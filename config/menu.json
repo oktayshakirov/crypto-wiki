@@ -1,0 +1,68 @@
+{
+  "main": [
+    {
+      "name": "Home",
+      "url": "/"
+    },
+    {
+      "name": "Posts",
+      "url": "",
+      "hasChildren": true,
+      "children": [
+        {
+          "name": "All",
+          "url": "/"
+        },
+        {
+          "name": "Categories",
+          "url": "/categories"
+        },
+        {
+          "name": "Tags",
+          "url": "/tags"
+        }
+      ]
+    },
+    {
+      "name": "Exchanges",
+      "url": "/exchanges"
+    },
+    {
+      "name": "Crypto OG's",
+      "url": "/crypto-ogs"
+    },
+    {
+      "name": "Tools",
+      "url": "",
+      "hasChildren": true,
+      "children": [
+        {
+          "name": "Bitcoin Rainbow Chart",
+          "url": "/"
+        },
+        {
+          "name": "Fear and Greed Index",
+          "url": "/"
+        },
+        {
+          "name": "Staking Calculator",
+          "url": "/"
+        }
+      ]
+    }
+  ],
+  "footer": [
+    {
+      "name": "About",
+      "url": "/about"
+    },
+    {
+      "name": "Contact",
+      "url": "/contact"
+    },
+    {
+      "name": "Privacy Policy",
+      "url": "/privacy-policy"
+    }
+  ]
+}

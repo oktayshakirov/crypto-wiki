@@ -1,0 +1,29 @@
+{
+  "site": {
+    "title": "The Crypto Wiki",
+    "base_url": "/",
+    "favicon": "/images/favicon.png",
+    "logo": "/images/logo.png",
+    "logo_width": "260",
+    "logo_height": "44",
+    "logo_text": "The Crypto Wiki"
+  },
+
+  "settings": {
+    "pagination": 9,
+    "summary_length": 200,
+    "blog_folder": "posts"
+  },
+
+  "params": {
+    "tag_manager_id": "",
+    "contact_form_action": "#",
+    "copyright": "Copyright © 2024"
+  },
+
+  "metadata": {
+    "meta_author": "The Crypto Wiki",
+    "meta_image": "/images/og-image.png",
+    "meta_description": "The reliable crypto source"
+  }
+}
