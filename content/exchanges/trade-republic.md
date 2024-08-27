@@ -104,3 +104,5 @@ Start your investment journey with Trade Republic and enjoy a €15 sign-up bonu
 Trade Republic stands out as a versatile and secure investment platform that integrates cryptocurrency trading with traditional asset management. Whether you're a seasoned investor or just starting, Trade Republic provides the tools and security you need to grow your wealth with confidence.
 
 **[Join Trade Republic today](https://refnocode.trade.re/sn8446n5)** to take advantage of its comprehensive services and start investing securely.
+
+---

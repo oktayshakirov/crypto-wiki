@@ -11,9 +11,9 @@ const Tags = ({ tags }) => {
       <section className="section">
         <div className="container text-center">
           {markdownify("Tags", "h1", "h2 mb-16")}
-          <ul className="space-x-4">
+          <ul className="flex flex-wrap justify-center gap-7">
             {tags.map((category, i) => (
-              <li key={`category-${i}`} className="inline-block">
+              <li key={`category-${i}`}>
                 <Link
                   href={`/tags/${category}`}
                   className="rounded-lg bg-theme-light px-4 py-2 text-dark transition hover:bg-primary hover:text-white"

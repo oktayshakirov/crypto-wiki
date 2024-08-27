@@ -109,3 +109,5 @@ Start your journey with Coinbase and enjoy exclusive benefits. Register using th
 Coinbase remains a top choice for cryptocurrency trading with its user-friendly interface, strong security measures, and educational resources. Its status as a publicly traded company further highlights its prominence and reliability in the crypto world. Whether you’re new to crypto or a seasoned trader, Coinbase offers a comprehensive platform to support your digital asset journey.
 
 **[Join Coinbase today](https://coinbase.com/join/8CXGA44?src=referral-link)** to leverage its powerful features and start trading with confidence.
+
+---

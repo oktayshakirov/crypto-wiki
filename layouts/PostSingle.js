@@ -142,7 +142,7 @@ const PostSingle = ({ post, posts, authors, cryptoOgs, exchanges, slug }) => {
               <MDXRemote {...mdxContent} components={shortcodes} />
             </div>
             <div className="flex flex-wrap items-center justify-between">
-              <ul className="mb-4 mr-4 space-x-3">
+              <ul className="mb-4 mr-4 flex flex-wrap justify-center gap-3">
                 {tags.map((tag, i) => (
                   <li className="inline-block" key={`tag-${i}`}>
                     <Link

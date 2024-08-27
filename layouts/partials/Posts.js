@@ -134,9 +134,7 @@ const Posts = ({ posts, authors, cryptoOgs, exchanges, className }) => {
               {post.frontmatter.title}
             </Link>
           </h3>
-          <p className="text-text">
-            {post.content && post.content.slice(0, Number(summary_length))}...
-          </p>
+          <p className="text-text">{post.frontmatter.description}</p>
         </div>
       ))}
     </div>

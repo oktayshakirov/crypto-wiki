@@ -119,3 +119,5 @@ Start your journey with KuCoin and unlock exclusive benefits. Register using the
 KuCoin stands out as a versatile and user-friendly cryptocurrency exchange, offering an extensive range of assets, advanced trading features, and a commitment to security. Whether you're a seasoned trader or just getting started, KuCoin provides a robust platform to help you achieve your crypto goals.
 
 **[Join KuCoin today](https://www.kucoin.com/r/rf/QBS5F2B1)** to take advantage of its innovative features and start trading with confidence.
+
+---

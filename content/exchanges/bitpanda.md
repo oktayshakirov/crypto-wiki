@@ -126,3 +126,5 @@ Start your investment journey with Bitpanda and enjoy exclusive benefits. Regist
 Bitpanda stands out as a reliable and user-friendly platform for investing in a wide range of assets. With its strong focus on security, transparency, and user experience, Bitpanda is a top choice for anyone looking to invest in digital assets in Europe and beyond.
 
 **[Join Bitpanda today](https://www.bitpanda.com/?ref=218256540088952131)** to take advantage of its comprehensive services and start investing with confidence.
+
+---

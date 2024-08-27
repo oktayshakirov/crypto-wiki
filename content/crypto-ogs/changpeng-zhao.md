@@ -93,3 +93,5 @@ CZ continues to be a driving force in the cryptocurrency world, frequently shari
 Changpeng Zhao's journey from a modest background to becoming one of the most influential figures in the cryptocurrency industry is a testament to his vision, determination, and leadership. Through Binance, CZ has revolutionized the way people trade and interact with cryptocurrencies, making a lasting impact on the global financial system.
 
 ![Changpeng Zhao](/images/posts/changpeng-zhao-2.png)
+
+---

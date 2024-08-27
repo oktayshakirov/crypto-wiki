@@ -97,3 +97,5 @@ Satoshi Nakamoto's influence on the world of finance and technology cannot be ov
 As Bitcoin continues to evolve and gain acceptance worldwide, the question of Nakamoto's identity remains a tantalizing enigma. Whether or not we ever discover who Nakamoto is, their creation has undeniably changed the world.
 
 ![Trading App on a Smartphone](/images/posts/trading.jpg)
+
+---

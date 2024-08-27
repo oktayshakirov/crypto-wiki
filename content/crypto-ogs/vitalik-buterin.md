@@ -95,3 +95,5 @@ Vitalik Buterin remains a prominent figure in the blockchain community, often sh
 Vitalik Buterin's contributions to the blockchain world are immeasurable. As the mastermind behind Ethereum, he has not only introduced groundbreaking technology but also shaped the future of decentralized finance and applications. His work continues to inspire a new generation of developers, and the future of Ethereum remains a key focus in the evolution of the internet.
 
 ![Ethereum Network](/images/posts/ethereum-network.jpg)
+
+---
