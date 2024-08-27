@@ -2,6 +2,7 @@ import config from "@config/config.json";
 import theme from "@config/theme.json";
 import { JsonContext } from "context/state";
 import Head from "next/head";
+import Script from "next/script";
 import { useEffect, useState } from "react";
 import TagManager from "react-gtm-module";
 import "styles/style.scss";
@@ -50,6 +51,22 @@ const App = ({ Component, pageProps }) => {
           content="width=device-width, initial-scale=1, maximum-scale=5"
         />
       </Head>
+
+      {/* Google Tag (gtag.js) */}
+      <Script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-ZRW4Z84C8T"
+      ></Script>
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-ZRW4Z84C8T');
+        `}
+      </Script>
+
       <Component {...pageProps} />
     </JsonContext>
   );
