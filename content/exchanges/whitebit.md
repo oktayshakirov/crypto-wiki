@@ -3,6 +3,7 @@ title: WhiteBIT
 image: /images/exchanges/whitebit.jpg
 description: WhiteBIT is a European crypto exchange offering secure trading, staking, and competitive fees.
 order: 8
+authors: ["Crypto Wiki"]
 social:
   facebook: https://www.facebook.com/whitebit
   twitter: https://twitter.com/WhiteBit

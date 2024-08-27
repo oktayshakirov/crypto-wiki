@@ -3,6 +3,7 @@ title: Nexo
 image: /images/exchanges/nexo.png
 description: Nexo is a leading platform for crypto lending and earning with high security.
 order: 3
+authors: ["Crypto Wiki"]
 social:
   android: https://play.google.com/store/apps/details?id=com.nexowallet&pli=1
   apple: https://apps.apple.com/us/app/nexo-buy-bitcoin-crypto/id1455341917

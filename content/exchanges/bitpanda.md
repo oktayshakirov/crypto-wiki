@@ -3,6 +3,7 @@ title: Bitpanda
 image: /images/exchanges/bitpanda.png
 description: Bitpanda is a trusted platform for investing in cryptocurrencies, stocks and metals with ease.
 order: 7
+authors: ["Crypto Wiki"]
 social:
   android: https://play.google.com/store/apps/details?id=com.bitpanda.bitpanda
   apple: https://apps.apple.com/gb/app/bitpanda-buy-bitcoin-crypto/id1449018960

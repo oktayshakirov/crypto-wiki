@@ -4,7 +4,7 @@ description: "meta description"
 date: 2023-04-04
 image: "/images/posts/01.jpg"
 categories: ["art", "art2", "art3", "art4"]
-authors: ["Oktay Shakirov"]
+authors: ["Crypto Wiki"]
 crypto-ogs: ["Satoshi Nakamoto"]
 exchanges: ["Binance"]
 tags: ["diy", "toy"]

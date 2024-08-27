@@ -3,6 +3,7 @@ title: Crypto.com
 image: /images/exchanges/crypto.png
 description: Crypto.com offers a robust platform for trading, staking, and utilizing crypto with innovative products.
 order: 1
+authors: ["Crypto Wiki"]
 social:
   android: https://play.google.com/store/apps/details?id=co.mona.android
   apple: https://apps.apple.com/us/app/crypto-com-buy-bitcoin-eth/id1262148500

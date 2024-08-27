@@ -3,6 +3,7 @@ title: Satoshi Nakamoto
 image: /images/crypto-ogs/satoshi.png
 description: Anonymous creator of Bitcoin, pioneering blockchain and revolutionizing digital finance.
 order: 1
+authors: ["Crypto Wiki"]
 social:
   wikipedia: https://en.wikipedia.org/wiki/Satoshi_Nakamoto
   bitcoin: https://bitcointalk.org/index.php?action=profile;u=3
