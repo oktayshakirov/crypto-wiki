@@ -1,12 +1,12 @@
 ---
 title: "Crypto for Beginners: A Complete Guide"
-description: "Learn everything you need to know about cryptocurrency, including how it works, popular types, and why it's revolutionizing the financial world. Perfect for beginners."
+description: "Everything you need to know about cryptocurrency, including how it works, popular types, and why it's revolutionizing the financial world. Perfect for beginners."
 date: 2024-08-27
 image: "/images/posts/cryptocurrency.jpg"
 categories: ["Cryptocurrency", "Beginners"]
 authors: ["Crypto Wiki"]
 crypto-ogs: ["Satoshi Nakamoto"]
-exchanges: ["Binance", "Coinbase", "Kraken"]
+exchanges: ["Binance", "Coinbase", "Crypto.com"]
 tags:
   [
     "cryptocurrency",
@@ -93,7 +93,7 @@ While there are thousands of cryptocurrencies in existence, a few stand out as p
 For beginners looking to get involved with cryptocurrency, here are some steps to follow:
 
 1. **Educate Yourself:** Before investing, it's crucial to understand the basics of cryptocurrency and the technology behind it. Reading guides like this one is a good start.
-2. **Choose a Reliable Exchange:** To buy cryptocurrency, you’ll need to use an exchange. Popular options include Binance, Coinbase, and Kraken. We also have [list of exchanges](/exchanges) with full guides to help you choose the best one for your needs.
+2. **Choose a Reliable Exchange:** To buy cryptocurrency, you’ll need to use an exchange. Popular options include Binance, Coinbase, and Crypto.com. We also have [list of exchanges](/exchanges) with full guides to help you choose the best one for your needs.
 3. **Create a Wallet:** You'll need a digital wallet to store your cryptocurrencies. There are different types of wallets, including hot wallets (online) and cold wallets (offline). Cold wallets are generally considered more secure.
 4. **Start Small:** As a beginner, it's wise to start with a small investment and gradually increase your exposure as you become more comfortable with the market.
 
