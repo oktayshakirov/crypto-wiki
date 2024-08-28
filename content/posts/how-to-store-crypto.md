@@ -1,9 +1,9 @@
 ---
 title: "How to Safely Store Your Cryptocurrency"
 description: "The best practices for storing your cryptocurrency securely. Discover the different types of wallets, how to protect your private keys, and avoid common security pitfalls."
-date: 2024-08-28
+date: 2024-08-26
 image: "/images/posts/ledger.jpeg"
-categories: ["Cryptocurrency", "Security", "Beginners"]
+categories: ["Security", "Beginners", "Guides"]
 authors: ["Crypto Wiki"]
 tags:
   [

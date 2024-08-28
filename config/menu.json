@@ -10,16 +10,12 @@
       "hasChildren": true,
       "children": [
         {
-          "name": "All",
+          "name": "All Posts",
           "url": "/"
         },
         {
           "name": "Categories",
           "url": "/categories"
-        },
-        {
-          "name": "Tags",
-          "url": "/tags"
         }
       ]
     },
@@ -57,12 +53,24 @@
       "url": "/about"
     },
     {
+      "name": "FAQ",
+      "url": "/faq"
+    },
+    {
+      "name": "Tags",
+      "url": "/tags"
+    },
+    {
       "name": "Contact",
       "url": "/contact"
     },
     {
       "name": "Privacy Policy",
       "url": "/privacy-policy"
+    },
+    {
+      "name": "Terms of Use",
+      "url": "/terms"
     }
   ]
 }
