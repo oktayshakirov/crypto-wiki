@@ -66,13 +66,13 @@ export const getStaticPaths = () => {
 // get exchanges pagination content
 export const getStaticProps = async ({ params }) => {
   const currentPage = parseInt((params && params.slug) || 1);
-  const { pagination } = config.settings;
+  const { paginationExchanges } = config.settings;
   const exchanges = getSinglePage("content/exchanges");
   const exchangeIndex = await getListPage("content/exchanges/_index.md");
 
   return {
     props: {
-      pagination: pagination,
+      pagination: paginationExchanges,
       exchanges: exchanges,
       currentPage: currentPage,
       exchangeIndex: exchangeIndex,
