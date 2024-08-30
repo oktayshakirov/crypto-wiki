@@ -1,140 +1,135 @@
-import config from "@config/config.json";
 import dateFormat from "@lib/utils/dateFormat";
-import { humanize, slugify } from "@lib/utils/textConverter";
+import { slugify } from "@lib/utils/textConverter";
 import Image from "next/image";
 import Link from "next/link";
+import { FaCalendarAlt, FaTag } from "react-icons/fa";
 
-const Posts = ({ posts, authors, cryptoOgs, exchanges, className }) => {
-  const { summary_length } = config.settings;
-
+const Posts = ({ posts, cryptoOgs, exchanges, className }) => {
   return (
-    <div className={`row space-y-16 ${className}`}>
+    <div className="row justify-center">
       {posts.map((post, i) => (
-        <div key={`key-${i}`} className="col-12 sm:col-6">
-          {post.frontmatter.image && (
-            <Image
-              className="rounded-lg"
-              src={post.frontmatter.image}
-              alt={post.frontmatter.title}
-              width="445"
-              height="230"
-            />
-          )}
-          <ul className="mb-4 mt-4 flex flex-wrap items-center space-x-3 text-text">
-            {/* Authors Section */}
-            {authors && post.frontmatter.authors && (
-              <li>
-                {authors
-                  .filter((author) =>
-                    post.frontmatter.authors
-                      .map((author) => slugify(author))
-                      .includes(slugify(author.frontmatter.title))
-                  )
-                  .map((author, i) => (
-                    <Link
-                      href={`/authors/${slugify(author.frontmatter.title)}`}
-                      key={`author-${i}`}
-                      className="flex items-center hover:text-primary"
-                    >
-                      {author.frontmatter.image && (
-                        <Image
-                          src={author.frontmatter.image}
-                          alt={author.frontmatter.title}
-                          height={50}
-                          width={50}
-                          className="mr-2 h-6 w-6 rounded-full"
-                        />
-                      )}
-                      <span>{author.frontmatter.title}</span>
-                    </Link>
-                  ))}
-              </li>
+        <div key={`key-${i}`} className="col-12 mb-10 justify-center sm:col-6">
+          <div className="group flex h-full flex-col justify-between rounded-lg border border-white p-4 hover:border-primary hover:bg-black hover:bg-opacity-40">
+            {post.frontmatter.image && (
+              <Image
+                className="rounded-lg"
+                src={post.frontmatter.image}
+                alt={post.frontmatter.title}
+                width={445}
+                height={230}
+              />
             )}
-
-            {/* Crypto OGs Section */}
-            {cryptoOgs && post.frontmatter["crypto-ogs"] && (
-              <li>
-                {cryptoOgs
-                  .filter((cryptoOg) =>
-                    post.frontmatter["crypto-ogs"]
-                      .map((cryptoOg) => slugify(cryptoOg))
-                      .includes(slugify(cryptoOg.frontmatter.title))
-                  )
-                  .map((cryptoOg, i) => (
-                    <Link
-                      href={`/crypto-ogs/${slugify(
-                        cryptoOg.frontmatter.title
-                      )}`}
-                      key={`cryptoOg-${i}`}
-                      className="flex items-center hover:text-primary"
+            <ul className="mb-4 mt-4 ">
+              {/* Title */}
+              <h4 className="mb-2 group-hover:text-primary">
+                <Link href={`/${post.slug}`} className="block ">
+                  {post.frontmatter.title}
+                </Link>
+              </h4>
+              {/* Categories */}
+              <li className="flex flex-wrap">
+                {post.frontmatter.categories
+                  .slice(0, 3)
+                  .map((category, index) => (
+                    <div
+                      key={`category-${index}`}
+                      className="mr-2 flex items-center"
                     >
-                      {cryptoOg.frontmatter.image && (
-                        <Image
-                          src={cryptoOg.frontmatter.image}
-                          alt={cryptoOg.frontmatter.title}
-                          height={50}
-                          width={50}
-                          className="mr-2 h-6 w-6 rounded-full"
-                        />
-                      )}
-                      <span>{cryptoOg.frontmatter.title}</span>
-                    </Link>
+                      <FaTag className="mx-2" />
+                      <Link
+                        href={`/categories/${slugify(category)}`}
+                        className="hover:text-primary"
+                      >
+                        <span>{category}</span>
+                      </Link>
+                    </div>
                   ))}
+                {post.frontmatter.categories.length > 3 && (
+                  <span className="text-secondary ml-2">
+                    +{post.frontmatter.categories.length - 3}
+                  </span>
+                )}
               </li>
-            )}
-
-            {/* Exchanges Section */}
-            {exchanges && post.frontmatter["exchanges"] && (
-              <li>
-                {exchanges
-                  .filter((exchange) =>
-                    post.frontmatter["exchanges"]
-                      .map((exchange) => slugify(exchange))
-                      .includes(slugify(exchange.frontmatter.title))
-                  )
-                  .map((exchange, i) => (
-                    <Link
-                      href={`/exchanges/${slugify(exchange.frontmatter.title)}`}
-                      key={`exchange-${i}`}
-                      className="flex items-center hover:text-primary"
-                    >
-                      {exchange.frontmatter.image && (
-                        <Image
-                          src={exchange.frontmatter.image}
-                          alt={exchange.frontmatter.title}
-                          height={50}
-                          width={50}
-                          className="mr-2 h-6 w-6 rounded-full"
-                        />
-                      )}
-                      <span>{exchange.frontmatter.title}</span>
-                    </Link>
-                  ))}
-              </li>
-            )}
-
-            <li>{dateFormat(post.frontmatter.date)}</li>
-            <li>
-              <ul>
-                {post.frontmatter.categories.map((category, i) => (
-                  <li className="inline-block" key={`category-${i}`}>
-                    <Link
-                      href={`/categories/${slugify(category)}`}
-                      className="mr-3 hover:text-primary"
-                    >
-                      &#9635; {humanize(category)}
-                    </Link>
+              {/* Crypto OGs Row */}
+              {post.frontmatter["crypto-ogs"] &&
+                post.frontmatter["crypto-ogs"].length > 0 && (
+                  <li className="flex flex-wrap items-center space-x-3">
+                    {post.frontmatter["crypto-ogs"]
+                      .slice(0, 3)
+                      .map((cryptoOg, index) => (
+                        <Link
+                          href={`/crypto-ogs/${slugify(cryptoOg)}`}
+                          key={`cryptoOg-${index}`}
+                          className="mr-3 flex items-center hover:text-primary"
+                        >
+                          {cryptoOgs
+                            .filter(
+                              (og) =>
+                                slugify(og.frontmatter.title) ===
+                                slugify(cryptoOg)
+                            )
+                            .map((og) => (
+                              <Image
+                                key={og.frontmatter.title}
+                                src={og.frontmatter.image}
+                                alt={og.frontmatter.title}
+                                height={50}
+                                width={50}
+                                className="mr-2 h-6 w-6 rounded-full"
+                              />
+                            ))}
+                          <span>{cryptoOg}</span>
+                        </Link>
+                      ))}
+                    {post.frontmatter["crypto-ogs"].length > 3 && (
+                      <span className="text-secondary">
+                        +{post.frontmatter["crypto-ogs"].length - 3}
+                      </span>
+                    )}
                   </li>
-                ))}
-              </ul>
-            </li>
-          </ul>
-          <h3 className="mb-2">
-            <Link href={`/${post.slug}`} className="block hover:text-primary">
-              {post.frontmatter.title}
-            </Link>
-          </h3>
-          <p className="text-text">{post.frontmatter.description}</p>
+                )}
+
+              {/* Exchanges Row */}
+              {post.frontmatter["exchanges"] &&
+                post.frontmatter["exchanges"].length > 0 && (
+                  <li className="flex flex-wrap items-center space-x-3">
+                    {post.frontmatter["exchanges"]
+                      .slice(0, 3)
+                      .map((exchange, index) => (
+                        <Link
+                          href={`/exchanges/${slugify(exchange)}`}
+                          key={`exchange-${index}`}
+                          className="mr-3 flex items-center hover:text-primary"
+                        >
+                          {exchanges
+                            .filter(
+                              (ex) =>
+                                slugify(ex.frontmatter.title) ===
+                                slugify(exchange)
+                            )
+                            .map((ex) => (
+                              <Image
+                                key={ex.frontmatter.title}
+                                src={ex.frontmatter.image}
+                                alt={ex.frontmatter.title}
+                                height={50}
+                                width={50}
+                                className="mr-2 h-6 w-6 rounded-full"
+                              />
+                            ))}
+                          <span>{exchange}</span>
+                        </Link>
+                      ))}
+                    {post.frontmatter["exchanges"].length > 3 && (
+                      <span className="text-secondary">
+                        +{post.frontmatter["exchanges"].length - 3}
+                      </span>
+                    )}
+                  </li>
+                )}
+            </ul>
+            <p className="text-text">{post.frontmatter.description}</p>
+          </div>
         </div>
       ))}
     </div>
