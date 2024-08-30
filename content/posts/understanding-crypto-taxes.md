@@ -3,7 +3,7 @@ title: "Understanding Cryptocurrency Taxes"
 description: "How is crypto taxed around the world, including key concepts like taxable events, capital gains and best practices for keeping track of your transactions. "
 date: 2024-08-31
 image: "/images/posts/crypto-taxes.jpg"
-categories: ["Guides", "Beginners", "Investing"]
+categories: ["Beginners", "Investing", "Regulation"]
 authors: ["Crypto Wiki"]
 tags:
   [

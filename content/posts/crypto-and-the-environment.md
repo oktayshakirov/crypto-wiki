@@ -3,7 +3,7 @@ title: "Can Crypto Go Green? The Environmental Impact"
 description: "The environmental impact of cryptocurrencies and the potential solutions to make the industry more sustainable. Learn about energy consumption, green initiatives, and the future of crypto."
 date: 2024-08-28
 image: "/images/posts/energy.jpg"
-categories: ["Sustainability", "Technology"]
+categories: ["Sustainability", "Technology", "Regulation"]
 authors: ["Crypto Wiki"]
 tags:
   [

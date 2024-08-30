@@ -3,7 +3,7 @@ title: "Crypto for Beginners: A Complete Guide"
 description: "Everything you need to know about cryptocurrency, including how it works, popular types, and why it's revolutionizing the financial world. Perfect for beginners."
 date: 2024-08-25
 image: "/images/posts/cryptocurrency.jpg"
-categories: ["Beginners", "Guides"]
+categories: ["Beginners"]
 authors: ["Crypto Wiki"]
 crypto-ogs: ["Satoshi Nakamoto"]
 exchanges: ["Binance", "Coinbase", "Crypto.com"]

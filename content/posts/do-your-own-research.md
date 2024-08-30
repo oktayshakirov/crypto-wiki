@@ -3,7 +3,7 @@ title: "The Importance of DYOR (Do Your Own Research)"
 description: "Why doing your own research is crucial before investing in cryptocurrency. Understand the key strategies to avoid scams and make informed decisions in the volatile crypto market."
 date: 2024-08-29
 image: "/images/posts/research.jpg"
-categories: ["Investing", "Beginners", "Guides"]
+categories: ["Investing", "Beginners"]
 authors: ["Crypto Wiki"]
 tags:
   [

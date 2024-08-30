@@ -3,7 +3,7 @@ title: "How to Buy Your First Cryptocurrency"
 description: "How to buy your first cryptocurrency with this comprehensive guide. We cover everything from choosing an exchange to securing your digital assets safely."
 date: 2024-08-27
 image: "/images/posts/bitcoin.jpg"
-categories: ["Beginners", "Investing", "Guides"]
+categories: ["Beginners", "Investing"]
 exchanges: ["Trade Republic", "Coinbase", "Crypto.com"]
 authors: ["Crypto Wiki"]
 tags:
@@ -17,6 +17,7 @@ tags:
     "blockchain",
     "security",
     "investing",
+    "crypto guides",
   ]
 draft: false
 ---
