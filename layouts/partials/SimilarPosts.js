@@ -1,46 +1,48 @@
-import dateFormat from "@lib/utils/dateFormat";
 import { humanize, slugify } from "@lib/utils/textConverter";
 import Image from "next/image";
 import Link from "next/link";
 
 const SimilarPosts = ({ posts }) => {
   return (
-    <div className="row justify-center">
+    <div className="flex flex-wrap justify-center">
       {posts.map((post, i) => (
-        <div key={`key-${i}`} className={"col-12 mb-4 sm:col-4"}>
+        <div key={`key-${i}`} className="w-full p-4 sm:w-1/3">
           {post.frontmatter.image && (
-            <Image
-              className="rounded-lg"
-              src={post.frontmatter.image}
-              alt={post.frontmatter.title}
-              width={445}
-              height={230}
-            />
+            <div className="relative h-56 w-full">
+              <Image
+                className="rounded-lg object-cover"
+                src={post.frontmatter.image}
+                alt={post.frontmatter.title}
+                layout="fill"
+              />
+            </div>
           )}
           <ul className="mt-4 text-text">
-            <li className="mb-2 mr-4 inline-block">
-              {dateFormat(post.frontmatter.date)}
-            </li>
-            <li className="mb-2 mr-4 inline-block">
-              <ul>
-                {post.frontmatter.categories?.map((category, i) => (
-                  <li className="inline-block" key={`category-${i}`}>
+            <li className="mb-2">
+              <ul className="flex flex-wrap">
+                {post.frontmatter.categories?.slice(0, 2).map((category, i) => (
+                  <li className="mr-3" key={`category-${i}`}>
                     <Link
                       href={`/categories/${slugify(category)}`}
-                      className="mr-3 hover:text-primary"
+                      className="hover:text-primary"
                     >
                       &#9635; {humanize(category)}
                     </Link>
                   </li>
                 ))}
+                {post.frontmatter.categories?.length > 2 && (
+                  <li className="mr-3 inline-block">
+                    +{post.frontmatter.categories.length - 2}
+                  </li>
+                )}
               </ul>
             </li>
           </ul>
-          <h3 className="h4">
+          <h5>
             <Link href={`/${post.slug}`} className="block hover:text-primary">
               {post.frontmatter.title}
             </Link>
-          </h3>
+          </h5>
         </div>
       ))}
     </div>

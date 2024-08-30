@@ -1,5 +1,5 @@
 ---
-title: "Common Cryptocurrency Terms Explained"
+title: "Common Crypto Terms Explained"
 description: "Essential crypto terms for beginners. Learn the key concepts like wallets, private keys, mining, HODL, altcoins, and ICOs to navigate the crypto world with confidence."
 date: 2024-08-31
 image: "/images/posts/woman-browsing-internet.jpg"

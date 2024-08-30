@@ -6,6 +6,7 @@ import shortcodes from "@shortcodes/all";
 import { MDXRemote } from "next-mdx-remote";
 import Image from "next/image";
 import Link from "next/link";
+import { FaCalendarAlt, FaTag, FaUser, FaExchangeAlt } from "react-icons/fa";
 
 const PostSingle = ({ post, posts, authors, cryptoOgs, exchanges, slug }) => {
   const { frontmatter, content, mdxContent } = post;
@@ -19,116 +20,110 @@ const PostSingle = ({ post, posts, authors, cryptoOgs, exchanges, slug }) => {
         <div className="container">
           <article className="text-center">
             {markdownify(title, "h1", "h2")}
-            <ul className="mb-8 mt-4 flex flex-wrap items-center justify-center space-x-3 text-white">
-              {/* Authors Section */}
-              <li>
-                {authors
-                  .filter((author) =>
-                    frontmatter.authors
-                      .map((author) => slugify(author))
-                      .includes(slugify(author.frontmatter.title))
-                  )
-                  .map((author, i) => (
+            <ul className="my-5">
+              {/* Author, Date, and Categories Row */}
+              <li className="mb-5 flex flex-wrap items-center justify-between">
+                <div className="flex flex-wrap items-center">
+                  {/* Date Section */}
+                  <span className="mt-2 flex items-center md:mt-0">
+                    <FaCalendarAlt className="mr-2" />
+                    {dateFormat(date)}
+                  </span>
+                </div>
+
+                {/* Categories Section */}
+                <div className="mt-4 flex flex-wrap justify-center gap-3 md:mt-0 md:justify-end">
+                  {categories.map((category, i) => (
                     <Link
-                      href={`/authors/${slugify(author.frontmatter.title)}`}
-                      key={`author-${i}`}
+                      href={`/categories/${slugify(category)}`}
+                      key={`category-${i}`}
                       className="flex items-center hover:text-primary"
                     >
-                      {author.frontmatter.image && (
-                        <Image
-                          src={author.frontmatter.image}
-                          alt={author.frontmatter.title}
-                          height={50}
-                          width={50}
-                          className="mr-2 h-6 w-6 rounded-full"
-                        />
-                      )}
-                      <span>{author.frontmatter.title}</span>
+                      <FaTag className="mr-2" />
+                      {humanize(category)}
                     </Link>
                   ))}
+                </div>
               </li>
 
               {/* Crypto OGs Section */}
               {frontmatter["crypto-ogs"] && cryptoOgs && (
-                <li>
-                  {cryptoOgs
-                    .filter((cryptoOg) =>
-                      frontmatter["crypto-ogs"]
-                        .map((cryptoOg) => slugify(cryptoOg))
-                        .includes(slugify(cryptoOg.frontmatter.title))
-                    )
-                    .map((cryptoOg, i) => (
-                      <Link
-                        href={`/crypto-ogs/${slugify(
-                          cryptoOg.frontmatter.title
-                        )}`}
-                        key={`cryptoOg-${i}`}
-                        className="flex items-center hover:text-primary"
-                      >
-                        {cryptoOg.frontmatter.image && (
-                          <Image
-                            src={cryptoOg.frontmatter.image}
-                            alt={cryptoOg.frontmatter.title}
-                            height={50}
-                            width={50}
-                            className="mr-2 h-6 w-6 rounded-full"
-                          />
-                        )}
-                        <span>{cryptoOg.frontmatter.title}</span>
-                      </Link>
-                    ))}
+                <li className="mt-4 flex flex-wrap items-center justify-center space-x-2 md:mt-0">
+                  <div className="flex items-center space-x-2">
+                    <FaUser />
+                    <span>Crypto OG&apos;s mentioned:</span>
+                  </div>
+                  <ul className="mt-2 flex flex-wrap justify-center gap-4 md:mt-0">
+                    {cryptoOgs
+                      .filter((cryptoOg) =>
+                        frontmatter["crypto-ogs"]
+                          .map((cryptoOg) => slugify(cryptoOg))
+                          .includes(slugify(cryptoOg.frontmatter.title))
+                      )
+                      .map((cryptoOg, i) => (
+                        <li key={`cryptoOg-${i}`} className="flex items-center">
+                          <Link
+                            href={`/crypto-ogs/${slugify(
+                              cryptoOg.frontmatter.title
+                            )}`}
+                            className="flex items-center hover:text-primary"
+                          >
+                            {cryptoOg.frontmatter.image && (
+                              <Image
+                                src={cryptoOg.frontmatter.image}
+                                alt={cryptoOg.frontmatter.title}
+                                height={50}
+                                width={50}
+                                className="mr-2 h-6 w-6 rounded-full"
+                              />
+                            )}
+                            <span>{cryptoOg.frontmatter.title}</span>
+                          </Link>
+                        </li>
+                      ))}
+                  </ul>
                 </li>
               )}
 
               {/* Exchanges Section */}
               {frontmatter["exchanges"] && exchanges && (
-                <li>
-                  {exchanges
-                    .filter((exchange) =>
-                      frontmatter["exchanges"]
-                        .map((exchange) => slugify(exchange))
-                        .includes(slugify(exchange.frontmatter.title))
-                    )
-                    .map((exchange, i) => (
-                      <Link
-                        href={`/exchanges/${slugify(
-                          exchange.frontmatter.title
-                        )}`}
-                        key={`exchange-${i}`}
-                        className="flex items-center hover:text-primary"
-                      >
-                        {exchange.frontmatter.image && (
-                          <Image
-                            src={exchange.frontmatter.image}
-                            alt={exchange.frontmatter.title}
-                            height={50}
-                            width={50}
-                            className="mr-2 h-6 w-6 rounded-full"
-                          />
-                        )}
-                        <span>{exchange.frontmatter.title}</span>
-                      </Link>
-                    ))}
+                <li className="mt-4 flex flex-wrap items-center justify-center space-x-2 md:mt-0">
+                  <div className="flex items-center space-x-2">
+                    <FaExchangeAlt />
+                    <span>Exchanges mentioned:</span>
+                  </div>
+                  <ul className="mt-2 flex flex-wrap justify-center gap-4 md:mt-0">
+                    {exchanges
+                      .filter((exchange) =>
+                        frontmatter["exchanges"]
+                          .map((exchange) => slugify(exchange))
+                          .includes(slugify(exchange.frontmatter.title))
+                      )
+                      .map((exchange, i) => (
+                        <li key={`exchange-${i}`} className="flex items-center">
+                          <Link
+                            href={`/exchanges/${slugify(
+                              exchange.frontmatter.title
+                            )}`}
+                            className="flex items-center hover:text-primary"
+                          >
+                            {exchange.frontmatter.image && (
+                              <Image
+                                src={exchange.frontmatter.image}
+                                alt={exchange.frontmatter.title}
+                                height={50}
+                                width={50}
+                                className="mr-2 h-6 w-6 rounded-full"
+                              />
+                            )}
+                            <span>{exchange.frontmatter.title}</span>
+                          </Link>
+                        </li>
+                      ))}
+                  </ul>
                 </li>
               )}
-
-              <li>{dateFormat(date)}</li>
-              <li>
-                <ul>
-                  {categories.map((category, i) => (
-                    <li className="inline-block" key={`category-${i}`}>
-                      <Link
-                        href={`/categories/${slugify(category)}`}
-                        className="mr-3 hover:text-primary"
-                      >
-                        &#9635; {humanize(category)}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </li>
             </ul>
-
             {image && (
               <Image
                 src={image}

@@ -1,48 +1,40 @@
-import dateFormat from "@lib/utils/dateFormat";
 import { slugify } from "@lib/utils/textConverter";
 import Image from "next/image";
 import Link from "next/link";
-import { FaCalendarAlt, FaTag } from "react-icons/fa";
+import { FaTag, FaUser, FaExchangeAlt } from "react-icons/fa";
 
-const Posts = ({ posts, cryptoOgs, exchanges, className }) => {
+const Posts = ({ posts }) => {
   return (
     <div className="row justify-center">
       {posts.map((post, i) => (
         <div key={`key-${i}`} className="col-12 mb-10 justify-center sm:col-6">
-          <div className="group flex h-full flex-col justify-between rounded-lg border border-white p-4 hover:border-primary hover:bg-black hover:bg-opacity-40">
+          <div className="group flex h-full flex-col justify-between rounded-lg border border-white p-4 hover:bg-black hover:bg-opacity-40 group-hover:text-primary">
             {post.frontmatter.image && (
-              <Image
-                className="rounded-lg"
-                src={post.frontmatter.image}
-                alt={post.frontmatter.title}
-                width={445}
-                height={230}
-              />
+              <Link href={`${post.slug}`}>
+                <div className="relative h-64 w-full">
+                  <Image
+                    className="rounded-lg object-cover"
+                    src={post.frontmatter.image}
+                    alt={post.frontmatter.title}
+                    layout="fill"
+                  />
+                </div>
+              </Link>
             )}
             <ul className="mb-4 mt-4 ">
-              {/* Title */}
-              <h4 className="mb-2 group-hover:text-primary">
-                <Link href={`/${post.slug}`} className="block ">
-                  {post.frontmatter.title}
-                </Link>
-              </h4>
               {/* Categories */}
               <li className="flex flex-wrap">
                 {post.frontmatter.categories
                   .slice(0, 3)
                   .map((category, index) => (
-                    <div
+                    <Link
                       key={`category-${index}`}
-                      className="mr-2 flex items-center"
+                      href={`/categories/${slugify(category)}`}
+                      className="mr-2 flex items-center hover:text-primary"
                     >
                       <FaTag className="mx-2" />
-                      <Link
-                        href={`/categories/${slugify(category)}`}
-                        className="hover:text-primary"
-                      >
-                        <span>{category}</span>
-                      </Link>
-                    </div>
+                      <span>{category}</span>
+                    </Link>
                   ))}
                 {post.frontmatter.categories.length > 3 && (
                   <span className="text-secondary ml-2">
@@ -50,6 +42,7 @@ const Posts = ({ posts, cryptoOgs, exchanges, className }) => {
                   </span>
                 )}
               </li>
+
               {/* Crypto OGs Row */}
               {post.frontmatter["crypto-ogs"] &&
                 post.frontmatter["crypto-ogs"].length > 0 && (
@@ -60,24 +53,10 @@ const Posts = ({ posts, cryptoOgs, exchanges, className }) => {
                         <Link
                           href={`/crypto-ogs/${slugify(cryptoOg)}`}
                           key={`cryptoOg-${index}`}
-                          className="mr-3 flex items-center hover:text-primary"
+                          className="mx-3 flex items-center hover:text-primary"
                         >
-                          {cryptoOgs
-                            .filter(
-                              (og) =>
-                                slugify(og.frontmatter.title) ===
-                                slugify(cryptoOg)
-                            )
-                            .map((og) => (
-                              <Image
-                                key={og.frontmatter.title}
-                                src={og.frontmatter.image}
-                                alt={og.frontmatter.title}
-                                height={50}
-                                width={50}
-                                className="mr-2 h-6 w-6 rounded-full"
-                              />
-                            ))}
+                          {/* Profile icon for Crypto OGs */}
+                          <FaUser className="mr-2" />
                           <span>{cryptoOg}</span>
                         </Link>
                       ))}
@@ -99,24 +78,10 @@ const Posts = ({ posts, cryptoOgs, exchanges, className }) => {
                         <Link
                           href={`/exchanges/${slugify(exchange)}`}
                           key={`exchange-${index}`}
-                          className="mr-3 flex items-center hover:text-primary"
+                          className="mx-3 flex items-center hover:text-primary"
                         >
-                          {exchanges
-                            .filter(
-                              (ex) =>
-                                slugify(ex.frontmatter.title) ===
-                                slugify(exchange)
-                            )
-                            .map((ex) => (
-                              <Image
-                                key={ex.frontmatter.title}
-                                src={ex.frontmatter.image}
-                                alt={ex.frontmatter.title}
-                                height={50}
-                                width={50}
-                                className="mr-2 h-6 w-6 rounded-full"
-                              />
-                            ))}
+                          {/* Currency exchange icon for Exchanges */}
+                          <FaExchangeAlt className="mr-2" />
                           <span>{exchange}</span>
                         </Link>
                       ))}
@@ -128,7 +93,16 @@ const Posts = ({ posts, cryptoOgs, exchanges, className }) => {
                   </li>
                 )}
             </ul>
-            <p className="text-text">{post.frontmatter.description}</p>
+            {/* Title */}
+            <h4 className="mb-2 group-hover:text-primary">
+              <Link href={`/${post.slug}`} className="block ">
+                {post.frontmatter.title}
+              </Link>
+            </h4>
+
+            <p className="group-hover:text-primary">
+              {post.frontmatter.description}
+            </p>
           </div>
         </div>
       ))}
