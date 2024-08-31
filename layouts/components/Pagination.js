@@ -46,7 +46,7 @@ const Pagination = ({ section, currentPage, totalPages }) => {
               </>
             </Link>
           ) : (
-            <span className="rounded-lg border border-primary px-2 py-2 text-dark">
+            <span className="2px rounded-lg border border-primary px-2 py-2 text-dark">
               <>
                 <span className="sr-only">Previous</span>
                 <svg
@@ -72,7 +72,7 @@ const Pagination = ({ section, currentPage, totalPages }) => {
               {pagination === currentPage ? (
                 <span
                   aria-current="page"
-                  className={`rounded-lg border border-primary bg-primary px-4 py-2 text-white`}
+                  className={`rounded-lg border border-primary bg-primary px-4 py-2 font-bold text-black`}
                 >
                   {pagination}
                 </span>
