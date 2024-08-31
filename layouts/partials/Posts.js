@@ -10,7 +10,7 @@ const Posts = ({ posts }) => {
         <div key={`key-${i}`} className="col-12 mb-10 justify-center sm:col-6">
           <div className="group flex h-full flex-col justify-between rounded-lg border border-white p-4 hover:bg-black hover:bg-opacity-40 group-hover:text-primary">
             {post.frontmatter.image && (
-              <Link href={`${post.slug}`}>
+              <Link href={`/${post.slug}`}>
                 <div className="relative h-64 w-full">
                   <Image
                     className="rounded-lg object-cover"
