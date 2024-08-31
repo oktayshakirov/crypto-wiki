@@ -1,7 +1,7 @@
 import { slugify } from "@lib/utils/textConverter";
 import Image from "next/image";
 import Link from "next/link";
-import { FaTag, FaUser, FaExchangeAlt } from "react-icons/fa";
+import { FaTag, FaUser, FaAt } from "react-icons/fa";
 
 const Posts = ({ posts }) => {
   return (
@@ -81,7 +81,7 @@ const Posts = ({ posts }) => {
                           className="mx-3 flex items-center hover:text-primary"
                         >
                           {/* Currency exchange icon for Exchanges */}
-                          <FaExchangeAlt className="mr-2" />
+                          <FaAt className="mr-2" />
                           <span>{exchange}</span>
                         </Link>
                       ))}
