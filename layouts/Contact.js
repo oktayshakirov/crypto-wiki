@@ -1,63 +1,76 @@
-import config from "@config/config";
-import { markdownify } from "@lib/utils/textConverter";
+import { FaEnvelope, FaGlobe, FaUser } from "react-icons/fa";
+import Link from "next/link";
 
-const Contact = ({ data }) => {
-  const { frontmatter } = data;
-  const { title } = frontmatter;
-  const { contact_form_action } = config.params;
-
+const Contact = () => {
   return (
-    <section className="section">
-      <div className="container max-w-[700px]">
-        {markdownify(title, "h1", "h2 mb-8 text-center")}
-        <form
-          className="contact-form"
-          method="POST"
-          action={contact_form_action}
-        >
-          <div className="mb-6">
-            <label className="mb-2 block" htmlFor="name">
-              Name
-            </label>
-            <input
-              className="form-input w-full"
-              name="name"
-              type="text"
-              required
-            />
-          </div>
-          <div className="mb-6">
-            <label className="mb-2 block" htmlFor="email">
-              Email
-            </label>
-            <input
-              className="form-input w-full"
-              name="email"
-              type="email"
-              required
-            />
-          </div>
-          <div className="mb-6">
-            <label className="mb-2 block" htmlFor="subject">
-              Subject
-            </label>
-            <input
-              className="form-input w-full"
-              name="subject"
-              type="text"
-              required
-            />
-          </div>
-          <div className="mb-6">
-            <label className="mb-2 block" htmlFor="message">
-              Message
-            </label>
-            <textarea className="form-textarea w-full" rows="7" />
-          </div>
-          <button className="btn btn-outline-primary">Submit Now</button>
-        </form>
-      </div>
-    </section>
+    <div className="mx-auto max-w-2xl p-6">
+      <h1 className="mb-4 text-3xl font-bold">Contact</h1>
+
+      <h2 className="mb-4 text-2xl font-semibold">
+        We&apos;d Love to Hear from You
+      </h2>
+      <p className="mb-6">
+        Have questions, suggestions, or need support? We’re here to help. At
+        TheCrypto.Wiki, we’re committed to providing valuable resources and
+        insights to help you better understand and navigate the world of
+        cryptocurrency. Your feedback is vital to our mission, helping us
+        continually improve and grow.
+      </p>
+
+      <h2 className="mb-4 text-2xl font-semibold">Contact Information</h2>
+      <p className="mb-4">
+        For any inquiries, advertising opportunities, or partnership proposals,
+        please don’t hesitate to get in touch:
+      </p>
+      <ul className="mb-6 list-inside list-disc">
+        <li className="mb-2">
+          <FaEnvelope className="mr-2 inline-block text-yellow-500" />
+          <strong>Email:</strong>{" "}
+          <a
+            href="mailto:info@thecrypto.wiki"
+            className="text-yellow-500 hover:underline"
+          >
+            info@thecrypto.wiki
+          </a>
+        </li>
+        <li className="mb-2">
+          <FaUser className="mr-2 inline-block text-yellow-500" />
+          <strong>Email:</strong>{" "}
+          <a
+            href="mailto:oktayshakirov@gmail.com"
+            className="text-yellow-500 hover:underline"
+          >
+            oktayshakirov@gmail.com
+          </a>
+        </li>
+        <li className="mb-2">
+          <FaGlobe className="mr-2 inline-block text-yellow-500" />
+          <strong>Website:</strong>{" "}
+          <a
+            href="http://www.oktayshakirov.com"
+            className="text-yellow-500 hover:underline"
+          >
+            Personal Portfolio
+          </a>
+        </li>
+      </ul>
+
+      <h2 className="mb-4 text-2xl font-semibold">More Information</h2>
+      <p className="mb-4">
+        For more information about TheCrypto.Wiki, please visit our{" "}
+        <Link href="/about" legacyBehavior>
+          <a className="text-yellow-500 hover:underline">About</a>
+        </Link>{" "}
+        page.
+      </p>
+      <p>
+        If you have any common questions, please check out our{" "}
+        <Link href="/faq" legacyBehavior>
+          <a className="text-yellow-500 hover:underline">FAQ</a>
+        </Link>{" "}
+        page for more details.
+      </p>
+    </div>
   );
 };
 

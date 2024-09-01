@@ -1,10 +1,7 @@
 ---
-title: The Crypto Wiki
+title: TheCrypto.Wiki
 image: /images/authors/crypto-wiki.png
 description: The Crypto Wiki provides expert insights, beginner guides, and the latest news about cryptocurrency.
-social:
-  email: oktayshakirov@gmail.com
-  address: https://maps.app.goo.gl/mtiyvM8a1v4SKYMm7
 ---
 
 #### Crypto Wiki: Your Gateway to the World of Cryptocurrency
