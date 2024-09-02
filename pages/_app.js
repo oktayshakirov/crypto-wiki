@@ -65,7 +65,7 @@ const App = ({ Component, pageProps }) => {
       <script
         async
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5852582960793521"
-        crossorigin="anonymous"
+        crossOrigin="anonymous"
       ></script>
       <Component {...pageProps} />
     </JsonContext>
