@@ -34,7 +34,6 @@ const App = ({ Component, pageProps }) => {
   return (
     <JsonContext>
       <Head>
-        {/* google font css */}
         <link
           rel="preconnect"
           href="https://fonts.gstatic.com"
@@ -45,14 +44,11 @@ const App = ({ Component, pageProps }) => {
             __html: `${fontcss}`,
           }}
         />
-        {/* responsive meta */}
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=5"
         />
       </Head>
-
-      {/* Google Tag (gtag.js) */}
       <Script
         async
         src="https://www.googletagmanager.com/gtag/js?id=G-ZRW4Z84C8T"
@@ -66,7 +62,11 @@ const App = ({ Component, pageProps }) => {
           gtag('config', 'G-ZRW4Z84C8T');
         `}
       </Script>
-
+      <script
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5852582960793521"
+        crossorigin="anonymous"
+      ></script>
       <Component {...pageProps} />
     </JsonContext>
   );
