@@ -16,6 +16,10 @@
         {
           "name": "Categories",
           "url": "/categories"
+        },
+        {
+          "name": "Tags",
+          "url": "/tags"
         }
       ]
     },
@@ -37,11 +41,11 @@
           "url": "/tools/bitcoin-rainbow-chart"
         },
         {
-          "name": "Fear and Greed Index",
+          "name": "Fear and Greed Index (comming soon)",
           "url": "/"
         },
         {
-          "name": "Staking Calculator",
+          "name": "Crypto Staking Calculator (comming soon)",
           "url": "/"
         }
       ]
