@@ -21,7 +21,7 @@ const Posts = ({ posts }) => {
                 </div>
               </Link>
             )}
-            <ul className="mb-4 mt-4 ">
+            <ul className="my-4 ">
               {/* Categories */}
               <li className="flex flex-wrap">
                 {post.frontmatter.categories
@@ -30,7 +30,7 @@ const Posts = ({ posts }) => {
                     <Link
                       key={`category-${index}`}
                       href={`/categories/${slugify(category)}`}
-                      className="mr-2 flex items-center hover:text-primary"
+                      className="mr-1 flex items-center hover:text-primary"
                     >
                       <FaTag className="mx-2" />
                       <span>{category}</span>
@@ -46,14 +46,14 @@ const Posts = ({ posts }) => {
               {/* Crypto OGs Row */}
               {post.frontmatter["crypto-ogs"] &&
                 post.frontmatter["crypto-ogs"].length > 0 && (
-                  <li className="flex flex-wrap items-center space-x-3">
+                  <li className="flex flex-wrap items-center space-x-2">
                     {post.frontmatter["crypto-ogs"]
                       .slice(0, 3)
                       .map((cryptoOg, index) => (
                         <Link
                           href={`/crypto-ogs/${slugify(cryptoOg)}`}
                           key={`cryptoOg-${index}`}
-                          className="mx-3 flex items-center hover:text-primary"
+                          className="mx-2 flex items-center hover:text-primary"
                         >
                           {/* Profile icon for Crypto OGs */}
                           <FaUser className="mr-2" />
@@ -71,14 +71,14 @@ const Posts = ({ posts }) => {
               {/* Exchanges Row */}
               {post.frontmatter["exchanges"] &&
                 post.frontmatter["exchanges"].length > 0 && (
-                  <li className="flex flex-wrap items-center space-x-3">
+                  <li className="flex flex-wrap items-center space-x-2">
                     {post.frontmatter["exchanges"]
                       .slice(0, 3)
                       .map((exchange, index) => (
                         <Link
                           href={`/exchanges/${slugify(exchange)}`}
                           key={`exchange-${index}`}
-                          className="mx-3 flex items-center hover:text-primary"
+                          className="mx-2 flex items-center hover:text-primary"
                         >
                           {/* Currency exchange icon for Exchanges */}
                           <FaAt className="mr-2" />
