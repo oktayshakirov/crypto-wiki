@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import Papa from "papaparse";
 import {
   LineChart,
@@ -60,6 +60,7 @@ const CustomTooltip = React.memo(({ active, payload, label }) => {
       month: "short",
       day: "numeric",
     });
+
     return (
       <div
         className="custom-tooltip"
@@ -71,11 +72,30 @@ const CustomTooltip = React.memo(({ active, payload, label }) => {
         }}
       >
         <p className="label">{`Date: ${formattedDate}`}</p>
-        {payload.map((entry) => (
-          <p key={entry.dataKey} className="price">
-            {`${entry.name}: $${entry.value.toLocaleString()}`}
-          </p>
-        ))}
+        {payload.map((entry) => {
+          const color =
+            COEFFICIENTS.find(({ name }) => name === entry.name)?.color ||
+            "white";
+          return (
+            <p
+              key={entry.dataKey}
+              className="price"
+              style={{ display: "flex", alignItems: "center" }}
+            >
+              <span
+                style={{
+                  backgroundColor: color,
+                  width: "10px",
+                  height: "10px",
+                  borderRadius: "50%",
+                  display: "inline-block",
+                  marginRight: "8px",
+                }}
+              ></span>
+              {`${entry.name}: $${entry.value.toLocaleString()}`}
+            </p>
+          );
+        })}
       </div>
     );
   }
@@ -122,6 +142,7 @@ const BitcoinRainbowChart = () => {
             ...rainbowBands,
           };
         });
+
         const extendedData = addFutureData(formattedData, 730);
         setData(extendedData);
       } catch (error) {
@@ -132,16 +153,10 @@ const BitcoinRainbowChart = () => {
     loadData();
   }, []);
 
-  const CustomXAxisTick = ({ x, y, payload, index }) => {
+  const memoizedData = useMemo(() => data, [data]);
+
+  const CustomXAxisTick = ({ x, y, payload }) => {
     const year = new Date(payload.value).getFullYear();
-    const previousYearRef = React.useRef(null);
-    const shouldRender = year !== previousYearRef.current;
-    if (shouldRender) {
-      previousYearRef.current = year;
-    }
-    if (!shouldRender) {
-      return null;
-    }
     return (
       <text x={x} y={y + 15} fill="#ccc" textAnchor="middle" fontSize={12}>
         {year}
@@ -149,12 +164,12 @@ const BitcoinRainbowChart = () => {
     );
   };
 
-  return !data.length ? (
+  return !memoizedData.length ? (
     <Loading />
   ) : (
     <ResponsiveContainer height={600}>
       <LineChart
-        data={data}
+        data={memoizedData}
         margin={{ top: 20, right: 20, left: 20, bottom: 20 }}
       >
         <YAxis
@@ -208,4 +223,4 @@ const BitcoinRainbowChart = () => {
   );
 };
 
-export default BitcoinRainbowChart;
+export default React.memo(BitcoinRainbowChart);
