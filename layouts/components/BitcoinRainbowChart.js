@@ -1,9 +1,8 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState } from "react";
 import Papa from "papaparse";
 import {
   LineChart,
   Line,
-  Area,
   YAxis,
   Tooltip,
   ResponsiveContainer,
@@ -13,23 +12,47 @@ import {
 import Loading from "@components/Loading";
 
 const COEFFICIENTS = [
-  { name: "Maximum Bubble Territory", factor: 1.1, color: "#c00200" },
-  { name: "Sell. Seriously, SELL!", factor: 1, color: "#d64018" },
-  { name: "FOMO Intensifies", factor: 0.9, color: "#ed7d31" },
-  { name: "Is this a bubble?", factor: 0.8, color: "#f6b45a" },
-  { name: "HODL!", factor: 0.7, color: "#feeb84" },
-  { name: "Still cheap", factor: 0.6, color: "#b1d580" },
-  { name: "Accumulate", factor: 0.5, color: "#63be7b" },
-  { name: "BUY!", factor: 0.4, color: "#54989f" },
-  { name: "Fire sale!", factor: 0.35, color: "#4472c4" },
+  { name: "Maximum Bubble Territory", factor: 0.7, color: "#c00200" },
+  { name: "Sell. Seriously, SELL!", factor: 0.65, color: "#d64018" },
+  { name: "FOMO Intensifies", factor: 0.6, color: "#ed7d31" },
+  { name: "Is this a bubble?", factor: 0.55, color: "#f6b45a" },
+  { name: "HODL!", factor: 0.5, color: "#feeb84" },
+  { name: "Still cheap", factor: 0.45, color: "#b1d580" },
+  { name: "Accumulate", factor: 0.4, color: "#63be7b" },
+  { name: "BUY!", factor: 0.35, color: "#54989f" },
+  { name: "Fire sale!", factor: 0.3, color: "#4472c4" },
 ];
 
 const calculateLogRegression = (daysSinceStart, factor) => {
-  const scalingFactor = 2;
-  return Math.pow(10, scalingFactor * factor * Math.log10(daysSinceStart + 2));
+  const scalingFactor = 3.8;
+  return Math.pow(5, scalingFactor * factor * Math.log10(daysSinceStart + 2));
 };
 
-// eslint-disable-next-line react/display-name
+const addFutureData = (data, daysToAdd) => {
+  const lastDate = new Date(data[data.length - 1].date);
+  const futureData = [];
+
+  for (let i = 1; i <= daysToAdd; i++) {
+    const futureDate = new Date(lastDate);
+    futureDate.setDate(lastDate.getDate() + i);
+
+    const daysSinceStart =
+      (futureDate - new Date(data[0].date)) / (1000 * 3600 * 24);
+
+    const rainbowBands = COEFFICIENTS.reduce((acc, { name, factor }) => {
+      acc[name] = calculateLogRegression(daysSinceStart, factor);
+      return acc;
+    }, {});
+
+    futureData.push({
+      date: futureDate.getTime(),
+      ...rainbowBands,
+    });
+  }
+
+  return [...data, ...futureData];
+};
+
 const CustomTooltip = React.memo(({ active, payload, label }) => {
   if (active && payload && payload.length) {
     const formattedDate = new Date(label).toLocaleDateString("en-US", {
@@ -58,6 +81,8 @@ const CustomTooltip = React.memo(({ active, payload, label }) => {
   }
   return null;
 });
+
+CustomTooltip.displayName = "CustomTooltip";
 
 const fetchCSVData = async () => {
   const response = await fetch("/data/bitcoin_data.csv");
@@ -97,8 +122,8 @@ const BitcoinRainbowChart = () => {
             ...rainbowBands,
           };
         });
-
-        setData(formattedData);
+        const extendedData = addFutureData(formattedData, 730);
+        setData(extendedData);
       } catch (error) {
         console.error("Error loading data: ", error);
       }
@@ -107,10 +132,27 @@ const BitcoinRainbowChart = () => {
     loadData();
   }, []);
 
+  const CustomXAxisTick = ({ x, y, payload, index }) => {
+    const year = new Date(payload.value).getFullYear();
+    const previousYearRef = React.useRef(null);
+    const shouldRender = year !== previousYearRef.current;
+    if (shouldRender) {
+      previousYearRef.current = year;
+    }
+    if (!shouldRender) {
+      return null;
+    }
+    return (
+      <text x={x} y={y + 15} fill="#ccc" textAnchor="middle" fontSize={12}>
+        {year}
+      </text>
+    );
+  };
+
   return !data.length ? (
     <Loading />
   ) : (
-    <ResponsiveContainer width="100%" height={600}>
+    <ResponsiveContainer height={600}>
       <LineChart
         data={data}
         margin={{ top: 20, right: 20, left: 20, bottom: 20 }}
@@ -122,15 +164,16 @@ const BitcoinRainbowChart = () => {
           stroke="#ccc"
           tickFormatter={(value) => `$${value.toLocaleString()}`}
           scale="log"
+          fontSize={12}
         />
         <XAxis
           dataKey="date"
           type="number"
           scale="time"
           domain={["dataMin", "dataMax"]}
-          stroke="#ccc"
-          tickFormatter={(tick) => new Date(tick).getFullYear()}
+          tick={<CustomXAxisTick />}
         />
+
         <Tooltip content={<CustomTooltip />} />
         {COEFFICIENTS.map(({ name, color }) => (
           <Line
@@ -138,7 +181,7 @@ const BitcoinRainbowChart = () => {
             type="monotone"
             dataKey={name}
             stroke={color}
-            strokeWidth={50}
+            strokeWidth={40}
             dot={false}
           />
         ))}
@@ -147,7 +190,7 @@ const BitcoinRainbowChart = () => {
           dataKey="price"
           name="Bitcoin Price"
           stroke="white"
-          strokeWidth={1.5}
+          strokeWidth={2}
           dot={false}
         />
 
