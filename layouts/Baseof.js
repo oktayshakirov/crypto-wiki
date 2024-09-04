@@ -40,6 +40,14 @@ const Base = ({
           content={plainify(description ? description : meta_description)}
         />
 
+        {/* Robots Metatag */}
+        <meta name="robots" content="index,follow" />
+
+        {/* Charset and Viewport */}
+
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
         {/* author from config.json */}
         <meta name="author" content={meta_author} />
 

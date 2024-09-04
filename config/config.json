@@ -4,8 +4,8 @@
     "base_url": "/",
     "favicon": "/images/favicon.png",
     "logo": "/images/logo.png",
-    "logo_width": "260",
-    "logo_height": "44",
+    "logo_width": "235",
+    "logo_height": "40",
     "logo_text": "The Crypto Wiki"
   },
 
@@ -23,7 +23,7 @@
 
   "metadata": {
     "meta_author": "The Crypto Wiki",
-    "meta_image": "/images/og-image.png",
-    "meta_description": "The reliable crypto source"
+    "meta_image": "/images/logo.png",
+    "meta_description": "our go-to portal for mastering crypto—whether you're just starting out or deep into the blockchain. Access real-world tools, insights, and tips from passionate enthusiasts like you."
   }
 }
