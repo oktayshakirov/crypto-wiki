@@ -1,5 +1,4 @@
-import React, { useEffect, useState, useMemo } from "react";
-import Papa from "papaparse";
+import React, { useEffect, useState } from "react";
 import {
   LineChart,
   Line,
@@ -28,150 +27,90 @@ const calculateLogRegression = (daysSinceStart, factor) => {
   return Math.pow(5, scalingFactor * factor * Math.log10(daysSinceStart + 2));
 };
 
-const addFutureData = (data, daysToAdd) => {
-  const lastDate = new Date(data[data.length - 1].date);
-  const futureData = [];
-
-  for (let i = 1; i <= daysToAdd; i++) {
-    const futureDate = new Date(lastDate);
-    futureDate.setDate(lastDate.getDate() + i);
-
-    const daysSinceStart =
-      (futureDate - new Date(data[0].date)) / (1000 * 3600 * 24);
-
-    const rainbowBands = COEFFICIENTS.reduce((acc, { name, factor }) => {
-      acc[name] = calculateLogRegression(daysSinceStart, factor);
-      return acc;
-    }, {});
-
-    futureData.push({
-      date: futureDate.getTime(),
-      ...rainbowBands,
-    });
-  }
-
-  return [...data, ...futureData];
+const fetchJSONData = async () => {
+  const response = await fetch("/data/bitcoin_data.json");
+  const jsonData = await response.json();
+  return jsonData.map((entry) => ({
+    date: new Date(entry.Date).getTime(),
+    price: entry.Value,
+    daysSinceStart:
+      (new Date(entry.Date) - new Date(jsonData[0].Date)) / (1000 * 3600 * 24),
+  }));
 };
 
-const CustomTooltip = React.memo(({ active, payload, label }) => {
-  if (active && payload && payload.length) {
-    const formattedDate = new Date(label).toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-    });
-
-    return (
-      <div
-        className="custom-tooltip"
-        style={{
-          backgroundColor: "#333",
-          padding: "10px",
-          borderRadius: "5px",
-          color: "#fff",
-        }}
-      >
-        <p className="label">{`Date: ${formattedDate}`}</p>
-        {payload.map((entry) => {
-          const color =
-            COEFFICIENTS.find(({ name }) => name === entry.name)?.color ||
-            "white";
-          return (
-            <p
-              key={entry.dataKey}
-              className="price"
-              style={{ display: "flex", alignItems: "center" }}
-            >
-              <span
-                style={{
-                  backgroundColor: color,
-                  width: "10px",
-                  height: "10px",
-                  borderRadius: "50%",
-                  display: "inline-block",
-                  marginRight: "8px",
-                }}
-              ></span>
-              {`${entry.name}: $${entry.value.toLocaleString()}`}
-            </p>
-          );
-        })}
-      </div>
-    );
-  }
-  return null;
-});
-
-CustomTooltip.displayName = "CustomTooltip";
-
-const fetchCSVData = async () => {
-  const response = await fetch("/data/bitcoin_data.csv");
-  const text = await response.text();
-  const parsedData = Papa.parse(text, {
-    header: true,
-    dynamicTyping: true,
-    skipEmptyLines: true,
-  }).data;
-
-  return parsedData
-    .filter((entry) => entry.Value > 0)
-    .map((entry) => ({
-      time: new Date(entry.Date),
-      price: entry.Value,
-      daysSinceStart:
-        (new Date(entry.Date) - new Date(parsedData[0].Date)) /
-        (1000 * 3600 * 24),
-    }));
+const fetchHistoricalData = async (lastDate, firstDate) => {
+  const startTime = lastDate + 86400000;
+  const endTime = new Date().getTime();
+  const response = await fetch(
+    `https://api.binance.com/api/v3/klines?symbol=BTCUSDT&interval=1d&startTime=${startTime}&endTime=${endTime}`
+  );
+  const data = await response.json();
+  return data.map((kline) => ({
+    date: kline[0],
+    price: parseFloat(kline[4]),
+    daysSinceStart: (kline[0] - firstDate) / (1000 * 3600 * 24),
+  }));
 };
 
 const BitcoinRainbowChart = () => {
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const loadData = async () => {
       try {
-        const csvData = await fetchCSVData();
-        const formattedData = csvData.map((entry) => {
-          const rainbowBands = COEFFICIENTS.reduce((acc, { name, factor }) => {
-            acc[name] = calculateLogRegression(entry.daysSinceStart, factor);
-            return acc;
-          }, {});
-          return {
-            date: entry.time.getTime(),
-            price: entry.price,
-            ...rainbowBands,
-          };
-        });
+        const historicalData = await fetchJSONData();
+        const lastDataDate = historicalData[historicalData.length - 1].date;
+        const firstDataDate = historicalData[0].date;
+        const additionalData = await fetchHistoricalData(
+          lastDataDate,
+          firstDataDate
+        );
 
-        const extendedData = addFutureData(formattedData, 730);
-        setData(extendedData);
+        const completeData = [...historicalData, ...additionalData].map(
+          (entry) => ({
+            ...entry,
+            ...COEFFICIENTS.reduce((acc, { name, factor }) => {
+              acc[name] = calculateLogRegression(entry.daysSinceStart, factor);
+              return acc;
+            }, {}),
+          })
+        );
+
+        setData(completeData);
       } catch (error) {
-        console.error("Error loading data: ", error);
+        console.error("Error loading data:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
     loadData();
   }, []);
 
-  const memoizedData = useMemo(() => data, [data]);
+  if (loading) {
+    return <Loading />;
+  }
 
-  const CustomXAxisTick = ({ x, y, payload }) => {
-    const year = new Date(payload.value).getFullYear();
-    return (
-      <text x={x} y={y + 15} fill="#ccc" textAnchor="middle" fontSize={12}>
-        {year}
-      </text>
-    );
-  };
-
-  return !memoizedData.length ? (
-    <Loading />
-  ) : (
+  return (
     <ResponsiveContainer height={600}>
       <LineChart
-        data={memoizedData}
+        data={data}
         margin={{ top: 20, right: 20, left: 20, bottom: 20 }}
       >
+        <XAxis
+          dataKey="date"
+          tickFormatter={(tick) => new Date(tick).getFullYear()}
+          type="number"
+          domain={["auto", "auto"]}
+          scale="time"
+          stroke="#ccc"
+          ticks={[
+            new Date(data[0].date).getTime(),
+            new Date(data[data.length - 1].date).getTime(),
+          ]}
+        />
+
         <YAxis
           type="number"
           domain={["auto", "auto"]}
@@ -181,31 +120,33 @@ const BitcoinRainbowChart = () => {
           scale="log"
           fontSize={12}
         />
-        <XAxis
-          dataKey="date"
-          type="number"
-          scale="time"
-          domain={["dataMin", "dataMax"]}
-          tick={<CustomXAxisTick />}
-        />
-
-        <Tooltip content={<CustomTooltip />} />
         {COEFFICIENTS.map(({ name, color }) => (
           <Line
             key={name}
             type="monotone"
             dataKey={name}
             stroke={color}
-            strokeWidth={40}
+            strokeWidth={50}
             dot={false}
           />
         ))}
+        <Tooltip
+          formatter={(value, name) => {
+            const formattedValue = `$${Math.round(value).toLocaleString()}`;
+            return [formattedValue, name];
+          }}
+          labelFormatter={(label) => {
+            const date = new Date(label).toLocaleDateString();
+            return date;
+          }}
+          contentStyle={{ backgroundColor: "black" }}
+        />
         <Line
           type="monotone"
           dataKey="price"
           name="Bitcoin Price"
           stroke="white"
-          strokeWidth={2}
+          strokeWidth={1.5}
           dot={false}
         />
 
@@ -214,9 +155,9 @@ const BitcoinRainbowChart = () => {
           align="center"
           wrapperStyle={{ paddingBottom: "10px" }}
           iconType="circle"
-          formatter={(value, entry) => {
-            return <span style={{ color: entry.color }}>{value}</span>;
-          }}
+          formatter={(value, entry) => (
+            <span style={{ color: entry.color }}>{value}</span>
+          )}
         />
       </LineChart>
     </ResponsiveContainer>
