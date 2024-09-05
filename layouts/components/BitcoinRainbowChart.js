@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo, useCallback } from "react";
 import {
   LineChart,
   Line,
@@ -12,19 +12,16 @@ import {
 import Loading from "@components/Loading";
 
 const COEFFICIENTS = [
-  { name: "Everyone is Rich!", factor: 0.257, color: "#D73027" },
-  { name: "Bubble territory", factor: 0.245, color: "#FC8D59" },
-  { name: "SELL!", factor: 0.231, color: "#FEE08B" },
-  { name: "HODL", factor: 0.217, color: "#A6D96A" },
-  { name: "BUY!", factor: 0.204, color: "#1A9850" },
-  { name: "Accumulate", factor: 0.187, color: "#66C2A5" },
-  { name: "Fire Sale", factor: 0.17, color: "#3288BD" },
-  { name: "Market Apocalypse", factor: 0.155, color: "#5E4FA2" },
-  { name: "Regret Zone", factor: 0.138, color: "#F7931A" },
+  { name: "Everyone is Rich!", factor: 0.257, color: "#c00200" },
+  { name: "Bubble territory", factor: 0.245, color: "#d64515" },
+  { name: "SELL!", factor: 0.231, color: "#f7931a" },
+  { name: "HODL", factor: 0.217, color: "#f3ca4d" },
+  { name: "BUY!", factor: 0.204, color: "#a7d54c" },
+  { name: "Accumulate", factor: 0.187, color: "#63be7b" },
+  { name: "Fire Sale", factor: 0.17, color: "#56909f" },
+  { name: "Market Apocalypse", factor: 0.155, color: "#4a75c4" },
+  { name: "Regret Zone", factor: 0.138, color: "#9b59b6" },
 ];
-
-const calculateLogRegression = (days, factor) =>
-  Math.pow(30, 4 * factor * Math.log10(days + 10));
 
 const fetchJSONData = async () => {
   const res = await fetch("/data/bitcoin_data.json");
@@ -50,18 +47,21 @@ const fetchHistoricalData = async (lastDate, firstDate) => {
   }));
 };
 
-const addFutureData = (data, years) => {
+const addFutureData = (data, years, calculateLogRegression) => {
   const msPerDay = 86400000;
   const lastDate = data[data.length - 1].date;
   const startDate = data[0].date;
   const futureDays = years * 365;
+
   return Array.from({ length: futureDays }, (_, i) => {
     const futureDate = lastDate + (i + 1) * msPerDay;
     const daysSinceStart = (futureDate - startDate) / msPerDay;
+
     const rainbowBands = COEFFICIENTS.reduce((acc, { name, factor }) => {
       acc[name] = calculateLogRegression(daysSinceStart, factor);
       return acc;
     }, {});
+
     return { date: futureDate, price: null, ...rainbowBands };
   });
 };
@@ -78,6 +78,11 @@ const BitcoinRainbowChart = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const calculateLogRegression = useCallback(
+    (days, factor) => Math.pow(30, 4 * factor * Math.log10(days + 10)),
+    []
+  );
+
   useEffect(() => {
     const loadData = async () => {
       try {
@@ -85,6 +90,7 @@ const BitcoinRainbowChart = () => {
         const lastDate = historicalData[historicalData.length - 1].date;
         const firstDate = historicalData[0].date;
         const additionalData = await fetchHistoricalData(lastDate, firstDate);
+
         const completeData = [...historicalData, ...additionalData].map(
           (entry) => ({
             ...entry,
@@ -95,7 +101,10 @@ const BitcoinRainbowChart = () => {
           })
         );
 
-        setData([...completeData, ...addFutureData(completeData, 4)]);
+        setData([
+          ...completeData,
+          ...addFutureData(completeData, 4, calculateLogRegression),
+        ]);
       } catch (error) {
         console.error("Error loading data:", error);
       } finally {
@@ -103,7 +112,7 @@ const BitcoinRainbowChart = () => {
       }
     };
     loadData();
-  }, []);
+  }, [calculateLogRegression]);
 
   if (loading) return <Loading />;
 
@@ -111,7 +120,7 @@ const BitcoinRainbowChart = () => {
     <ResponsiveContainer height={500}>
       <LineChart
         data={data}
-        margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+        margin={{ top: 5, right: 30, left: 30, bottom: 5 }}
       >
         <XAxis
           dataKey="date"
@@ -138,7 +147,7 @@ const BitcoinRainbowChart = () => {
           scale="log"
           fontSize={12}
         />
-        {COEFFICIENTS.map(({ name, color }, index) => (
+        {COEFFICIENTS.map(({ name, color }) => (
           <Line
             key={name}
             type="monotone"
@@ -170,7 +179,12 @@ const BitcoinRainbowChart = () => {
             x={date}
             stroke="white"
             strokeDasharray="3 3"
-            label={{ position: "top", value: "Halving", fill: "white" }}
+            label={{
+              position: "top",
+              value: "Halving",
+              fill: "white",
+              fontSize: 12,
+            }}
           />
         ))}
         <Legend
