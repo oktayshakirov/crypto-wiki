@@ -7,50 +7,72 @@ import {
   ResponsiveContainer,
   Legend,
   XAxis,
+  ReferenceLine,
 } from "recharts";
 import Loading from "@components/Loading";
 
 const COEFFICIENTS = [
-  { name: "Maximum Bubble Territory", factor: 0.7, color: "#c00200" },
-  { name: "Sell. Seriously, SELL!", factor: 0.65, color: "#d64018" },
-  { name: "FOMO Intensifies", factor: 0.6, color: "#ed7d31" },
-  { name: "Is this a bubble?", factor: 0.55, color: "#f6b45a" },
-  { name: "HODL!", factor: 0.5, color: "#feeb84" },
-  { name: "Still cheap", factor: 0.45, color: "#b1d580" },
-  { name: "Accumulate", factor: 0.4, color: "#63be7b" },
-  { name: "BUY!", factor: 0.35, color: "#54989f" },
-  { name: "Fire sale!", factor: 0.3, color: "#4472c4" },
+  { name: "Everyone is Rich!", factor: 0.257, color: "#D73027" },
+  { name: "Bubble territory", factor: 0.245, color: "#FC8D59" },
+  { name: "SELL!", factor: 0.231, color: "#FEE08B" },
+  { name: "HODL", factor: 0.217, color: "#A6D96A" },
+  { name: "BUY!", factor: 0.204, color: "#1A9850" },
+  { name: "Accumulate", factor: 0.187, color: "#66C2A5" },
+  { name: "Fire Sale", factor: 0.17, color: "#3288BD" },
+  { name: "Market Apocalypse", factor: 0.155, color: "#5E4FA2" },
+  { name: "Regret Zone", factor: 0.138, color: "#F7931A" },
 ];
 
-const calculateLogRegression = (daysSinceStart, factor) => {
-  const scalingFactor = 3.8;
-  return Math.pow(5, scalingFactor * factor * Math.log10(daysSinceStart + 2));
-};
+const calculateLogRegression = (days, factor) =>
+  Math.pow(30, 4 * factor * Math.log10(days + 10));
 
 const fetchJSONData = async () => {
-  const response = await fetch("/data/bitcoin_data.json");
-  const jsonData = await response.json();
-  return jsonData.map((entry) => ({
+  const res = await fetch("/data/bitcoin_data.json");
+  const data = await res.json();
+  const startDate = new Date(data[0].Date);
+  return data.map((entry) => ({
     date: new Date(entry.Date).getTime(),
     price: entry.Value,
-    daysSinceStart:
-      (new Date(entry.Date) - new Date(jsonData[0].Date)) / (1000 * 3600 * 24),
+    daysSinceStart: (new Date(entry.Date) - startDate) / (1000 * 3600 * 24),
   }));
 };
 
 const fetchHistoricalData = async (lastDate, firstDate) => {
   const startTime = lastDate + 86400000;
-  const endTime = new Date().getTime();
-  const response = await fetch(
-    `https://api.binance.com/api/v3/klines?symbol=BTCUSDT&interval=1d&startTime=${startTime}&endTime=${endTime}`
+  const res = await fetch(
+    `https://api.binance.com/api/v3/klines?symbol=BTCUSDT&interval=1d&startTime=${startTime}`
   );
-  const data = await response.json();
+  const data = await res.json();
   return data.map((kline) => ({
     date: kline[0],
     price: parseFloat(kline[4]),
     daysSinceStart: (kline[0] - firstDate) / (1000 * 3600 * 24),
   }));
 };
+
+const addFutureData = (data, years) => {
+  const msPerDay = 86400000;
+  const lastDate = data[data.length - 1].date;
+  const startDate = data[0].date;
+  const futureDays = years * 365;
+  return Array.from({ length: futureDays }, (_, i) => {
+    const futureDate = lastDate + (i + 1) * msPerDay;
+    const daysSinceStart = (futureDate - startDate) / msPerDay;
+    const rainbowBands = COEFFICIENTS.reduce((acc, { name, factor }) => {
+      acc[name] = calculateLogRegression(daysSinceStart, factor);
+      return acc;
+    }, {});
+    return { date: futureDate, price: null, ...rainbowBands };
+  });
+};
+
+const halvingDates = [
+  new Date("2012-11-28").getTime(), // First halving
+  new Date("2016-07-09").getTime(), // Second halving
+  new Date("2020-05-11").getTime(), // Third halving
+  new Date("2024-04-20").getTime(), // Fourth halving
+  new Date("2028-04-17").getTime(), // Fifth halving
+];
 
 const BitcoinRainbowChart = () => {
   const [data, setData] = useState([]);
@@ -60,13 +82,9 @@ const BitcoinRainbowChart = () => {
     const loadData = async () => {
       try {
         const historicalData = await fetchJSONData();
-        const lastDataDate = historicalData[historicalData.length - 1].date;
-        const firstDataDate = historicalData[0].date;
-        const additionalData = await fetchHistoricalData(
-          lastDataDate,
-          firstDataDate
-        );
-
+        const lastDate = historicalData[historicalData.length - 1].date;
+        const firstDate = historicalData[0].date;
+        const additionalData = await fetchHistoricalData(lastDate, firstDate);
         const completeData = [...historicalData, ...additionalData].map(
           (entry) => ({
             ...entry,
@@ -77,26 +95,23 @@ const BitcoinRainbowChart = () => {
           })
         );
 
-        setData(completeData);
+        setData([...completeData, ...addFutureData(completeData, 4)]);
       } catch (error) {
         console.error("Error loading data:", error);
       } finally {
         setLoading(false);
       }
     };
-
     loadData();
   }, []);
 
-  if (loading) {
-    return <Loading />;
-  }
+  if (loading) return <Loading />;
 
   return (
-    <ResponsiveContainer height={600}>
+    <ResponsiveContainer height={500}>
       <LineChart
         data={data}
-        margin={{ top: 20, right: 20, left: 20, bottom: 20 }}
+        margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
       >
         <XAxis
           dataKey="date"
@@ -107,38 +122,38 @@ const BitcoinRainbowChart = () => {
           stroke="#ccc"
           ticks={[
             new Date(data[0].date).getTime(),
+            new Date("2016-07-09").getTime(),
+            new Date("2020-05-11").getTime(),
+            new Date("2024-04-20").getTime(),
             new Date(data[data.length - 1].date).getTime(),
           ]}
         />
 
         <YAxis
           type="number"
-          domain={["auto", "auto"]}
+          domain={[10, (dataMax) => Math.max(dataMax, 1000000)]}
           orientation="right"
           stroke="#ccc"
           tickFormatter={(value) => `$${value.toLocaleString()}`}
           scale="log"
           fontSize={12}
         />
-        {COEFFICIENTS.map(({ name, color }) => (
+        {COEFFICIENTS.map(({ name, color }, index) => (
           <Line
             key={name}
             type="monotone"
             dataKey={name}
             stroke={color}
-            strokeWidth={50}
+            strokeWidth="30"
             dot={false}
           />
         ))}
         <Tooltip
-          formatter={(value, name) => {
-            const formattedValue = `$${Math.round(value).toLocaleString()}`;
-            return [formattedValue, name];
-          }}
-          labelFormatter={(label) => {
-            const date = new Date(label).toLocaleDateString();
-            return date;
-          }}
+          formatter={(value, name) => [
+            `$${Math.round(value).toLocaleString()}`,
+            name,
+          ]}
+          labelFormatter={(label) => new Date(label).toLocaleDateString()}
           contentStyle={{ backgroundColor: "black" }}
         />
         <Line
@@ -149,11 +164,19 @@ const BitcoinRainbowChart = () => {
           strokeWidth={1.5}
           dot={false}
         />
-
+        {halvingDates.map((date) => (
+          <ReferenceLine
+            key={date}
+            x={date}
+            stroke="white"
+            strokeDasharray="3 3"
+            label={{ position: "top", value: "Halving", fill: "white" }}
+          />
+        ))}
         <Legend
           verticalAlign="top"
           align="center"
-          wrapperStyle={{ paddingBottom: "10px" }}
+          wrapperStyle={{ paddingBottom: "40px" }}
           iconType="circle"
           formatter={(value, entry) => (
             <span style={{ color: entry.color }}>{value}</span>
