@@ -6,22 +6,7 @@
     },
     {
       "name": "Posts",
-      "url": "",
-      "hasChildren": true,
-      "children": [
-        {
-          "name": "All Posts",
-          "url": "/"
-        },
-        {
-          "name": "Categories",
-          "url": "/categories"
-        },
-        {
-          "name": "Tags",
-          "url": "/tags"
-        }
-      ]
+      "url": "/posts"
     },
     {
       "name": "Exchanges",

@@ -11,6 +11,7 @@
 
   "settings": {
     "pagination": 8,
+    "paginationPosts": 8,
     "paginationExchanges": 9,
     "blog_folder": "posts"
   },

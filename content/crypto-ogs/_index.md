@@ -1,3 +1,3 @@
 ---
-title: "🏆 Crypto OG's 🏆"
+title: "Crypto OG's"
 ---
