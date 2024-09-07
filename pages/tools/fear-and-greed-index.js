@@ -4,6 +4,13 @@ import FearAndGreedIndexChart from "@components/FearAndGreedIndex";
 import { FaExclamationTriangle } from "react-icons/fa";
 import Link from "next/link";
 
+const data = [
+  { color: "#e73827", label: "Extreme Fear" },
+  { color: "#f2c94c", label: "Fear" },
+  { color: "#78ffd6", label: "Neutral" },
+  { color: "#56ab2f", label: "Greed" },
+];
+
 const FearAndGreedIndexPage = () => {
   return (
     <Base title="Crypto Fear and Greed Index">
@@ -18,100 +25,30 @@ const FearAndGreedIndexPage = () => {
           </p>
 
           <FearAndGreedIndexChart />
-
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              marginTop: "10px",
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                marginRight: "15px",
-              }}
-            >
-              <div
-                style={{
-                  backgroundColor: "red",
-                  width: "15px",
-                  height: "15px",
-                  borderRadius: "50%",
-                  marginRight: "5px",
-                }}
-              ></div>
-              <span>Extreme Fear</span>
-            </div>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                marginRight: "15px",
-              }}
-            >
-              <div
-                style={{
-                  backgroundColor: "orange",
-                  width: "15px",
-                  height: "15px",
-                  borderRadius: "50%",
-                  marginRight: "5px",
-                }}
-              ></div>
-              <span>Fear</span>
-            </div>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                marginRight: "15px",
-              }}
-            >
-              <div
-                style={{
-                  backgroundColor: "yellow",
-                  width: "15px",
-                  height: "15px",
-                  borderRadius: "50%",
-                  marginRight: "5px",
-                }}
-              ></div>
-              <span>Neutral</span>
-            </div>
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <div
-                style={{
-                  backgroundColor: "green",
-                  width: "15px",
-                  height: "15px",
-                  borderRadius: "50%",
-                  marginRight: "5px",
-                }}
-              ></div>
-              <span>Greed</span>
-            </div>
+          <div className="mt-2 flex flex-wrap justify-center gap-1 md:gap-4">
+            {data.map((item, index) => (
+              <div key={index} className="flex max-w-xs items-center">
+                <div
+                  style={{
+                    backgroundColor: item.color,
+                    width: "15px",
+                    height: "15px",
+                    borderRadius: "50%",
+                    marginRight: "5px",
+                  }}
+                />
+                <span>{item.label}</span>
+              </div>
+            ))}
           </div>
-
-          <div
-            style={{
-              border: "2px solid orange",
-              borderRadius: "10px",
-              padding: "15px",
-              marginTop: "20px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <FaExclamationTriangle
-              style={{ color: "orange", marginRight: "10px", fontSize: "24px" }}
-            />
-            <p style={{ margin: 0 }}>
+          <div className="mt-5 rounded-lg border-2 border-orange-400 p-6 text-center">
+            <div className="mb-2 flex justify-center">
+              <FaExclamationTriangle className="text-4xl text-orange-400" />
+            </div>
+            <p className="m-0">
               <strong>*Disclaimer:</strong> The Fear and Greed Index is a
               sentiment analysis tool. It is not investment advice! Use it to
-              gauge market conditions, but always conduct your own research
+              analyse market conditions, but always conduct your own research
               before making any investment decisions.
             </p>
           </div>

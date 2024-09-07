@@ -14,17 +14,20 @@ const Home = ({ posts, ogs, exchanges }) => {
         <div className="container my-7 text-center">
           {markdownify("LATEST POSTS", "h2", "mb-8")}
           <Posts posts={posts.slice(0, 6)} />
-          <div className="container mb-20">
-            <Link className="btn btn-outline mx-3" href="/posts">
+          <div className="container mb-20 flex flex-col justify-center space-y-3 md:flex-row md:space-x-3 md:space-y-0">
+            <Link className="btn btn-outline w-full md:w-auto" href="/posts">
               MORE POSTS
             </Link>
-            <Link className="btn btn-outline mx-3" href="/categories">
+            <Link
+              className="btn btn-outline w-full md:w-auto"
+              href="/categories"
+            >
               CATEGORIES
             </Link>
-            <Link className="btn btn-outline mx-3" href="/tags">
+            <Link className="btn btn-outline w-full md:w-auto" href="/tags">
               TAGS
             </Link>
-            <Link className="btn btn-outline mx-3" href="/authors">
+            <Link className="btn btn-outline w-full md:w-auto" href="/authors">
               AUTHORS
             </Link>
           </div>
@@ -40,12 +43,21 @@ const Home = ({ posts, ogs, exchanges }) => {
           <div className="container mb-20">
             {markdownify("RECOMMENDED CRYPTO EXCHANGES", "h3", "mb-8")}
             <Exchanges exchanges={exchanges.slice(0, 6)} />
-            <Link className="btn btn-outline mx-3" href="/exchanges">
-              MORE EXCHANGES
-            </Link>
-            <Link className="btn btn-outline mx-3" href="/contact">
-              REQUEST AN EXCHANGE
-            </Link>
+
+            <div className="mt-6 flex flex-col justify-center space-y-3 md:flex-row md:space-x-3 md:space-y-0">
+              <Link
+                className="btn btn-outline w-full md:w-auto"
+                href="/exchanges"
+              >
+                MORE EXCHANGES
+              </Link>
+              <Link
+                className="btn btn-outline w-full md:w-auto"
+                href="/contact"
+              >
+                REQUEST AN EXCHANGE
+              </Link>
+            </div>
           </div>
         </div>
       </section>

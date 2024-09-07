@@ -18,21 +18,11 @@ const BitcoinRainbowChartPage = () => {
 
           <BitcoinRainbowChart />
 
-          <div
-            style={{
-              border: "2px solid orange",
-              borderRadius: "10px",
-              padding: "15px",
-              marginTop: "20px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <FaExclamationTriangle
-              style={{ color: "orange", marginRight: "10px", fontSize: "24px" }}
-            />
-            <p style={{ margin: 0 }}>
+          <div className="mt-5 rounded-lg border-2 border-orange-400 p-6 text-center">
+            <div className="mb-2 flex justify-center">
+              <FaExclamationTriangle className="text-4xl text-orange-400" />
+            </div>
+            <p className="m-0">
               <strong>*Disclaimer:</strong> The Rainbow Chart is not investment
               advice! It&apos;s just a fun, colorful way to think about
               long-term Bitcoin price trends, ignoring the daily ups and downs.

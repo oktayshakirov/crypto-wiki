@@ -79,7 +79,7 @@ const BitcoinRainbowChart = () => {
   const [loading, setLoading] = useState(true);
 
   const calculateLogRegression = useCallback(
-    (days, factor) => Math.pow(30, 4 * factor * Math.log10(days + 10)),
+    (days, factor) => Math.pow(30, 4 * factor * Math.log10(days + 1)),
     []
   );
 
