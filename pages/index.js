@@ -38,8 +38,14 @@ const Home = ({ posts, ogs, exchanges }) => {
             <CryptoOGs ogs={ogs} />
           </div>
           <div className="container mb-20">
-            {markdownify("CRYPTO EXCHANGES", "h2", "mb-8")}
+            {markdownify("RECOMMENDED CRYPTO EXCHANGES", "h3", "mb-8")}
             <Exchanges exchanges={exchanges.slice(0, 6)} />
+            <Link className="btn btn-outline mx-3" href="/exchanges">
+              MORE EXCHANGES
+            </Link>
+            <Link className="btn btn-outline mx-3" href="/contact">
+              REQUEST AN EXCHANGE
+            </Link>
           </div>
         </div>
       </section>
