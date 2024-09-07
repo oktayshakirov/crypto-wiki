@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { FaArrowUp, FaArrowDown, FaExclamationTriangle } from "react-icons/fa";
 import Loading from "@components/Loading";
 
-const CACHE_TIMEOUT = 60 * 60 * 1000; // Cache for 1 hour
+const CACHE_TIMEOUT = 240 * 60 * 1000; // Cache for 4 hours
 let cache = null;
 let lastFetchTime = 0;
 
@@ -35,13 +34,26 @@ const FearAndGreedIndexChart = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const getBackgroundColor = (value) => {
-    if (value <= 24) return { color: "red", icon: <FaArrowDown /> };
+  const getSmileyAndBackgroundGradient = (value) => {
+    if (value <= 24)
+      return {
+        smiley: "😢",
+        background: "linear-gradient(to right, #f85032, #e73827)",
+      };
     if (value <= 49)
-      return { color: "orange", icon: <FaExclamationTriangle /> };
+      return {
+        smiley: "😐",
+        background: "linear-gradient(to right, #f2994a, #f2c94c)",
+      };
     if (value <= 74)
-      return { color: "yellow", icon: <FaExclamationTriangle /> };
-    return { color: "green", icon: <FaArrowUp /> };
+      return {
+        smiley: "🙂",
+        background: "linear-gradient(to right, #a8ff78, #78ffd6)",
+      };
+    return {
+      smiley: "😁",
+      background: "linear-gradient(to right, #56ab2f, #a8e063)",
+    };
   };
 
   return (
@@ -49,7 +61,8 @@ const FearAndGreedIndexChart = () => {
       {indexValue ? (
         <div
           style={{
-            backgroundColor: getBackgroundColor(indexValue.value).color,
+            background: getSmileyAndBackgroundGradient(indexValue.value)
+              .background,
             borderRadius: "10px",
             padding: "20px",
             textAlign: "center",
@@ -61,7 +74,7 @@ const FearAndGreedIndexChart = () => {
           }}
         >
           <div style={{ fontSize: "50px" }}>
-            {getBackgroundColor(indexValue.value).icon}
+            {getSmileyAndBackgroundGradient(indexValue.value).smiley}
           </div>
           <h2 className="h3 my-4">
             Current Index: {indexValue.value} -{" "}

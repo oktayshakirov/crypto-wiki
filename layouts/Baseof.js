@@ -4,6 +4,7 @@ import Footer from "@partials/Footer";
 import Header from "@partials/Header";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import CoinTracker from "@components/CoinTracker";
 
 const Base = ({
   title,
@@ -98,6 +99,9 @@ const Base = ({
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <Header />
+      <div className="container">
+        <CoinTracker />
+      </div>
       {/* main site */}
       <main>{children}</main>
       <Footer />

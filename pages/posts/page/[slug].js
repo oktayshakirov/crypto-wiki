@@ -23,37 +23,39 @@ const PostPagination = ({
 
   return (
     <Base title={title}>
-      <div className="container mt-8 text-center">
-        {markdownify(title, "h1", "h2 mb-8")}
-        <div className="mb-8">
-          <ul className="flex flex-wrap justify-center gap-6">
-            {categories.slice(0, 6).map((category, i) => (
-              <li key={`category-${i}`} className="mb-2 inline-block">
+      <section className="section">
+        <div className="container text-center">
+          <div className="mb-8">
+            <ul className="flex flex-wrap justify-center gap-6">
+              {categories.slice(0, 6).map((category, i) => (
+                <li key={`category-${i}`} className="mb-2 inline-block">
+                  <Link
+                    href={`/categories/${category}`}
+                    className="rounded-lg bg-theme-light px-4 py-2 text-dark transition hover:bg-primary hover:text-white"
+                  >
+                    {humanize(category)}
+                  </Link>
+                </li>
+              ))}
+              <li className="mb-2 inline-block">
                 <Link
-                  href={`/categories/${category}`}
+                  href="/categories"
                   className="rounded-lg bg-theme-light px-4 py-2 text-dark transition hover:bg-primary hover:text-white"
                 >
-                  {humanize(category)}
+                  All Categories
                 </Link>
               </li>
-            ))}
-            <li className="mb-2 inline-block">
-              <Link
-                href="/categories"
-                className="rounded-lg bg-theme-light px-4 py-2 text-dark transition hover:bg-primary hover:text-white"
-              >
-                All Categories
-              </Link>
-            </li>
-          </ul>
+            </ul>
+          </div>
+          {markdownify(title, "h1", "h2 mb-8")}
+          <Posts posts={currentPosts} />
+          <Pagination
+            section="posts"
+            totalPages={totalPages}
+            currentPage={currentPage}
+          />
         </div>
-        <Posts posts={currentPosts} />
-        <Pagination
-          section="posts"
-          totalPages={totalPages}
-          currentPage={currentPage}
-        />
-      </div>
+      </section>
     </Base>
   );
 };

@@ -5,7 +5,6 @@ import { getSinglePage } from "@lib/contentParser";
 import Posts from "@partials/Posts";
 const { blog_folder } = config.settings;
 
-// blog pagination
 const BlogPagination = ({
   posts,
   authors,
@@ -39,7 +38,6 @@ const BlogPagination = ({
 
 export default BlogPagination;
 
-// get blog pagination slug
 export const getStaticPaths = () => {
   const getAllSlug = getSinglePage(`content/${blog_folder}`);
   const allSlug = getAllSlug.map((item) => item.slug);
@@ -61,7 +59,6 @@ export const getStaticPaths = () => {
   };
 };
 
-// get blog pagination content
 export const getStaticProps = async ({ params }) => {
   const currentPage = parseInt((params && params.slug) || 1);
   const { pagination } = config.settings;

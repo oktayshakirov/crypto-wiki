@@ -1,3 +1,3 @@
 ---
-title: "Crypto OG's"
+title: "CRYPTO OG'S"
 ---

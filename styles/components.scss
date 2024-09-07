@@ -90,3 +90,52 @@
     border-radius: 30px;
   }
 }
+
+// Coin Ticker Widget
+.tickerContainer {
+  overflow: hidden;
+}
+
+.tickerWrapper {
+  display: flex;
+  animation: tickerScroll 15s linear infinite;
+}
+
+.tickerList {
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+.tickerItem {
+  display: inline-flex;
+  align-items: center;
+  padding-right: 30px;
+  white-space: nowrap;
+}
+
+.coinName {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.coinPrice {
+  font-weight: bold;
+}
+
+.green {
+  color: green;
+}
+
+.red {
+  color: red;
+}
+
+@keyframes tickerScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}

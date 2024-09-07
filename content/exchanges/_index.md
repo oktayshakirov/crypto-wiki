@@ -1,3 +1,3 @@
 ---
-title: "Exchanges"
+title: "EXCHANGES"
 ---
