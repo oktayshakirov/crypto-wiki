@@ -32,6 +32,10 @@
         {
           "name": "Crypto Heatmap",
           "url": "/tools/crypto-heatmap"
+        },
+        {
+          "name": "Random Coin Generator",
+          "url": "/tools/random-coin-generator"
         }
       ]
     }
