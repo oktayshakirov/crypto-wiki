@@ -81,11 +81,7 @@ const FearAndGreedIndexPage = () => {
             <Link className="text-primary" href="/how-to-buy-your-first-crypto">
               how to buy your first crypto
             </Link>
-            . For more detailed strategies and insights, visit our{" "}
-            <Link className="text-primary" href="/investing-strategies">
-              investing strategies
-            </Link>{" "}
-            section.
+            .
           </p>
         </div>
       </section>
