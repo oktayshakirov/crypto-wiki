@@ -34,6 +34,5 @@ module.exports = {
         allow: "/",
       },
     ],
-    additionalSitemaps: ["https://thecrypto.wiki/sitemap.xml"],
   },
 };
