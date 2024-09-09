@@ -117,11 +117,8 @@ const BitcoinRainbowChart = () => {
   if (loading) return <Loading />;
 
   return (
-    <ResponsiveContainer height={500}>
-      <LineChart
-        data={data}
-        margin={{ top: 5, right: 30, left: 30, bottom: 5 }}
-      >
+    <ResponsiveContainer height={400}>
+      <LineChart data={data} margin={{ right: 20, left: 30 }}>
         <XAxis
           dataKey="date"
           tickFormatter={(tick) => new Date(tick).getFullYear()}
@@ -153,8 +150,9 @@ const BitcoinRainbowChart = () => {
             type="monotone"
             dataKey={name}
             stroke={color}
-            strokeWidth="30"
+            strokeWidth="20"
             dot={false}
+            isAnimationActive={false}
           />
         ))}
         <Tooltip
@@ -172,6 +170,7 @@ const BitcoinRainbowChart = () => {
           stroke="white"
           strokeWidth={1.5}
           dot={false}
+          isAnimationActive={false}
         />
         {halvingDates.map((date) => (
           <ReferenceLine

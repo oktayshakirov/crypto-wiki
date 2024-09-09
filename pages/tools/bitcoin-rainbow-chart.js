@@ -8,16 +8,22 @@ const BitcoinRainbowChartPage = () => {
   return (
     <Base title="Bitcoin Rainbow Chart">
       <section className="section">
-        <div className="container text-center">
-          <h1 className="h2 mb-3">🌈 Bitcoin Rainbow Chart 🌈</h1>
-          <p>
+        <div className="container">
+          <h1 className="mb-3 text-center text-2xl sm:text-3xl md:text-5xl">
+            🌈 Bitcoin Rainbow Chart 🌈
+          </h1>
+          <p className="mb-3 text-center">
             The Rainbow Chart is like the ultimate crystal ball for Bitcoin
             prices. It uses a sophisticated, ever-growing curve to give you a
             colorful sneak peek into where BTC might be headed in the future.
           </p>
+        </div>
 
+        <div className="lg:mx-28">
           <BitcoinRainbowChart />
+        </div>
 
+        <div className="container">
           <div className="mt-5 rounded-lg border-2 border-orange-400 p-6 text-center">
             <div className="mb-2 flex justify-center">
               <FaExclamationTriangle className="text-4xl text-orange-400" />

@@ -8,9 +8,11 @@ const RandomCoinPage = () => {
   return (
     <Base title="Random Coin Generator - Find Your Next Crypto Adventure">
       <section className="section">
-        <div className="container text-center">
-          <h1 className="h2 mb-3">🎲 Random Crypto Coin Generator 🎲</h1>
-          <p>
+        <div className="container">
+          <h1 className="mb-3 text-center text-xl sm:text-3xl md:text-5xl">
+            🎲 Random Coin Generator 🎲
+          </h1>
+          <p className="mb-3 text-center">
             Ready to discover new cryptocurrencies? Our Random Coin Generator
             helps you explore the diverse world of crypto by presenting you with
             a random coin each time. Whether you&apos;re doing research, looking

@@ -5,17 +5,19 @@ import Link from "next/link";
 import Heatmap from "@components/Heatmap";
 
 const data = [
-  { color: "#56ab2f", label: "Positive Price Change" }, // Green for positive
-  { color: "#e73827", label: "Negative Price Change" }, // Red for negative
+  { color: "#56ab2f", label: "Positive Price Change" },
+  { color: "#e73827", label: "Negative Price Change" },
 ];
 
 const CryptoHeatmapPage = () => {
   return (
     <Base title="Crypto Market Heatmap">
       <section className="section">
-        <div className="container text-center">
-          <h1 className="h2 mb-3">🔥 Crypto Market Heatmap 🔥</h1>
-          <p>
+        <div className="container">
+          <h1 className="mb-3 text-center text-2xl sm:text-3xl md:text-5xl">
+            🔥 Crypto Market Heatmap 🔥
+          </h1>
+          <p className="mb-3 text-center">
             The Crypto Heatmap is an essential tool for tracking the real-time
             performance of various cryptocurrencies. It provides a visual
             representation of the entire crypto market, highlighting price

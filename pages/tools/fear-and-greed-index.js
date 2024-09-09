@@ -15,9 +15,11 @@ const FearAndGreedIndexPage = () => {
   return (
     <Base title="Crypto Fear and Greed Index">
       <section className="section">
-        <div className="container text-center">
-          <h1 className="h2 mb-3">📈 Crypto Fear and Greed Index 📉</h1>
-          <p>
+        <div className="container ">
+          <h1 className="mb-3 text-center text-2xl sm:text-3xl md:text-5xl">
+            📉 Fear and Greed Index 📈
+          </h1>
+          <p className="mb-3 text-center">
             The Fear and Greed Index measures the emotions and sentiments of the
             market. It ranges from 0 to 100, with lower values indicating fear
             and higher values indicating greed. Use this tool to gauge market
