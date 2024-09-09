@@ -10,20 +10,22 @@ const Footer = () => {
   return (
     <footer className="section bg-theme-dark">
       <div className="container text-center">
-        {/* footer menu */}
-        <ul className="mb-8 space-x-4">
-          {menu.footer.map((menu) => (
-            <li className="inline-block" key={menu.name}>
-              <Link href={menu.url} className="p-4 text-light hover:text-white">
-                {menu.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
-        {/* social icons */}
-        <Social source={social} className="social-icons mb-8" />
-        {/* copyright */}
-        {markdownify(copyright, "p", "text-light")}
+        <div className="flex flex-col items-center space-y-8 sm:flex-row sm:justify-between sm:space-x-8 sm:space-y-0">
+          <ul className="flex flex-col items-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
+            {menu.footer.map((menu) => (
+              <li className="inline-block" key={menu.name}>
+                <Link
+                  href={menu.url}
+                  className="p-4 text-light hover:text-white"
+                >
+                  {menu.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <Social source={social} className="social-icons" />
+          <div>{markdownify(copyright, "p", "text-light")}</div>
+        </div>
       </div>
     </footer>
   );
