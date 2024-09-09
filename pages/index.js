@@ -38,7 +38,7 @@ const Home = ({ posts, ogs, exchanges }) => {
           </div>
           <div className="container mb-20">
             {markdownify("CRYPTO LEGENDS", "h2", "mb-8")}
-            <CryptoOGs ogs={ogs} />
+            <CryptoOGs ogs={ogs.slice(0, 3)} />
           </div>
           <div className="container mb-20">
             {markdownify("RECOMMENDED CRYPTO EXCHANGES", "h3", "mb-8")}
