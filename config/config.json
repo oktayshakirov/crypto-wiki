@@ -10,6 +10,7 @@
   },
 
   "settings": {
+    "paginationAuthors": 3,
     "paginationPosts": 8,
     "paginationExchanges": 9,
     "paginationCryptoOGs": 9,

@@ -63,13 +63,13 @@ export const getStaticPaths = () => {
 // get authors pagination content
 export const getStaticProps = async ({ params }) => {
   const currentPage = parseInt((params && params.slug) || 1);
-  const { pagination } = config.settings;
+  const { paginationAuthors } = config.settings;
   const authors = getSinglePage("content/authors");
   const authorIndex = await getListPage("content/authors/_index.md");
 
   return {
     props: {
-      pagination: pagination,
+      pagination: paginationAuthors,
       authors: authors,
       currentPage: currentPage,
       authorIndex: authorIndex,

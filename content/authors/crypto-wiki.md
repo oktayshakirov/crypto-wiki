@@ -2,6 +2,7 @@
 title: TheCrypto.Wiki
 image: /images/authors/crypto-wiki.png
 description: The Crypto Wiki provides expert insights, beginner guides, and the latest news about cryptocurrency.
+order: 1
 ---
 
 #### Crypto Wiki: Your Gateway to the World of Cryptocurrency
