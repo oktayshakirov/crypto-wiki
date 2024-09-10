@@ -16,7 +16,7 @@ const Tags = ({ tags }) => {
               <li key={`category-${i}`}>
                 <Link
                   href={`/tags/${category}`}
-                  className="rounded-lg bg-theme-light px-4 py-2 text-dark transition hover:bg-primary hover:text-white"
+                  className="rounded-lg bg-theme-light px-4 py-2 text-dark transition hover:bg-primary hover:font-bold hover:text-black"
                 >
                   &#8226; {humanize(category)}
                 </Link>

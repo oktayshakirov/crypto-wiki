@@ -38,7 +38,7 @@ const Home = ({ posts, ogs, exchanges }) => {
           </div>
           <div className="container mb-20">
             {markdownify("CRYPTO LEGENDS", "h2", "mb-8")}
-            <CryptoOGs ogs={ogs.slice(0, 3)} />
+            <CryptoOGs ogs={ogs.slice(-3)} />
             <div className="mt-6 flex flex-col justify-center space-y-3 md:flex-row md:space-x-3 md:space-y-0">
               <Link
                 className="btn btn-outline w-full md:w-auto"

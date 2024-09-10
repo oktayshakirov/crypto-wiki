@@ -31,7 +31,7 @@ const PostPagination = ({
                 <li key={`category-${i}`} className="mb-2 inline-block">
                   <Link
                     href={`/categories/${category}`}
-                    className="rounded-lg bg-theme-light px-4 py-2 text-dark transition hover:bg-primary hover:text-white"
+                    className="rounded-lg bg-theme-light px-4 py-2 text-dark transition hover:bg-primary hover:font-bold hover:text-black"
                   >
                     {humanize(category)}
                   </Link>
