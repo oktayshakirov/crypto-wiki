@@ -39,11 +39,18 @@ const Home = ({ posts, ogs, exchanges }) => {
           <div className="container mb-20">
             {markdownify("CRYPTO LEGENDS", "h2", "mb-8")}
             <CryptoOGs ogs={ogs.slice(0, 3)} />
+            <div className="mt-6 flex flex-col justify-center space-y-3 md:flex-row md:space-x-3 md:space-y-0">
+              <Link
+                className="btn btn-outline w-full md:w-auto"
+                href="/exchanges"
+              >
+                MORE LEGENDS
+              </Link>
+            </div>
           </div>
           <div className="container mb-20">
             {markdownify("RECOMMENDED CRYPTO EXCHANGES", "h3", "mb-8")}
             <Exchanges exchanges={exchanges.slice(0, 6)} />
-
             <div className="mt-6 flex flex-col justify-center space-y-3 md:flex-row md:space-x-3 md:space-y-0">
               <Link
                 className="btn btn-outline w-full md:w-auto"
