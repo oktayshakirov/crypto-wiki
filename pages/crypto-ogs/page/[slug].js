@@ -58,13 +58,13 @@ export const getStaticPaths = () => {
 // get ogs pagination content
 export const getStaticProps = async ({ params }) => {
   const currentPage = parseInt((params && params.slug) || 1);
-  const { pagination } = config.settings;
+  const { paginationCryptoOGs } = config.settings;
   const ogs = getSinglePage("content/crypto-ogs");
   const ogIndex = await getListPage("content/crypto-ogs/_index.md");
 
   return {
     props: {
-      pagination: pagination,
+      pagination: paginationCryptoOGs,
       ogs: ogs,
       currentPage: currentPage,
       ogIndex: ogIndex,

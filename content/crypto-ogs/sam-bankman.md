@@ -1,13 +1,12 @@
 ---
 title: Sam Bankman
 image: /images/crypto-ogs/sam-bankman.png
-description: From crypto mogul to scandal, the rise and fall of Sam Bankman-Fried.
+description: From crypto OG to scandal, the rise and fall of Sam Bankman-Fried.
 order: 8
 authors: ["Crypto Wiki"]
 social:
   wikipedia: https://en.wikipedia.org/wiki/Sam_Bankman-Fried
   twitter: https://twitter.com/SBF_FTX
-  linkedin: https://www.linkedin.com/in/sam-bankman-fried-126906155/
 ---
 
 Sam Bankman-Fried (SBF), once hailed as a genius of the cryptocurrency world, experienced a meteoric rise as the founder of **FTX**, one of the world’s largest crypto exchanges. However, what was once perceived as an incredible success story ended in scandal, revealing one of the largest financial frauds in the history of cryptocurrency.
@@ -36,6 +35,8 @@ The core of the scandal was the blatant misuse of **customer deposits**. FTX had
 
 As word spread of FTX's insolvency, a **bank run** ensued, with users attempting to withdraw their funds en masse. However, FTX quickly halted withdrawals, confirming that the company was insolvent. Within days, FTX filed for bankruptcy, and its estimated $10 billion hole in customer funds was exposed. Bankman-Fried resigned as CEO, and the exchange crumbled, leaving thousands of users devastated and the broader crypto market in chaos.
 
+![Sam Bankman-Fried Rugpull](/images/posts/rugpull.jpg)
+
 ## Unethical Practices and Scams
 
 Bankman-Fried’s actions were widely condemned as unethical and potentially criminal. The deceit extended beyond simple financial mismanagement. Several fraudulent practices and schemes have been identified, including:
@@ -43,8 +44,6 @@ Bankman-Fried’s actions were widely condemned as unethical and potentially cri
 - **Deceptive Fund Transfers**: Bankman-Fried’s secret transfers of customer assets from FTX to Alameda Research were at the heart of the scandal. These transfers, made without customer consent, were in direct violation of the platform’s terms of service.
 - **Market Manipulation**: Alameda Research was allegedly involved in **price manipulation** and **front-running** trades on FTX, giving them an unfair advantage over other users.
 - **Lack of Financial Oversight**: Bankman-Fried operated with virtually no oversight, and FTX's internal financial controls were practically non-existent. This enabled the misuse of funds on a massive scale, with billions being diverted into personal and corporate accounts without accountability.
-
-![Sam Bankman-Fried](/images/posts/sbf-scandal.jpg)
 
 ## The Public Fallout: Fraud Charges and Arrest
 
@@ -65,6 +64,8 @@ The collapse led to a loss of trust in crypto exchanges and custodial services, 
 ### Calls for Regulation
 
 In the aftermath of the scandal, regulators worldwide began scrutinizing the cryptocurrency market more closely. There were renewed calls for transparency, auditing requirements, and better customer protection measures to prevent similar scandals in the future.
+
+![Law](/images/posts/law.jpg)
 
 ## Conclusion
 

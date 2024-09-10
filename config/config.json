@@ -10,9 +10,9 @@
   },
 
   "settings": {
-    "pagination": 8,
     "paginationPosts": 8,
     "paginationExchanges": 9,
+    "paginationCryptoOGs": 9,
     "blog_folder": "posts"
   },
 
