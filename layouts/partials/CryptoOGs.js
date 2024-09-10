@@ -1,45 +1,28 @@
-import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { FaUser } from "react-icons/fa";
-import Loading from "../components/Loading";
 
 const CryptoOGs = ({ ogs }) => {
   const router = useRouter();
-  const [loading, setLoading] = useState(true);
-  const [sortedOGs, setSortedOGs] = useState([]);
-
-  useEffect(() => {
-    const sortData = () => {
-      const sortedData = [...ogs].sort(
-        (a, b) => a.frontmatter.order - b.frontmatter.order
-      );
-      setSortedOGs(sortedData);
-      setLoading(false);
-    };
-
-    sortData();
-  }, [ogs]);
-
-  if (loading) {
-    return <Loading />;
-  }
 
   return (
     <div className="row justify-center">
-      {sortedOGs.map((og, i) => (
+      {ogs.map((og, i) => (
         <div className="col-12 mb-8 sm:col-6 md:col-4" key={`key-${i}`}>
           <div className="group flex h-full flex-col justify-between rounded-lg border border-white p-4 hover:border-primary hover:bg-black hover:bg-opacity-40">
             {og.frontmatter.image && (
-              <div className="mb-4 flex items-center justify-center">
+              <div
+                className="relative mb-4 flex items-center justify-center"
+                style={{ width: "100%", paddingTop: "100%" }}
+              >
                 <Link href={`/crypto-ogs/${og.slug}`}>
                   <Image
                     src={og.frontmatter.image}
                     alt={og.frontmatter.title}
-                    width={150}
-                    height={150}
-                    className="rounded-lg object-cover"
+                    layout="fill"
+                    objectFit="cover"
+                    className="rounded-lg"
                   />
                 </Link>
               </div>
