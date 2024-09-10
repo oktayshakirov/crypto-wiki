@@ -42,9 +42,15 @@ const Home = ({ posts, ogs, exchanges }) => {
             <div className="mt-6 flex flex-col justify-center space-y-3 md:flex-row md:space-x-3 md:space-y-0">
               <Link
                 className="btn btn-outline w-full md:w-auto"
-                href="/exchanges"
+                href="/crypto-ogs"
               >
-                MORE LEGENDS
+                MORE CRYPTO OGS
+              </Link>
+              <Link
+                className="btn btn-outline w-full md:w-auto"
+                href="/contact"
+              >
+                REQUEST SOMEONE
               </Link>
             </div>
           </div>
