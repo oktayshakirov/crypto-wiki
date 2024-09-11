@@ -9,3 +9,7 @@
 .btn-outline-primary {
   @apply border-white bg-transparent text-white  hover:border-primary hover:text-primary;
 }
+
+.btn-custom {
+  @apply rounded-lg bg-theme-light px-4 py-2 text-dark transition hover:bg-primary hover:font-bold hover:text-black;
+}

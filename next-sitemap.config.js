@@ -16,20 +16,24 @@ module.exports = {
     } else if (/^\/[a-zA-Z0-9-]+$/.test(path)) {
       priority = 0.85;
       changefreq = "daily";
-    } else if (path.startsWith("/tools")) {
+    } else if (
+      path.startsWith("/tools") ||
+      path.startsWith("/exchanges") ||
+      path.startsWith("/crypto-ogs")
+    ) {
       priority = 0.9;
+      changefreq = "weekly";
+    } else if (path.startsWith("/posts")) {
+      priority = 0.95;
       changefreq = "weekly";
     } else if (path.startsWith("/categories")) {
       priority = 0.7;
       changefreq = "weekly";
-    } else if (path.startsWith("/tags")) {
-      priority = 0.5;
-      changefreq = "weekly";
     } else if (
-      /^\/(faq|privacy-policy|terms|about|contact|authors)$/.test(path)
+      /^\/(tags|faq|privacy-policy|terms|about|contact|authors)$/.test(path)
     ) {
       priority = 0.4;
-      changefreq = "monthly";
+      changefreq = "weekly";
     }
 
     return {

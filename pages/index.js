@@ -6,6 +6,15 @@ import Exchanges from "@partials/Exchanges";
 import { markdownify } from "@lib/utils/textConverter";
 import FearAndGreedIndex from "@layouts/components/FearAndGreedIndex";
 import Link from "next/link";
+import {
+  FaRegNewspaper,
+  FaBookOpen,
+  FaTags,
+  FaUserAlt,
+  FaCoins,
+  FaAddressBook,
+  FaExchangeAlt,
+} from "react-icons/fa";
 
 const Home = ({ posts, ogs, exchanges }) => {
   return (
@@ -15,22 +24,26 @@ const Home = ({ posts, ogs, exchanges }) => {
           {markdownify("LATEST POSTS", "h2", "mb-8")}
           <Posts posts={posts.slice(0, 6)} />
           <div className="container mb-20 flex flex-col justify-center space-y-3 md:flex-row md:space-x-3 md:space-y-0">
-            <Link className="btn btn-outline w-full md:w-auto" href="/posts">
-              MORE POSTS
+            <Link className="btn-custom flex items-center gap-2" href="/posts">
+              <FaRegNewspaper /> MORE POSTS
             </Link>
             <Link
-              className="btn btn-outline w-full md:w-auto"
+              className="btn-custom flex items-center gap-2"
               href="/categories"
             >
-              CATEGORIES
+              <FaBookOpen /> CATEGORIES
             </Link>
-            <Link className="btn btn-outline w-full md:w-auto" href="/tags">
-              TAGS
+            <Link className="btn-custom flex items-center gap-2" href="/tags">
+              <FaTags /> TAGS
             </Link>
-            <Link className="btn btn-outline w-full md:w-auto" href="/authors">
-              AUTHORS
+            <Link
+              className="btn-custom flex items-center gap-2"
+              href="/authors"
+            >
+              <FaUserAlt /> AUTHORS
             </Link>
           </div>
+
           <div className="container mb-20">
             {markdownify("MARKET MOOD: The Crypto Rollercoaster!", "h3")}
             <Link href="/tools/fear-and-greed-index">Learn more</Link>
@@ -41,16 +54,16 @@ const Home = ({ posts, ogs, exchanges }) => {
             <CryptoOGs ogs={ogs.slice(0, 3)} />
             <div className="mt-6 flex flex-col justify-center space-y-3 md:flex-row md:space-x-3 md:space-y-0">
               <Link
-                className="btn btn-outline w-full md:w-auto"
+                className="btn-custom flex items-center gap-2"
                 href="/crypto-ogs"
               >
-                MORE CRYPTO OGS
+                <FaUserAlt /> MORE CRYPTO OGS
               </Link>
               <Link
-                className="btn btn-outline w-full md:w-auto"
+                className="btn-custom flex items-center gap-2"
                 href="/contact"
               >
-                REQUEST SOMEONE
+                <FaAddressBook /> REQUEST SOMEONE
               </Link>
             </div>
           </div>
@@ -59,16 +72,16 @@ const Home = ({ posts, ogs, exchanges }) => {
             <Exchanges exchanges={exchanges.slice(0, 6)} />
             <div className="mt-6 flex flex-col justify-center space-y-3 md:flex-row md:space-x-3 md:space-y-0">
               <Link
-                className="btn btn-outline w-full md:w-auto"
+                className="btn-custom flex items-center gap-2"
                 href="/exchanges"
               >
-                MORE EXCHANGES
+                <FaExchangeAlt /> MORE EXCHANGES
               </Link>
               <Link
-                className="btn btn-outline w-full md:w-auto"
+                className="btn-custom flex items-center gap-2"
                 href="/contact"
               >
-                REQUEST AN EXCHANGE
+                <FaAddressBook /> REQUEST AN EXCHANGE
               </Link>
             </div>
           </div>
