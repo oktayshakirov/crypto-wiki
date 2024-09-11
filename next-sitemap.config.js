@@ -12,11 +12,24 @@ module.exports = {
 
     if (path === "/") {
       priority = 1.0;
-    } else if (path.startsWith("/blog")) {
       changefreq = "daily";
-      priority = 0.8;
+    } else if (/^\/[a-zA-Z0-9-]+$/.test(path)) {
+      priority = 0.85;
+      changefreq = "daily";
     } else if (path.startsWith("/tools")) {
       priority = 0.9;
+      changefreq = "weekly";
+    } else if (path.startsWith("/categories")) {
+      priority = 0.7;
+      changefreq = "weekly";
+    } else if (path.startsWith("/tags")) {
+      priority = 0.5;
+      changefreq = "weekly";
+    } else if (
+      /^\/(faq|privacy-policy|terms|about|contact|authors)$/.test(path)
+    ) {
+      priority = 0.4;
+      changefreq = "monthly";
     }
 
     return {
