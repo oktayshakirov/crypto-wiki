@@ -5,10 +5,10 @@ import { FaTag, FaUser, FaAt } from "react-icons/fa";
 
 const Posts = ({ posts }) => {
   return (
-    <div className="row justify-center">
+    <div className="row">
       {posts.map((post, i) => (
         <div key={`key-${i}`} className="col-12 mb-10 justify-center sm:col-6">
-          <div className="group flex h-full flex-col justify-between rounded-lg border border-white p-4 hover:bg-black hover:bg-opacity-40 group-hover:text-primary">
+          <div className="card flex h-full flex-col justify-between">
             {post.frontmatter.image && (
               <Link href={`/${post.slug}`}>
                 <div className="relative h-64 w-full">
@@ -80,7 +80,6 @@ const Posts = ({ posts }) => {
                           key={`exchange-${index}`}
                           className="mx-2 flex items-center hover:text-primary"
                         >
-                          {/* Currency exchange icon for Exchanges */}
                           <FaAt className="mr-2" />
                           <span>{exchange}</span>
                         </Link>
@@ -94,15 +93,10 @@ const Posts = ({ posts }) => {
                 )}
             </ul>
             {/* Title */}
-            <h4 className="mb-2 group-hover:text-primary">
-              <Link href={`/${post.slug}`} className="block ">
-                {post.frontmatter.title}
-              </Link>
+            <h4 className="mb-2">
+              <Link href={`/${post.slug}`}>{post.frontmatter.title}</Link>
             </h4>
-
-            <p className="group-hover:text-primary">
-              {post.frontmatter.description}
-            </p>
+            <p>{post.frontmatter.description}</p>
           </div>
         </div>
       ))}

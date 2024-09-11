@@ -23,7 +23,7 @@ const Home = ({ posts, ogs, exchanges }) => {
         <div className="container my-7 text-center">
           {markdownify("LATEST POSTS", "h2", "mb-8")}
           <Posts posts={posts.slice(0, 6)} />
-          <div className="container mb-20 flex flex-col justify-center space-y-3 md:flex-row md:space-x-3 md:space-y-0">
+          <div className="mb-20 flex flex-col justify-center space-y-3 md:flex-row md:space-x-3 md:space-y-0">
             <Link className="btn-custom flex items-center gap-2" href="/posts">
               <FaRegNewspaper /> MORE POSTS
             </Link>
@@ -44,12 +44,12 @@ const Home = ({ posts, ogs, exchanges }) => {
             </Link>
           </div>
 
-          <div className="container mb-20">
+          <div className="mb-20">
             {markdownify("MARKET MOOD: The Crypto Rollercoaster!", "h3")}
             <Link href="/tools/fear-and-greed-index">Learn more</Link>
             <FearAndGreedIndex />
           </div>
-          <div className="container mb-20">
+          <div className="mb-20">
             {markdownify("CRYPTO LEGENDS", "h2", "mb-8")}
             <CryptoOGs ogs={ogs.slice(0, 3)} />
             <div className="mt-6 flex flex-col justify-center space-y-3 md:flex-row md:space-x-3 md:space-y-0">
@@ -67,7 +67,7 @@ const Home = ({ posts, ogs, exchanges }) => {
               </Link>
             </div>
           </div>
-          <div className="container mb-20">
+          <div className="mb-20">
             {markdownify("RECOMMENDED CRYPTO EXCHANGES", "h3", "mb-8")}
             <Exchanges exchanges={exchanges.slice(0, 6)} />
             <div className="mt-6 flex flex-col justify-center space-y-3 md:flex-row md:space-x-3 md:space-y-0">

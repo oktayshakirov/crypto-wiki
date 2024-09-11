@@ -139,3 +139,17 @@
     transform: translateX(-50%);
   }
 }
+
+.card {
+  border: 1px solid rgb(84 90 106);
+  border-radius: 20px;
+  background: #212121;
+  box-shadow: 5px 5px 8px #1b1b1b, -5px -5px 8px #272727;
+  padding: 10px;
+}
+
+.card:hover {
+  border: 1px solid rgba(229, 194, 0, 0.7);
+  box-shadow: 5px 5px 8px rgba(229, 194, 0, 0.7),
+    -5px -5px 8px rgba(15, 15, 15, 0.7);
+}
