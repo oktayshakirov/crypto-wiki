@@ -110,6 +110,8 @@ After selecting your platform and coin, you’ll need to lock your assets in the
 
 As your staked assets help validate transactions on the blockchain, you will begin earning staking rewards. These rewards are typically paid out periodically (daily, weekly, or monthly).
 
+![Crypto Growing](/images/posts/investing.jpg)
+
 ## Risks of Crypto Staking
 
 While staking offers passive income, it’s important to be aware of the associated risks:
