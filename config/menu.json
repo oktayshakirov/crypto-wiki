@@ -36,6 +36,10 @@
         {
           "name": "Random Coin Generator",
           "url": "/tools/random-coin-generator"
+        },
+        {
+          "name": "Staking Calculator",
+          "url": "/tools/staking-calculator"
         }
       ]
     }

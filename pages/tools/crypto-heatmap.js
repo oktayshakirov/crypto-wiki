@@ -15,7 +15,7 @@ const CryptoHeatmapPage = () => {
       <section className="section">
         <div className="container">
           <h1 className="mb-3 text-center text-2xl sm:text-3xl md:text-5xl">
-            🔥 Crypto Market Heatmap 🔥
+            🔥 Market Heatmap 🔥
           </h1>
           <p className="mb-3 text-center">
             The Crypto Heatmap is an essential tool for tracking the real-time

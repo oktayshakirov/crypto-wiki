@@ -11,7 +11,6 @@ import {
   FaBookOpen,
   FaTags,
   FaUserAlt,
-  FaCoins,
   FaAddressBook,
   FaExchangeAlt,
 } from "react-icons/fa";
@@ -25,30 +24,37 @@ const Home = ({ posts, ogs, exchanges }) => {
           <Posts posts={posts.slice(0, 6)} />
           <div className="mb-20 flex flex-col justify-center space-y-3 md:flex-row md:space-x-3 md:space-y-0">
             <Link className="btn-custom flex items-center gap-2" href="/posts">
-              <FaRegNewspaper /> MORE POSTS
+              <FaRegNewspaper />
+              <span>MORE POSTS</span>
             </Link>
             <Link
               className="btn-custom flex items-center gap-2"
               href="/categories"
             >
-              <FaBookOpen /> CATEGORIES
+              <FaBookOpen />
+              <span>CATEGORIES</span>
             </Link>
             <Link className="btn-custom flex items-center gap-2" href="/tags">
-              <FaTags /> TAGS
+              <FaTags />
+              <span>TAGS</span>
             </Link>
             <Link
               className="btn-custom flex items-center gap-2"
               href="/authors"
             >
-              <FaUserAlt /> AUTHORS
+              <FaUserAlt />
+              <span>AUTHORS</span>
             </Link>
           </div>
 
           <div className="mb-20">
             {markdownify("MARKET MOOD: The Crypto Rollercoaster!", "h3")}
-            <Link href="/tools/fear-and-greed-index">Learn more</Link>
+            <Link href="/tools/fear-and-greed-index">
+              <span>Learn more</span>
+            </Link>
             <FearAndGreedIndex />
           </div>
+
           <div className="mb-20">
             {markdownify("CRYPTO LEGENDS", "h2", "mb-8")}
             <CryptoOGs ogs={ogs.slice(0, 3)} />
@@ -57,16 +63,19 @@ const Home = ({ posts, ogs, exchanges }) => {
                 className="btn-custom flex items-center gap-2"
                 href="/crypto-ogs"
               >
-                <FaUserAlt /> MORE CRYPTO OGS
+                <FaUserAlt />
+                <span>MORE CRYPTO OGS</span>
               </Link>
               <Link
                 className="btn-custom flex items-center gap-2"
                 href="/contact"
               >
-                <FaAddressBook /> REQUEST SOMEONE
+                <FaAddressBook />
+                <span>REQUEST SOMEONE</span>
               </Link>
             </div>
           </div>
+
           <div className="mb-20">
             {markdownify("RECOMMENDED CRYPTO EXCHANGES", "h3", "mb-8")}
             <Exchanges exchanges={exchanges.slice(0, 6)} />
@@ -75,13 +84,15 @@ const Home = ({ posts, ogs, exchanges }) => {
                 className="btn-custom flex items-center gap-2"
                 href="/exchanges"
               >
-                <FaExchangeAlt /> MORE EXCHANGES
+                <FaExchangeAlt />
+                <span>MORE EXCHANGES</span>
               </Link>
               <Link
                 className="btn-custom flex items-center gap-2"
                 href="/contact"
               >
-                <FaAddressBook /> REQUEST AN EXCHANGE
+                <FaAddressBook />
+                <span>REQUEST AN EXCHANGE</span>
               </Link>
             </div>
           </div>
