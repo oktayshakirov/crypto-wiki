@@ -14,8 +14,11 @@ const Categories = ({ categories }) => {
           <ul className="flex flex-wrap justify-center gap-6">
             {categories.map((category, i) => (
               <li key={`category-${i}`} className="mb-2 inline-block">
-                <Link href={`/categories/${category}`} className="btn-custom">
-                  &#8226; {humanize(category)}
+                <Link
+                  href={`/categories/${category}`}
+                  className="btn-categories"
+                >
+                  {humanize(category)}
                 </Link>
               </li>
             ))}

@@ -29,13 +29,16 @@ const PostPagination = ({
             <ul className="flex flex-wrap justify-center gap-6">
               {categories.slice(0, 6).map((category, i) => (
                 <li key={`category-${i}`} className="mb-2 inline-block">
-                  <Link href={`/categories/${category}`} className="btn-custom">
+                  <Link
+                    href={`/categories/${category}`}
+                    className="btn-secondary"
+                  >
                     {humanize(category)}
                   </Link>
                 </li>
               ))}
               <li className="mb-2 inline-block">
-                <Link href="/categories" className="btn-custom">
+                <Link href="/categories" className="btn-secondary">
                   All Categories
                 </Link>
               </li>

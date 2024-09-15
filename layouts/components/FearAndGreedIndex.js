@@ -66,21 +66,21 @@ const FearAndGreedIndexChart = () => {
             borderRadius: "10px",
             padding: "20px",
             textAlign: "center",
-            color: "white",
+            color: "black",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
           }}
         >
-          <div style={{ fontSize: "50px" }}>
+          <div style={{ fontSize: "50px", color: "black" }}>
             {getSmileyAndBackgroundGradient(indexValue.value).smiley}
           </div>
-          <h2 className="h3 my-4">
+          <h2 className="h3 my-4" style={{ color: "black" }}>
             Current Index: {indexValue.value} -{" "}
             {indexValue.value_classification}
           </h2>
-          <p style={{ fontSize: "14px" }}>
+          <p style={{ fontSize: "14px", color: "black" }}>
             Last updated:{" "}
             {new Date(indexValue.timestamp * 1000).toLocaleDateString()}
           </p>

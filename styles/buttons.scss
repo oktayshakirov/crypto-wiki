@@ -1,7 +1,12 @@
-.btn {
-  @apply flex w-full justify-center rounded-lg bg-theme-light px-4 py-2 text-dark;
+.btn-primary {
+  @apply flex w-full justify-center rounded-xl bg-[#ffffff] px-4 py-2 font-bold text-black
+    hover:bg-[#bdc3c7];
 }
 
-.btn-custom {
-  @apply rounded-lg bg-theme-light px-4 py-2 text-dark transition hover:bg-primary hover:font-bold hover:text-black;
+.btn-secondary {
+  @apply flex items-center justify-center rounded-lg bg-theme-light px-4 py-2 text-dark transition hover:bg-primary hover:font-bold hover:text-black;
+}
+
+.btn-categories {
+  @apply flex h-40 w-40 items-center justify-center rounded-lg bg-theme-light px-6 py-8 text-lg text-dark transition hover:bg-primary hover:font-bold hover:text-black;
 }
