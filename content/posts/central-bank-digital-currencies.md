@@ -3,7 +3,7 @@ title: "The Rise of Central Bank Digital Currencies (CBDCs)"
 description: "All about the growing global interest in Central Bank Digital Currencies (CBDCs), their potential to reshape monetary systems, and the challenges they pose for the future of finance."
 date: 2024-09-14
 image: "/images/posts/fiat-money.jpg"
-categories: ["Blockchain", "Regulation", "Security"]
+categories: ["Regulation", "Security"]
 authors: ["Crypto Wiki"]
 tags:
   [
