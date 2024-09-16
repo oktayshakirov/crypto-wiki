@@ -31,14 +31,14 @@ const PostPagination = ({
                 <li key={`category-${i}`} className="mb-2 inline-block">
                   <Link
                     href={`/categories/${category}`}
-                    className="btn-secondary"
+                    className="btn-primary"
                   >
                     {humanize(category)}
                   </Link>
                 </li>
               ))}
               <li className="mb-2 inline-block">
-                <Link href="/categories" className="btn-secondary">
+                <Link href="/categories" className="btn-primary">
                   All Categories
                 </Link>
               </li>

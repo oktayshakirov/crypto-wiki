@@ -48,7 +48,6 @@ input#nav-toggle:checked ~ #nav-menu {
   @apply min-w-[250px] py-1 text-lg font-semibold text-dark transition hover:text-primary;
 }
 
-// search style
 .search-modal {
   @apply invisible absolute left-0 right-0 top-0 z-10 h-10 bg-white opacity-0 transition md:h-full;
   .form-input {

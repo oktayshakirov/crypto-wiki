@@ -31,7 +31,7 @@ const Exchanges = ({ exchanges }) => {
             </h3>
             <p>{exchange.frontmatter.description}</p>
             <div className="mt-4 flex justify-center">
-              <button className="btn flex items-center">
+              <button className="btn-secondary flex items-center">
                 <FaBuffer className="mr-2" />
                 View Exchange
               </button>

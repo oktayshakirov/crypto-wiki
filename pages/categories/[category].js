@@ -5,12 +5,21 @@ import { getTaxonomy } from "@lib/taxonomyParser";
 import { slugify } from "@lib/utils/textConverter";
 import Posts from "@partials/Posts";
 const { blog_folder } = config.settings;
+import { FaArrowLeft } from "react-icons/fa";
+import Link from "next/link";
 
-// category page
 const Category = ({ category, posts, authors, cryptoOgs, exchanges }) => {
   return (
     <Base title={category}>
       <div className="section">
+        <div className="container mb-8 text-left">
+          <Link href="/categories">
+            <button className="flex items-center">
+              <FaArrowLeft className="mr-2" />
+              All Categories
+            </button>
+          </Link>
+        </div>
         <div className="container">
           <h1 className="h2 mb-8 text-center">
             Showing posts from <span className="text-primary">{category}</span>{" "}
@@ -30,7 +39,6 @@ const Category = ({ category, posts, authors, cryptoOgs, exchanges }) => {
 
 export default Category;
 
-// category page routes
 export const getStaticPaths = () => {
   const allCategories = getTaxonomy(`content/${blog_folder}`, "categories");
 
@@ -43,7 +51,6 @@ export const getStaticPaths = () => {
   return { paths, fallback: false };
 };
 
-// category page data
 export const getStaticProps = ({ params }) => {
   const posts = getSinglePage(`content/${blog_folder}`);
   const filterPosts = posts.filter((post) =>

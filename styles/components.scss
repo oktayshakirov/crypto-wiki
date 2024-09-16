@@ -84,7 +84,7 @@
 }
 
 .tickerContainer {
-  overflow: hidden;
+  @apply overflow-hidden;
 }
 
 .tickerWrapper {
@@ -93,33 +93,27 @@
 }
 
 .tickerList {
-  display: flex;
-  padding: 0;
-  margin: 0;
+  @apply m-0 flex p-0;
 }
 
 .tickerItem {
-  display: inline-flex;
-  align-items: center;
-  padding-right: 30px;
-  white-space: nowrap;
+  @apply inline-flex items-center whitespace-nowrap pr-8;
 }
 
 .coinName {
-  font-weight: bold;
-  margin-right: 10px;
+  @apply mr-2 font-bold;
 }
 
 .coinPrice {
-  font-weight: bold;
+  @apply font-bold;
 }
 
 .green {
-  color: green;
+  @apply text-green-600;
 }
 
 .red {
-  color: red;
+  @apply text-red-600;
 }
 
 @keyframes tickerScroll {
@@ -132,67 +126,41 @@
 }
 
 .card {
-  border: 1px solid rgb(84 90 106);
-  border-radius: 20px;
-  background: #212121;
-  box-shadow: 5px 5px 8px #1b1b1b, -5px -5px 8px #272727;
-  padding: 10px;
-  transition: all 0.3s ease;
+  @apply rounded-xl border border-gray-700 bg-[#212121] p-4 shadow-[5px_5px_8px_#1b1b1b,_-5px_-5px_8px_#272727] transition-all ease-linear;
 }
 
-.card:hover,
-.card:focus,
-.card:active {
-  border: 1px solid rgba(229, 194, 0, 0.7);
-  box-shadow: 5px 5px 8px rgba(229, 194, 0, 0.7),
-    -5px -5px 8px rgba(15, 15, 15, 0.7);
+.card:hover {
+  @apply border-primary shadow-[5px_5px_8px_rgba(229,194,0,0.7),_-5px_-5px_8px_rgba(15,15,15,0.7)];
 }
 
-.card:focus {
-  outline: none;
+.card-secondary {
+  @apply rounded-xl border border-gray-800 bg-[#212121] p-4 shadow-[5px_5px_8px_#1b1b1b,_-5px_-5px_8px_#272727] transition-all ease-linear;
 }
 
 .staking-calculator {
-  padding: 20px;
-  max-width: 700px;
-  margin: auto;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+  @apply mx-auto max-w-[700px] rounded-lg border border-gray-300 p-5;
 }
 
 .form-group {
-  margin-bottom: 15px;
-  margin-top: 15px;
+  @apply my-4;
 }
 
 .input-group {
-  display: flex;
-  align-items: center;
+  @apply flex items-center;
 }
 
 .input-field {
-  margin-left: 10px;
-  padding: 10px;
-  width: 100%;
-  background-color: #333;
-  color: #fff;
-  border-radius: 4px;
-  border: 1px solid #555;
+  @apply ml-2 w-full rounded border border-gray-100 bg-gray-800 p-2 text-white;
 }
 
 .duration-wrapper {
-  display: flex;
-  align-items: center;
+  @apply flex items-center;
 }
 
 .result h3 {
-  margin-top: 20px;
+  @apply mt-5;
 }
 
 .profit {
-  color: #00e900;
-}
-
-.default {
-  color: #fff;
+  @apply text-green-500;
 }

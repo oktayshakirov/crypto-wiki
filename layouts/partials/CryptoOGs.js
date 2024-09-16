@@ -32,7 +32,7 @@ const CryptoOGs = ({ ogs }) => {
             <h3 className="h4 mb-2 text-center">{og.frontmatter.title}</h3>
             <p>{og.frontmatter.description}</p>
             <div className="mt-4 flex justify-center">
-              <button className="btn flex items-center">
+              <button className="btn-secondary flex items-center">
                 <FaUser className="mr-2" />
                 View Profile
               </button>

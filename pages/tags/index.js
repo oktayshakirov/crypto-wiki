@@ -14,7 +14,7 @@ const Tags = ({ tags }) => {
           <ul className="flex flex-wrap justify-center gap-7">
             {tags.map((category, i) => (
               <li key={`category-${i}`}>
-                <Link href={`/tags/${category}`} className="btn-secondary">
+                <Link href={`/tags/${category}`} className="btn-primary">
                   # {humanize(category)}
                 </Link>
               </li>

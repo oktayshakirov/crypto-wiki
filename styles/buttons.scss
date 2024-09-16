@@ -1,10 +1,9 @@
 .btn-primary {
-  @apply flex w-full justify-center rounded-xl bg-[#ffffff] px-4 py-2 font-bold text-black
-    hover:bg-[#bdc3c7];
+  @apply flex items-center justify-center rounded-lg bg-theme-light px-4 py-2 text-dark transition hover:bg-primary hover:font-bold hover:text-black;
 }
 
 .btn-secondary {
-  @apply flex items-center justify-center rounded-lg bg-theme-light px-4 py-2 text-dark transition hover:bg-primary hover:font-bold hover:text-black;
+  @apply flex items-center justify-center rounded-lg bg-theme-light px-4 py-2 text-dark;
 }
 
 .btn-categories {
