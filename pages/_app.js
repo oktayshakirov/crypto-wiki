@@ -67,6 +67,7 @@ const App = ({ Component, pageProps }) => {
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5852582960793521"
         crossOrigin="anonymous"
       ></script>
+      <meta name="coinzilla" content="c2fa7e8cfa96039c31e22709d68ba80c" />
       <Component {...pageProps} />
     </JsonContext>
   );
