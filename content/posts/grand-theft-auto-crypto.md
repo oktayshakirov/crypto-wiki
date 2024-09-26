@@ -76,7 +76,7 @@ For gamers unfamiliar with crypto, the game could serve as an introduction to **
 
 Additionally, **GTA VI** could set the stage for other game developers to explore blockchain integration, leading to an era of **crypto gaming** where digital assets hold real-world value. It would mark a new frontier where gaming and finance intersect, opening up new opportunities for both industries.
 
-![VR Gaming](/images/posts/metaverse.jpg)
+![VR Gaming](/images/posts/blockchain-technology.jpg)
 
 ## Conclusion: The Future of GTA VI and Cryptocurrency
 

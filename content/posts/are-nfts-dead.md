@@ -83,7 +83,7 @@ The move to proof-of-stake systems like **Ethereum 2.0** and the growth of eco-f
 
 One of the biggest barriers to broader NFT adoption is the complexity of engaging with blockchain technology. For NFTs to thrive, platforms will need to prioritize **usability**. Innovations like gas-free minting, better wallet integration, and more accessible marketplaces will be key to bringing in new users who aren’t crypto experts. User-friendly interfaces and reduced transaction fees will be pivotal in onboarding a new wave of users.
 
-![2 People with Laptops](/images/posts/gamers.jpg)
+![Man with Laptops](/images/posts/man-and-laptop.jpg)
 
 ## Conclusion: NFTs Aren’t Dead Yet, But Their Future Depends on Evolving
 
