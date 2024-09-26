@@ -3,7 +3,7 @@ title: "What is GameFi (Game Finance)"
 description: "Everything about GameFi, a new frontier in cryptocurrency where gaming meets decentralized finance (DeFi). Explore how it works, the role of NFTs, and the future of play-to-earn games."
 date: 2024-09-15
 image: "/images/posts/gamers.jpg"
-categories: ["Beginners", "Technology", "Gaming"]
+categories: ["Beginners", "Technology", "Gaming", "Web3"]
 authors: ["Crypto Wiki"]
 tags:
   [

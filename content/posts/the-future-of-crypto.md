@@ -3,7 +3,7 @@ title: "The Future of Crypto"
 description: "The key trends shaping the future of cryptocurrency, including NFTs, DeFi, CBDCs and green crypto initiatives. Stay ahead of the curve with expert insights on what's next for the crypto market."
 date: 2024-08-29
 image: "/images/posts/crypto-future.jpg"
-categories: ["Technology", "Investing", "Predictions", "Regulation"]
+categories: ["Technology", "Investing", "Predictions", "Regulation", "Web3"]
 authors: ["Crypto Wiki"]
 tags:
   [

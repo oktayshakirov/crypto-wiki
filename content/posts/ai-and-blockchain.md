@@ -3,7 +3,7 @@ title: "AI and Blockchain: A New Era of Technological Innovations"
 description: "How the fusion of AI and blockchain is driving technological advancements across various sectors. Explore their combined potential, use cases, and challenges as we enter a new era of innovation."
 date: 2024-09-03
 image: "/images/posts/ai-and-human.jpg"
-categories: ["Technology", "Blockchain", "AI"]
+categories: ["Technology", "Blockchain", "AI", "Web3"]
 authors: ["Crypto Wiki"]
 tags:
   [

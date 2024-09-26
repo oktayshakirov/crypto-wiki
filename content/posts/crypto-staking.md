@@ -3,7 +3,7 @@ title: "The Ultimate Beginner's Guide to Crypto Staking"
 description: "Discover what crypto staking is, how it works, and how you can start earning passive income through staking. Learn about popular cryptocurrencies for staking and the potential risks involved."
 date: 2024-09-12
 image: "/images/posts/crypto-staking.jpg"
-categories: ["Investing", "Beginners"]
+categories: ["Investing", "Beginners", "Web3"]
 authors: ["Crypto Wiki"]
 exchanges: ["Crypto.com", "Coinbase", "Nexo"]
 tags:

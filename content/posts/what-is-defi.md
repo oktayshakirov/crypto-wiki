@@ -3,7 +3,7 @@ title: "What is DeFi (Decentralized Finance)? "
 description: "Decentralized Finance (DeFi), the revolutionary financial ecosystem that operates without intermediaries. Learn how DeFi is changing the financial landscape, popular platforms, and how to get involved."
 date: 2024-08-30
 image: "/images/posts/defi.jpg"
-categories: ["Technology", "Investing", "Beginners"]
+categories: ["Technology", "Investing", "Beginners", "Web3"]
 authors: ["Crypto Wiki"]
 tags:
   [
