@@ -2,7 +2,6 @@ import ExchangeSingle from "@layouts/ExchangeSingle";
 import { getSinglePage } from "@lib/contentParser";
 import parseMDX from "@lib/utils/mdxParser";
 
-// post single layout
 const Article = ({ exchange, mdxContent }) => {
   const { frontmatter, content } = exchange[0];
 
@@ -15,7 +14,6 @@ const Article = ({ exchange, mdxContent }) => {
   );
 };
 
-// get exchanges single slug
 export const getStaticPaths = () => {
   const allSlug = getSinglePage("content/exchanges");
   const paths = allSlug.map((item) => ({
@@ -30,7 +28,6 @@ export const getStaticPaths = () => {
   };
 };
 
-// get exchanges single content
 export const getStaticProps = async ({ params }) => {
   const { single } = params;
   const getExchanges = getSinglePage("content/exchanges");

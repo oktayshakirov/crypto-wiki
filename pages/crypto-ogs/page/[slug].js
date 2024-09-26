@@ -10,7 +10,7 @@ const CryptoOgPagination = ({ ogIndex, ogs, currentPage, pagination }) => {
   const indexOfFirstOG = indexOfLastOG - pagination;
   const totalPages = Math.ceil(ogs.length / pagination);
   const currentOGs = ogs.slice(indexOfFirstOG, indexOfLastOG);
-  const { frontmatter, content } = ogIndex;
+  const { frontmatter } = ogIndex;
   const { title } = frontmatter;
 
   return (
@@ -35,14 +35,14 @@ export default CryptoOgPagination;
 export const getStaticPaths = () => {
   const getAllSlug = getSinglePage("content/crypto-ogs");
   const allSlug = getAllSlug.map((item) => item.slug);
-  const { pagination } = config.settings;
-  const totalPages = Math.ceil(allSlug.length / pagination);
+  const { paginationCryptoOGs } = config.settings;
+  const totalPages = Math.ceil(allSlug.length / paginationCryptoOGs);
   let paths = [];
 
-  for (let i = 1; i < totalPages; i++) {
+  for (let i = 1; i <= totalPages; i++) {
     paths.push({
       params: {
-        slug: (i + 1).toString(),
+        slug: i.toString(),
       },
     });
   }

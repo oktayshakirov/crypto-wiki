@@ -2,7 +2,6 @@ import CryptoOgSingle from "@layouts/CryptoOgSingle";
 import { getSinglePage } from "@lib/contentParser";
 import parseMDX from "@lib/utils/mdxParser";
 
-// post single layout
 const Article = ({ og, mdxContent }) => {
   const { frontmatter, content } = og[0];
 
@@ -15,7 +14,6 @@ const Article = ({ og, mdxContent }) => {
   );
 };
 
-// get ogs single slug
 export const getStaticPaths = () => {
   const allSlug = getSinglePage("content/crypto-ogs");
   const paths = allSlug.map((item) => ({
@@ -30,7 +28,6 @@ export const getStaticPaths = () => {
   };
 };
 
-// get ogs single content
 export const getStaticProps = async ({ params }) => {
   const { single } = params;
   const getOGs = getSinglePage("content/crypto-ogs");

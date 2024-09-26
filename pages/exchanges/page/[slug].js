@@ -19,7 +19,7 @@ const ExchangePagination = ({
     indexOfFirstExchange,
     indexOfLastExchange
   );
-  const { frontmatter, content } = exchangeIndex;
+  const { frontmatter } = exchangeIndex;
   const { title } = frontmatter;
 
   return (
@@ -41,7 +41,6 @@ const ExchangePagination = ({
 
 export default ExchangePagination;
 
-// get exchanges pagination slug
 export const getStaticPaths = () => {
   const getAllSlug = getSinglePage("content/exchanges");
   const allSlug = getAllSlug.map((item) => item.slug);
@@ -63,7 +62,6 @@ export const getStaticPaths = () => {
   };
 };
 
-// get exchanges pagination content
 export const getStaticProps = async ({ params }) => {
   const currentPage = parseInt((params && params.slug) || 1);
   const { paginationExchanges } = config.settings;
