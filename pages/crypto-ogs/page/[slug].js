@@ -5,7 +5,6 @@ import { getListPage, getSinglePage } from "@lib/contentParser";
 import { markdownify } from "@lib/utils/textConverter";
 import CryptoOGs from "@partials/CryptoOGs";
 
-// blog pagination
 const CryptoOgPagination = ({ ogIndex, ogs, currentPage, pagination }) => {
   const indexOfLastOG = currentPage * pagination;
   const indexOfFirstOG = indexOfLastOG - pagination;
@@ -21,7 +20,7 @@ const CryptoOgPagination = ({ ogIndex, ogs, currentPage, pagination }) => {
           {markdownify(title, "h1", "h2 mb-16")}
           <CryptoOGs ogs={currentOGs} />
           <Pagination
-            section="ogs"
+            section="crypto-ogs"
             totalPages={totalPages}
             currentPage={currentPage}
           />
@@ -33,7 +32,6 @@ const CryptoOgPagination = ({ ogIndex, ogs, currentPage, pagination }) => {
 
 export default CryptoOgPagination;
 
-// get ogs pagination slug
 export const getStaticPaths = () => {
   const getAllSlug = getSinglePage("content/crypto-ogs");
   const allSlug = getAllSlug.map((item) => item.slug);
@@ -55,7 +53,6 @@ export const getStaticPaths = () => {
   };
 };
 
-// get ogs pagination content
 export const getStaticProps = async ({ params }) => {
   const currentPage = parseInt((params && params.slug) || 1);
   const { paginationCryptoOGs } = config.settings;
