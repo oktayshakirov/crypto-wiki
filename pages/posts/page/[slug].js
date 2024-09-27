@@ -13,11 +13,9 @@ const PostPagination = ({
   currentPage,
   pagination,
   categories,
+  totalPosts,
 }) => {
-  const indexOfLastPost = currentPage * pagination;
-  const indexOfFirstPost = indexOfLastPost - pagination;
-  const totalPages = Math.ceil(posts.length / pagination);
-  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+  const totalPages = Math.ceil(totalPosts / pagination);
   const { frontmatter } = postIndex;
   const { title } = frontmatter;
 
@@ -45,7 +43,7 @@ const PostPagination = ({
             </ul>
           </div>
           {markdownify(title, "h1", "h2 mb-8")}
-          <Posts posts={currentPosts} />
+          <Posts posts={posts} />
           <Pagination
             section="posts"
             totalPages={totalPages}
@@ -61,9 +59,8 @@ export default PostPagination;
 
 export const getStaticPaths = () => {
   const allPosts = getSinglePage("content/posts");
-  const allSlugs = allPosts.map((item) => item.slug);
   const { paginationPosts } = config.settings;
-  const totalPages = Math.ceil(allSlugs.length / paginationPosts);
+  const totalPages = Math.ceil(allPosts.length / paginationPosts);
   let paths = [];
 
   for (let i = 1; i <= totalPages; i++) {
@@ -83,17 +80,22 @@ export const getStaticPaths = () => {
 export const getStaticProps = async ({ params }) => {
   const currentPage = parseInt((params && params.slug) || 1, 10);
   const { paginationPosts, blog_folder } = config.settings;
-  const posts = getSinglePage("content/posts");
+  const allPosts = getSinglePage("content/posts");
+  const indexOfLastPost = currentPage * paginationPosts;
+  const indexOfFirstPost = indexOfLastPost - paginationPosts;
+  const currentPosts = allPosts.slice(indexOfFirstPost, indexOfLastPost);
+
   const postIndex = await getListPage("content/posts/_index.md");
   const categories = getTaxonomy(`content/${blog_folder}`, "categories");
 
   return {
     props: {
       pagination: paginationPosts,
-      posts: posts,
+      posts: currentPosts,
       currentPage: currentPage,
       postIndex: postIndex || {},
       categories: categories || [],
+      totalPosts: allPosts.length,
     },
   };
 };
