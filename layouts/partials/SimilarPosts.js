@@ -13,7 +13,7 @@ const SimilarPosts = ({ posts }) => {
                 className="rounded-lg object-cover"
                 src={post.frontmatter.image}
                 alt={post.frontmatter.title}
-                layout="fill"
+                fill
               />
             </div>
           )}

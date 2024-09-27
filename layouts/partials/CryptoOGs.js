@@ -23,8 +23,7 @@ const CryptoOGs = ({ ogs }) => {
                 <Image
                   src={og.frontmatter.image}
                   alt={og.frontmatter.title}
-                  layout="fill"
-                  objectFit="cover"
+                  fill
                   className="rounded-lg"
                 />
               </div>
