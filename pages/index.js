@@ -28,7 +28,7 @@ const Home = ({ posts, ogs, exchanges }) => {
           <div className="mb-20 flex flex-col justify-center space-y-3 md:flex-row md:space-x-3 md:space-y-0">
             <Link className="btn-primary flex items-center gap-2" href="/posts">
               <FaRegNewspaper />
-              <span>MORE POSTS</span>
+              <span>ALL POSTS</span>
             </Link>
             <Link
               className="btn-primary flex items-center gap-2"
