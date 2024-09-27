@@ -3,7 +3,12 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ["thecrypto.wiki"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "thecrypto.wiki",
+      },
+    ],
   },
   async rewrites() {
     return [
