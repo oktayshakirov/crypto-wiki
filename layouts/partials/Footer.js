@@ -10,8 +10,8 @@ const Footer = () => {
   return (
     <footer className="section bg-theme-dark">
       <div className="container text-center">
-        <div className="flex flex-col items-center space-y-8 sm:flex-row sm:justify-between sm:space-x-8 sm:space-y-0">
-          <ul className="flex flex-col items-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
+        <div className="flex flex-col items-center space-y-8 lg:flex-row lg:justify-between lg:space-x-8 lg:space-y-0">
+          <ul className="flex flex-col items-center space-y-4 lg:flex-row lg:space-x-4 lg:space-y-0">
             {menu.footer.map((menu) => (
               <li className="inline-block" key={menu.name}>
                 <Link

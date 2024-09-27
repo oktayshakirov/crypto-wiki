@@ -19,16 +19,12 @@ import {
 } from "react-icons/fa";
 
 const Home = ({ posts, ogs, exchanges }) => {
-  const latestPosts = posts.slice(0, 6);
-  const latestOGs = ogs.slice(0, 3);
-  const latestExchanges = exchanges.slice(0, 6);
-
   return (
     <Base>
       <section>
         <div className="container my-7 text-center">
           {markdownify("LATEST POSTS", "h2", "mb-8")}
-          <Posts posts={latestPosts} />
+          <Posts posts={posts} />
           <div className="mb-20 flex flex-col justify-center space-y-3 md:flex-row md:space-x-3 md:space-y-0">
             <Link className="btn-primary flex items-center gap-2" href="/posts">
               <FaRegNewspaper />
@@ -89,7 +85,7 @@ const Home = ({ posts, ogs, exchanges }) => {
           </div>
           <div className="mb-20">
             {markdownify("CRYPTO LEGENDS", "h2", "mb-8")}
-            <CryptoOGs ogs={latestOGs} />
+            <CryptoOGs ogs={ogs} />
             <div className="mt-6 flex flex-col justify-center space-y-3 md:flex-row md:space-x-3 md:space-y-0">
               <Link
                 className="btn-primary flex items-center gap-2"
@@ -109,7 +105,7 @@ const Home = ({ posts, ogs, exchanges }) => {
           </div>
           <div className="mb-20">
             {markdownify("RECOMMENDED CRYPTO EXCHANGES", "h3", "mb-8")}
-            <Exchanges exchanges={latestExchanges} />
+            <Exchanges exchanges={exchanges} />
             <div className="mt-6 flex flex-col justify-center space-y-3 md:flex-row md:space-x-3 md:space-y-0">
               <Link
                 className="btn-primary flex items-center gap-2"
@@ -136,9 +132,9 @@ const Home = ({ posts, ogs, exchanges }) => {
 export default Home;
 
 export const getStaticProps = async () => {
-  const posts = getSinglePage("content/posts");
-  const ogs = getSinglePage("content/crypto-ogs");
-  const exchanges = getSinglePage("content/exchanges");
+  const posts = getSinglePage("content/posts").slice(0, 6);
+  const ogs = getSinglePage("content/crypto-ogs").slice(0, 3);
+  const exchanges = getSinglePage("content/exchanges").slice(0, 6);
 
   return {
     props: {
