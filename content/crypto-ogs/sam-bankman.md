@@ -1,7 +1,7 @@
 ---
-title: Sam Bankman
-image: /images/crypto-ogs/sam-bankman.png
-description: From crypto OG to scandal, the rise and fall of Sam Bankman-Fried.
+title: "Sam Bankman"
+image: "/images/crypto-ogs/sam-bankman.png"
+description: "From crypto OG to scandal, the rise and fall of Sam Bankman-Fried."
 order: 8
 authors: ["Crypto Wiki"]
 social:

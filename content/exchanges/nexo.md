@@ -1,7 +1,7 @@
 ---
-title: Nexo
-image: /images/exchanges/nexo.png
-description: Nexo is a leading platform for crypto lending and earning with high security.
+title: "Nexo"
+image: "/images/exchanges/nexo.png"
+description: "Nexo is a leading platform for crypto lending and earning with high security."
 order: 3
 authors: ["Crypto Wiki"]
 social:

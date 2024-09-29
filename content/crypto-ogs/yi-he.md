@@ -1,7 +1,7 @@
 ---
-title: Yi He
-image: /images/crypto-ogs/yi-he.jpg
-description: Co-founder of Binance and one of the most influential women in the cryptocurrency industry.
+title: "Yi He"
+image: "/images/crypto-ogs/yi-he.jpg"
+description: "Co-founder of Binance and one of the most influential women in the cryptocurrency industry."
 order: 13
 authors: ["Crypto Wiki"]
 social:

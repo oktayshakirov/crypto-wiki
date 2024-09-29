@@ -1,6 +1,6 @@
 ---
 title: TheCrypto.Wiki
-image: /images/authors/crypto-wiki.png
+image: "/images/authors/crypto-wiki.png"
 description: The Crypto Wiki provides expert insights, beginner guides, and the latest news about cryptocurrency.
 order: 1
 ---

@@ -1,7 +1,7 @@
 ---
-title: Vitalik Buterin
-image: /images/crypto-ogs/vitalik-buterin.png
-description: Creator of Ethereum, transforming blockchain with decentralized finance and smart contracts.
+title: "Vitalik Buterin"
+image: "/images/crypto-ogs/vitalik-buterin.png"
+description: "Creator of Ethereum, transforming blockchain with decentralized finance and smart contracts."
 order: 2
 authors: ["Crypto Wiki"]
 social:

@@ -1,7 +1,7 @@
 ---
-title: WhiteBIT
-image: /images/exchanges/whitebit.jpg
-description: WhiteBIT is a European crypto exchange offering secure trading, staking, and competitive fees.
+title: "WhiteBIT"
+image: "/images/exchanges/whitebit.jpg"
+description: "WhiteBIT is a European crypto exchange offering secure trading, staking, and competitive fees."
 order: 8
 authors: ["Crypto Wiki"]
 social:

@@ -1,7 +1,7 @@
 ---
-title: Pavel Durov
-image: /images/crypto-ogs/pavel-durov.png
-description: Co-founder of Telegram and VK, blockchain entrepreneur, and founder of The Open Network (TON).
+title: "Pavel Durov"
+image: "/images/crypto-ogs/pavel-durov.png"
+description: "Co-founder of Telegram and VK, blockchain entrepreneur, and founder of The Open Network (TON)."
 order: 17
 authors: ["Crypto Wiki"]
 social:
