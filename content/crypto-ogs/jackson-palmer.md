@@ -1,7 +1,7 @@
 ---
 title: Jackson Palmer
 image: /images/crypto-ogs/jackson-palmer.jpg
-description: Jackson Palmer, co-creator of Dogecoin, and his journey from founding the meme cryptocurrency to becoming a vocal critic of the industry.
+description: Co-creator of Dogecoin, from creating the meme coin to becoming a vocal critic of the industry.
 order: 11
 authors: ["Crypto Wiki"]
 ---

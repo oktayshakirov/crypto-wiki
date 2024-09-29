@@ -32,7 +32,7 @@
   li {
     @apply inline-block;
     a {
-      @apply block h-12 w-12 rounded-lg border border-light bg-transparent text-center text-white transition hover:border-primary hover:bg-primary;
+      @apply block h-12 w-12 rounded-lg  bg-transparent text-center text-white transition;
       svg {
         @apply m-auto h-12 text-lg;
       }

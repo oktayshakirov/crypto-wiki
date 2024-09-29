@@ -1,7 +1,7 @@
 ---
 title: Billy Markus
 image: /images/crypto-ogs/billy-markus.png
-description: Billy Markus, co-creator of Dogecoin, on his journey from IBM engineer to founding one of the most well-known meme coins.
+description: Co-creator of Dogecoin, on his journey from IBM engineer to founding one of the most well-known meme coins.
 order: 10
 authors: ["Crypto Wiki"]
 social:
