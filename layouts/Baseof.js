@@ -85,6 +85,12 @@ const Base = ({
           content={plainify(description ? description : meta_description)}
         />
 
+        {/* og-image */}
+        <meta
+          property="og:image"
+          content={`${base_url}${image ? image : meta_image}`}
+        />
+
         {/* twitter-image */}
         <meta
           name="twitter:image"
