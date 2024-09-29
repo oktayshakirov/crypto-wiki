@@ -18,9 +18,6 @@ const Base = ({
   const { meta_image, meta_author, meta_description } = config.metadata;
   const { base_url } = config.site;
   const router = useRouter();
-  const resolvedImage = image
-    ? `${base_url}${image}`
-    : `${base_url}${meta_image}`;
 
   return (
     <>
@@ -48,6 +45,7 @@ const Base = ({
         <meta name="robots" content="index,follow" />
 
         {/* Charset and Viewport */}
+
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -68,7 +66,10 @@ const Base = ({
           content={plainify(description ? description : meta_description)}
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content={`${base_url}${router.asPath}`} />
+        <meta
+          property="og:url"
+          content={`${base_url}/${router.asPath.replace("/", "")}`}
+        />
 
         {/* twitter-title */}
         <meta
@@ -85,7 +86,10 @@ const Base = ({
         />
 
         {/* twitter-image */}
-        <meta name="twitter:image" content={resolvedImage} />
+        <meta
+          name="twitter:image"
+          content={`${base_url}${image ? image : meta_image}`}
+        />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <Header />
