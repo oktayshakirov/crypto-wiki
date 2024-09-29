@@ -12,6 +12,7 @@ const ExchangeSingle = ({ frontmatter, content, mdxContent }) => {
     <Base
       title={title}
       description={description ? description : content.slice(0, 120)}
+      image={image}
     >
       <section className="section">
         <div className="container">
