@@ -1,7 +1,7 @@
 ---
 title: Guest Author
 image: "/images/authors/guest.png"
-description: The Guest Author provides valuable insights, guides, and updates on cryptocurrency topics.
+description: "The Guest Author provides valuable insights, guides, and updates on cryptocurrency topics."
 order: 2
 ---
 

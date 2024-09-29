@@ -5,10 +5,11 @@ import Base from "@layouts/Baseof";
 import Contact from "@layouts/Contact";
 import Default from "@layouts/Default";
 import PostSingle from "@layouts/PostSingle";
+import CryptoOgSingle from "@layouts/CryptoOgSingle";
+import ExchangeSingle from "@layouts/ExchangeSingle";
 import { getRegularPage, getSinglePage } from "@lib/contentParser";
 const { blog_folder } = config.settings;
 
-// for all regular pages
 const RegularPages = ({
   slug,
   data,
@@ -31,7 +32,6 @@ const RegularPages = ({
       noindex={noindex}
       canonical={canonical}
     >
-      {/* single post */}
       {postSlug.includes(slug) ? (
         <PostSingle
           slug={slug}
@@ -40,6 +40,20 @@ const RegularPages = ({
           cryptoOgs={cryptoOgs}
           exchanges={exchanges}
           posts={posts}
+        />
+      ) : cryptoOgs.map((og) => og.slug).includes(slug) ? (
+        <CryptoOgSingle
+          slug={slug}
+          og={data}
+          authors={authors}
+          cryptoOgs={cryptoOgs}
+        />
+      ) : exchanges.map((exchange) => exchange.slug).includes(slug) ? (
+        <ExchangeSingle
+          slug={slug}
+          exchange={data}
+          authors={authors}
+          exchanges={exchanges}
         />
       ) : layout === "404" ? (
         <NotFound data={data} />
