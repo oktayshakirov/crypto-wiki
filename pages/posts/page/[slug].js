@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import Pagination from "@components/Pagination";
 import config from "@config/config.json";
 import Base from "@layouts/Baseof";
@@ -19,40 +18,15 @@ const PostPagination = ({
   const totalPages = Math.ceil(totalPosts / pagination);
   const { frontmatter } = postIndex;
   const { title } = frontmatter;
-  const categoryListRef = useRef(null);
-
-  const scrollCategoryList = (direction) => {
-    const scrollAmount = 200;
-    if (direction === "left") {
-      categoryListRef.current.scrollBy({
-        left: -scrollAmount,
-        behavior: "smooth",
-      });
-    } else if (direction === "right") {
-      categoryListRef.current.scrollBy({
-        left: scrollAmount,
-        behavior: "smooth",
-      });
-    }
-  };
 
   return (
     <Base title={title}>
       <section className="section">
         <div className="container text-center">
-          <div className="mb-8 flex items-center justify-center">
-            <button
-              className="btn-primary lg:hidden"
-              onClick={() => scrollCategoryList("left")}
-            >
-              ←
-            </button>
-            <ul
-              ref={categoryListRef}
-              className="scrollbar-hide lg:scrollbar-none mx-4 flex flex-nowrap gap-3 overflow-x-auto lg:flex-wrap lg:justify-center lg:overflow-x-visible"
-            >
-              {categories.map((category, i) => (
-                <li key={`category-${i}`} className="inline-block">
+          <div className="mb-8">
+            <ul className="flex flex-wrap justify-center gap-6">
+              {categories.slice(0, 6).map((category, i) => (
+                <li key={`category-${i}`} className="mb-2 inline-block">
                   <Link
                     href={`/categories/${category}`}
                     className="btn-primary"
@@ -61,13 +35,12 @@ const PostPagination = ({
                   </Link>
                 </li>
               ))}
+              <li className="mb-2 inline-block">
+                <Link href="/categories" className="btn-primary">
+                  All Categories
+                </Link>
+              </li>
             </ul>
-            <button
-              className="btn-primary lg:hidden"
-              onClick={() => scrollCategoryList("right")}
-            >
-              →
-            </button>
           </div>
           {markdownify(title, "h1", "h2 mb-8")}
           <Posts posts={posts} />
