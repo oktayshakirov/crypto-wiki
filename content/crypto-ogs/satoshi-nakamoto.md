@@ -58,17 +58,15 @@ Another significant transaction was the first-ever Bitcoin transfer between Sato
 
 For more detailed information on Nakamoto's early transactions, you can explore the following resources:
 
-1. [Genesis Block Details](https://www.blockchain.com/explorer/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f)
+1. [Satoshi's BitcoinTalk Profile](https://bitcointalk.org/index.php?action=profile;u=3)
 
-2. [Satoshi's BitcoinTalk Profile](https://bitcointalk.org/index.php?action=profile;u=3)
+2. [First Bitcoin Transaction](https://www.blockchain.com/explorer/transactions/btc/f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91338530e9831e9e16)
 
-3. [First Bitcoin Transaction](https://www.blockchain.com/explorer/transactions/btc/f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91338530e9831e9e16)
+3. [Satoshi's Known Wallet #1](https://www.blockchain.com/explorer/addresses/btc/1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa)
 
-4. [Satoshi's Known Wallet #1](https://www.blockchain.com/explorer/addresses/btc/1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa)
+4. [Satoshi's Known Wallet #2](https://www.blockchain.com/explorer/addresses/btc/12cbQLTFMXRnSzktFkuoG3eHoMeFtpTu3S)
 
-5. [Satoshi's Known Wallet #2](https://www.blockchain.com/explorer/addresses/btc/12cbQLTFMXRnSzktFkuoG3eHoMeFtpTu3S)
-
-6. [Hal Finney's Wallet](https://www.blockchain.com/explorer/addresses/btc/1Q2TWHE3GMdB6BZKafqwxXtWAWgFt5Jvm3)
+5. [Hal Finney's Wallet](https://www.blockchain.com/explorer/addresses/btc/1Q2TWHE3GMdB6BZKafqwxXtWAWgFt5Jvm3)
 
 ## Legacy and Impact
 

@@ -6,7 +6,7 @@ order: 15
 authors: ["Crypto Wiki"]
 social:
   twitter: https://twitter.com/justinsuntron
-  instagram: instagram.com/justinsun
+  instagram: https://instagram.com/justinsun
   linkedin: https://www.linkedin.com/in/justinsuntron
   wikipedia: https://en.wikipedia.org/wiki/Justin_Sun
 ---
