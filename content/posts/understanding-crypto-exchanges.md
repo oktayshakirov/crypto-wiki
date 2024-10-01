@@ -33,7 +33,7 @@ Centralized exchanges are the most common type of cryptocurrency exchange. They 
 
 Some popular centralized exchanges include:
 
-- **[Crypto.com](/exchanges/crypto-com):** Known for its user-friendly app and Visa card that lets users spend their crypto easily.
+- **[Crypto.com](/exchanges/cryptocom):** Known for its user-friendly app and Visa card that lets users spend their crypto easily.
 - **[Coinbase](/exchanges/coinbase):** One of the largest and most trusted exchanges in the U.S., popular for its ease of use, especially for beginners.
 - **[Binance](/exchanges/binance):** The world's largest exchange by trading volume, offering a wide variety of cryptocurrencies and advanced trading features.
 - **[KuCoin](/exchanges/kucoin):** A global exchange with a wide range of supported assets and a reputation for strong security measures.
@@ -77,7 +77,7 @@ Liquidity is crucial for executing trades quickly at the desired price. High liq
 
 ### 5. **User Experience**
 
-A user-friendly interface can make the trading experience more enjoyable, especially for beginners. Look for exchanges with intuitive platforms, educational resources, and responsive customer support. **[Coinbase](/exchanges/coinbase)** and **[Crypto.com](/exchanges/crypto-com)** are well-known for their beginner-friendly interfaces.
+A user-friendly interface can make the trading experience more enjoyable, especially for beginners. Look for exchanges with intuitive platforms, educational resources, and responsive customer support. **[Coinbase](/exchanges/coinbase)** and **[Crypto.com](/exchanges/cryptocom)** are well-known for their beginner-friendly interfaces.
 
 ### 6. **Regulation and Compliance**
 

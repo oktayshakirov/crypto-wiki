@@ -62,7 +62,7 @@ Staking cryptocurrency has become easy with the rise of exchanges and wallets th
 
 ### 2. **Crypto.com**
 
-[Crypto.com](https://thecrypto.wiki/exchanges/crypto-com) is another well-known exchange where users can stake coins like **CRO**, **ETH**, and **DOT** to earn attractive staking rewards. The platform also provides flexible options for staking, making it accessible for both beginners and experienced users.
+[Crypto.com](https://thecrypto.wiki/exchanges/cryptocom) is another well-known exchange where users can stake coins like **CRO**, **ETH**, and **DOT** to earn attractive staking rewards. The platform also provides flexible options for staking, making it accessible for both beginners and experienced users.
 
 ### 3. **Nexo**
 
