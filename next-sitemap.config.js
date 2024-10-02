@@ -1,5 +1,5 @@
 module.exports = {
-  siteUrl: "https://thecrypto.wiki",
+  siteUrl: "https://www.thecrypto.wiki",
   generateRobotsTxt: true,
   changefreq: "weekly",
   priority: 0.7,

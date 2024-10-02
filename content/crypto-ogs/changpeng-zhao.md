@@ -36,7 +36,7 @@ In 2017, Changpeng Zhao founded Binance with the vision of creating a more user-
 
 Binance’s success is largely attributed to CZ’s focus on community engagement, innovation, and regulatory compliance. His leadership has helped Binance navigate the complex global regulatory landscape while continuing to expand its services.
 
-![Binance Exchange](/images/exchanges/binance.jpg)
+![Binance Exchange](/images/exchanges/binance.png)
 
 **[Visit Binance](https://www.binance.com)**
 
