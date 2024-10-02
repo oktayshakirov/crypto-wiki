@@ -8,7 +8,6 @@ import TagManager from "react-gtm-module";
 import "styles/style.scss";
 
 const App = ({ Component, pageProps }) => {
-  // import google font css
   const pf = theme.fonts.font_family.primary;
   const sf = theme.fonts.font_family.secondary;
   const [fontcss, setFontcss] = useState();
@@ -20,7 +19,6 @@ const App = ({ Component, pageProps }) => {
     ).then((res) => res.text().then((css) => setFontcss(css)));
   }, [pf, sf]);
 
-  // google tag manager (gtm)
   const tagManagerArgs = {
     gtmId: config.params.tag_manager_id,
   };
@@ -67,7 +65,6 @@ const App = ({ Component, pageProps }) => {
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5852582960793521"
         crossOrigin="anonymous"
       ></script>
-      <meta name="coinzilla" content="c2fa7e8cfa96039c31e22709d68ba80c" />
       <Component {...pageProps} />
     </JsonContext>
   );

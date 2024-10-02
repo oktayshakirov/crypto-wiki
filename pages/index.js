@@ -23,6 +23,7 @@ const Home = ({ posts, ogs, exchanges }) => {
     <Base>
       <section>
         <div className="container my-7 text-center">
+          {markdownify("Uncover the World of Crypto", "h1", "mb-8")}
           {markdownify("LATEST POSTS", "h2", "mb-8")}
           <Posts posts={posts} />
           <div className="mb-20 flex flex-col justify-center space-y-3 md:flex-row md:space-x-3 md:space-y-0">

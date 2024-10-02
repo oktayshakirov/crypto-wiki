@@ -1,7 +1,7 @@
 ---
-title: Bitpanda
-image: /images/exchanges/bitpanda.png
-description: Bitpanda is a trusted platform for investing in cryptocurrencies, stocks and metals with ease.
+title: "Bitpanda"
+image: "/images/exchanges/bitpanda.png"
+description: "Bitpanda is a trusted platform for investing in cryptocurrencies, stocks and metals with ease."
 order: 7
 authors: ["Crypto Wiki"]
 social:

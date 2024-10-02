@@ -1,7 +1,7 @@
 ---
-title: CoinEx
-image: /images/exchanges/coinex.png
-description: CoinEx is a cryptocurrency exchange offering a wide range of assets and advanced trading.
+title: "CoinEx"
+image: "/images/exchanges/coinex.png"
+description: "CoinEx is a cryptocurrency exchange offering a wide range of assets and advanced trading."
 order: 6
 authors: ["Crypto Wiki"]
 social:

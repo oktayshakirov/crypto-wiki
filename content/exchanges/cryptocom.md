@@ -1,7 +1,7 @@
 ---
-title: Crypto.com
-image: /images/exchanges/crypto.png
-description: Crypto.com offers a robust platform for trading, staking, and utilizing crypto with innovative products.
+title: "Crypto.com"
+image: "/images/exchanges/crypto.png"
+description: "Crypto.com offers a robust platform for trading, staking, and utilizing crypto with innovative products."
 order: 1
 authors: ["Crypto Wiki"]
 social:

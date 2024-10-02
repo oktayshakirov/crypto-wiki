@@ -1,7 +1,7 @@
 ---
-title: Anatoly Yakovenko
-image: /images/crypto-ogs/anatoly-yakovenko.png
-description: Co-founder of Solana and a pioneer in blockchain technology, developed one of the fastest blockchains in the world.
+title: "Anatoly Yakovenko"
+image: "/images/crypto-ogs/anatoly-yakovenko.png"
+description: "Co-founder of Solana and a pioneer in blockchain technology, developed one of the fastest blockchains in the world."
 order: 14
 authors: ["Crypto Wiki"]
 social:

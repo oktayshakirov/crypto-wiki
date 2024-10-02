@@ -1,7 +1,7 @@
 ---
-title: Trade Republic
-image: /images/exchanges/trade-republic.png
-description: Trade Republic is a secure platform for trading cryptocurrencies, stocks and ETFs.
+title: "Trade Republic"
+image: "/images/exchanges/trade-republic.png"
+description: "Trade Republic is a secure platform for trading cryptocurrencies, stocks and ETFs."
 order: 9
 authors: ["Crypto Wiki"]
 social:
@@ -12,7 +12,6 @@ social:
   instagram: https://www.instagram.com/traderepublic/
   linkedin: https://www.linkedin.com/company/trade-republic/
   tiktok: https://www.tiktok.com/@traderepublic
-  telegram: N/A
   website: https://www.traderepublic.com/
   wikipedia: https://en.wikipedia.org/wiki/Trade_Republic
 ---

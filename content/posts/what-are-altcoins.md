@@ -77,7 +77,7 @@ Before investing in any altcoin, it's essential to research the project thorough
 
 ### 2. **Choose a Reliable Exchange**
 
-To buy altcoins, you'll need to use a cryptocurrency exchange. Some well-known centralized exchanges include [Crypto.com](/exchanges/crypto-com), [Coinbase](/exchanges/coinbase), and [KuCoin](/exchanges/kucoin). For those who prefer decentralized options, platforms like [Uniswap](https://app.uniswap.org/) and [SushiSwap](https://www.sushi.com/swap) allow you to trade directly from your wallet.
+To buy altcoins, you'll need to use a cryptocurrency exchange. Some well-known centralized exchanges include [Crypto.com](/exchanges/cryptocom), [Coinbase](/exchanges/coinbase), and [KuCoin](/exchanges/kucoin). For those who prefer decentralized options, platforms like [Uniswap](https://app.uniswap.org/) and [SushiSwap](https://www.sushi.com/swap) allow you to trade directly from your wallet.
 
 ### 3. **Diversify Your Portfolio**
 

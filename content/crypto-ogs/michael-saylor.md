@@ -1,7 +1,7 @@
 ---
-title: Michael Saylor
-image: /images/crypto-ogs/michael-saylor.png
-description: CEO of MicroStrategy, Bitcoin advocate, and leader in corporate crypto adoption.
+title: "Michael Saylor"
+image: "/images/crypto-ogs/michael-saylor.png"
+description: "CEO of MicroStrategy, Bitcoin advocate, and leader in corporate crypto adoption."
 order: 4
 authors: ["Crypto Wiki"]
 social:

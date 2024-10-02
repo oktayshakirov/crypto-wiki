@@ -1,12 +1,12 @@
 ---
-title: Justin Sun
-image: /images/crypto-ogs/justin-sun.png
-description: Founder of TRON and a prominent blockchain entrepreneur, has made significant strides in the world of decentralized technologies and art.
+title: "Justin Sun"
+image: "/images/crypto-ogs/justin-sun.png"
+description: "Founder of TRON and a prominent blockchain entrepreneur, has made significant strides in the world of decentralized technologies and art."
 order: 15
 authors: ["Crypto Wiki"]
 social:
   twitter: https://twitter.com/justinsuntron
-  instagram: instagram.com/justinsun
+  instagram: https://instagram.com/justinsun
   linkedin: https://www.linkedin.com/in/justinsuntron
   wikipedia: https://en.wikipedia.org/wiki/Justin_Sun
 ---

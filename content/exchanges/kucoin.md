@@ -1,7 +1,7 @@
 ---
-title: KuCoin
-image: /images/exchanges/kucoin.jpg
-description: KuCoin is a popular global cryptocurrency exchange offering advanced trading features.
+title: "KuCoin"
+image: "/images/exchanges/kucoin.jpg"
+description: "KuCoin is a popular global cryptocurrency exchange offering advanced trading features."
 order: 5
 authors: ["Crypto Wiki"]
 social:

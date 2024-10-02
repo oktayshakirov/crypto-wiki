@@ -1,7 +1,7 @@
 ---
-title: Binance
-image: /images/exchanges/binance.png
-description: Binance is a global leader in cryptocurrency exchange services, offering innovative services.
+title: "Binance"
+image: "/images/exchanges/binance.png"
+description: "Binance is a global leader in cryptocurrency exchange services, offering innovative services."
 order: 4
 authors: ["Crypto Wiki"]
 social:

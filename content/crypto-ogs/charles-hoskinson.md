@@ -1,7 +1,7 @@
 ---
-title: Charles Hoskinson
-image: /images/crypto-ogs/charles-hoskinson.png
-description: Co-founder of Ethereum and founder of Cardano, shaping the future of blockchain technology.
+title: "Charles Hoskinson"
+image: "/images/crypto-ogs/charles-hoskinson.png"
+description: "Co-founder of Ethereum and founder of Cardano, shaping the future of blockchain technology."
 order: 9
 authors: ["Crypto Wiki"]
 social:

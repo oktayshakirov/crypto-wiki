@@ -1,7 +1,7 @@
 ---
-title: Snoop Dogg
-image: /images/crypto-ogs/snoop-dogg.jpg
-description: Snoop Dogg's journey through cryptocurrency and NFTs, from early adoption to becoming a major player in the NFT space.
+title: "Snoop Dogg"
+image: "/images/crypto-ogs/snoop-dogg.jpg"
+description: "Snoop Dogg's journey through cryptocurrency and NFTs, from early adoption to becoming a major player in the NFT space."
 order: 12
 authors: ["Crypto Wiki"]
 social:

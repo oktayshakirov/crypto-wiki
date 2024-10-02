@@ -1,7 +1,7 @@
 ---
-title: Jackson Palmer
-image: /images/crypto-ogs/jackson-palmer.jpg
-description: Co-creator of Dogecoin, from creating the meme coin to becoming a vocal critic of the industry.
+title: "Jackson Palmer"
+image: "/images/crypto-ogs/jackson-palmer.jpg"
+description: "Co-creator of Dogecoin, from creating the meme coin to becoming a vocal critic of the industry."
 order: 11
 authors: ["Crypto Wiki"]
 ---
