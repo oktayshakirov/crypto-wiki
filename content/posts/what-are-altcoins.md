@@ -5,7 +5,7 @@ date: 2024-09-02
 image: "/images/posts/altcoins.jpg"
 categories: ["Beginners", "Technology"]
 exchanges: ["Crypto.com", "Coinbase", "KuCoin"]
-authors: ["Crypto Wiki"]
+authors: ["Crypto Wiki Team"]
 tags:
   [
     "altcoins",

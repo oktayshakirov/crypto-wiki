@@ -5,7 +5,7 @@ date: 2024-08-31
 image: "/images/posts/suit-man-and-bitcoin.jpg"
 categories: ["Technology", "Beginners", "Blockchain"]
 crypto-ogs: ["Satoshi Nakamoto"]
-authors: ["Crypto Wiki"]
+authors: ["Crypto Wiki Team"]
 tags:
   [
     "Bitcoin",

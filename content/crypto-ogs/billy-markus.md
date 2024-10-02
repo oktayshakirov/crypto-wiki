@@ -2,8 +2,9 @@
 title: "Billy Markus"
 image: "/images/crypto-ogs/billy-markus.png"
 description: "Co-creator of Dogecoin, on his journey from IBM engineer to founding one of the most well-known meme coins."
+date: 2024-09-10
 order: 10
-authors: ["Crypto Wiki"]
+authors: ["Crypto Wiki Team"]
 social:
   website: https://billym2k.net/
   twitter: https://twitter.com/BillyM2k

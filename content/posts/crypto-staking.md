@@ -4,7 +4,7 @@ description: "Discover what crypto staking is, how it works, and how you can sta
 date: 2024-09-12
 image: "/images/posts/crypto-staking.jpg"
 categories: ["Investing", "Beginners", "Web3"]
-authors: ["Crypto Wiki"]
+authors: ["Crypto Wiki Team"]
 exchanges: ["Crypto.com", "Coinbase", "Nexo"]
 tags:
   [

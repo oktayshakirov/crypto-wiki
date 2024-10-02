@@ -4,7 +4,7 @@ description: "How is crypto taxed around the world, including key concepts like 
 date: 2024-08-31
 image: "/images/posts/crypto-taxes.jpg"
 categories: ["Beginners", "Investing", "Regulation"]
-authors: ["Crypto Wiki"]
+authors: ["Crypto Wiki Team"]
 tags:
   [
     "cryptocurrency",

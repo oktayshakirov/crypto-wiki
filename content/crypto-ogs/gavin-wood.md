@@ -2,8 +2,9 @@
 title: "Gavin Wood"
 image: "/images/crypto-ogs/gavin-wood.png"
 description: "Co-founder of Ethereum and founder of Polkadot, a pioneer in blockchain interoperability."
+date: 2024-09-23
 order: 6
-authors: ["Crypto Wiki"]
+authors: ["Crypto Wiki Team"]
 social:
   wikipedia: https://en.wikipedia.org/wiki/Gavin_Wood
   twitter: https://twitter.com/gavofyork

@@ -8,14 +8,16 @@ const SimilarPosts = ({ posts }) => {
       {posts.map((post, i) => (
         <div key={`key-${i}`} className="w-full p-4 sm:w-1/3">
           {post.frontmatter.image && (
-            <div className="relative h-56 w-full">
-              <Image
-                className="rounded-lg object-cover"
-                src={post.frontmatter.image}
-                alt={post.frontmatter.title}
-                fill
-              />
-            </div>
+            <Link href={`/${post.slug}`}>
+              <div className="relative h-56 w-full cursor-pointer">
+                <Image
+                  className="rounded-lg object-cover"
+                  src={post.frontmatter.image}
+                  alt={post.frontmatter.title}
+                  fill
+                />
+              </div>
+            </Link>
           )}
           <ul className="mt-4 text-text">
             <li className="mb-2">

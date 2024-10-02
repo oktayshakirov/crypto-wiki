@@ -2,8 +2,9 @@
 title: "Brian Armstrong"
 image: "/images/crypto-ogs/brian-armstrong.png"
 description: "Co-founder and CEO of Coinbase, driving mainstream adoption of cryptocurrency."
+date: 2024-10-20
 order: 5
-authors: ["Crypto Wiki"]
+authors: ["Crypto Wiki Team"]
 social:
   wikipedia: https://en.wikipedia.org/wiki/Brian_Armstrong_(businessman)
   twitter: https://twitter.com/brian_armstrong

@@ -4,7 +4,7 @@ description: "Curious about why cryptocurrencies experience such extreme volatil
 date: 2024-08-28
 image: "/images/posts/bitcoin-trading.jpg"
 categories: ["Investing", "Beginners"]
-authors: ["Crypto Wiki"]
+authors: ["Crypto Wiki Team"]
 tags:
   [
     "cryptocurrency",

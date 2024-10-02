@@ -4,7 +4,7 @@ description: "All about the growing global interest in Central Bank Digital Curr
 date: 2024-09-14
 image: "/images/posts/fiat-money.jpg"
 categories: ["Regulation", "Security"]
-authors: ["Crypto Wiki"]
+authors: ["Crypto Wiki Team"]
 tags:
   [
     "CBDC",

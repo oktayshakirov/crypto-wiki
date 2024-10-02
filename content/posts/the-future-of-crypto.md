@@ -4,7 +4,7 @@ description: "The key trends shaping the future of cryptocurrency, including NFT
 date: 2024-08-29
 image: "/images/posts/crypto-future.jpg"
 categories: ["Technology", "Investing", "Predictions", "Regulation", "Web3"]
-authors: ["Crypto Wiki"]
+authors: ["Crypto Wiki Team"]
 tags:
   [
     "cryptocurrency",

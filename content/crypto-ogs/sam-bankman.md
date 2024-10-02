@@ -2,8 +2,9 @@
 title: "Sam Bankman"
 image: "/images/crypto-ogs/sam-bankman.png"
 description: "From crypto OG to scandal, the rise and fall of Sam Bankman-Fried."
+date: 2024-07-27
 order: 8
-authors: ["Crypto Wiki"]
+authors: ["Crypto Wiki Team"]
 social:
   wikipedia: https://en.wikipedia.org/wiki/Sam_Bankman-Fried
   twitter: https://twitter.com/SBF_FTX

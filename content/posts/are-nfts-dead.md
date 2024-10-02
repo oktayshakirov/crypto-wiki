@@ -4,7 +4,7 @@ description: "With the hype fading and criticisms rising, are NFTs still relevan
 date: 2024-09-25
 image: "/images/posts/bored-ape-yacht-club.jpg"
 categories: ["Blockchain", "Technology", "NFTs", "Web3"]
-authors: ["Crypto Wiki"]
+authors: ["Crypto Wiki Team"]
 crypto-ogs: ["Snoop Dogg"]
 tags:
   [

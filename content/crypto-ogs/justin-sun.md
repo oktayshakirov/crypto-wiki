@@ -2,8 +2,9 @@
 title: "Justin Sun"
 image: "/images/crypto-ogs/justin-sun.png"
 description: "Founder of TRON and a prominent blockchain entrepreneur, has made significant strides in the world of decentralized technologies and art."
+date: 2024-09-25
 order: 15
-authors: ["Crypto Wiki"]
+authors: ["Crypto Wiki Team"]
 social:
   twitter: https://twitter.com/justinsuntron
   instagram: https://instagram.com/justinsun
@@ -73,3 +74,5 @@ Sun’s investments in **NFTs**, decentralized finance, and blockchain-based con
 ## Conclusion
 
 Justin Sun’s contributions to the blockchain industry are undeniable. From founding TRON and leading it to become one of the largest blockchain platforms in the world to his role in the NFT space with APENFT, Sun has consistently pushed the boundaries of what decentralized technologies can achieve. His vision for a decentralized internet and the democratization of art and finance continues to drive innovation in the blockchain world. As Sun expands his influence into global trade and digital diplomacy, his role in shaping the future of blockchain technology will undoubtedly grow.
+
+---

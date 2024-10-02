@@ -2,8 +2,9 @@
 title: "Changpeng Zhao"
 image: "/images/crypto-ogs/changpeng-zhao.png"
 description: "Founder of Binance, leading its rise to become the world’s largest crypto exchange."
+date: 2024-07-05
 order: 3
-authors: ["Crypto Wiki"]
+authors: ["Crypto Wiki Team"]
 social:
   wikipedia: https://en.wikipedia.org/wiki/Changpeng_Zhao
   twitter: https://twitter.com/cz_binance

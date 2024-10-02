@@ -7,13 +7,19 @@ import { useRouter } from "next/router";
 const Posts = ({ posts }) => {
   const router = useRouter();
 
+  const handleCardClick = (e, slug) => {
+    if (!e.target.closest("a")) {
+      router.push(`/${slug}`);
+    }
+  };
+
   return (
     <div className="row">
-      {posts.map((post, i) => (
-        <div key={`key-${i}`} className="col-12 mb-10 justify-center sm:col-6">
+      {posts.map((post) => (
+        <div key={post.slug} className="col-12 mb-10 justify-center sm:col-6">
           <div
             className="card flex h-full flex-col justify-between"
-            onClick={() => router.push(`/${post.slug}`)}
+            onClick={(e) => handleCardClick(e, post.slug)}
             style={{ cursor: "pointer" }}
           >
             {post.frontmatter.image && (
@@ -35,7 +41,6 @@ const Posts = ({ posts }) => {
                       key={`category-${index}`}
                       href={`/categories/${slugify(category)}`}
                       className="mr-1 flex items-center hover:text-primary"
-                      onClick={(e) => e.stopPropagation()}
                     >
                       <FaTag className="mx-2" />
                       <span>{category}</span>
@@ -47,7 +52,7 @@ const Posts = ({ posts }) => {
                   </span>
                 )}
               </li>
-              {post.frontmatter["crypto-ogs"]?.length > 0 && (
+              {post.frontmatter["crypto-ogs"]?.length && (
                 <li className="flex flex-wrap items-center space-x-2">
                   {post.frontmatter["crypto-ogs"]
                     .slice(0, 3)
@@ -56,7 +61,6 @@ const Posts = ({ posts }) => {
                         href={`/crypto-ogs/${slugify(cryptoOg)}`}
                         key={`cryptoOg-${index}`}
                         className="mx-2 flex items-center hover:text-primary"
-                        onClick={(e) => e.stopPropagation()}
                       >
                         <FaUser className="mr-2" />
                         <span>{cryptoOg}</span>
@@ -69,7 +73,7 @@ const Posts = ({ posts }) => {
                   )}
                 </li>
               )}
-              {post.frontmatter["exchanges"]?.length > 0 && (
+              {post.frontmatter["exchanges"]?.length && (
                 <li className="flex flex-wrap items-center space-x-2">
                   {post.frontmatter["exchanges"]
                     .slice(0, 3)
@@ -78,7 +82,6 @@ const Posts = ({ posts }) => {
                         href={`/exchanges/${slugify(exchange)}`}
                         key={`exchange-${index}`}
                         className="mx-2 flex items-center hover:text-primary"
-                        onClick={(e) => e.stopPropagation()}
                       >
                         <FaAt className="mr-2" />
                         <span>{exchange}</span>

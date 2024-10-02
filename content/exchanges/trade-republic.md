@@ -2,8 +2,9 @@
 title: "Trade Republic"
 image: "/images/exchanges/trade-republic.png"
 description: "Trade Republic is a secure platform for trading cryptocurrencies, stocks and ETFs."
+date: 2024-07-04
 order: 9
-authors: ["Crypto Wiki"]
+authors: ["Crypto Wiki Team"]
 social:
   android: https://play.google.com/store/apps/details?id=de.traderepublic.app
   apple: https://apps.apple.com/be/app/trade-republic-broker-bank/id1410703839

@@ -2,8 +2,9 @@
 title: "Anatoly Yakovenko"
 image: "/images/crypto-ogs/anatoly-yakovenko.png"
 description: "Co-founder of Solana and a pioneer in blockchain technology, developed one of the fastest blockchains in the world."
+date: 2024-08-20
 order: 14
-authors: ["Crypto Wiki"]
+authors: ["Crypto Wiki Team"]
 social:
   twitter: https://x.com/aeyakovenko
   linkedin: https://www.linkedin.com/in/anatoly-yakovenko/
@@ -75,3 +76,5 @@ Yakovenko’s passion for optimizing complex systems extends beyond blockchain. 
 Anatoly Yakovenko’s contributions to the blockchain space have been transformative. His vision for a fast, scalable blockchain with **Solana** has paved the way for new innovations in decentralized finance, NFTs, and Web3. Through the implementation of **Proof of History**, Yakovenko has solved one of the biggest challenges in blockchain technology—scalability.
 
 As he continues to lead **Solana Labs**, Yakovenko remains focused on building solutions that will revolutionize the financial industry and create a more decentralized, efficient world. His commitment to improving blockchain technology, alongside his collaborative approach to platforms like Ethereum, ensures that Yakovenko’s influence will continue to shape the future of decentralized technologies.
+
+---

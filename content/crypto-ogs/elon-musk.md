@@ -2,8 +2,9 @@
 title: "Elon Musk"
 image: "/images/crypto-ogs/elon-musk.png"
 description: "How Elon Musk’s involvement has shaped the cryptocurrency world, from Bitcoin to Dogecoin."
+date: 2024-07-18
 order: 7
-authors: ["Crypto Wiki"]
+authors: ["Crypto Wiki Team"]
 social:
   wikipedia: https://en.wikipedia.org/wiki/Elon_Musk
   twitter: https://twitter.com/elonmusk

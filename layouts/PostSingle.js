@@ -6,11 +6,13 @@ import shortcodes from "@shortcodes/all";
 import { MDXRemote } from "next-mdx-remote";
 import Image from "next/image";
 import Link from "next/link";
+import Authors from "@components/Authors";
 import { FaCalendarAlt, FaTag, FaUser, FaExchangeAlt } from "react-icons/fa";
 
-const PostSingle = ({ post, posts, authors, cryptoOgs, exchanges, slug }) => {
+const PostSingle = ({ post, posts, cryptoOgs, exchanges, slug }) => {
   const { frontmatter, content, mdxContent } = post;
-  let { description, title, date, image, categories, tags } = frontmatter;
+  let { description, title, date, image, categories, tags, authors } =
+    frontmatter;
   description = description ? description : content.slice(0, 120);
   const similarPosts = similerItems(post, posts, slug);
 
@@ -21,17 +23,14 @@ const PostSingle = ({ post, posts, authors, cryptoOgs, exchanges, slug }) => {
           <article className="text-center">
             {markdownify(title, "h1", "h2")}
             <ul className="my-5">
-              {/* Author, Date, and Categories Row */}
               <li className="mb-5 flex flex-wrap items-center justify-between">
                 <div className="flex flex-wrap items-center">
-                  {/* Date Section */}
                   <span className="mt-2 flex items-center md:mt-0">
                     <FaCalendarAlt className="mr-2" />
                     {dateFormat(date)}
                   </span>
+                  <Authors authors={authors} />
                 </div>
-
-                {/* Categories Section */}
                 <div className="mt-4 flex flex-wrap justify-center gap-3 md:mt-0 md:justify-end">
                   {categories.map((category, i) => (
                     <Link
@@ -45,8 +44,6 @@ const PostSingle = ({ post, posts, authors, cryptoOgs, exchanges, slug }) => {
                   ))}
                 </div>
               </li>
-
-              {/* Crypto OGs Section */}
               {frontmatter["crypto-ogs"] && cryptoOgs && (
                 <li className="mt-4 flex flex-wrap items-center justify-center space-x-2 md:mt-0">
                   <div className="flex items-center space-x-2">
@@ -84,8 +81,6 @@ const PostSingle = ({ post, posts, authors, cryptoOgs, exchanges, slug }) => {
                   </ul>
                 </li>
               )}
-
-              {/* Exchanges Section */}
               {frontmatter["exchanges"] && exchanges && (
                 <li className="mt-4 flex flex-wrap items-center justify-center space-x-2 md:mt-0">
                   <div className="flex items-center space-x-2">
@@ -156,7 +151,7 @@ const PostSingle = ({ post, posts, authors, cryptoOgs, exchanges, slug }) => {
       <section className="section">
         <div className="container">
           <h2 className="mb-8 text-center">Similar Posts</h2>
-          <SimilarPosts posts={similarPosts.slice(0, 3)} />
+          <SimilarPosts posts={similarPosts.slice(0, 6)} />
         </div>
       </section>
     </>

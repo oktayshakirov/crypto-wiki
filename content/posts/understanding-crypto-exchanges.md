@@ -5,7 +5,7 @@ date: 2024-09-01
 image: "/images/posts/crypto-exchange.jpg"
 categories: ["Investing", "Beginners"]
 exchanges: ["Crypto.com", "Coinbase", "Binance", "KuCoin", "Nexo"]
-authors: ["Crypto Wiki"]
+authors: ["Crypto Wiki Team"]
 tags:
   [
     "cryptocurrency",

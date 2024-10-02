@@ -3,10 +3,13 @@ import shortcodes from "@shortcodes/all";
 import { MDXRemote } from "next-mdx-remote";
 import Image from "next/image";
 import Base from "./Baseof";
-import Social from "./components/Social";
+import Social from "@components/Social";
+import Authors from "@components/Authors";
+import { FaCalendarAlt } from "react-icons/fa";
+import dateFormat from "@lib/utils/dateFormat";
 
 const CryptoOgSingle = ({ frontmatter, content, mdxContent }) => {
-  const { description, social, title, image } = frontmatter;
+  const { description, social, title, image, authors, date } = frontmatter;
 
   return (
     <Base
@@ -32,6 +35,13 @@ const CryptoOgSingle = ({ frontmatter, content, mdxContent }) => {
             <Social source={social} className="social-icons-simple" />
             <div className="content text-start">
               <MDXRemote {...mdxContent} components={shortcodes} />
+            </div>
+            <div className="flex items-center justify-center">
+              <span className="mt-2 flex items-center md:mt-0">
+                <FaCalendarAlt className="mr-2" />
+                {dateFormat(date)}
+              </span>
+              <Authors authors={authors} />
             </div>
           </div>
         </div>

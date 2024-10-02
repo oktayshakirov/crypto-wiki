@@ -5,7 +5,7 @@ date: 2024-08-27
 image: "/images/posts/bitcoin.jpg"
 categories: ["Beginners", "Investing"]
 exchanges: ["Trade Republic", "Coinbase", "Crypto.com"]
-authors: ["Crypto Wiki"]
+authors: ["Crypto Wiki Team"]
 tags:
   [
     "cryptocurrency",

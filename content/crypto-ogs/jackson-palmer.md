@@ -2,8 +2,9 @@
 title: "Jackson Palmer"
 image: "/images/crypto-ogs/jackson-palmer.jpg"
 description: "Co-creator of Dogecoin, from creating the meme coin to becoming a vocal critic of the industry."
+date: 2024-10-02
 order: 11
-authors: ["Crypto Wiki"]
+authors: ["Crypto Wiki Team"]
 ---
 
 **Jackson Palmer**, an Australian software engineer, is best known as the co-creator of **Dogecoin**, one of the most well-known meme-based cryptocurrencies. Palmer’s journey in the cryptocurrency space is unique—he co-founded Dogecoin as a joke, only to later become one of its most vocal critics. His outspoken views on the industry have positioned him as a contrarian voice in the crypto world.

@@ -4,7 +4,7 @@ description: "The best practices for storing your cryptocurrency securely. Disco
 date: 2024-08-26
 image: "/images/posts/ledger.jpeg"
 categories: ["Security", "Beginners"]
-authors: ["Crypto Wiki"]
+authors: ["Crypto Wiki Team"]
 tags:
   [
     "cryptocurrency",
