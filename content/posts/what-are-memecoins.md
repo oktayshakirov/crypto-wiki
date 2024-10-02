@@ -5,7 +5,7 @@ date: 2024-09-27
 image: "/images/posts/dogecoin.jpg"
 categories: ["Blockchain", "Beginners"]
 crypto-ogs: ["Elon Musk", "Billy Markus", "Jackson Palmer"]
-authors: ["Crypto Wiki"]
+authors: ["Crypto Wiki Team"]
 tags:
   [
     "Meme Coins",

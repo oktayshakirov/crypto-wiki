@@ -2,8 +2,9 @@
 title: "CoinEx"
 image: "/images/exchanges/coinex.png"
 description: "CoinEx is a cryptocurrency exchange offering a wide range of assets and advanced trading."
+date: 2024-07-25
 order: 6
-authors: ["Crypto Wiki"]
+authors: ["Crypto Wiki Team"]
 social:
   android: https://play.google.com/store/apps/details?id=com.coinex.trade.play
   apple: https://apps.apple.com/us/app/coinex-buy-bitcoin-crypto/id1626447428

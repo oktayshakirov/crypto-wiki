@@ -4,7 +4,7 @@ description: "How the fusion of AI and blockchain is driving technological advan
 date: 2024-09-03
 image: "/images/posts/ai-and-human.jpg"
 categories: ["Technology", "Blockchain", "AI", "Web3"]
-authors: ["Crypto Wiki"]
+authors: ["Crypto Wiki Team"]
 tags:
   [
     "AI",

@@ -4,7 +4,7 @@ description: "Everything you need to know about cryptocurrency, including how it
 date: 2024-08-25
 image: "/images/posts/cryptocurrency.jpg"
 categories: ["Beginners"]
-authors: ["Crypto Wiki"]
+authors: ["Crypto Wiki Team"]
 crypto-ogs: ["Satoshi Nakamoto"]
 exchanges: ["Binance", "Coinbase", "Crypto.com"]
 tags:

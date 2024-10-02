@@ -4,7 +4,7 @@ description: "Apple's evolving viewpoint on cryptocurrency is poised to bring cr
 date: 2024-09-16
 image: "/images/posts/apple.jpg"
 categories: ["Technology", "Brands", "AI"]
-authors: ["Crypto Wiki"]
+authors: ["Crypto Wiki Team"]
 tags:
   [
     "Apple",

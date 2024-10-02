@@ -4,7 +4,7 @@ description: "The environmental impact of cryptocurrencies and the potential sol
 date: 2024-08-28
 image: "/images/posts/energy.jpg"
 categories: ["Sustainability", "Technology", "Regulation"]
-authors: ["Crypto Wiki"]
+authors: ["Crypto Wiki Team"]
 tags:
   [
     "cryptocurrency",

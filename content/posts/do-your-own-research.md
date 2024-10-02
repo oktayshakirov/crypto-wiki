@@ -4,7 +4,7 @@ description: "Why doing your own research is crucial before investing in cryptoc
 date: 2024-08-29
 image: "/images/posts/research.jpg"
 categories: ["Investing", "Beginners"]
-authors: ["Crypto Wiki"]
+authors: ["Crypto Wiki Team"]
 tags:
   [
     "cryptocurrency",

@@ -2,8 +2,9 @@
 title: "Yi He"
 image: "/images/crypto-ogs/yi-he.jpg"
 description: "Co-founder of Binance and one of the most influential women in the cryptocurrency industry."
+date: 2024-09-10
 order: 13
-authors: ["Crypto Wiki"]
+authors: ["Crypto Wiki Team"]
 social:
   twitter: https://x.com/heyibinance
 ---
@@ -102,3 +103,5 @@ Yi He’s ambition doesn’t stop there. She aims to push Binance beyond just be
 Yi He's impact on the cryptocurrency and blockchain industry cannot be overstated. From her early work in co-founding OKX to leading Binance's global strategy and investment initiatives, Yi has played a vital role in shaping the future of digital finance. Her vision for the future of Web3, combined with her advocacy for women in blockchain, makes her a powerful figure in the industry.
 
 Yi He’s story is not just one of entrepreneurial success, but also of leadership, resilience, and a commitment to innovation. As she continues to expand Binance’s influence globally, her legacy in the blockchain space will only grow.
+
+---

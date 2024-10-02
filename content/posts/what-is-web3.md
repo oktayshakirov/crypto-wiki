@@ -4,7 +4,7 @@ description: "Explore Web3, the decentralized evolution of the internet. Learn h
 date: 2024-09-22
 image: "/images/posts/metaverse.jpg"
 categories: ["Blockchain", "Technology", "Web3", "Beginners"]
-authors: ["Crypto Wiki"]
+authors: ["Crypto Wiki Team"]
 tags:
   [
     "Web3",

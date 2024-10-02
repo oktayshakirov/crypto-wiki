@@ -4,7 +4,7 @@ description: "Rumors are swirling around the highly anticipated GTA VI, suggesti
 date: 2024-09-26
 image: "/images/posts/grand-theft-auto.jpg"
 categories: ["Gaming", "Technology", "Blockchain"]
-authors: ["Crypto Wiki"]
+authors: ["Crypto Wiki Team"]
 tags:
   [
     "GTA VI",

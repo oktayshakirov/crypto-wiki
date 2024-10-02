@@ -5,7 +5,7 @@ date: 2024-09-03
 image: "/images/posts/scammer.jpg"
 exchanges: ["Coinbase", "Binance", "KuCoin"]
 categories: ["Security", "Beginners"]
-authors: ["Crypto Wiki"]
+authors: ["Crypto Wiki Team"]
 tags:
   [
     "cryptocurrency",

@@ -4,7 +4,7 @@ description: "Decentralized Finance (DeFi), the revolutionary financial ecosyste
 date: 2024-08-30
 image: "/images/posts/defi.jpg"
 categories: ["Technology", "Investing", "Beginners", "Web3"]
-authors: ["Crypto Wiki"]
+authors: ["Crypto Wiki Team"]
 tags:
   [
     "DeFi",

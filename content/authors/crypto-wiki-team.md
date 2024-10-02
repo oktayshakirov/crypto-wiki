@@ -1,7 +1,9 @@
 ---
-title: TheCrypto.Wiki
+title: Crypto Wiki Team
 image: "/images/authors/crypto-wiki.png"
 description: "The Crypto Wiki provides expert insights, beginner guides, and the latest news about cryptocurrency."
+social:
+  twitter: https://x.com/TheCrypto_Wiki
 order: 1
 ---
 
@@ -20,5 +22,3 @@ Whether you're just starting out in the crypto space or you're a seasoned enthus
 We also provide comprehensive reviews of crypto exchanges, tools, and services, helping you make informed decisions about where to trade, invest, and manage your digital assets. Our regularly updated news section ensures that you're always in the loop on what's happening in the fast-paced world of crypto.
 
 At Crypto Wiki, we believe in empowering our readers with the knowledge they need to navigate the crypto landscape confidently. Our team of experts is committed to delivering trustworthy and detailed content that you can rely on, whether you're making your first crypto purchase or managing a diversified digital portfolio.
-
-Trust Crypto Wiki to be your guide in the ever-evolving world of cryptocurrency. Stay informed, stay secure, and stay ahead with us.

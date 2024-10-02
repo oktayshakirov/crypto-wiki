@@ -2,8 +2,9 @@
 title: "KuCoin"
 image: "/images/exchanges/kucoin.jpg"
 description: "KuCoin is a popular global cryptocurrency exchange offering advanced trading features."
+date: 2024-07-27
 order: 5
-authors: ["Crypto Wiki"]
+authors: ["Crypto Wiki Team"]
 social:
   android: https://play.google.com/store/apps/details?id=com.kubi.kucoin
   apple: https://apps.apple.com/us/app/kucoin-buy-bitcoin-crypto/id1378956601

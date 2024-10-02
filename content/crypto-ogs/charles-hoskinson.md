@@ -2,8 +2,9 @@
 title: "Charles Hoskinson"
 image: "/images/crypto-ogs/charles-hoskinson.png"
 description: "Co-founder of Ethereum and founder of Cardano, shaping the future of blockchain technology."
+date: 2024-08-15
 order: 9
-authors: ["Crypto Wiki"]
+authors: ["Crypto Wiki Team"]
 social:
   wikipedia: https://en.wikipedia.org/wiki/Charles_Hoskinson
   twitter: https://twitter.com/IOHK_Charles

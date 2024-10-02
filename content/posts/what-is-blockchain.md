@@ -4,7 +4,7 @@ description: "Explore how blockchain works, its key principles, and its game-cha
 date: 2024-09-01
 image: "/images/posts/blockchain-technology.jpg"
 categories: ["Technology", "Blockchain", "Beginners"]
-authors: ["Crypto Wiki"]
+authors: ["Crypto Wiki Team"]
 tags:
   [
     "blockchain",

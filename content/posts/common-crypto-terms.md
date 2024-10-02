@@ -4,7 +4,7 @@ description: "Essential crypto terms for beginners. Learn the key concepts like 
 date: 2024-08-31
 image: "/images/posts/woman-browsing-internet.jpg"
 categories: ["Beginners"]
-authors: ["Crypto Wiki"]
+authors: ["Crypto Wiki Team"]
 tags:
   [
     "cryptocurrency",

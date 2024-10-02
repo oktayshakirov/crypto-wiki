@@ -2,8 +2,9 @@
 title: "Binance"
 image: "/images/exchanges/binance.png"
 description: "Binance is a global leader in cryptocurrency exchange services, offering innovative services."
+date: 2024-07-20
 order: 4
-authors: ["Crypto Wiki"]
+authors: ["Crypto Wiki Team"]
 social:
   android: https://play.google.com/store/apps/details?id=com.binance.dev
   apple: https://apps.apple.com/us/app/binance-us-buy-bitcoin-eth/id1492670702

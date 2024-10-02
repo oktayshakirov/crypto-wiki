@@ -2,8 +2,9 @@
 title: "Snoop Dogg"
 image: "/images/crypto-ogs/snoop-dogg.jpg"
 description: "Snoop Dogg's journey through cryptocurrency and NFTs, from early adoption to becoming a major player in the NFT space."
+date: 2024-07-13
 order: 12
-authors: ["Crypto Wiki"]
+authors: ["Crypto Wiki Team"]
 social:
   wikipedia: https://en.wikipedia.org/wiki/Snoop_Dogg
   twitter: https://twitter.com/SnoopDogg
@@ -89,3 +90,5 @@ One of his most ambitious projects is to turn **Death Row Records**, the label h
 ## Conclusion
 
 Snoop Dogg has successfully bridged the worlds of entertainment and blockchain, becoming a significant figure in the NFT space and promoting cryptocurrency to mainstream audiences. His journey in the digital asset world reflects his ability to stay ahead of trends and shape cultural moments, both online and offline.
+
+---

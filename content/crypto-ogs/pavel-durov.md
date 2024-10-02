@@ -2,8 +2,9 @@
 title: "Pavel Durov"
 image: "/images/crypto-ogs/pavel-durov.png"
 description: "Co-founder of Telegram and VK, blockchain entrepreneur, and founder of The Open Network (TON)."
+date: 2024-10-01
 order: 17
-authors: ["Crypto Wiki"]
+authors: ["Crypto Wiki Team"]
 social:
   twitter: https://twitter.com/durov
   instagram: https://www.instagram.com/durov
@@ -84,3 +85,5 @@ In a world where digital privacy is increasingly under threat, Durov's stance ma
 ## Conclusion
 
 Pavel Durov’s journey from the founder of VK to the driving force behind Telegram and TON highlights his resilience and dedication to building technologies that prioritize privacy and user autonomy. His refusal to compromise on issues of censorship and data privacy has earned him both admiration and opposition worldwide. As technology and society grapple with the balance between security and privacy, Durov remains at the forefront of this debate, pushing for a decentralized and secure future for communication and digital assets.
+
+---

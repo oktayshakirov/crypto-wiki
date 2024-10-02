@@ -4,7 +4,7 @@ description: "Everything about GameFi, a new frontier in cryptocurrency where ga
 date: 2024-09-15
 image: "/images/posts/gamers.jpg"
 categories: ["Beginners", "Technology", "Gaming", "Web3"]
-authors: ["Crypto Wiki"]
+authors: ["Crypto Wiki Team"]
 tags:
   [
     "GameFi",

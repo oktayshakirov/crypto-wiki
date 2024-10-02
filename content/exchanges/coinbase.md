@@ -2,8 +2,9 @@
 title: "Coinbase"
 image: "/images/exchanges/coinbase.png"
 description: "Coinbase is a leading platform for easy, secure cryptocurrency trading and investment."
+date: 2024-07-02
 order: 2
-authors: ["Crypto Wiki"]
+authors: ["Crypto Wiki Team"]
 social:
   android: https://play.google.com/store/apps/details?id=com.coinbase.android
   apple: https://apps.apple.com/us/app/coinbase-buy-bitcoin-ether/id886427730

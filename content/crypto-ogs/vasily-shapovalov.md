@@ -2,8 +2,9 @@
 title: "Vasiliy Shapovalov"
 image: "/images/crypto-ogs/vasiliy-shapovalov.jpg"
 description: "Co-founder of Lido and CTO at P2P Validator, is a leading developer in liquid staking and blockchain technology."
+date: 2024-09-28
 order: 16
-authors: ["Crypto Wiki"]
+authors: ["Crypto Wiki Team"]
 social:
   twitter: https://twitter.com/vshapovalov
   linkedin: https://www.linkedin.com/in/vasiliy-shapovalov-91716491/
@@ -80,3 +81,5 @@ As a visionary, Shapovalov aims to improve the capital efficiency of decentraliz
 Vasiliy Shapovalov’s contributions to blockchain technology, particularly in **liquid staking** through Lido, have made him a significant figure in the DeFi space. His technical expertise and leadership have driven the growth of Lido and P2P Validator, helping to create secure, efficient, and decentralized solutions for the future of staking.
 
 As the blockchain world continues to evolve, Shapovalov’s vision for decentralized finance will remain influential in shaping the landscape of Ethereum staking and DeFi as a whole.
+
+---
