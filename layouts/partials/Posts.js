@@ -92,8 +92,10 @@ const Posts = ({ posts }) => {
                 </li>
               )}
             </ul>
-            <h4 className="mb-2">{post.frontmatter.title}</h4>
-            <p>{post.frontmatter.description}</p>
+            <h4 className="mb-2 text-lg sm:text-2xl">
+              {post.frontmatter.title}
+            </h4>
+            <p className="text-sm sm:text-sm">{post.frontmatter.description}</p>
           </div>
         </div>
       ))}

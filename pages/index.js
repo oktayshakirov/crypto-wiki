@@ -8,7 +8,6 @@ import FearAndGreedIndex from "@layouts/components/FearAndGreedIndex";
 import Link from "next/link";
 import {
   FaRegNewspaper,
-  FaBookOpen,
   FaTags,
   FaUserAlt,
   FaAddressBook,
@@ -23,8 +22,10 @@ const Home = ({ posts, ogs, exchanges }) => {
     <Base>
       <section>
         <div className="container my-7 text-center">
-          {markdownify("Uncover the World of Crypto", "h1", "mb-8")}
-          {markdownify("LATEST POSTS", "h2", "mb-8")}
+          <h1 className="mb-8 text-2xl font-bold leading-tight sm:text-4xl">
+            Uncover the World of <span className="text-primary">Crypto</span>
+          </h1>
+          {markdownify("LATEST POSTS", "h3", "mb-8")}
           <Posts posts={posts} />
           <div className="mb-20 flex flex-col justify-center space-y-3 md:flex-row md:space-x-3 md:space-y-0">
             <Link className="btn-primary flex items-center gap-2" href="/posts">
@@ -35,7 +36,7 @@ const Home = ({ posts, ogs, exchanges }) => {
               className="btn-primary flex items-center gap-2"
               href="/categories"
             >
-              <FaBookOpen />
+              <FaTags />
               <span>CATEGORIES</span>
             </Link>
             <Link
@@ -44,10 +45,6 @@ const Home = ({ posts, ogs, exchanges }) => {
             >
               <FaUserAlt />
               <span>AUTHORS</span>
-            </Link>
-            <Link className="btn-primary flex items-center gap-2" href="/tags">
-              <FaTags />
-              <span>TAGS</span>
             </Link>
           </div>
           <div className="card-secondary mb-10 p-10">
@@ -85,7 +82,7 @@ const Home = ({ posts, ogs, exchanges }) => {
             </div>
           </div>
           <div className="mb-20">
-            {markdownify("CRYPTO LEGENDS", "h2", "mb-8")}
+            {markdownify("CRYPTO LEGENDS", "h3", "mb-8")}
             <CryptoOGs ogs={ogs} />
             <div className="mt-6 flex flex-col justify-center space-y-3 md:flex-row md:space-x-3 md:space-y-0">
               <Link
