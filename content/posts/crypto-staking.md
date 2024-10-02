@@ -1,6 +1,6 @@
 ---
 title: "The Ultimate Beginner's Guide to Crypto Staking"
-description: "Discover what crypto staking is, how it works, and how you can start earning passive income through staking. Learn about popular cryptocurrencies for staking and the potential risks involved."
+description: "Learn what crypto staking is, how it works, and how to earn passive income with popular cryptocurrencies. Understand the risks before you start staking."
 date: 2024-09-12
 image: "/images/posts/crypto-staking.jpg"
 categories: ["Investing", "Beginners", "Web3"]
@@ -58,23 +58,23 @@ Staking cryptocurrency has become easy with the rise of exchanges and wallets th
 
 ### 1. **Coinbase**
 
-[Coinbase](https://thecrypto.wiki/exchanges/coinbase) is one of the most popular platforms for staking. It allows users to stake cryptocurrencies like **Ethereum** (ETH) and earn rewards with a user-friendly interface. You can also check out our full guide on **Coinbase** and the benefits of staking through the platform.
+[Coinbase](/exchanges/coinbase) is one of the most popular platforms for staking. It allows users to stake cryptocurrencies like **Ethereum** (ETH) and earn rewards with a user-friendly interface. You can also check out our full guide on **Coinbase** and the benefits of staking through the platform.
 
 ### 2. **Crypto.com**
 
-[Crypto.com](https://thecrypto.wiki/exchanges/cryptocom) is another well-known exchange where users can stake coins like **CRO**, **ETH**, and **DOT** to earn attractive staking rewards. The platform also provides flexible options for staking, making it accessible for both beginners and experienced users.
+[Crypto.com](/exchanges/cryptocom) is another well-known exchange where users can stake coins like **CRO**, **ETH**, and **DOT** to earn attractive staking rewards. The platform also provides flexible options for staking, making it accessible for both beginners and experienced users.
 
 ### 3. **Nexo**
 
-[Nexo](https://thecrypto.wiki/exchanges/nexo) offers an easy way to earn passive income by staking a wide variety of cryptocurrencies. Nexo allows users to stake popular assets like **BTC**, **ETH**, and **USDT**, offering competitive APYs with daily payouts.
+[Nexo](/exchanges/nexo) offers an easy way to earn passive income by staking a wide variety of cryptocurrencies. Nexo allows users to stake popular assets like **BTC**, **ETH**, and **USDT**, offering competitive APYs with daily payouts.
 
-For more options on where you can stake your crypto, visit our comprehensive [Exchanges page](https://thecrypto.wiki/exchanges).
+For more options on where you can stake your crypto, visit our comprehensive [Exchanges page](/exchanges).
 
 ## Staking with Ledger Hardware Wallet
 
 For those looking for extra security, you can also stake directly from your **Ledger hardware wallet**. Ledger allows you to stake coins like **Polkadot (DOT)**, **Tezos (XTZ)**, and **Algorand (ALGO)** while keeping full control of your private keys. This provides an additional layer of protection, especially for long-term holders.
 
-If you're new to hardware wallets or storing crypto securely, check out our guide on [How to Store Crypto](https://thecrypto.wiki/how-to-store-crypto) for more information.
+If you're new to hardware wallets or storing crypto securely, check out our guide on [How to Store Crypto](/how-to-store-crypto) for more information.
 
 You can purchase a Ledger hardware wallet [here](https://shop.ledger.com/pages/referral-program?referral_code=6GTHJH7XH9QRC) and get up to $20 worth of Bitcoin for free with your purchase.
 
@@ -126,7 +126,7 @@ Some staking platforms require you to lock your crypto for a specific period. Du
 
 ### 3. Platform or Network Risk
 
-Always be cautious when choosing a staking platform. If the platform or network experiences technical issues or security breaches, your staked assets could be at risk. For instance, the collapse of **FTX** in 2022 led to billions in lost customer funds, highlighting how even major platforms can fail. To learn more about **Sam Bankman-Fried** and the FTX collapse, visit our detailed article [here](https://thecrypto.wiki/crypto-ogs/sam-bankman).
+Always be cautious when choosing a staking platform. If the platform or network experiences technical issues or security breaches, your staked assets could be at risk. For instance, the collapse of **FTX** in 2022 led to billions in lost customer funds, highlighting how even major platforms can fail. To learn more about **Sam Bankman-Fried** and the FTX collapse, visit our detailed article [here](/crypto-ogs/sam-bankman).
 
 ## Conclusion
 
