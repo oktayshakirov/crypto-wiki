@@ -12,7 +12,6 @@ social:
   instagram: https://www.instagram.com/traderepublic/
   linkedin: https://www.linkedin.com/company/trade-republic/
   tiktok: https://www.tiktok.com/@traderepublic
-  telegram: N/A
   website: https://www.traderepublic.com/
   wikipedia: https://en.wikipedia.org/wiki/Trade_Republic
 ---
