@@ -7,9 +7,19 @@ import Social from "@components/Social";
 import Authors from "@components/Authors";
 import { FaCalendarAlt } from "react-icons/fa";
 import dateFormat from "@lib/utils/dateFormat";
+import NextPrevNavigation from "@partials/NextPrevNavigation";
 
-const CryptoOgSingle = ({ frontmatter, content, mdxContent }) => {
+const CryptoOgSingle = ({
+  frontmatter,
+  content,
+  mdxContent,
+  ogs = [],
+  slug,
+}) => {
   const { description, social, title, image, authors, date } = frontmatter;
+  const currentIndex = ogs.findIndex((og) => og.slug === slug);
+  const nextOg = currentIndex !== -1 ? ogs[currentIndex + 1] : null;
+  const prevOg = currentIndex !== -1 ? ogs[currentIndex - 1] : null;
 
   return (
     <Base
@@ -24,7 +34,7 @@ const CryptoOgSingle = ({ frontmatter, content, mdxContent }) => {
               <div className="mb-8">
                 <Image
                   src={image}
-                  className="mx-auto rounded-lg"
+                  className="mx-auto aspect-auto rounded-lg"
                   height={150}
                   width={150}
                   alt={title}
@@ -46,6 +56,17 @@ const CryptoOgSingle = ({ frontmatter, content, mdxContent }) => {
           </div>
         </div>
       </section>
+      {(prevOg || nextOg) && (
+        <section className="section">
+          <div className="container">
+            <NextPrevNavigation
+              prevItem={prevOg}
+              nextItem={nextOg}
+              basePath="crypto-ogs"
+            />
+          </div>
+        </section>
+      )}
     </Base>
   );
 };

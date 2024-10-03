@@ -15,6 +15,8 @@ const SimilarPosts = ({ posts }) => {
                   src={post.frontmatter.image}
                   alt={post.frontmatter.title}
                   fill
+                  loading="lazy"
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </div>
             </Link>

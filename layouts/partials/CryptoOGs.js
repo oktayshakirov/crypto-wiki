@@ -24,6 +24,7 @@ const CryptoOGs = ({ ogs }) => {
                   src={og.frontmatter.image}
                   alt={og.frontmatter.title}
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="rounded-lg"
                 />
               </div>
