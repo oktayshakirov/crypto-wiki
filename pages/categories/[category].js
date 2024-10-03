@@ -10,7 +10,9 @@ import Link from "next/link";
 
 const Category = ({ category, posts, authors, cryptoOgs, exchanges }) => {
   return (
-    <Base title={category}>
+    <Base
+      title={`Discover ${category} content: Latest Posts and Crypto Insights`}
+    >
       <div className="section">
         <div className="container mb-8 text-left">
           <Link href="/categories">

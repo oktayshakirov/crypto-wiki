@@ -21,7 +21,7 @@ const PostPagination = ({
   const { title } = frontmatter;
 
   return (
-    <Base title={title}>
+    <Base title={`${title}: Crypto Guides, Market News and Insights`}>
       <section className="section">
         <div className="container text-center">
           <div className="mb-8">

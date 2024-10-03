@@ -4,8 +4,6 @@ description: "Terms of Use for TheCrypto.Wiki"
 draft: false
 ---
 
-# Terms of Use
-
 Welcome to TheCrypto.Wiki, a website dedicated to providing educational content and tools related to cryptocurrency and blockchain technology ("TheCrypto.Wiki," "we," "us," or "our"). By accessing or using our website ("Service"), you agree to comply with and be bound by the following terms and conditions ("Terms of Use"). If you do not agree to these Terms, please do not use the Service.
 
 ## 1. Acceptance of Terms

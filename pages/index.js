@@ -22,8 +22,9 @@ const Home = ({ posts, ogs, exchanges }) => {
     <Base>
       <section>
         <div className="container my-7 text-center">
-          <h1 className="mb-8 text-2xl font-bold leading-tight sm:text-4xl">
-            Uncover the World of <span className="text-primary">Crypto</span>
+          <h1 className="mb-8 text-2xl font-semibold leading-tight sm:text-4xl">
+            Uncover the World of{" "}
+            <span className="font-mono text-primary">Crypto</span>
           </h1>
           {markdownify("LATEST POSTS", "h3", "mb-8")}
           <Posts posts={posts} />

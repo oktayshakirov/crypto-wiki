@@ -1,6 +1,6 @@
 ---
-title: "About TheCrypto.Wiki"
-meta_title: "About"
+title: "About Us"
+meta_title: "About TheCrypto.Wiki"
 image: "/images/logo.png"
 layout: "about"
 draft: false

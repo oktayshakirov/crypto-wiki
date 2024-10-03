@@ -4,8 +4,6 @@ description: "Privacy Policy for TheCrypto.Wiki"
 draft: false
 ---
 
-# Privacy Policy
-
 TheCrypto.Wiki ("TheCrypto.Wiki," "we," or "us") is committed to protecting your privacy. This Privacy Policy explains how information about you ("personal information") is collected, used, and disclosed by TheCrypto.Wiki. This Policy applies to the online services offered by TheCrypto.Wiki at TheCrypto.Wiki (the "Website" or "Our Service").
 
 ## 1. INFORMATION WE COLLECT

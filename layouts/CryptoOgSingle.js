@@ -13,7 +13,7 @@ const CryptoOgSingle = ({ frontmatter, content, mdxContent }) => {
 
   return (
     <Base
-      title={title}
+      title={`${title}: Contributions and Role in the Crypto Space`}
       description={description ? description : content.slice(0, 120)}
       image={image}
     >
