@@ -15,6 +15,7 @@ import {
   FaCalculator,
   FaChartLine,
   FaThermometerHalf,
+  FaHashtag,
 } from "react-icons/fa";
 
 const Home = ({ posts, ogs, exchanges }) => {
@@ -39,6 +40,10 @@ const Home = ({ posts, ogs, exchanges }) => {
             >
               <FaTags />
               <span>CATEGORIES</span>
+            </Link>
+            <Link className="btn-primary flex items-center gap-2" href="/tags">
+              <FaHashtag />
+              <span>TAGS</span>
             </Link>
             <Link
               className="btn-primary flex items-center gap-2"

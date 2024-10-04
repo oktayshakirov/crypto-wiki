@@ -9,7 +9,6 @@ module.exports = {
   transform: async (config, path) => {
     let priority = config.priority;
     let changefreq = config.changefreq;
-
     if (path === "/") {
       priority = 1.0;
       changefreq = "daily";
@@ -23,9 +22,15 @@ module.exports = {
     ) {
       priority = 0.9;
       changefreq = "weekly";
+      if (path.includes("/page/1")) {
+        path = path.replace("/page/1", "");
+      }
     } else if (path.startsWith("/posts")) {
       priority = 0.95;
       changefreq = "weekly";
+      if (path.includes("/page/1")) {
+        path = path.replace("/page/1", "");
+      }
     } else if (path.startsWith("/categories")) {
       priority = 0.7;
       changefreq = "weekly";

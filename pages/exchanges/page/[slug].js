@@ -5,7 +5,6 @@ import { getListPage, getSinglePage } from "@lib/contentParser";
 import { markdownify } from "@lib/utils/textConverter";
 import Exchanges from "@partials/Exchanges";
 
-// blog pagination
 const ExchangePagination = ({
   exchangeIndex,
   exchanges,
