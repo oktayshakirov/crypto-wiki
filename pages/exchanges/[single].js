@@ -2,7 +2,7 @@ import ExchangeSingle from "@layouts/ExchangeSingle";
 import { getSinglePage } from "@lib/contentParser";
 import parseMDX from "@lib/utils/mdxParser";
 
-const Article = ({ exchange, mdxContent }) => {
+const Article = ({ exchange, mdxContent, exchanges, slug }) => {
   const { frontmatter, content } = exchange[0];
 
   return (
@@ -10,6 +10,8 @@ const Article = ({ exchange, mdxContent }) => {
       frontmatter={frontmatter}
       content={content}
       mdxContent={mdxContent}
+      exchanges={exchanges}
+      slug={slug}
     />
   );
 };
@@ -38,6 +40,7 @@ export const getStaticProps = async ({ params }) => {
     props: {
       exchange: exchange,
       mdxContent: mdxContent,
+      exchanges: getExchanges,
       slug: single,
     },
   };

@@ -1,4 +1,4 @@
-import { markdownify, slugify } from "@lib/utils/textConverter";
+import { markdownify } from "@lib/utils/textConverter";
 import shortcodes from "@shortcodes/all";
 import { MDXRemote } from "next-mdx-remote";
 import Image from "next/image";
@@ -7,9 +7,22 @@ import Social from "@components/Social";
 import Authors from "@components/Authors";
 import { FaCalendarAlt } from "react-icons/fa";
 import dateFormat from "@lib/utils/dateFormat";
+import NextPrevNavigation from "@partials/NextPrevNavigation";
 
-const ExchangeSingle = ({ frontmatter, content, mdxContent }) => {
+const ExchangeSingle = ({
+  frontmatter,
+  content,
+  mdxContent,
+  exchanges = [],
+  slug,
+}) => {
   const { description, social, title, image, authors, date } = frontmatter;
+  const currentIndex = exchanges.findIndex(
+    (exchange) => exchange.slug === slug
+  );
+
+  const nextExchange = currentIndex !== -1 ? exchanges[currentIndex + 1] : null;
+  const prevExchange = currentIndex !== -1 ? exchanges[currentIndex - 1] : null;
 
   return (
     <Base
@@ -24,7 +37,7 @@ const ExchangeSingle = ({ frontmatter, content, mdxContent }) => {
               <div className="mb-8">
                 <Image
                   src={image}
-                  className="mx-auto rounded-lg"
+                  className="mx-auto aspect-auto rounded-lg"
                   height={150}
                   width={150}
                   alt={title}
@@ -46,6 +59,17 @@ const ExchangeSingle = ({ frontmatter, content, mdxContent }) => {
           </div>
         </div>
       </section>
+      {(prevExchange || nextExchange) && (
+        <section className="section">
+          <div className="container">
+            <NextPrevNavigation
+              prevItem={prevExchange}
+              nextItem={nextExchange}
+              basePath="exchanges"
+            />
+          </div>
+        </section>
+      )}
     </Base>
   );
 };

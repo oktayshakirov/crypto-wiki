@@ -1,5 +1,5 @@
 .btn-primary {
-  @apply flex items-center justify-center rounded-lg bg-theme-light px-4 py-2 font-semibold text-dark transition hover:bg-primary  hover:text-black;
+  @apply flex items-center justify-center rounded-lg bg-theme-light px-4 py-2 text-dark transition hover:bg-primary hover:text-black;
 }
 
 .btn-secondary {
@@ -7,5 +7,5 @@
 }
 
 .btn-categories {
-  @apply flex h-40 w-40 items-center justify-center rounded-lg bg-theme-light px-6 py-8 text-lg text-dark transition hover:bg-primary hover:font-bold hover:text-black;
+  @apply flex h-40 w-40 items-center justify-center rounded-lg bg-theme-light px-6 py-8 text-lg text-dark  hover:bg-primary hover:text-black;
 }

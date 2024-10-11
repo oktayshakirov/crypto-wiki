@@ -6,6 +6,7 @@ import Posts from "@partials/Posts";
 import { humanize, markdownify } from "@lib/utils/textConverter";
 import Link from "next/link";
 import { getTaxonomy } from "@lib/taxonomyParser";
+import { FaTags } from "react-icons/fa";
 
 const PostPagination = ({
   postIndex,
@@ -20,11 +21,20 @@ const PostPagination = ({
   const { title } = frontmatter;
 
   return (
-    <Base title={title}>
+    <Base title={`${title}: Crypto Guides, Market News and Insights`}>
       <section className="section">
         <div className="container text-center">
           <div className="mb-8">
-            <ul className="flex flex-wrap justify-center gap-6">
+            <div className="block md:hidden">
+              <Link
+                href="/categories"
+                className="btn-primary flex items-center gap-2"
+              >
+                <FaTags />
+                Show Categories
+              </Link>
+            </div>
+            <ul className="hidden flex-wrap justify-center gap-6 md:flex">
               {categories.slice(0, 6).map((category, i) => (
                 <li key={`category-${i}`} className="mb-2 inline-block">
                   <Link

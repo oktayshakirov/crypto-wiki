@@ -8,6 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Authors from "@components/Authors";
 import { FaCalendarAlt, FaTag, FaUser, FaExchangeAlt } from "react-icons/fa";
+import NextPrevNavigation from "@partials/NextPrevNavigation";
 
 const PostSingle = ({ post, posts, cryptoOgs, exchanges, slug }) => {
   const { frontmatter, content, mdxContent } = post;
@@ -15,6 +16,9 @@ const PostSingle = ({ post, posts, cryptoOgs, exchanges, slug }) => {
     frontmatter;
   description = description ? description : content.slice(0, 120);
   const similarPosts = similerItems(post, posts, slug);
+  const currentIndex = posts.findIndex((p) => p.slug === slug);
+  const nextPost = posts[currentIndex + 1] || null;
+  const prevPost = posts[currentIndex - 1] || null;
 
   return (
     <>
@@ -146,6 +150,15 @@ const PostSingle = ({ post, posts, cryptoOgs, exchanges, slug }) => {
               </ul>
             </div>
           </article>
+        </div>
+      </section>
+      <section className="section">
+        <div className="container">
+          <NextPrevNavigation
+            prevItem={prevPost}
+            nextItem={nextPost}
+            basePath=""
+          />
         </div>
       </section>
       <section className="section">

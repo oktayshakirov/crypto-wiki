@@ -7,7 +7,9 @@ const { blog_folder } = config.settings;
 
 const Categories = ({ categories }) => {
   return (
-    <Base title={"Categories"}>
+    <Base
+      title={"All Categories: Crypto, Blockchain, Web3, AI, Investing, Guides"}
+    >
       <section className="section">
         <div className="container text-center">
           {markdownify("Categories", "h1", "h2 mb-16")}

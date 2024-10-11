@@ -5,7 +5,6 @@ import { getListPage, getSinglePage } from "@lib/contentParser";
 import { markdownify } from "@lib/utils/textConverter";
 import Exchanges from "@partials/Exchanges";
 
-// blog pagination
 const ExchangePagination = ({
   exchangeIndex,
   exchanges,
@@ -23,7 +22,7 @@ const ExchangePagination = ({
   const { title } = frontmatter;
 
   return (
-    <Base title={title}>
+    <Base title={`${title}: Trusted and Recommended Crypto Exchanges`}>
       <section className="section">
         <div className="container text-center">
           {markdownify(title, "h1", "h2 mb-16")}

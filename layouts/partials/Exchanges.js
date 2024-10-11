@@ -22,7 +22,7 @@ const Exchanges = ({ exchanges }) => {
                   alt={exchange.frontmatter.title}
                   width={300}
                   height={120}
-                  className="rounded-lg object-cover"
+                  className="aspect-auto rounded-lg object-cover"
                 />
               </div>
             )}

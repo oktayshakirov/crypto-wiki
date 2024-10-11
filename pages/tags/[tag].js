@@ -6,10 +6,9 @@ import { slugify } from "@lib/utils/textConverter";
 import Posts from "@partials/Posts";
 const { blog_folder } = config.settings;
 
-// tag page
 const Tag = ({ tag, posts, authors, cryptoOgs, exchanges }) => {
   return (
-    <Base title={tag}>
+    <Base title={`Discover ${tag} content: Latest Posts and Crypto Insights`}>
       <div className="section">
         <div className="container">
           <h1 className="h2 mb-8 text-center">
