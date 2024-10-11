@@ -35,22 +35,12 @@ const Contact = () => {
         </li>
         <li className="mb-2">
           <FaUser className="mr-2 inline-block text-yellow-500" />
-          <strong>Email:</strong>{" "}
+          <strong>Personal Email:</strong>{" "}
           <a
             href="mailto:oktayshakirov@gmail.com"
             className="text-yellow-500 hover:underline"
           >
             oktayshakirov@gmail.com
-          </a>
-        </li>
-        <li className="mb-2">
-          <FaGlobe className="mr-2 inline-block text-yellow-500" />
-          <strong>Website:</strong>{" "}
-          <a
-            href="http://www.oktayshakirov.com"
-            className="text-yellow-500 hover:underline"
-          >
-            Personal Portfolio
           </a>
         </li>
         <li className="mb-2">
@@ -60,7 +50,7 @@ const Contact = () => {
             href="https://x.com/TheCrypto_Wiki"
             className="text-yellow-500 hover:underline"
           >
-            TheCrypto_Wiki
+            @TheCrypto_Wiki
           </a>
         </li>
       </ul>

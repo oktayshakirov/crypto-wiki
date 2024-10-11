@@ -4,8 +4,6 @@ description: "Terms of Use for TheCrypto.Wiki"
 draft: false
 ---
 
-# Terms of Use
-
 Welcome to TheCrypto.Wiki, a website dedicated to providing educational content and tools related to cryptocurrency and blockchain technology ("TheCrypto.Wiki," "we," "us," or "our"). By accessing or using our website ("Service"), you agree to comply with and be bound by the following terms and conditions ("Terms of Use"). If you do not agree to these Terms, please do not use the Service.
 
 ## 1. Acceptance of Terms
@@ -22,7 +20,7 @@ All content provided on TheCrypto.Wiki is for informational and educational purp
 
 ## 4. Intellectual Property Rights
 
-The content on TheCrypto.Wiki, including but not limited to text, graphics, images, and software, is the intellectual property of TheCrypto.Wiki and is protected by copyright and other intellectual property laws. You may not reproduce, distribute, or create derivative works from any content found on the Service without our express written consent.
+The content on TheCrypto.Wiki, including but not limited to text, graphics, images, videos, and software, is the intellectual property of TheCrypto.Wiki and is protected by copyright, trademark, and other intellectual property laws. You may not reproduce, distribute, modify, or create derivative works from any content found on the Service without our express written consent.
 
 ## 5. Use of the Service
 
@@ -34,15 +32,15 @@ You agree not to engage in any of the following activities:
 
 - Using the Service to engage in any form of unauthorized advertising, solicitation, or spamming.
 - Attempting to gain unauthorized access to the Service, user accounts, or computer systems or networks connected to the Service.
-- Uploading, transmitting, or distributing any content that is unlawful, defamatory, or otherwise harmful.
+- Uploading, transmitting, or distributing any content that is unlawful, defamatory, harmful, or violates any intellectual property or privacy rights of others.
 
 ## 6. Affiliate Links and Third-Party Content
 
-Some articles and pages on TheCrypto.Wiki may contain affiliate links, which means that we may earn a commission if you make a purchase through those links. We are not responsible for the content or practices of any third-party websites or services. Your interactions with such third-party sites are governed by their own terms and policies.
+Some articles and pages on TheCrypto.Wiki may contain affiliate links, which means that we may earn a commission if you make a purchase through those links. We are not responsible for the content, policies, or practices of any third-party websites or services. Your interactions with such third-party sites are governed by their own terms and conditions.
 
 ## 7. API Usage and Tools
 
-TheCrypto.Wiki may provide tools and APIs that interact with third-party services or data. Use of these tools and APIs is at your own risk. We do not guarantee the accuracy or reliability of any data obtained through these tools, and we are not responsible for any actions taken based on this data.
+TheCrypto.Wiki may provide tools and APIs that interact with third-party services or data. Use of these tools and APIs is at your own risk. We do not guarantee the accuracy, reliability, or availability of any data obtained through these tools, and we are not responsible for any actions taken based on this data.
 
 ## 8. Global Privacy Compliance
 
@@ -63,12 +61,20 @@ The Service is provided on an "as is" and "as available" basis. TheCrypto.Wiki m
 
 ## 11. Changes to the Service
 
-TheCrypto.Wiki reserves the right to modify or discontinue the Service at any time, with or without notice. We are not liable to you or any third party for any modification, suspension, or discontinuation of the Service.
+TheCrypto.Wiki reserves the right to modify, suspend, or discontinue the Service at any time, with or without notice. We are not liable to you or any third party for any modification, suspension, or discontinuation of the Service.
 
 ## 12. Governing Law and Dispute Resolution
 
-These Terms shall be governed by and construed in accordance with the laws of the jurisdiction in which TheCrypto.Wiki operates, without regard to its conflict of law principles. Any disputes arising out of or relating to these Terms or the Service shall be resolved through binding arbitration, rather than in court.
+These Terms shall be governed by and construed in accordance with the laws of the jurisdiction in which TheCrypto.Wiki operates, without regard to its conflict of law principles. Any disputes arising out of or relating to these Terms or the Service shall be resolved through binding arbitration, rather than in court, except where prohibited by law.
 
-## 13. Contact Information
+## 13. Indemnification
+
+You agree to indemnify, defend, and hold harmless TheCrypto.Wiki, its affiliates, officers, directors, employees, and agents from and against any and all claims, liabilities, damages, losses, and expenses, including reasonable attorneys' fees and costs, arising out of or in any way connected with your use of the Service or violation of these Terms.
+
+## 14. Severability
+
+If any provision of these Terms is found to be unlawful, void, or unenforceable, that provision shall be severable from the remaining provisions and shall not affect the validity and enforceability of the remaining provisions.
+
+## 15. Contact Information
 
 For more information about TheCrypto.Wiki or these Terms, please visit our [About](/about) page or contact us through our [Contact](/contact) page.
