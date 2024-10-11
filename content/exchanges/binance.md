@@ -94,9 +94,9 @@ Embark on your cryptocurrency journey with Binance, equipped with powerful tools
 
 ## Sign Up and Get Rewarded
 
-Begin exploring Binance's comprehensive offerings and receive exclusive benefits. Register using the link below:
+Begin exploring Binance's comprehensive offerings and receive exclusive benefits. Register using the button below:
 
-#### **[Register here](https://www.binance.com/activity/referral-entry/CPA?ref=CPA_000OF1CRMZ) to claim your sign-up bonus and discover the full range of Binance’s features.**
+<Button href="https://www.binance.com/activity/referral-entry/CPA?ref=CPA_000OF1CRMZ" type="btn-exchange">Get Started With Binance</Button>
 
 ## Conclusion
 

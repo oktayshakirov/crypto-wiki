@@ -97,18 +97,16 @@ In 2022, Coinbase launched its NFT marketplace, enabling users to create profile
 
 Coinbase offers a secure and straightforward platform for all your cryptocurrency needs, whether you're a beginner or an experienced trader.
 
+![Coinbase Logo](/images/posts/coinbase-app.jpg)
+
 ## Sign Up and Get Rewarded
 
-Start your journey with Coinbase and enjoy exclusive benefits. Register using the link below:
+Start your journey with Coinbase and enjoy exclusive benefits. Register using the button below:
 
-#### **[Register here](https://coinbase.com/join/8CXGA44?src=referral-link) to claim your $5 sign-up bonus and explore all that Coinbase has to offer.**
-
-![Coinbase Logo](/images/posts/coinbase-app.jpg)
+<Button href="(https://coinbase.com/join/8CXGA44?src=referral-link" type="btn-exchange">Get Started With Coinbase</Button>
 
 ## Conclusion
 
 Coinbase remains a top choice for cryptocurrency trading with its user-friendly interface, strong security measures, and educational resources. Its status as a publicly traded company further highlights its prominence and reliability in the crypto world. Whether you’re new to crypto or a seasoned trader, Coinbase offers a comprehensive platform to support your digital asset journey.
-
-**[Join Coinbase today](https://coinbase.com/join/8CXGA44?src=referral-link)** to leverage its powerful features and start trading with confidence.
 
 ---

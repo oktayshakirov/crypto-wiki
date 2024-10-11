@@ -118,14 +118,12 @@ Bitpanda offers a comprehensive and secure platform for all your investment need
 
 ## Sign Up and Get Rewarded
 
-Start your investment journey with Bitpanda and enjoy exclusive benefits. Register using the link below to get started with up to a €10 sign-up bonus:
+Start your investment journey with Bitpanda and enjoy exclusive benefits. Register using the button below to get started with up to a €10 sign-up bonus:
 
-#### **[Register here](https://www.bitpanda.com/?ref=218256540088952131) to claim your sign-up bonus and explore all that Bitpanda has to offer.**
+<Button href="https://www.bitpanda.com/?ref=218256540088952131" type="btn-exchange">Get Started With Bitpanda</Button>
 
 ## Conclusion
 
 Bitpanda stands out as a reliable and user-friendly platform for investing in a wide range of assets. With its strong focus on security, transparency, and user experience, Bitpanda is a top choice for anyone looking to invest in digital assets in Europe and beyond.
-
-**[Join Bitpanda today](https://www.bitpanda.com/?ref=218256540088952131)** to take advantage of its comprehensive services and start investing with confidence.
 
 ---

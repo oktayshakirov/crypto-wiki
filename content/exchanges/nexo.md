@@ -95,14 +95,12 @@ Nexo provides a comprehensive platform for leveraging your crypto assets and ear
 
 ## Sign Up and Get Rewarded
 
-Start your journey with Nexo and unlock exclusive benefits. Register using the link below and receive a $25 startup bonus in Bitcoin:
+Start your journey with Nexo and unlock exclusive benefits. Register using the button below and receive a $25 startup bonus in Bitcoin:
 
-#### **[Register here](https://nexo.com/ref/sm1eye9uma?src=web-link) to claim your $25 Bitcoin bonus and explore all that Nexo has to offer.**
+<Button href="https://nexo.com/ref/sm1eye9uma?src=web-link" type="btn-exchange">Get Started With Nexo</Button>
 
 ## Conclusion
 
 Nexo stands out as a leading platform in the cryptocurrency space, offering innovative financial products, strong security, and a user-friendly experience. Its focus on crypto-backed loans and high-yield savings makes it a valuable tool for managing and growing your digital assets.
-
-**[Join Nexo today](https://nexo.com/ref/sm1eye9uma?src=web-link)** to take advantage of its comprehensive services and start maximizing the potential of your crypto assets.
 
 ---

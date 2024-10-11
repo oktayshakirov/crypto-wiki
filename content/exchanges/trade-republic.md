@@ -95,14 +95,12 @@ Trade Republic offers a comprehensive and secure platform for all your investmen
 
 ## Sign Up and Get Rewarded
 
-Start your investment journey with Trade Republic and enjoy a €15 sign-up bonus when you register using the link below:
+Start your investment journey with Trade Republic and enjoy a €15 sign-up bonus when you register using the button below:
 
-#### **[Register here](https://refnocode.trade.re/sn8446n5) to claim your sign-up bonus and explore all that Trade Republic has to offer.**
+<Button href="https://refnocode.trade.re/sn8446n5" type="btn-exchange">Get Started With Trade Republic</Button>
 
 ## Conclusion
 
 Trade Republic stands out as a versatile and secure investment platform that integrates cryptocurrency trading with traditional asset management. Whether you're a seasoned investor or just starting, Trade Republic provides the tools and security you need to grow your wealth with confidence.
-
-**[Join Trade Republic today](https://refnocode.trade.re/sn8446n5)** to take advantage of its comprehensive services and start investing securely.
 
 ---
