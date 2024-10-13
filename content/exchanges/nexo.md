@@ -93,9 +93,9 @@ Nexo offers a streamlined platform for managing your assets and loans:
 
 Nexo provides a comprehensive platform for leveraging your crypto assets and earning interest. Whether you need a loan or want to grow your savings, Nexo offers the tools to help you achieve your financial goals.
 
-## Sign Up and Get Rewarded
+### Sign Up and Get Rewarded
 
-Start your journey with Nexo and unlock exclusive benefits. Register using the button below and receive a $25 startup bonus in Bitcoin:
+Start your journey with Nexo and unlock exclusive benefits. Register using the button below and receive a $35 startup bonus in Bitcoin:
 
 <Button href="https://nexo.com/ref/sm1eye9uma?src=web-link" type="btn-exchange">Get Started With Nexo</Button>
 

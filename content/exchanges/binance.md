@@ -86,13 +86,13 @@ Binance has faced several regulatory challenges and legal issues over the years,
 - **SEC Allegations**: In June 2023, the U.S. Securities and Exchange Commission (SEC) filed a lawsuit against Binance, alleging that it operated illegally in the U.S. and offered unregistered securities, including BNB and BUSD tokens.
 - **$4.3 Billion Settlement**: In November 2023, Binance agreed to a $4.3 billion settlement with the U.S. Department of Justice, pleading guilty to charges related to anti-money laundering, unlicensed money transmitting, and sanctions violations.
 
+![Binance Exchange](/images/posts/binance-banner.png)
+
 ## Get Started with Binance
 
 Embark on your cryptocurrency journey with Binance, equipped with powerful tools and services for trading, staking, and more.
 
-![Binance Exchange](/images/posts/binance-banner.png)
-
-## Sign Up and Get Rewarded
+### Sign Up and Get Rewarded
 
 Begin exploring Binance's comprehensive offerings and receive exclusive benefits. Register using the button below:
 

@@ -112,7 +112,7 @@ Crypto.com’s NFT platform features unique content from popular artists, musici
 
 Crypto.com has positioned itself as a leader in the cryptocurrency space by combining a wide array of financial services with cutting-edge technology. Whether you're looking to trade, invest, or use your crypto in everyday transactions, Crypto.com provides the tools you need to succeed in the digital economy.
 
-## Sign Up and Get Rewarded
+### Sign Up and Get Rewarded
 
 Crypto.com offers an enticing referral program where new users can sign up and start earning with exclusive bonuses. Register today using the referral button below to receive up to a $50 sign-up bonus:
 

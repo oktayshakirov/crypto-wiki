@@ -109,7 +109,7 @@ KuCoin continues to push the boundaries of innovation in the crypto space with u
 
 KuCoin offers a comprehensive platform with a wide range of features for both novice and experienced traders. Whether you're looking to trade, earn passive income, or explore new crypto projects, KuCoin provides the tools you need to succeed.
 
-## Sign Up and Get Rewarded
+### Sign Up and Get Rewarded
 
 Start your journey with KuCoin and unlock exclusive benefits. Register using the button below and explore everything KuCoin has to offer:
 

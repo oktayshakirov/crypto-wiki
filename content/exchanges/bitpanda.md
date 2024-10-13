@@ -116,7 +116,7 @@ Bitpanda continues to innovate within the financial technology space, offering u
 
 Bitpanda offers a comprehensive and secure platform for all your investment needs. Whether you're interested in cryptocurrencies, stocks, or precious metals, Bitpanda provides the tools and resources to help you build and manage your portfolio.
 
-## Sign Up and Get Rewarded
+### Sign Up and Get Rewarded
 
 Start your investment journey with Bitpanda and enjoy exclusive benefits. Register using the button below to get started with up to a €10 sign-up bonus:
 

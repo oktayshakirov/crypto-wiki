@@ -93,7 +93,7 @@ Trade Republic provides strong support and fosters an active user community:
 
 Trade Republic offers a comprehensive and secure platform for all your investment needs, whether you're interested in stocks, ETFs, derivatives, or cryptocurrencies. With its user-friendly interface and strong regulatory framework, Trade Republic is an excellent choice for anyone looking to manage their investments in one place.
 
-## Sign Up and Get Rewarded
+### Sign Up and Get Rewarded
 
 Start your investment journey with Trade Republic and enjoy a €15 sign-up bonus when you register using the button below:
 

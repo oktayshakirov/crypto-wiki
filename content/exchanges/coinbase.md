@@ -93,13 +93,13 @@ In 2022, Coinbase launched its NFT marketplace, enabling users to create profile
 - **Coinbase NFT Launch**: The platform officially launched its NFT marketplace, expanding its product offerings to include digital collectibles and making NFTs more accessible to a mainstream audience.
 - **Coinbase Pro Integration**: Coinbase Pro's advanced trading features have been integrated into the main Coinbase platform under the new "Advanced Trade" feature, streamlining the user experience and providing a unified platform for all trading activities.
 
+![Coinbase Logo](/images/posts/coinbase-app.jpg)
+
 ## Get Started with Coinbase
 
 Coinbase offers a secure and straightforward platform for all your cryptocurrency needs, whether you're a beginner or an experienced trader.
 
-![Coinbase Logo](/images/posts/coinbase-app.jpg)
-
-## Sign Up and Get Rewarded
+### Sign Up and Get Rewarded
 
 Start your journey with Coinbase and enjoy exclusive benefits. Register using the button below:
 
