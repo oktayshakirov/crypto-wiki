@@ -103,7 +103,7 @@ Coinbase offers a secure and straightforward platform for all your cryptocurrenc
 
 Start your journey with Coinbase and enjoy exclusive benefits. Register using the button below:
 
-<Button href="(https://coinbase.com/join/8CXGA44?src=referral-link" type="btn-exchange">Get Started With Coinbase</Button>
+<Button href="https://coinbase.com/join/8CXGA44?src=referral-link" type="btn-exchange">Get Started With Coinbase</Button>
 
 ## Conclusion
 

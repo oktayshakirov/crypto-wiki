@@ -10,6 +10,7 @@ social:
   twitter: https://twitter.com/nayibbukele
   instagram: https://www.instagram.com/nayibbukele
   facebook: https://www.facebook.com/nayibbukele
+  youtube: https://www.youtube.com/channel/UCIDBp59M3O_n6tNnwUt9gyA
 ---
 
 **Nayib Bukele**, the President of **El Salvador**, remains a transformative figure in the global cryptocurrency space. By making El Salvador the first country in the world to adopt Bitcoin as legal tender, Bukele has not only made headlines but also sparked both admiration and controversy. His bold move has reshaped El Salvador’s financial landscape and positioned the small Central American country at the forefront of the crypto revolution.
