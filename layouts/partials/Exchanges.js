@@ -23,6 +23,7 @@ const Exchanges = ({ exchanges }) => {
                   width={300}
                   height={120}
                   className="aspect-auto rounded-lg object-cover"
+                  loading="lazy"
                 />
               </div>
             )}
