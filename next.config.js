@@ -10,19 +10,6 @@ const nextConfig = {
       },
     ],
   },
-  async headers() {
-    return [
-      {
-        source: "/(.*).(png|jpg|jpeg|svg|js|css|woff2|ico)",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
-          },
-        ],
-      },
-    ];
-  },
   async rewrites() {
     return [
       {
