@@ -3,7 +3,7 @@ title: "What is Bitcoin? A Beginner’s Guide"
 description: "Bitcoin is the world's first cryptocurrency. Learn about its history, how it works, and why it's considered digital gold. Perfect for beginners looking to understand the foundation of the crypto world."
 date: 2024-08-31
 image: "/images/posts/suit-man-and-bitcoin.jpg"
-categories: ["Technology", "Beginners", "Blockchain"]
+categories: ["Technology", "Beginners", "Blockchain", "Bitcoin"]
 crypto-ogs: ["Satoshi Nakamoto"]
 authors: ["Crypto Wiki Team"]
 tags:
