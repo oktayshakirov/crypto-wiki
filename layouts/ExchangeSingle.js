@@ -5,7 +5,8 @@ import Image from "next/image";
 import Base from "./Baseof";
 import Social from "@components/Social";
 import Authors from "@components/Authors";
-import { FaCalendarAlt } from "react-icons/fa";
+import { FaCalendarAlt, FaExclamationTriangle } from "react-icons/fa";
+import Link from "next/link"; // Import Link component
 import dateFormat from "@lib/utils/dateFormat";
 import NextPrevNavigation from "@partials/NextPrevNavigation";
 
@@ -31,6 +32,25 @@ const ExchangeSingle = ({
       image={image}
     >
       <section className="section">
+        <div className="container text-center">
+          <div className="mt-4 rounded-lg border-2 border-orange-400 p-4">
+            <div className="mb-2 flex justify-center">
+              <FaExclamationTriangle className="text-4xl text-orange-400" />
+            </div>
+            <p className="m-0">
+              <strong>*Disclaimer:</strong> The information provided here is for
+              informational purposes only and does not constitute financial
+              advice. Cryptocurrency trading involves risks, so please DYOR. For
+              beginners, check out our{" "}
+              <Link href="/categories/beginners" className="text-primary">
+                Beginners Guides
+              </Link>{" "}
+              to learn more.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section className="section">
         <div className="container">
           <div className="text-center md:px-24">
             {image && (
@@ -38,8 +58,8 @@ const ExchangeSingle = ({
                 <Image
                   src={image}
                   className="mx-auto aspect-auto rounded-lg"
-                  height={150}
-                  width={150}
+                  height={250}
+                  width={250}
                   alt={title}
                 />
               </div>

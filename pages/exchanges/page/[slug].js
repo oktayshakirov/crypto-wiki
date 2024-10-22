@@ -22,7 +22,7 @@ const ExchangePagination = ({
   const { title } = frontmatter;
 
   return (
-    <Base title={`${title}: Trusted and Recommended Crypto Exchanges`}>
+    <Base title={`${title}: Popular Crypto Exchanges`}>
       <section className="section">
         <div className="container text-center">
           {markdownify(title, "h1", "h2 mb-16")}

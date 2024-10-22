@@ -19,21 +19,19 @@ const RandomCoinPage = () => {
             for investment ideas, or just having fun, this tool is a great way
             to dive into the crypto universe!
           </p>
-
           <RandomCoinGenerator />
-
           <div className="mt-10 rounded-lg border-2 border-orange-400 p-6 text-center">
             <div className="mb-2 flex justify-center">
               <FaExclamationTriangle className="text-4xl text-orange-400" />
             </div>
             <p className="m-0">
-              <strong>*Disclaimer:</strong> The Random Coin Generator is purely
-              for fun and research purposes. It is not intended as financial
-              advice. Please make sure to conduct your own thorough research
-              before making any investment decisions.
+              <strong>*Disclaimer:</strong> The Random Coin Generator is
+              intended for entertainment and informational purposes only. It is
+              not financial advice and should not be used to make investment
+              decisions. Always conduct thorough research and consult a
+              qualified financial advisor before making any investment choices.
             </p>
           </div>
-
           <h2 className="h3 my-4">What is the Random Coin Generator?</h2>
           <p>
             The Random Coin Generator is a simple yet fun way to discover new
@@ -43,7 +41,6 @@ const RandomCoinPage = () => {
             about its market performance, use cases, and potential for the
             future.
           </p>
-
           <h2 className="h3 my-4">How to Use the Random Coin Generator?</h2>
           <p>
             It’s easy! Just click the button to generate a random cryptocurrency
@@ -53,7 +50,6 @@ const RandomCoinPage = () => {
             it&apos;s a fun way to explore, make sure you combine it with your
             own research before making any decisions.
           </p>
-
           <h2 className="h3 my-4">Explore More Tools</h2>
           <p>
             If you&apos;re new to crypto, why not explore more of our tools?

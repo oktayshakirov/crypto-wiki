@@ -13,9 +13,10 @@ const BitcoinRainbowChartPage = () => {
             🌈 Bitcoin Rainbow Chart 🌈
           </h1>
           <p className="mb-3 text-center">
-            The Rainbow Chart is like the ultimate crystal ball for Bitcoin
-            prices. It uses a sophisticated, ever-growing curve to give you a
-            colorful sneak peek into where BTC might be headed in the future.
+            The Rainbow Chart is a visual tool that represents Bitcoin&apos;s
+            historical price trends using a logarithmic growth curve. It offers
+            a colorful way to explore how Bitcoin&apos;s price has fluctuated
+            over time, based on past market behavior.
           </p>
         </div>
 
@@ -29,10 +30,14 @@ const BitcoinRainbowChartPage = () => {
               <FaExclamationTriangle className="text-4xl text-orange-400" />
             </div>
             <p className="m-0">
-              <strong>*Disclaimer:</strong> The Rainbow Chart is not investment
-              advice! It&apos;s just a fun, colorful way to think about
-              long-term Bitcoin price trends, ignoring the daily ups and downs.
-              So, enjoy the rainbow, but don’t bet your life savings on it!
+              <strong>*Disclaimer:</strong> The Rainbow Chart is for
+              informational and educational purposes only and should not be
+              construed as financial advice. It is a visual tool designed to
+              reflect historical trends, and any future projections are purely
+              speculative. Please do not base any financial or investment
+              decisions solely on this chart. Always conduct thorough research
+              and consult with a qualified financial advisor before making any
+              investment choices.
             </p>
           </div>
 

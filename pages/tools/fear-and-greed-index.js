@@ -20,12 +20,12 @@ const FearAndGreedIndexPage = () => {
             📉 Fear and Greed Index 📈
           </h1>
           <p className="mb-3 text-center">
-            The Fear and Greed Index measures the emotions and sentiments of the
-            market. It ranges from 0 to 100, with lower values indicating fear
-            and higher values indicating greed. Use this tool to gauge market
-            sentiment and make informed decisions.
+            The Fear and Greed Index is a tool that tracks market sentiment by
+            analyzing various factors. The index ranges from 0 to 100, with
+            lower values representing fear and higher values indicating greed.
+            It provides insight into market emotions, offering a way to better
+            understand current market conditions.
           </p>
-
           <FearAndGreedIndexChart />
           <div className="mt-2 flex flex-wrap justify-center gap-1 md:gap-4">
             {data.map((item, index) => (
@@ -48,10 +48,12 @@ const FearAndGreedIndexPage = () => {
               <FaExclamationTriangle className="text-4xl text-orange-400" />
             </div>
             <p className="m-0">
-              <strong>*Disclaimer:</strong> The Fear and Greed Index is a
-              sentiment analysis tool. It is not investment advice! Use it to
-              analyse market conditions, but always conduct your own research
-              before making any investment decisions.
+              <strong>*Disclaimer:</strong> The Fear and Greed Index is a market
+              sentiment analysis tool and is provided for informational purposes
+              only. It is not intended to be used as financial or investment
+              advice. Please ensure that you perform thorough research and
+              consult with a qualified financial advisor before making any
+              investment decisions.
             </p>
           </div>
 

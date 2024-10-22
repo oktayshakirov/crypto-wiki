@@ -35,17 +35,20 @@ We may share your personal information with:
 
 - **Service Providers**: Third-party vendors who perform services on our behalf.
 - **Legal Obligations**: If required by law, we may disclose your information to comply with legal obligations.
-- **Aggregated Data**: We may share aggregated, non-personally identifiable information publicly or with third parties.
-  We use third-party services, such as Google Analytics and Google AdSense, to analyze usage trends and serve personalized ads. These third parties may collect information about your activity on our website and across different websites using cookies and similar technologies.
+- **Aggregated Data**: We may share aggregated, non-personally identifiable information publicly or with third parties. We use third-party services, such as Google Analytics and Google AdSense, to analyze usage trends and serve personalized ads. These third parties may collect information about your activity on our website and across different websites using cookies and similar technologies.
 
 ## 4. CONSENT TO USE OF DATA
 
 By using our website, you consent to the collection and use of your information as outlined in this Privacy Policy. If you do not agree with any part of this policy, please refrain from using our website. You may withdraw your consent at any time by adjusting your browser settings to disable cookies or by contacting us directly.
 
+### Cookies and Consent:
+
+By using our website, you consent to the use of cookies and similar technologies. Users are presented with a cookie consent banner on their first visit, and you can manage or withdraw your consent anytime by adjusting your browser settings.
+
 ## 5. YOUR CHOICES REGARDING YOUR INFORMATION
 
 - **Opt-Out of Communications**: You can opt-out of receiving promotional emails by following the unsubscribe instructions provided in those emails.
-- **Cookies**: You can choose to disable cookies through your browser settings.
+- **Cookies**: You can choose to disable cookies through your browser settings. You may also withdraw consent for cookie usage through the cookie management tool provided on the website.
 
 ## 6. COOKIES
 
@@ -55,11 +58,15 @@ We use cookies and similar tracking technologies to collect information about yo
 - **Analyze site performance** and user behavior.
 - **Provide targeted advertising** and track its effectiveness.
 
-## 7. SECURITY AND STORAGE OF INFORMATION
+## 7. CHILDREN'S PRIVACY
+
+TheCrypto.Wiki does not knowingly collect or solicit any personal information from children under the age of 13. If we learn that we have inadvertently collected personal information from a child under 13, we will delete that information as quickly as possible. If you believe that a child under 13 may have provided us with personal information, please contact us immediately.
+
+## 8. SECURITY AND STORAGE OF INFORMATION
 
 We take reasonable measures to protect the information that we collect from or about you from unauthorized access, use, or disclosure. However, no method of transmission over the internet, or method of electronic storage, is completely secure, and we cannot guarantee its absolute security.
 
-## 8. NOT FINANCIAL ADVICE
+## 9. NOT FINANCIAL ADVICE
 
 TheCrypto.Wiki provides articles, tools, and information related to cryptocurrency. **None of the content provided on TheCrypto.Wiki constitutes financial, investment, or legal advice.**
 
@@ -67,7 +74,7 @@ TheCrypto.Wiki provides articles, tools, and information related to cryptocurren
 - **Do Your Own Research**: Users are encouraged to conduct their own research and consult with professional advisors before making any financial decisions.
 - **No Liability**: TheCrypto.Wiki and its authors are not responsible for any financial decisions made based on the information provided on this website.
 
-## 9. REFERRAL LINKS AND THIRD-PARTY SERVICES
+## 10. REFERRAL LINKS AND THIRD-PARTY SERVICES
 
 TheCrypto.Wiki may include referral links to third-party products, services, or websites. These referral links may result in a commission or bonus being paid to us if you make a purchase or sign up through the link.
 
@@ -75,22 +82,26 @@ TheCrypto.Wiki may include referral links to third-party products, services, or 
 - **No Responsibility for Third Parties**: We are not responsible for the content, privacy policies, or practices of any third-party websites or services. Users should review the terms and conditions and privacy policies of any third-party service before engaging with them.
 - **Transparency**: We aim to be transparent about our use of referral links, and we encourage users to contact us if they have any questions or concerns.
 
-## 10. GLOBAL PRIVACY COMPLIANCE
+## 11. GLOBAL PRIVACY COMPLIANCE
 
 TheCrypto.Wiki is committed to complying with global privacy regulations. Users from different regions have rights concerning their personal information, including access, correction, and deletion.
 
 - **Your Rights**: Depending on your location, you may have certain rights regarding your personal data, such as the right to access, rectify, or erase your data, the right to restrict processing, and the right to data portability.
 - **International Transfers**: By using our services, you consent to the transfer of your information to our facilities and to those third parties with whom we share it as described in this policy, regardless of where you are located.
 
-## 11. LINKS TO THIRD-PARTY WEBSITES
+### California Privacy Rights (CCPA):
+
+California residents have the right to request access to personal information we have collected, request deletion of their personal information, and opt-out of the sale of personal information. To exercise these rights, please contact us directly.
+
+## 12. LINKS TO THIRD-PARTY WEBSITES
 
 Our Website may contain links to third-party websites. We are not responsible for the privacy practices or the content of these external sites. We encourage you to review the privacy policies of any third-party sites you visit.
 
-## 12. TERMS OF USE
+## 13. TERMS OF USE
 
 Please review our [Terms of Use](/terms) for more information on the rules and policies that govern your use of TheCrypto.Wiki. Your use of our website and services is also subject to the Terms of Use, which are incorporated by reference into this Privacy Policy.
 
-## 13. CHANGES TO THIS POLICY
+## 14. CHANGES TO THIS POLICY
 
 We reserve the right to modify this Privacy Policy at any time. If we make any changes, we will post the updated policy on this page.
 
