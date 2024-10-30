@@ -29,8 +29,8 @@ const Posts = ({ posts }) => {
                   src={post.frontmatter.image}
                   alt={post.frontmatter.title}
                   fill
-                  priority={true}
                   sizes="(max-width: 768px) 100vw, 50vw"
+                  loading="lazy"
                 />
               </div>
             )}

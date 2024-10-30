@@ -20,6 +20,7 @@ const Authors = ({ authors }) => {
                     width={150}
                     height={150}
                     className="rounded-lg object-cover"
+                    loading="lazy"
                   />
                 </Link>
               </div>

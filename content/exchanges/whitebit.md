@@ -105,16 +105,14 @@ WhiteBIT continues to innovate and expand its offerings to meet the needs of its
 
 WhiteBIT provides a secure and efficient platform for all your cryptocurrency needs. Whether you’re interested in trading, staking, or simply managing your assets, WhiteBIT offers the tools and resources to help you succeed in the digital economy.
 
-## Sign Up and Get Rewarded
+### Sign Up and Get Rewarded
 
-Start your journey with WhiteBIT and enjoy exclusive benefits. Register using the link below to get started:
+Start your journey with WhiteBIT and enjoy exclusive benefits. Register using the button below to get started:
 
-#### **[Register here](https://whitebit.com/referral/7e78e3d7-dfc9-4182-8443-16ca40922f81) to explore all that WhiteBIT has to offer and start trading securely.**
+<Button href="https://whitebit.com/referral/7e78e3d7-dfc9-4182-8443-16ca40922f81" type="btn-exchange">Get Started With WhiteBIT</Button>
 
 ## Conclusion
 
 WhiteBIT stands out as a reliable and secure platform for cryptocurrency trading, offering a user-friendly experience and advanced tools. With its strong focus on security, regulatory compliance, and community support, WhiteBIT is a top choice for anyone looking to trade and invest in digital assets.
-
-**[Join WhiteBIT today](https://whitebit.com/referral/7e78e3d7-dfc9-4182-8443-16ca40922f81)** to take advantage of its comprehensive services and start your crypto journey with confidence.
 
 ---

@@ -19,22 +19,20 @@ const StakingCalculatorPage = () => {
             with our accurate staking calculator.
           </p>
         </div>
-
         <StakingCalculator />
-
         <div className="container">
           <div className="mt-5 rounded-lg border-2 border-orange-400 p-6 text-center">
             <div className="mb-2 flex justify-center">
               <FaExclamationTriangle className="text-4xl text-orange-400" />
             </div>
             <p className="m-0">
-              <strong>*Disclaimer:</strong> This staking calculator provides
-              estimates and is for informational purposes only. Actual rewards
-              depend on market conditions and the staking platform you choose.
-              Always research before staking your assets.
+              <strong>*Disclaimer:</strong> This staking calculator offers
+              estimates for informational purposes only. Actual rewards may vary
+              based on market conditions and the specific staking platform used.
+              Always conduct thorough research and consider risks before staking
+              your assets.
             </p>
           </div>
-
           <h2 className="h3 my-4">What is Crypto Staking?</h2>
           <p>
             Staking allows cryptocurrency holders to lock their assets in a
@@ -43,7 +41,6 @@ const StakingCalculatorPage = () => {
             the same crypto they staked. It&apos;s a way to grow your crypto
             holdings without trading.
           </p>
-
           <h2 className="h3 my-4">How Does Staking Work? </h2>
           <p>
             When you stake your crypto, you contribute to network security and
@@ -52,7 +49,6 @@ const StakingCalculatorPage = () => {
             can use this calculator to estimate your staking earnings by
             entering your staking amount, APY, and duration.
           </p>
-
           <h2 className="h3 my-4">Why Should You Stake Crypto? </h2>
           <p>
             Staking is an excellent option for long-term holders looking to grow
@@ -60,7 +56,6 @@ const StakingCalculatorPage = () => {
             you not only support the blockchain network but also earn rewards,
             helping your crypto grow over time.
           </p>
-
           <h2 className="h3 my-4">How to Start Staking?</h2>
           <p>
             If you&apos;re ready to start staking your crypto, make sure to

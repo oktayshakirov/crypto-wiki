@@ -108,7 +108,7 @@ const Home = ({ posts, ogs, exchanges }) => {
             </div>
           </div>
           <div className="mb-20">
-            {markdownify("RECOMMENDED CRYPTO EXCHANGES", "h3", "mb-8")}
+            {markdownify("CRYPTO EXCHANGES", "h3", "mb-8")}
             <Exchanges exchanges={exchanges} />
             <div className="mt-6 flex flex-col justify-center space-y-3 md:flex-row md:space-x-3 md:space-y-0">
               <Link

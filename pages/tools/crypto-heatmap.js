@@ -46,13 +46,14 @@ const CryptoHeatmapPage = () => {
               <FaExclamationTriangle className="text-4xl text-orange-400" />
             </div>
             <p className="m-0">
-              <strong>*Disclaimer:</strong> The Crypto Market Heatmap provides a
-              visual representation of market data for analysis purposes. It is
-              not intended to serve as financial advice. Please conduct your own
-              research before making investment decisions.
+              <strong>*Disclaimer:</strong> The Crypto Market Heatmap is a
+              visual tool designed to present market data for informational and
+              analytical purposes only. It should not be interpreted as
+              financial advice or a recommendation to invest. Always perform
+              thorough research and consult with a licensed financial advisor
+              before making any investment decisions.
             </p>
           </div>
-
           <h2 className="h3 my-4">What is a Crypto Heatmap?</h2>
           <p>
             A crypto heatmap is a visual tool that shows the price movement and

@@ -8,7 +8,7 @@ Welcome to TheCrypto.Wiki, a website dedicated to providing educational content 
 
 ## 1. Acceptance of Terms
 
-By accessing or using the Service, you affirm that you are at least 18 years old or have obtained parental or guardian consent to use the Service. You acknowledge that you have read, understood, and agree to be bound by these Terms of Use, including any future modifications. If you do not agree to these Terms, you may not use the Service.
+By accessing or using the Service, you affirm that you are at least 18 years old or have obtained parental or guardian consent to use the Service if you are between the ages of 13 and 18. The Service is not intended for children under 13, and we do not knowingly collect personal information from children under 13. You acknowledge that you have read, understood, and agree to be bound by these Terms of Use, including any future modifications. If you do not agree to these Terms, you may not use the Service.
 
 ## 2. Privacy Policy
 
@@ -33,18 +33,25 @@ You agree not to engage in any of the following activities:
 - Using the Service to engage in any form of unauthorized advertising, solicitation, or spamming.
 - Attempting to gain unauthorized access to the Service, user accounts, or computer systems or networks connected to the Service.
 - Uploading, transmitting, or distributing any content that is unlawful, defamatory, harmful, or violates any intellectual property or privacy rights of others.
+- **Prohibition of Click Fraud**: Engaging in any activity that artificially increases the number of clicks or impressions on advertisements, including but not limited to encouraging users to click on ads or using automated systems to generate clicks or impressions. Such behavior may result in immediate termination of your access to the Service.
 
 ## 6. Affiliate Links and Third-Party Content
 
-Some articles and pages on TheCrypto.Wiki may contain affiliate links, which means that we may earn a commission if you make a purchase through those links. We are not responsible for the content, policies, or practices of any third-party websites or services. Your interactions with such third-party sites are governed by their own terms and conditions.
+Some articles and pages on TheCrypto.Wiki may contain affiliate links, which means that we may earn a commission if you make a purchase through those links. In addition to affiliate links, TheCrypto.Wiki uses third-party advertising networks, such as Google AdSense, to display ads on our website. These networks may collect information about your activity on the website using cookies and other tracking technologies to serve personalized ads. By using our Service, you consent to the use of cookies and similar technologies by these networks. You can manage your consent and opt-out of personalized ads via your browser settings or by visiting [Google's Ad Settings](https://adssettings.google.com).
+
+We are not responsible for the content, policies, or practices of any third-party websites or services. Your interactions with such third-party sites are governed by their own terms and conditions.
 
 ## 7. API Usage and Tools
 
-TheCrypto.Wiki may provide tools and APIs that interact with third-party services or data. Use of these tools and APIs is at your own risk. We do not guarantee the accuracy, reliability, or availability of any data obtained through these tools, and we are not responsible for any actions taken based on this data.
+TheCrypto.Wiki may provide tools and APIs that interact with third-party services or data. Use of these tools and APIs is at your own risk. The tools and APIs provided by TheCrypto.Wiki are for informational purposes only. We do not guarantee the accuracy, reliability, or availability of the data provided through these tools, and you should not rely solely on them for making financial decisions.
 
 ## 8. Global Privacy Compliance
 
-TheCrypto.Wiki is committed to complying with global privacy laws and regulations. By using the Service, you agree to the collection and processing of your data as described in our Privacy Policy. If you are accessing the Service from outside of your country, you agree to comply with all local laws and regulations that may apply.
+TheCrypto.Wiki is committed to complying with global privacy laws and regulations. By using the Service, you agree to the collection and processing of your data as described in our Privacy Policy. We use cookies to collect and process data as described in our Privacy Policy. By using our website, you consent to the use of cookies for personalization and analytics purposes. Users in the European Economic Area (EEA) will see a cookie consent banner on their first visit and can manage or withdraw their consent anytime through browser settings.
+
+### California Privacy Rights (CCPA)
+
+California residents have the right to request access to personal information we have collected, request deletion of their personal information, and opt-out of the sale of personal information. To exercise these rights, please contact us directly.
 
 ## 9. Limitation of Liability
 
@@ -65,7 +72,7 @@ TheCrypto.Wiki reserves the right to modify, suspend, or discontinue the Service
 
 ## 12. Governing Law and Dispute Resolution
 
-These Terms shall be governed by and construed in accordance with the laws of the jurisdiction in which TheCrypto.Wiki operates, without regard to its conflict of law principles. Any disputes arising out of or relating to these Terms or the Service shall be resolved through binding arbitration, rather than in court, except where prohibited by law.
+These Terms shall be governed by and construed in accordance with the laws of the jurisdiction in which TheCrypto.Wiki operates, without regard to its conflict of law principles. Users outside of this jurisdiction agree to comply with all local laws applicable to their use of the Service. Any disputes arising from or relating to these Terms or the Service will be resolved through binding arbitration.
 
 ## 13. Indemnification
 

@@ -106,16 +106,14 @@ CoinEx continues to push the boundaries of innovation in the crypto space with u
 
 CoinEx offers a comprehensive platform with a wide range of features for both novice and experienced traders. Whether you're looking to trade, earn passive income, or explore new crypto projects, CoinEx provides the tools you need to succeed.
 
-## Sign Up and Get Rewarded
+### Sign Up and Get Rewarded
 
-Start your journey with CoinEx and unlock exclusive benefits. Register using the link below and explore everything CoinEx has to offer:
+Start your journey with CoinEx and unlock exclusive benefits. Register using the button below and explore everything CoinEx has to offer:
 
-#### **[Register here](https://www.coinex.com/register?refer_code=7yrbs) to claim your rewards and begin your crypto journey on CoinEx.**
+<Button href="https://www.coinex.com/register?refer_code=7yrbs" type="btn-exchange">Get Started With Coinex</Button>
 
 ## Conclusion
 
 CoinEx stands out as a versatile and user-friendly cryptocurrency exchange, offering an extensive range of assets, advanced trading features, and a strong commitment to security. Whether you're a seasoned trader or just getting started, CoinEx provides a robust platform to help you achieve your crypto goals.
-
-**[Join CoinEx today](https://www.coinex.com/register?refer_code=7yrbs)** to take advantage of its innovative features and start trading with confidence.
 
 ---
