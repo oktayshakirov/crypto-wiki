@@ -1,4 +1,18 @@
-<h1 align=center>Crypto Wiki</h1>
+# TinnitusHelp.me
+
+Crypto Wiki is your trusted source for accurate and up-to-date information on all things cryptocurrency. We are dedicated to making the complex world of digital assets accessible to everyone, regardless of their level of experience.
+
+> In the rapidly evolving world of cryptocurrency, staying informed isn't just an option—it's a necessity. At Crypto Wiki, we make that journey easier and more insightful.
+
+Whether you're just beginning your crypto journey or are a seasoned enthusiast looking to stay on top of the latest developments, Crypto Wiki has you covered. Our platform offers a wide range of content, from beginner guides that explain the basics of blockchain technology to advanced insights into emerging trends and innovations in the cryptocurrency space.
+
+## Demo
+
+![Desktop Demo](https://oktayshakirov.com/assets/images/projects/crypto-wiki.png "Desktop Demo")
+
+<p align="center">
+  <a href="https://www.TinnitusHelp.me/"><strong>➥ Live Demo</strong></a>
+</p>
 
 <!-- installation -->
 
