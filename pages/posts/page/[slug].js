@@ -95,7 +95,7 @@ export const getStaticProps = async ({ params }) => {
   const indexOfFirstPost = indexOfLastPost - paginationPosts;
   const currentPosts = allPosts.slice(indexOfFirstPost, indexOfLastPost);
 
-  const postIndex = await getListPage("content/posts/_index.md");
+  const postIndex = await getListPage("content/posts/_index.mdx");
   const categories = getTaxonomy(`content/${blog_folder}`, "categories");
 
   return {

@@ -57,7 +57,7 @@ export const getStaticProps = async ({ params }) => {
   const currentPage = parseInt((params && params.slug) || 1);
   const { paginationCryptoOGs } = config.settings;
   const ogs = getSinglePage("content/crypto-ogs");
-  const ogIndex = await getListPage("content/crypto-ogs/_index.md");
+  const ogIndex = await getListPage("content/crypto-ogs/_index.mdx");
 
   return {
     props: {
