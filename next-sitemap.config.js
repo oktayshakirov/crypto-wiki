@@ -10,7 +10,7 @@ module.exports = {
     let priority = config.priority;
     let changefreq = config.changefreq;
 
-    if (path.startsWith("/search")) {
+    if (path.startsWith("/search") || path.startsWith("/tags")) {
       return null;
     }
 
@@ -42,7 +42,7 @@ module.exports = {
       priority = 0.7;
       changefreq = "weekly";
     } else if (
-      /^\/(tags|faq|privacy-policy|terms|about|contact|authors)$/.test(path)
+      /^\/(faq|privacy-policy|terms|about|contact|authors)$/.test(path)
     ) {
       priority = 0.4;
       changefreq = "weekly";
@@ -61,6 +61,7 @@ module.exports = {
       {
         userAgent: "*",
         allow: "/",
+        disallow: ["/tags/"],
       },
     ],
   },
