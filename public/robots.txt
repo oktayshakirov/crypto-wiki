@@ -3,5 +3,8 @@ User-agent: *
 Allow: /
 Disallow: /tags/
 
+# Host
+Host: https://www.thecrypto.wiki
+
 # Sitemaps
 Sitemap: https://www.thecrypto.wiki/sitemap.xml

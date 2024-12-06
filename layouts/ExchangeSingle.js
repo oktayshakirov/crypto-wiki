@@ -1,14 +1,14 @@
 import { markdownify } from "@lib/utils/textConverter";
-import shortcodes from "@shortcodes/all";
 import { MDXRemote } from "next-mdx-remote";
 import Image from "next/image";
 import Base from "./Baseof";
 import Social from "@components/Social";
 import Authors from "@components/Authors";
 import { FaCalendarAlt, FaExclamationTriangle } from "react-icons/fa";
-import Link from "next/link"; // Import Link component
+import Link from "next/link";
 import dateFormat from "@lib/utils/dateFormat";
 import NextPrevNavigation from "@partials/NextPrevNavigation";
+import Button from "@components/Button";
 
 const ExchangeSingle = ({
   frontmatter,
@@ -67,10 +67,10 @@ const ExchangeSingle = ({
             {markdownify(title, "h1", "h2 mb-8")}
             <Social source={social} className="social-icons-simple" />
             <div className="content text-start">
-              <MDXRemote {...mdxContent} components={shortcodes} />
+              <MDXRemote {...mdxContent} components={{ Button }} />
             </div>
-            <div className="flex items-center justify-center">
-              <span className="mt-2 flex items-center md:mt-0">
+            <div className="mt-8 flex items-center justify-center">
+              <span className="flex items-center md:mt-0">
                 <FaCalendarAlt className="mr-2" />
                 {dateFormat(date)}
               </span>

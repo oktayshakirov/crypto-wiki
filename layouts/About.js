@@ -1,6 +1,5 @@
 import Social from "@components/Social";
 import { markdownify } from "@lib/utils/textConverter";
-import shortcodes from "@shortcodes/all";
 import { MDXRemote } from "next-mdx-remote";
 import Image from "next/image";
 
@@ -26,7 +25,7 @@ const About = ({ data }) => {
         <Social source={social} className="social-icons-simple my-8" />
 
         <div className="content">
-          <MDXRemote {...mdxContent} components={shortcodes} />
+          <MDXRemote {...mdxContent} />
         </div>
       </div>
     </section>

@@ -33,13 +33,13 @@ export const getStaticPaths = () => {
 export const getStaticProps = async ({ params }) => {
   const { single } = params;
   const getExchanges = getSinglePage("content/exchanges");
-  const exchange = getExchanges.filter((exchange) => exchange.slug == single);
+  const exchange = getExchanges.filter((exchange) => exchange.slug === single);
   const mdxContent = await parseMDX(exchange[0].content);
 
   return {
     props: {
-      exchange: exchange,
-      mdxContent: mdxContent,
+      exchange,
+      mdxContent,
       exchanges: getExchanges,
       slug: single,
     },

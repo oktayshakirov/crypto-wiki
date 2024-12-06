@@ -2,7 +2,6 @@ import dateFormat from "@lib/utils/dateFormat";
 import similerItems from "@lib/utils/similarItems";
 import { humanize, markdownify, slugify } from "@lib/utils/textConverter";
 import SimilarPosts from "@partials/SimilarPosts";
-import shortcodes from "@shortcodes/all";
 import { MDXRemote } from "next-mdx-remote";
 import Image from "next/image";
 import Link from "next/link";
@@ -133,7 +132,7 @@ const PostSingle = ({ post, posts, cryptoOgs, exchanges, slug }) => {
               />
             )}
             <div className="content mb-16 text-left text-white">
-              <MDXRemote {...mdxContent} components={shortcodes} />
+              <MDXRemote {...mdxContent} />
             </div>
             <div className="flex flex-wrap items-center justify-between">
               <ul className="mb-4 mr-4 flex flex-wrap justify-center gap-3">
