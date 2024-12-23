@@ -28,7 +28,7 @@
 }
 
 .social-icons {
-  @apply space-x-4;
+  @apply flex space-x-4;
   li {
     @apply inline-block;
     a {

@@ -64,6 +64,14 @@
     {
       "name": "Terms of Use",
       "url": "/terms"
+    },
+    {
+      "name": "Affiliate Disclosure",
+      "url": "/affiliate-disclosure"
+    },
+    {
+      "name": "Advertising",
+      "url": "/advertising"
     }
   ]
 }

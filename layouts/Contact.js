@@ -24,18 +24,18 @@ const Contact = () => {
       </p>
       <ul className="mb-6 list-inside list-disc">
         <li className="mb-2">
-          <FaEnvelope className="mr-2 inline-block text-yellow-500" />
-          <strong>Email:</strong>{" "}
+          <FaTwitter className="mr-2 inline-block text-yellow-500" />
+          <strong>Twitter:</strong>{" "}
           <a
-            href="mailto:info@thecrypto.wiki"
+            href="https://x.com/TheCrypto_Wiki"
             className="text-yellow-500 hover:underline"
           >
-            info@thecrypto.wiki
+            @TheCrypto_Wiki
           </a>
         </li>
         <li className="mb-2">
-          <FaUser className="mr-2 inline-block text-yellow-500" />
-          <strong>Personal Email:</strong>{" "}
+          <FaEnvelope className="mr-2 inline-block text-yellow-500" />
+          <strong>Email:</strong>{" "}
           <a
             href="mailto:oktayshakirov@gmail.com"
             className="text-yellow-500 hover:underline"
@@ -44,13 +44,13 @@ const Contact = () => {
           </a>
         </li>
         <li className="mb-2">
-          <FaTwitter className="mr-2 inline-block text-yellow-500" />
-          <strong>Twitter:</strong>{" "}
+          <FaUser className="mr-2 inline-block text-yellow-500" />
+          <strong>Linkedin:</strong>{" "}
           <a
-            href="https://x.com/TheCrypto_Wiki"
+            href="https://www.linkedin.com/in/oktayshakirov/"
             className="text-yellow-500 hover:underline"
           >
-            @TheCrypto_Wiki
+            Founder / Developer
           </a>
         </li>
       </ul>

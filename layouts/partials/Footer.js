@@ -16,22 +16,26 @@ const Footer = () => {
           a financial advisor before making any investment decisions.
         </p>
       </div>
-      <div className="container mt-4 text-center">
-        <div className="flex flex-col items-center space-y-8 lg:flex-row lg:justify-between lg:space-x-8 lg:space-y-0">
-          <ul className="flex flex-col items-center space-y-4 lg:flex-row lg:space-x-4 lg:space-y-0">
+      <div className="container mt-4">
+        <div className="flex flex-col items-center space-y-8 lg:space-y-4">
+          <ul className="footer-menu flex flex-col justify-center gap-4 md:flex-row md:flex-wrap">
             {menu.footer.map((menu) => (
-              <li className="inline-block" key={menu.name}>
+              <li key={menu.name}>
                 <Link
                   href={menu.url}
-                  className="p-4 text-light hover:text-white"
+                  className="whitespace-nowrap text-light hover:text-white"
                 >
                   {menu.name}
                 </Link>
               </li>
             ))}
           </ul>
-          <Social source={social} className="social-icons" />
-          <div>{markdownify(copyright, "p", "text-light")}</div>
+          <div className="flex w-full flex-col items-center space-y-4 lg:flex-row lg:justify-between lg:space-x-8 lg:space-y-0">
+            <Social source={social} className="social-icons" />
+            <div className="text-center">
+              {markdownify(copyright, "p", "text-light")}
+            </div>
+          </div>
         </div>
       </div>
     </footer>
