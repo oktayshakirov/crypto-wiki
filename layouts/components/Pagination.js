@@ -49,7 +49,7 @@ const Pagination = ({ section, currentPage, totalPages, basePath }) => {
   const linkBasePath = basePath || (section ? `/${section}` : "/");
 
   return (
-    <nav className="mb-4 flex justify-center space-x-4" aria-label="Pagination">
+    <nav className="pagination" aria-label="Pagination">
       {hasPrevPage && (
         <PrevButton href={generateLink(linkBasePath, currentPage - 1)} />
       )}
