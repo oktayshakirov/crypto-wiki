@@ -16,7 +16,7 @@ const Posts = ({ posts }) => {
   return (
     <div className="row">
       {posts.map((post) => (
-        <div key={post.slug} className="col-12 mb-10 justify-center sm:col-6">
+        <div key={post.slug} className="col-12 mb-7 justify-center sm:col-6">
           <div
             className="card flex h-full flex-col justify-between"
             onClick={(e) => handleCardClick(e, post.slug)}
