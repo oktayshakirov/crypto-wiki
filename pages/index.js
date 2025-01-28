@@ -1,6 +1,7 @@
 import Base from "@layouts/Baseof";
 import { getSinglePage } from "@lib/contentParser";
 import Posts from "@partials/Posts";
+import Pagination from "@components/Pagination";
 import CryptoOGs from "@partials/CryptoOGs";
 import Exchanges from "@partials/Exchanges";
 import { markdownify } from "@lib/utils/textConverter";
@@ -18,7 +19,15 @@ import {
   FaHashtag,
 } from "react-icons/fa";
 
-const Home = ({ posts, ogs, exchanges }) => {
+const Home = ({
+  posts,
+  ogs,
+  exchanges,
+  currentPage,
+  postPages,
+  ogPages,
+  exchangePages,
+}) => {
   return (
     <Base>
       <section>
@@ -29,7 +38,12 @@ const Home = ({ posts, ogs, exchanges }) => {
           </h1>
           {markdownify("LATEST POSTS", "h3", "mb-8")}
           <Posts posts={posts} />
-          <div className="mb-20 flex flex-col justify-center space-y-3 md:flex-row md:space-x-3 md:space-y-0">
+          <Pagination
+            basePath="/posts"
+            currentPage={currentPage}
+            totalPages={postPages}
+          />
+          <div className="mb-20 mt-6 flex flex-col justify-center space-y-3 md:flex-row md:space-x-3 md:space-y-0">
             <Link className="btn-primary flex items-center gap-2" href="/posts">
               <FaRegNewspaper />
               <span>ALL POSTS</span>
@@ -90,6 +104,11 @@ const Home = ({ posts, ogs, exchanges }) => {
           <div className="mb-20">
             {markdownify("CRYPTO LEGENDS", "h3", "mb-8")}
             <CryptoOGs ogs={ogs} />
+            <Pagination
+              basePath="/crypto-ogs"
+              currentPage={currentPage}
+              totalPages={ogPages}
+            />
             <div className="mt-6 flex flex-col justify-center space-y-3 md:flex-row md:space-x-3 md:space-y-0">
               <Link
                 className="btn-primary flex items-center gap-2"
@@ -110,6 +129,11 @@ const Home = ({ posts, ogs, exchanges }) => {
           <div className="mb-20">
             {markdownify("CRYPTO EXCHANGES", "h3", "mb-8")}
             <Exchanges exchanges={exchanges} />
+            {/* <Pagination
+              basePath="/exchanges"
+              currentPage={currentPage}
+              totalPages={exchangePages}
+            /> */}
             <div className="mt-6 flex flex-col justify-center space-y-3 md:flex-row md:space-x-3 md:space-y-0">
               <Link
                 className="btn-primary flex items-center gap-2"
@@ -136,15 +160,32 @@ const Home = ({ posts, ogs, exchanges }) => {
 export default Home;
 
 export const getStaticProps = async () => {
-  const posts = getSinglePage("content/posts").slice(0, 6);
-  const ogs = getSinglePage("content/crypto-ogs").slice(0, 3);
-  const exchanges = getSinglePage("content/exchanges").slice(0, 6);
+  const paginationPosts = 6;
+  const paginationOGs = 6;
+  const paginationExchanges = 6;
+  const allPosts = getSinglePage("content/posts");
+  const allOGs = getSinglePage("content/crypto-ogs");
+  const allExchanges = getSinglePage("content/exchanges");
+  const currentPage = 1;
+  const totalPostsPages = Math.ceil(allPosts.length / paginationPosts);
+  const totalOGsPages = Math.ceil(allOGs.length / paginationOGs);
+  const totalExchangesPages = Math.ceil(
+    allExchanges.length / paginationExchanges
+  );
+
+  const currentPosts = allPosts.slice(0, paginationPosts);
+  const currentOGs = allOGs.slice(0, paginationOGs);
+  const currentExchanges = allExchanges.slice(0, paginationExchanges);
 
   return {
     props: {
-      posts: posts || [],
-      ogs: ogs || [],
-      exchanges: exchanges || [],
+      posts: currentPosts,
+      ogs: currentOGs,
+      exchanges: currentExchanges,
+      postPages: totalPostsPages,
+      ogPages: totalOGsPages,
+      exchangePages: totalExchangesPages,
+      currentPage,
     },
   };
 };
