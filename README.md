@@ -1,4 +1,4 @@
-# TinnitusHelp.me
+# TheCrypto.wiki
 
 Crypto Wiki is your trusted source for accurate and up-to-date information on all things cryptocurrency. We are dedicated to making the complex world of digital assets accessible to everyone, regardless of their level of experience.
 
