@@ -164,3 +164,10 @@
 .profit {
   @apply text-green-500;
 }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
