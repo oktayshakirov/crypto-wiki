@@ -22,33 +22,39 @@ const getVisiblePages = (currentPage, totalPages, isMobile) => {
   if (!isMobile) {
     return Array.from({ length: totalPages }, (_, i) => i + 1);
   }
-
-  const maxVisible = 3;
-  let pages = [];
-
-  if (totalPages <= maxVisible + 2) {
+  if (totalPages <= 4) {
     return Array.from({ length: totalPages }, (_, i) => i + 1);
   }
 
-  pages.push(1);
+  let pages = [];
+  const isInFirstHalf = currentPage <= Math.ceil(totalPages / 2);
 
-  if (currentPage <= 3) {
-    pages.push(2);
-    pages.push(3);
-    if (totalPages > 4) {
-      pages.push("...");
-    }
-    pages.push(totalPages);
-  } else if (currentPage >= totalPages - 2) {
-    pages.push("...");
-    for (let i = totalPages - 2; i <= totalPages; i++) {
-      pages.push(i);
+  if (isInFirstHalf) {
+    pages = [
+      currentPage - 1,
+      currentPage,
+      currentPage + 1,
+      currentPage + 2,
+    ].filter((page) => page > 0 && page <= totalPages);
+    while (pages.length < 4) {
+      const nextPage = pages[pages.length - 1] + 1;
+      if (nextPage <= totalPages) {
+        pages.push(nextPage);
+      }
     }
   } else {
-    pages.push("...");
-    pages.push(currentPage);
-    pages.push("...");
-    pages.push(totalPages);
+    pages = [
+      currentPage - 2,
+      currentPage - 1,
+      currentPage,
+      currentPage + 1,
+    ].filter((page) => page > 0 && page <= totalPages);
+    while (pages.length < 4) {
+      const prevPage = pages[0] - 1;
+      if (prevPage > 0) {
+        pages.unshift(prevPage);
+      }
+    }
   }
 
   return pages;
@@ -72,7 +78,6 @@ const Pagination = ({ section, currentPage, totalPages, basePath }) => {
   const hasPrevPage = currentPage > 1;
   const hasNextPage = totalPages > currentPage;
   const linkBasePath = basePath || (section ? `/${section}` : "/");
-
   const visiblePages = mounted
     ? getVisiblePages(currentPage, totalPages, isMobile)
     : getVisiblePages(currentPage, totalPages, false);
@@ -83,16 +88,8 @@ const Pagination = ({ section, currentPage, totalPages, basePath }) => {
         <PrevButton href={generateLink(linkBasePath, currentPage - 1)} />
       )}
 
-      {visiblePages.map((pageNumber, index) => {
-        if (pageNumber === "...") {
-          return (
-            <span key={`ellipsis-${index}`} className="px-2">
-              ...
-            </span>
-          );
-        }
-
-        return pageNumber === currentPage ? (
+      {visiblePages.map((pageNumber) =>
+        pageNumber === currentPage ? (
           <span
             key={`page-${pageNumber}`}
             aria-current="page"
@@ -108,8 +105,8 @@ const Pagination = ({ section, currentPage, totalPages, basePath }) => {
           >
             {pageNumber}
           </Link>
-        );
-      })}
+        )
+      )}
 
       {hasNextPage && (
         <NextButton href={generateLink(linkBasePath, currentPage + 1)} />
