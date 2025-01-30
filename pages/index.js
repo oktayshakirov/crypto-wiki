@@ -39,7 +39,7 @@ const Home = ({
           {markdownify("LATEST POSTS", "h3", "mb-8")}
           <Posts posts={posts} />
           <Pagination
-            basePath="/posts"
+            section="posts"
             currentPage={currentPage}
             totalPages={postPages}
           />
@@ -105,7 +105,7 @@ const Home = ({
             {markdownify("CRYPTO LEGENDS", "h3", "mb-8")}
             <CryptoOGs ogs={ogs} />
             <Pagination
-              basePath="/crypto-ogs"
+              section="crypto-ogs"
               currentPage={currentPage}
               totalPages={ogPages}
             />
@@ -130,7 +130,7 @@ const Home = ({
             {markdownify("CRYPTO EXCHANGES", "h3", "mb-8")}
             <Exchanges exchanges={exchanges} />
             {/* <Pagination
-              basePath="/exchanges"
+            section="exchanges"
               currentPage={currentPage}
               totalPages={exchangePages}
             /> */}
