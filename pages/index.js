@@ -38,11 +38,11 @@ const Home = ({
           </h1>
           {markdownify("LATEST POSTS", "h3", "mb-8")}
           <Posts posts={posts} />
-          {/* <Pagination
+          <Pagination
             section="posts"
             currentPage={currentPage}
             totalPages={postPages}
-          /> */}
+          />
           <div className="mb-20 mt-6 flex flex-col justify-center space-y-3 md:flex-row md:space-x-3 md:space-y-0">
             <Link className="btn-primary flex items-center gap-2" href="/posts">
               <FaRegNewspaper />
@@ -104,11 +104,11 @@ const Home = ({
           <div className="mb-20">
             {markdownify("CRYPTO LEGENDS", "h3", "mb-8")}
             <CryptoOGs ogs={ogs} />
-            {/* <Pagination
+            <Pagination
               section="crypto-ogs"
               currentPage={currentPage}
               totalPages={ogPages}
-            /> */}
+            />
             <div className="mt-6 flex flex-col justify-center space-y-3 md:flex-row md:space-x-3 md:space-y-0">
               <Link
                 className="btn-primary flex items-center gap-2"

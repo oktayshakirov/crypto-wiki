@@ -1,6 +1,5 @@
 import Link from "next/link";
-import React, { useState, useEffect } from "react";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import React from "react";
 
 const generateLink = (basePath, page) => {
   return page === 1 ? basePath : `${basePath}/page/${page}`;
@@ -8,102 +7,54 @@ const generateLink = (basePath, page) => {
 
 const PrevButton = ({ href }) => (
   <Link href={href} className="btn-primary">
-    <FaChevronLeft className="h-5 w-2" />
+    <span className="sr-only">Previous</span>
+    <svg
+      className="h-5 w-4"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 20 20"
+      fill="currentColor"
+      aria-hidden="true"
+    >
+      <path
+        fillRule="evenodd"
+        d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+        clipRule="evenodd"
+      />
+    </svg>
   </Link>
 );
 
 const NextButton = ({ href }) => (
   <Link href={href} className="btn-primary">
-    <FaChevronRight className="h-5 w-2" />
+    <span className="sr-only">Next</span>
+    <svg
+      className="h-5 w-4"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 20 20"
+      fill="currentColor"
+      aria-hidden="true"
+    >
+      <path
+        fillRule="evenodd"
+        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+        clipRule="evenodd"
+      />
+    </svg>
   </Link>
 );
 
-const useIsMobile = () => {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkIsMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    checkIsMobile();
-    window.addEventListener("resize", checkIsMobile);
-    return () => window.removeEventListener("resize", checkIsMobile);
-  }, []);
-
-  return isMobile;
-};
-
 const Pagination = ({ section, currentPage, totalPages, basePath }) => {
-  const isMobile = useIsMobile();
   const hasPrevPage = currentPage > 1;
   const hasNextPage = totalPages > currentPage;
   const linkBasePath = basePath || (section ? `/${section}` : "/");
 
-  const getMobileVisiblePages = () => {
-    const maxVisible = 3;
-    let pages = [];
-
-    if (totalPages <= maxVisible + 2) {
-      return Array.from({ length: totalPages }, (_, i) => i + 1);
-    }
-
-    pages.push(1);
-
-    if (currentPage <= 3) {
-      pages.push(2);
-      pages.push(3);
-      if (totalPages > 4) {
-        pages.push("...");
-      }
-      pages.push(totalPages);
-    } else if (currentPage >= totalPages - 2) {
-      pages.push("...");
-      for (let i = totalPages - 2; i <= totalPages; i++) {
-        pages.push(i);
-      }
-    } else {
-      pages.push("...");
-      pages.push(currentPage);
-      pages.push("...");
-      pages.push(totalPages);
-    }
-
-    return pages;
-  };
-
-  const getDesktopVisiblePages = () => {
-    return Array.from({ length: totalPages }, (_, i) => i + 1);
-  };
-
-  const visiblePages = isMobile
-    ? getMobileVisiblePages()
-    : getDesktopVisiblePages();
-
-  const [isClient, setIsClient] = useState(false);
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  if (!isClient) {
-    return null;
-  }
-
   return (
-    <nav className="pagination" aria-label="Pagination">
+    <nav className="mb-4 flex justify-center space-x-4" aria-label="Pagination">
       {hasPrevPage && (
         <PrevButton href={generateLink(linkBasePath, currentPage - 1)} />
       )}
-
-      {visiblePages.map((pageNumber, index) => {
-        if (pageNumber === "...") {
-          return (
-            <span key={`ellipsis-${index}`} className="px-2">
-              ...
-            </span>
-          );
-        }
-
+      {[...Array(totalPages)].map((_, i) => {
+        const pageNumber = i + 1;
         return pageNumber === currentPage ? (
           <span
             key={`page-${pageNumber}`}
@@ -122,7 +73,6 @@ const Pagination = ({ section, currentPage, totalPages, basePath }) => {
           </Link>
         );
       })}
-
       {hasNextPage && (
         <NextButton href={generateLink(linkBasePath, currentPage + 1)} />
       )}
