@@ -18,10 +18,48 @@ const NextButton = ({ href }) => (
   </Link>
 );
 
-const useIsMobile = () => {
+const getVisiblePages = (currentPage, totalPages, isMobile) => {
+  if (!isMobile) {
+    return Array.from({ length: totalPages }, (_, i) => i + 1);
+  }
+
+  const maxVisible = 3;
+  let pages = [];
+
+  if (totalPages <= maxVisible + 2) {
+    return Array.from({ length: totalPages }, (_, i) => i + 1);
+  }
+
+  pages.push(1);
+
+  if (currentPage <= 3) {
+    pages.push(2);
+    pages.push(3);
+    if (totalPages > 4) {
+      pages.push("...");
+    }
+    pages.push(totalPages);
+  } else if (currentPage >= totalPages - 2) {
+    pages.push("...");
+    for (let i = totalPages - 2; i <= totalPages; i++) {
+      pages.push(i);
+    }
+  } else {
+    pages.push("...");
+    pages.push(currentPage);
+    pages.push("...");
+    pages.push(totalPages);
+  }
+
+  return pages;
+};
+
+const Pagination = ({ section, currentPage, totalPages, basePath }) => {
   const [isMobile, setIsMobile] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const checkIsMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
@@ -31,65 +69,13 @@ const useIsMobile = () => {
     return () => window.removeEventListener("resize", checkIsMobile);
   }, []);
 
-  return isMobile;
-};
-
-const Pagination = ({ section, currentPage, totalPages, basePath }) => {
-  const isMobile = useIsMobile();
   const hasPrevPage = currentPage > 1;
   const hasNextPage = totalPages > currentPage;
   const linkBasePath = basePath || (section ? `/${section}` : "/");
 
-  const getMobileVisiblePages = () => {
-    const maxVisible = 3;
-    let pages = [];
-
-    if (totalPages <= maxVisible + 2) {
-      return Array.from({ length: totalPages }, (_, i) => i + 1);
-    }
-
-    pages.push(1);
-
-    if (currentPage <= 3) {
-      pages.push(2);
-      pages.push(3);
-      if (totalPages > 4) {
-        pages.push("...");
-      }
-      pages.push(totalPages);
-    } else if (currentPage >= totalPages - 2) {
-      pages.push("...");
-      for (let i = totalPages - 2; i <= totalPages; i++) {
-        pages.push(i);
-      }
-    } else {
-      pages.push("...");
-      pages.push(currentPage - 1);
-      pages.push(currentPage);
-      pages.push(currentPage + 1);
-      pages.push("...");
-      pages.push(totalPages);
-    }
-
-    return pages;
-  };
-
-  const getDesktopVisiblePages = () => {
-    return Array.from({ length: totalPages }, (_, i) => i + 1);
-  };
-
-  const visiblePages = isMobile
-    ? getMobileVisiblePages()
-    : getDesktopVisiblePages();
-
-  const [isClient, setIsClient] = useState(false);
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  if (!isClient) {
-    return null;
-  }
+  const visiblePages = mounted
+    ? getVisiblePages(currentPage, totalPages, isMobile)
+    : getVisiblePages(currentPage, totalPages, false);
 
   return (
     <nav className="pagination" aria-label="Pagination">
