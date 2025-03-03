@@ -49,3 +49,7 @@ After finishing all the customization, you can create a production build by runn
 ```
 npm run build
 ```
+
+## License
+
+This project is provided for viewing purposes only. All rights are reserved. No part of this project may be copied, modified, or redistributed without explicit written permission from the author.
