@@ -7,10 +7,7 @@ import { IoSearch } from "react-icons/io5";
 import { useRouter } from "next/router";
 
 const Header = () => {
-  // destructuring the main menu from menu object
   const { main } = menu;
-
-  // states declaration
   const [navFixed, setNavFixed] = useState(false);
   const [searchModal, setSearchModal] = useState(false);
 
@@ -35,11 +32,9 @@ const Header = () => {
         }`}
       >
         <nav className="navbar container">
-          {/* logo */}
           <div className="order-0">
             <Logo />
           </div>
-          {/* navbar toggler */}
           <input id="nav-toggle" type="checkbox" className="hidden" />
           <label
             id="show-button"
@@ -64,7 +59,6 @@ const Header = () => {
               />
             </svg>
           </label>
-          {/* /navbar toggler */}
 
           <ul
             id="nav-menu"
@@ -77,7 +71,10 @@ const Header = () => {
                 <React.Fragment key={`menu-${i}`}>
                   {menu.hasChildren ? (
                     <li className="nav-item nav-dropdown group relative">
-                      <span className="nav-link inline-flex items-center">
+                      <Link
+                        href={menu.url}
+                        className="nav-link inline-flex items-center"
+                      >
                         {menu.name}
                         <svg
                           className="h-4 w-4 fill-current"
@@ -85,7 +82,7 @@ const Header = () => {
                         >
                           <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
                         </svg>
-                      </span>
+                      </Link>
                       <ul className="nav-dropdown-list hidden bg-theme-dark group-hover:block md:invisible md:absolute md:block md:opacity-0 md:group-hover:visible md:group-hover:opacity-100">
                         {menu.children.map((child, i) => (
                           <li
