@@ -29,48 +29,23 @@ if (fs.existsSync(cachePath)) {
   }
 }
 
-async function sendPushNotification(title, type, content) {
-  try {
-    const notificationRef = admin.firestore().collection("notifications");
-    await notificationRef.add({
-      title,
-      type,
-      content: content.substring(0, 200) + "...",
-      createdAt: admin.firestore.FieldValue.serverTimestamp(),
-      read: false,
-    });
-    console.log(`Notification created for ${type}: ${title}`);
-  } catch (error) {
-    console.error(`Error creating notification for ${title}:`, error);
-  }
-}
-
 async function processFiles(directory, type) {
   const files = fs.readdirSync(directory);
   for (const file of files) {
-    if (!file.endsWith(".mdx")) continue;
-
     const filePath = path.join(directory, file);
     const fileContent = fs.readFileSync(filePath, "utf8");
-    const { data, content } = matter(fileContent);
+    const { data } = matter(fileContent);
 
     if (data && data.title) {
       if (cache[type].includes(data.title)) {
         console.log(`Skipping already processed "${data.title}"`);
         continue;
       }
-
       try {
         await admin.firestore().collection(type).doc(data.title).set({
           title: data.title,
-          content: content,
-          metadata: data,
           createdAt: admin.firestore.FieldValue.serverTimestamp(),
-          updatedAt: admin.firestore.FieldValue.serverTimestamp(),
         });
-
-        await sendPushNotification(data.title, type, content);
-
         console.log(`Successfully added "${data.title}"`);
         cache[type].push(data.title);
       } catch (error) {
@@ -93,12 +68,27 @@ async function run() {
       path.join(__dirname, "../../content/crypto-ogs"),
       "cryptoOgs"
     );
-
     fs.writeFileSync(cachePath, JSON.stringify(cache, null, 2), "utf8");
-    console.log("Content sync completed successfully");
   } catch (error) {
     console.error("Error processing content:", error);
   }
 }
 
-module.exports = run;
+run();
+
+export default async function handler(req, res) {
+  if (req.method !== "POST") {
+    return res.status(405).json({ message: "Method not allowed" });
+  }
+
+  try {
+    await run();
+    return res.status(200).json({ message: "Content sync completed" });
+  } catch (error) {
+    console.error("Error processing content:", error);
+    return res.status(500).json({
+      error: "Internal Server Error",
+      details: error.message,
+    });
+  }
+}
