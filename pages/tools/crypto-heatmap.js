@@ -3,6 +3,7 @@ import Base from "@layouts/Baseof";
 import { FaExclamationTriangle } from "react-icons/fa";
 import Link from "next/link";
 import Heatmap from "@components/Heatmap";
+import GoBackLink from "@partials/GoBackLink";
 
 const data = [
   { color: "#56ab2f", label: "Positive Price Change" },
@@ -14,6 +15,7 @@ const CryptoHeatmapPage = () => {
     <Base title="Crypto Market Heatmap">
       <section className="section">
         <div className="container">
+          <GoBackLink option="tools" />
           <h1 className="mb-3 text-center text-2xl sm:text-3xl md:text-5xl">
             🔥 Market Heatmap 🔥
           </h1>

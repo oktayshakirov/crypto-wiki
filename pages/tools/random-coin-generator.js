@@ -3,12 +3,13 @@ import Base from "@layouts/Baseof";
 import { FaExclamationTriangle } from "react-icons/fa";
 import Link from "next/link";
 import RandomCoinGenerator from "@components/RandomCoinGenerator";
-
+import GoBackLink from "@partials/GoBackLink";
 const RandomCoinPage = () => {
   return (
     <Base title="Random Coin Generator - Find Your Next Crypto Adventure">
       <section className="section">
         <div className="container">
+          <GoBackLink option="tools" />
           <h1 className="mb-3 text-center text-xl sm:text-3xl md:text-5xl">
             🎲 Random Coin Generator 🎲
           </h1>

@@ -3,12 +3,14 @@ import Base from "@layouts/Baseof";
 import StakingCalculator from "@components/StakingCalculator";
 import { FaExclamationTriangle } from "react-icons/fa";
 import Link from "next/link";
+import GoBackLink from "@partials/GoBackLink";
 
 const StakingCalculatorPage = () => {
   return (
     <Base title="Crypto Staking Calculator">
       <section className="section">
         <div className="container">
+          <GoBackLink option="tools" />
           <h1 className="mb-3 text-center text-2xl sm:text-3xl md:text-5xl">
             💰 Staking Calculator 💰
           </h1>

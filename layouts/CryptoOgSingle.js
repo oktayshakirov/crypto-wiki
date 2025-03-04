@@ -7,6 +7,7 @@ import Authors from "@components/Authors";
 import { FaCalendarAlt } from "react-icons/fa";
 import dateFormat from "@lib/utils/dateFormat";
 import NextPrevNavigation from "@partials/NextPrevNavigation";
+import GoBackLink from "@partials/GoBackLink";
 
 const CryptoOgSingle = ({
   frontmatter,
@@ -28,6 +29,7 @@ const CryptoOgSingle = ({
     >
       <section className="section">
         <div className="container">
+          <GoBackLink option="crypto-ogs" />
           <div className="mb-4 text-center md:px-24">
             {image && (
               <div className="mb-8">
