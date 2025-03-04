@@ -17,7 +17,7 @@ const cachePath = path.join(__dirname, "cache.json");
 let cache = {
   posts: [],
   exchanges: [],
-  cryptoOgs: [],
+  "crypto-ogs": [],
 };
 
 if (fs.existsSync(cachePath)) {
@@ -66,7 +66,7 @@ async function run() {
     );
     await processFiles(
       path.join(__dirname, "../../content/crypto-ogs"),
-      "cryptoOgs"
+      "crypto-ogs"
     );
     fs.writeFileSync(cachePath, JSON.stringify(cache, null, 2), "utf8");
   } catch (error) {
