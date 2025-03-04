@@ -3,6 +3,7 @@ import Base from "@layouts/Baseof";
 import FearAndGreedIndexChart from "@components/FearAndGreedIndex";
 import { FaExclamationTriangle } from "react-icons/fa";
 import Link from "next/link";
+import GoBackLink from "@partials/GoBackLink";
 
 const data = [
   { color: "#e73827", label: "Extreme Fear" },
@@ -16,6 +17,7 @@ const FearAndGreedIndexPage = () => {
     <Base title="Crypto Fear and Greed Index">
       <section className="section">
         <div className="container ">
+          <GoBackLink option="tools" />
           <h1 className="mb-3 text-center text-2xl sm:text-3xl md:text-5xl">
             📉 Fear and Greed Index 📈
           </h1>

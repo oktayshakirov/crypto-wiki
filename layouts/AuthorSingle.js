@@ -3,6 +3,7 @@ import { MDXRemote } from "next-mdx-remote";
 import Image from "next/image";
 import Base from "./Baseof";
 import Social from "./components/Social";
+import GoBackLink from "@partials/GoBackLink";
 
 const AuthorSingle = ({ frontmatter, content, mdxContent }) => {
   const { description, social, title, image } = frontmatter;
@@ -15,6 +16,7 @@ const AuthorSingle = ({ frontmatter, content, mdxContent }) => {
     >
       <section className="section">
         <div className="container">
+          <GoBackLink option="authors" />
           <div className="mb-4 text-center md:px-24">
             {image && (
               <div className="mb-8">

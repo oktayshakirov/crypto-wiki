@@ -9,7 +9,7 @@ import Link from "next/link";
 import dateFormat from "@lib/utils/dateFormat";
 import NextPrevNavigation from "@partials/NextPrevNavigation";
 import Button from "@components/Button";
-
+import GoBackLink from "@partials/GoBackLink";
 const ExchangeSingle = ({
   frontmatter,
   content,
@@ -33,6 +33,7 @@ const ExchangeSingle = ({
     >
       <section className="section">
         <div className="container text-center">
+          <GoBackLink option="exchanges" />
           <div className="mt-4 rounded-lg border-2 border-orange-400 p-4">
             <div className="mb-2 flex justify-center">
               <FaExclamationTriangle className="text-4xl text-orange-400" />
