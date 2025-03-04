@@ -3,12 +3,13 @@ import Base from "@layouts/Baseof";
 import BitcoinRainbowChart from "@components/BitcoinRainbowChart";
 import { FaExclamationTriangle } from "react-icons/fa";
 import Link from "next/link";
-
+import GoBackLink from "@partials/GoBackLink";
 const BitcoinRainbowChartPage = () => {
   return (
     <Base title="Bitcoin Rainbow Chart">
       <section className="section">
         <div className="container">
+          <GoBackLink option="tools" />
           <h1 className="mb-3 text-center text-2xl sm:text-3xl md:text-5xl">
             🌈 Bitcoin Rainbow Chart 🌈
           </h1>

@@ -8,6 +8,7 @@ import Link from "next/link";
 import Authors from "@components/Authors";
 import { FaCalendarAlt, FaTag, FaUser, FaExchangeAlt } from "react-icons/fa";
 import NextPrevNavigation from "@partials/NextPrevNavigation";
+import GoBackLink from "@partials/GoBackLink";
 
 const PostSingle = ({ post, posts, cryptoOgs, exchanges, slug }) => {
   const { frontmatter, content, mdxContent } = post;
@@ -23,6 +24,7 @@ const PostSingle = ({ post, posts, cryptoOgs, exchanges, slug }) => {
     <>
       <section className="section">
         <div className="container">
+          <GoBackLink option="posts" />
           <article className="text-center">
             {markdownify(title, "h1", "h2")}
             <ul className="my-5">
