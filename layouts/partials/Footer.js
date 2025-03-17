@@ -4,11 +4,23 @@ import menu from "@config/menu.json";
 import social from "@config/social.json";
 import { markdownify } from "@lib/utils/textConverter";
 import Link from "next/link";
+import AppsBanner from "@layouts/components/AppsBanner";
+import { usePathname } from "next/navigation";
 
-const Footer = () => {
+const Footer = ({ isApp = false }) => {
   const { copyright } = config.params;
+  const pathname = usePathname();
+  const shouldHideAppsBanner = isApp || pathname === "/app";
+  const currentYear = new Date().getFullYear();
+  const copyrightText = copyright.replace("2024", `2024 - ${currentYear}`);
+
   return (
     <footer className="section bg-theme-dark">
+      {!shouldHideAppsBanner && (
+        <div className="container">
+          <AppsBanner />
+        </div>
+      )}
       <div className="bg-primary py-4 text-center text-sm text-black">
         <p>
           Nothing on this website constitutes financial advice. The content is
@@ -31,9 +43,9 @@ const Footer = () => {
             ))}
           </ul>
           <div className="flex w-full flex-col items-center space-y-4 lg:flex-row lg:justify-between lg:space-x-8 lg:space-y-0">
-            <Social source={social} className="social-icons" />
+            {!isApp && <Social source={social} className="social-icons" />}
             <div className="text-center">
-              {markdownify(copyright, "p", "text-light")}
+              {markdownify(copyrightText, "p", "text-light")}
             </div>
           </div>
         </div>
