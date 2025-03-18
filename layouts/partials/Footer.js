@@ -6,13 +6,21 @@ import { markdownify } from "@lib/utils/textConverter";
 import Link from "next/link";
 import AppsBanner from "@layouts/components/AppsBanner";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 const Footer = ({ isApp = false }) => {
   const { copyright } = config.params;
   const pathname = usePathname();
-  const shouldHideAppsBanner = isApp || pathname === "/app";
+  const [isAppView] = useState(() => {
+    if (typeof document !== "undefined") {
+      return document.documentElement.classList.contains("is-app");
+    }
+    return false;
+  });
   const currentYear = new Date().getFullYear();
   const copyrightText = copyright.replace("2024", `2024 - ${currentYear}`);
+
+  const shouldHideAppsBanner = isApp || pathname === "/app" || isAppView;
 
   return (
     <footer className="section bg-theme-dark">
