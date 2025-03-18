@@ -3,11 +3,9 @@ import Base from "@layouts/Baseof";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  FaCheckCircle,
-  FaClock,
   FaShieldAlt,
   FaBookReader,
-  FaChartLine,
+  FaBitcoin,
   FaUsers,
   FaTools,
   FaUser,
@@ -51,37 +49,40 @@ const AppStoreBadges = () => (
 
 const FEATURES = [
   {
-    icon: <FaBookReader className="text-2xl text-primary" />,
+    icon: <FaBookReader className="text-4xl text-primary" />,
     title: "Educational Content",
-    description: "Access expert-curated guides and tutorials",
+    description:
+      "Access comprehensive expert-curated guides and tutorials for all skill levels.",
     highlight: "100+ Articles",
   },
   {
-    icon: <FaChartLine className="text-2xl text-primary" />,
-    title: "Real-Time Data",
-    description: "Live market data and analysis",
-    highlight: "24/7 Updates",
+    icon: <FaShieldAlt className="text-4xl text-primary" />,
+    title: "Smart Security",
+    description:
+      "Make confident decisions with our verified exchange reviews and security insights.",
+    highlight: "Trusted",
   },
   {
-    icon: <FaShieldAlt className="text-2xl text-primary" />,
-    title: "Secure Platform",
-    description: "Verified exchange reviews and safety guides",
-    highlight: "Trusted",
+    icon: <FaBitcoin className="text-4xl text-primary" />,
+    title: "Real-Time Data",
+    description:
+      "Stay informed with live market data and in-depth analysis updates.",
+    highlight: "24/7 Updates",
   },
 ];
 
 const KEY_FEATURES = [
   {
     icon: <FaBookReader className="text-5xl text-primary" />,
-    title: "Learn & Understand",
+    title: "Articles",
   },
   {
-    icon: <FaChartLine className="text-5xl text-primary" />,
-    title: "Market Analysis",
+    icon: <FaBitcoin className="text-5xl text-primary" />,
+    title: "Exchanges",
   },
   {
     icon: <FaUsers className="text-5xl text-primary" />,
-    title: "Community",
+    title: "Crypto OG's",
   },
   {
     icon: <FaTools className="text-5xl text-primary" />,
@@ -91,24 +92,24 @@ const KEY_FEATURES = [
 
 const REVIEWS = [
   {
-    name: "Alex Thompson",
+    name: "Alex Jones",
     location: "New York, USA",
     rating: 5,
-    text: "Crypto Wiki has been an invaluable resource for my crypto journey. The educational content is top-notch, and the real-time market data helps me make informed decisions.",
+    text: "The educational content on Crypto Wiki is incredibly easy to understand. The real-time market data and analysis tools help me make more informed investment decisions.",
     date: "2 weeks ago",
   },
   {
-    name: "Sarah Chen",
+    name: "Sarah Woods",
     location: "Singapore",
     rating: 5,
-    text: "The app's interface is clean and intuitive. I particularly love the exchange reviews and security guides that help me stay safe in the crypto space.",
+    text: "The app's interface is beautifully designed and intuitive to navigate. The exchange reviews and security features help me make safe and confident trading decisions.",
     date: "1 month ago",
   },
   {
-    name: "Michael Rodriguez",
-    location: "London, UK",
+    name: "Falco Lang",
+    location: "Berlin, DE",
     rating: 5,
-    text: "As a beginner in crypto, this app has been my go-to resource. The educational content is well-structured and easy to understand.",
+    text: "As someone new to cryptocurrency, this app provides clear and practical guidance. The educational resources and trading insights have made my learning journey smooth.",
     date: "3 months ago",
   },
 ];
@@ -116,12 +117,12 @@ const REVIEWS = [
 const App = () => {
   return (
     <Base title={"CRYPTO WIKI APP: Your All-In-One Crypto Hub"}>
-      <div className="container mx-auto max-w-7xl px-4 py-8">
-        <div className="relative rounded-2xl bg-gradient-to-b from-black/20 to-transparent p-8 text-center">
-          <h1 className="to-secondary mb-4 bg-gradient-to-r from-primary bg-clip-text text-4xl font-extrabold text-transparent md:text-5xl">
+      <div className="container my-7">
+        <div className="relative rounded-2xl p-8 text-center">
+          <h1 className="to-secondary mb-4 bg-primary bg-clip-text text-4xl font-extrabold text-transparent md:text-5xl">
             CRYPTO WIKI APP
           </h1>
-          <p className="mx-auto max-w-2xl text-lg text-gray-400 md:text-xl">
+          <p className="mx-auto max-w-2xl text-lg md:text-xl">
             Your personalized companion for navigating the crypto universe
           </p>
         </div>
@@ -165,25 +166,25 @@ const App = () => {
           </div>
         </div>
 
-        <div className="mb-16 grid grid-cols-1 gap-6 md:grid-cols-3">
+        <div className="mb-16 grid grid-cols-1 gap-8 md:grid-cols-3">
           {FEATURES.map((feature) => (
             <div
               key={feature.title}
-              className="flex items-start gap-6 rounded-2xl border border-white/5 p-5 transition-all duration-300"
+              className="flex h-full flex-col items-center gap-4 rounded-2xl border border-white/10 bg-[#1a1a1a] p-8 transition-all duration-300"
             >
-              <div className="flex h-[56px] min-w-[56px] items-center justify-center rounded-xl bg-white/5 p-4 text-primary shadow-lg">
+              <div className="flex h-[80px] w-[80px] items-center justify-center rounded-2xl bg-[#242424] text-primary shadow-lg">
                 {feature.icon}
               </div>
-              <div className="flex-1">
-                <h3 className="mb-2 text-xl font-bold">{feature.title}</h3>
-                <div className="space-y-2">
-                  <p className="font-medium text-gray-400">
-                    {feature.description}
-                  </p>
-                  <span className="inline-block rounded border border-white/10 bg-white/5 px-2 py-1 text-sm text-primary">
-                    {feature.highlight}
-                  </span>
-                </div>
+              <div className="flex flex-1 flex-col text-center">
+                <h3 className="mb-2 text-xl font-bold text-white">
+                  {feature.title}
+                </h3>
+                <p className="mb-4 flex-1 text-gray-400">
+                  {feature.description}
+                </p>
+                <span className="inline-block rounded-lg bg-[#242424] px-4 py-2 text-sm text-primary">
+                  {feature.highlight}
+                </span>
               </div>
             </div>
           ))}
@@ -203,7 +204,7 @@ const App = () => {
                 <div className="mb-4 flex h-20 items-center justify-center">
                   {feature.icon}
                 </div>
-                <h3 className="text-xl font-bold text-primary">
+                <h3 className="text-lg font-bold text-primary">
                   {feature.title}
                 </h3>
               </div>
@@ -220,14 +221,14 @@ const App = () => {
             {REVIEWS.map((review) => (
               <div
                 key={review.name}
-                className="flex h-full flex-col rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-lg"
+                className="flex h-full flex-col rounded-3xl border border-white/10 bg-white/5 p-8 text-sm backdrop-blur-lg"
               >
                 <div className="mb-6 flex items-center">
                   <div className="to-secondary/40 mr-4 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-r from-primary/40 text-primary shadow-lg">
                     <FaUser size={24} />
                   </div>
                   <div>
-                    <h4 className="font-bold">{review.name}</h4>
+                    <h4 className="text-base font-bold">{review.name}</h4>
                     <p className="text-sm text-gray-400">{review.location}</p>
                   </div>
                 </div>
