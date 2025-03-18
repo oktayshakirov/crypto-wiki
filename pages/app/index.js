@@ -15,18 +15,6 @@ import {
   FaChevronDown,
   FaStar,
 } from "react-icons/fa";
-import {
-  StyledContainer,
-  HeaderSection,
-  FeatureItem,
-  ReviewsSection,
-  ReviewsGrid,
-  ReviewCard,
-  FeaturesGrid,
-  FeatureBox,
-  FeaturesSection,
-  CallToActionSection,
-} from "./App.styled";
 
 const SectionTitle = ({ children, subtitle }) => (
   <div className="mb-12 text-center">
@@ -128,15 +116,15 @@ const REVIEWS = [
 const App = () => {
   return (
     <Base title={"CRYPTO WIKI APP: Your All-In-One Crypto Hub"}>
-      <StyledContainer>
-        <HeaderSection>
+      <div className="container mx-auto max-w-7xl px-4 py-8">
+        <div className="relative rounded-2xl bg-gradient-to-b from-black/20 to-transparent p-8 text-center">
           <h1 className="to-secondary mb-4 bg-gradient-to-r from-primary bg-clip-text text-4xl font-extrabold text-transparent md:text-5xl">
             CRYPTO WIKI APP
           </h1>
           <p className="mx-auto max-w-2xl text-lg text-gray-400 md:text-xl">
             Your personalized companion for navigating the crypto universe
           </p>
-        </HeaderSection>
+        </div>
 
         <div className="relative mb-8 overflow-hidden rounded-2xl">
           <Image
@@ -179,7 +167,10 @@ const App = () => {
 
         <div className="mb-16 grid grid-cols-1 gap-6 md:grid-cols-3">
           {FEATURES.map((feature) => (
-            <FeatureItem key={feature.title}>
+            <div
+              key={feature.title}
+              className="flex items-start gap-6 rounded-2xl border border-white/5 p-5 transition-all duration-300"
+            >
               <div className="flex h-[56px] min-w-[56px] items-center justify-center rounded-xl bg-white/5 p-4 text-primary shadow-lg">
                 {feature.icon}
               </div>
@@ -194,37 +185,43 @@ const App = () => {
                   </span>
                 </div>
               </div>
-            </FeatureItem>
+            </div>
           ))}
         </div>
 
-        <FeaturesSection>
+        <div className="my-24 rounded-2xl bg-gradient-to-b from-black/20 to-transparent p-12">
           <SectionTitle subtitle="Everything you need to master the crypto universe">
             Key Features
           </SectionTitle>
 
-          <FeaturesGrid>
+          <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
             {KEY_FEATURES.map((feature) => (
-              <FeatureBox key={feature.title}>
+              <div
+                key={feature.title}
+                className="rounded-2xl border border-white/10 bg-white/5 p-8 text-center backdrop-blur-lg transition-all duration-300 hover:-translate-y-2 hover:bg-white/10 hover:shadow-2xl"
+              >
                 <div className="mb-4 flex h-20 items-center justify-center">
                   {feature.icon}
                 </div>
                 <h3 className="text-xl font-bold text-primary">
                   {feature.title}
                 </h3>
-              </FeatureBox>
+              </div>
             ))}
-          </FeaturesGrid>
-        </FeaturesSection>
+          </div>
+        </div>
 
-        <ReviewsSection>
+        <div className="rounded-2xl bg-gradient-to-b from-black/20 to-transparent p-12">
           <SectionTitle subtitle="Join thousands of successful crypto enthusiasts who trust our platform">
             What Our Users Say
           </SectionTitle>
 
-          <ReviewsGrid>
+          <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {REVIEWS.map((review) => (
-              <ReviewCard key={review.name}>
+              <div
+                key={review.name}
+                className="flex h-full flex-col rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-lg"
+              >
                 <div className="mb-6 flex items-center">
                   <div className="to-secondary/40 mr-4 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-r from-primary/40 text-primary shadow-lg">
                     <FaUser size={24} />
@@ -252,9 +249,9 @@ const App = () => {
                 <p className="mt-auto border-t border-white/5 pt-4 text-sm text-gray-400">
                   {review.date}
                 </p>
-              </ReviewCard>
+              </div>
             ))}
-          </ReviewsGrid>
+          </div>
 
           <div className="mt-8 text-center">
             <div className="mb-2 flex items-center justify-center gap-2 text-2xl text-primary">
@@ -265,9 +262,9 @@ const App = () => {
               Based on 1,000+ reviews from App Store and Google Play
             </p>
           </div>
-        </ReviewsSection>
+        </div>
 
-        <CallToActionSection>
+        <div className="relative rounded-2xl bg-gradient-to-b from-black/20 to-transparent p-12 text-center">
           <h2 className="mb-4 text-3xl font-bold">
             Ready to Start Your Crypto Journey?
           </h2>
@@ -279,8 +276,8 @@ const App = () => {
           <FaChevronDown className="mx-auto mb-8 animate-bounce text-2xl text-primary" />
 
           <AppStoreBadges />
-        </CallToActionSection>
-      </StyledContainer>
+        </div>
+      </div>
     </Base>
   );
 };
