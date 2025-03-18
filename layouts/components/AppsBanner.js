@@ -12,7 +12,7 @@ const AppsBanner = () => {
             for learning, investing and connecting with the visionaries
             reshaping finance.
           </p>
-          <Link href="/app" className="text-sm underline">
+          <Link href="/app" className="text-sm text-primary">
             Learn more
           </Link>
         </div>

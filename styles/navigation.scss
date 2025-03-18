@@ -60,17 +60,17 @@ input#nav-toggle:checked ~ #nav-menu {
 }
 
 .footer-menu {
-  @apply flex flex-wrap justify-center gap-4;
+  @apply flex flex-wrap justify-center gap-1;
 
   li {
     @apply flex-shrink-0;
   }
 
   a {
-    @apply whitespace-nowrap px-4 py-2 text-center text-light hover:text-white;
+    @apply whitespace-nowrap px-1 py-1 text-center text-light hover:text-white;
   }
 
   @media (max-width: 768px) {
-    @apply flex-col items-center;
+    @apply flex-row items-center;
   }
 }

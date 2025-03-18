@@ -39,17 +39,20 @@ const Footer = () => {
           a financial advisor before making any investment decisions.
         </p>
       </div>
-      <div className="container mt-4">
-        <div className="flex flex-col items-center space-y-8 lg:space-y-4">
-          <ul className="footer-menu flex flex-col justify-center gap-4 md:flex-row md:flex-wrap">
-            {menu.footer.map((menu) => (
-              <li key={menu.name}>
+      <div className="container mt-4 px-1">
+        <div className="flex flex-col items-center space-y-4 lg:space-y-2">
+          <ul className="footer-menu flex w-full flex-row flex-wrap justify-center gap-1 md:gap-2">
+            {menu.footer.map((menu, index, array) => (
+              <li key={menu.name} className="flex items-center">
                 <Link
                   href={menu.url}
-                  className="whitespace-nowrap text-light hover:text-white"
+                  className="whitespace-nowrap text-sm text-light hover:text-white"
                 >
                   {menu.name}
                 </Link>
+                {index < array.length - 1 && (
+                  <span className=" text-light/50">|</span>
+                )}
               </li>
             ))}
           </ul>

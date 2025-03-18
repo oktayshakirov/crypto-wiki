@@ -190,7 +190,7 @@ const App = () => {
           ))}
         </div>
 
-        <div className="my-24 rounded-2xl bg-gradient-to-b from-black/20 to-transparent p-12">
+        <div className="my-20 rounded-2xl bg-gradient-to-b from-black/20 to-transparent p-12">
           <SectionTitle subtitle="Everything you need to master the crypto universe">
             Key Features
           </SectionTitle>
@@ -212,44 +212,48 @@ const App = () => {
           </div>
         </div>
 
-        <div className="rounded-2xl bg-gradient-to-b from-black/20 to-transparent p-12">
+        <div className="rounded-2xl bg-gradient-to-b from-black/20 to-transparent px-4 py-12 md:p-12">
           <SectionTitle subtitle="Join thousands of successful crypto enthusiasts who trust our platform">
             What Our Users Say
           </SectionTitle>
 
-          <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-4 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {REVIEWS.map((review) => (
               <div
                 key={review.name}
-                className="flex h-full flex-col rounded-3xl border border-white/10 bg-white/5 p-8 text-sm backdrop-blur-lg"
+                className="flex h-full flex-col rounded-3xl border border-white/10 bg-[#1a1a1a] p-6 text-sm backdrop-blur-lg md:p-8"
               >
                 <div className="mb-6 flex items-center">
                   <div className="to-secondary/40 mr-4 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-r from-primary/40 text-primary shadow-lg">
                     <FaUser size={24} />
                   </div>
                   <div>
-                    <h4 className="text-base font-bold">{review.name}</h4>
+                    <h4 className="text-lg font-bold">{review.name}</h4>
                     <p className="text-sm text-gray-400">{review.location}</p>
                   </div>
                 </div>
 
-                <div className="mb-4">
+                <div className="mb-4 flex-1">
                   <FaQuoteLeft
                     size={20}
-                    className="mr-2 inline-block text-white/30"
+                    className="mb-2 inline-block text-white/30"
                   />
-                  <p className="text-gray-300">{review.text}</p>
+                  <p className="text-base leading-relaxed text-gray-300">
+                    {review.text}
+                  </p>
                 </div>
 
-                <div className="mb-4 flex text-yellow-400">
-                  {[...Array(review.rating)].map((_, i) => (
-                    <FaStar key={i} />
-                  ))}
-                </div>
+                <div>
+                  <div className="mb-3 flex text-yellow-400">
+                    {[...Array(review.rating)].map((_, i) => (
+                      <FaStar key={i} />
+                    ))}
+                  </div>
 
-                <p className="mt-auto border-t border-white/5 pt-4 text-sm text-gray-400">
-                  {review.date}
-                </p>
+                  <p className="border-t border-white/5 pt-3 text-sm text-gray-400">
+                    {review.date}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
@@ -269,7 +273,7 @@ const App = () => {
           <h2 className="mb-4 text-3xl font-bold">
             Ready to Start Your Crypto Journey?
           </h2>
-          <p className="mb-8 text-xl">
+          <p className="mb-8 text-lg">
             Download Crypto Wiki today and join thousands of successful crypto
             enthusiasts who trust our platform for their crypto education and
             investment decisions.
