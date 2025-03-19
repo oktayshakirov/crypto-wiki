@@ -1,7 +1,7 @@
 {
   "site": {
     "title": "The Crypto Wiki",
-    "base_url": "https://thecrypto.wiki",
+    "base_url": "https://www.thecrypto.wiki",
     "favicon": "/images/favicon.png",
     "logo": "/images/logo.png",
     "logo_width": "235",
