@@ -43,7 +43,10 @@ const SimilarPosts = ({ posts }) => {
             </li>
           </ul>
           <h5>
-            <Link href={`/${post.slug}`} className="block hover:text-primary">
+            <Link
+              href={`/posts/${post.slug}`}
+              className="block hover:text-primary"
+            >
               {post.frontmatter.title}
             </Link>
           </h5>
