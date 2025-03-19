@@ -73,7 +73,7 @@ const BitcoinRainbowChartPage = () => {
             the way we think about money by allowing peer-to-peer transactions
             without the need for a central authority. To dive deeper into what
             Bitcoin is and how it works, check out our detailed guide on{" "}
-            <Link className="text-primary" href="/what-is-bitcoin">
+            <Link className="text-primary" href="/posts/what-is-bitcoin">
               What is Bitcoin?
             </Link>
             .
@@ -82,7 +82,10 @@ const BitcoinRainbowChartPage = () => {
           <p>
             If you&apos;re new to the world of cryptocurrencies and want to
             start your journey, we have a beginner-friendly guide on{" "}
-            <Link className="text-primary" href="/how-to-buy-your-first-crypto">
+            <Link
+              className="text-primary"
+              href="/posts/how-to-buy-your-first-crypto"
+            >
               how to buy your first crypto
             </Link>
             . This guide will walk you through the steps to get started safely

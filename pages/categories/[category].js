@@ -15,7 +15,7 @@ const Category = ({ category, posts, authors, cryptoOgs, exchanges }) => {
       meta_title={`Crypto ${category} articles – Beginner Guides & Latest Trends`}
       description={`Stay ahead with the latest crypto ${category} trends, in-depth analysis, and comprehensive guides tailored for both beginners and experienced enthusiasts.`}
       image="/images/meta-image.png"
-      canonical={`${config.site.base_url}/category/${category.toLowerCase()}`}
+      canonical={`${config.site.base_url}/categories/${category.toLowerCase()}`}
     >
       <div className="section">
         <div className="container mb-8 text-left">
