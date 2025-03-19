@@ -1,8 +1,6 @@
 # *
 User-agent: *
 Allow: /
-
-# Disallowed pages 
 Disallow: /tags/
 Disallow: /search/
 Disallow: /contact
@@ -16,5 +14,5 @@ Disallow: /authors
 # Host
 Host: https://www.thecrypto.wiki
 
-# Sitemap
+# Sitemaps
 Sitemap: https://www.thecrypto.wiki/sitemap.xml

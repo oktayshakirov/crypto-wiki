@@ -4,6 +4,7 @@ import FearAndGreedIndexChart from "@components/FearAndGreedIndex";
 import { FaExclamationTriangle } from "react-icons/fa";
 import Link from "next/link";
 import GoBackLink from "@partials/GoBackLink";
+import config from "@config/config.json";
 
 const data = [
   { color: "#e73827", label: "Extreme Fear" },
@@ -14,7 +15,13 @@ const data = [
 
 const FearAndGreedIndexPage = () => {
   return (
-    <Base title="Crypto Fear and Greed Index">
+    <Base
+      title="Crypto Fear and Greed Index"
+      meta_title="Crypto Fear and Greed Index – Track Market Moods in Real Time"
+      description="Monitor the emotional dynamics of the crypto market with our Crypto Fear and Greed Index. This tool aggregates market data to provide insights into investor sentiment, helping you make informed decisions."
+      image="/images/meta-image.png"
+      canonical={`${config.site.base_url}/tools/fear-and-greed-index`}
+    >
       <section className="section">
         <div className="container ">
           <GoBackLink option="tools" />

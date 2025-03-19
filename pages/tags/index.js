@@ -8,7 +8,11 @@ const { blog_folder } = config.settings;
 const Tags = ({ tags }) => {
   return (
     <Base
-      title={"All Tags: Explore Topics on Cryptocurrency, Blockchain and Web3"}
+      title="All Tags: Explore Topics like Crypto, Blockchain and AI"
+      meta_title="All Crypto Tags – Explore Cryptocurrency, Blockchain & AI Topics"
+      description="Browse all tags on Crypto Wiki to discover articles, guides, and insights on cryptocurrency, blockchain, and Web3. Find the topics that interest you most and stay updated with the latest trends."
+      image="/images/meta-image.png"
+      canonical={`${config.site.base_url}/tags`}
     >
       <section className="section">
         <div className="container text-center">

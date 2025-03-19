@@ -1,66 +1,39 @@
-import config from "@config/config.json";
 import NotFound from "@layouts/404";
 import About from "@layouts/About";
 import Base from "@layouts/Baseof";
 import Contact from "@layouts/Contact";
 import Default from "@layouts/Default";
-import PostSingle from "@layouts/PostSingle";
-import CryptoOgSingle from "@layouts/CryptoOgSingle";
-import ExchangeSingle from "@layouts/ExchangeSingle";
 import { getRegularPage, getSinglePage } from "@lib/contentParser";
-const { blog_folder } = config.settings;
 
-const RegularPages = ({
-  slug,
-  data,
-  postSlug,
-  authors,
-  cryptoOgs,
-  exchanges,
-  posts,
-}) => {
+const RegularPages = ({ slug, data }) => {
   const { title, meta_title, description, image, noindex, canonical, layout } =
     data.frontmatter;
-  const { content } = data;
 
   return (
     <Base
       title={title}
-      description={description ? description : content.slice(0, 120)}
+      description={description}
       meta_title={meta_title}
       image={image}
       noindex={noindex}
       canonical={canonical}
     >
-      {postSlug.includes(slug) ? (
-        <PostSingle
-          slug={slug}
-          post={data}
-          authors={authors}
-          cryptoOgs={cryptoOgs}
-          exchanges={exchanges}
-          posts={posts}
-        />
-      ) : cryptoOgs.map((og) => og.slug).includes(slug) ? (
-        <CryptoOgSingle
-          slug={slug}
-          og={data}
-          authors={authors}
-          cryptoOgs={cryptoOgs}
-        />
-      ) : exchanges.map((exchange) => exchange.slug).includes(slug) ? (
-        <ExchangeSingle
-          slug={slug}
-          exchange={data}
-          authors={authors}
-          exchanges={exchanges}
-        />
-      ) : layout === "404" ? (
+      {layout === "404" ? (
         <NotFound data={data} />
       ) : layout === "about" ? (
         <About data={data} />
       ) : layout === "contact" ? (
         <Contact data={data} />
+      ) : layout === "faq" ? (
+        <Default data={data} />
+      ) : layout === "privacy-policy" ? (
+        <Default data={data} />
+      ) : layout === "terms" ? (
+        <Default data={data} />
+      ) : layout === "affiliate-disclosure" ? (
+        <Default data={data} />
+      ) : layout === "advertising" ? (
+        <Default data={data} />
       ) : (
         <Default data={data} />
       )}
@@ -70,12 +43,9 @@ const RegularPages = ({
 
 export default RegularPages;
 
-// for regular page routes
 export const getStaticPaths = async () => {
   const regularSlugs = getSinglePage("content");
-  const postSlugs = getSinglePage(`content/${blog_folder}`);
-  const allSlugs = [...regularSlugs, ...postSlugs];
-  const paths = allSlugs.map((item) => ({
+  const paths = regularSlugs.map((item) => ({
     params: {
       regular: item.slug,
     },
@@ -87,36 +57,14 @@ export const getStaticPaths = async () => {
   };
 };
 
-// for regular page data
 export const getStaticProps = async ({ params }) => {
   const { regular } = params;
   const allPages = await getRegularPage(regular);
-
-  // get posts folder slug for filtering
-  const getPostSlug = getSinglePage(`content/${blog_folder}`);
-  const postSlug = getPostSlug.map((item) => item.slug);
-
-  // Fetch authors
-  const authors = getSinglePage("content/authors");
-
-  // Fetch all posts
-  const posts = getSinglePage(`content/${blog_folder}`);
-
-  // Fetch cryptoOGs
-  const cryptoOgs = getSinglePage("content/crypto-ogs");
-
-  // Fetch exchanges
-  const exchanges = getSinglePage("content/exchanges");
 
   return {
     props: {
       slug: regular,
       data: allPages,
-      postSlug: postSlug,
-      authors: authors,
-      posts: posts,
-      cryptoOgs: cryptoOgs,
-      exchanges: exchanges,
     },
   };
 };

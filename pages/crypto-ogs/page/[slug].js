@@ -14,7 +14,13 @@ const CryptoOgPagination = ({ ogIndex, ogs, currentPage, pagination }) => {
   const { title } = frontmatter;
 
   return (
-    <Base title={`${title}: Innovators Shaping the Crypto World`}>
+    <Base
+      title={`${title}: Innovators Shaping the Crypto World`}
+      meta_title={`${title} – Pioneers, Innovators & Visionaries in the Crypto Space`}
+      description="Discover crypto legends like Satoshi Nakamoto, Vitalik Buterin and CZ. Explore their innovations, investments and impact on blockchain."
+      image="/images/meta-image.png"
+      canonical={`${config.site.base_url}/crypto-og`}
+    >
       <section className="section">
         <div className="container text-center">
           {markdownify(title, "h1", "h2 mb-16")}

@@ -8,7 +8,13 @@ const { blog_folder } = config.settings;
 
 const Tag = ({ tag, posts, authors, cryptoOgs, exchanges }) => {
   return (
-    <Base title={`Discover ${tag} content: Latest Posts and Crypto Insights`}>
+    <Base
+      title={`Discover ${tag} content: Latest Posts and Crypto Insights`}
+      meta_title={`Discover ${tag} – Latest Posts, Guides & Insights`}
+      description={`Stay updated with the latest posts, expert guides, and analysis on ${tag}. Explore top crypto content tailored to your interests and trends in the crypto space.`}
+      image="/images/meta-image.png"
+      canonical={`${config.site.base_url}/tag/${tag.toLowerCase()}`}
+    >
       <div className="section">
         <div className="container">
           <h1 className="h2 mb-8 text-center">

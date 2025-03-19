@@ -13,6 +13,7 @@ import {
   FaChevronDown,
   FaStar,
 } from "react-icons/fa";
+import config from "@config/config.json";
 
 const SectionTitle = ({ children, subtitle }) => (
   <div className="mb-12 text-center">
@@ -116,7 +117,13 @@ const REVIEWS = [
 
 const App = () => {
   return (
-    <Base title={"CRYPTO WIKI APP: Your All-In-One Crypto Hub"}>
+    <Base
+      title="Crypto Wiki App: Your All-In-One Crypto Hub"
+      meta_title="Crypto Wiki App –Crypto Guides, News and Insights on iOS and Android"
+      description="Discover the ultimate Crypto Wiki App for iOS and Android. Access real-time crypto news, expert analysis and comprehensive guides—everything you need to stay ahead in the crypto market on the go."
+      image="/images/app.jpg"
+      canonical={`${config.site.base_url}/app`}
+    >
       <div className="container my-7">
         <div className="relative rounded-2xl p-8 text-center">
           <h1 className="to-secondary mb-4 bg-primary bg-clip-text text-4xl font-extrabold text-transparent md:text-5xl">

@@ -4,9 +4,17 @@ import { FaExclamationTriangle } from "react-icons/fa";
 import Link from "next/link";
 import RandomCoinGenerator from "@components/RandomCoinGenerator";
 import GoBackLink from "@partials/GoBackLink";
+import config from "@config/config.json";
+
 const RandomCoinPage = () => {
   return (
-    <Base title="Random Coin Generator - Find Your Next Crypto Adventure">
+    <Base
+      title="Random Coin Generator - Find Your Next Crypto Adventure"
+      meta_title="Random Coin Generator – Discover New Cryptocurrencies Instantly"
+      description="Explore our Random Coin Generator to uncover unique cryptocurrencies. Whether you're an investor or just curious, discover your next crypto adventure with this interactive tool."
+      image="/images/meta-image.png"
+      canonical={`${config.site.base_url}/tools/random-coin-generator`}
+    >
       <section className="section">
         <div className="container">
           <GoBackLink option="tools" />

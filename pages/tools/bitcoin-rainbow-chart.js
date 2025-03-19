@@ -4,9 +4,16 @@ import BitcoinRainbowChart from "@components/BitcoinRainbowChart";
 import { FaExclamationTriangle } from "react-icons/fa";
 import Link from "next/link";
 import GoBackLink from "@partials/GoBackLink";
+import config from "@config/config.json";
 const BitcoinRainbowChartPage = () => {
   return (
-    <Base title="Bitcoin Rainbow Chart">
+    <Base
+      title="Bitcoin Rainbow Chart"
+      meta_title="Bitcoin Rainbow Chart – Visualize Price Trends & Market Behavior"
+      description="Explore the Bitcoin Rainbow Chart to visualize historical price trends and gauge market sentiment. Understand Bitcoin's cyclical behavior and potential market movements with this interactive tool."
+      image="/images/meta-image.png"
+      canonical={`${config.site.base_url}/tools/bitcoin-rainbow-chart`}
+    >
       <section className="section">
         <div className="container">
           <GoBackLink option="tools" />

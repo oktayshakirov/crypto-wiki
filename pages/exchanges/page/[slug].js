@@ -22,7 +22,13 @@ const ExchangePagination = ({
   const { title } = frontmatter;
 
   return (
-    <Base title={`${title}: Popular Crypto Exchanges`}>
+    <Base
+      title={`CRYPTO ${title}`}
+      meta_title={`CRYPTO ${title} – Reviews & Ratings`}
+      description="Explore our detailed reviews of top crypto exchanges trusted by millions of investors. Discover expert insights, comprehensive ratings, and the latest updates to help you choose the best platform for your crypto trading."
+      image="/images/meta-image.png"
+      canonical={`${config.site.base_url}/exchanges`}
+    >
       <section className="section">
         <div className="container text-center">
           {markdownify(title, "h1", "h2 mb-16")}

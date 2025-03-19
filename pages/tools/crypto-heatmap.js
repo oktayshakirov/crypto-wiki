@@ -4,6 +4,7 @@ import { FaExclamationTriangle } from "react-icons/fa";
 import Link from "next/link";
 import Heatmap from "@components/Heatmap";
 import GoBackLink from "@partials/GoBackLink";
+import config from "@config/config.json";
 
 const data = [
   { color: "#56ab2f", label: "Positive Price Change" },
@@ -12,7 +13,13 @@ const data = [
 
 const CryptoHeatmapPage = () => {
   return (
-    <Base title="Crypto Market Heatmap">
+    <Base
+      title="Crypto Market Heatmap"
+      meta_title="Crypto Market Heatmap – Real-Time Trends & Analysis"
+      description="Discover real-time trends in the crypto market with our interactive heatmap. Visualize performance across top cryptocurrencies and access live market data for informed decision-making."
+      image="/images/meta-image.png"
+      canonical={`${config.site.base_url}/tools/crypto-heatmap`}
+    >
       <section className="section">
         <div className="container">
           <GoBackLink option="tools" />

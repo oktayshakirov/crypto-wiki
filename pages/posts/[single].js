@@ -1,22 +1,28 @@
 import PostSingle from "@layouts/PostSingle";
 import { getSinglePage } from "@lib/contentParser";
 import parseMDX from "@lib/utils/mdxParser";
+import config from "@config/config.json";
 
-const Article = ({ post, mdxContent }) => {
-  const { frontmatter, content } = post[0];
+const { blog_folder } = config.settings;
 
+const Article = ({ post, mdxContent, posts, cryptoOgs, exchanges, slug }) => {
   return (
     <PostSingle
-      frontmatter={frontmatter}
-      content={content}
-      mdxContent={mdxContent}
+      post={{
+        ...post[0],
+        mdxContent,
+      }}
+      posts={posts}
+      cryptoOgs={cryptoOgs}
+      exchanges={exchanges}
+      slug={slug}
     />
   );
 };
 
 export const getStaticPaths = () => {
-  const allSlug = getSinglePage("/");
-  const paths = allSlug.map((item) => ({
+  const posts = getSinglePage(`content/${blog_folder}`);
+  const paths = posts.map((item) => ({
     params: {
       single: item.slug,
     },
@@ -30,14 +36,23 @@ export const getStaticPaths = () => {
 
 export const getStaticProps = async ({ params }) => {
   const { single } = params;
-  const getPosts = getSinglePage("content/posts");
-  const post = getPosts.filter((post) => post.slug == single);
+  const posts = getSinglePage(`content/${blog_folder}`);
+  const post = posts.filter((post) => post.slug === single);
   const mdxContent = await parseMDX(post[0].content);
+
+  // Get cryptoOGs
+  const cryptoOgs = getSinglePage("content/crypto-ogs");
+
+  // Get exchanges
+  const exchanges = getSinglePage("content/exchanges");
 
   return {
     props: {
       post: post,
       mdxContent: mdxContent,
+      posts: posts,
+      cryptoOgs: cryptoOgs,
+      exchanges: exchanges,
       slug: single,
     },
   };
