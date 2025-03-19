@@ -166,7 +166,7 @@ const PostSingle = ({ post, posts, cryptoOgs, exchanges, slug }) => {
           <NextPrevNavigation
             prevItem={prevPost}
             nextItem={nextPost}
-            basePath=""
+            basePath="posts"
           />
         </div>
       </section>
