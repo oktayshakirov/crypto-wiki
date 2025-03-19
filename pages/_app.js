@@ -4,6 +4,7 @@ import { JsonContext } from "context/state";
 import Head from "next/head";
 import Script from "next/script";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import TagManager from "react-gtm-module";
 import "styles/style.scss";
 
@@ -18,6 +19,7 @@ function getIsAppFlag() {
 }
 
 const App = ({ Component, pageProps }) => {
+  const router = useRouter();
   const pf = theme.fonts.font_family.primary;
   const sf = theme.fonts.font_family.secondary;
   const [fontcss, setFontcss] = useState();
@@ -40,6 +42,7 @@ const App = ({ Component, pageProps }) => {
   const tagManagerArgs = {
     gtmId: config.params.tag_manager_id,
   };
+
   useEffect(() => {
     setTimeout(() => {
       !isApp &&
@@ -48,6 +51,16 @@ const App = ({ Component, pageProps }) => {
     }, 5000);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const noIndexPages = [
+    "/contact",
+    "/faq",
+    "/privacy-policy",
+    "/terms",
+    "/affiliate-disclosure",
+    "/advertising",
+    "/authors",
+  ];
 
   return (
     <JsonContext>
@@ -66,6 +79,9 @@ const App = ({ Component, pageProps }) => {
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=5"
         />
+        {noIndexPages.includes(router.pathname) && (
+          <meta name="robots" content="noindex, follow" />
+        )}
       </Head>
       {!isApp && (
         <>

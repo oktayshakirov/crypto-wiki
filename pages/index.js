@@ -59,13 +59,6 @@ const Home = ({
               <FaHashtag />
               <span>TAGS</span>
             </Link>
-            <Link
-              className="btn-primary flex items-center gap-2"
-              href="/authors"
-            >
-              <FaUserAlt />
-              <span>AUTHORS</span>
-            </Link>
           </div>
           <div className="card-secondary mb-10 p-10">
             <div className="mb-20">
