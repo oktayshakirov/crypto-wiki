@@ -7,8 +7,8 @@ module.exports = {
   autoLastmod: true,
 
   transform: async (config, path) => {
-    // Completely exclude certain pages from sitemap
     const excludePaths = [
+      "/about",
       "/contact",
       "/faq",
       "/privacy-policy",
@@ -72,6 +72,7 @@ module.exports = {
         userAgent: "*",
         allow: "/",
         disallow: [
+          "/about",
           "/tags/",
           "/search/",
           "/contact",
