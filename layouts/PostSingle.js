@@ -9,6 +9,8 @@ import Authors from "@components/Authors";
 import { FaCalendarAlt, FaTag, FaUser, FaExchangeAlt } from "react-icons/fa";
 import NextPrevNavigation from "@partials/NextPrevNavigation";
 import GoBackLink from "@partials/GoBackLink";
+import Base from "./Baseof";
+import config from "@config/config.json";
 
 const PostSingle = ({ post, posts, cryptoOgs, exchanges, slug }) => {
   const { frontmatter, content, mdxContent } = post;
@@ -21,7 +23,13 @@ const PostSingle = ({ post, posts, cryptoOgs, exchanges, slug }) => {
   const prevPost = posts[currentIndex - 1] || null;
 
   return (
-    <>
+    <Base
+      title={`${title}`}
+      meta_title={`${title} – Crypto Wiki`}
+      description={description ? description : content.slice(0, 120)}
+      image={image}
+      canonical={`${config.site.base_url}/posts/${slug}`}
+    >
       <section className="section">
         <div className="container">
           <GoBackLink option="posts" />
@@ -168,7 +176,7 @@ const PostSingle = ({ post, posts, cryptoOgs, exchanges, slug }) => {
           <SimilarPosts posts={similarPosts.slice(0, 6)} />
         </div>
       </section>
-    </>
+    </Base>
   );
 };
 

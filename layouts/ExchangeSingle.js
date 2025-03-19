@@ -10,6 +10,8 @@ import dateFormat from "@lib/utils/dateFormat";
 import NextPrevNavigation from "@partials/NextPrevNavigation";
 import Button from "@components/Button";
 import GoBackLink from "@partials/GoBackLink";
+import config from "@config/config.json";
+
 const ExchangeSingle = ({
   frontmatter,
   content,
@@ -28,8 +30,10 @@ const ExchangeSingle = ({
   return (
     <Base
       title={title}
+      meta_title={`${title} Review – In-Depth Exchange Analysis`}
       description={description ? description : content.slice(0, 120)}
       image={image}
+      canonical={`${config.site.base_url}/exchanges/${slug}`}
     >
       <section className="section">
         <div className="container text-center">

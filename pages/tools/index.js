@@ -1,6 +1,7 @@
 import Base from "@layouts/Baseof";
 import { markdownify } from "@lib/utils/textConverter";
 import Link from "next/link";
+import config from "@config/config.json";
 
 const Tools = () => {
   const tools = [
@@ -28,7 +29,11 @@ const Tools = () => {
 
   return (
     <Base
-      title={"Crypto Tools: Charts, Fear and Greed Index, Calculators and more"}
+      title="Crypto Tools: Charts, Fear and Greed Index, Calculators and more"
+      meta_title="Explore Crypto Tools – Bitcoin Rainbow, Fear & Greed Index, Staking Calculator & More"
+      description="Discover a comprehensive suite of crypto tools on Crypto Wiki. From Bitcoin Rainbow charts and the Fear & Greed Index to advanced staking calculators, access the insights you need to navigate the digital currency market confidently."
+      image="/images/meta-image.png"
+      canonical={`${config.site.base_url}/tools`}
     >
       <section className="section">
         <div className="container max-w-6xl text-center">

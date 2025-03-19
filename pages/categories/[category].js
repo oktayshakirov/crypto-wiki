@@ -11,7 +11,11 @@ import Link from "next/link";
 const Category = ({ category, posts, authors, cryptoOgs, exchanges }) => {
   return (
     <Base
-      title={`Discover ${category} content: Latest Posts and Crypto Insights`}
+      title={`Crypto ${category}: Latest News, Guides & Expert Analysis`}
+      meta_title={`Crypto ${category} articles – Beginner Guides & Latest Trends`}
+      description={`Stay ahead with the latest crypto ${category} trends, in-depth analysis, and comprehensive guides tailored for both beginners and experienced enthusiasts.`}
+      image="/images/meta-image.png"
+      canonical={`${config.site.base_url}/category/${category.toLowerCase()}`}
     >
       <div className="section">
         <div className="container mb-8 text-left">

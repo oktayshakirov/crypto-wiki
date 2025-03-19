@@ -20,7 +20,13 @@ const AuthorPagination = ({
   const { title } = frontmatter;
 
   return (
-    <Base title={title}>
+    <Base
+      title="Crypto Wiki Authors – Meet Our Expert Contributors"
+      meta_title="Meet the Crypto Wiki Authors | Expert Crypto Writers & Analysts"
+      description="Discover the talented team behind Crypto Wiki. Learn about our expert authors, their insights, and their contributions that keep you updated with the latest crypto trends and analysis."
+      image="/images/meta-image.png"
+      canonical={`${config.site.base_url}/authors`}
+    >
       <section className="section">
         <div className="container text-center">
           {markdownify(title, "h1", "h2 mb-16")}

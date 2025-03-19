@@ -9,7 +9,7 @@ const Posts = ({ posts }) => {
 
   const handleCardClick = (e, slug) => {
     if (!e.target.closest("a")) {
-      router.push(`/${slug}`);
+      router.push(`/posts/${slug}`);
     }
   };
 

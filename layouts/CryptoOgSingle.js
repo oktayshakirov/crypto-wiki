@@ -8,6 +8,7 @@ import { FaCalendarAlt } from "react-icons/fa";
 import dateFormat from "@lib/utils/dateFormat";
 import NextPrevNavigation from "@partials/NextPrevNavigation";
 import GoBackLink from "@partials/GoBackLink";
+import config from "@config/config.json";
 
 const CryptoOgSingle = ({
   frontmatter,
@@ -24,8 +25,10 @@ const CryptoOgSingle = ({
   return (
     <Base
       title={`${title}: Contributions and Role in the Crypto Space`}
+      meta_title={`Crypto OG Profile – ${title}: Achievements, Contributions & Impact`}
       description={description ? description : content.slice(0, 120)}
       image={image}
+      canonical={`${config.site.base_url}/crypto-ogs/${slug}`}
     >
       <section className="section">
         <div className="container">

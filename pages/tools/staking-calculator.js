@@ -4,10 +4,17 @@ import StakingCalculator from "@components/StakingCalculator";
 import { FaExclamationTriangle } from "react-icons/fa";
 import Link from "next/link";
 import GoBackLink from "@partials/GoBackLink";
+import config from "@config/config.json";
 
 const StakingCalculatorPage = () => {
   return (
-    <Base title="Crypto Staking Calculator">
+    <Base
+      title="Crypto Staking Calculator"
+      meta_title="Crypto Staking Calculator – Estimate Your Staking Rewards"
+      description="Use our Crypto Staking Calculator to estimate your potential earnings from staking cryptocurrencies. Input your details to forecast rewards and optimize your crypto investment strategy."
+      image="/images/meta-image.png"
+      canonical={`${config.site.base_url}/tools/staking-calculator`}
+    >
       <section className="section">
         <div className="container">
           <GoBackLink option="tools" />
