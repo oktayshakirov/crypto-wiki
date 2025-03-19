@@ -31,8 +31,8 @@ const Home = ({
 }) => {
   return (
     <Base
-      title="Crypto Wiki – Your Ultimate Resource for Crypto News, Guides & Analysis"
-      meta_title="Crypto Wiki – Latest Crypto News, Expert Guides & Market Insights"
+      title="CRYPTO WIKI – Your Ultimate Resource for Crypto News, Guides & Analysis"
+      meta_title="CRYPTO WIKI – Uncover the World of Crypto"
       description="Stay ahead in the dynamic world of cryptocurrency with Crypto Wiki. Discover the latest news, comprehensive guides, and expert market insights on Bitcoin, blockchain, Web3, and more."
       image="/images/meta-image.png"
       canonical={`${config.site.base_url}/`}

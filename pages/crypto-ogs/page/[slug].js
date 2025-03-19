@@ -19,7 +19,7 @@ const CryptoOgPagination = ({ ogIndex, ogs, currentPage, pagination }) => {
       meta_title={`${title} – Pioneers, Innovators & Visionaries in the Crypto Space`}
       description="Discover crypto legends like Satoshi Nakamoto, Vitalik Buterin and CZ. Explore their innovations, investments and impact on blockchain."
       image="/images/meta-image.png"
-      canonical={`${config.site.base_url}/crypto-og`}
+      canonical={`${config.site.base_url}/crypto-ogs`}
     >
       <section className="section">
         <div className="container text-center">

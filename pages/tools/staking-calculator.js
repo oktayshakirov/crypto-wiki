@@ -71,7 +71,7 @@ const StakingCalculatorPage = () => {
             choose a reliable platform. Compare APY rates across different
             staking platforms to maximize your earnings. Learn more about the
             staking process in our detailed guide on{" "}
-            <Link className="text-primary" href="/crypto-staking">
+            <Link className="text-primary" href="/posts/crypto-staking">
               what is crypto staking
             </Link>
             .

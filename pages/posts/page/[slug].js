@@ -21,7 +21,13 @@ const PostPagination = ({
   const { title } = frontmatter;
 
   return (
-    <Base title={`${title}: Crypto Guides, Market News and Insights`}>
+    <Base
+      title={`${title}: Crypto Guides, News and Insights`}
+      meta_title={`${title} – In-Depth Guides, News & Expert Insights"
+      description="Explore a wide range of crypto articles covering detailed guides, the latest market news, and expert insights. Whether you're a beginner or a seasoned investor, discover valuable tips and analysis on all things crypto.`}
+      image="/images/meta-image.png"
+      canonical={`${config.site.base_url}/posts`}
+    >
       <section className="section">
         <div className="container text-center">
           <div className="mb-8">
