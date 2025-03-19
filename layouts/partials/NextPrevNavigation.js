@@ -6,7 +6,9 @@ const NextPrevNavigation = ({ prevItem, nextItem, basePath = "" }) => {
     <div className="flex flex-wrap justify-between gap-6">
       {prevItem && (
         <div className="card rounded-lg p-4 sm:w-[48%]">
-          <Link href={`${basePath ? `/${basePath}` : ""}/${prevItem.slug}`}>
+          <Link
+            href={`${basePath ? `/${basePath}` : ""}/posts/${prevItem.slug}`}
+          >
             <div className="mb-2">
               <span className="block text-left text-sm">← Previous</span>
             </div>
@@ -31,7 +33,9 @@ const NextPrevNavigation = ({ prevItem, nextItem, basePath = "" }) => {
       )}
       {nextItem && (
         <div className="card rounded-lg p-4 sm:w-[48%]">
-          <Link href={`${basePath ? `/${basePath}` : ""}/${nextItem.slug}`}>
+          <Link
+            href={`${basePath ? `/${basePath}` : ""}/posts/${nextItem.slug}`}
+          >
             <div className="mb-2">
               <span className="block text-right text-sm">Next →</span>
             </div>
