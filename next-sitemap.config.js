@@ -20,7 +20,10 @@ module.exports = {
       "/authors",
     ];
 
-    if (excludePaths.some((excludedPath) => path.startsWith(excludedPath))) {
+    if (
+      excludePaths.some((excludedPath) => path.startsWith(excludedPath)) ||
+      path.match(/\/page\/\d+/)
+    ) {
       return null;
     }
 
@@ -48,11 +51,7 @@ module.exports = {
     } else if (/^\/categories(\/.+)?$/.test(path)) {
       priority = 0.7;
       changefreq = "weekly";
-    } else if (/^\/authors(\/.+)?$/.test(path)) {
-      priority = 0.6;
-      changefreq = "weekly";
     } else if (/^\/[a-zA-Z0-9-]+$/.test(path)) {
-      // For individual pages like /app, /about, etc.
       priority = 0.8;
       changefreq = "weekly";
     }
