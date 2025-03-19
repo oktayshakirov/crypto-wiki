@@ -18,6 +18,7 @@ import {
   FaThermometerHalf,
   FaHashtag,
 } from "react-icons/fa";
+import config from "@config/config.json";
 
 const Home = ({
   posts,
@@ -29,7 +30,13 @@ const Home = ({
   exchangePages,
 }) => {
   return (
-    <Base>
+    <Base
+      title="Crypto Wiki – Your Ultimate Resource for Crypto News, Guides & Analysis"
+      meta_title="Crypto Wiki – Latest Crypto News, Expert Guides & Market Insights"
+      description="Stay ahead in the dynamic world of cryptocurrency with Crypto Wiki. Discover the latest news, comprehensive guides, and expert market insights on Bitcoin, blockchain, Web3, and more."
+      image="/images/meta-image.png"
+      canonical={`${config.site.base_url}/`}
+    >
       <section>
         <div className="container my-7 text-center">
           <h1 className="mb-8 text-2xl font-semibold leading-tight sm:text-4xl">

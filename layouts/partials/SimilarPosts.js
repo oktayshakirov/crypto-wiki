@@ -8,7 +8,7 @@ const SimilarPosts = ({ posts }) => {
       {posts.map((post, i) => (
         <div key={`key-${i}`} className="w-full p-4 sm:w-1/3">
           {post.frontmatter.image && (
-            <Link href={`/${post.slug}`}>
+            <Link href={`/posts/${post.slug}`}>
               <div className="relative h-56 w-full cursor-pointer">
                 <Image
                   className="rounded-lg object-cover"
