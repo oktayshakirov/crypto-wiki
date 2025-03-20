@@ -8,9 +8,9 @@ const { blog_folder } = config.settings;
 const Categories = ({ categories }) => {
   return (
     <Base
-      title="All Crypto Categories – News, Guides & Insights"
-      meta_title="All Crypto Categories – Blockchain, Web3, AI, Investing & More"
-      description="Browse a comprehensive range of topics on Crypto Wiki. From blockchain and Bitcoin to AI, security, and investing, discover the latest news, expert insights, and in-depth guides to stay ahead in the crypto space."
+      title="All Crypto Categories | Blockchain, Web3, AI & More - Crypto Wiki"
+      meta_title="All Crypto Categories | Blockchain, Web3, AI & More - Crypto Wiki"
+      description="Explore a wide range of crypto topics on Crypto Wiki. From blockchain and Bitcoin to AI, security, and investing—access expert insights, guides, and the latest news."
       image="/images/meta-image.png"
       canonical={`${config.site.base_url}/categories`}
     >

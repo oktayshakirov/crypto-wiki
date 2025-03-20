@@ -10,8 +10,9 @@ const AuthorSingle = ({ frontmatter, content, mdxContent }) => {
 
   return (
     <Base
-      title={title}
-      description={description ? description : content.slice(0, 120)}
+      title={`${title} | Author Profile & Articles - Crypto Wiki`}
+      meta_title={`${title} | Expert Author & Crypto Insights - Crypto Wiki`}
+      description={description ? description : content.slice(0, 160)}
       image={image}
     >
       <section className="section">

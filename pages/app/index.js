@@ -118,9 +118,9 @@ const REVIEWS = [
 const App = () => {
   return (
     <Base
-      title="Crypto Wiki App: Your All-In-One Crypto Hub"
-      meta_title="Crypto Wiki App –Crypto Guides, News and Insights on iOS and Android"
-      description="Discover the ultimate Crypto Wiki App for iOS and Android. Access real-time crypto news, expert analysis and comprehensive guides—everything you need to stay ahead in the crypto market on the go."
+      title="Crypto Wiki App | Your All-In-One Crypto Hub for iOS & Android"
+      meta_title="Crypto Wiki App | Crypto Guides, News & Insights on iOS & Android"
+      description="Download the Crypto Wiki App for iOS and Android. Stay updated with real-time crypto news, expert analysis, and comprehensive guides—your go-to crypto resource on the go."
       image="/images/app.jpg"
       canonical={`${config.site.base_url}/app`}
     >

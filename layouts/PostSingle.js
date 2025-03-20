@@ -24,9 +24,9 @@ const PostSingle = ({ post, posts, cryptoOgs, exchanges, slug }) => {
 
   return (
     <Base
-      title={`${title}`}
-      meta_title={`${title} – Crypto Wiki`}
-      description={description ? description : content.slice(0, 120)}
+      title={`${title} | Crypto Wiki`}
+      meta_title={`${title} | Crypto Wiki`}
+      description={description ? description : content.slice(0, 160)}
       image={image}
       canonical={`${config.site.base_url}/posts/${slug}`}
     >

@@ -14,9 +14,9 @@ const data = [
 const CryptoHeatmapPage = () => {
   return (
     <Base
-      title="Crypto Market Heatmap"
-      meta_title="Crypto Market Heatmap – Real-Time Trends & Analysis"
-      description="Discover real-time trends in the crypto market with our interactive heatmap. Visualize performance across top cryptocurrencies and access live market data for informed decision-making."
+      title="Crypto Market Heatmap | Real-Time Trends & Analysis - Crypto Wiki"
+      meta_title="Crypto Market Heatmap | Real-Time Trends & Analysis - Crypto Wiki"
+      description="Visualize real-time crypto market trends with our interactive heatmap. Track top cryptocurrencies' performance and access live data for smarter decision-making."
       image="/images/meta-image.png"
       canonical={`${config.site.base_url}/tools/crypto-heatmap`}
     >

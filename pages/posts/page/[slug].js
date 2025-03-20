@@ -22,9 +22,9 @@ const PostPagination = ({
 
   return (
     <Base
-      title={`${title}: Crypto Guides, News and Insights`}
-      meta_title={`${title} – In-Depth Guides, News & Expert Insights`}
-      description="Explore a wide range of crypto articles covering detailed guides, the latest market news, and expert insights. Whether you're a beginner or a seasoned investor, discover valuable tips and analysis on all things crypto."
+      title="All Crypto Posts | Guides, News & Expert Insights - Crypto Wiki"
+      meta_title="All Crypto Posts | Guides, News & Expert Insights - Crypto Wiki"
+      description="Browse comprehensive crypto articles, including guides, news, and expert analysis. Perfect for beginners and seasoned investors seeking valuable tips and insights."
       image="/images/meta-image.png"
       canonical={`${config.site.base_url}/posts`}
     >

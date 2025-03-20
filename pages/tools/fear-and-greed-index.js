@@ -16,9 +16,9 @@ const data = [
 const FearAndGreedIndexPage = () => {
   return (
     <Base
-      title="Crypto Fear and Greed Index"
-      meta_title="Crypto Fear and Greed Index – Track Market Moods in Real Time"
-      description="Monitor the emotional dynamics of the crypto market with our Crypto Fear and Greed Index. This tool aggregates market data to provide insights into investor sentiment, helping you make informed decisions."
+      title="Crypto Fear & Greed Index | Market Mood Tracker - Crypto Wiki"
+      meta_title="Crypto Fear & Greed Index | Market Mood Tracker - Crypto Wiki"
+      description="Track real-time crypto market mood with the Crypto Fear and Greed Index. Analyze emotions driving the market and enhance your trading strategy with valuable insights."
       image="/images/meta-image.png"
       canonical={`${config.site.base_url}/tools/fear-and-greed-index`}
     >

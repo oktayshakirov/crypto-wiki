@@ -23,9 +23,9 @@ const ExchangePagination = ({
 
   return (
     <Base
-      title={`CRYPTO ${title}`}
-      meta_title={`CRYPTO ${title} – Reviews & Ratings`}
-      description="Explore our detailed reviews of top crypto exchanges trusted by millions of investors. Discover expert insights, comprehensive ratings, and the latest updates to help you choose the best platform for your crypto trading."
+      title="Crypto Exchanges | Reviews & Ratings - Crypto Wiki"
+      meta_title="Crypto Exchanges | Reviews & Ratings - Crypto Wiki"
+      description="Explore detailed reviews of top crypto exchanges trusted by investors worldwide. Find expert insights, ratings, and updates to choose the best platform for your trading needs."
       image="/images/meta-image.png"
       canonical={`${config.site.base_url}/exchanges`}
     >

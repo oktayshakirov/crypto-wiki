@@ -9,9 +9,9 @@ import config from "@config/config.json";
 const RandomCoinPage = () => {
   return (
     <Base
-      title="Random Coin Generator - Find Your Next Crypto Adventure"
-      meta_title="Random Coin Generator – Discover New Cryptocurrencies Instantly"
-      description="Explore our Random Coin Generator to uncover unique cryptocurrencies. Whether you're an investor or just curious, discover your next crypto adventure with this interactive tool."
+      title="Random Coin Generator | Discover New Crypto Coins - Crypto Wiki"
+      meta_title="Random Coin Generator | Discover New Crypto Coins - Crypto Wiki"
+      description="Uncover unique cryptocurrencies with the Random Coin Generator. Find your next crypto adventure—whether you’re investing or just exploring the crypto universe."
       image="/images/meta-image.png"
       canonical={`${config.site.base_url}/tools/random-coin-generator`}
     >
