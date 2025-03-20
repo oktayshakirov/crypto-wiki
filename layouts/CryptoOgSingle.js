@@ -24,9 +24,9 @@ const CryptoOgSingle = ({
 
   return (
     <Base
-      title={`${title}: Contributions and Role in the Crypto Space`}
-      meta_title={`Crypto OG Profile – ${title}: Achievements, Contributions & Impact`}
-      description={description ? description : content.slice(0, 120)}
+      title={`${title} | Contributions & Impact in the Crypto Space - Crypto Wiki`}
+      meta_title={`${title} | Achievements, Contributions & Impact - Crypto Wiki`}
+      description={description ? description : content.slice(0, 160)}
       image={image}
       canonical={`${config.site.base_url}/crypto-ogs/${slug}`}
     >

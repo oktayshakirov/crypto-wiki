@@ -15,9 +15,9 @@ const CryptoOgPagination = ({ ogIndex, ogs, currentPage, pagination }) => {
 
   return (
     <Base
-      title={`${title}: Innovators Shaping the Crypto World`}
-      meta_title={`${title} – Pioneers, Innovators & Visionaries in the Crypto Space`}
-      description="Discover crypto legends like Satoshi Nakamoto, Vitalik Buterin and CZ. Explore their innovations, investments and impact on blockchain."
+      title="Crypto OGs | Pioneers & Visionaries of the Crypto World - Crypto Wiki"
+      meta_title="Crypto OGs | Pioneers & Visionaries of the Crypto World - Crypto Wiki"
+      description="Discover the legends of crypto like Satoshi Nakamoto, Vitalik Buterin, and CZ. Explore their innovations, investments, and lasting impact on blockchain technology."
       image="/images/meta-image.png"
       canonical={`${config.site.base_url}/crypto-ogs`}
     >

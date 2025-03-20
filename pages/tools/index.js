@@ -43,9 +43,9 @@ const Tools = () => {
 
   return (
     <Base
-      title="CRYPTO TOOLS: Charts, Fear and Greed Index, Calculators and more"
-      meta_title="CRYPTO TOOLS – Bitcoin Rainbow, Staking Calculator, Fear & Greed Index & More"
-      description="Discover a comprehensive suite of crypto tools on Crypto Wiki. From Bitcoin Rainbow charts and the Fear & Greed Index to advanced staking calculators, access the insights you need to navigate the digital currency market confidently."
+      title="Crypto Tools | Crypto Wiki - Market Analysis, Staking, & More"
+      meta_title="Crypto Tools | Crypto Wiki - Market Analysis, Staking, & More"
+      description="Explore the best crypto tools on Crypto Wiki! From market heatmaps and staking calculators to Fear and Greed Index and random coin generators, boost your trading strategy today."
       image="/images/meta-image.png"
       canonical={`${config.site.base_url}/tools`}
     >

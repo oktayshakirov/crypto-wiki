@@ -21,9 +21,9 @@ const AuthorPagination = ({
 
   return (
     <Base
-      title="Crypto Wiki Authors – Meet Our Expert Contributors"
-      meta_title="Meet the Crypto Wiki Authors | Expert Crypto Writers & Analysts"
-      description="Discover the talented team behind Crypto Wiki. Learn about our expert authors, their insights, and their contributions that keep you updated with the latest crypto trends and analysis."
+      title="Meet the Crypto Wiki Authors | Expert Writers & Analysts"
+      meta_title="Meet the Crypto Wiki Authors | Expert Writers & Analysts"
+      description="Discover the expert contributors behind Crypto Wiki. Learn about their insights, articles, and analysis that keep you informed on the latest crypto trends and developments."
       image="/images/meta-image.png"
       canonical={`${config.site.base_url}/authors`}
     >

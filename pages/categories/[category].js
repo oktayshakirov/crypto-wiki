@@ -11,9 +11,9 @@ import Link from "next/link";
 const Category = ({ category, posts, authors, cryptoOgs, exchanges }) => {
   return (
     <Base
-      title={`Crypto ${category}: Latest News, Guides & Expert Analysis`}
-      meta_title={`Crypto ${category} articles – Beginner Guides & Latest Trends`}
-      description={`Stay ahead with the latest crypto ${category} trends, in-depth analysis, and comprehensive guides tailored for both beginners and experienced enthusiasts.`}
+      title={`Discover ${category} posts | News, Guides & Analysis - Crypto Wiki`}
+      meta_title={`Discover ${category} posts | News, Guides & Analysis - Crypto Wiki`}
+      description={`Explore the latest Crypto ${category} trends, expert analysis, and detailed guides. Perfect for beginners and enthusiasts looking to deepen their crypto knowledge.`}
       image="/images/meta-image.png"
       canonical={`${config.site.base_url}/categories/${category.toLowerCase()}`}
     >

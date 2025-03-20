@@ -9,9 +9,9 @@ import config from "@config/config.json";
 const StakingCalculatorPage = () => {
   return (
     <Base
-      title="Crypto Staking Calculator"
-      meta_title="Crypto Staking Calculator – Estimate Your Staking Rewards"
-      description="Use our Crypto Staking Calculator to estimate your potential earnings from staking cryptocurrencies. Input your details to forecast rewards and optimize your crypto investment strategy."
+      title="Crypto Staking Calculator | Estimate Your Rewards - Crypto Wiki"
+      meta_title="Crypto Staking Calculator | Estimate Your Rewards - Crypto Wiki"
+      description="Calculate your staking rewards with our Crypto Staking Calculator. Input your details to forecast potential earnings and enhance your crypto investment strategy."
       image="/images/meta-image.png"
       canonical={`${config.site.base_url}/tools/staking-calculator`}
     >

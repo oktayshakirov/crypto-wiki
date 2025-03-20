@@ -29,9 +29,9 @@ const ExchangeSingle = ({
 
   return (
     <Base
-      title={title}
-      meta_title={`${title} Review – In-Depth Exchange Analysis`}
-      description={description ? description : content.slice(0, 120)}
+      title={`${title} Review | In-Depth Exchange Analysis - Crypto Wiki`}
+      meta_title={`${title} Review | In-Depth Exchange Analysis - Crypto Wiki`}
+      description={description ? description : content.slice(0, 160)}
       image={image}
       canonical={`${config.site.base_url}/exchanges/${slug}`}
     >

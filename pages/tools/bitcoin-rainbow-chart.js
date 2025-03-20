@@ -8,9 +8,9 @@ import config from "@config/config.json";
 const BitcoinRainbowChartPage = () => {
   return (
     <Base
-      title="Bitcoin Rainbow Chart"
-      meta_title="Bitcoin Rainbow Chart – Visualize Price Trends & Market Behavior"
-      description="Explore the Bitcoin Rainbow Chart to visualize historical price trends and gauge market sentiment. Understand Bitcoin's cyclical behavior and potential market movements with this interactive tool."
+      title="Bitcoin Rainbow Chart | Visualize BTC Price Trends - Crypto Wiki"
+      meta_title="Bitcoin Rainbow Chart | Visualize BTC Price Trends - Crypto Wiki"
+      description="Explore the Bitcoin Rainbow Chart to visualize historical BTC price trends. Understand market moods and potential movements with this insightful crypto analysis tool."
       image="/images/meta-image.png"
       canonical={`${config.site.base_url}/tools/bitcoin-rainbow-chart`}
     >
