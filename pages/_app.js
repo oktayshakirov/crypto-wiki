@@ -83,6 +83,10 @@ const App = ({ Component, pageProps }) => {
           <meta name="robots" content="noindex, follow" />
         )}
       </Head>
+      <Script
+        strategy="afterInteractive"
+        src="https://www.googletagmanager.com/gtag/js?id=G-ZRW4Z84C8T"
+      />
       <Script id="google-analytics" strategy="afterInteractive">
         {`
               window.dataLayer = window.dataLayer || [];
