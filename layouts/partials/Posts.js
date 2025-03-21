@@ -16,7 +16,10 @@ const Posts = ({ posts }) => {
   return (
     <div className="row">
       {posts.map((post) => (
-        <div key={post.slug} className="col-12 mb-7 justify-center sm:col-6">
+        <div
+          key={post.slug}
+          className="col-12 mb-7 justify-center min-[650px]:col-6"
+        >
           <div
             className="card flex h-full flex-col justify-between"
             onClick={(e) => handleCardClick(e, post.slug)}
@@ -42,14 +45,14 @@ const Posts = ({ posts }) => {
                     <Link
                       key={`category-${index}`}
                       href={`/categories/${slugify(category)}`}
-                      className="mr-1 flex items-center hover:text-primary"
+                      className="mr-1 flex items-center text-xs hover:text-primary sm:text-sm"
                     >
-                      <FaTag className="mx-2" />
+                      <FaTag className="mx-2 text-xs sm:text-base" />
                       <span>{category}</span>
                     </Link>
                   ))}
                 {post.frontmatter.categories.length > 3 && (
-                  <span className="text-secondary ml-2">
+                  <span className="text-secondary ml-2 text-xs sm:text-sm">
                     +{post.frontmatter.categories.length - 3}
                   </span>
                 )}
@@ -62,14 +65,14 @@ const Posts = ({ posts }) => {
                       <Link
                         href={`/crypto-ogs/${slugify(cryptoOg)}`}
                         key={`cryptoOg-${index}`}
-                        className="mx-2 flex items-center hover:text-primary"
+                        className="mx-2 flex items-center text-xs hover:text-primary sm:text-sm"
                       >
-                        <FaUser className="mr-2" />
+                        <FaUser className="mr-2 text-xs sm:text-base" />
                         <span>{cryptoOg}</span>
                       </Link>
                     ))}
                   {post.frontmatter["crypto-ogs"].length > 3 && (
-                    <span className="text-secondary">
+                    <span className="text-secondary text-xs sm:text-sm">
                       +{post.frontmatter["crypto-ogs"].length - 3}
                     </span>
                   )}
@@ -83,14 +86,14 @@ const Posts = ({ posts }) => {
                       <Link
                         href={`/exchanges/${slugify(exchange)}`}
                         key={`exchange-${index}`}
-                        className="mx-2 flex items-center hover:text-primary"
+                        className="mx-2 flex items-center text-xs hover:text-primary sm:text-sm"
                       >
-                        <FaAt className="mr-2" />
+                        <FaAt className="mr-2 text-xs sm:text-base" />
                         <span>{exchange}</span>
                       </Link>
                     ))}
                   {post.frontmatter["exchanges"].length > 3 && (
-                    <span className="text-secondary">
+                    <span className="text-secondary text-xs sm:text-sm">
                       +{post.frontmatter["exchanges"].length - 3}
                     </span>
                   )}
