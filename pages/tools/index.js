@@ -63,9 +63,9 @@ const Tools = () => {
               <Link
                 key={`tool-${i}`}
                 href={tool.path}
-                className="group relative overflow-hidden rounded-xl bg-gray-50 p-6 shadow-lg transition-all duration-300 hover:shadow-xl dark:bg-gray-800/50"
+                className="group relative overflow-hidden rounded-xl bg-gradient-to-b from-black/20 to-transparent p-6 shadow-lg "
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-gray-100/50 to-gray-200/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100 dark:from-gray-700/50 dark:to-gray-600/50"></div>
+                <div className="absolute"></div>
                 <div className="relative">
                   <div className="mb-4 text-4xl">{tool.icon}</div>
                   <h3 className="mb-2 text-xl font-bold text-gray-900 dark:text-white">
