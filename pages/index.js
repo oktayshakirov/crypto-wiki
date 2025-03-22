@@ -129,11 +129,11 @@ const Home = ({
           <div className="mb-20">
             {markdownify("CRYPTO EXCHANGES", "h3", "mb-8")}
             <Exchanges exchanges={exchanges} />
-            {/* <Pagination
-            section="exchanges"
+            <Pagination
+              section="exchanges"
               currentPage={currentPage}
               totalPages={exchangePages}
-            /> */}
+            />
             <div className="mt-6 flex flex-col justify-center space-y-3 md:flex-row md:space-x-3 md:space-y-0">
               <Link
                 className="btn-primary flex items-center gap-2"

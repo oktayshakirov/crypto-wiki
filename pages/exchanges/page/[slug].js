@@ -49,14 +49,14 @@ export default ExchangePagination;
 export const getStaticPaths = () => {
   const getAllSlug = getSinglePage("content/exchanges");
   const allSlug = getAllSlug.map((item) => item.slug);
-  const { pagination } = config.settings;
-  const totalPages = Math.ceil(allSlug.length / pagination);
+  const { paginationCryptoOGs } = config.settings;
+  const totalPages = Math.ceil(allSlug.length / paginationCryptoOGs);
   let paths = [];
 
-  for (let i = 1; i < totalPages; i++) {
+  for (let i = 1; i <= totalPages; i++) {
     paths.push({
       params: {
-        slug: (i + 1).toString(),
+        slug: i.toString(),
       },
     });
   }
