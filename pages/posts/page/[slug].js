@@ -94,7 +94,7 @@ export const getStaticPaths = () => {
 };
 
 export const getStaticProps = async ({ params }) => {
-  const currentPage = parseInt((params && params.slug) || 1, 10);
+  const currentPage = parseInt((params && params.slug) || 1);
   const { paginationPosts, blog_folder } = config.settings;
   const allPosts = getSinglePage("content/posts");
   const indexOfLastPost = currentPage * paginationPosts;
