@@ -5,6 +5,7 @@ import Head from "next/head";
 import Script from "next/script";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
 import TagManager from "react-gtm-module";
 import "styles/style.scss";
 
@@ -17,6 +18,35 @@ function getIsAppFlag() {
     localStorage.getItem("isApp") === "true"
   );
 }
+
+const AdsWrapper = () => {
+  const [isApp, setIsApp] = useState(false);
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const appFlag =
+      urlParams.get("isApp") === "true" ||
+      !!window.isApp ||
+      localStorage.getItem("isApp") === "true";
+    setIsApp(appFlag);
+    if (appFlag) {
+      localStorage.setItem("isApp", "true");
+    }
+  }, []);
+
+  if (isApp) return null;
+  return (
+    <Script
+      strategy="afterInteractive"
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5852582960793521"
+      crossOrigin="anonymous"
+    />
+  );
+};
+
+const DynamicAdsWrapper = dynamic(() => Promise.resolve(AdsWrapper), {
+  ssr: false,
+});
 
 const App = ({ Component, pageProps }) => {
   const router = useRouter();
@@ -36,7 +66,9 @@ const App = ({ Component, pageProps }) => {
       `https://fonts.googleapis.com/css2?family=${pf}${
         sf ? "&family=" + sf : ""
       }&display=swap`
-    ).then((res) => res.text().then((css) => setFontcss(css)));
+    )
+      .then((res) => res.text())
+      .then((css) => setFontcss(css));
   }, [pf, sf]);
 
   const tagManagerArgs = {
@@ -70,11 +102,7 @@ const App = ({ Component, pageProps }) => {
           href="https://fonts.gstatic.com"
           crossOrigin="true"
         />
-        <style
-          dangerouslySetInnerHTML={{
-            __html: `${fontcss}`,
-          }}
-        />
+        <style dangerouslySetInnerHTML={{ __html: fontcss || "" }} />
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=5"
@@ -89,23 +117,15 @@ const App = ({ Component, pageProps }) => {
       />
       <Script id="google-analytics" strategy="afterInteractive">
         {`
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-ZRW4Z84C8T', {
-                page_path: window.location.pathname,
-              });
-            `}
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-ZRW4Z84C8T', {
+            page_path: window.location.pathname,
+          });
+        `}
       </Script>
-      {!isApp && (
-        <>
-          <Script
-            strategy="afterInteractive"
-            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5852582960793521"
-            crossOrigin="anonymous"
-          />
-        </>
-      )}
+      <DynamicAdsWrapper />
       <Component {...pageProps} />
     </JsonContext>
   );
