@@ -63,17 +63,14 @@ const Tools = () => {
               <Link
                 key={`tool-${i}`}
                 href={tool.path}
-                className="group relative overflow-hidden rounded-xl bg-gradient-to-b from-black/20 to-transparent p-6 shadow-lg "
+                className="group relative overflow-hidden rounded-xl bg-gradient-to-b from-black/20 to-transparent p-6 shadow-lg"
               >
-                <div className="absolute"></div>
                 <div className="relative">
                   <div className="mb-4 text-4xl">{tool.icon}</div>
-                  <h3 className="mb-2 text-xl font-bold text-gray-900 dark:text-white">
+                  <h3 className="mb-2 text-xl font-bold text-white">
                     {tool.name}
                   </h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
-                    {tool.description}
-                  </p>
+                  <p className="text-sm text-white">{tool.description}</p>
                 </div>
                 <div className="absolute bottom-0 right-0 p-4">
                   <svg
