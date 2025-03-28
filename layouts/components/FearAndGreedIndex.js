@@ -35,59 +35,69 @@ const FearAndGreedIndexChart = () => {
   }, []);
 
   const getSmileyAndBackgroundGradient = (value) => {
-    if (value <= 24)
+    if (value <= 20)
       return {
-        smiley: "😢",
+        label: "Extreme Fear",
+        smiley: "😱",
         background: "linear-gradient(to right, #f85032, #e73827)",
       };
-    if (value <= 49)
+    if (value <= 40)
       return {
-        smiley: "😐",
-        background: "linear-gradient(to right, #f2994a, #f2c94c)",
+        label: "Fear",
+        smiley: "😢",
+        background: "linear-gradient(to right, #ff7e5f, #feb47b)",
       };
-    if (value <= 74)
+    if (value <= 60)
       return {
+        label: "Neutral",
+        smiley: "😐",
+        background: "linear-gradient(to right, #f2c94c, #f2994a)",
+      };
+    if (value <= 80)
+      return {
+        label: "Greed",
         smiley: "🙂",
         background: "linear-gradient(to right, #a8ff78, #78ffd6)",
       };
     return {
+      label: "Extreme Greed",
       smiley: "😁",
       background: "linear-gradient(to right, #56ab2f, #a8e063)",
     };
   };
 
+  if (!indexValue) {
+    return <Loading />;
+  }
+
+  const numericValue = parseInt(indexValue.value, 10);
+  const { smiley, background, label } =
+    getSmileyAndBackgroundGradient(numericValue);
+
   return (
     <div className="fear-and-greed-index-chart" style={{ paddingTop: "20px" }}>
-      {indexValue ? (
-        <div
-          style={{
-            background: getSmileyAndBackgroundGradient(indexValue.value)
-              .background,
-            borderRadius: "10px",
-            padding: "20px",
-            textAlign: "center",
-            color: "black",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <div style={{ fontSize: "50px", color: "black" }}>
-            {getSmileyAndBackgroundGradient(indexValue.value).smiley}
-          </div>
-          <h2 className="h3 my-4" style={{ color: "black" }}>
-            Current Index: {indexValue.value} -{" "}
-            {indexValue.value_classification}
-          </h2>
-          <p style={{ fontSize: "14px", color: "black" }}>
-            Last updated:{" "}
-            {new Date(indexValue.timestamp * 1000).toLocaleDateString()}
-          </p>
-        </div>
-      ) : (
-        <Loading />
-      )}
+      <div
+        style={{
+          background: background,
+          borderRadius: "10px",
+          padding: "20px",
+          textAlign: "center",
+          color: "black",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <div style={{ fontSize: "50px", color: "black" }}>{smiley}</div>
+        <h2 className="h3 my-4" style={{ color: "black" }}>
+          Current Index: {numericValue} - {label}
+        </h2>
+        <p style={{ fontSize: "14px", color: "black" }}>
+          Last updated:{" "}
+          {new Date(indexValue.timestamp * 1000).toLocaleDateString()}
+        </p>
+      </div>
     </div>
   );
 };

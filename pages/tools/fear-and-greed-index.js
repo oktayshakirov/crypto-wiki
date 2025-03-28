@@ -7,10 +7,11 @@ import GoBackLink from "@partials/GoBackLink";
 import config from "@config/config.json";
 
 const data = [
-  { color: "#e73827", label: "Extreme Fear" },
-  { color: "#f2c94c", label: "Fear" },
-  { color: "#78ffd6", label: "Neutral" },
-  { color: "#56ab2f", label: "Greed" },
+  { color: "#f85032", label: "Extreme Fear" },
+  { color: "#ff7e5f", label: "Fear" },
+  { color: "#f2c94c", label: "Neutral" },
+  { color: "#a8ff78", label: "Greed" },
+  { color: "#56ab2f", label: "Extreme Greed" },
 ];
 
 const FearAndGreedIndexPage = () => {
