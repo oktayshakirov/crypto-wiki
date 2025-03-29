@@ -22,7 +22,7 @@ const GoBackLink = ({ option }) => {
   return (
     <div className="block pb-4 lg:hidden">
       <NextLink href={href}>
-        <div className="flex items-center text-white no-underline">
+        <div className="inline-flex items-center text-white no-underline">
           <svg
             className="mr-2 h-4 w-4 text-white"
             fill="none"
