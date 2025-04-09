@@ -36,9 +36,9 @@ const ExchangeSingle = ({
       canonical={`${config.site.base_url}/exchanges/${slug}`}
     >
       <section className="section">
-        <div className="container text-center">
+        <div className="container ">
           <GoBackLink option="exchanges" />
-          <div className="mt-4 rounded-lg border-2 border-orange-400 p-4">
+          <div className="mt-4 rounded-lg border-2 border-orange-400 p-4 text-center">
             <div className="mb-2 flex justify-center">
               <FaExclamationTriangle className="text-4xl text-orange-400" />
             </div>
