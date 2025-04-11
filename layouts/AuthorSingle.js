@@ -23,7 +23,7 @@ const AuthorSingle = ({ frontmatter, content, mdxContent }) => {
               <div className="mb-8">
                 <Image
                   src={image}
-                  className="mx-auto rounded-lg"
+                  className="mx-auto aspect-auto rounded-lg"
                   height={150}
                   width={150}
                   alt={title}
