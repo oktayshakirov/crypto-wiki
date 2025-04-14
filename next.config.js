@@ -6,7 +6,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "thecrypto.wiki",
+        hostname: "www.thecrypto.wiki",
       },
     ],
   },
