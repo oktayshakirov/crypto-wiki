@@ -138,7 +138,7 @@ const PostSingle = ({ post, posts, cryptoOgs, exchanges, slug }) => {
                 height={500}
                 width={1000}
                 alt={title}
-                className="rounded-lg"
+                className="mb-8 rounded-lg"
               />
             )}
             <div className="content mb-16 text-left text-white">
