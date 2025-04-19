@@ -81,6 +81,60 @@
   img {
     border-radius: 30px;
   }
+
+  table {
+    width: 100%;
+    margin: 1.5rem 0;
+    border-collapse: collapse;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 0.5rem;
+    table-layout: fixed;
+
+    th,
+    td {
+      padding: 0.75rem 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: left;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      font-size: clamp(0.75rem, 2vw, 1rem);
+    }
+
+    th {
+      background: rgba(255, 255, 255, 0.05);
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.9);
+      white-space: normal;
+    }
+
+    tr:hover {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    @media (max-width: 768px) {
+      th,
+      td {
+        padding: 0.5rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      font-size: 0.875rem;
+
+      th,
+      td {
+        padding: 0.375rem 0.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      th,
+      td {
+        padding: 0.25rem;
+        font-size: 0.75rem;
+      }
+    }
+  }
 }
 
 .tickerContainer {

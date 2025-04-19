@@ -8,7 +8,6 @@ import { FaCalendarAlt, FaExclamationTriangle } from "react-icons/fa";
 import Link from "next/link";
 import dateFormat from "@lib/utils/dateFormat";
 import NextPrevNavigation from "@partials/NextPrevNavigation";
-import Button from "@components/Button";
 import GoBackLink from "@partials/GoBackLink";
 import config from "@config/config.json";
 
@@ -72,7 +71,24 @@ const ExchangeSingle = ({
             {markdownify(title, "h1", "h2 mb-8")}
             <Social source={social} className="social-icons-simple" />
             <div className="content text-start">
-              <MDXRemote {...mdxContent} components={{ Button }} />
+              <MDXRemote {...mdxContent} />
+            </div>
+            <div className="mt-4 rounded-lg border-2 border-orange-400 p-4 text-center">
+              <p className="m-0">
+                Explore other platforms on our{" "}
+                <Link href="/exchanges" className="text-primary">
+                  Exchanges page
+                </Link>{" "}
+                or learn more about exchanges and brokers in general in our
+                guide:{" "}
+                <Link
+                  href="/posts/understanding-crypto-exchanges"
+                  className="text-primary"
+                >
+                  Understanding Crypto Exchanges
+                </Link>
+                .
+              </p>
             </div>
             <div className="mt-8 flex items-center justify-center">
               <span className="flex items-center md:mt-0">
