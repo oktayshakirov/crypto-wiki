@@ -51,7 +51,7 @@ const CryptoHeatmapPage = () => {
         <div className="container">
           <GoBackLink option="tools" />
 
-          <h1 className="h1 mb-4 text-center">🔥 Crypto Market Heatmap 🔥</h1>
+          <h1 className="h1 mb-4 text-center">Crypto Market Heatmap</h1>
 
           <p className="mb-6 text-center text-lg">
             Get a real-time visual overview of the cryptocurrency market&apos;s

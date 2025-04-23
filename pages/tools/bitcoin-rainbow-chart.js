@@ -101,7 +101,7 @@ const BitcoinRainbowChartPage = () => {
         <div className="container">
           <GoBackLink option="tools" />
 
-          <h1 className="h1 mb-4 text-center">🌈 Bitcoin Rainbow Chart 🌈</h1>
+          <h1 className="h1 mb-4 text-center">Bitcoin Rainbow Chart</h1>
 
           <p className="mb-6 text-center text-lg">
             Visualize Bitcoin&apos;s long-term price movements and potential

@@ -37,7 +37,7 @@ const RandomCoinPage = () => {
         <div className="container">
           <GoBackLink option="tools" />
 
-          <h1 className="h1 mb-4 text-center">🎲 Random Coin Generator 🎲</h1>
+          <h1 className="h1 mb-4 text-center">Random Coin Generator</h1>
 
           <p className="text-center text-lg">
             Curious about the vast crypto universe? Click the button below to

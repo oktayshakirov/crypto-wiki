@@ -22,23 +22,23 @@
       "hasChildren": true,
       "children": [
         {
-          "name": "Bitcoin Rainbow Chart",
+          "name": "🌈 Bitcoin Rainbow Chart",
           "url": "/tools/bitcoin-rainbow-chart"
         },
         {
-          "name": "Fear and Greed Index",
+          "name": "🔥 Fear and Greed Index",
           "url": "/tools/fear-and-greed-index"
         },
         {
-          "name": "Crypto Market Heatmap",
+          "name": "📉 Crypto Market Heatmap",
           "url": "/tools/crypto-heatmap"
         },
         {
-          "name": "Random Coin Generator",
+          "name": "🎲 Random Coin Generator",
           "url": "/tools/random-coin-generator"
         },
         {
-          "name": "Staking Calculator",
+          "name": "💰 Staking Calculator",
           "url": "/tools/staking-calculator"
         }
       ]
