@@ -32,7 +32,14 @@ const RandomCoinGenerator = () => {
   }, []);
 
   return (
-    <div className="random-coin-widget" style={{ paddingTop: "20px" }}>
+    <div
+      className="random-coin-widget"
+      style={{
+        paddingTop: "20px",
+        maxWidth: "100%",
+        overflow: "hidden",
+      }}
+    >
       {isLoaded ? (
         <div>
           <gecko-random-coin-widget

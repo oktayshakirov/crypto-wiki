@@ -23,7 +23,7 @@ const CryptoOgPagination = ({ ogIndex, ogs, currentPage, pagination }) => {
     >
       <section className="section">
         <div className="container text-center">
-          {markdownify(title, "h1", "h2 mb-16")}
+          {markdownify(title, "h1", "h1 mb-16")}
           <CryptoOGs ogs={currentOGs} />
           <Pagination
             section="crypto-ogs"

@@ -21,7 +21,7 @@ const About = ({ data }) => {
             />
           </div>
         )}
-        {markdownify(title, "h1", "h2")}
+        {markdownify(title, "h1", "h1")}
         <Social source={social} className="social-icons-simple my-8" />
 
         <div className="content">

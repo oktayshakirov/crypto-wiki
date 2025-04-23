@@ -34,7 +34,7 @@ const PostSingle = ({ post, posts, cryptoOgs, exchanges, slug }) => {
         <div className="container">
           <GoBackLink option="posts" />
           <article className="text-center">
-            {markdownify(title, "h1", "h2")}
+            {markdownify(title, "h1", "h1")}
             <ul className="my-5">
               <li className="mb-5 flex flex-wrap items-center justify-between">
                 <div className="flex flex-wrap items-center">
@@ -144,13 +144,13 @@ const PostSingle = ({ post, posts, cryptoOgs, exchanges, slug }) => {
             <div className="content mb-16 text-left text-white">
               <MDXRemote {...mdxContent} />
             </div>
-            <div className="flex flex-wrap items-center justify-between">
-              <ul className="mb-4 mr-4 flex flex-wrap justify-center gap-3">
+            <div className="flex flex-wrap items-center justify-center">
+              <ul className="flex flex-wrap justify-center gap-2">
                 {tags.map((tag, i) => (
-                  <li className="inline-block" key={`tag-${i}`}>
+                  <li key={`tag-${i}`} className="inline-block">
                     <Link
                       href={`/tags/${slugify(tag)}`}
-                      className="block rounded-lg bg-theme-light px-4 py-2 font-semibold text-light hover:text-primary"
+                      className="inline-block rounded-lg bg-theme-light px-3 py-1.5 text-sm font-medium text-light hover:text-primary"
                     >
                       #{humanize(tag)}
                     </Link>

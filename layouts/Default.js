@@ -7,7 +7,7 @@ const Default = ({ data }) => {
   return (
     <section className="section">
       <div className="container">
-        {markdownify(title, "h1", "h2 mb-8 text-center")}
+        {markdownify(title, "h1", "h1 mb-8 text-center")}
         <div className="content">
           <MDXRemote {...mdxContent} />
         </div>
