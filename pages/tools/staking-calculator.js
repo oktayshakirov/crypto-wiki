@@ -46,9 +46,7 @@ const StakingCalculatorPage = () => {
         <div className="container">
           <GoBackLink option="tools" />
 
-          <h1 className="h1 mb-4 text-center">
-            💰 Crypto Staking Calculator 💰
-          </h1>
+          <h1 className="h1 mb-4 text-center">Crypto Staking Calculator</h1>
 
           <p className="mb-8 text-center text-lg">
             Estimate potential earnings from staking Proof-of-Stake (PoS)
