@@ -5,7 +5,6 @@ import SimilarPosts from "@partials/SimilarPosts";
 import { MDXRemote } from "next-mdx-remote";
 import Image from "next/image";
 import Link from "next/link";
-import Authors from "@components/Authors";
 import { FaCalendarAlt, FaTag, FaUser, FaExchangeAlt } from "react-icons/fa";
 import NextPrevNavigation from "@partials/NextPrevNavigation";
 import GoBackLink from "@partials/GoBackLink";
@@ -34,104 +33,111 @@ const PostSingle = ({ post, posts, cryptoOgs, exchanges, slug }) => {
         <div className="container">
           <GoBackLink option="posts" />
           <article className="text-center">
-            {markdownify(title, "h1", "h1")}
-            <ul className="my-5">
-              <li className="mb-5 flex flex-wrap items-center justify-between">
-                <div className="flex flex-wrap items-center">
-                  <span className="mt-2 flex items-center md:mt-0">
-                    <FaCalendarAlt className="mr-2" />
-                    {dateFormat(date)}
-                  </span>
-                  <Authors authors={authors} />
-                </div>
-                <div className="mt-4 flex flex-wrap justify-center gap-3 md:mt-0 md:justify-end">
+            {markdownify(title, "h1", "h1 mb-4")}
+            <div className="mb-6 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
+                <span className="flex items-center whitespace-nowrap">
+                  <FaCalendarAlt className="mr-1.5 opacity-80" />
+                  {dateFormat(date)}
+                </span>
+                {authors && authors.length > 0 && (
+                  <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
+                    <span className="flex items-center">
+                      <FaUser className="mr-1.5 opacity-80" />
+                    </span>
+                    {authors.map((author, i) => (
+                      <Link
+                        key={slugify(author)}
+                        href={`/authors/${slugify(author)}`}
+                        className="hover:text-primary hover:underline"
+                      >
+                        {author}
+                        {i < authors.length - 1 ? (
+                          <span className="ml-1 opacity-80">,</span>
+                        ) : (
+                          ""
+                        )}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+              {categories && categories.length > 0 && (
+                <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
+                  <FaTag className="mr-1 opacity-80" />
                   {categories.map((category, i) => (
                     <Link
-                      href={`/categories/${slugify(category)}`}
                       key={`category-${i}`}
-                      className="flex items-center hover:text-primary"
+                      href={`/categories/${slugify(category)}`}
+                      className="hover:text-primary hover:underline"
                     >
-                      <FaTag className="mr-2" />
                       {humanize(category)}
+                      {i < categories.length - 1 ? (
+                        <span className="ml-1">,</span>
+                      ) : (
+                        ""
+                      )}
                     </Link>
                   ))}
                 </div>
-              </li>
+              )}
+            </div>
+            <div className="mb-6 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-gray-600 dark:text-gray-400">
               {frontmatter["crypto-ogs"] && cryptoOgs && (
-                <li className="mt-4 flex flex-wrap items-center justify-center space-x-2 md:mt-0">
-                  <div className="flex items-center space-x-2">
-                    <FaUser />
-                    <span>Crypto OG&apos;s mentioned:</span>
-                  </div>
-                  <ul className="mt-2 flex flex-wrap justify-center gap-4 md:mt-0">
-                    {cryptoOgs
-                      .filter((cryptoOg) =>
-                        frontmatter["crypto-ogs"]
-                          .map((cryptoOg) => slugify(cryptoOg))
-                          .includes(slugify(cryptoOg.frontmatter.title))
-                      )
-                      .map((cryptoOg, i) => (
-                        <li key={`cryptoOg-${i}`} className="flex items-center">
-                          <Link
-                            href={`/crypto-ogs/${slugify(
-                              cryptoOg.frontmatter.title
-                            )}`}
-                            className="flex items-center hover:text-primary"
-                          >
-                            {cryptoOg.frontmatter.image && (
-                              <Image
-                                src={cryptoOg.frontmatter.image}
-                                alt={cryptoOg.frontmatter.title}
-                                height={50}
-                                width={50}
-                                className="mr-2 h-6 w-6 rounded-full"
-                              />
-                            )}
-                            <span>{cryptoOg.frontmatter.title}</span>
-                          </Link>
-                        </li>
-                      ))}
-                  </ul>
-                </li>
+                <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
+                  <span className="flex items-center font-medium">
+                    <FaUser className="mr-1.5 opacity-80" /> OGs:
+                  </span>
+                  {cryptoOgs
+                    .filter((og) =>
+                      frontmatter["crypto-ogs"]
+                        .map((name) => slugify(name))
+                        .includes(slugify(og.frontmatter.title))
+                    )
+                    .map((og, i, arr) => (
+                      <Link
+                        key={`cryptoOg-${i}`}
+                        href={`/crypto-ogs/${slugify(og.frontmatter.title)}`}
+                        className="hover:text-primary hover:underline"
+                      >
+                        {og.frontmatter.title}
+                        {i < arr.length - 1 ? (
+                          <span className="ml-1 opacity-80">,</span>
+                        ) : (
+                          ""
+                        )}
+                      </Link>
+                    ))}
+                </div>
               )}
               {frontmatter["exchanges"] && exchanges && (
-                <li className="mt-4 flex flex-wrap items-center justify-center space-x-2 md:mt-0">
-                  <div className="flex items-center space-x-2">
-                    <FaExchangeAlt />
-                    <span>Exchanges mentioned:</span>
-                  </div>
-                  <ul className="mt-2 flex flex-wrap justify-center gap-4 md:mt-0">
-                    {exchanges
-                      .filter((exchange) =>
-                        frontmatter["exchanges"]
-                          .map((exchange) => slugify(exchange))
-                          .includes(slugify(exchange.frontmatter.title))
-                      )
-                      .map((exchange, i) => (
-                        <li key={`exchange-${i}`} className="flex items-center">
-                          <Link
-                            href={`/exchanges/${slugify(
-                              exchange.frontmatter.title
-                            )}`}
-                            className="flex items-center hover:text-primary"
-                          >
-                            {exchange.frontmatter.image && (
-                              <Image
-                                src={exchange.frontmatter.image}
-                                alt={exchange.frontmatter.title}
-                                height={50}
-                                width={50}
-                                className="mr-2 h-6 w-6 rounded-full"
-                              />
-                            )}
-                            <span>{exchange.frontmatter.title}</span>
-                          </Link>
-                        </li>
-                      ))}
-                  </ul>
-                </li>
+                <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
+                  <span className="flex items-center font-medium">
+                    <FaExchangeAlt className="mr-1.5 opacity-80" /> Exchanges:
+                  </span>
+                  {exchanges
+                    .filter((ex) =>
+                      frontmatter["exchanges"]
+                        .map((name) => slugify(name))
+                        .includes(slugify(ex.frontmatter.title))
+                    )
+                    .map((ex, i, arr) => (
+                      <Link
+                        key={`exchange-${i}`}
+                        href={`/exchanges/${slugify(ex.frontmatter.title)}`}
+                        className="hover:text-primary hover:underline"
+                      >
+                        {ex.frontmatter.title}
+                        {i < arr.length - 1 ? (
+                          <span className="ml-1 opacity-80">,</span>
+                        ) : (
+                          ""
+                        )}
+                      </Link>
+                    ))}
+                </div>
               )}
-            </ul>
+            </div>
             {image && (
               <Image
                 src={image}
@@ -139,6 +145,7 @@ const PostSingle = ({ post, posts, cryptoOgs, exchanges, slug }) => {
                 width={1000}
                 alt={title}
                 className="mb-8 rounded-lg"
+                priority
               />
             )}
             <div className="content mb-16 text-left text-white">
