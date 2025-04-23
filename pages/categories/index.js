@@ -16,7 +16,7 @@ const Categories = ({ categories }) => {
     >
       <section className="section">
         <div className="container text-center">
-          {markdownify("Categories", "h1", "h2 mb-16")}
+          {markdownify("Categories", "h1", "h1 mb-16")}
           <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
             {categories.map((category, i) => (
               <li key={`category-${i}`} className="mb-2">

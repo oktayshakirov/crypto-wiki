@@ -58,7 +58,7 @@ const PostPagination = ({
               </li>
             </ul>
           </div>
-          {markdownify(title, "h1", "h2 mb-8")}
+          {markdownify(title, "h1", "h1 mb-8")}
           <Posts posts={posts} />
           <Pagination
             section="posts"

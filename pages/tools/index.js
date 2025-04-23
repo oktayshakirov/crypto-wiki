@@ -52,7 +52,7 @@ const Tools = () => {
       <section className="section">
         <div className="container max-w-6xl">
           <div className="mb-16 text-center">
-            {markdownify("CRYPTO TOOLS", "h1", "h2 mb-4")}
+            {markdownify("CRYPTO TOOLS", "h1", "h1 mb-4")}
             <p className="text-lg text-gray-200 ">
               Access the insights you need to navigate the digital currency
               market confidently
