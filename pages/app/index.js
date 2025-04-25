@@ -27,7 +27,7 @@ const SectionTitle = ({ children, subtitle }) => (
 const AppStoreBadges = () => (
   <div className="mt-8 flex flex-wrap justify-center gap-6">
     <Link
-      href="https://apps.apple.com/de/app/crypto-wiki/id6742765176?l=en-GB"
+      href="https://apps.apple.com/de/app/crypto-wiki/id6742765176"
       target="_blank"
     >
       <Image
@@ -37,7 +37,10 @@ const AppStoreBadges = () => (
         height={60}
       />
     </Link>
-    <Link href="/" target="_blank">
+    <Link
+      href="https://play.google.com/store/apps/details?id=com.shadev.thecryptowiki"
+      target="_blank"
+    >
       <Image
         src="/google-play-badge.png"
         alt="Get it on Google Play"

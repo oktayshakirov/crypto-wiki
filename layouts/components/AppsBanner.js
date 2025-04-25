@@ -18,7 +18,7 @@ const AppsBanner = () => {
         </div>
         <div className="flex shrink-0 items-center justify-center gap-2.5">
           <a
-            href="https://apps.apple.com/de/app/crypto-wiki/id6742765176?l=en-GB"
+            href="https://apps.apple.com/de/app/crypto-wiki/id6742765176"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -30,7 +30,11 @@ const AppsBanner = () => {
               className="h-10 w-auto"
             />
           </a>
-          <a href="/" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://play.google.com/store/apps/details?id=com.shadev.thecryptowiki"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Image
               src="/google-play-badge.png"
               alt="Get it on Google Play"
