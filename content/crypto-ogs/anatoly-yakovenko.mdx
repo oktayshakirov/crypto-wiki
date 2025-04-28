@@ -38,7 +38,7 @@ Frustrated by the low transaction throughput and high fees limiting existing blo
 Solana's performance relies on PoH and several other architectural optimizations:
 
 - **Proof-of-History (PoH) Explained:** It's crucial to understand PoH is **not a consensus mechanism itself**. Rather, it's a **cryptographic clock**. Before transactions are processed by consensus, they are timestamped and ordered using a high-frequency Verifiable Delay Function (VDF). This creates a verifiable historical record of _when_ events occurred relative to each other. This allows validator nodes to process transactions in parallel more efficiently, as they have a trusted time sequence to work from, significantly boosting throughput.
-- **Proof-of-Stake (PoS) Consensus:** Solana achieves network consensus (agreement on the valid state of the ledger) using a **[Proof-of-Stake (PoS)](/posts/crypto-staking)** based mechanism, often involving a system known as Tower BFT, which leverages the PoH-generated time sequence for efficiency. Link: **[Consensus Mechanisms](/posts/common-crypto-terms)**.
+- **Proof-of-Stake (PoS) Consensus:** Solana achieves network consensus (agreement on the valid state of the ledger) using a **[Proof-of-Stake (PoS)](/posts/what-is-proof-of-stake)** based mechanism, often involving a system known as Tower BFT, which leverages the PoH-generated time sequence for efficiency. Link: **[Consensus Mechanisms](/posts/common-crypto-terms)**.
 - **Other Optimizations:** Solana incorporates additional technologies like **Turbine** (a block propagation protocol), **Gulf Stream** (mempool-less transaction forwarding), and **Sealevel** (a parallel smart contract runtime) to further enhance speed and efficiency.
 
 ![Solana Logo and branding](/images/posts/solana.jpeg)
