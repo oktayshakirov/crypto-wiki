@@ -7,23 +7,7 @@ module.exports = {
   autoLastmod: true,
 
   transform: async (config, path) => {
-    const excludePaths = [
-      "/about",
-      "/contact",
-      "/faq",
-      "/privacy-policy",
-      "/terms",
-      "/affiliate-disclosure",
-      "/advertising",
-      "/search",
-      "/tags",
-      "/authors",
-    ];
-
-    if (
-      excludePaths.some((excludedPath) => path.startsWith(excludedPath)) ||
-      path.match(/\/page\/\d+/)
-    ) {
+    if (path.match(/\/page\/\d+/)) {
       return null;
     }
 
@@ -70,18 +54,7 @@ module.exports = {
       {
         userAgent: "*",
         allow: "/",
-        disallow: [
-          "/about",
-          "/tags/",
-          "/search/",
-          "/contact",
-          "/faq",
-          "/privacy-policy",
-          "/terms",
-          "/affiliate-disclosure",
-          "/advertising",
-          "/authors",
-        ],
+        disallow: ["/search/", "/authors"],
       },
     ],
   },
