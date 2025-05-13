@@ -7,7 +7,7 @@ module.exports = {
   autoLastmod: true,
 
   transform: async (config, path) => {
-    if (path.match(/\/page\/\d+/)) {
+    if (path.match(/\/page\/\d+/) || path.startsWith("/search")) {
       return null;
     }
 
