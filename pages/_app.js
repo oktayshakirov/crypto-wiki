@@ -24,6 +24,7 @@ const App = ({ Component, pageProps }) => {
   const sf = theme.fonts.font_family.secondary;
   const [fontcss, setFontcss] = useState();
   const isApp = getIsAppFlag();
+  const { tag_manager_id } = config.params;
 
   useEffect(() => {
     if (isApp) {
@@ -39,18 +40,17 @@ const App = ({ Component, pageProps }) => {
     ).then((res) => res.text().then((css) => setFontcss(css)));
   }, [pf, sf]);
 
-  const tagManagerArgs = {
-    gtmId: config.params.tag_manager_id,
-  };
-
   useEffect(() => {
-    setTimeout(() => {
-      !isApp &&
-        config.params.tag_manager_id &&
+    if (tag_manager_id) {
+      const tagManagerArgs = {
+        gtmId: tag_manager_id,
+      };
+      const gtmTimeout = setTimeout(() => {
         TagManager.initialize(tagManagerArgs);
-    }, 5000);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+      }, 5000);
+      return () => clearTimeout(gtmTimeout);
+    }
+  }, [tag_manager_id]);
 
   const noIndexPages = [
     "/contact",
@@ -83,20 +83,25 @@ const App = ({ Component, pageProps }) => {
           <meta name="robots" content="noindex, follow" />
         )}
       </Head>
-      <Script
-        strategy="afterInteractive"
-        src="https://www.googletagmanager.com/gtag/js?id=G-ZRW4Z84C8T"
-      />
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`
+      {tag_manager_id && (
+        <>
+          <Script
+            strategy="afterInteractive"
+            src={`https://www.googletagmanager.com/gtag/js?id=${tag_manager_id}`}
+          />
+          <Script id="google-analytics" strategy="afterInteractive">
+            {`
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', 'G-ZRW4Z84C8T', {
+              gtag('config', '${tag_manager_id}', {
                 page_path: window.location.pathname,
               });
             `}
-      </Script>
+          </Script>
+        </>
+      )}
+      {/* AdSense script remains commented out
       {!isApp && (
         <>
           <Script
@@ -106,6 +111,7 @@ const App = ({ Component, pageProps }) => {
           />
         </>
       )}
+      */}
       <Component {...pageProps} />
     </JsonContext>
   );
