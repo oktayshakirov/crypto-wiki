@@ -8,6 +8,7 @@ const Document = () => {
   return (
     <Html lang="en">
       <Head>
+        <meta name="coinzilla" content="c2fa7e8cfa96039c31e22709d68ba80c" />
         {/* favicon */}
         <link rel="shortcut icon" href={favicon} />
         {/* theme meta */}
