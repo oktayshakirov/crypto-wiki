@@ -101,13 +101,19 @@ const App = ({ Component, pageProps }) => {
           </Script>
         </>
       )}
-      <script
-        src="https://fpyf8.com/88/tag.min.js"
-        data-zone="150063"
-        async
-        data-cfasync="false"
-      ></script>
-      {/* AdSense script remains commented out
+
+      {!isApp && (
+        <>
+          <script
+            src="https://fpyf8.com/88/tag.min.js"
+            data-zone="150063"
+            async
+            data-cfasync="false"
+          ></script>
+        </>
+      )}
+
+      {/* 
       {!isApp && (
         <>
           <Script
