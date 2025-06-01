@@ -97,7 +97,6 @@
       text-align: left;
       word-wrap: break-word;
       overflow-wrap: break-word;
-      font-size: clamp(0.75rem, 2vw, 1rem);
     }
 
     th {
@@ -119,7 +118,7 @@
     }
 
     @media (max-width: 640px) {
-      font-size: 0.875rem;
+      font-size: 0.9rem;
 
       th,
       td {
@@ -130,8 +129,7 @@
     @media (max-width: 480px) {
       th,
       td {
-        padding: 0.25rem;
-        font-size: 0.75rem;
+        font-size: 0.7rem;
       }
     }
   }
