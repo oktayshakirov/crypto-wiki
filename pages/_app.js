@@ -24,7 +24,6 @@ const App = ({ Component, pageProps }) => {
   const sf = theme.fonts.font_family.secondary;
   const [fontcss, setFontcss] = useState();
   const isApp = getIsAppFlag();
-  const { tag_manager_id } = config.params;
 
   useEffect(() => {
     if (isApp) {
@@ -40,17 +39,18 @@ const App = ({ Component, pageProps }) => {
     ).then((res) => res.text().then((css) => setFontcss(css)));
   }, [pf, sf]);
 
+  const tagManagerArgs = {
+    gtmId: config.params.tag_manager_id,
+  };
+
   useEffect(() => {
-    if (tag_manager_id) {
-      const tagManagerArgs = {
-        gtmId: tag_manager_id,
-      };
-      const gtmTimeout = setTimeout(() => {
+    setTimeout(() => {
+      !isApp &&
+        config.params.tag_manager_id &&
         TagManager.initialize(tagManagerArgs);
-      }, 5000);
-      return () => clearTimeout(gtmTimeout);
-    }
-  }, [tag_manager_id]);
+    }, 5000);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const noIndexPages = [
     "/contact",
@@ -79,30 +79,25 @@ const App = ({ Component, pageProps }) => {
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=5"
         />
+        <meta name="coinzilla" content="c2fa7e8cfa96039c31e22709d68ba80c" />
         {noIndexPages.includes(router.pathname) && (
           <meta name="robots" content="noindex, follow" />
         )}
       </Head>
-      {tag_manager_id && (
-        <>
-          <Script
-            strategy="afterInteractive"
-            src={`https://www.googletagmanager.com/gtag/js?id=${tag_manager_id}`}
-          />
-          <Script id="google-analytics" strategy="afterInteractive">
-            {`
+      <Script
+        strategy="afterInteractive"
+        src="https://www.googletagmanager.com/gtag/js?id=G-ZRW4Z84C8T"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', '${tag_manager_id}', {
+              gtag('config', 'G-ZRW4Z84C8T', {
                 page_path: window.location.pathname,
               });
             `}
-          </Script>
-        </>
-      )}
-      <meta name="coinzilla" content="c2fa7e8cfa96039c31e22709d68ba80c" />
-      {/* AdSense script remains commented out
+      </Script>
       {!isApp && (
         <>
           <Script
@@ -112,7 +107,6 @@ const App = ({ Component, pageProps }) => {
           />
         </>
       )}
-      */}
       <Component {...pageProps} />
     </JsonContext>
   );
