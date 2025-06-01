@@ -5,25 +5,42 @@ import { slugify } from "@lib/utils/textConverter";
 import CategoryLayout from "@layouts/CategorySingle";
 const { blog_folder } = config.settings;
 
-const Category = (props) => {
+const CategoryPagination = (props) => {
   return <CategoryLayout {...props} />;
 };
 
-export default Category;
+export default CategoryPagination;
 
-export const getStaticPaths = () => {
+export const getStaticPaths = async () => {
   const allCategories = getTaxonomy(`content/${blog_folder}`, "categories");
+  const paths = [];
 
-  const paths = allCategories.map((category) => ({
-    params: {
-      category: category,
-    },
-  }));
+  for (const category of allCategories) {
+    const posts = getSinglePage(`content/${blog_folder}`);
+    const filteredPosts = posts.filter((post) =>
+      post.frontmatter.categories.find((cat) => slugify(cat).includes(category))
+    );
 
-  return { paths, fallback: false };
+    const postsPerPage = 6;
+    const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
+
+    for (let i = 1; i <= totalPages; i++) {
+      paths.push({
+        params: {
+          category: category,
+          slug: i.toString(),
+        },
+      });
+    }
+  }
+
+  return {
+    paths,
+    fallback: false,
+  };
 };
 
-export const getStaticProps = ({ params }) => {
+export const getStaticProps = async ({ params }) => {
   const posts = getSinglePage(`content/${blog_folder}`);
   const filteredPosts = posts.filter((post) =>
     post.frontmatter.categories.find((category) =>
@@ -32,7 +49,7 @@ export const getStaticProps = ({ params }) => {
   );
 
   const postsPerPage = 6;
-  const currentPage = 1;
+  const currentPage = parseInt(params.slug);
   const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
