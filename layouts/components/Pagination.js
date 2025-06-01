@@ -46,6 +46,11 @@ const Pagination = ({ section, currentPage, totalPages, basePath }) => {
     return page === 1 ? linkBasePath : `${linkBasePath}/page/${page}`;
   };
 
+  // Don't render pagination if there's only one page
+  if (totalPages <= 1) {
+    return null;
+  }
+
   return (
     <nav
       className="flex items-center justify-center space-x-2 py-4"
