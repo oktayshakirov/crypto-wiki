@@ -19,6 +19,16 @@ const Base = ({
   const { base_url } = config.site;
   const router = useRouter();
 
+  const getRobotsContent = () => {
+    if (typeof noindex === "string") {
+      return noindex;
+    }
+    if (noindex === true) {
+      return "noindex,nofollow";
+    }
+    return "index,follow";
+  };
+
   return (
     <>
       <Head>
@@ -32,20 +42,16 @@ const Base = ({
         {/* canonical url */}
         {canonical && <link rel="canonical" href={canonical} itemProp="url" />}
 
-        {/* noindex robots */}
-        {noindex && <meta name="robots" content="noindex,nofollow" />}
-
         {/* meta-description */}
         <meta
           name="description"
           content={plainify(description ? description : meta_description)}
         />
 
-        {/* Robots Metatag */}
-        <meta name="robots" content="index,follow" />
+        {/* Single, definitive Robots Metatag */}
+        <meta name="robots" content={getRobotsContent()} />
 
         {/* Charset and Viewport */}
-
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -68,7 +74,7 @@ const Base = ({
         <meta property="og:type" content="website" />
         <meta
           property="og:url"
-          content={`${base_url}/${router.asPath.replace("/", "")}`}
+          content={`${base_url}${router.asPath === "/" ? "" : router.asPath}`}
         />
 
         {/* twitter-title */}

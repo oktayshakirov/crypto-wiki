@@ -14,6 +14,7 @@ const Tag = ({ tag, posts, authors, cryptoOgs, exchanges }) => {
       description={`Explore the latest articles, expert guides, and insights about ${tag}. Stay informed with curated crypto content tailored to your interests and trends.`}
       image="/images/meta-image.png"
       canonical={`${config.site.base_url}/tags/${tag.toLowerCase()}`}
+      noindex={true}
     >
       <div className="section">
         <div className="container">
