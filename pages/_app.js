@@ -101,6 +101,7 @@ const App = ({ Component, pageProps }) => {
           </Script>
         </>
       )}
+      <meta name="coinzilla" content="c2fa7e8cfa96039c31e22709d68ba80c" />
       {/* AdSense script remains commented out
       {!isApp && (
         <>
