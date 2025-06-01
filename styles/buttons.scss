@@ -1,20 +1,25 @@
-.btn-primary {
-  @apply flex  items-center justify-center rounded-lg bg-theme-light px-4 py-2 text-dark transition;
-}
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-lg bg-theme-light px-4 py-2 text-dark transition hover:bg-primary hover:text-black;
+  }
 
-.hover-page:hover,
-.active-page {
-  @apply bg-primary text-black;
-}
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-lg bg-theme-light px-4 py-2 text-dark;
+  }
 
-.btn-secondary {
-  @apply flex items-center justify-center rounded-lg bg-theme-light px-4 py-2 text-dark;
-}
+  .btn-categories {
+    @apply inline-flex h-40 w-40 items-center justify-center rounded-lg bg-theme-light px-6 py-8 text-lg text-dark hover:bg-primary hover:text-black;
+  }
 
-.btn-categories {
-  @apply flex h-40 w-40 items-center justify-center rounded-lg bg-theme-light px-6 py-8 text-lg text-dark  hover:bg-primary hover:text-black;
-}
+  .btn-exchange {
+    @apply inline-flex items-center justify-center rounded-lg bg-primary px-2 py-2 font-bold text-black;
+  }
 
-.btn-exchange {
-  @apply flex items-center justify-center rounded-lg bg-primary px-2 py-2 font-bold text-black;
+  .btn-pagination {
+    @apply inline-flex h-10 w-10 items-center justify-center rounded-lg bg-theme-light text-dark transition hover:bg-primary hover:text-black;
+  }
+
+  .btn-pagination.active {
+    @apply bg-primary text-black;
+  }
 }
