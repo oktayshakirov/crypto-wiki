@@ -43,12 +43,6 @@ const Home = ({
             Uncover the World of{" "}
             <span className="font-mono text-primary">CRYPTO</span>
           </h1>
-          <script
-            async="async"
-            data-cfasync="false"
-            src="//pl26819053.profitableratecpm.com/40d733b837f8c768f760133fd8d2a053/invoke.js"
-          ></script>
-          <div id="container-40d733b837f8c768f760133fd8d2a053"></div>
           {markdownify("LATEST POSTS", "h3", "mb-8")}
           <Posts posts={posts} />
           <Pagination
