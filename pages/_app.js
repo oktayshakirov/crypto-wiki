@@ -76,10 +76,13 @@ const App = ({ Component, pageProps }) => {
           }}
         />
         <meta
+          name="bitmedia-site-verification"
+          content="36cb3ebd681fc5a8e683f9d230fff7da"
+        />
+        <meta
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=5"
         />
-        <meta name="coinzilla" content="c2fa7e8cfa96039c31e22709d68ba80c" />
         {noIndexPages.includes(router.pathname) && (
           <meta name="robots" content="noindex, follow" />
         )}
@@ -98,7 +101,7 @@ const App = ({ Component, pageProps }) => {
               });
             `}
       </Script>
-      {!isApp && (
+      {/* {!isApp && (
         <>
           <Script
             strategy="afterInteractive"
@@ -106,7 +109,7 @@ const App = ({ Component, pageProps }) => {
             crossOrigin="anonymous"
           />
         </>
-      )}
+      )} */}
       <Component {...pageProps} />
     </JsonContext>
   );
