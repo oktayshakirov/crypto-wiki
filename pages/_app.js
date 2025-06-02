@@ -76,10 +76,6 @@ const App = ({ Component, pageProps }) => {
           }}
         />
         <meta
-          name="bitmedia-site-verification"
-          content="36cb3ebd681fc5a8e683f9d230fff7da"
-        />
-        <meta
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=5"
         />
