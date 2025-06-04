@@ -80,13 +80,18 @@ const App = ({ Component, pageProps }) => {
           conten
           t="width=device-width, initial-scale=1, maximum-scale=5"
         />
+        {noIndexPages.includes(router.pathname) && (
+          <meta name="robots" content="noindex, follow" />
+        )}
+
+        {/* AdMaven */}
+        <meta name="admaven-placement" content="BqdY4qHkG" />
+
+        {/* HilltopAds */}
         <meta
           name="6e8fda7f63b17080ce4490d4f884c05de744a342"
           content="6e8fda7f63b17080ce4490d4f884c05de744a342"
         />
-        {noIndexPages.includes(router.pathname) && (
-          <meta name="robots" content="noindex, follow" />
-        )}
       </Head>
       <Script
         strategy="afterInteractive"
