@@ -77,7 +77,12 @@ const App = ({ Component, pageProps }) => {
         />
         <meta
           name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=5"
+          conten
+          t="width=device-width, initial-scale=1, maximum-scale=5"
+        />
+        <meta
+          name="6e8fda7f63b17080ce4490d4f884c05de744a342"
+          content="6e8fda7f63b17080ce4490d4f884c05de744a342"
         />
         {noIndexPages.includes(router.pathname) && (
           <meta name="robots" content="noindex, follow" />
