@@ -1,7 +1,7 @@
 import {
   FaAndroid,
   FaApple,
-  FaFacebookF,
+  FaFacebook,
   FaTwitter,
   FaInstagram,
   FaYoutube,
@@ -98,7 +98,7 @@ const Social = ({ source, className }) => {
             target="_blank"
             rel="noopener noreferrer nofollow"
           >
-            <FaFacebookF />
+            <FaFacebook />
           </a>
         </li>
       )}

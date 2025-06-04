@@ -6,6 +6,7 @@ import CryptoOGs from "@partials/CryptoOGs";
 import Exchanges from "@partials/Exchanges";
 import { markdownify } from "@lib/utils/textConverter";
 import FearAndGreedIndex from "@layouts/components/FearAndGreedIndex";
+// import BannerAd from "@components/BannerAd";
 import Link from "next/link";
 import {
   FaRegNewspaper,
@@ -43,6 +44,7 @@ const Home = ({
             Uncover the World of{" "}
             <span className="font-mono text-primary">CRYPTO</span>
           </h1>
+          {/* <BannerAd /> */}
           {markdownify("LATEST POSTS", "h3", "mb-8")}
           <Posts posts={posts} />
           <Pagination
@@ -73,7 +75,6 @@ const Home = ({
               {markdownify(
                 "[Uncover Market Emotions with the Fear and Greed Index](/tools/fear-and-greed-index)"
               )}
-
               <FearAndGreedIndex />
             </div>
             {markdownify("MORE HELPFUL TOOLS", "h5", "mb-8")}
