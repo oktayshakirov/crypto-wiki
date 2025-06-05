@@ -83,10 +83,6 @@ const App = ({ Component, pageProps }) => {
         {noIndexPages.includes(router.pathname) && (
           <meta name="robots" content="noindex, follow" />
         )}
-
-        {/* AdMaven */}
-        <meta name="admaven-placement" content="BqdY4qHkG" />
-
         {/* HilltopAds */}
         <meta
           name="6e8fda7f63b17080ce4490d4f884c05de744a342"
