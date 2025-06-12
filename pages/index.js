@@ -6,8 +6,9 @@ import CryptoOGs from "@partials/CryptoOGs";
 import Exchanges from "@partials/Exchanges";
 import { markdownify } from "@lib/utils/textConverter";
 import FearAndGreedIndex from "@layouts/components/FearAndGreedIndex";
-// import BannerAd from "@components/BannerAd";
+import BannerAd from "@components/BannerAd";
 import Link from "next/link";
+import Script from "next/script";
 import {
   FaRegNewspaper,
   FaTags,
@@ -44,7 +45,7 @@ const Home = ({
             Uncover the World of{" "}
             <span className="font-mono text-primary">CRYPTO</span>
           </h1>
-          {/* <BannerAd /> */}
+          <BannerAd />
           {markdownify("LATEST POSTS", "h3", "mb-8")}
           <Posts posts={posts} />
           <Pagination
