@@ -83,11 +83,6 @@ const App = ({ Component, pageProps }) => {
         {noIndexPages.includes(router.pathname) && (
           <meta name="robots" content="noindex, follow" />
         )}
-        {/* HilltopAds */}
-        <meta
-          name="6e8fda7f63b17080ce4490d4f884c05de744a342"
-          content="6e8fda7f63b17080ce4490d4f884c05de744a342"
-        />
       </Head>
       <Script
         strategy="afterInteractive"
