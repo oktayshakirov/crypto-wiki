@@ -83,11 +83,6 @@ const App = ({ Component, pageProps }) => {
         {noIndexPages.includes(router.pathname) && (
           <meta name="robots" content="noindex, follow" />
         )}
-        {/* Purple Ads */}
-        <meta
-          name="purpleads-verification"
-          content="8dd6692fd8adf2577874b9dc"
-        />
       </Head>
       <Script
         strategy="afterInteractive"
@@ -103,7 +98,7 @@ const App = ({ Component, pageProps }) => {
               });
             `}
       </Script>
-      {/* {!isApp && (
+      {!isApp && (
         <>
           <Script
             strategy="afterInteractive"
@@ -111,7 +106,7 @@ const App = ({ Component, pageProps }) => {
             crossOrigin="anonymous"
           />
         </>
-      )} */}
+      )}
       <Component {...pageProps} />
     </JsonContext>
   );
