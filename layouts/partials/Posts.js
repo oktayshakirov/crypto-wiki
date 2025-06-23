@@ -7,10 +7,7 @@ const Posts = ({ posts }) => {
   return (
     <div className="row">
       {posts.map((post) => (
-        <div
-          key={post.slug}
-          className="col-12 mb-7 justify-center min-[650px]:col-6"
-        >
+        <div key={post.slug} className="col-12 mb-7 min-[650px]:col-6">
           <Link
             href={`/posts/${post.slug}`}
             className="card flex h-full cursor-pointer flex-col justify-between"

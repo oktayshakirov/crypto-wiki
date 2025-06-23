@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const Exchanges = ({ exchanges }) => {
   return (
-    <div className="row justify-center">
+    <div className="row">
       {exchanges.map((exchange, i) => (
         <div className="col-12 mb-8 sm:col-6 md:col-4" key={`key-${i}`}>
           <Link
