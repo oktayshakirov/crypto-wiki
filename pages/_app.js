@@ -6,30 +6,14 @@ import Script from "next/script";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import TagManager from "react-gtm-module";
+import App from "next/app";
 import "styles/style.scss";
 
-function getIsAppFlag() {
-  if (typeof window === "undefined") return false;
-  const urlParams = new URLSearchParams(window.location.search);
-  return (
-    urlParams.get("isApp") === "true" ||
-    !!window.isApp ||
-    localStorage.getItem("isApp") === "true"
-  );
-}
-
-const App = ({ Component, pageProps }) => {
+const MyApp = ({ Component, pageProps, isApp }) => {
   const router = useRouter();
   const pf = theme.fonts.font_family.primary;
   const sf = theme.fonts.font_family.secondary;
   const [fontcss, setFontcss] = useState();
-  const isApp = getIsAppFlag();
-
-  useEffect(() => {
-    if (isApp) {
-      localStorage.setItem("isApp", "true");
-    }
-  }, [isApp]);
 
   useEffect(() => {
     fetch(
@@ -39,18 +23,16 @@ const App = ({ Component, pageProps }) => {
     ).then((res) => res.text().then((css) => setFontcss(css)));
   }, [pf, sf]);
 
-  const tagManagerArgs = {
-    gtmId: config.params.tag_manager_id,
-  };
-
   useEffect(() => {
-    setTimeout(() => {
-      !isApp &&
-        config.params.tag_manager_id &&
+    const tagManagerArgs = {
+      gtmId: config.params.tag_manager_id,
+    };
+    if (!isApp && config.params.tag_manager_id) {
+      setTimeout(() => {
         TagManager.initialize(tagManagerArgs);
-    }, 5000);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+      }, 5000);
+    }
+  }, [isApp]);
 
   const noIndexPages = [
     "/contact",
@@ -77,14 +59,11 @@ const App = ({ Component, pageProps }) => {
         />
         <meta
           name="viewport"
-          conten
-          t="width=device-width, initial-scale=1, maximum-scale=5"
+          content="width=device-width, initial-scale=1, maximum-scale=5"
         />
         {noIndexPages.includes(router.pathname) && (
           <meta name="robots" content="noindex, follow" />
         )}
-        {/* ClickAdu */}
-        <meta name="clckd" content="c2bf83867ae1fc43e36896aa3bac2f01" />
         {/* ExoClick */}
         <meta
           name="6a97888e-site-verification"
@@ -97,13 +76,13 @@ const App = ({ Component, pageProps }) => {
       />
       <Script id="google-analytics" strategy="afterInteractive">
         {`
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-ZRW4Z84C8T', {
-                page_path: window.location.pathname,
-              });
-            `}
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-ZRW4Z84C8T', {
+            page_path: window.location.pathname,
+          });
+        `}
       </Script>
       {/* {!isApp && (
         <>
@@ -114,9 +93,15 @@ const App = ({ Component, pageProps }) => {
           />
         </>
       )} */}
-      <Component {...pageProps} />
+      <Component {...pageProps} isApp={isApp} />
     </JsonContext>
   );
 };
 
-export default App;
+MyApp.getInitialProps = async (appContext) => {
+  const appProps = await App.getInitialProps(appContext);
+  const isApp = appContext.ctx.req?.cookies.isApp === "true";
+  return { ...appProps, isApp };
+};
+
+export default MyApp;

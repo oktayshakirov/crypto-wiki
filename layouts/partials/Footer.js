@@ -7,23 +7,16 @@ import Link from "next/link";
 import AppsBanner from "@layouts/components/AppsBanner";
 import { usePathname } from "next/navigation";
 
-function getIsAppFlag() {
-  if (typeof window === "undefined") return false;
-  const urlParams = new URLSearchParams(window.location.search);
-  return (
-    urlParams.get("isApp") === "true" ||
-    !!window.isApp ||
-    localStorage.getItem("isApp") === "true"
-  );
-}
-
-const Footer = () => {
+const Footer = ({ isApp }) => {
   const { copyright } = config.params;
   const pathname = usePathname();
-  const isApp = getIsAppFlag();
   const shouldHideAppsBanner = isApp || pathname === "/app";
   const currentYear = new Date().getFullYear();
   const copyrightText = copyright.replace("2024", `2024 - ${currentYear}`);
+
+  if (isApp) {
+    return null;
+  }
 
   return (
     <footer className="section bg-theme-dark">
@@ -57,7 +50,7 @@ const Footer = () => {
             ))}
           </ul>
           <div className="flex w-full flex-col items-center space-y-4 lg:flex-row lg:justify-between lg:space-x-8 lg:space-y-0">
-            {!isApp && <Social source={social} className="social-icons" />}
+            <Social source={social} className="social-icons" />
             <div className="text-center">
               {markdownify(copyrightText, "p", "text-light")}
             </div>
