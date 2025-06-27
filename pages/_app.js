@@ -9,11 +9,31 @@ import TagManager from "react-gtm-module";
 import App from "next/app";
 import "styles/style.scss";
 
-const MyApp = ({ Component, pageProps, isApp }) => {
+function getIsAppFlag() {
+  if (typeof window === "undefined") return false;
+  const urlParams = new URLSearchParams(window.location.search);
+  return (
+    urlParams.get("isApp") === "true" ||
+    !!window.isApp ||
+    localStorage.getItem("isApp") === "true"
+  );
+}
+
+const MyApp = ({ Component, pageProps, isApp: serverIsApp }) => {
   const router = useRouter();
   const pf = theme.fonts.font_family.primary;
   const sf = theme.fonts.font_family.secondary;
   const [fontcss, setFontcss] = useState();
+  const [isApp, setIsApp] = useState(serverIsApp);
+
+  useEffect(() => {
+    // Check client-side isApp flag on mount
+    const clientIsApp = getIsAppFlag();
+    if (clientIsApp) {
+      setIsApp(true);
+      localStorage.setItem("isApp", "true");
+    }
+  }, []);
 
   useEffect(() => {
     fetch(
