@@ -83,7 +83,13 @@ const App = ({ Component, pageProps }) => {
         {noIndexPages.includes(router.pathname) && (
           <meta name="robots" content="noindex, follow" />
         )}
+        {/* ClickAdu */}
         <meta name="clckd" content="c2bf83867ae1fc43e36896aa3bac2f01" />
+        {/* ExoClick */}
+        <meta
+          name="6a97888e-site-verification"
+          content="d0624c09694d795539537403fa4dbe14"
+        ></meta>
       </Head>
       <Script
         strategy="afterInteractive"
