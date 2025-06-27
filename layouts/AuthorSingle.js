@@ -6,7 +6,7 @@ import Social from "./components/Social";
 import GoBackLink from "@partials/GoBackLink";
 
 const AuthorSingle = ({ frontmatter, content, mdxContent }) => {
-  const { description, social, title, image } = frontmatter;
+  const { description, social, title, image, isApp } = frontmatter;
 
   return (
     <Base
@@ -14,6 +14,7 @@ const AuthorSingle = ({ frontmatter, content, mdxContent }) => {
       meta_title={`${title} | Expert Author & Crypto Insights - Crypto Wiki`}
       description={description ? description : content.slice(0, 160)}
       image={image}
+      isApp={isApp}
     >
       <section className="section">
         <div className="container">

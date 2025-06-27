@@ -6,7 +6,7 @@ import Link from "next/link";
 import GoBackLink from "@partials/GoBackLink";
 import config from "@config/config.json";
 
-const RandomCoinPage = () => {
+const RandomCoinPage = ({ isApp }) => {
   const author = {
     name: "Crypto Wiki Team",
     profileUrl: "/authors/crypto-wiki-team",
@@ -32,6 +32,7 @@ const RandomCoinPage = () => {
       canonical={`${config.site.base_url}/tools/random-coin-generator`}
       dateModified={lastUpdated}
       author={author.name}
+      isApp={isApp}
     >
       <section className="section">
         <div className="container">

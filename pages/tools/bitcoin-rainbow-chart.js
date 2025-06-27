@@ -6,7 +6,7 @@ import Link from "next/link";
 import GoBackLink from "@partials/GoBackLink";
 import config from "@config/config.json";
 
-const BitcoinRainbowChartPage = () => {
+const BitcoinRainbowChartPage = ({ isApp }) => {
   const author = {
     name: "Crypto Wiki Team",
     profileUrl: "/authors/crypto-wiki-team",
@@ -96,6 +96,7 @@ const BitcoinRainbowChartPage = () => {
       canonical={`${config.site.base_url}/tools/bitcoin-rainbow-chart`}
       dateModified={lastUpdated}
       author={author.name}
+      isApp={isApp}
     >
       <section className="section pt-10">
         <div className="container">

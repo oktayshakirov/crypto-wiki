@@ -19,7 +19,7 @@ const legendData = [
   },
 ];
 
-const CryptoHeatmapPage = () => {
+const CryptoHeatmapPage = ({ isApp }) => {
   const author = {
     name: "Crypto Wiki Team",
     profileUrl: "/authors/crypto-wiki-team",
@@ -46,6 +46,7 @@ const CryptoHeatmapPage = () => {
       canonical={`${config.site.base_url}/tools/crypto-heatmap`}
       dateModified={lastUpdated}
       author={author.name}
+      isApp={isApp}
     >
       <section className="section pt-10">
         <div className="container">

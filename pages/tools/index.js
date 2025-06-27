@@ -3,7 +3,7 @@ import { markdownify } from "@lib/utils/textConverter";
 import Link from "next/link";
 import config from "@config/config.json";
 
-const Tools = () => {
+const Tools = ({ isApp }) => {
   const tools = [
     {
       name: "Bitcoin Rainbow Chart",
@@ -48,6 +48,7 @@ const Tools = () => {
       description="Explore the best crypto tools on Crypto Wiki! From market heatmaps and staking calculators to Fear and Greed Index and random coin generators, boost your trading strategy today."
       image="/images/meta-image.png"
       canonical={`${config.site.base_url}/tools`}
+      isApp={isApp}
     >
       <section className="section">
         <div className="container max-w-6xl">

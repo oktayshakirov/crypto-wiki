@@ -5,7 +5,13 @@ import { getListPage, getSinglePage } from "@lib/contentParser";
 import { markdownify } from "@lib/utils/textConverter";
 import CryptoOGs from "@partials/CryptoOGs";
 
-const CryptoOgPagination = ({ ogIndex, ogs, currentPage, pagination }) => {
+const CryptoOgPagination = ({
+  ogIndex,
+  ogs,
+  currentPage,
+  pagination,
+  isApp,
+}) => {
   const indexOfLastOG = currentPage * pagination;
   const indexOfFirstOG = indexOfLastOG - pagination;
   const totalPages = Math.ceil(ogs.length / pagination);
@@ -20,6 +26,7 @@ const CryptoOgPagination = ({ ogIndex, ogs, currentPage, pagination }) => {
       description="Discover the legends of crypto like Satoshi Nakamoto, Vitalik Buterin, and CZ. Explore their innovations, investments, and lasting impact on blockchain technology."
       image="/images/meta-image.png"
       canonical={`${config.site.base_url}/crypto-ogs`}
+      isApp={isApp}
     >
       <section className="section">
         <div className="container text-center">

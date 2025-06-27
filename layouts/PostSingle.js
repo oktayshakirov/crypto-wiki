@@ -11,7 +11,7 @@ import GoBackLink from "@partials/GoBackLink";
 import Base from "./Baseof";
 import config from "@config/config.json";
 
-const PostSingle = ({ post, posts, cryptoOgs, exchanges, slug }) => {
+const PostSingle = ({ post, posts, cryptoOgs, exchanges, slug, isApp }) => {
   const { frontmatter, content, mdxContent } = post;
   let { description, title, date, image, categories, tags, authors } =
     frontmatter;
@@ -28,6 +28,7 @@ const PostSingle = ({ post, posts, cryptoOgs, exchanges, slug }) => {
       description={description ? description : content.slice(0, 160)}
       image={image}
       canonical={`${config.site.base_url}/posts/${slug}`}
+      isApp={isApp}
     >
       <section className="section">
         <div className="container">

@@ -15,6 +15,7 @@ const PostPagination = ({
   pagination,
   categories,
   totalPosts,
+  isApp,
 }) => {
   const totalPages = Math.ceil(totalPosts / pagination);
   const { frontmatter } = postIndex;
@@ -27,6 +28,7 @@ const PostPagination = ({
       description="Browse comprehensive crypto articles, including guides, news, and expert analysis. Perfect for beginners and seasoned investors seeking valuable tips and insights."
       image="/images/meta-image.png"
       canonical={`${config.site.base_url}/posts`}
+      isApp={isApp}
     >
       <section className="section">
         <div className="container text-center">

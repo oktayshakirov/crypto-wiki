@@ -16,6 +16,7 @@ const CryptoOgSingle = ({
   mdxContent,
   ogs = [],
   slug,
+  isApp,
 }) => {
   const { description, social, title, image, authors, date } = frontmatter;
   const currentIndex = ogs.findIndex((og) => og.slug === slug);
@@ -29,6 +30,7 @@ const CryptoOgSingle = ({
       description={description ? description : content.slice(0, 160)}
       image={image}
       canonical={`${config.site.base_url}/crypto-ogs/${slug}`}
+      isApp={isApp}
     >
       <section className="section">
         <div className="container">
