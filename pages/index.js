@@ -8,7 +8,7 @@ import { markdownify } from "@lib/utils/textConverter";
 import FearAndGreedIndex from "@layouts/components/FearAndGreedIndex";
 import BannerAd from "@components/BannerAd";
 import Link from "next/link";
-import Script from "next/script";
+
 import {
   FaRegNewspaper,
   FaTags,
@@ -30,7 +30,7 @@ const Home = ({
   postPages,
   ogPages,
   exchangePages,
-  // isApp,
+  isApp,
 }) => {
   return (
     <Base
@@ -39,7 +39,7 @@ const Home = ({
       description="Explore Crypto Wiki – your all-in-one hub for crypto news, guides, exchange reviews, and market tools. Stay informed and master the world of Bitcoin, blockchain, and Web3."
       image="/images/meta-image.png"
       canonical={`${config.site.base_url}/`}
-      // isApp={isApp}
+      isApp={isApp}
     >
       <section>
         <div className="container my-7 text-center">
