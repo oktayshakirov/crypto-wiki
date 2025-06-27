@@ -5,7 +5,15 @@ import config from "@config/config.json";
 
 const { blog_folder } = config.settings;
 
-const Article = ({ post, mdxContent, posts, cryptoOgs, exchanges, slug }) => {
+const Article = ({
+  post,
+  mdxContent,
+  posts,
+  cryptoOgs,
+  exchanges,
+  slug,
+  isApp,
+}) => {
   return (
     <PostSingle
       post={{
@@ -16,6 +24,7 @@ const Article = ({ post, mdxContent, posts, cryptoOgs, exchanges, slug }) => {
       cryptoOgs={cryptoOgs}
       exchanges={exchanges}
       slug={slug}
+      isApp={isApp}
     />
   );
 };

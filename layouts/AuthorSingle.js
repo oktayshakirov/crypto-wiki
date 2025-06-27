@@ -5,8 +5,8 @@ import Base from "./Baseof";
 import Social from "./components/Social";
 import GoBackLink from "@partials/GoBackLink";
 
-const AuthorSingle = ({ frontmatter, content, mdxContent }) => {
-  const { description, social, title, image, isApp } = frontmatter;
+const AuthorSingle = ({ frontmatter, content, mdxContent, isApp }) => {
+  const { description, social, title, image } = frontmatter;
 
   return (
     <Base

@@ -3,7 +3,7 @@ import { getSinglePage } from "@lib/contentParser";
 import parseMDX from "@lib/utils/mdxParser";
 
 // post single layout
-const Article = ({ author, mdxContent }) => {
+const Article = ({ author, mdxContent, isApp }) => {
   const { frontmatter, content } = author[0];
 
   return (
@@ -11,6 +11,7 @@ const Article = ({ author, mdxContent }) => {
       frontmatter={frontmatter}
       content={content}
       mdxContent={mdxContent}
+      isApp={isApp}
     />
   );
 };

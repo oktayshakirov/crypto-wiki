@@ -2,7 +2,7 @@ import ExchangeSingle from "@layouts/ExchangeSingle";
 import { getSinglePage } from "@lib/contentParser";
 import parseMDX from "@lib/utils/mdxParser";
 
-const Article = ({ exchange, mdxContent, exchanges, slug }) => {
+const Article = ({ exchange, mdxContent, exchanges, slug, isApp }) => {
   const { frontmatter, content } = exchange[0];
 
   return (
@@ -12,6 +12,7 @@ const Article = ({ exchange, mdxContent, exchanges, slug }) => {
       mdxContent={mdxContent}
       exchanges={exchanges}
       slug={slug}
+      isApp={isApp}
     />
   );
 };
