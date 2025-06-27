@@ -2,7 +2,7 @@ import CryptoOgSingle from "@layouts/CryptoOgSingle";
 import { getSinglePage } from "@lib/contentParser";
 import parseMDX from "@lib/utils/mdxParser";
 
-const Article = ({ og, mdxContent, ogs, slug }) => {
+const Article = ({ og, mdxContent, ogs, slug, isApp }) => {
   const { frontmatter, content } = og[0];
 
   return (
@@ -12,6 +12,7 @@ const Article = ({ og, mdxContent, ogs, slug }) => {
       mdxContent={mdxContent}
       ogs={ogs}
       slug={slug}
+      isApp={isApp}
     />
   );
 };
