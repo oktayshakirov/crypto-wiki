@@ -83,6 +83,7 @@ const App = ({ Component, pageProps }) => {
         {noIndexPages.includes(router.pathname) && (
           <meta name="robots" content="noindex, follow" />
         )}
+        <meta name="clckd" content="c2bf83867ae1fc43e36896aa3bac2f01" />
       </Head>
       <Script
         strategy="afterInteractive"
