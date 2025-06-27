@@ -5,12 +5,12 @@ import { getListPage, getSinglePage } from "@lib/contentParser";
 import { markdownify } from "@lib/utils/textConverter";
 import Authors from "@partials/Authors";
 
-// blog pagination
 const AuthorPagination = ({
   authorIndex,
   authors,
   currentPage,
   pagination,
+  isApp,
 }) => {
   const indexOfLastAuthor = currentPage * pagination;
   const indexOfFirstAuthor = indexOfLastAuthor - pagination;
@@ -26,6 +26,7 @@ const AuthorPagination = ({
       description="Discover the expert contributors behind Crypto Wiki. Learn about their insights, articles, and analysis that keep you informed on the latest crypto trends and developments."
       image="/images/meta-image.png"
       canonical={`${config.site.base_url}/authors`}
+      isApp={isApp}
     >
       <section className="section">
         <div className="container text-center">

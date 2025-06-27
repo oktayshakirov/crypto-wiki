@@ -17,6 +17,7 @@ const ExchangeSingle = ({
   mdxContent,
   exchanges = [],
   slug,
+  isApp,
 }) => {
   const { description, social, title, image, authors, date } = frontmatter;
   const currentIndex = exchanges.findIndex(
@@ -33,6 +34,7 @@ const ExchangeSingle = ({
       description={description ? description : content.slice(0, 160)}
       image={image}
       canonical={`${config.site.base_url}/exchanges/${slug}`}
+      isApp={isApp}
     >
       <section className="section">
         <div className="container ">

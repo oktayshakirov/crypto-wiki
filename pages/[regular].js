@@ -5,7 +5,7 @@ import Contact from "@layouts/Contact";
 import Default from "@layouts/Default";
 import { getRegularPage, getSinglePage } from "@lib/contentParser";
 
-const RegularPages = ({ slug, data }) => {
+const RegularPages = ({ slug, data, isApp }) => {
   const { title, meta_title, description, image, noindex, canonical, layout } =
     data.frontmatter;
 
@@ -17,6 +17,7 @@ const RegularPages = ({ slug, data }) => {
       image={image}
       noindex={noindex}
       canonical={canonical}
+      isApp={isApp}
     >
       {layout === "404" ? (
         <NotFound data={data} />

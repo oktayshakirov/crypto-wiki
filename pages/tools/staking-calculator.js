@@ -19,7 +19,7 @@ const legendData = [
   },
 ];
 
-const StakingCalculatorPage = () => {
+const StakingCalculatorPage = ({ isApp }) => {
   const author = {
     name: "Crypto Wiki Team",
     profileUrl: "/authors/crypto-wiki-team",
@@ -41,6 +41,7 @@ const StakingCalculatorPage = () => {
       canonical={`${config.site.base_url}/tools/staking-calculator`}
       dateModified={lastUpdated}
       author={author.name}
+      isApp={isApp}
     >
       <section className="section pt-10">
         <div className="container">

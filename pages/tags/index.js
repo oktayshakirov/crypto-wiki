@@ -5,7 +5,7 @@ import { humanize, markdownify } from "@lib/utils/textConverter";
 import Link from "next/link";
 const { blog_folder } = config.settings;
 
-const Tags = ({ tags }) => {
+const Tags = ({ tags, isApp }) => {
   return (
     <Base
       title="All Crypto Tags | Explore Topics on Blockchain, AI & More - Crypto Wiki"
@@ -13,6 +13,7 @@ const Tags = ({ tags }) => {
       description="Browse all tags on Crypto Wiki to find articles, guides, and insights about cryptocurrency, blockchain, AI, and Web3. Stay updated with the latest trends and topics."
       image="/images/meta-image.png"
       canonical={`${config.site.base_url}/tags`}
+      isApp={isApp}
     >
       <section className="section">
         <div className="container text-center">

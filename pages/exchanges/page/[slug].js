@@ -10,6 +10,7 @@ const ExchangePagination = ({
   exchanges,
   currentPage,
   pagination,
+  isApp,
 }) => {
   const indexOfLastExchange = currentPage * pagination;
   const indexOfFirstExchange = indexOfLastExchange - pagination;
@@ -28,6 +29,7 @@ const ExchangePagination = ({
       description="Explore detailed reviews of top crypto exchanges trusted by investors worldwide. Find expert insights, ratings, and updates to choose the best platform for your trading needs."
       image="/images/meta-image.png"
       canonical={`${config.site.base_url}/exchanges`}
+      isApp={isApp}
     >
       <section className="section">
         <div className="container text-center">

@@ -13,6 +13,7 @@ const CategoryLayout = ({
   exchanges,
   currentPage,
   totalPages,
+  isApp,
 }) => {
   return (
     <Base
@@ -21,6 +22,7 @@ const CategoryLayout = ({
       description={`Explore the latest Crypto ${category} trends, expert analysis, and detailed guides. Perfect for beginners and enthusiasts looking to deepen their crypto knowledge.`}
       image="/images/meta-image.png"
       canonical={`${config.site.base_url}/categories/${category.toLowerCase()}`}
+      isApp={isApp}
     >
       <div className="section">
         <div className="container mb-8 text-left">

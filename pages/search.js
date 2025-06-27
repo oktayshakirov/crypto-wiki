@@ -5,7 +5,7 @@ import { slugify } from "@lib/utils/textConverter";
 import { useSearchContext } from "context/state";
 import { useRouter } from "next/router";
 
-const SearchPage = ({ authors, cryptoOgs, exchanges }) => {
+const SearchPage = ({ authors, cryptoOgs, exchanges, isApp }) => {
   const router = useRouter();
   const { query } = router;
   const keyword = slugify(query.key);
@@ -49,7 +49,11 @@ const SearchPage = ({ authors, cryptoOgs, exchanges }) => {
   const filteredExchanges = filterEntities("exchanges", exchanges);
 
   return (
-    <Base title={`Search results for ${query.key}`} noindex={true}>
+    <Base
+      title={`Search results for ${query.key}`}
+      noindex={true}
+      isApp={isApp}
+    >
       <div className="section">
         <div className="container">
           <h1 className="h2 mb-8 text-center">

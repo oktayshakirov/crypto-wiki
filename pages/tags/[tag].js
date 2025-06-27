@@ -6,7 +6,7 @@ import { slugify } from "@lib/utils/textConverter";
 import Posts from "@partials/Posts";
 const { blog_folder } = config.settings;
 
-const Tag = ({ tag, posts, authors, cryptoOgs, exchanges }) => {
+const Tag = ({ tag, posts, authors, cryptoOgs, exchanges, isApp }) => {
   return (
     <Base
       title={`Discover ${tag} content | Latest Posts & Guides - Crypto Wiki`}
@@ -15,6 +15,7 @@ const Tag = ({ tag, posts, authors, cryptoOgs, exchanges }) => {
       image="/images/meta-image.png"
       canonical={`${config.site.base_url}/tags/${tag.toLowerCase()}`}
       noindex={true}
+      isApp={isApp}
     >
       <div className="section">
         <div className="container">

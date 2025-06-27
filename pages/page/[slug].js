@@ -12,6 +12,7 @@ const BlogPagination = ({
   exchanges,
   currentPage,
   pagination,
+  isApp,
 }) => {
   const indexOfLastPost = currentPage * pagination;
   const indexOfFirstPost = indexOfLastPost - pagination;
@@ -19,7 +20,7 @@ const BlogPagination = ({
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
   return (
-    <Base>
+    <Base isApp={isApp}>
       <section className="section">
         <div className="container">
           <Posts
