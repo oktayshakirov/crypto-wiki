@@ -30,6 +30,7 @@ const Home = ({
   postPages,
   ogPages,
   exchangePages,
+  // isApp,
 }) => {
   return (
     <Base
@@ -38,6 +39,7 @@ const Home = ({
       description="Explore Crypto Wiki – your all-in-one hub for crypto news, guides, exchange reviews, and market tools. Stay informed and master the world of Bitcoin, blockchain, and Web3."
       image="/images/meta-image.png"
       canonical={`${config.site.base_url}/`}
+      // isApp={isApp}
     >
       <section>
         <div className="container my-7 text-center">
@@ -45,7 +47,7 @@ const Home = ({
             Uncover the World of{" "}
             <span className="font-mono text-primary">CRYPTO</span>
           </h1>
-          <BannerAd />
+          {/* {!isApp && <BannerAd />} */}
           {markdownify("LATEST POSTS", "h3", "mb-8")}
           <Posts posts={posts} />
           <Pagination

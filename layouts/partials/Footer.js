@@ -14,10 +14,6 @@ const Footer = ({ isApp }) => {
   const currentYear = new Date().getFullYear();
   const copyrightText = copyright.replace("2024", `2024 - ${currentYear}`);
 
-  if (isApp) {
-    return null;
-  }
-
   return (
     <footer className="section bg-theme-dark">
       {!shouldHideAppsBanner && (
@@ -50,7 +46,7 @@ const Footer = ({ isApp }) => {
             ))}
           </ul>
           <div className="flex w-full flex-col items-center space-y-4 lg:flex-row lg:justify-between lg:space-x-8 lg:space-y-0">
-            <Social source={social} className="social-icons" />
+            {!isApp && <Social source={social} className="social-icons" />}
             <div className="text-center">
               {markdownify(copyrightText, "p", "text-light")}
             </div>
