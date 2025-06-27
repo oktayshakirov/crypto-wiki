@@ -14,6 +14,7 @@ const Base = ({
   noindex,
   canonical,
   children,
+  isApp,
 }) => {
   const { meta_image, meta_author, meta_description } = config.metadata;
   const { base_url } = config.site;
@@ -32,41 +33,26 @@ const Base = ({
   return (
     <>
       <Head>
-        {/* title */}
         <title>
           {plainify(
             meta_title ? meta_title : title ? title : config.site.title
           )}
         </title>
-
-        {/* canonical url */}
         {canonical && <link rel="canonical" href={canonical} itemProp="url" />}
-
-        {/* meta-description */}
         <meta
           name="description"
           content={plainify(description ? description : meta_description)}
         />
-
-        {/* Single, definitive Robots Metatag */}
         <meta name="robots" content={getRobotsContent()} />
-
-        {/* Charset and Viewport */}
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-        {/* author from config.json */}
         <meta name="author" content={meta_author} />
-
-        {/* og-title */}
         <meta
           property="og:title"
           content={plainify(
             meta_title ? meta_title : title ? title : config.site.title
           )}
         />
-
-        {/* og-description */}
         <meta
           property="og:description"
           content={plainify(description ? description : meta_description)}
@@ -76,28 +62,20 @@ const Base = ({
           property="og:url"
           content={`${base_url}${router.asPath === "/" ? "" : router.asPath}`}
         />
-
-        {/* twitter-title */}
         <meta
           name="twitter:title"
           content={plainify(
             meta_title ? meta_title : title ? title : config.site.title
           )}
         />
-
-        {/* twitter-description */}
         <meta
           name="twitter:description"
           content={plainify(description ? description : meta_description)}
         />
-
-        {/* og-image */}
         <meta
           property="og:image"
           content={`${base_url}${image ? image : meta_image}`}
         />
-
-        {/* twitter-image */}
         <meta
           name="twitter:image"
           content={`${base_url}${image ? image : meta_image}`}
@@ -108,9 +86,8 @@ const Base = ({
       <div className="container">
         <CoinTracker />
       </div>
-      {/* main site */}
       <main>{children}</main>
-      <Footer />
+      <Footer isApp={isApp} />
     </>
   );
 };
