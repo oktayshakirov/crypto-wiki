@@ -59,7 +59,10 @@ export const getStaticProps = async ({ params }) => {
     props: {
       post: post,
       mdxContent: mdxContent,
-      posts: posts,
+      posts: posts.map((post) => ({
+        frontmatter: post.frontmatter,
+        slug: post.slug,
+      })),
       cryptoOgs: cryptoOgs,
       exchanges: exchanges,
       slug: single,

@@ -8,28 +8,14 @@ import { useRouter } from "next/router";
 
 const Header = () => {
   const { main } = menu;
-  const [navFixed, setNavFixed] = useState(false);
   const [searchModal, setSearchModal] = useState(false);
 
   const router = useRouter();
 
-  useEffect(() => {
-    const changeNavbarBackground = () => {
-      if (window.pageYOffset >= 1) {
-        setNavFixed(true);
-      } else {
-        setNavFixed(false);
-      }
-    };
-    window.addEventListener("scroll", changeNavbarBackground);
-  });
-
   return (
     <>
       <header
-        className={`sticky top-0 z-50 bg-theme-dark py-2 transition-all ${
-          navFixed ? "shadow" : "pt-8 md:pt-16"
-        }`}
+        className={`sticky top-0 z-50 bg-theme-dark py-2 transition-all `}
       >
         <nav className="navbar container">
           <div className="order-0">
