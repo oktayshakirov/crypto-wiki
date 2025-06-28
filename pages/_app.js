@@ -27,7 +27,6 @@ const MyApp = ({ Component, pageProps, isApp: serverIsApp }) => {
   const [isApp, setIsApp] = useState(serverIsApp);
 
   useEffect(() => {
-    // Check client-side isApp flag on mount
     const clientIsApp = getIsAppFlag();
     if (clientIsApp) {
       setIsApp(true);
