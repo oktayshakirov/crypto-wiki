@@ -4,13 +4,36 @@ import { JsonContext } from "context/state";
 import Head from "next/head";
 import Script from "next/script";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import TagManager from "react-gtm-module";
+import App from "next/app";
 import "styles/style.scss";
 
-const App = ({ Component, pageProps }) => {
+function getIsAppFlag() {
+  if (typeof window === "undefined") return false;
+  const urlParams = new URLSearchParams(window.location.search);
+  return (
+    urlParams.get("isApp") === "true" ||
+    !!window.isApp ||
+    localStorage.getItem("isApp") === "true"
+  );
+}
+
+const MyApp = ({ Component, pageProps, isApp: serverIsApp }) => {
+  const router = useRouter();
   const pf = theme.fonts.font_family.primary;
   const sf = theme.fonts.font_family.secondary;
   const [fontcss, setFontcss] = useState();
+  const [isApp, setIsApp] = useState(serverIsApp);
+
+  useEffect(() => {
+    const clientIsApp = getIsAppFlag();
+    if (clientIsApp) {
+      setIsApp(true);
+      localStorage.setItem("isApp", "true");
+    }
+  }, []);
+
   useEffect(() => {
     fetch(
       `https://fonts.googleapis.com/css2?family=${pf}${
@@ -19,15 +42,26 @@ const App = ({ Component, pageProps }) => {
     ).then((res) => res.text().then((css) => setFontcss(css)));
   }, [pf, sf]);
 
-  const tagManagerArgs = {
-    gtmId: config.params.tag_manager_id,
-  };
   useEffect(() => {
-    setTimeout(() => {
-      config.params.tag_manager_id && TagManager.initialize(tagManagerArgs);
-    }, 5000);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    const tagManagerArgs = {
+      gtmId: config.params.tag_manager_id,
+    };
+    if (!isApp && config.params.tag_manager_id) {
+      setTimeout(() => {
+        TagManager.initialize(tagManagerArgs);
+      }, 5000);
+    }
+  }, [isApp]);
+
+  const noIndexPages = [
+    "/contact",
+    "/faq",
+    "/privacy-policy",
+    "/terms",
+    "/affiliate-disclosure",
+    "/advertising",
+    "/authors",
+  ];
 
   return (
     <JsonContext>
@@ -46,28 +80,47 @@ const App = ({ Component, pageProps }) => {
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=5"
         />
+        {noIndexPages.includes(router.pathname) && (
+          <meta name="robots" content="noindex, follow" />
+        )}
+        {/* ExoClick */}
+        <meta
+          name="6a97888e-site-verification"
+          content="d0624c09694d795539537403fa4dbe14"
+        ></meta>
       </Head>
       <Script
-        async
+        strategy="afterInteractive"
         src="https://www.googletagmanager.com/gtag/js?id=G-ZRW4Z84C8T"
-      ></Script>
+      />
       <Script id="google-analytics" strategy="afterInteractive">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-
-          gtag('config', 'G-ZRW4Z84C8T');
+          gtag('config', 'G-ZRW4Z84C8T', {
+            page_path: window.location.pathname,
+          });
         `}
       </Script>
-      {/* <script
-        async
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5852582960793521"
-        crossOrigin="anonymous"
-      ></script> */}
-      <Component {...pageProps} />
+      {/* {!isApp && (
+        <>
+          <Script
+            strategy="afterInteractive"
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5852582960793521"
+            crossOrigin="anonymous"
+          />
+        </>
+      )} */}
+      <Component {...pageProps} isApp={isApp} />
     </JsonContext>
   );
 };
 
-export default App;
+MyApp.getInitialProps = async (appContext) => {
+  const appProps = await App.getInitialProps(appContext);
+  const isApp = appContext.ctx.req?.cookies.isApp === "true";
+  return { ...appProps, isApp };
+};
+
+export default MyApp;
