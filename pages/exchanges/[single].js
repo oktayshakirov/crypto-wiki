@@ -41,7 +41,14 @@ export const getStaticProps = async ({ params }) => {
     props: {
       exchange,
       mdxContent,
-      exchanges: getExchanges,
+      exchanges: getExchanges.map((exchange) => ({
+        frontmatter: {
+          title: exchange.frontmatter.title,
+          description: exchange.frontmatter.description,
+          image: exchange.frontmatter.image,
+        },
+        slug: exchange.slug,
+      })),
       slug: single,
     },
   };

@@ -41,7 +41,6 @@ export const getStaticProps = async ({ params }) => {
     props: {
       og: og,
       mdxContent: mdxContent,
-      ogs: getOGs,
       slug: single,
     },
   };

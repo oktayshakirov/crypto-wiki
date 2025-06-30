@@ -75,7 +75,14 @@ export const getStaticProps = async ({ params }) => {
   return {
     props: {
       pagination: paginationCryptoOGs,
-      ogs: ogs,
+      ogs: ogs.map((og) => ({
+        frontmatter: {
+          title: og.frontmatter.title,
+          description: og.frontmatter.description,
+          image: og.frontmatter.image,
+        },
+        slug: og.slug,
+      })),
       currentPage: currentPage,
       ogIndex: ogIndex,
       mdxContent: ogIndex.mdxContent,

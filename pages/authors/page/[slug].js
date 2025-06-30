@@ -77,7 +77,14 @@ export const getStaticProps = async ({ params }) => {
   return {
     props: {
       pagination: paginationAuthors,
-      authors: authors,
+      authors: authors.map((author) => ({
+        frontmatter: {
+          title: author.frontmatter.title,
+          description: author.frontmatter.description,
+          image: author.frontmatter.image,
+        },
+        slug: author.slug,
+      })),
       currentPage: currentPage,
       authorIndex: authorIndex,
       mdxContent: authorIndex.mdxContent,

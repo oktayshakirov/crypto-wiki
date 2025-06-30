@@ -5,15 +5,7 @@ import { getSinglePage } from "@lib/contentParser";
 import Posts from "@partials/Posts";
 const { blog_folder } = config.settings;
 
-const BlogPagination = ({
-  posts,
-  authors,
-  cryptoOgs,
-  exchanges,
-  currentPage,
-  pagination,
-  isApp,
-}) => {
+const BlogPagination = ({ posts, authors, currentPage, pagination, isApp }) => {
   const indexOfLastPost = currentPage * pagination;
   const indexOfFirstPost = indexOfLastPost - pagination;
   const totalPages = Math.ceil(posts.length / pagination);
@@ -23,13 +15,7 @@ const BlogPagination = ({
     <Base isApp={isApp}>
       <section className="section">
         <div className="container">
-          <Posts
-            className="mb-16"
-            posts={currentPosts}
-            authors={authors}
-            cryptoOgs={cryptoOgs}
-            exchanges={exchanges}
-          />
+          <Posts className="mb-16" posts={currentPosts} authors={authors} />
           <Pagination totalPages={totalPages} currentPage={currentPage} />
         </div>
       </section>
@@ -65,16 +51,22 @@ export const getStaticProps = async ({ params }) => {
   const { pagination } = config.settings;
   const posts = getSinglePage(`content/${blog_folder}`);
   const authors = getSinglePage("content/authors");
-  const cryptoOgs = getSinglePage("content/crypto-ogs");
-  const exchanges = getSinglePage("content/exchanges");
 
   return {
     props: {
       pagination: pagination,
-      posts: posts,
+      posts: posts.map((post) => ({
+        frontmatter: {
+          title: post.frontmatter.title,
+          description: post.frontmatter.description,
+          image: post.frontmatter.image,
+          categories: post.frontmatter.categories,
+          "crypto-ogs": post.frontmatter["crypto-ogs"] || [],
+          exchanges: post.frontmatter.exchanges || [],
+        },
+        slug: post.slug,
+      })),
       authors: authors,
-      cryptoOgs: cryptoOgs,
-      exchanges: exchanges,
       currentPage: currentPage,
     },
   };

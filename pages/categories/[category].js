@@ -39,16 +39,22 @@ export const getStaticProps = ({ params }) => {
   const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
 
   const authors = getSinglePage("content/authors");
-  const cryptoOgs = getSinglePage("content/crypto-ogs");
-  const exchanges = getSinglePage("content/exchanges");
 
   return {
     props: {
-      posts: currentPosts,
+      posts: currentPosts.map((post) => ({
+        frontmatter: {
+          title: post.frontmatter.title,
+          description: post.frontmatter.description,
+          image: post.frontmatter.image,
+          categories: post.frontmatter.categories,
+          "crypto-ogs": post.frontmatter["crypto-ogs"] || [],
+          exchanges: post.frontmatter.exchanges || [],
+        },
+        slug: post.slug,
+      })),
       category: params.category,
       authors: authors,
-      cryptoOgs: cryptoOgs,
-      exchanges: exchanges,
       currentPage: currentPage,
       totalPages: totalPages,
     },

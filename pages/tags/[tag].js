@@ -36,7 +36,6 @@ const Tag = ({ tag, posts, authors, cryptoOgs, exchanges, isApp }) => {
 
 export default Tag;
 
-// tag page routes
 export const getStaticPaths = () => {
   const allCategories = getTaxonomy(`content/${blog_folder}`, "tags");
 
@@ -49,23 +48,28 @@ export const getStaticPaths = () => {
   return { paths, fallback: false };
 };
 
-// tag page data
 export const getStaticProps = ({ params }) => {
   const posts = getSinglePage(`content/${blog_folder}`);
   const filterPosts = posts.filter((post) =>
     post.frontmatter.tags.find((tag) => slugify(tag).includes(params.tag))
   );
   const authors = getSinglePage("content/authors");
-  const cryptoOgs = getSinglePage("content/crypto-ogs");
-  const exchanges = getSinglePage("content/exchanges");
 
   return {
     props: {
-      posts: filterPosts,
+      posts: filterPosts.map((post) => ({
+        frontmatter: {
+          title: post.frontmatter.title,
+          description: post.frontmatter.description,
+          image: post.frontmatter.image,
+          categories: post.frontmatter.categories,
+          "crypto-ogs": post.frontmatter["crypto-ogs"] || [],
+          exchanges: post.frontmatter.exchanges || [],
+        },
+        slug: post.slug,
+      })),
       tag: params.tag,
       authors: authors,
-      cryptoOgs: cryptoOgs,
-      exchanges: exchanges,
     },
   };
 };
