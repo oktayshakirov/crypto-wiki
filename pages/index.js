@@ -183,9 +183,33 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      posts: currentPosts,
-      ogs: currentOGs,
-      exchanges: currentExchanges,
+      posts: currentPosts.map((post) => ({
+        frontmatter: {
+          title: post.frontmatter.title,
+          description: post.frontmatter.description,
+          image: post.frontmatter.image,
+          categories: post.frontmatter.categories,
+          "crypto-ogs": post.frontmatter["crypto-ogs"] || [],
+          exchanges: post.frontmatter.exchanges || [],
+        },
+        slug: post.slug,
+      })),
+      ogs: currentOGs.map((og) => ({
+        frontmatter: {
+          title: og.frontmatter.title,
+          description: og.frontmatter.description,
+          image: og.frontmatter.image,
+        },
+        slug: og.slug,
+      })),
+      exchanges: currentExchanges.map((exchange) => ({
+        frontmatter: {
+          title: exchange.frontmatter.title,
+          description: exchange.frontmatter.description,
+          image: exchange.frontmatter.image,
+        },
+        slug: exchange.slug,
+      })),
       postPages: totalPostsPages,
       ogPages: totalOGsPages,
       exchangePages: totalExchangesPages,

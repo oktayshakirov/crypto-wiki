@@ -6,7 +6,6 @@ import Script from "next/script";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import TagManager from "react-gtm-module";
-import App from "next/app";
 import "styles/style.scss";
 
 function getIsAppFlag() {
@@ -19,12 +18,12 @@ function getIsAppFlag() {
   );
 }
 
-const MyApp = ({ Component, pageProps, isApp: serverIsApp }) => {
+const MyApp = ({ Component, pageProps }) => {
   const router = useRouter();
   const pf = theme.fonts.font_family.primary;
   const sf = theme.fonts.font_family.secondary;
   const [fontcss, setFontcss] = useState();
-  const [isApp, setIsApp] = useState(serverIsApp);
+  const [isApp, setIsApp] = useState(false);
 
   useEffect(() => {
     const clientIsApp = getIsAppFlag();
@@ -115,12 +114,6 @@ const MyApp = ({ Component, pageProps, isApp: serverIsApp }) => {
       <Component {...pageProps} isApp={isApp} />
     </JsonContext>
   );
-};
-
-MyApp.getInitialProps = async (appContext) => {
-  const appProps = await App.getInitialProps(appContext);
-  const isApp = appContext.ctx.req?.cookies.isApp === "true";
-  return { ...appProps, isApp };
 };
 
 export default MyApp;

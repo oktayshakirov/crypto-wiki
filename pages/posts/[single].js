@@ -14,6 +14,7 @@ const Article = ({
   slug,
   isApp,
 }) => {
+  //Todo: Fix for Single Post to not fetch all posts
   return (
     <PostSingle
       post={{
@@ -45,24 +46,54 @@ export const getStaticPaths = () => {
 
 export const getStaticProps = async ({ params }) => {
   const { single } = params;
-  const posts = getSinglePage(`content/${blog_folder}`);
-  const post = posts.filter((post) => post.slug === single);
+  const allPosts = getSinglePage(`content/${blog_folder}`);
+  const post = allPosts.filter((post) => post.slug === single);
   const mdxContent = await parseMDX(post[0].content);
 
-  // Get cryptoOGs
-  const cryptoOgs = getSinglePage("content/crypto-ogs");
+  const referencedCryptoOgs = post[0].frontmatter["crypto-ogs"] || [];
+  const referencedExchanges = post[0].frontmatter.exchanges || [];
 
-  // Get exchanges
-  const exchanges = getSinglePage("content/exchanges");
+  const cryptoOgs = getSinglePage("content/crypto-ogs")
+    .filter((og) => referencedCryptoOgs.includes(og.frontmatter.title))
+    .map((og) => ({
+      frontmatter: {
+        title: og.frontmatter.title,
+        description: og.frontmatter.description,
+        image: og.frontmatter.image,
+      },
+      slug: og.slug,
+    }));
+
+  const exchanges = getSinglePage("content/exchanges")
+    .filter((exchange) =>
+      referencedExchanges.includes(exchange.frontmatter.title)
+    )
+    .map((exchange) => ({
+      frontmatter: {
+        title: exchange.frontmatter.title,
+        description: exchange.frontmatter.description,
+        image: exchange.frontmatter.image,
+      },
+      slug: exchange.slug,
+    }));
+
+  const postsForNavigation = allPosts.map((post) => ({
+    frontmatter: {
+      title: post.frontmatter.title,
+      description: post.frontmatter.description,
+      image: post.frontmatter.image,
+      categories: post.frontmatter.categories,
+      "crypto-ogs": post.frontmatter["crypto-ogs"] || [],
+      exchanges: post.frontmatter.exchanges || [],
+    },
+    slug: post.slug,
+  }));
 
   return {
     props: {
       post: post,
       mdxContent: mdxContent,
-      posts: posts.map((post) => ({
-        frontmatter: post.frontmatter,
-        slug: post.slug,
-      })),
+      posts: postsForNavigation,
       cryptoOgs: cryptoOgs,
       exchanges: exchanges,
       slug: single,

@@ -109,7 +109,17 @@ export const getStaticProps = async ({ params }) => {
   return {
     props: {
       pagination: paginationPosts,
-      posts: currentPosts,
+      posts: currentPosts.map((post) => ({
+        frontmatter: {
+          title: post.frontmatter.title,
+          description: post.frontmatter.description,
+          image: post.frontmatter.image,
+          categories: post.frontmatter.categories,
+          "crypto-ogs": post.frontmatter["crypto-ogs"] || [],
+          exchanges: post.frontmatter.exchanges || [],
+        },
+        slug: post.slug,
+      })),
       currentPage: currentPage,
       postIndex: postIndex || {},
       categories: categories || [],
