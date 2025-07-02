@@ -41,6 +41,14 @@ export const getStaticProps = async ({ params }) => {
     props: {
       og: og,
       mdxContent: mdxContent,
+      ogs: getOGs.map((og) => ({
+        frontmatter: {
+          title: og.frontmatter.title,
+          description: og.frontmatter.description,
+          image: og.frontmatter.image,
+        },
+        slug: og.slug,
+      })),
       slug: single,
     },
   };
