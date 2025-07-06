@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "node lib/jsonGenerator.js && next dev",
-    "build": "npm run clean && node lib/jsonGenerator.js && next build && next-sitemap && node pages/api/syncContent.js",
+    "build": "npm run clean && node lib/jsonGenerator.js && next build && next-sitemap",
     "export": "next build && next export && next-sitemap",
     "lint": "next lint",
     "start": "next start",

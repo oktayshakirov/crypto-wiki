@@ -8,7 +8,6 @@ import Link from "next/link";
 const CategoryLayout = ({
   category,
   posts,
-  authors,
   cryptoOgs,
   exchanges,
   currentPage,
@@ -38,12 +37,7 @@ const CategoryLayout = ({
             Showing posts from <span className="text-primary">{category}</span>{" "}
             category
           </h1>
-          <Posts
-            posts={posts}
-            authors={authors}
-            cryptoOgs={cryptoOgs}
-            exchanges={exchanges}
-          />
+          <Posts posts={posts} cryptoOgs={cryptoOgs} exchanges={exchanges} />
           <Pagination
             section={`categories/${category}`}
             totalPages={totalPages}

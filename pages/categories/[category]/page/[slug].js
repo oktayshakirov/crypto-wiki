@@ -55,11 +55,8 @@ export const getStaticProps = async ({ params }) => {
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
 
-  const authors = getSinglePage("content/authors");
-
   return {
     props: {
-      //ToDo: check if we need to refetch posts for category pages
       posts: currentPosts.map((post) => ({
         frontmatter: {
           title: post.frontmatter.title,
@@ -72,7 +69,6 @@ export const getStaticProps = async ({ params }) => {
         slug: post.slug,
       })),
       category: params.category,
-      authors: authors,
       currentPage: currentPage,
       totalPages: totalPages,
     },
