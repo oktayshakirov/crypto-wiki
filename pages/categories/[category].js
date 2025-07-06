@@ -38,8 +38,6 @@ export const getStaticProps = ({ params }) => {
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
 
-  const authors = getSinglePage("content/authors");
-
   return {
     props: {
       posts: currentPosts.map((post) => ({
@@ -54,7 +52,6 @@ export const getStaticProps = ({ params }) => {
         slug: post.slug,
       })),
       category: params.category,
-      authors: authors,
       currentPage: currentPage,
       totalPages: totalPages,
     },
