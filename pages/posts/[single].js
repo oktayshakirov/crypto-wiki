@@ -8,20 +8,21 @@ const { blog_folder } = config.settings;
 const Article = ({
   post,
   mdxContent,
-  posts,
+  prevPost,
+  nextPost,
   cryptoOgs,
   exchanges,
   slug,
   isApp,
 }) => {
-  //Todo: Fix for Single Post to not fetch all posts
   return (
     <PostSingle
       post={{
         ...post[0],
         mdxContent,
       }}
-      posts={posts}
+      prevPost={prevPost}
+      nextPost={nextPost}
       cryptoOgs={cryptoOgs}
       exchanges={exchanges}
       slug={slug}
@@ -46,14 +47,18 @@ export const getStaticPaths = () => {
 
 export const getStaticProps = async ({ params }) => {
   const { single } = params;
-  const allPosts = getSinglePage(`content/${blog_folder}`);
+  const allPosts = getSinglePage(`content/${blog_folder}`) || [];
   const post = allPosts.filter((post) => post.slug === single);
+  if (!post[0]) {
+    return { notFound: true };
+  }
   const mdxContent = await parseMDX(post[0].content);
 
   const referencedCryptoOgs = post[0].frontmatter["crypto-ogs"] || [];
   const referencedExchanges = post[0].frontmatter.exchanges || [];
 
-  const cryptoOgs = getSinglePage("content/crypto-ogs")
+  const allCryptoOgs = getSinglePage("content/crypto-ogs") || [];
+  const cryptoOgs = allCryptoOgs
     .filter((og) => referencedCryptoOgs.includes(og.frontmatter.title))
     .map((og) => ({
       frontmatter: {
@@ -64,7 +69,8 @@ export const getStaticProps = async ({ params }) => {
       slug: og.slug,
     }));
 
-  const exchanges = getSinglePage("content/exchanges")
+  const allExchanges = getSinglePage("content/exchanges") || [];
+  const exchanges = allExchanges
     .filter((exchange) =>
       referencedExchanges.includes(exchange.frontmatter.title)
     )
@@ -77,23 +83,33 @@ export const getStaticProps = async ({ params }) => {
       slug: exchange.slug,
     }));
 
-  const postsForNavigation = allPosts.map((post) => ({
-    frontmatter: {
-      title: post.frontmatter.title,
-      description: post.frontmatter.description,
-      image: post.frontmatter.image,
-      categories: post.frontmatter.categories,
-      "crypto-ogs": post.frontmatter["crypto-ogs"] || [],
-      exchanges: post.frontmatter.exchanges || [],
-    },
-    slug: post.slug,
-  }));
+  // Only pass prev/next post for navigation
+  const currentIndex = allPosts.findIndex((p) => p.slug === single);
+  const prevPost = currentIndex > 0 ? allPosts[currentIndex - 1] : null;
+  const nextPost =
+    currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null;
+
+  const formatPost = (post) =>
+    post
+      ? {
+          frontmatter: {
+            title: post.frontmatter.title,
+            description: post.frontmatter.description,
+            image: post.frontmatter.image,
+            categories: post.frontmatter.categories,
+            "crypto-ogs": post.frontmatter["crypto-ogs"] || [],
+            exchanges: post.frontmatter.exchanges || [],
+          },
+          slug: post.slug,
+        }
+      : null;
 
   return {
     props: {
       post: post,
       mdxContent: mdxContent,
-      posts: postsForNavigation,
+      prevPost: formatPost(prevPost),
+      nextPost: formatPost(nextPost),
       cryptoOgs: cryptoOgs,
       exchanges: exchanges,
       slug: single,
