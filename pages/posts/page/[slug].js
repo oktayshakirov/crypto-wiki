@@ -76,7 +76,7 @@ const PostPagination = ({
 export default PostPagination;
 
 export const getStaticPaths = () => {
-  const allPosts = getSinglePage("content/posts");
+  const allPosts = getSinglePage("content/posts") || [];
   const { paginationPosts } = config.settings;
   const totalPages = Math.ceil(allPosts.length / paginationPosts);
   let paths = [];
@@ -98,7 +98,7 @@ export const getStaticPaths = () => {
 export const getStaticProps = async ({ params }) => {
   const currentPage = parseInt((params && params.slug) || 1);
   const { paginationPosts, blog_folder } = config.settings;
-  const allPosts = getSinglePage("content/posts");
+  const allPosts = getSinglePage("content/posts") || [];
   const indexOfLastPost = currentPage * paginationPosts;
   const indexOfFirstPost = indexOfLastPost - paginationPosts;
   const currentPosts = allPosts.slice(indexOfFirstPost, indexOfLastPost);

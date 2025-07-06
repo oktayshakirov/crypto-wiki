@@ -11,15 +11,23 @@ import GoBackLink from "@partials/GoBackLink";
 import Base from "./Baseof";
 import config from "@config/config.json";
 
-const PostSingle = ({ post, posts, cryptoOgs, exchanges, slug, isApp }) => {
+const PostSingle = ({
+  post,
+  prevPost,
+  nextPost,
+  cryptoOgs,
+  exchanges,
+  slug,
+  isApp,
+  posts,
+}) => {
   const { frontmatter, content, mdxContent } = post;
   let { description, title, date, image, categories, tags, authors } =
     frontmatter;
   description = description ? description : content.slice(0, 120);
-  const similarPosts = similerItems(post, posts, slug);
-  const currentIndex = posts.findIndex((p) => p.slug === slug);
-  const nextPost = posts[currentIndex + 1] || null;
-  const prevPost = posts[currentIndex - 1] || null;
+  const similarPosts = Array.isArray(posts)
+    ? similerItems(post, posts, slug)
+    : [];
 
   return (
     <Base
@@ -84,14 +92,14 @@ const PostSingle = ({ post, posts, cryptoOgs, exchanges, slug, isApp }) => {
               )}
             </div>
             <div className="mb-6 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-gray-600 dark:text-gray-400">
-              {frontmatter["crypto-ogs"] && cryptoOgs && (
+              {(frontmatter["crypto-ogs"] || []).length > 0 && cryptoOgs && (
                 <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
                   <span className="flex items-center font-medium">
                     <FaUser className="mr-1.5 opacity-80" /> OGs:
                   </span>
                   {cryptoOgs
                     .filter((og) =>
-                      frontmatter["crypto-ogs"]
+                      (frontmatter["crypto-ogs"] || [])
                         .map((name) => slugify(name))
                         .includes(slugify(og.frontmatter.title))
                     )
@@ -111,14 +119,14 @@ const PostSingle = ({ post, posts, cryptoOgs, exchanges, slug, isApp }) => {
                     ))}
                 </div>
               )}
-              {frontmatter["exchanges"] && exchanges && (
+              {(frontmatter["exchanges"] || []).length > 0 && exchanges && (
                 <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
                   <span className="flex items-center font-medium">
                     <FaExchangeAlt className="mr-1.5 opacity-80" /> Exchanges:
                   </span>
                   {exchanges
                     .filter((ex) =>
-                      frontmatter["exchanges"]
+                      (frontmatter["exchanges"] || [])
                         .map((name) => slugify(name))
                         .includes(slugify(ex.frontmatter.title))
                     )
@@ -178,12 +186,14 @@ const PostSingle = ({ post, posts, cryptoOgs, exchanges, slug, isApp }) => {
           />
         </div>
       </section>
-      <section className="section">
-        <div className="container">
-          <h2 className="mb-8 text-center">Similar Posts</h2>
-          <SimilarPosts posts={similarPosts.slice(0, 6)} />
-        </div>
-      </section>
+      {similarPosts.length > 0 && (
+        <section className="section">
+          <div className="container">
+            <h2 className="mb-8 text-center">Similar Posts</h2>
+            <SimilarPosts posts={similarPosts.slice(0, 6)} />
+          </div>
+        </section>
+      )}
     </Base>
   );
 };

@@ -43,7 +43,7 @@ const Posts = ({ posts }) => {
                   </span>
                 )}
               </li>
-              {post.frontmatter["crypto-ogs"]?.length && (
+              {post.frontmatter["crypto-ogs"]?.length > 0 && (
                 <li className="flex flex-wrap items-center space-x-2">
                   {post.frontmatter["crypto-ogs"]
                     .slice(0, 3)
@@ -63,7 +63,7 @@ const Posts = ({ posts }) => {
                   )}
                 </li>
               )}
-              {post.frontmatter["exchanges"]?.length && (
+              {post.frontmatter["exchanges"]?.length > 0 && (
                 <li className="flex flex-wrap items-center space-x-2">
                   {post.frontmatter["exchanges"]
                     .slice(0, 3)
