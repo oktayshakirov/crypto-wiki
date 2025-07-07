@@ -2,6 +2,7 @@ import PostSingle from "@layouts/PostSingle";
 import { getSinglePage } from "@lib/contentParser";
 import parseMDX from "@lib/utils/mdxParser";
 import config from "@config/config.json";
+import similerItems from "@lib/utils/similarItems";
 
 const { blog_folder } = config.settings;
 
@@ -14,11 +15,12 @@ const Article = ({
   exchanges,
   slug,
   isApp,
+  similarPosts,
 }) => {
   return (
     <PostSingle
       post={{
-        ...post[0],
+        ...post,
         mdxContent,
       }}
       prevPost={prevPost}
@@ -27,6 +29,7 @@ const Article = ({
       exchanges={exchanges}
       slug={slug}
       isApp={isApp}
+      similarPosts={similarPosts}
     />
   );
 };
@@ -83,7 +86,6 @@ export const getStaticProps = async ({ params }) => {
       slug: exchange.slug,
     }));
 
-  // Only pass prev/next post for navigation
   const currentIndex = allPosts.findIndex((p) => p.slug === single);
   const prevPost = currentIndex > 0 ? allPosts[currentIndex - 1] : null;
   const nextPost =
@@ -104,15 +106,21 @@ export const getStaticProps = async ({ params }) => {
         }
       : null;
 
+  const minimalPosts = allPosts
+    .filter((p) => p.slug !== single)
+    .map((p) => formatPost(p));
+  const similarPosts = similerItems(post[0], minimalPosts);
+
   return {
     props: {
-      post: post,
+      post: post[0],
       mdxContent: mdxContent,
       prevPost: formatPost(prevPost),
       nextPost: formatPost(nextPost),
       cryptoOgs: cryptoOgs,
       exchanges: exchanges,
       slug: single,
+      similarPosts: similarPosts,
     },
   };
 };

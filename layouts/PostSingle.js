@@ -1,5 +1,4 @@
 import dateFormat from "@lib/utils/dateFormat";
-import similerItems from "@lib/utils/similarItems";
 import { humanize, markdownify, slugify } from "@lib/utils/textConverter";
 import SimilarPosts from "@partials/SimilarPosts";
 import { MDXRemote } from "next-mdx-remote";
@@ -19,15 +18,12 @@ const PostSingle = ({
   exchanges,
   slug,
   isApp,
-  posts,
+  similarPosts,
 }) => {
   const { frontmatter, content, mdxContent } = post;
   let { description, title, date, image, categories, tags, authors } =
     frontmatter;
   description = description ? description : content.slice(0, 120);
-  const similarPosts = Array.isArray(posts)
-    ? similerItems(post, posts, slug)
-    : [];
 
   return (
     <Base
@@ -186,11 +182,11 @@ const PostSingle = ({
           />
         </div>
       </section>
-      {similarPosts.length > 0 && (
+      {similarPosts && similarPosts.length > 0 && (
         <section className="section">
           <div className="container">
             <h2 className="mb-8 text-center">Similar Posts</h2>
-            <SimilarPosts posts={similarPosts.slice(0, 6)} />
+            <SimilarPosts posts={similarPosts} />
           </div>
         </section>
       )}
