@@ -9,13 +9,9 @@ const CryptoOgPagination = ({
   ogIndex,
   ogs,
   currentPage,
-  pagination,
+  totalPages,
   isApp,
 }) => {
-  const indexOfLastOG = currentPage * pagination;
-  const indexOfFirstOG = indexOfLastOG - pagination;
-  const totalPages = Math.ceil(ogs.length / pagination);
-  const currentOGs = ogs.slice(indexOfFirstOG, indexOfLastOG);
   const { frontmatter } = ogIndex;
   const { title } = frontmatter;
 
@@ -31,7 +27,7 @@ const CryptoOgPagination = ({
       <section className="section">
         <div className="container text-center">
           {markdownify(title, "h1", "h1 mb-16")}
-          <CryptoOGs ogs={currentOGs} />
+          <CryptoOGs ogs={ogs} />
           <Pagination
             section="crypto-ogs"
             totalPages={totalPages}
@@ -72,10 +68,15 @@ export const getStaticProps = async ({ params }) => {
   const ogs = getSinglePage("content/crypto-ogs");
   const ogIndex = await getListPage("content/crypto-ogs/_index.mdx");
 
+  const indexOfLastOG = currentPage * paginationCryptoOGs;
+  const indexOfFirstOG = indexOfLastOG - paginationCryptoOGs;
+  const currentOGs = ogs.slice(indexOfFirstOG, indexOfLastOG);
+  const totalPages = Math.ceil(ogs.length / paginationCryptoOGs);
+
   return {
     props: {
       pagination: paginationCryptoOGs,
-      ogs: ogs.map((og) => ({
+      ogs: currentOGs.map((og) => ({
         frontmatter: {
           title: og.frontmatter.title,
           description: og.frontmatter.description,
@@ -86,6 +87,7 @@ export const getStaticProps = async ({ params }) => {
       currentPage: currentPage,
       ogIndex: ogIndex,
       mdxContent: ogIndex.mdxContent,
+      totalPages: totalPages,
     },
   };
 };
