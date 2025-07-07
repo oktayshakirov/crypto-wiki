@@ -14,14 +14,12 @@ const CryptoOgSingle = ({
   frontmatter,
   content,
   mdxContent,
-  ogs = [],
+  prevOg,
+  nextOg,
   slug,
   isApp,
 }) => {
   const { description, social, title, image, authors, date } = frontmatter;
-  const currentIndex = ogs.findIndex((og) => og.slug === slug);
-  const nextOg = currentIndex !== -1 ? ogs[currentIndex + 1] : null;
-  const prevOg = currentIndex !== -1 ? ogs[currentIndex - 1] : null;
 
   return (
     <Base
