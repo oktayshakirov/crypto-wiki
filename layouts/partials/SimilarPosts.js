@@ -6,7 +6,7 @@ const SimilarPosts = ({ posts }) => {
   return (
     <div className="flex flex-wrap justify-center">
       {posts.map((post, i) => (
-        <div key={`key-${i}`} className="w-full p-4 sm:w-1/3">
+        <div key={`key-${i}`} className="w-full p-4 sm:w-1/2 md:w-1/3 xl:w-1/3">
           {post.frontmatter.image && (
             <Link href={`/posts/${post.slug}`}>
               <div className="relative h-56 w-full cursor-pointer">
