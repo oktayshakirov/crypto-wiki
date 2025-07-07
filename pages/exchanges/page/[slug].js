@@ -9,16 +9,9 @@ const ExchangePagination = ({
   exchangeIndex,
   exchanges,
   currentPage,
-  pagination,
+  totalPages,
   isApp,
 }) => {
-  const indexOfLastExchange = currentPage * pagination;
-  const indexOfFirstExchange = indexOfLastExchange - pagination;
-  const totalPages = Math.ceil(exchanges.length / pagination);
-  const currentExchanges = exchanges.slice(
-    indexOfFirstExchange,
-    indexOfLastExchange
-  );
   const { frontmatter } = exchangeIndex;
   const { title } = frontmatter;
 
@@ -34,7 +27,7 @@ const ExchangePagination = ({
       <section className="section">
         <div className="container text-center">
           {markdownify(title, "h1", "h1 mb-16")}
-          <Exchanges exchanges={currentExchanges} />
+          <Exchanges exchanges={exchanges} />
           <Pagination
             section="exchanges"
             totalPages={totalPages}
@@ -75,10 +68,18 @@ export const getStaticProps = async ({ params }) => {
   const exchanges = getSinglePage("content/exchanges");
   const exchangeIndex = await getListPage("content/exchanges/_index.mdx");
 
+  const indexOfLastExchange = currentPage * paginationExchanges;
+  const indexOfFirstExchange = indexOfLastExchange - paginationExchanges;
+  const currentExchanges = exchanges.slice(
+    indexOfFirstExchange,
+    indexOfLastExchange
+  );
+  const totalPages = Math.ceil(exchanges.length / paginationExchanges);
+
   return {
     props: {
       pagination: paginationExchanges,
-      exchanges: exchanges.map((exchange) => ({
+      exchanges: currentExchanges.map((exchange) => ({
         frontmatter: {
           title: exchange.frontmatter.title,
           description: exchange.frontmatter.description,
@@ -89,6 +90,7 @@ export const getStaticProps = async ({ params }) => {
       currentPage: currentPage,
       exchangeIndex: exchangeIndex,
       mdxContent: exchangeIndex.mdxContent,
+      totalPages: totalPages,
     },
   };
 };
