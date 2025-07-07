@@ -2,7 +2,14 @@ import ExchangeSingle from "@layouts/ExchangeSingle";
 import { getSinglePage } from "@lib/contentParser";
 import parseMDX from "@lib/utils/mdxParser";
 
-const Article = ({ exchange, mdxContent, exchanges, slug, isApp }) => {
+const Article = ({
+  exchange,
+  mdxContent,
+  prevExchange,
+  nextExchange,
+  slug,
+  isApp,
+}) => {
   const { frontmatter, content } = exchange[0];
 
   return (
@@ -10,7 +17,8 @@ const Article = ({ exchange, mdxContent, exchanges, slug, isApp }) => {
       frontmatter={frontmatter}
       content={content}
       mdxContent={mdxContent}
-      exchanges={exchanges}
+      prevExchange={prevExchange}
+      nextExchange={nextExchange}
       slug={slug}
       isApp={isApp}
     />
@@ -40,40 +48,35 @@ export const getStaticProps = async ({ params }) => {
   const currentIndex = getExchanges.findIndex(
     (exchange) => exchange.slug === single
   );
-  const prevExchange = currentIndex > 0 ? getExchanges[currentIndex - 1] : null;
+  const prevExchange =
+    currentIndex > 0
+      ? {
+          frontmatter: {
+            title: getExchanges[currentIndex - 1].frontmatter.title,
+            description: getExchanges[currentIndex - 1].frontmatter.description,
+            image: getExchanges[currentIndex - 1].frontmatter.image,
+          },
+          slug: getExchanges[currentIndex - 1].slug,
+        }
+      : null;
   const nextExchange =
     currentIndex < getExchanges.length - 1
-      ? getExchanges[currentIndex + 1]
+      ? {
+          frontmatter: {
+            title: getExchanges[currentIndex + 1].frontmatter.title,
+            description: getExchanges[currentIndex + 1].frontmatter.description,
+            image: getExchanges[currentIndex + 1].frontmatter.image,
+          },
+          slug: getExchanges[currentIndex + 1].slug,
+        }
       : null;
-
-  const navigationExchanges = [];
-  if (prevExchange) {
-    navigationExchanges.push({
-      frontmatter: {
-        title: prevExchange.frontmatter.title,
-        description: prevExchange.frontmatter.description,
-        image: prevExchange.frontmatter.image,
-      },
-      slug: prevExchange.slug,
-    });
-  }
-
-  if (nextExchange) {
-    navigationExchanges.push({
-      frontmatter: {
-        title: nextExchange.frontmatter.title,
-        description: nextExchange.frontmatter.description,
-        image: nextExchange.frontmatter.image,
-      },
-      slug: nextExchange.slug,
-    });
-  }
 
   return {
     props: {
       exchange,
       mdxContent,
-      exchanges: navigationExchanges,
+      prevExchange,
+      nextExchange,
       slug: single,
     },
   };

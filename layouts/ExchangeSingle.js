@@ -15,17 +15,12 @@ const ExchangeSingle = ({
   frontmatter,
   content,
   mdxContent,
-  exchanges = [],
+  prevExchange,
+  nextExchange,
   slug,
   isApp,
 }) => {
   const { description, social, title, image, authors, date } = frontmatter;
-  const currentIndex = exchanges.findIndex(
-    (exchange) => exchange.slug === slug
-  );
-
-  const nextExchange = currentIndex !== -1 ? exchanges[currentIndex + 1] : null;
-  const prevExchange = currentIndex !== -1 ? exchanges[currentIndex - 1] : null;
 
   return (
     <Base
