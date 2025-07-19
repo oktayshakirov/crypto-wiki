@@ -6,7 +6,7 @@ import { FaTag, FaUser, FaAt } from "react-icons/fa";
 const Posts = ({ posts }) => {
   return (
     <div className="row">
-      {posts.map((post) => (
+      {posts.map((post, index) => (
         <div key={post.slug} className="col-12 mb-7 min-[650px]:col-6">
           <Link
             href={`/posts/${post.slug}`}
@@ -20,7 +20,9 @@ const Posts = ({ posts }) => {
                   alt={post.frontmatter.title}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  loading="lazy"
+                  priority={index === 0}
+                  fetchPriority={index === 0 ? "high" : undefined}
+                  {...(index !== 0 ? { loading: "lazy" } : {})}
                 />
               </div>
             )}
