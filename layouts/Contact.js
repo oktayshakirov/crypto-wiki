@@ -47,10 +47,10 @@ const Contact = () => {
           <FaEnvelope className="mr-2 inline-block text-yellow-500" />
           <strong>Email:</strong>{" "}
           <a
-            href="mailto:oktayshakirov@gmail.com"
+            href="mailto:contact@thecryptowiki.com"
             className="text-yellow-500 hover:underline"
           >
-            oktayshakirov@gmail.com
+            contact@thecryptowiki.com
           </a>
         </li>
         <li className="mb-2">
