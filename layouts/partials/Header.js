@@ -6,11 +6,15 @@ import React, { useEffect, useState } from "react";
 import { IoSearch } from "react-icons/io5";
 import { useRouter } from "next/router";
 
-const Header = () => {
+const Header = ({ isApp }) => {
   const { main } = menu;
   const [searchModal, setSearchModal] = useState(false);
 
   const router = useRouter();
+
+  if (isApp) {
+    return null;
+  }
 
   return (
     <>
