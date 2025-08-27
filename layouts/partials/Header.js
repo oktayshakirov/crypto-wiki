@@ -2,30 +2,27 @@ import Logo from "@components/Logo";
 import menu from "@config/menu.json";
 import SearchModal from "@layouts/partials/SearchModal";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IoSearch } from "react-icons/io5";
 import { useRouter } from "next/router";
 
 const Header = ({ isApp }) => {
   const { main } = menu;
   const [searchModal, setSearchModal] = useState(false);
+  const [isHydrated, setIsHydrated] = useState(false);
 
   const router = useRouter();
 
+  useEffect(() => {
+    setIsHydrated(true);
+  }, []);
+
   return (
     <>
-      <style jsx>{`
-        header[data-is-app="true"] {
-          display: none !important;
-          height: 0 !important;
-          overflow: hidden !important;
-          margin: 0 !important;
-          padding: 0 !important;
-        }
-      `}</style>
       <header
-        className="sticky top-0 z-50 bg-theme-dark py-2 transition-all"
-        data-is-app={isApp}
+        className={`sticky top-0 z-50 bg-theme-dark py-2 transition-all ${
+          isApp && !isHydrated ? "opacity-0" : isApp ? "hidden" : ""
+        }`}
       >
         <nav className="navbar container">
           <div className="order-0">
