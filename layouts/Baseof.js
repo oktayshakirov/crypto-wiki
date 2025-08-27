@@ -8,6 +8,7 @@ import CoinTracker from "@components/CoinTracker";
 
 const Header = dynamic(() => import("@partials/Header"), {
   ssr: false,
+  loading: () => null, // Don't show loading state to prevent layout shift
 });
 
 const Base = ({
