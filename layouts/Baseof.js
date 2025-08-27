@@ -23,15 +23,12 @@ const Base = ({
   const { base_url } = config.site;
   const router = useRouter();
 
-  const [isAppMode] =
-    useState <
-    boolean >
-    (() => {
-      if (typeof document !== "undefined") {
-        return document.documentElement.classList.contains("is-app");
-      }
-      return false;
-    });
+  const [isAppMode] = useState(() => {
+    if (typeof document !== "undefined") {
+      return document.documentElement.classList.contains("is-app");
+    }
+    return false;
+  });
 
   const getRobotsContent = () => {
     if (typeof noindex === "string") {
