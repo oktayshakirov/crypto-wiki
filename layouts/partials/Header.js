@@ -9,8 +9,17 @@ import { useRouter } from "next/router";
 const Header = ({ isApp }) => {
   const { main } = menu;
   const [searchModal, setSearchModal] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   const router = useRouter();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
 
   if (isApp) {
     return null;
