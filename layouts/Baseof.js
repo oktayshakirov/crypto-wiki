@@ -5,7 +5,6 @@ import dynamic from "next/dynamic";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import CoinTracker from "@components/CoinTracker";
-import { useState } from "react";
 
 const Header = dynamic(() => import("@partials/Header"), { ssr: true });
 
@@ -22,13 +21,6 @@ const Base = ({
   const { meta_image, meta_author, meta_description } = config.metadata;
   const { base_url } = config.site;
   const router = useRouter();
-
-  const [isAppMode] = useState(() => {
-    if (typeof document !== "undefined") {
-      return document.documentElement.classList.contains("is-app");
-    }
-    return false;
-  });
 
   const getRobotsContent = () => {
     if (typeof noindex === "string") {
@@ -92,7 +84,9 @@ const Base = ({
         />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      {!isAppMode && <Header />}
+      <div className="isApp">
+        <Header />
+      </div>
       <div className="container">
         <CoinTracker />
       </div>
