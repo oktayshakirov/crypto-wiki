@@ -9,17 +9,20 @@ import { useRouter } from "next/router";
 const Header = ({ isApp }) => {
   const { main } = menu;
   const [searchModal, setSearchModal] = useState(false);
+  const [isHydrated, setIsHydrated] = useState(false);
 
   const router = useRouter();
 
-  if (isApp) {
-    return null;
-  }
+  useEffect(() => {
+    setIsHydrated(true);
+  }, []);
 
   return (
     <>
       <header
-        className={`sticky top-0 z-50 bg-theme-dark py-2 transition-all `}
+        className={`sticky top-0 z-50 bg-theme-dark py-2 transition-all ${
+          isApp && !isHydrated ? "opacity-0" : isApp ? "hidden" : ""
+        }`}
       >
         <nav className="navbar container">
           <div className="order-0">
