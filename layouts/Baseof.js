@@ -82,7 +82,11 @@ const Base = ({
         />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <Header />
+      {!isApp && (
+        <div className="isApp">
+          <Header />
+        </div>
+      )}
       <div className="container">
         <CoinTracker />
       </div>
