@@ -30,7 +30,6 @@ const MyApp = ({ Component, pageProps }) => {
     if (clientIsApp) {
       setIsApp(true);
       localStorage.setItem("isApp", "true");
-      document.documentElement.classList.add("is-app");
     }
   }, []);
 
@@ -76,11 +75,6 @@ const MyApp = ({ Component, pageProps }) => {
             __html: `${fontcss}`,
           }}
         />
-        <style jsx global>{`
-          .is-app .isApp {
-            display: none !important;
-          }
-        `}</style>
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=5"

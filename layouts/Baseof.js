@@ -1,12 +1,10 @@
 import config from "@config/config.json";
 import { plainify } from "@lib/utils/textConverter";
 import Footer from "@partials/Footer";
-import dynamic from "next/dynamic";
+import Header from "@partials/Header";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import CoinTracker from "@components/CoinTracker";
-
-const Header = dynamic(() => import("@partials/Header"), { ssr: true });
 
 const Base = ({
   title,
@@ -84,9 +82,7 @@ const Base = ({
         />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <div className="isApp">
-        <Header />
-      </div>
+      <Header />
       <div className="container">
         <CoinTracker />
       </div>
