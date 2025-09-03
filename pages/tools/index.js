@@ -2,9 +2,23 @@ import Base from "@layouts/Baseof";
 import { markdownify } from "@lib/utils/textConverter";
 import Link from "next/link";
 import config from "@config/config.json";
+import { useRouter } from "next/router";
 
 const Tools = ({ isApp }) => {
+  const router = useRouter();
+
   const tools = [
+    ...(isApp
+      ? [
+          {
+            name: "Portfolio Tracker",
+            path: "/portfolio",
+            description:
+              "Track the real-time value and performance of all your assets.",
+            icon: "📈",
+          },
+        ]
+      : []),
     {
       name: "Bitcoin Rainbow Chart",
       path: "/tools/bitcoin-rainbow-chart",
