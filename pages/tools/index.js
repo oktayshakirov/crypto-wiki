@@ -7,6 +7,20 @@ import { useRouter } from "next/router";
 const Tools = ({ isApp }) => {
   const router = useRouter();
 
+  const handlePortfolioClick = (e) => {
+    if (isApp) {
+      e.preventDefault();
+      if (window.ReactNativeWebView) {
+        window.ReactNativeWebView.postMessage(
+          JSON.stringify({
+            type: "NAVIGATE",
+            path: "/portfolio",
+          })
+        );
+      }
+    }
+  };
+
   const tools = [
     ...(isApp
       ? [
@@ -16,6 +30,7 @@ const Tools = ({ isApp }) => {
             description:
               "Track the real-time value and performance of all your assets.",
             icon: "📈",
+            isAppOnly: true,
           },
         ]
       : []),
@@ -78,6 +93,7 @@ const Tools = ({ isApp }) => {
               <Link
                 key={`tool-${i}`}
                 href={tool.path}
+                onClick={tool.isAppOnly ? handlePortfolioClick : undefined}
                 className="group relative overflow-hidden rounded-xl bg-gradient-to-b from-black/20 to-transparent p-6 shadow-lg"
               >
                 <div className="relative">
