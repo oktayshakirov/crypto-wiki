@@ -28,6 +28,23 @@ input#nav-toggle:checked ~ #nav-menu {
 
 .nav-link {
   @apply p-3 text-lg font-semibold text-dark transition hover:text-primary md:p-4;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background: currentColor;
+    transition: all 0.2s ease;
+    transform: translateX(-50%);
+  }
+
+  &:hover::after {
+    width: 80%;
+  }
 }
 
 .nav-dropdown {
@@ -44,6 +61,23 @@ input#nav-toggle:checked ~ #nav-menu {
 
 .nav-dropdown-link {
   @apply min-w-[250px] py-1 text-lg font-semibold text-dark transition hover:text-primary;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background: currentColor;
+    transition: all 0.2s ease;
+    transform: translateX(-50%);
+  }
+
+  &:hover::after {
+    width: 80%;
+  }
 }
 
 .search-modal {

@@ -227,42 +227,35 @@ const App = () => {
             What Our Users Say
           </SectionTitle>
 
-          <div className="mt-4 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
             {REVIEWS.map((review) => (
               <div
                 key={review.name}
-                className="flex h-full flex-col rounded-3xl border border-white/10 bg-[#1a1a1a] p-6 text-sm backdrop-blur-lg md:p-8"
+                className="flex h-full flex-col rounded-2xl border border-white/10 bg-[#1a1a1a] p-4 backdrop-blur-lg"
               >
-                <div className="mb-6 flex items-center">
-                  <div className="to-secondary/40 mr-4 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-r from-primary/40 text-primary shadow-lg">
-                    <FaUser size={24} />
+                <div className="mb-3 flex items-center">
+                  <div className="mr-3 flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-primary/40 to-primary/20 text-primary shadow-lg">
+                    <FaUser size={18} />
                   </div>
                   <div>
-                    <h4 className="text-lg font-bold">{review.name}</h4>
-                    <p className="text-sm text-gray-400">{review.location}</p>
+                    <h4 className="text-sm font-bold">{review.name}</h4>
+                    <p className="text-xs text-gray-400">{review.location}</p>
                   </div>
                 </div>
 
-                <div className="mb-4 flex-1">
-                  <FaQuoteLeft
-                    size={20}
-                    className="mb-2 inline-block text-white/30"
-                  />
-                  <p className="text-base leading-relaxed text-gray-300">
+                <div className="mb-3 flex-1">
+                  <p className="text-sm leading-relaxed text-gray-300">
                     {review.text}
                   </p>
                 </div>
 
-                <div>
-                  <div className="mb-3 flex text-yellow-400">
+                <div className="flex items-center justify-between">
+                  <div className="flex text-yellow-400">
                     {[...Array(review.rating)].map((_, i) => (
-                      <FaStar key={i} />
+                      <FaStar key={i} size={12} />
                     ))}
                   </div>
-
-                  <p className="border-t border-white/5 pt-3 text-sm text-gray-400">
-                    {review.date}
-                  </p>
+                  <p className="text-xs text-gray-400">{review.date}</p>
                 </div>
               </div>
             ))}
