@@ -123,7 +123,7 @@ const AppDownloadPopup = () => {
           isAnimating ? "translate-y-0" : "translate-y-full md:translate-y-0"
         } transition-transform duration-300 ease-out`}
       >
-        <div className="popup-content mx-4 mb-4 rounded-t-3xl border border-white/10 bg-[#1a1a1a] p-8 shadow-2xl backdrop-blur-lg md:mb-0 md:min-w-[450px] md:rounded-3xl">
+        <div className="popup-content mx-4 mb-4 rounded-t-3xl border border-white/10 bg-[#1a1a1a] p-8 shadow-2xl backdrop-blur-lg md:mb-0 md:rounded-3xl">
           <div className="popup-header relative mb-6">
             <div className="flex items-center gap-4">
               <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-r from-primary/20 to-primary/10">
