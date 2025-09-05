@@ -146,7 +146,7 @@ const AppDownloadPopup = () => {
             </div>
             <button
               onClick={handleClose}
-              className="close-button absolute right-0 top-0 flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-gray-400 transition-colors hover:bg-white/20 hover:text-white"
+              className="absolute right-0 top-0 flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-gray-400"
             >
               <FaTimes size={14} />
             </button>
@@ -227,50 +227,44 @@ const AppDownloadPopup = () => {
                 href="https://apps.apple.com/de/app/crypto-wiki/id6742765176"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="app-badge group"
+                className="app-badge"
               >
                 <Image
                   src="/app-store-badge-ios.png"
                   alt="Download on the App Store"
                   width={160}
                   height={53}
-                  className="h-12 w-auto transition-transform duration-200 group-hover:scale-105"
+                  className="h-12 w-auto"
                 />
               </Link>
               <Link
                 href="https://play.google.com/store/apps/details?id=com.shadev.thecryptowiki"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="app-badge group"
+                className="app-badge"
               >
                 <Image
                   src="/google-play-badge.png"
                   alt="Get it on Google Play"
                   width={160}
                   height={53}
-                  className="h-12 w-auto transition-transform duration-200 group-hover:scale-105"
+                  className="h-12 w-auto"
                 />
               </Link>
             </div>
           </div>
 
           <div className="flex items-center justify-between border-t border-white/10 pt-4">
-            <Link
-              href="/app"
-              className="action-link text-sm text-primary transition-colors hover:text-primary/80"
-            >
+            <Link href="/app" className="text-sm text-primary">
               Learn more
             </Link>
             <div className="flex items-center gap-4">
-              <button
-                onClick={handleHasApp}
-                className="action-link text-sm text-gray-300 transition-colors hover:text-gray-200"
-              >
+              <button onClick={handleHasApp} className="text-sm text-gray-300">
                 I have the app
               </button>
               <button
                 onClick={handleNotInterested}
-                className="action-link text-sm text-gray-400 transition-colors hover:text-gray-300"
+                className="text-sm text-gray-400"
               >
                 Not interested
               </button>
