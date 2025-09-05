@@ -5,6 +5,7 @@ import Header from "@partials/Header";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import CoinTracker from "@components/CoinTracker";
+import AppDownloadPopup from "@components/AppDownloadPopup";
 
 const Base = ({
   title,
@@ -88,6 +89,7 @@ const Base = ({
       </div>
       <main>{children}</main>
       <Footer isApp={isApp} />
+      {!isApp && <AppDownloadPopup />}
     </>
   );
 };
