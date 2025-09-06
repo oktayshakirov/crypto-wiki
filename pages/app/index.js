@@ -12,6 +12,8 @@ import {
   FaQuoteLeft,
   FaChevronDown,
   FaStar,
+  FaWifi,
+  FaMobile,
 } from "react-icons/fa";
 import config from "@config/config.json";
 
@@ -91,6 +93,75 @@ const KEY_FEATURES = [
   {
     icon: <FaTools className="text-5xl text-primary" />,
     title: "Trading Tools",
+  },
+];
+
+const PORTFOLIO_FEATURES = [
+  {
+    icon: <FaBitcoin className="text-3xl text-primary" />,
+    title: "500+ Cryptocurrencies",
+    description: "Track any cryptocurrency from Bitcoin to the newest altcoins",
+  },
+  {
+    icon: <FaShieldAlt className="text-3xl text-primary" />,
+    title: "Real-Time Monitoring",
+    description: "Live portfolio value updates and performance tracking",
+  },
+  {
+    icon: <FaUsers className="text-3xl text-primary" />,
+    title: "Secure Data Storage",
+    description: "Your data stays on your device - no cloud storage required",
+  },
+];
+
+const OFFLINE_FEATURES = [
+  {
+    icon: <FaBookReader className="text-3xl text-primary" />,
+    title: "Download Articles",
+    description: "Save content for offline reading anywhere",
+  },
+  {
+    icon: <FaWifi className="text-3xl text-primary" />,
+    title: "Offline Access",
+    description: "Access your saved content without connection",
+  },
+  {
+    icon: <FaMobile className="text-3xl text-primary" />,
+    title: "Perfect for Travel",
+    description: "Learn during commutes or when traveling",
+  },
+];
+
+const ADVANCED_TOOLS = [
+  {
+    name: "Fear & Greed Index",
+    description: "Follow market sentiment in real time",
+    icon: "📊",
+  },
+  {
+    name: "Bitcoin Rainbow Chart",
+    description: "Visualize BTC's price trends at a glance",
+    icon: "🌈",
+  },
+  {
+    name: "Market Heatmap",
+    description: "Spot booming sectors and tokens with live data",
+    icon: "🔥",
+  },
+  {
+    name: "Staking Calculator",
+    description: "Estimate rewards and optimize your passive income",
+    icon: "💰",
+  },
+  {
+    name: "Random Coin Generator",
+    description: "Feeling lucky? Discover new investment ideas instantly!",
+    icon: "🎲",
+  },
+  {
+    name: "More Coming Soon",
+    description: "We're working hard to grow our collection of trading tools",
+    icon: "🚀",
   },
 ];
 
@@ -219,6 +290,108 @@ const App = () => {
                 </h3>
               </div>
             ))}
+          </div>
+        </div>
+
+        <div className="my-20 rounded-2xl bg-gradient-to-b from-black/20 to-transparent p-12">
+          <SectionTitle subtitle="Track Your Crypto Portfolio">
+            Portfolio Management
+          </SectionTitle>
+
+          <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-3">
+            {PORTFOLIO_FEATURES.map((feature) => (
+              <div
+                key={feature.title}
+                className="flex h-full flex-col items-center gap-4 rounded-2xl border border-white/10 bg-[#1a1a1a] p-8 transition-all duration-300 hover:bg-white/5"
+              >
+                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#242424] text-primary shadow-lg">
+                  {feature.icon}
+                </div>
+                <div className="flex flex-1 flex-col text-center">
+                  <h3 className="mb-2 text-xl font-bold text-white">
+                    {feature.title}
+                  </h3>
+                  <p className="text-gray-400">{feature.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="my-20 rounded-2xl bg-gradient-to-b from-black/20 to-transparent p-12">
+          <SectionTitle subtitle="Read Offline, Learn Anywhere">
+            Offline Capabilities
+          </SectionTitle>
+
+          <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-3">
+            {OFFLINE_FEATURES.map((feature) => (
+              <div
+                key={feature.title}
+                className="flex h-full flex-col items-center gap-4 rounded-2xl border border-white/10 bg-[#1a1a1a] p-8 transition-all duration-300 hover:bg-white/5"
+              >
+                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#242424] text-primary shadow-lg">
+                  {feature.icon}
+                </div>
+                <div className="flex flex-1 flex-col text-center">
+                  <h3 className="mb-2 text-xl font-bold text-white">
+                    {feature.title}
+                  </h3>
+                  <p className="text-gray-400">{feature.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="my-20 rounded-2xl bg-gradient-to-b from-black/20 to-transparent p-12">
+          <SectionTitle subtitle="Smarter Tools, Smarter Wins">
+            Advanced Trading Tools
+          </SectionTitle>
+
+          <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {ADVANCED_TOOLS.map((tool) => (
+              <div
+                key={tool.name}
+                className="rounded-2xl border border-white/10 bg-[#1a1a1a] p-6 transition-all duration-300 hover:bg-white/5"
+              >
+                <div className="mb-4 flex items-center gap-4">
+                  <span className="text-3xl">{tool.icon}</span>
+                  <h3 className="text-lg font-bold text-white">{tool.name}</h3>
+                </div>
+                <p className="text-gray-400">{tool.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="my-20 rounded-2xl bg-gradient-to-b from-black/20 to-transparent p-12 text-center">
+          <div className="mx-auto max-w-3xl">
+            <h2 className="mb-6 text-3xl font-bold text-white">
+              Completely Free, No Ads, No Signup Required
+            </h2>
+            <p className="mb-8 text-lg text-gray-300">
+              Get full access to all features without any hidden costs,
+              subscriptions, or annoying advertisements. Your crypto education
+              journey starts here, completely free.
+            </p>
+            <div className="flex flex-wrap justify-center gap-6">
+              <div className="flex items-center gap-2 rounded-lg bg-white/10 px-4 py-2">
+                <FaShieldAlt className="text-green-400" />
+                <span className="text-sm font-semibold text-white">No Ads</span>
+              </div>
+              <div className="flex items-center gap-2 rounded-lg bg-white/10 px-4 py-2">
+                <FaUsers className="text-green-400" />
+                <span className="text-sm font-semibold text-white">
+                  No Signup
+                </span>
+              </div>
+              <div className="flex items-center gap-2 rounded-lg bg-white/10 px-4 py-2">
+                <FaBitcoin className="text-green-400" />
+                <span className="text-sm font-semibold text-white">
+                  100% Free
+                </span>
+              </div>
+            </div>
           </div>
         </div>
 
