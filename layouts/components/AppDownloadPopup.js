@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -12,44 +12,138 @@ import {
   FaCheckCircle,
 } from "react-icons/fa";
 
+const COOLDOWN_PERIODS = {
+  CLOSE: 24 * 60 * 60 * 1000,
+  NOT_INTERESTED: 7 * 24 * 60 * 60 * 1000,
+  MIN_TIME_ON_SITE: 30000,
+  CHECK_INTERVAL: 5000,
+  ANIMATION_DELAY: 100,
+  CLOSE_DELAY: 300,
+};
+
+const STORAGE_KEYS = {
+  PERMANENTLY_DISMISSED: "appPopupPermanentlyDismissed",
+  DISMISSED_UNTIL: "appPopupDismissedUntil",
+  NOT_INTERESTED_UNTIL: "appPopupNotInterestedUntil",
+  IS_APP: "isApp",
+  PAGE_VIEWS: "pageViews",
+};
+
 const AppDownloadPopup = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [isInitialized, setIsInitialized] = useState(false);
+
+  const checkPopupVisibility = useCallback(() => {
+    try {
+      const permanentlyDismissed = localStorage.getItem(
+        STORAGE_KEYS.PERMANENTLY_DISMISSED
+      );
+      if (permanentlyDismissed === "true") return false;
+
+      const dismissedUntil = localStorage.getItem(STORAGE_KEYS.DISMISSED_UNTIL);
+      const notInterestedUntil = localStorage.getItem(
+        STORAGE_KEYS.NOT_INTERESTED_UNTIL
+      );
+      const currentTime = Date.now();
+
+      if (dismissedUntil && currentTime < parseInt(dismissedUntil))
+        return false;
+      if (notInterestedUntil && currentTime < parseInt(notInterestedUntil))
+        return false;
+      if (localStorage.getItem(STORAGE_KEYS.IS_APP) === "true") return false;
+
+      return true;
+    } catch (error) {
+      console.warn("Error checking popup visibility:", error);
+      return false;
+    }
+  }, []);
+
+  const setCooldown = useCallback((key, duration) => {
+    try {
+      const cooldown = Date.now() + duration;
+      localStorage.setItem(key, cooldown.toString());
+    } catch (error) {
+      console.warn("Error setting cooldown:", error);
+    }
+  }, []);
+
+  const dismissPopup = useCallback(
+    (cooldownKey, duration) => {
+      setIsAnimating(false);
+      setCooldown(cooldownKey, duration);
+      setTimeout(() => setIsVisible(false), COOLDOWN_PERIODS.CLOSE_DELAY);
+    },
+    [setCooldown]
+  );
+
+  const handleClose = useCallback(() => {
+    dismissPopup(STORAGE_KEYS.DISMISSED_UNTIL, COOLDOWN_PERIODS.CLOSE);
+  }, [dismissPopup]);
+
+  const handleNotInterested = useCallback(() => {
+    dismissPopup(
+      STORAGE_KEYS.NOT_INTERESTED_UNTIL,
+      COOLDOWN_PERIODS.NOT_INTERESTED
+    );
+  }, [dismissPopup]);
+
+  const handleHasApp = useCallback(() => {
+    setIsAnimating(false);
+    try {
+      localStorage.setItem(STORAGE_KEYS.PERMANENTLY_DISMISSED, "true");
+    } catch (error) {
+      console.warn("Error setting permanent dismissal:", error);
+    }
+    setTimeout(() => setIsVisible(false), COOLDOWN_PERIODS.CLOSE_DELAY);
+  }, []);
+
+  const benefits = useMemo(
+    () => [
+      {
+        icon: FaCheckCircle,
+        title: "Track portfolio across 500+ cryptocurrencies",
+        description: "Real-time portfolio monitoring",
+      },
+      {
+        icon: FaBell,
+        title: "Push notifications for new content",
+        description: "Never miss the latest articles",
+      },
+      {
+        icon: FaWifi,
+        title: "Read content offline anywhere",
+        description: "Download articles for later",
+      },
+      {
+        icon: FaDownload,
+        title: "100% Free to download",
+        description: "No subscription required",
+      },
+    ],
+    []
+  );
 
   useEffect(() => {
-    const permanentlyDismissed = localStorage.getItem(
-      "appPopupPermanentlyDismissed"
-    );
-    if (permanentlyDismissed === "true") {
+    if (!checkPopupVisibility()) {
+      setIsInitialized(true);
       return;
     }
 
-    const dismissedUntil = localStorage.getItem("appPopupDismissedUntil");
-    const notInterestedUntil = localStorage.getItem(
-      "appPopupNotInterestedUntil"
-    );
-
-    if (dismissedUntil && new Date().getTime() < parseInt(dismissedUntil)) {
-      return;
-    }
-
-    if (
-      notInterestedUntil &&
-      new Date().getTime() < parseInt(notInterestedUntil)
-    ) {
-      return;
-    }
-
-    if (localStorage.getItem("isApp") === "true") {
-      return;
-    }
-
-    let pageViews = parseInt(localStorage.getItem("pageViews") || "0");
+    let pageViews = 0;
     let timeOnSite = 0;
     let hasScrolled = false;
 
-    pageViews += 1;
-    localStorage.setItem("pageViews", pageViews.toString());
+    try {
+      pageViews = parseInt(
+        localStorage.getItem(STORAGE_KEYS.PAGE_VIEWS) || "0"
+      );
+      pageViews += 1;
+      localStorage.setItem(STORAGE_KEYS.PAGE_VIEWS, pageViews.toString());
+    } catch (error) {
+      console.warn("Error managing page views:", error);
+    }
 
     const startTime = Date.now();
     const timer = setInterval(() => {
@@ -59,63 +153,61 @@ const AppDownloadPopup = () => {
     const handleScroll = () => {
       hasScrolled = true;
     };
-    window.addEventListener("scroll", handleScroll);
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     const checkConditions = () => {
-      const shouldShow = (timeOnSite >= 30000 && hasScrolled) || pageViews >= 2;
+      if (!checkPopupVisibility()) {
+        clearInterval(timer);
+        clearInterval(checkInterval);
+        window.removeEventListener("scroll", handleScroll);
+        setIsInitialized(true);
+        return;
+      }
+
+      const shouldShow =
+        (timeOnSite >= COOLDOWN_PERIODS.MIN_TIME_ON_SITE && hasScrolled) ||
+        pageViews >= 2;
 
       if (shouldShow) {
         setIsVisible(true);
-        setTimeout(() => setIsAnimating(true), 100);
+        setTimeout(
+          () => setIsAnimating(true),
+          COOLDOWN_PERIODS.ANIMATION_DELAY
+        );
         clearInterval(timer);
         window.removeEventListener("scroll", handleScroll);
+        setIsInitialized(true);
       }
     };
 
-    const checkInterval = setInterval(checkConditions, 5000);
+    const checkInterval = setInterval(
+      checkConditions,
+      COOLDOWN_PERIODS.CHECK_INTERVAL
+    );
 
     return () => {
       clearInterval(timer);
       clearInterval(checkInterval);
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [checkPopupVisibility]);
 
-  const handleClose = () => {
-    setIsAnimating(false);
-    setTimeout(() => {
-      setIsVisible(false);
-      const cooldown = new Date().getTime() + 24 * 60 * 60 * 1000;
-      localStorage.setItem("appPopupDismissedUntil", cooldown.toString());
-    }, 300);
-  };
-
-  const handleNotInterested = () => {
-    setIsAnimating(false);
-    setTimeout(() => {
-      setIsVisible(false);
-      const cooldown = new Date().getTime() + 7 * 24 * 60 * 60 * 1000;
-      localStorage.setItem("appPopupNotInterestedUntil", cooldown.toString());
-    }, 300);
-  };
-
-  const handleHasApp = () => {
-    setIsAnimating(false);
-    setTimeout(() => {
-      setIsVisible(false);
-      localStorage.setItem("appPopupPermanentlyDismissed", "true");
-    }, 300);
-  };
-
-  if (!isVisible) return null;
+  if (!isInitialized || !isVisible) return null;
 
   return (
-    <div className="app-download-popup">
+    <div
+      className="app-download-popup"
+      role="dialog"
+      aria-labelledby="popup-title"
+      aria-describedby="popup-description"
+    >
       <div
         className={`popup-backdrop fixed inset-0 z-40 bg-black/50 transition-opacity duration-300 ${
           isAnimating ? "opacity-100" : "opacity-0"
         }`}
         onClick={handleClose}
+        aria-hidden="true"
       />
 
       <div
@@ -127,15 +219,20 @@ const AppDownloadPopup = () => {
           <div className="popup-header relative mb-6">
             <div className="flex items-center gap-4">
               <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-r from-primary/20 to-primary/10">
-                <FaMobile className="text-xl text-primary" />
+                <FaMobile className="text-xl text-primary" aria-hidden="true" />
               </div>
               <div>
-                <h3 className="text-2xl font-bold">Get the App</h3>
-                <p className="text-sm text-gray-400">
+                <h3 id="popup-title" className="text-2xl font-bold">
+                  Get the App
+                </h3>
+                <p id="popup-description" className="text-sm text-gray-400">
                   Exclusive features not on the website
                 </p>
-                <div className="mt-1 flex items-center gap-2">
-                  <div className="flex text-yellow-400">
+                <div
+                  className="mt-1 flex items-center gap-2"
+                  aria-label="4.9 out of 5 stars rating"
+                >
+                  <div className="flex text-yellow-400" aria-hidden="true">
                     {[...Array(5)].map((_, i) => (
                       <FaStar key={i} size={12} />
                     ))}
@@ -146,15 +243,16 @@ const AppDownloadPopup = () => {
             </div>
             <button
               onClick={handleClose}
-              className="absolute right-0 top-0 flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-gray-400"
+              className="absolute right-0 top-0 flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-gray-400 transition-colors hover:bg-white/20"
+              aria-label="Close popup"
             >
-              <FaTimes size={14} />
+              <FaTimes size={14} aria-hidden="true" />
             </button>
           </div>
 
           <div className="social-proof mb-6 rounded-lg p-3">
             <div className="flex items-center gap-2">
-              <FaShieldAlt className="text-green-400" />
+              <FaShieldAlt className="text-green-400" aria-hidden="true" />
               <span className="text-sm font-semibold text-white">
                 Your trusted crypto companion
               </span>
@@ -166,50 +264,29 @@ const AppDownloadPopup = () => {
               Why download the app?
             </h4>
             <div className="space-y-3">
-              <div className="benefit-item flex items-start gap-3">
-                <FaCheckCircle className="mt-1 text-primary" size={16} />
-                <div>
-                  <span className="text-sm font-medium text-white">
-                    Track portfolio across 500+ cryptocurrencies
-                  </span>
-                  <p className="text-xs text-gray-400">
-                    Real-time portfolio monitoring
-                  </p>
-                </div>
-              </div>
-              <div className="benefit-item flex items-start gap-3">
-                <FaBell className="mt-1 text-primary" size={16} />
-                <div>
-                  <span className="text-sm font-medium text-white">
-                    Push notifications for new content
-                  </span>
-                  <p className="text-xs text-gray-400">
-                    Never miss the latest articles
-                  </p>
-                </div>
-              </div>
-              <div className="benefit-item flex items-start gap-3">
-                <FaWifi className="mt-1 text-primary" size={16} />
-                <div>
-                  <span className="text-sm font-medium text-white">
-                    Read content offline anywhere
-                  </span>
-                  <p className="text-xs text-gray-400">
-                    Download articles for later
-                  </p>
-                </div>
-              </div>
-              <div className="benefit-item flex items-start gap-3">
-                <FaDownload className="mt-1 text-primary" size={16} />
-                <div>
-                  <span className="text-sm font-medium text-white">
-                    100% Free to download
-                  </span>
-                  <p className="text-xs text-gray-400">
-                    No subscription required
-                  </p>
-                </div>
-              </div>
+              {benefits.map((benefit, index) => {
+                const IconComponent = benefit.icon;
+                return (
+                  <div
+                    key={index}
+                    className="benefit-item flex items-start gap-3"
+                  >
+                    <IconComponent
+                      className="mt-1 text-primary"
+                      size={16}
+                      aria-hidden="true"
+                    />
+                    <div>
+                      <span className="text-sm font-medium text-white">
+                        {benefit.title}
+                      </span>
+                      <p className="text-xs text-gray-400">
+                        {benefit.description}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
 
@@ -227,7 +304,8 @@ const AppDownloadPopup = () => {
                 href="https://apps.apple.com/de/app/crypto-wiki/id6742765176"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="app-badge"
+                className="app-badge transition-opacity hover:opacity-90"
+                aria-label="Download Crypto Wiki on the App Store"
               >
                 <Image
                   src="/app-store-badge-ios.png"
@@ -241,7 +319,8 @@ const AppDownloadPopup = () => {
                 href="https://play.google.com/store/apps/details?id=com.shadev.thecryptowiki"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="app-badge"
+                className="app-badge transition-opacity hover:opacity-90"
+                aria-label="Get Crypto Wiki on Google Play"
               >
                 <Image
                   src="/google-play-badge.png"
@@ -255,16 +334,24 @@ const AppDownloadPopup = () => {
           </div>
 
           <div className="flex items-center justify-between border-t border-white/10 pt-4">
-            <Link href="/app" className="text-sm text-primary">
+            <Link
+              href="/app"
+              className="text-sm text-primary transition-colors hover:text-primary/80"
+            >
               Learn more
             </Link>
             <div className="flex items-center gap-4">
-              <button onClick={handleHasApp} className="text-sm text-gray-300">
+              <button
+                onClick={handleHasApp}
+                className="text-sm text-gray-300 transition-colors hover:text-white"
+                aria-label="I already have the app"
+              >
                 I have the app
               </button>
               <button
                 onClick={handleNotInterested}
-                className="text-sm text-gray-400"
+                className="text-sm text-gray-400 transition-colors hover:text-gray-300"
+                aria-label="Not interested in the app"
               >
                 Not interested
               </button>
