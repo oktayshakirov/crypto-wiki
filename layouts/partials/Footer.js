@@ -46,7 +46,25 @@ const Footer = ({ isApp }) => {
             ))}
           </ul>
           <div className="flex w-full flex-col items-center space-y-4 lg:flex-row lg:justify-between lg:space-x-8 lg:space-y-0">
-            {!isApp && <Social source={social} className="social-icons" />}
+            <div className="flex flex-col items-center space-y-4">
+              {!isApp && <Social source={social} className="social-icons" />}
+              {!isApp && (
+                <div className="flex justify-center">
+                  <a
+                    href="https://startupfa.me/s/crypto-wiki?utm_source=thecrypto.wiki"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      src="https://startupfa.me/badges/featured/dark-small-rounded.webp"
+                      alt="Featured on Startup Fame"
+                      width="120"
+                      height="18"
+                    />
+                  </a>
+                </div>
+              )}
+            </div>
             <div className="text-center">
               {markdownify(copyrightText, "p", "text-light")}
             </div>
