@@ -33,8 +33,6 @@ const AppDownloadPopup = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
   const [isInitialized, setIsInitialized] = useState(false);
-  const [viewportHeight, setViewportHeight] = useState(0);
-  const [needsScrolling, setNeedsScrolling] = useState(false);
 
   const checkPopupVisibility = useCallback(() => {
     try {
@@ -127,30 +125,6 @@ const AppDownloadPopup = () => {
     []
   );
 
-  const checkScrollingNeeded = useCallback(() => {
-    if (viewportHeight === 0) return;
-
-    const estimatedHeight = 520;
-    const availableHeight = viewportHeight * 0.9;
-
-    setNeedsScrolling(estimatedHeight > availableHeight);
-  }, [viewportHeight]);
-
-  const updateViewportHeight = useCallback(() => {
-    const height = window.innerHeight;
-    setViewportHeight(height);
-  }, []);
-
-  useEffect(() => {
-    updateViewportHeight();
-    window.addEventListener("resize", updateViewportHeight);
-    return () => window.removeEventListener("resize", updateViewportHeight);
-  }, [updateViewportHeight]);
-
-  useEffect(() => {
-    checkScrollingNeeded();
-  }, [checkScrollingNeeded]);
-
   useEffect(() => {
     if (!checkPopupVisibility()) {
       setIsInitialized(true);
@@ -241,318 +215,148 @@ const AppDownloadPopup = () => {
           isAnimating ? "translate-y-0" : "translate-y-full md:translate-y-0"
         } transition-transform duration-300 ease-out`}
       >
-        <div
-          className={`popup-content mx-4 mb-4 rounded-t-3xl border border-white/10 bg-[#1a1a1a] shadow-2xl backdrop-blur-lg md:mb-0 md:rounded-3xl ${
-            needsScrolling
-              ? "flex max-h-[90vh] flex-col overflow-hidden"
-              : "p-8"
-          }`}
-        >
-          {needsScrolling ? (
-            <>
-              <div className="popup-header relative mb-4 flex-shrink-0 p-6 pb-0">
-                <div className="flex items-center gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-r from-primary/20 to-primary/10">
-                    <FaMobile
-                      className="text-lg text-primary"
+        <div className="popup-content mx-4 mb-4 max-h-[95vh] overflow-y-auto rounded-t-3xl border border-white/10 bg-[#1a1a1a] p-8 shadow-2xl backdrop-blur-lg md:mb-0 md:rounded-3xl">
+          <div className="popup-header relative mb-6">
+            <div className="flex items-center gap-4">
+              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-r from-primary/20 to-primary/10">
+                <FaMobile className="text-xl text-primary" aria-hidden="true" />
+              </div>
+              <div>
+                <h3 id="popup-title" className="text-2xl font-bold">
+                  Get the App
+                </h3>
+                <p id="popup-description" className="text-sm text-gray-400">
+                  Exclusive features not on the website
+                </p>
+                <div
+                  className="mt-1 flex items-center gap-2"
+                  aria-label="4.9 out of 5 stars rating"
+                >
+                  <div className="flex text-yellow-400" aria-hidden="true">
+                    {[...Array(5)].map((_, i) => (
+                      <FaStar key={i} size={12} />
+                    ))}
+                  </div>
+                  <span className="text-xs text-gray-400">4.9/5 rating</span>
+                </div>
+              </div>
+            </div>
+            <button
+              onClick={handleClose}
+              className="absolute right-0 top-0 flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-gray-400 transition-colors hover:bg-white/20"
+              aria-label="Close popup"
+            >
+              <FaTimes size={14} aria-hidden="true" />
+            </button>
+          </div>
+
+          <div className="social-proof mb-6 rounded-lg p-3">
+            <div className="flex items-center gap-2">
+              <FaShieldAlt className="text-green-400" aria-hidden="true" />
+              <span className="text-sm font-semibold text-white">
+                Your trusted crypto companion
+              </span>
+            </div>
+          </div>
+
+          <div className="mb-8">
+            <h4 className="mb-4 text-lg font-semibold text-white">
+              Why download the app?
+            </h4>
+            <div className="space-y-3">
+              {benefits.map((benefit, index) => {
+                const IconComponent = benefit.icon;
+                return (
+                  <div
+                    key={index}
+                    className="benefit-item flex items-start gap-3"
+                  >
+                    <IconComponent
+                      className="mt-1 text-primary"
+                      size={16}
                       aria-hidden="true"
                     />
-                  </div>
-                  <div>
-                    <h3 id="popup-title" className="text-xl font-bold">
-                      Get the App
-                    </h3>
-                    <p id="popup-description" className="text-xs text-gray-400">
-                      Exclusive features not on the website
-                    </p>
-                    <div
-                      className="mt-1 flex items-center gap-2"
-                      aria-label="4.9 out of 5 stars rating"
-                    >
-                      <div className="flex text-yellow-400" aria-hidden="true">
-                        {[...Array(5)].map((_, i) => (
-                          <FaStar key={i} size={10} />
-                        ))}
-                      </div>
-                      <span className="text-xs text-gray-400">
-                        4.9/5 rating
+                    <div>
+                      <span className="text-sm font-medium text-white">
+                        {benefit.title}
                       </span>
+                      <p className="text-xs text-gray-400">
+                        {benefit.description}
+                      </p>
                     </div>
                   </div>
-                </div>
-                <button
-                  onClick={handleClose}
-                  className="absolute right-0 top-0 flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-gray-400 transition-colors hover:bg-white/20"
-                  aria-label="Close popup"
-                >
-                  <FaTimes size={14} aria-hidden="true" />
-                </button>
-              </div>
+                );
+              })}
+            </div>
+          </div>
 
-              <div className="flex-1 overflow-y-auto px-6">
-                <div className="social-proof mb-4 rounded-lg p-3">
-                  <div className="flex items-center gap-2">
-                    <FaShieldAlt
-                      className="text-green-400"
-                      aria-hidden="true"
-                    />
-                    <span className="text-sm font-semibold text-white">
-                      Your trusted crypto companion
-                    </span>
-                  </div>
-                </div>
+          <div className="mb-6">
+            <div className="mb-4 text-center">
+              <p className="text-sm font-semibold text-white">
+                Don&apos;t miss out!
+              </p>
+              <p className="text-xs text-gray-400">
+                Download now and join the community
+              </p>
+            </div>
+            <div className="flex justify-center gap-4">
+              <Link
+                href="https://apps.apple.com/de/app/crypto-wiki/id6742765176"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="app-badge transition-opacity hover:opacity-90"
+                aria-label="Download Crypto Wiki on the App Store"
+              >
+                <Image
+                  src="/app-store-badge-ios.png"
+                  alt="Download on the App Store"
+                  width={160}
+                  height={53}
+                  className="h-12 w-auto"
+                />
+              </Link>
+              <Link
+                href="https://play.google.com/store/apps/details?id=com.shadev.thecryptowiki"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="app-badge transition-opacity hover:opacity-90"
+                aria-label="Get Crypto Wiki on Google Play"
+              >
+                <Image
+                  src="/google-play-badge.png"
+                  alt="Get it on Google Play"
+                  width={160}
+                  height={53}
+                  className="h-12 w-auto"
+                />
+              </Link>
+            </div>
+          </div>
 
-                <div className="mb-6">
-                  <h4 className="mb-3 text-base font-semibold text-white">
-                    Why download the app?
-                  </h4>
-                  <div className="space-y-2">
-                    {benefits.map((benefit, index) => {
-                      const IconComponent = benefit.icon;
-                      return (
-                        <div
-                          key={index}
-                          className="benefit-item flex items-start gap-3"
-                        >
-                          <IconComponent
-                            className="mt-1 flex-shrink-0 text-primary"
-                            size={14}
-                            aria-hidden="true"
-                          />
-                          <div>
-                            <span className="text-sm font-medium text-white">
-                              {benefit.title}
-                            </span>
-                            <p className="text-xs text-gray-400">
-                              {benefit.description}
-                            </p>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-
-                <div className="mb-4">
-                  <div className="mb-3 text-center">
-                    <p className="text-sm font-semibold text-white">
-                      Don&apos;t miss out!
-                    </p>
-                    <p className="text-xs text-gray-400">
-                      Download now and join the community
-                    </p>
-                  </div>
-                  <div className="flex justify-center gap-3">
-                    <Link
-                      href="https://apps.apple.com/de/app/crypto-wiki/id6742765176"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="app-badge transition-opacity hover:opacity-90"
-                      aria-label="Download Crypto Wiki on the App Store"
-                    >
-                      <Image
-                        src="/app-store-badge-ios.png"
-                        alt="Download on the App Store"
-                        width={140}
-                        height={46}
-                        className="h-10 w-auto"
-                      />
-                    </Link>
-                    <Link
-                      href="https://play.google.com/store/apps/details?id=com.shadev.thecryptowiki"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="app-badge transition-opacity hover:opacity-90"
-                      aria-label="Get Crypto Wiki on Google Play"
-                    >
-                      <Image
-                        src="/google-play-badge.png"
-                        alt="Get it on Google Play"
-                        width={140}
-                        height={46}
-                        className="h-10 w-auto"
-                      />
-                    </Link>
-                  </div>
-                </div>
-              </div>
-
-              {/* Fixed Footer */}
-              <div className="flex flex-shrink-0 items-center justify-between border-t border-white/10 px-6 py-4">
-                <Link
-                  href="/app"
-                  className="text-sm text-primary transition-colors hover:text-primary/80"
-                >
-                  Learn more
-                </Link>
-                <div className="flex items-center gap-4">
-                  <button
-                    onClick={handleHasApp}
-                    className="text-sm text-gray-300 transition-colors hover:text-white"
-                    aria-label="I already have the app"
-                  >
-                    I have the app
-                  </button>
-                  <button
-                    onClick={handleNotInterested}
-                    className="text-sm text-gray-400 transition-colors hover:text-gray-300"
-                    aria-label="Not interested in the app"
-                  >
-                    Not interested
-                  </button>
-                </div>
-              </div>
-            </>
-          ) : (
-            <>
-              <div className="popup-header relative mb-6">
-                <div className="flex items-center gap-4">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-r from-primary/20 to-primary/10">
-                    <FaMobile
-                      className="text-xl text-primary"
-                      aria-hidden="true"
-                    />
-                  </div>
-                  <div>
-                    <h3 id="popup-title" className="text-2xl font-bold">
-                      Get the App
-                    </h3>
-                    <p id="popup-description" className="text-sm text-gray-400">
-                      Exclusive features not on the website
-                    </p>
-                    <div
-                      className="mt-1 flex items-center gap-2"
-                      aria-label="4.9 out of 5 stars rating"
-                    >
-                      <div className="flex text-yellow-400" aria-hidden="true">
-                        {[...Array(5)].map((_, i) => (
-                          <FaStar key={i} size={12} />
-                        ))}
-                      </div>
-                      <span className="text-xs text-gray-400">
-                        4.9/5 rating
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <button
-                  onClick={handleClose}
-                  className="absolute right-0 top-0 flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-gray-400 transition-colors hover:bg-white/20"
-                  aria-label="Close popup"
-                >
-                  <FaTimes size={14} aria-hidden="true" />
-                </button>
-              </div>
-
-              <div className="social-proof mb-6 rounded-lg p-3">
-                <div className="flex items-center gap-2">
-                  <FaShieldAlt className="text-green-400" aria-hidden="true" />
-                  <span className="text-sm font-semibold text-white">
-                    Your trusted crypto companion
-                  </span>
-                </div>
-              </div>
-
-              <div className="mb-8">
-                <h4 className="mb-4 text-lg font-semibold text-white">
-                  Why download the app?
-                </h4>
-                <div className="space-y-3">
-                  {benefits.map((benefit, index) => {
-                    const IconComponent = benefit.icon;
-                    return (
-                      <div
-                        key={index}
-                        className="benefit-item flex items-start gap-3"
-                      >
-                        <IconComponent
-                          className="mt-1 text-primary"
-                          size={16}
-                          aria-hidden="true"
-                        />
-                        <div>
-                          <span className="text-sm font-medium text-white">
-                            {benefit.title}
-                          </span>
-                          <p className="text-xs text-gray-400">
-                            {benefit.description}
-                          </p>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-
-              <div className="mb-6">
-                <div className="mb-4 text-center">
-                  <p className="text-sm font-semibold text-white">
-                    Don&apos;t miss out!
-                  </p>
-                  <p className="text-xs text-gray-400">
-                    Download now and join the community
-                  </p>
-                </div>
-                <div className="flex justify-center gap-4">
-                  <Link
-                    href="https://apps.apple.com/de/app/crypto-wiki/id6742765176"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="app-badge transition-opacity hover:opacity-90"
-                    aria-label="Download Crypto Wiki on the App Store"
-                  >
-                    <Image
-                      src="/app-store-badge-ios.png"
-                      alt="Download on the App Store"
-                      width={160}
-                      height={53}
-                      className="h-12 w-auto"
-                    />
-                  </Link>
-                  <Link
-                    href="https://play.google.com/store/apps/details?id=com.shadev.thecryptowiki"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="app-badge transition-opacity hover:opacity-90"
-                    aria-label="Get Crypto Wiki on Google Play"
-                  >
-                    <Image
-                      src="/google-play-badge.png"
-                      alt="Get it on Google Play"
-                      width={160}
-                      height={53}
-                      className="h-12 w-auto"
-                    />
-                  </Link>
-                </div>
-              </div>
-
-              <div className="flex items-center justify-between border-t border-white/10 pt-4">
-                <Link
-                  href="/app"
-                  className="text-sm text-primary transition-colors hover:text-primary/80"
-                >
-                  Learn more
-                </Link>
-                <div className="flex items-center gap-4">
-                  <button
-                    onClick={handleHasApp}
-                    className="text-sm text-gray-300 transition-colors hover:text-white"
-                    aria-label="I already have the app"
-                  >
-                    I have the app
-                  </button>
-                  <button
-                    onClick={handleNotInterested}
-                    className="text-sm text-gray-400 transition-colors hover:text-gray-300"
-                    aria-label="Not interested in the app"
-                  >
-                    Not interested
-                  </button>
-                </div>
-              </div>
-            </>
-          )}
+          <div className="flex items-center justify-between border-t border-white/10 pt-4">
+            <Link
+              href="/app"
+              className="text-sm text-primary transition-colors hover:text-primary/80"
+            >
+              Learn more
+            </Link>
+            <div className="flex items-center gap-4">
+              <button
+                onClick={handleHasApp}
+                className="text-sm text-gray-300 transition-colors hover:text-white"
+                aria-label="I already have the app"
+              >
+                I have the app
+              </button>
+              <button
+                onClick={handleNotInterested}
+                className="text-sm text-gray-400 transition-colors hover:text-gray-300"
+                aria-label="Not interested in the app"
+              >
+                Not interested
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
