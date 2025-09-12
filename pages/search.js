@@ -13,7 +13,7 @@ const SearchPage = ({ authors, cryptoOgs, exchanges, isApp }) => {
 
   const searchResults = posts.filter((post) => {
     if (post.frontmatter.draft) {
-      return !post.frontmatter.draft;
+      return false;
     }
     if (slugify(post.frontmatter.title).includes(keyword)) {
       return true;
