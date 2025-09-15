@@ -137,7 +137,7 @@
 ### **Internal Linking Requirements**
 
 - **Minimum**: 15 internal links
-- **Maximum**: 25 internal links
+- **Maximum**: 20 internal links
 - **Founders**: Must link in opening paragraph
 - **Concepts**: Link Bitcoin, Ethereum, DeFi, Staking, etc.
 - **Exchanges**: Use for comparisons and context
@@ -146,7 +146,7 @@
 ## Quality Checklist
 
 - [ ] All 7 sections included in correct order
-- [ ] 15-25 internal links using content database
+- [ ] 15-20 internal links using content database
 - [ ] 1-2 images with descriptive alt text
 - [ ] 1,200+ words, professional tone
 - [ ] Risk warnings for derivatives/custodial risks
