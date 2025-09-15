@@ -8,25 +8,25 @@
 
 ## Content Structure (EXACT ORDER)
 
-1. **Opening Paragraph** (2-3 sentences): Founding year, founder(s) with internal links, headquarters, key positioning
-2. **Core Services** (specific header): Trading platform, spot/derivatives/margin, staking, DeFi features
-3. **Security Measures**: Account security, platform security, historical incidents, custodial disclaimers
-4. **User Experience**: Interface, educational resources, customer support
-5. **Regulatory Compliance**: Licenses, challenges, geographic restrictions
-6. **Points to Consider** (4-5 specific points): Fee structures, risks, complexity, target users
-7. **Conclusion** (2-3 sentences): Market position, ideal users, balanced summary
+1. **Opening Section** (## **[Exchange]: Brief Description**): Founding year, founder(s) ONLY if in database, headquarters, key positioning
+2. **Core Services** (## **Core [Platform/Services/Offerings]**): Trading platform, spot/derivatives/margin, staking, DeFi features
+3. **Security Measures** (## **Security Measures**): Account security, platform security, historical incidents, custodial disclaimers
+4. **User Experience** (## **User Experience**): Interface, educational resources, customer support
+5. **Regulatory Compliance** (## **Regulatory Compliance**): Licenses, challenges, geographic restrictions
+6. **Points to Consider** (## **Points to Consider**): 4-5 specific points: Fee structures, risks, complexity, target users
+7. **Conclusion** (## **Conclusion**): Market position, ideal users, balanced summary
 
 ## Content Requirements
 
 - **Length**: 1,500-2,500 words (minimum 1,200)
-- **Internal Links**: 15-25 total using content database
+- **Internal Links**: 15-20 total using content database
 - **Images**: 1-2 with descriptive alt text
-- **Formatting**: Use **bold** for all sub-categories in bullet points
+- **Formatting**: Use ## for ALL main headings, **bold** for all sub-categories in bullet points
 - **Tone**: Professional, balanced, expert-level, E-E-A-T compliant
 
 ## Internal Linking Rules
 
-- **Founders**: [Name](/crypto-ogs/{slug})
+- **Founders**: [Name](/crypto-ogs/{slug}) - ONLY if founder exists in content database
 - **Concepts**: [Title](/posts/{slug})
 - **Exchanges**: **[Exchange](/exchanges/{slug})**
 - **Tools**: **[Tool](/tools/{slug})**
@@ -42,10 +42,11 @@
 
 ## Content Patterns from High-Quality Examples
 
-### **Opening Paragraph Structure**
+### **Opening Section Structure**
 
-- **Format**: "Founded in [YEAR] by [FOUNDER(S)] with internal links, [EXCHANGE] is [POSITIONING]..."
-- **Include**: Founding year, founder(s) with links, headquarters location, key differentiator
+- **Header**: ## **[Exchange Name]: Brief Description**
+- **Format**: "Founded in [YEAR] [by FOUNDER(S) with internal links if in database], [EXCHANGE] is [POSITIONING]..."
+- **Include**: Founding year, founder(s) with links ONLY if in content database, headquarters location, key differentiator
 - **Length**: 2-3 sentences maximum
 - **Tone**: Professional, informative, sets context
 
@@ -101,12 +102,13 @@
 ### **Required Fields**
 
 - **title**: Official exchange name (proper capitalization)
-- **image**: `/images/exchanges/{exchange-name}.png`
+- **image**: `/images/exchanges/{exchange-slug}.png`
 - **description**: 100-150 characters, highlight key features
-- **date**: YYYY-MM-DD format
+- **date**: YYYY-MM-DD format (not ISO string)
 - **order**: Sequential number from content-database.json
 - **authors**: `["Crypto Wiki Team"]`
-- **social**: Include all available social media links
+- **social**: Include website and all available social media links
+- **draft**: `true` for new exchanges
 
 ### **Social Media Priority Order**
 
@@ -119,9 +121,10 @@
 
 ## Content Quality Standards
 
-### **Opening Paragraph Requirements**
+### **Opening Section Requirements**
 
-- **Founding Details**: Year, founder(s) with internal links, headquarters
+- **Header**: ## **[Exchange Name]: Brief Description**
+- **Founding Details**: Year, founder(s) with internal links ONLY if in content database, headquarters
 - **Key Positioning**: What makes this exchange unique
 - **Context**: Market position or regulatory status
 - **Length**: Exactly 2-3 sentences
@@ -145,16 +148,19 @@
 
 ## Quality Checklist
 
-- [ ] All 7 sections included in correct order
+- [ ] All 7 sections included in correct order with ## headers
+- [ ] Opening header: ## **[Exchange Name]: Brief Description**
+- [ ] All main sections use ## heading format
 - [ ] 15-20 internal links using content database
+- [ ] Founders only linked if they exist in content database
 - [ ] 1-2 images with descriptive alt text
 - [ ] 1,200+ words, professional tone
 - [ ] Risk warnings for derivatives/custodial risks
 - [ ] Specific, actionable "Points to Consider"
 - [ ] Balanced conclusion with clear user guidance
-- [ ] Opening paragraph includes founding year, founders, location
+- [ ] Frontmatter includes: title, image, description, date (YYYY-MM-DD), order, authors, social, draft
+- [ ] Website included in social section (not separate field)
 - [ ] Section headers match exchange type (Trading Platform vs Protocol)
 - [ ] Bullet points use consistent **bold** formatting
 - [ ] Regulatory context includes specific details and dates
 - [ ] Images placed after main services, before security
-- [ ] Social media links include all available platforms
