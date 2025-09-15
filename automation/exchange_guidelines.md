@@ -114,6 +114,9 @@
 - **order**: Sequential number from content-database.json
 - **authors**: `["Crypto Wiki Team"]`
 - **social**: Include website and all available social media links (REQUIRED)
+  - Must include: website, twitter, youtube, linkedin, facebook, instagram
+  - Optional but recommended: tiktok, telegram, reddit, discord, wikipedia
+  - Only include platforms that actually exist for the exchange
 - **draft**: `true` for new exchanges
 
 ### **Social Media Priority Order**
@@ -124,6 +127,12 @@
 4. **facebook**, **instagram**, **tiktok**
 5. **discord**, **reddit**, **github** (if applicable)
 6. **wikipedia** (if available)
+
+### **Automation Requirements**
+
+- **AI Prompt**: Must request social media links as JSON object
+- **Frontmatter Generation**: Must parse and include all social media links from AI response
+- **Validation**: Only include platforms that actually exist for the exchange
 
 ## Content Quality Standards
 
