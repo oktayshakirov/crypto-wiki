@@ -1,0 +1,376 @@
+{
+  "name": "Crypto Wiki: Exchanges Automation",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "7155fe0e-b552-4a99-96d5-fc2d1a732360",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [-1872, 144]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "name",
+              "value": "Gemini"
+            },
+            {
+              "name": "website",
+              "value": "https://www.gemini.com"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "7c064cd9-baf2-4a8d-b394-3a60fe3799f9",
+      "name": "Set Exchange Data",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [-1664, 144]
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "operation": "get",
+        "owner": {
+          "__rl": true,
+          "value": "oktayshakirov",
+          "mode": "name"
+        },
+        "repository": {
+          "__rl": true,
+          "value": "crypto-wiki",
+          "mode": "name"
+        },
+        "filePath": "automation/content-database.json",
+        "asBinaryProperty": false,
+        "additionalParameters": {}
+      },
+      "id": "6d869604-f770-4d88-803c-f888d1e66845",
+      "name": "Get content-database.json",
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1,
+      "position": [-1472, 32],
+      "webhookId": "8af5d58b-af86-47d8-971b-dbf4b40302d7",
+      "credentials": {
+        "githubApi": {
+          "id": "PGPD26vSgTS2AeM8",
+          "name": "GitHub account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "operation": "get",
+        "owner": {
+          "__rl": true,
+          "value": "oktayshakirov",
+          "mode": "name"
+        },
+        "repository": {
+          "__rl": true,
+          "value": "crypto-wiki",
+          "mode": "name"
+        },
+        "filePath": "automation/exchange_guidelines.md",
+        "asBinaryProperty": false,
+        "additionalParameters": {}
+      },
+      "id": "5bda4101-9689-4608-82b3-750719e68128",
+      "name": "Get Guidelines",
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1,
+      "position": [-1472, 240],
+      "webhookId": "868cb777-82aa-4244-9260-5987f185246b",
+      "credentials": {
+        "githubApi": {
+          "id": "PGPD26vSgTS2AeM8",
+          "name": "GitHub account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "wait"
+      },
+      "id": "0bcb93fe-16c3-40e5-8761-7f2089e41abe",
+      "name": "Merge DB + Guidelines",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 1,
+      "position": [-1264, 144]
+    },
+    {
+      "parameters": {
+        "functionCode": "function decodeFile(nodeName, parseJson=false) {\n  const node = $node[nodeName].json;\n  if (!node.content) throw new Error(`${nodeName} has no json.content`);\n  const buff = Buffer.from(node.content, 'base64');\n  const text = buff.toString('utf-8');\n  return parseJson ? JSON.parse(text) : text;\n}\n\nconst db = decodeFile(\"Get content-database.json\", true);\nconst guidelinesText = decodeFile(\"Get Guidelines\", false);\nconst { name, website } = $node[\"Set Exchange Data\"].json;\n\n// Prepare data for internal linking\nconst ogs = db.crypto_ogs || {};\nconst posts = db.posts || {};\nconst exchanges = db.exchanges || [];\nconst tools = {\n  \"crypto heatmap\": { \"slug\": \"/tools/crypto-heatmap\", \"title\": \"Crypto Heatmap\" },\n  \"fear and greed index\": { \"slug\": \"/tools/fear-and-greed-index\", \"title\": \"Fear and Greed Index\" },\n  \"bitcoin rainbow chart\": { \"slug\": \"/tools/bitcoin-rainbow-chart\", \"title\": \"Bitcoin Rainbow Chart\" },\n  \"staking calculator\": { \"slug\": \"/tools/staking-calculator\", \"title\": \"Staking Calculator\" },\n  \"random coin generator\": { \"slug\": \"/tools/random-coin-generator\", \"title\": \"Random Coin Generator\" }\n};\n\n// Guidelines loaded from external file - single source of truth\nreturn [{\n  json: { \n    db, \n    guidelinesText,\n    name, \n    website,\n    ogs,\n    posts,\n    exchanges,\n    tools\n  }\n}];"
+      },
+      "id": "c2a5481e-6f0b-4929-be1f-8f7868959b87",
+      "name": "Parse & Prepare Data",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [-1072, 144]
+    },
+    {
+      "parameters": {
+        "resource": "chat",
+        "chatModel": "=gpt-5",
+        "prompt": {
+          "messages": [
+            {
+              "role": "system",
+              "content": "=\"You are an expert crypto editor creating comprehensive exchange reviews for Crypto Wiki.\n\nIMPORTANT:\n- Follow the provided guidelines exactly\n- Write ONLY the Markdown body (no frontmatter)\n- Use ONLY the provided internal link databases\n- Generate professional, balanced, expert-level content\n- Include social media links in your response as a separate JSON object\""
+            },
+            {
+              "content": "=\"Exchange: {{$json.name}}  \nWebsite: {{$json.website}}  \n\nINTERNAL LINK DATABASES:  \nCRYPTO_OGS: {{$json.ogs | json}}  \nPOSTS: {{$json.posts | json}}  \nEXCHANGES: {{$json.exchanges | json}}  \nTOOLS: {{$json.tools | json}}  \n\n=== COMPLETE GUIDELINES ===  \n{{$json.guidelinesText}}\n\nCRITICAL REQUIREMENTS:\n1. Include EXACTLY 2 images in the article body using /images/posts/ paths\n2. First image: After main services section, before security section\n3. Second image: After user experience/regulatory section, before conclusion\n4. Use descriptive alt text for all images\n5. Include 15-20 internal links using the provided databases\n6. Use **bold** formatting for ALL sub-categories consistently\n7. Include SEO keywords naturally: 'cryptocurrency exchange', 'crypto trading', 'digital assets'\n8. Always include these priority links: How To Store Crypto, How to Avoid Crypto Scams\n9. Link to Bitcoin, Ethereum, DeFi, Staking, and other major concepts\n10. Use exchange comparisons with other exchanges from the database\n\nIMPORTANT: After writing the exchange review, provide social media links as a JSON object in this format:\n{\n  \"social\": {\n    \"website\": \"https://www.exchange.com\",\n    \"twitter\": \"https://twitter.com/exchange\",\n    \"youtube\": \"https://youtube.com/@exchange\",\n    \"linkedin\": \"https://linkedin.com/company/exchange\",\n    \"facebook\": \"https://facebook.com/exchange\",\n    \"instagram\": \"https://instagram.com/exchange\",\n    \"tiktok\": \"https://tiktok.com/@exchange\",\n    \"telegram\": \"https://t.me/exchange\",\n    \"reddit\": \"https://reddit.com/r/exchange\",\n    \"discord\": \"https://discord.gg/exchange\",\n    \"wikipedia\": \"https://en.wikipedia.org/wiki/Exchange\"\n  }\n}\n\nOnly include social media platforms that actually exist for this exchange. Research the exchange's official social media presence.\""
+            }
+          ]
+        },
+        "simplifyOutput": false,
+        "options": {},
+        "requestOptions": {}
+      },
+      "id": "e14ac901-8596-4ae3-bc46-e0d5f8dbe11d",
+      "name": "OpenAI: Generate Body",
+      "type": "n8n-nodes-base.openAi",
+      "position": [-848, 144],
+      "typeVersion": 1.1,
+      "credentials": {
+        "openAiApi": {
+          "id": "V3M27dVzBH2bYknk",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "functionCode": "const meta = $node[\"Parse & Prepare Data\"].json;\nconst ai = $node[\"OpenAI: Generate Body\"].json;\n\nconst slug = meta.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');\nconst isoDate = new Date().toISOString().split('T')[0]; // YYYY-MM-DD format\nconst order = meta.db.next_orders.exchanges;\n\n// Generate description from exchange name\nconst description = `${meta.name} offers comprehensive cryptocurrency trading services with advanced features and security.`;\n\n// Extract social media links from AI response\nlet socialLinks = { website: meta.website };\ntry {\n  const aiContent = ai.choices?.[0]?.message?.content || ai.content || '';\n  console.log('AI Response length:', aiContent.length);\n  \n  // Look for JSON object in the response - improved regex\n  const jsonMatch = aiContent.match(/\\{[\\s\\S]*?\"social\"[\\s\\S]*?\\}/g);\n  if (jsonMatch && jsonMatch.length > 0) {\n    console.log('Found JSON match:', jsonMatch[0].substring(0, 200));\n    const socialData = JSON.parse(jsonMatch[0]);\n    if (socialData.social) {\n      socialLinks = { ...socialLinks, ...socialData.social };\n      console.log('Extracted social links:', Object.keys(socialData.social));\n    }\n  } else {\n    console.log('No JSON social object found in AI response');\n    // Fallback: add common social media platforms if not found\n    const exchangeName = meta.name.toLowerCase();\n    socialLinks = {\n      ...socialLinks,\n      twitter: `https://twitter.com/${exchangeName}`,\n      linkedin: `https://linkedin.com/company/${exchangeName}`,\n      facebook: `https://facebook.com/${exchangeName}`,\n      youtube: `https://youtube.com/@${exchangeName}`,\n      instagram: `https://instagram.com/${exchangeName}`\n    };\n    console.log('Using fallback social links');\n  }\n} catch (e) {\n  console.log('Error parsing social media links:', e.message);\n  // Fallback social links\n  const exchangeName = meta.name.toLowerCase();\n  socialLinks = {\n    ...socialLinks,\n    twitter: `https://twitter.com/${exchangeName}`,\n    linkedin: `https://linkedin.com/company/${exchangeName}`\n  };\n}\n\n// Build social media section for frontmatter\nconst socialSection = Object.entries(socialLinks)\n  .filter(([key, value]) => value && value.trim())\n  .map(([key, value]) => `  ${key}: ${value}`)\n  .join('\\n');\n\nconst frontmatter = [\n  '---',\n  `title: \"${meta.name}\"`,\n  `image: \"/images/exchanges/${slug}.png\"`,\n  `description: \"${description}\"`,\n  `date: ${isoDate}`,\n  `order: ${order}`,\n  `authors: [\"Crypto Wiki Team\"]`,\n  `social:`,\n  socialSection,\n  `draft: true`,\n  '---'\n].join('\\n');\n\n// Extract just the markdown body (remove any JSON at the end)\nlet body = ai.choices?.[0]?.message?.content || ai.content || '';\n// Remove JSON object if it exists at the end\nbody = body.replace(/\\n\\{[\\s\\S]*\"social\"[\\s\\S]*\\}$/, '').trim();\n\nreturn [{\n  json: {\n    mdx: `${frontmatter}\\n\\n${body}`,\n    slug,\n    name: meta.name,\n    website: meta.website,\n    isoDate,\n    order,\n    db: meta.db,\n    socialLinks\n  }\n}];"
+      },
+      "id": "2d15afaa-a159-465c-a8fc-9ca377940ed4",
+      "name": "Build Frontmatter + MDX",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [-656, 144]
+    },
+    {
+      "parameters": {
+        "functionCode": "const data = $json;\nconst filePath = `content/automation-exchanges/${data.slug}.mdx`;\nconst commitMessage = `New exchange: ${data.name}`;\n\nreturn [{\n  json: {\n    ...data,\n    filePath,\n    commitMessage\n  }\n}];"
+      },
+      "id": "bb3d706a-0568-4a7c-bfb0-45f618035298",
+      "name": "Prepare File Data",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [-448, 144]
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "owner": {
+          "__rl": true,
+          "value": "oktayshakirov",
+          "mode": "name"
+        },
+        "repository": {
+          "__rl": true,
+          "value": "crypto-wiki",
+          "mode": "name"
+        },
+        "filePath": "={{$json.filePath}}",
+        "fileContent": "={{$json.mdx}}",
+        "commitMessage": "={{$json.commitMessage}}"
+      },
+      "id": "7615cc3a-ded9-4350-8562-06d6765a484b",
+      "name": "Write New Exchange MDX",
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1,
+      "position": [-256, 144],
+      "webhookId": "0659f16d-29c4-4df0-b762-51f61500a898",
+      "credentials": {
+        "githubApi": {
+          "id": "PGPD26vSgTS2AeM8",
+          "name": "GitHub account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "functionCode": "// Validate file write was successful\nconst fileResult = $input.first().json;\nif (!fileResult || fileResult.error) {\n  throw new Error(`File write failed: ${fileResult?.error || 'Unknown error'}`);\n}\n\n// Get exchange data from Build Frontmatter + MDX node\nconst exchangeData = $node[\"Build Frontmatter + MDX\"].json;\nif (!exchangeData || !exchangeData.name || !exchangeData.slug) {\n  throw new Error('Exchange data not found or incomplete');\n}\n\n// Get and validate database data\nconst dbData = exchangeData.db;\nif (!dbData) {\n  throw new Error('Database data not found');\n}\n\n// Create updated database with proper structure\nconst updatedDb = {\n  ...dbData,\n  exchanges: { ...(dbData.exchanges || {}) },\n  next_orders: { ...(dbData.next_orders || { exchanges: 1 }) }\n};\n\n// Create exchange key (lowercase, replace spaces with dots)\nconst exchangeKey = exchangeData.name.toLowerCase().replace(/\\s+/g, '.');\n\n// Check if exchange already exists\nif (updatedDb.exchanges[exchangeKey]) {\n  throw new Error(`Exchange '${exchangeData.name}' already exists in database`);\n}\n\n// Add new exchange to database\nupdatedDb.exchanges[exchangeKey] = {\n  slug: `/exchanges/${exchangeData.slug}`,\n  title: exchangeData.name,\n  order: exchangeData.order\n};\n\n// Increment next order counter\nupdatedDb.next_orders.exchanges = (updatedDb.next_orders.exchanges || 0) + 1;\n\n// Return success with updated database\nreturn [{ \n  json: { \n    db: updatedDb, \n    fileSuccess: true, \n    dbSuccess: true,\n    exchangeAdded: exchangeKey,\n    name: exchangeData.name\n  } \n}];"
+      },
+      "id": "a5809241-32f8-418d-a573-072cae608978",
+      "name": "Update Database",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [128, 144]
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "operation": "edit",
+        "owner": {
+          "__rl": true,
+          "value": "oktayshakirov",
+          "mode": "name"
+        },
+        "repository": {
+          "__rl": true,
+          "value": "crypto-wiki",
+          "mode": "name"
+        },
+        "filePath": "automation/content-database.json",
+        "fileContent": "={{JSON.stringify($json.db, null, 2)}}",
+        "commitMessage": "=Update exchanges DB after adding {{$json.name || 'new exchange'}}"
+      },
+      "id": "bc0b1c5c-596d-4735-84aa-8db527d706a5",
+      "name": "Write Updated DB JSON",
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1,
+      "position": [304, 144],
+      "webhookId": "c216a840-93e7-41f1-99d2-215bce62e058",
+      "credentials": {
+        "githubApi": {
+          "id": "PGPD26vSgTS2AeM8",
+          "name": "GitHub account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Set Exchange Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Exchange Data": {
+      "main": [
+        [
+          {
+            "node": "Get content-database.json",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Get Guidelines",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get content-database.json": {
+      "main": [
+        [
+          {
+            "node": "Merge DB + Guidelines",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Guidelines": {
+      "main": [
+        [
+          {
+            "node": "Merge DB + Guidelines",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge DB + Guidelines": {
+      "main": [
+        [
+          {
+            "node": "Parse & Prepare Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse & Prepare Data": {
+      "main": [
+        [
+          {
+            "node": "OpenAI: Generate Body",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI: Generate Body": {
+      "main": [
+        [
+          {
+            "node": "Build Frontmatter + MDX",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Frontmatter + MDX": {
+      "main": [
+        [
+          {
+            "node": "Prepare File Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare File Data": {
+      "main": [
+        [
+          {
+            "node": "Write New Exchange MDX",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Write New Exchange MDX": {
+      "main": [
+        [
+          {
+            "node": "Update Database",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Database": {
+      "main": [
+        [
+          {
+            "node": "Write Updated DB JSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {},
+  "versionId": "d75758db-92d7-4715-a2b8-4ef467d6e8da",
+  "meta": {
+    "instanceId": "002b5e092f04f4d75aa57fd214532db5fa3d65fe608d265bda2ed541d575f595"
+  },
+  "id": "pEfGTfVz5FdtLTGM",
+  "tags": []
+}
