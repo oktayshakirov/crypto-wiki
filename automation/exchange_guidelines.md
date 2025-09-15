@@ -20,7 +20,7 @@
 
 - **Length**: 1,500-2,500 words (minimum 1,200)
 - **Internal Links**: 15-20 total using content database
-- **Images**: 1-2 with descriptive alt text
+- **Images**: Exactly 2 with descriptive alt text (using /images/posts/ paths)
 - **Formatting**: Use ## for ALL main headings, **bold** for all sub-categories in bullet points
 - **Tone**: Professional, balanced, expert-level, E-E-A-T compliant
 
@@ -40,20 +40,14 @@
 - **Balanced Tone**: Acknowledge both strengths and limitations objectively
 - **Actionable Advice**: "Points to Consider" must be specific and actionable
 
-## Content Patterns from High-Quality Examples
+## Content Patterns & Examples
 
-### **Opening Section Structure**
+### **Opening Section Descriptor Examples**
 
-- **Header**: ## **[Exchange Name]: [Specific Descriptor]** (NOT "Brief Description")
-- **Descriptor Examples**:
-  - "A Publicly Traded US-Based Crypto Exchange" (Coinbase)
-  - "Global Leader in Cryptocurrency Services" (Binance)
-  - "A Global Hub for Altcoin Trading" (KuCoin)
-  - "Global Crypto Exchange with Extensive Trading and Web3 Features" (OKX)
-- **Format**: "Founded in [YEAR] [by FOUNDER(S) with internal links if in database], [EXCHANGE] is [POSITIONING]..."
-- **Include**: Founding year, founder(s) with links ONLY if in content database, headquarters location, key differentiator
-- **Length**: 2-3 sentences maximum
-- **Tone**: Professional, informative, sets context
+- "A Publicly Traded US-Based Crypto Exchange" (Coinbase)
+- "Global Leader in Cryptocurrency Services" (Binance)
+- "A Global Hub for Altcoin Trading" (KuCoin)
+- "Global Crypto Exchange with Extensive Trading and Web3 Features" (OKX)
 
 ### **Section Header Variations**
 
@@ -63,45 +57,26 @@
 
 ### **Bullet Point Structure**
 
-- **Main Category**: **Bold** with colon
-- **Sub-categories**: **Bold** with detailed description
-- **Consistent Format**: Always use **bold** for sub-categories
+- **Main Category**: **Bold** with colon (e.g., **- **Trading Platform:\*\*)
+- **Sub-categories**: **Bold** with detailed description (e.g., **- **Spot Trading:\*\*)
+- **Consistent Format**: ALWAYS use **bold** for ALL sub-categories
 - **Descriptive**: Include specific details, numbers, and context
 
-### **Image Placement & Alt Text**
+### **Image Requirements**
 
-- **Placement**: After main service descriptions, before security section
-- **Alt Text Format**: `![Exchange name interface showing [specific feature]](/images/exchanges/exchange-name.png)`
-- **Descriptive**: Focus on what the image shows, not just "logo" or "interface"
-- **Required**: At least 1 image must be included within the content body (not just frontmatter)
+- **Required**: Exactly **2 images** in content body (not counting frontmatter image)
+- **Placement**:
+  1. **First image**: After main service descriptions, before security section
+  2. **Second image**: After user experience or regulatory section, before conclusion
+- **Image Paths**: Use `/images/posts/` for body images, `/images/exchanges/` only for frontmatter
+- **Alt Text**: `![Descriptive text about what image shows](/images/posts/relevant-image.png)`
 
-### **Internal Linking Patterns**
-
-- **Founders**: Always link in opening paragraph: `[Name](/crypto-ogs/slug)`
-- **Concepts**: Link throughout content: `[Bitcoin](/posts/what-is-bitcoin)`, `[DeFi](/posts/what-is-defi)`
-- **Exchanges**: Use for comparisons: `**[Coinbase](/exchanges/coinbase)**`, `**[Binance](/exchanges/binance)**`
-- **Tools**: Link when relevant: `**[Fear and Greed Index](/tools/fear-and-greed-index)**`
-
-### **Regulatory Context Requirements**
-
-- **Specific Details**: Mention exact settlements, fines, regulatory status
-- **Timeline**: Include dates for major regulatory events
-- **Impact**: Explain how regulatory issues affect users
-- **Geographic**: Specify which regions are affected
-
-### **Risk Warning Standards**
+### **Risk Warning Templates**
 
 - **Derivatives**: "Trading derivatives, especially with high leverage, carries extreme risk..."
 - **Custodial**: "Assets held on [exchange] are under [exchange]'s custody..."
 - **Regulatory**: "Users must verify the legality and availability of [exchange] in their country..."
 - **Complexity**: "The platform's complexity may be overwhelming for beginners..."
-
-### **Conclusion Structure**
-
-- **Market Position**: Where the exchange stands in the market
-- **Ideal Users**: Who should use this exchange
-- **Key Considerations**: Main pros and cons
-- **Length**: 2-3 sentences maximum
 
 ## Frontmatter Standards
 
@@ -109,7 +84,7 @@
 
 - **title**: Official exchange name (proper capitalization)
 - **image**: `/images/exchanges/{exchange-slug}.png`
-- **description**: 100-150 characters, highlight key features
+- **description**: 150-160 characters, highlight key features
 - **date**: YYYY-MM-DD format (not ISO string)
 - **order**: Sequential number from content-database.json
 - **authors**: `["Crypto Wiki Team"]`
@@ -128,56 +103,77 @@
 5. **discord**, **reddit**, **github** (if applicable)
 6. **wikipedia** (if available)
 
-### **Automation Requirements**
+## SEO and Content Optimization
+
+### **Keyword Strategy**
+
+- **Primary Keywords**: Include "cryptocurrency exchange", "crypto trading", "digital assets" naturally
+- **Long-tail Keywords**: "best crypto exchange for [specific use case]", "secure cryptocurrency platform"
+- **Exchange-specific Keywords**: Include exchange name + key features (e.g., "Binance staking", "Coinbase wallet")
+- **Keyword Density**: 1-2% for primary keywords, natural integration throughout content
+- **LSI Keywords**: Use related terms like "blockchain", "DeFi", "trading platform", "digital wallet"
+
+### **Meta Optimization**
+
+- **Title Tag**: "[Exchange Name]: [Specific Descriptor] - [Key Benefit]"
+- **Meta Description**: 150-160 characters, include primary keyword + call-to-action
+- **Header Structure**: Use H2 for main sections, include keywords in headers
+- **Image Alt Text**: Include relevant keywords and descriptive text
+
+### **Internal Linking Strategy**
+
+- **Minimum 15 internal links** using provided content database
+- **Anchor Text Variety**: Use different anchor text for same target page
+- **Contextual Placement**: Links should flow naturally within content
+- **Priority Links**: Always include storage and scam prevention links
+- **Exchange Comparisons**: Link to other exchanges for context
+
+## Automation Requirements
 
 - **AI Prompt**: Must request social media links as JSON object
 - **Frontmatter Generation**: Must parse and include all social media links from AI response
 - **Validation**: Only include platforms that actually exist for the exchange
-
-## Content Quality Standards
-
-### **Opening Section Requirements**
-
-- **Header**: ## **[Exchange Name]: [Specific Descriptor]** (NOT "Brief Description")
-- **Founding Details**: Year, founder(s) with internal links ONLY if in content database, headquarters
-- **Key Positioning**: What makes this exchange unique
-- **Context**: Market position or regulatory status
-- **Length**: Exactly 2-3 sentences
-
-### **Section Content Requirements**
-
-- **Core Services**: 3-5 main service categories with sub-categories
-- **Security**: Specific technical details, historical incidents, disclaimers
-- **User Experience**: Interface options, educational resources, support quality
-- **Regulatory**: Specific licenses, challenges, geographic restrictions
-- **Points to Consider**: 4-5 specific, actionable considerations
-
-### **Internal Linking Requirements**
-
-- **Minimum**: 15 internal links
-- **Maximum**: 20 internal links
-- **Founders**: Must link in opening paragraph
-- **Concepts**: Link Bitcoin, Ethereum, DeFi, Staking, etc.
-- **Exchanges**: Use for comparisons and context
-- **Security**: Always include storage and scam prevention links
+- **Image Requirements**: Must enforce exactly 2 images in body using /images/posts/ paths
+- **Content Structure**: Must follow 7-section format with proper internal linking
 
 ## Quality Checklist
+
+### **Content Structure**
 
 - [ ] All 7 sections included in correct order with ## headers
 - [ ] Opening header: ## **[Exchange Name]: [Specific Descriptor]** (NOT "Brief Description")
 - [ ] All main sections use ## heading format
+- [ ] 1,200+ words, professional tone
+- [ ] Balanced conclusion with clear user guidance
+
+### **Internal Linking & SEO**
+
 - [ ] 15-20 internal links using content database
 - [ ] Founders only linked if they exist in content database
-- [ ] 1-2 images with descriptive alt text placed within content body
-- [ ] 1,200+ words, professional tone
+- [ ] Priority links included: How To Store Crypto, How to Avoid Crypto Scams
+- [ ] Major concepts linked: Bitcoin, Ethereum, DeFi, Staking
+- [ ] Exchange comparisons with other exchanges from database
+- [ ] SEO keywords naturally integrated: 'cryptocurrency exchange', 'crypto trading', 'digital assets'
+
+### **Formatting & Images**
+
+- [ ] Exactly 2 images with descriptive alt text placed within content body (using /images/posts/ paths)
+- [ ] First image: After main services, before security
+- [ ] Second image: After user experience/regulatory, before conclusion
+- [ ] Bullet points use consistent **bold** formatting for ALL sub-categories
+- [ ] Section headers match exchange type (Trading Platform vs Protocol)
+
+### **Content Quality**
+
 - [ ] Risk warnings for derivatives/custodial risks
 - [ ] Specific, actionable "Points to Consider"
-- [ ] Balanced conclusion with clear user guidance
+- [ ] Regulatory context includes specific details and dates
+- [ ] Professional, expert-level tone throughout
+
+### **Frontmatter & Technical**
+
 - [ ] Frontmatter includes: title, image, description, date (YYYY-MM-DD), order, authors, social, draft
 - [ ] Social media links included in frontmatter (REQUIRED)
 - [ ] Website included in social section (not separate field)
-- [ ] Section headers match exchange type (Trading Platform vs Protocol)
-- [ ] Bullet points use consistent **bold** formatting
-- [ ] Regulatory context includes specific details and dates
-- [ ] Images placed after main services, before security
+- [ ] Meta description 150-160 characters with primary keyword
 - [ ] NO "Additional resources" section at the end
