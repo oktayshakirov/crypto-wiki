@@ -1,0 +1,135 @@
+---
+title: "Gemini"
+image: "/images/exchanges/gemini.png"
+description: "Gemini offers comprehensive cryptocurrency trading services with advanced features and security."
+date: 2025-09-15
+order: 14
+authors: ["Crypto Wiki Team"]
+social:
+  website: https://www.gemini.com
+draft: true
+---
+
+## **Gemini: A New York–Chartered, Security-First Crypto Exchange**
+
+Founded in 2014 and headquartered in New York City, Gemini is a regulated cryptocurrency exchange and custodian operating under a New York State trust charter. Positioned as a compliance- and security-led platform, Gemini offers spot trading, institutional custody, and fiat on/off ramps to retail and institutional clients across the United States, the United Kingdom, the European Union, and several other jurisdictions. Its conservative product lineup and regulatory posture make it a frequent choice for users who prioritize oversight, transparency, and strong account protections.
+
+## **Core Services**
+
+- **Spot Trading (Retail and Pro/ActiveTrader):**
+  - **Asset Coverage:** Gemini supports 100+ cryptocurrencies with 150+ trading pairs, including major assets such as Bitcoin (BTC) and Ethereum (ETH) alongside a curated mix of large-cap and mid-cap altcoins. Listings tend to pass strict compliance reviews, resulting in a more selective asset roster than some global competitors.
+  - **Order Types and Liquidity:** The ActiveTrader interface supports limit, market, stop-limit, IOC/FOK, and post-only orders, with aggregated order-book depth across USD, GBP, and EUR markets on the most liquid pairs. Retail users can use a simplified buy/sell interface for one-tap purchases.
+  - **Fiat Support:** Deposit and withdraw in USD (ACH, wires), as well as GBP and EUR (bank transfers). Card purchases may be available in select regions, with higher fees than bank transfers.
+  - **Fees:** ActiveTrader uses a maker/taker schedule with tiered volume discounts, while the simple interface charges a convenience spread and flat fee, which can be meaningfully higher for small trades.
+
+- **Advanced Trading & APIs:**
+  - **Connectivity:** Gemini offers REST and WebSocket market data and trading APIs, plus FIX for institutions, enabling robust integration with algorithmic strategies, OMS/EMS platforms, and treasury systems.
+  - **Market Data:** Real-time price feeds, order book snapshots, and historical candlesticks are available to support backtesting and analytics. Rate limits and throughput are designed for moderate institutional use; ultra-HFT participants may require custom arrangements.
+  - **Account/Operations:** API key scoping, IP allowlisting, and granular permissions (read-only, trading, withdrawals disabled by default) help reduce operational risk.
+
+- **Custody, Wallets, and Treasury Services:**
+  - **Gemini Custody (Institutional):** A qualified custodian solution under a New York trust charter designed for institutions requiring segregated cold storage, auditable records, and rigorous controls. Gemini provides SOC 2 Type II attestation, multi-signature governance, and role-based access.
+  - **Retail Wallets:** Standard custodial wallets for trading balances and a distinct hot wallet segment for convenience withdrawals. Users can enable address allowlisting and withdrawal holds for added protection.
+  - **Treasury/Corporate:** Tools for corporates to acquire, store, and manage digital assets on balance sheet, typically with custom onboarding, API connectivity, and reporting for compliance and audit.
+
+- **Stablecoin and Payments (GUSD, Card, and Merchant):**
+  - **Gemini Dollar (GUSD):** A US dollar–denominated stablecoin issued by Gemini Trust Company, LLC. Designed to be fully backed by cash and cash equivalents held with regulated institutions, with regular attestations. GUSD is widely integrated across DeFi venues and centralized exchanges, though it is smaller in market share compared to leading alternatives.
+  - **Gemini Credit Card (US):** A rewards credit card that returns crypto rewards on purchases, settled into the user’s Gemini account. Availability, APRs, and reward structures vary by state and credit profile.
+  - **Merchant/Payments Tools:** Historical integrations have supported crypto acceptance via partners; availability and scope vary by geography and business type.
+
+- **Staking and Yield (Jurisdiction-Dependent):**
+  - **Staking:** Gemini has offered staking on select assets (e.g., ETH) in certain non-US jurisdictions, with custodial oversight and slashing protections described in product documentation. Availability changes with regulation and network conditions.
+  - **Yield/Earn Programs:** Gemini Earn was discontinued after counterparty issues in 2022–2023. Users should assume that yield programs are either unavailable or highly limited—and that any future yield products would be subject to stringent regulatory and counterparty risk frameworks.
+
+![Gemini interface showing the ActiveTrader order book, candlestick chart, and account balances](/images/exchanges/gemini.png)
+
+## **Security Measures**
+
+- **Account-Level Protections:**
+  - **Multi-Factor Authentication (MFA):** Time-based one-time passwords (TOTP) and hardware key support (WebAuthn/U2F) are available. Hardware keys reduce SIM-swap and phishing attack surface and are recommended for high-value accounts.
+  - **Allowlisting and Withdrawal Controls:** Users can enable withdrawal address allowlisting, time-locked changes, and device management. Login alerts, session reviews, and geofencing add further control layers.
+  - **Human Factors:** Gemini encourages strong password hygiene and offers prompts to migrate from SMS-based 2FA to app-based or hardware methods.
+
+- **Platform and Custody Controls:**
+  - **Cold Storage–First Architecture:** The majority of digital assets are stored offline in geographically distributed, access-controlled facilities leveraging multi-signature and hardware security modules (HSMs).
+  - **SOC 2 Type II:** Gemini undergoes independent SOC 2 Type II audits, evidencing internal controls across security, availability, and confidentiality domains. This is uncommon among retail-focused crypto exchanges and is a core differentiator.
+  - **Network and Application Security:** Segmentation, intrusion detection, anomaly monitoring, and code review pipelines are standard parts of the platform’s defense-in-depth approach. Change management and privileged access are tightly governed.
+
+- **Insurance and Disclosures:**
+  - **Hot Wallet Insurance:** Gemini has historically maintained a digital asset insurance policy for a limited portion of hot wallet balances. Insurance does not cover all scenarios or all assets and is subject to policy terms that can change.
+  - **Fiat Balances:** US dollar cash balances may be held at partner banks and can be eligible for pass-through FDIC insurance under certain circumstances; this does not apply to crypto assets, which are not FDIC- or SIPC-insured.
+
+- **Historical Incidents and Risk Transparency:**
+  - **Third-Party Data Incident (2022):** Gemini disclosed a vendor-related incident that exposed certain customer emails and partial phone numbers. No digital asset losses were reported, but it increased phishing risks for affected users.
+  - **Earn/Counterparty Risk (2022–2024):** Funds in the discontinued Earn program became tied up with a third-party borrower’s bankruptcy. In February 2024, Gemini agreed with New York regulators to return at least $1.1 billion to Earn customers through the bankruptcy process and paid a $37 million penalty related to compliance issues. This was not a platform hack, but it underscores counterparty and program risk distinct from on-exchange spot trading.
+  - **Custodial Risk Reminder:** Assets held on any centralized exchange remain under the exchange’s custody until withdrawn to self-custody. Users should evaluate their security posture, distribution of holdings, and withdrawal habits accordingly.
+
+- **Risk Warnings:**
+  - **Custody:** Assets held on Gemini are under Gemini’s custody; while security practices are strong, no centralized exchange can eliminate custodial risk.
+  - **Counterparty/Program Risk:** Any staking, lending, or yield products—if offered—carry counterparty and protocol risks; terms and structures can change with regulation.
+  - **Operational Risk:** Always verify official communications and consider hardware security keys to mitigate phishing and SIM-swap attacks.
+
+## **User Experience**
+
+- **Interfaces and Platforms:**
+  - **Retail App and Web:** A clean, minimal interface for simple buys, recurring purchases (DCA), and basic portfolio tracking. Ideal for beginners prioritizing simplicity.
+  - **ActiveTrader (Pro):** A performance-oriented UI with depth charts, full order book, advanced order types, and fee schedule rebates. Suitable for experienced traders and institutions.
+  - **Mobile Apps:** iOS and Android apps feature biometric login, price alerts, watchlists, and on-the-go deposits/withdrawals.
+
+- **Onboarding and Funding:**
+  - **KYC/AML:** Government ID verification and proof of address are required; enhanced due diligence may apply to institutional or high-limit accounts.
+  - **Deposits/Withdrawals:** ACH (US), domestic and international wires, and bank transfers in GBP/EUR. Crypto deposits and withdrawals support standard network confirmation thresholds; withdrawal allowlisting is available.
+
+- **Education and Research:**
+  - **Cryptopedia:** Gemini’s educational library covers beginner to intermediate topics (e.g., custody basics, on-chain transactions, consensus mechanisms). While comprehensive, users should compare multiple sources for due diligence.
+
+- **Customer Support:**
+  - **Channels:** Email ticketing and help center are primary; live chat availability varies. Response times are generally reasonable but can extend during market stress or high-volume events.
+  - **Dispute Handling and Status Pages:** Gemini maintains system status updates for transparency on maintenance or incidents. For account-specific issues, KYC-driven processes may lengthen resolution times, especially for fraud or recovery cases.
+
+- **Performance and Reliability:**
+  - **Throughput and Uptime:** The platform has a strong reputation for uptime and orderly market behavior during volatility relative to many retail exchanges. Nevertheless, extreme market events can degrade performance or trigger protective measures (e.g., rate limits).
+
+## **Regulatory Compliance**
+
+- **New York Trust Charter and US Oversight:**
+  - **NYDFS Supervision:** Gemini Trust Company, LLC operates as a New York–chartered limited purpose trust company, subject to capital requirements, examinations, and governance scrutiny comparable to certain financial institutions.
+  - **Consumer Protection Actions:** In February 2024, New York regulators announced a settlement whereby Gemini agreed to return at least $1.1 billion to Earn customers via the bankruptcy process and paid a $37 million penalty. This followed the 2023 SEC complaint concerning the Earn program as an alleged unregistered securities offering; related proceedings have involved multiple parties and saw developments through 2024.
+
+- **United Kingdom and European Union:**
+  - **UK Registration:** Gemini entities are registered with the UK Financial Conduct Authority (FCA) as cryptoasset businesses for AML/CTF supervision. This is not investment firm authorization but permits certain crypto activities under UK rules.
+  - **EU Presence:** Gemini established a European hub in Ireland and obtained local registrations to serve EU users under AML/CTF frameworks. Availability, product scope, and marketing are aligned with evolving EU rules, including MiCA implementation phases from 2024–2025.
+
+- **International Availability and Restrictions:**
+  - **Supported Regions:** Gemini serves users in many US states and numerous countries, with tailored product sets by jurisdiction. Fiat support focuses on USD, GBP, and EUR corridors.
+  - **Limitations:** Past adjustments have included exiting or pausing services in certain jurisdictions due to licensing changes or regulatory requirements. Derivatives offerings for non-US users launched in 2023 were wound down in 2024; US derivatives are not offered.
+  - **Sanctions and Prohibited Use:** Gemini screens for sanctioned individuals, entities, and geographies; users must confirm eligibility and lawful use before onboarding.
+
+- **Implications for Users:**
+  - **Transparency and Audits:** The trust charter, SOC 2 Type II reports, and disclosures signal a higher-than-average compliance bar. However, regulatory scrutiny can delay product rollouts and limit asset coverage relative to offshore exchanges.
+  - **Ongoing Proceedings:** Litigation and regulatory actions related to prior yield programs have created a compliance overhang but also resulted in structured remediation for affected users. Users should track updates that may influence product availability, fees, or terms.
+
+## **Points to Consider**
+
+- **Fees and Execution Costs:**
+  - **ActiveTrader vs Simple Buy:** The simple interface charges higher all-in costs (spread + fee) versus the maker/taker schedule on ActiveTrader. If you place limit orders and route via ActiveTrader, you can materially reduce costs—especially on larger trades.
+  - **Fiat Funding Fees:** ACH in the US is typically free, while wires and card buys may incur meaningful fees. Always compare total landed cost before executing.
+
+- **Custodial and Counterparty Risk:**
+  - **On-Exchange Balances:** Keep only the amount you need for near-term trading; longer-term holdings may warrant self-custody with secure backup practices.
+  - **Programs and Staking:** Any future yield or staking products (especially custodial) carry counterparty, liquidity, and regulatory risks. Review custody segregation, slashing guarantees, and any rehypothecation clauses.
+
+- **Regulatory Overhang and Product Scope:**
+  - **US-Centric Compliance:** Gemini’s strict compliance posture improves oversight but can limit asset listings, derivatives access, and innovative features compared to global rivals.
+  - **Jurisdictional Nuance:** Product availability differs widely by region. Confirm local eligibility for staking, card rewards, and fiat ramps before onboarding.
+
+- **Platform Complexity and Best Practices:**
+  - **Pick the Right Interface:** Beginners can start with the simple app, but transitioning to ActiveTrader can dramatically reduce fees as trade sizes grow.
+  - **Security Hygiene:** Use hardware security keys, enable withdrawal allowlisting, and monitor new device logins. Consider segmenting roles and API permissions if you connect third-party tools.
+
+- **Institutional and Corporate Use:**
+  - **Custody Requirements:** If you need SOC 2 Type II attestation, board-level governance, and audit-friendly reporting, Gemini Custody may fit. Align service-level agreements and access controls with your internal policies before moving funds.
+
+## **Conclusion**
+
+Gemini occupies a distinctive position as a security- and compliance-first exchange geared toward regulated markets and risk-conscious users. Its strengths lie in its trust charter, SOC 2 Type II controls, polished user experience, and institutional-grade custody, while limitations include higher retail fees on the simple interface, conservative listings, and no US derivatives. It is best suited for individuals and institutions that prioritize oversight, predictable operations, and strong account protections over maximal asset breadth and aggressive features.
