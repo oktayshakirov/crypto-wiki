@@ -36,7 +36,3 @@ yarn-error.log*
 
 # vercel
 .vercel
-
-# n8n automation files with credentials
-automation/*.json
-automation/*_automation.json
