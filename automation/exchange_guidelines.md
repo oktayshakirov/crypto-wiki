@@ -8,7 +8,7 @@
 
 ## Content Structure (EXACT ORDER)
 
-1. **Opening Section** (## **[Exchange]: Brief Description**): Founding year, founder(s) ONLY if in database, headquarters, key positioning
+1. **Opening Section** (## **[Exchange]: [Specific Descriptor]**): Founding year, founder(s) ONLY if in database, headquarters, key positioning
 2. **Core Services** (## **Core [Platform/Services/Offerings]**): Trading platform, spot/derivatives/margin, staking, DeFi features
 3. **Security Measures** (## **Security Measures**): Account security, platform security, historical incidents, custodial disclaimers
 4. **User Experience** (## **User Experience**): Interface, educational resources, customer support
@@ -44,7 +44,12 @@
 
 ### **Opening Section Structure**
 
-- **Header**: ## **[Exchange Name]: Brief Description**
+- **Header**: ## **[Exchange Name]: [Specific Descriptor]** (NOT "Brief Description")
+- **Descriptor Examples**:
+  - "A Publicly Traded US-Based Crypto Exchange" (Coinbase)
+  - "Global Leader in Cryptocurrency Services" (Binance)
+  - "A Global Hub for Altcoin Trading" (KuCoin)
+  - "Global Crypto Exchange with Extensive Trading and Web3 Features" (OKX)
 - **Format**: "Founded in [YEAR] [by FOUNDER(S) with internal links if in database], [EXCHANGE] is [POSITIONING]..."
 - **Include**: Founding year, founder(s) with links ONLY if in content database, headquarters location, key differentiator
 - **Length**: 2-3 sentences maximum
@@ -68,6 +73,7 @@
 - **Placement**: After main service descriptions, before security section
 - **Alt Text Format**: `![Exchange name interface showing [specific feature]](/images/exchanges/exchange-name.png)`
 - **Descriptive**: Focus on what the image shows, not just "logo" or "interface"
+- **Required**: At least 1 image must be included within the content body (not just frontmatter)
 
 ### **Internal Linking Patterns**
 
@@ -107,7 +113,7 @@
 - **date**: YYYY-MM-DD format (not ISO string)
 - **order**: Sequential number from content-database.json
 - **authors**: `["Crypto Wiki Team"]`
-- **social**: Include website and all available social media links
+- **social**: Include website and all available social media links (REQUIRED)
 - **draft**: `true` for new exchanges
 
 ### **Social Media Priority Order**
@@ -123,7 +129,7 @@
 
 ### **Opening Section Requirements**
 
-- **Header**: ## **[Exchange Name]: Brief Description**
+- **Header**: ## **[Exchange Name]: [Specific Descriptor]** (NOT "Brief Description")
 - **Founding Details**: Year, founder(s) with internal links ONLY if in content database, headquarters
 - **Key Positioning**: What makes this exchange unique
 - **Context**: Market position or regulatory status
@@ -149,18 +155,20 @@
 ## Quality Checklist
 
 - [ ] All 7 sections included in correct order with ## headers
-- [ ] Opening header: ## **[Exchange Name]: Brief Description**
+- [ ] Opening header: ## **[Exchange Name]: [Specific Descriptor]** (NOT "Brief Description")
 - [ ] All main sections use ## heading format
 - [ ] 15-20 internal links using content database
 - [ ] Founders only linked if they exist in content database
-- [ ] 1-2 images with descriptive alt text
+- [ ] 1-2 images with descriptive alt text placed within content body
 - [ ] 1,200+ words, professional tone
 - [ ] Risk warnings for derivatives/custodial risks
 - [ ] Specific, actionable "Points to Consider"
 - [ ] Balanced conclusion with clear user guidance
 - [ ] Frontmatter includes: title, image, description, date (YYYY-MM-DD), order, authors, social, draft
+- [ ] Social media links included in frontmatter (REQUIRED)
 - [ ] Website included in social section (not separate field)
 - [ ] Section headers match exchange type (Trading Platform vs Protocol)
 - [ ] Bullet points use consistent **bold** formatting
 - [ ] Regulatory context includes specific details and dates
 - [ ] Images placed after main services, before security
+- [ ] NO "Additional resources" section at the end
