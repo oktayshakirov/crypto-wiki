@@ -30,7 +30,9 @@
 - **Concepts**: [Title](/posts/{slug})
 - **Exchanges**: **[Exchange](/exchanges/{slug})**
 - **Tools**: **[Tool](/tools/{slug})**
-- **Security Links**: Always include `**[How To Store Crypto](/posts/how-to-store-crypto)**` and `**[How to Avoid Crypto Scams](/posts/how-to-avoid-crypto-scams)**`
+- **Minimum 15 links**: Enforce this requirement strictly
+- **Anchor Text Variety**: Use different anchor text for same target page
+- **Contextual Placement**: Links should flow naturally within content
 
 ## Writing Standards
 
@@ -84,7 +86,13 @@
 
 - **title**: Official exchange name (proper capitalization)
 - **image**: `/images/exchanges/{exchange-slug}.png`
-- **description**: 150-160 characters, highlight key features
+- **description**: 150-160 characters, highlight key features and unique value proposition
+  - **Specificity**: Include unique differentiator, not generic phrases
+  - **Keywords**: Must include "cryptocurrency exchange" + key benefit
+  - **Examples**:
+    - ❌ "comprehensive cryptocurrency trading services"
+    - ✅ "US-regulated crypto exchange with institutional custody and GUSD stablecoin"
+    - ✅ "Global crypto platform with Visa card, staking, and DeFi wallet"
 - **date**: YYYY-MM-DD format (not ISO string)
 - **order**: Sequential number from content-database.json
 - **authors**: `["Crypto Wiki Team"]`
@@ -94,14 +102,22 @@
   - Only include platforms that actually exist for the exchange
 - **draft**: `true` for new exchanges
 
+### **Social Media Requirements (ENHANCED)**
+
+- **Minimum 6 social links** required
+- **Required platforms**: website, twitter, youtube, linkedin
+- **Recommended platforms**: facebook, instagram, telegram, tiktok, discord, reddit
+- **Validation**: AI must research actual social media presence, don't guess URLs
+- **Fallback**: If platform doesn't exist for the exchange, don't include it
+
 ### **Social Media Priority Order**
 
 1. **website** (required)
-2. **twitter** (most important)
+2. **twitter**
 3. **youtube**, **linkedin**, **telegram**
 4. **facebook**, **instagram**, **tiktok**
-5. **discord**, **reddit**, **github** (if applicable)
-6. **wikipedia** (if available)
+5. **discord**, **reddit**, **github**
+6. **wikipedia**
 
 ## SEO and Content Optimization
 
@@ -148,11 +164,9 @@
 
 ### **Internal Linking & SEO**
 
-- [ ] 15-20 internal links using content database
+- [ ] **MANDATORY**: Minimum 15 internal links using content database
 - [ ] Founders only linked if they exist in content database
-- [ ] Priority links included: How To Store Crypto, How to Avoid Crypto Scams
-- [ ] Major concepts linked: Bitcoin, Ethereum, DeFi, Staking
-- [ ] Exchange comparisons with other exchanges from database
+- [ ] Major concepts linked: Staking, NFTs, Blockchain, Trading
 - [ ] SEO keywords naturally integrated: 'cryptocurrency exchange', 'crypto trading', 'digital assets'
 
 ### **Formatting & Images**
@@ -173,7 +187,8 @@
 ### **Frontmatter & Technical**
 
 - [ ] Frontmatter includes: title, image, description, date (YYYY-MM-DD), order, authors, social, draft
-- [ ] Social media links included in frontmatter (REQUIRED)
+- [ ] **MANDATORY**: Minimum 6 social media links included in frontmatter
 - [ ] Website included in social section (not separate field)
+- [ ] **MANDATORY**: Description is specific and includes unique value proposition (not generic)
 - [ ] Meta description 150-160 characters with primary keyword
 - [ ] NO "Additional resources" section at the end
