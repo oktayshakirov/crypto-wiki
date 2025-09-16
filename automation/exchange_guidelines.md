@@ -8,13 +8,13 @@
 
 ## Content Structure (EXACT ORDER)
 
-1. **Opening Section** (## **[Exchange]: [Specific Descriptor]**): Founding year, founder(s) ONLY if in database, headquarters, key positioning
+1. **Opening Section** (## **[Exchange]: [Specific Descriptor]**): Founding year, founder(s) ONLY if in database, headquarters, key positioning. Must begin with 1–2 positioning sentences that highlight what makes the exchange unique.
 2. **Core Services** (## **Core [Platform/Services/Offerings]**): Trading platform, spot/derivatives/margin, staking, DeFi features
 3. **Security Measures** (## **Security Measures**): Account security, platform security, historical incidents, custodial disclaimers
 4. **User Experience** (## **User Experience**): Interface, educational resources, customer support
 5. **Regulatory Compliance** (## **Regulatory Compliance**): Licenses, challenges, geographic restrictions
 6. **Points to Consider** (## **Points to Consider**): 4-5 specific points: Fee structures, risks, complexity, target users
-7. **Conclusion** (## **Conclusion**): Market position, ideal users, balanced summary
+7. **Conclusion** (## **Conclusion**): Market position, ideal users, balanced summary. Must end with a mandatory final verdict sentence that sums up pros and cons in one line.
 
 ## Content Requirements
 
@@ -33,6 +33,7 @@
 - **Minimum 15 links**: Enforce this requirement strictly
 - **Anchor Text Variety**: Use different anchor text for same target page
 - **Contextual Placement**: Links should flow naturally within content
+- **Links** should be distributed evenly across all sections, not clustered in one area.
 
 ## Writing Standards
 
@@ -41,6 +42,8 @@
 - **Risk Warnings**: Always mention custodial risks, regulatory uncertainties, derivatives risks
 - **Balanced Tone**: Acknowledge both strengths and limitations objectively
 - **Actionable Advice**: "Points to Consider" must be specific and actionable
+- **Avoid AI-like filler**: Use a natural editorial voice similar to Binance, Coinbase, and OKX reviews.
+- **Vary sentence length**: Include occasional short sentences and rhetorical questions to improve readability.
 
 ## Content Patterns & Examples
 
