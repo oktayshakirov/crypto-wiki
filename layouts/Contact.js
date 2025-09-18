@@ -1,4 +1,10 @@
-import { FaEnvelope, FaUser, FaTwitter, FaFacebook } from "react-icons/fa";
+import {
+  FaEnvelope,
+  FaUser,
+  FaTwitter,
+  FaFacebook,
+  FaInstagram,
+} from "react-icons/fa";
 import Link from "next/link";
 
 const Contact = () => {
@@ -41,6 +47,16 @@ const Contact = () => {
             className="text-yellow-500 hover:underline"
           >
             @TheCryptoWiki
+          </a>
+        </li>
+        <li className="mb-2">
+          <FaInstagram className="mr-2 inline-block text-yellow-500" />
+          <strong>Instagram:</strong>{" "}
+          <a
+            href="https://www.instagram.com/thecrypto.wiki/"
+            className="text-yellow-500 hover:underline"
+          >
+            @TheCrypto.Wiki
           </a>
         </li>
         <li className="mb-2">
