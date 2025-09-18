@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import {
   FaTimes,
   FaMobile,
@@ -30,12 +31,15 @@ const STORAGE_KEYS = {
 };
 
 const AppDownloadPopup = () => {
+  const router = useRouter();
   const [isVisible, setIsVisible] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
   const [isInitialized, setIsInitialized] = useState(false);
 
   const checkPopupVisibility = useCallback(() => {
     try {
+      if (router.pathname === "/app") return false;
+
       const permanentlyDismissed = localStorage.getItem(
         STORAGE_KEYS.PERMANENTLY_DISMISSED
       );
@@ -58,7 +62,7 @@ const AppDownloadPopup = () => {
       console.warn("Error checking popup visibility:", error);
       return false;
     }
-  }, []);
+  }, [router.pathname]);
 
   const setCooldown = useCallback((key, duration) => {
     try {
