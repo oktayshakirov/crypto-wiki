@@ -11,13 +11,13 @@ const Exchanges = ({ exchanges }) => {
             className="card flex h-full cursor-pointer flex-col justify-between"
           >
             {exchange.frontmatter.image && (
-              <div className="mb-4 flex items-center justify-center">
+              <div className="mb-4 flex h-36 items-center justify-center overflow-hidden">
                 <Image
                   src={exchange.frontmatter.image}
                   alt={exchange.frontmatter.title}
                   width={300}
                   height={120}
-                  className="aspect-auto rounded-lg object-cover"
+                  className="h-full w-full rounded-lg object-cover"
                   loading="lazy"
                 />
               </div>
