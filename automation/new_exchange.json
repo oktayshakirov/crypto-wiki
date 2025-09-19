@@ -1,5 +1,5 @@
 {
-  "name": "Crypto Wiki: Exchanges",
+  "name": "Crypto Wiki: New Exchange",
   "nodes": [
     {
       "parameters": {},
@@ -397,7 +397,7 @@
   },
   "active": false,
   "settings": {},
-  "versionId": "f67af6a3-9055-4099-aef1-da0d63461208",
+  "versionId": "3e264bfb-8eb9-437e-a6e9-e31687789d24",
   "meta": {
     "instanceId": "002b5e092f04f4d75aa57fd214532db5fa3d65fe608d265bda2ed541d575f595"
   },
