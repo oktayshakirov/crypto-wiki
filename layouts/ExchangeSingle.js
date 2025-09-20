@@ -4,6 +4,7 @@ import Image from "next/image";
 import Base from "./Baseof";
 import Social from "@components/Social";
 import Authors from "@components/Authors";
+import ExchangeButton from "@components/ExchangeButton";
 import { FaCalendarAlt, FaExclamationTriangle } from "react-icons/fa";
 import Link from "next/link";
 import dateFormat from "@lib/utils/dateFormat";
@@ -68,7 +69,7 @@ const ExchangeSingle = ({
             {markdownify(title, "h1", "h1 mb-8")}
             <Social source={social} className="social-icons-simple" />
             <div className="content text-start">
-              <MDXRemote {...mdxContent} />
+              <MDXRemote {...mdxContent} components={{ ExchangeButton }} />
             </div>
             <div className="mt-4 rounded-lg border-2 border-orange-400 p-4 text-center">
               <p className="m-0">

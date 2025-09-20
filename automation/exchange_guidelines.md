@@ -15,6 +15,7 @@
 5. **Regulatory Compliance** (## **Regulatory Compliance**): Licenses, challenges, geographic restrictions
 6. **Points to Consider** (## **Points to Consider**): 4-5 specific points: Fee structures, risks, complexity, target users
 7. **Conclusion** (## **Conclusion**): Market position, ideal users, balanced summary. Must end with a mandatory final verdict sentence that sums up pros and cons in one line.
+8. **ExchangeButton Component** (MANDATORY): Add ExchangeButton component at the very end of the content with the exchange's website URL and "Join [Exchange Name]" text.
 
 ## Content Requirements
 
@@ -147,6 +148,37 @@
 - **Priority Links**: Always include storage and scam prevention links
 - **Exchange Comparisons**: Link to other exchanges for context
 
+## ExchangeButton Component Requirements
+
+### **Mandatory Addition**
+
+- **Placement**: Add ExchangeButton component at the very end of the content, after the Conclusion section
+- **Format**: Use the exact format shown in examples below
+- **URL**: Use the exchange's main website URL from the social media links
+- **Text**: Use "Join [Exchange Name]" format (e.g., "Join Coinbase", "Join Binance")
+
+### **ExchangeButton Format**
+
+```jsx
+<ExchangeButton
+  href="https://exchange-website.com"
+  text="Join [Exchange Name]"
+/>
+```
+
+### **Examples**
+
+- **Coinbase**: `<ExchangeButton href="https://coinbase.com" text="Join Coinbase" />`
+- **Binance**: `<ExchangeButton href="https://binance.com" text="Join Binance" />`
+- **Gemini**: `<ExchangeButton href="https://gemini.com" text="Join Gemini" />`
+
+### **Requirements**
+
+- **MANDATORY**: Every exchange review must include this component
+- **URL Source**: Use the website URL from the social media links in frontmatter
+- **Consistent Format**: Always use "Join [Exchange Name]" text format
+- **Placement**: Must be the last element in the content, after Conclusion section
+
 ## Automation Requirements
 
 - **AI Prompt**: Must request social media links as JSON object
@@ -154,6 +186,7 @@
 - **Validation**: Only include platforms that actually exist for the exchange
 - **Image Requirements**: Must enforce exactly 2 images in body using /images/posts/ paths
 - **Content Structure**: Must follow 7-section format with proper internal linking
+- **ExchangeButton**: Must include ExchangeButton component at the end of every exchange review
 
 ## Quality Checklist
 
@@ -164,6 +197,7 @@
 - [ ] All main sections use ## heading format
 - [ ] 1,200+ words, professional tone
 - [ ] Balanced conclusion with clear user guidance
+- [ ] **MANDATORY**: ExchangeButton component added at the end with correct format
 
 ### **Internal Linking & SEO**
 
