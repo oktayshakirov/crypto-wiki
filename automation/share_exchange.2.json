@@ -1,0 +1,354 @@
+{
+  "name": "Crypto Wiki: Share Exchange",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "99fbd994-085e-43ad-b19e-fa634610eb37",
+      "name": "Manual Trigger (Social Share)",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [-464, 160]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "slug",
+              "value": "coinbase"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "17484a89-6c7e-4312-8ece-777fefb29c6a",
+      "name": "Set Slug",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [-272, 160]
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "operation": "get",
+        "owner": "oktayshakirov",
+        "repository": "crypto-wiki",
+        "filePath": "=content/exchanges/{{$json.slug}}.mdx",
+        "asBinaryProperty": false,
+        "additionalParameters": {}
+      },
+      "id": "12ba998c-1ba4-41ea-b731-72fce108cb84",
+      "name": "Get Exchange MDX",
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1,
+      "position": [-64, 160],
+      "webhookId": "c63f79e1-d6a2-4f3e-8a29-504e53d02ae7",
+      "credentials": {
+        "githubApi": {
+          "id": "PGPD26vSgTS2AeM8",
+          "name": "GitHub account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const raw = $json.content;\nconst decoded = Buffer.from(raw, 'base64').toString('utf8');\nconst match = /---([\\s\\S]*?)---/.exec(decoded);\nconst fm = {};\nif (match && match[1]) {\n  match[1].split('\\n').forEach(line => {\n    const [key, ...rest] = line.split(':');\n    if (key && rest.length > 0) {\n      fm[key.trim()] = rest.join(':').trim().replace(/^\\\"|\\\"$|'/g, '');\n    }\n  });\n}\nreturn [{ json: {\n  name: fm.title || \"Exchange\",\n  image: fm.image ? `https://www.thecrypto.wiki${fm.image}` : \"\",\n  description: fm.description || \"\",\n  link: `http://thecrypto.wiki/exchanges/${$json.name.replace('.mdx','')}`\n}}];"
+      },
+      "id": "9fe48b2f-01cd-42d6-9d53-c89f66e73e10",
+      "name": "Parse Frontmatter",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [128, 160]
+    },
+    {
+      "parameters": {
+        "jsCode": "return $input.all().map(item => {\n  const name = item.json.name || \"Exchanges\";\n  const link = item.json.link || \"http://thecrypto.wiki/exchanges\";\n\n  const variants = [\n    `${name} Review - Pros & Cons for Crypto Traders`,\n    `Curious about ${name}? Learn fees, security & usability`,\n    `We reviewed ${name} so you don't have to`,\n    `Thinking about trading on ${name}? Read before you start`,\n    `${name} Under Review - Key facts every trader must know`,\n    `Is ${name} the right platform for your crypto journey?`\n  ];\n\n  const variant = variants[Math.floor(Math.random() * variants.length)];\n\n  const fbTwPost = `Check out our latest ${name} review 🔎 👉 ${link}`;\n  const igPost = `${variant} 🚀 Read more at thecrypto.wiki`;\n\n  return {\n    json: {\n      ...item.json,\n      facebook: fbTwPost,\n      twitter: fbTwPost,\n      instagramCaption: igPost,\n      selectedText: variant\n    }\n  };\n});"
+      },
+      "id": "ab3639fe-40c4-47e4-95cc-983f13ec1a37",
+      "name": "Format Social Post",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [336, 160]
+    },
+    {
+      "parameters": {
+        "authentication": "headerAuth",
+        "url": "https://rest.apitemplate.io/v2/create-image?template_id=5d677b23dcfff87a",
+        "sendBody": true,
+        "bodyContentType": "json",
+        "jsonBody": "={\n  \"modifications\": [\n    { \"name\": \"logo\", \"src\": \"{{$json.image}}\" },\n    { \"name\": \"title\", \"text\": \"{{$json.name}} Review\" },\n    { \"name\": \"text\", \"text\": \"{{$json.selectedText}}\" }\n  ]\n}",
+        "options": {}
+      },
+      "id": "2b66c2af-4913-4314-97ab-020f7b729fa8",
+      "name": "APITemplate Generate Image",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 1,
+      "position": [528, 160],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "apitemplate-header-auth",
+          "name": "APITemplate Header Auth"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Merge APITemplate response with original social post data\nconst items = $input.all();\nreturn items.map(item => {\n  // Get the original data from Format Social Post\n  const originalData = $('Format Social Post').first().json;\n  \n  return {\n    json: {\n      ...originalData,\n      download_url: item.json.download_url,\n      download_url_png: item.json.download_url_png,\n      transaction_ref: item.json.transaction_ref,\n      template_id: item.json.template_id,\n      status: item.json.status\n    }\n  };\n});"
+      },
+      "id": "merge-data-for-instagram",
+      "name": "Merge Data for Instagram",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [632, 160]
+    },
+    {
+      "parameters": {
+        "httpRequestMethod": "POST",
+        "graphApiVersion": "v23.0",
+        "node": "17841477190733041",
+        "edge": "media",
+        "options": {
+          "queryParameters": {
+            "parameter": [
+              {
+                "name": "image_url",
+                "value": "={{$json.download_url}}"
+              },
+              {
+                "name": "caption",
+                "value": "={{$json.instagramCaption}}"
+              },
+              {
+                "name": "media_type",
+                "value": "IMAGE"
+              }
+            ]
+          }
+        }
+      },
+      "id": "6b2cfa68-364c-46f4-8585-02ebb9902c4d",
+      "name": "Instagram Create Media",
+      "type": "n8n-nodes-base.facebookGraphApi",
+      "typeVersion": 1,
+      "position": [944, 160],
+      "credentials": {
+        "facebookGraphApi": {
+          "id": "CGGakNGphccGvIDc",
+          "name": "Facebook Graph account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Debug: Log the Instagram Create Media response and extract the creation ID\nconst items = $input.all();\nreturn items.map(item => {\n  console.log('Instagram Create Media Response:', JSON.stringify(item.json, null, 2));\n  \n  // Extract the creation ID from the response\n  let creationId = null;\n  \n  if (item.json.id) {\n    // If response has direct id field\n    creationId = item.json.id;\n  } else if (item.json.data && Array.isArray(item.json.data) && item.json.data.length > 0) {\n    // If response has data array, take the first item's id\n    creationId = item.json.data[0].id;\n  }\n  \n  console.log('Extracted Creation ID:', creationId);\n  \n  return {\n    json: {\n      ...item.json,\n      id: creationId\n    }\n  };\n});"
+      },
+      "id": "debug-instagram-create-response",
+      "name": "Debug Instagram Create Response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [1152, 160]
+    },
+    {
+      "parameters": {
+        "httpRequestMethod": "POST",
+        "graphApiVersion": "v23.0",
+        "node": "17841477190733041",
+        "edge": "media_publish",
+        "options": {
+          "queryParameters": {
+            "parameter": [
+              {
+                "name": "creation_id",
+                "value": "={{$json.id}}"
+              }
+            ]
+          }
+        }
+      },
+      "id": "f079c6f1-558a-4c2f-be6e-ff6272a97d78",
+      "name": "Instagram Publish Media",
+      "type": "n8n-nodes-base.facebookGraphApi",
+      "typeVersion": 1,
+      "position": [960, 160],
+      "credentials": {
+        "facebookGraphApi": {
+          "id": "CGGakNGphccGvIDc",
+          "name": "Facebook Graph account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "text": "={{$json.twitter}}",
+        "additionalFields": {}
+      },
+      "id": "edcf65fd-f20e-4e24-ae31-86396da5218f",
+      "name": "Create Tweet",
+      "type": "n8n-nodes-base.twitter",
+      "typeVersion": 2,
+      "position": [544, 384],
+      "credentials": {
+        "twitterOAuth2Api": {
+          "id": "QT8bLYGAdrhMNYdJ",
+          "name": "X account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpRequestMethod": "POST",
+        "graphApiVersion": "v23.0",
+        "node": "me",
+        "edge": "feed",
+        "options": {
+          "queryParameters": {
+            "parameter": [
+              {
+                "name": "message",
+                "value": "={{$json.facebook}}"
+              },
+              {
+                "name": "link",
+                "value": "={{$json.link}}"
+              }
+            ]
+          }
+        }
+      },
+      "id": "14a59830-ab1f-4ea7-bd7f-c20afb00fc31",
+      "name": "Facebook Graph API",
+      "type": "n8n-nodes-base.facebookGraphApi",
+      "typeVersion": 1,
+      "position": [528, -16],
+      "credentials": {
+        "facebookGraphApi": {
+          "id": "CGGakNGphccGvIDc",
+          "name": "Facebook Graph account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Manual Trigger (Social Share)": {
+      "main": [
+        [
+          {
+            "node": "Set Slug",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Slug": {
+      "main": [
+        [
+          {
+            "node": "Get Exchange MDX",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Exchange MDX": {
+      "main": [
+        [
+          {
+            "node": "Parse Frontmatter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse Frontmatter": {
+      "main": [
+        [
+          {
+            "node": "Format Social Post",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Social Post": {
+      "main": [
+        [
+          {
+            "node": "APITemplate Generate Image",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Facebook Graph API",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Create Tweet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "APITemplate Generate Image": {
+      "main": [
+        [
+          {
+            "node": "Merge Data for Instagram",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge Data for Instagram": {
+      "main": [
+        [
+          {
+            "node": "Instagram Create Media",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Instagram Create Media": {
+      "main": [
+        [
+          {
+            "node": "Debug Instagram Create Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Debug Instagram Create Response": {
+      "main": [
+        [
+          {
+            "node": "Instagram Publish Media",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "67d35cb8-8097-490e-968a-8c7cecba2e72",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "002b5e092f04f4d75aa57fd214532db5fa3d65fe608d265bda2ed541d575f595"
+  },
+  "id": "KYJga45bwixvg8DY",
+  "tags": []
+}
