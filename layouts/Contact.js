@@ -4,6 +4,7 @@ import {
   FaTwitter,
   FaFacebook,
   FaInstagram,
+  FaTelegramPlane,
 } from "react-icons/fa";
 import Link from "next/link";
 
@@ -57,6 +58,16 @@ const Contact = () => {
             className="text-yellow-500 hover:underline"
           >
             @TheCrypto.Wiki
+          </a>
+        </li>
+        <li className="mb-2">
+          <FaTelegramPlane className="mr-2 inline-block text-yellow-500" />
+          <strong>Telegram:</strong>{" "}
+          <a
+            href="https://t.me/thecryptowiki"
+            className="text-yellow-500 hover:underline"
+          >
+            @thecryptowiki
           </a>
         </li>
         <li className="mb-2">
