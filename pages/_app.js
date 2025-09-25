@@ -102,7 +102,7 @@ const MyApp = ({ Component, pageProps }) => {
           });
         `}
       </Script>
-      {/* {!isApp && (
+      {!isApp && (
         <>
           <Script
             strategy="afterInteractive"
@@ -110,7 +110,7 @@ const MyApp = ({ Component, pageProps }) => {
             crossOrigin="anonymous"
           />
         </>
-      )} */}
+      )}
       <Component {...pageProps} isApp={isApp} />
     </JsonContext>
   );
