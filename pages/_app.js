@@ -23,15 +23,23 @@ const MyApp = ({ Component, pageProps }) => {
   const pf = theme.fonts.font_family.primary;
   const sf = theme.fonts.font_family.secondary;
   const [fontcss, setFontcss] = useState();
-  const [isApp, setIsApp] = useState(false);
+  const [isApp, setIsApp] = useState(() => {
+    if (typeof window !== "undefined") {
+      const urlParams = new URLSearchParams(window.location.search);
+      return (
+        urlParams.get("isApp") === "true" ||
+        !!window.isApp ||
+        localStorage.getItem("isApp") === "true"
+      );
+    }
+    return false;
+  });
 
   useEffect(() => {
-    const clientIsApp = getIsAppFlag();
-    if (clientIsApp) {
-      setIsApp(true);
+    if (isApp) {
       localStorage.setItem("isApp", "true");
     }
-  }, []);
+  }, [isApp]);
 
   useEffect(() => {
     fetch(
@@ -82,11 +90,6 @@ const MyApp = ({ Component, pageProps }) => {
         {noIndexPages.includes(router.pathname) && (
           <meta name="robots" content="noindex, follow" />
         )}
-        {/* ExoClick */}
-        <meta
-          name="6a97888e-site-verification"
-          content="d0624c09694d795539537403fa4dbe14"
-        ></meta>
       </Head>
       <Script
         strategy="afterInteractive"
