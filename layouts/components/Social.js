@@ -21,6 +21,7 @@ import {
   FaBitcoin,
   FaWallet,
   FaTelegramPlane,
+  FaDiscord,
 } from "react-icons/fa";
 
 const Social = ({ source, className }) => {
@@ -44,6 +45,7 @@ const Social = ({ source, className }) => {
     whatsapp,
     tiktok,
     telegram,
+    discord,
     website,
     email,
     phone,
@@ -123,6 +125,18 @@ const Social = ({ source, className }) => {
             rel="noopener noreferrer nofollow"
           >
             <FaTelegramPlane />
+          </a>
+        </li>
+      )}
+      {discord && (
+        <li className="inline-block">
+          <a
+            aria-label="discord"
+            href={discord}
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+          >
+            <FaDiscord />
           </a>
         </li>
       )}
