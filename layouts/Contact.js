@@ -67,7 +67,7 @@ const Contact = () => {
             href="https://t.me/thecryptowiki"
             className="text-yellow-500 hover:underline"
           >
-            @thecryptowiki
+            @TheCryptoWiki
           </a>
         </li>
         <li className="mb-2">
