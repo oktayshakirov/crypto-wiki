@@ -21,7 +21,7 @@ const CryptoOGs = ({ ogs }) => {
                   alt={og.frontmatter.title}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  className="rounded-lg"
+                  className="rounded-lg object-cover"
                   loading="lazy"
                 />
               </div>
