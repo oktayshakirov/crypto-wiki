@@ -60,15 +60,7 @@ const MyApp = ({ Component, pageProps }) => {
     }
   }, [isApp]);
 
-  const noIndexPages = [
-    "/contact",
-    "/faq",
-    "/privacy-policy",
-    "/terms",
-    "/affiliate-disclosure",
-    "/advertising",
-    "/authors",
-  ];
+  const noIndexPages = ["/contact", "/faq", "/authors"];
 
   return (
     <JsonContext>
