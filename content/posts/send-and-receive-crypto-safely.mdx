@@ -97,6 +97,8 @@ This is where many mistakes happen. Cryptocurrencies can exist on multiple block
 
 - Match the token and chain precisely. If you're sending "USDT on Ethereum," make sure both your wallet and the recipient support Ethereum (ERC‑20).
 - Never assume compatibility. An Ethereum address (starting with 0x) won't work for Solana, XRP, or Bitcoin—each has its own address format.
+- Verify that both your sending wallet and the receiving platform support the exact network you've chosen. For exchange deposits, the deposit page will explicitly list which networks are supported for each asset. Don't assume—verify.
+- If the network isn't listed on the deposit page, don't send to it. The funds may be irretrievable.
 - When in doubt, ask the recipient to confirm which network they're using.
 
 ### Step 2: Collect Recipient Details from the Source
@@ -108,8 +110,9 @@ Always get the address directly from the source—never trust addresses sent via
 - Copy-paste the address directly from the recipient's wallet app or the exchange's official deposit page.
 - Prefer scanning QR codes when possible—this eliminates typing errors entirely.
 - If the destination requires a memo/tag (common for XRP, XLM, ATOM, and BNB Beacon Chain when sending to exchanges), copy both the address and memo/tag exactly. Treat them as equally important.
+- **For receiving crypto:** When someone is sending you crypto, share the correct address, network name (e.g., "Ethereum ERC‑20"), and any required memo/tag. Make it clear which is which. Most wallets and exchanges can generate QR codes that include both address and memo/tag. Never share seed phrases or private keys—you only need to share your public address to receive funds.
 
-### Step 3: Validate the Address Format
+### Step 3: Validate the Address Format and Double-Check Characters
 
 Each blockchain uses a specific address format. If the format doesn't match what you expect, something's wrong. This is like checking that a mailing address has the right format before sending a package.
 
@@ -123,32 +126,22 @@ Each blockchain uses a specific address format. If the format doesn't match what
 **What to do:**
 
 - Verify the format matches the network you're using.
+- Double-check address characters: verify the first 6 and last 6 characters of the address match what the recipient provided. Even one wrong character means your funds go to the wrong address—and you'll never see them again.
+- For extra safety, read the address aloud or have a second person verify it.
+- Be aware of "address poisoning" attacks where scammers send tiny amounts to addresses similar to your real contacts, hoping you'll copy the wrong one from your transaction history. Always verify addresses from the original source, not your history.
 - If something looks off, stop and double-check with the recipient. It's better to ask than to lose funds.
 
-### Step 4: Confirm Network Support on Both Ends
+### Step 4: Add the Correct Memo/Tag When Required
 
-Before sending, verify that both your sending wallet and the receiving platform support the exact network you've chosen. This might seem obvious, but it's a common point of failure.
-
-**What to do:**
-
-- Check that your wallet supports the network (most modern wallets support multiple chains).
-- For exchange deposits, the deposit page will explicitly list which networks are supported for each asset. Don't assume—verify.
-- If the network isn't listed on the deposit page, don't send to it. The funds may be irretrievable.
-
-### Step 5: Send a Small Test Transaction First
-
-This is your safety net. For any new destination, chain, or significant amount, send a small test first—typically 1–5% of the total amount you plan to send. This might seem like an extra step, but it's saved countless people from losing everything.
+Some networks require an additional memo or tag when sending to exchange wallets. This is like an apartment number—the address gets it to the building, but the memo gets it to the right account.
 
 **What to do:**
 
-- Send a small test amount that's meaningful enough to confirm the process works (including memos/tags if required) but not so large that losing it would hurt.
-- Wait for the test to be confirmed and credited.
-- Verify the recipient received it correctly.
-- Only then send the remainder.
+- If the exchange deposit page shows a memo/tag field, copy it exactly along with the address.
+- Double-check that you've entered it correctly—missing or incorrect memos can delay or prevent crediting.
+- If you forget the memo, contact the exchange's support immediately with your transaction ID (TXID), address, amount, and timestamp. Recovery isn't guaranteed and may require a fee, but it's worth trying.
 
-**Why this matters:** A test transaction confirms that addresses, networks, memos, and fees all work correctly before you risk the full amount.
-
-### Step 6: Review Fees and Speed Trade-offs
+### Step 5: Review Fees and Speed Trade-offs
 
 Transaction fees vary based on network congestion and how quickly you want the transaction processed. Understanding this helps you make informed decisions and avoid overpaying.
 
@@ -168,31 +161,20 @@ Transaction fees vary based on network congestion and how quickly you want the t
 - Avoid "max fee" or "fastest" presets unless the transfer is truly time-critical
 - Consider Layer 2 solutions (like Arbitrum or Optimism) for lower fees if the recipient supports them
 
-### Step 7: Double-Check Address Characters
+### Step 6: Send a Small Test Transaction First
 
-Even one wrong character means your funds go to the wrong address—and you'll never see them again. This final check is critical.
-
-**What to do:**
-
-- Verify the first 6 and last 6 characters of the address match what the recipient provided.
-- For extra safety, read the address aloud or have a second person verify it.
-- Be aware of "address poisoning" attacks where scammers send tiny amounts to addresses similar to your real contacts, hoping you'll copy the wrong one from your transaction history. Always verify addresses from the original source, not your history.
-
-### Step 8: Add the Correct Memo/Tag When Required
-
-Some networks require an additional memo or tag when sending to exchange wallets. This is like an apartment number—the address gets it to the building, but the memo gets it to the right account.
+This is your safety net. For any new destination, chain, or significant amount, send a small test first—typically 1–5% of the total amount you plan to send. This might seem like an extra step, but it's saved countless people from losing everything.
 
 **What to do:**
 
-- If the exchange deposit page shows a memo/tag field, copy it exactly along with the address.
-- Double-check that you've entered it correctly—missing or incorrect memos can delay or prevent crediting.
-- If you forget the memo, contact the exchange's support immediately with your transaction ID (TXID), address, amount, and timestamp. Recovery isn't guaranteed and may require a fee, but it's worth trying.
+- Send a small test amount that's meaningful enough to confirm the process works (including memos/tags if required) but not so large that losing it would hurt.
+- Wait for the test to be confirmed and credited.
+- Verify the recipient received it correctly.
+- Only then send the remainder.
 
-### Step 9: Wait for Confirmations Before Sending the Remainder
+**Why this matters:** A test transaction confirms that addresses, networks, memos, and fees all work correctly before you risk the full amount. After your test transaction, wait for it to be fully confirmed before sending the rest. Different networks have different confirmation requirements—we'll cover this in detail below in the "Confirmations and Finality" section.
 
-After your test transaction, wait for it to be fully confirmed before sending the rest. Different networks have different confirmation requirements—we'll cover this in detail below in the "Confirmations and Finality" section.
-
-### Step 10: Save Your Transaction Details
+### Step 7: Save Your Transaction Details
 
 Keep records of every transaction. You'll need them for taxes, support tickets, and your own records.
 
@@ -236,8 +218,6 @@ When you send cryptocurrency from a hardware wallet, the process is similar to s
 - **Keep your device updated:** Regularly update your hardware wallet's firmware to patch security vulnerabilities.
 - **Never share your PIN or recovery phrase:** Your hardware wallet will never ask you to enter your recovery phrase on your computer—only on the device itself.
 
-![Hardware wallet approving a test transaction before a large send](/images/posts/ledger.jpeg)
-
 ### Receiving To a Hardware Wallet
 
 Receiving cryptocurrency to a hardware wallet is actually simpler than sending—you just need to provide your receiving address. The hardware wallet doesn't need to be connected to receive funds.
@@ -274,17 +254,7 @@ Receiving cryptocurrency to a hardware wallet is actually simpler than sending�
 
 Remember: hardware wallets provide excellent security, but they're not foolproof. Always follow the same careful process—verify addresses, send test transactions, and double-check everything—even when using a hardware wallet.
 
-## How to Receive Crypto Safely
-
-Receiving cryptocurrency is simpler than sending it, but follow these key practices:
-
-- **Provide exact network and memo/tag information:** When someone is sending you crypto, share the correct address, network name (e.g., "Ethereum ERC‑20"), and any required memo/tag. Make it clear which is which.
-
-- **Prefer QR codes:** QR codes eliminate typing errors. Most wallets and exchanges can generate QR codes that include both address and memo/tag.
-
-- **Never share seed phrases or private keys:** You only need to share your public address to receive funds. Anyone asking for your seed phrase or private keys is scamming you.
-
-- **Verify transactions yourself:** After someone sends you crypto, ask for the transaction ID (TXID) and verify it on a block explorer (like Etherscan or Blockchain.info) before acknowledging receipt.
+![Hardware wallet approving a test transaction before a large send](/images/posts/ledger.jpeg)
 
 ## Confirmations and Finality: How Long Is "Safe"?
 
