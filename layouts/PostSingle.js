@@ -4,7 +4,13 @@ import SimilarPosts from "@partials/SimilarPosts";
 import { MDXRemote } from "next-mdx-remote";
 import Image from "next/image";
 import Link from "next/link";
-import { FaCalendarAlt, FaTag, FaUser, FaExchangeAlt } from "react-icons/fa";
+import {
+  FaCalendarAlt,
+  FaTag,
+  FaUser,
+  FaExchangeAlt,
+  FaExclamationTriangle,
+} from "react-icons/fa";
 import NextPrevNavigation from "@partials/NextPrevNavigation";
 import GoBackLink from "@partials/GoBackLink";
 import Base from "./Baseof";
@@ -37,6 +43,21 @@ const PostSingle = ({
       <section className="section">
         <div className="container">
           <GoBackLink option="posts" />
+          <div className="mt-4 rounded-lg border-2 border-orange-400 p-4 text-center">
+            <div className="mb-2 flex justify-center">
+              <FaExclamationTriangle className="text-4xl text-orange-400" />
+            </div>
+            <p className="m-0">
+              <strong>Disclaimer:</strong> This article is for educational
+              purposes only and{" "}
+              <strong>does not constitute financial advice</strong>. Crypto
+              investments involve significant risks, including the potential
+              loss of all invested capital.{" "}
+              <strong>Never invest more than you can afford to lose</strong>.
+              Always conduct your own research and consult with a qualified
+              financial advisor before making any investment decisions.
+            </p>
+          </div>
           <article className="text-center">
             {markdownify(title, "h1", "h1 mb-4")}
             <div className="mb-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-gray-600 dark:text-gray-400">
