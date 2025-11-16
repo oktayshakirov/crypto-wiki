@@ -3,7 +3,7 @@ import React from "react";
 const ExchangeButton = ({
   href,
   text,
-  disclaimer = "We may earn a commission if you sign up through our link, at no extra cost to you.",
+  disclaimer = "Disclosure: We may earn a commission at no extra cost to you. This is not financial advice. Cryptocurrency exchanges involve significant risks, including potential loss of all funds. Always verify the platform is legal in your jurisdiction and never invest more than you can afford to lose.",
   className = "",
 }) => {
   return (
