@@ -3,80 +3,31 @@ import theme from "@config/theme.json";
 import { JsonContext } from "context/state";
 import Head from "next/head";
 import Script from "next/script";
-import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import TagManager from "react-gtm-module";
 import "styles/style.scss";
-
-if (typeof window !== "undefined") {
-  window.adsbygoogle = window.adsbygoogle || [];
-}
-
-function getIsAppFlag() {
-  if (typeof window === "undefined") return false;
-  const appFlag = document.documentElement.classList.contains("is-app");
-  if (appFlag) return true;
-  const urlParams = new URLSearchParams(window.location.search);
-  return (
-    urlParams.get("isApp") === "true" ||
-    !!window.isApp ||
-    localStorage.getItem("isApp") === "true"
-  );
-}
-
-const AdsWrapper = () => {
-  useEffect(() => {
-    const appFlag = document.documentElement.classList.contains("is-app");
-
-    if (appFlag) {
-      localStorage.setItem("isApp", "true");
-    } else {
-      if (!document.querySelector('script[src*="adsbygoogle.js"]')) {
-        const script = document.createElement("script");
-        script.async = true;
-        script.src =
-          "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5852582960793521";
-        script.crossOrigin = "anonymous";
-        document.head.appendChild(script);
-      }
-      localStorage.removeItem("isApp");
-    }
-  }, []);
-
-  return null;
-};
-
-const DynamicAdsWrapper = dynamic(() => Promise.resolve(AdsWrapper), {
-  ssr: false,
-});
 
 const MyApp = ({ Component, pageProps }) => {
   const router = useRouter();
   const pf = theme.fonts.font_family.primary;
   const sf = theme.fonts.font_family.secondary;
   const [fontcss, setFontcss] = useState();
-  const [isApp, setIsApp] = useState(() => getIsAppFlag());
-
-  useEffect(() => {
-    const checkIsApp = () => {
-      const appFlag = document.documentElement.classList.contains("is-app");
-      setIsApp((currentIsApp) => {
-        return appFlag !== currentIsApp ? appFlag : currentIsApp;
-      });
-    };
-    checkIsApp();
-    const timeout = setTimeout(checkIsApp, 100);
-    return () => clearTimeout(timeout);
-  }, []);
+  const [isApp, setIsApp] = useState(() => {
+    if (typeof window !== "undefined") {
+      const urlParams = new URLSearchParams(window.location.search);
+      return (
+        urlParams.get("isApp") === "true" ||
+        !!window.isApp ||
+        localStorage.getItem("isApp") === "true"
+      );
+    }
+    return false;
+  });
 
   useEffect(() => {
     if (isApp) {
       localStorage.setItem("isApp", "true");
-      document.documentElement.classList.add("is-app");
-    } else {
-      localStorage.removeItem("isApp");
-      document.documentElement.classList.remove("is-app");
     }
   }, [isApp]);
 
@@ -121,15 +72,6 @@ const MyApp = ({ Component, pageProps }) => {
         {noIndexPages.includes(router.pathname) && (
           <meta name="robots" content="noindex, follow" />
         )}
-        <style
-          dangerouslySetInnerHTML={{
-            __html: `
-              .is-app .isApp {
-                display: none !important;
-              }
-            `,
-          }}
-        />
       </Head>
       <Script
         strategy="afterInteractive"
@@ -145,7 +87,13 @@ const MyApp = ({ Component, pageProps }) => {
           });
         `}
       </Script>
-      <DynamicAdsWrapper />
+      {!isApp && (
+        <Script
+          strategy="afterInteractive"
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5852582960793521"
+          crossOrigin="anonymous"
+        />
+      )}
       <Component {...pageProps} isApp={isApp} />
     </JsonContext>
   );
