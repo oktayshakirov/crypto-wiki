@@ -8,6 +8,16 @@ import { useRouter } from "next/router";
 import TagManager from "react-gtm-module";
 import "styles/style.scss";
 
+function getIsAppFlag() {
+  if (typeof window === "undefined") return false;
+  const urlParams = new URLSearchParams(window.location.search);
+  return (
+    urlParams.get("isApp") === "true" ||
+    !!window.isApp ||
+    localStorage.getItem("isApp") === "true"
+  );
+}
+
 const MyApp = ({ Component, pageProps }) => {
   const router = useRouter();
   const pf = theme.fonts.font_family.primary;
@@ -87,13 +97,15 @@ const MyApp = ({ Component, pageProps }) => {
           });
         `}
       </Script>
-      {!isApp && (
-        <Script
-          strategy="afterInteractive"
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5852582960793521"
-          crossOrigin="anonymous"
-        />
-      )}
+      {/* {!isApp && (
+        <>
+          <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5852582960793521"
+            crossorigin="anonymous"
+          ></script>
+        </>
+      )} */}
       <Component {...pageProps} isApp={isApp} />
     </JsonContext>
   );
