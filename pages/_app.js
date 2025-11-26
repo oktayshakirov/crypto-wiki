@@ -65,6 +65,10 @@ const MyApp = ({ Component, pageProps }) => {
   return (
     <JsonContext>
       <Head>
+        <meta
+          name="bitmedia-site-verification"
+          content="b7a8ee0079870c3395576ffce1a1dd6f"
+        />
         <link
           rel="preconnect"
           href="https://fonts.gstatic.com"
