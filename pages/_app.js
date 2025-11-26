@@ -65,6 +65,7 @@ const MyApp = ({ Component, pageProps }) => {
   return (
     <JsonContext>
       <Head>
+        <meta name="coinzilla" content="443272930fe2561111352ad40cb6da17" />
         <link
           rel="preconnect"
           href="https://fonts.gstatic.com"
@@ -97,7 +98,6 @@ const MyApp = ({ Component, pageProps }) => {
           });
         `}
       </Script>
-      <meta name="coinzilla" content="443272930fe2561111352ad40cb6da17" />
       {/* {!isApp && (
         <>
           <script
