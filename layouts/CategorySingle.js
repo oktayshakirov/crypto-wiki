@@ -2,6 +2,7 @@ import config from "@config/config.json";
 import Base from "@layouts/Baseof";
 import Posts from "@partials/Posts";
 import Pagination from "@components/Pagination";
+import BannerAd from "@layouts/components/BannerAd";
 import { FaArrowLeft } from "react-icons/fa";
 import Link from "next/link";
 
@@ -37,7 +38,9 @@ const CategoryLayout = ({
             Showing posts from <span className="text-primary">{category}</span>{" "}
             category
           </h1>
+          {!isApp && <BannerAd id={`category-${category}-ad-1`} />}
           <Posts posts={posts} cryptoOgs={cryptoOgs} exchanges={exchanges} />
+          {!isApp && <BannerAd id={`category-${category}-ad-2`} />}
           <Pagination
             section={`categories/${category}`}
             totalPages={totalPages}
