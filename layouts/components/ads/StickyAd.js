@@ -1,12 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 
-let bitmediaStickyAdRightLoaded = false;
+let bitmediaStickyAdLoaded = false;
 
-const StickyAdRight = ({
-  className = "",
-  style = {},
-  id = "sticky-ad-right",
-}) => {
+const StickyAd = ({ className = "", style = {}, id = "sticky-ad-bottom" }) => {
   const adRef = useRef(null);
   const [isDevelopment, setIsDevelopment] = useState(false);
 
@@ -23,13 +19,13 @@ const StickyAdRight = ({
       setIsDevelopment(isDev);
     }
 
-    if (bitmediaStickyAdRightLoaded || typeof window === "undefined") return;
+    if (bitmediaStickyAdLoaded || typeof window === "undefined") return;
 
     const existingScript = document.querySelector(
-      'script[src*="692e1ae6583b3fbfcbb4e22b"]'
+      'script[src*="692e1c90583b3fbfcbb4e450"]'
     );
     if (existingScript) {
-      bitmediaStickyAdRightLoaded = true;
+      bitmediaStickyAdLoaded = true;
       return;
     }
 
@@ -48,39 +44,39 @@ const StickyAdRight = ({
         window,
         document,
         "script",
-        "692e1ae6583b3fbfcbb4e22b",
+        "692e1c90583b3fbfcbb4e450",
         ["cdn.bmcdn6.com"],
         0,
         new Date().getTime()
       );
     })();
 
-    bitmediaStickyAdRightLoaded = true;
+    bitmediaStickyAdLoaded = true;
   }, []);
 
   if (isDevelopment) {
     return (
       <div
-        className={`sticky-ad-right-placeholder ${className}`}
+        className={`sticky-ad-bottom-placeholder ${className}`}
         style={{
           position: "fixed",
+          bottom: "0",
+          left: "0",
           right: "0",
-          top: "50%",
-          transform: "translateY(-50%)",
           zIndex: "1000",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          minHeight: "250px",
-          minWidth: "160px",
-          maxWidth: "160px",
+          minHeight: "90px",
+          width: "100%",
           backgroundColor: "#1f2937",
           border: "2px dashed #4b5563",
-          borderRadius: "4px",
+          borderTopLeftRadius: "4px",
+          borderTopRightRadius: "4px",
           color: "#ffffff",
-          fontSize: "12px",
+          fontSize: "14px",
           textAlign: "center",
-          padding: "20px 10px",
+          padding: "20px",
           margin: "0",
           ...style,
         }}
@@ -92,21 +88,11 @@ const StickyAdRight = ({
               fontWeight: "bold",
               marginBottom: "8px",
               color: "#ffffff",
-              writingMode: "vertical-rl",
-              textOrientation: "mixed",
             }}
           >
-            Sticky Ad Right
+            Sticky Ad Bottom
           </div>
-          <div
-            style={{
-              fontSize: "10px",
-              opacity: 0.7,
-              color: "#d1d5db",
-              writingMode: "vertical-rl",
-              textOrientation: "mixed",
-            }}
-          >
+          <div style={{ fontSize: "12px", opacity: 0.7, color: "#d1d5db" }}>
             Bitmedia ads only display in production
           </div>
         </div>
@@ -117,12 +103,12 @@ const StickyAdRight = ({
   return (
     <ins
       ref={adRef}
-      className={`692e1ae6583b3fbfcbb4e22b ${className}`}
+      className={`692e1c90583b3fbfcbb4e450 ${className}`}
       style={{
         position: "fixed",
+        bottom: "0",
+        left: "0",
         right: "0",
-        top: "50%",
-        transform: "translateY(-50%)",
         zIndex: "1000",
         display: "inline-block",
         width: "1px",
@@ -134,4 +120,4 @@ const StickyAdRight = ({
   );
 };
 
-export default StickyAdRight;
+export default StickyAd;
