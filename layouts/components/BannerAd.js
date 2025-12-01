@@ -1,12 +1,17 @@
 import { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/router";
+
+let routeChangeHandlerRegistered = false;
 
 const BannerAd = ({ className = "", style = {}, id }) => {
   const containerRef = useRef(null);
   const adRef = useRef(null);
+  const router = useRouter();
   const [isDevelopment, setIsDevelopment] = useState(false);
   const [uniqueId] = useState(
     () => id || `banner-ad-${Math.random().toString(36).substr(2, 9)}`
   );
+  const scriptLoadedRef = useRef(false);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -20,7 +25,41 @@ const BannerAd = ({ className = "", style = {}, id }) => {
 
       setIsDevelopment(isDev);
     }
+  }, []);
 
+  useEffect(() => {
+    if (typeof window === "undefined" || isDevelopment) return;
+
+    if (!routeChangeHandlerRegistered && router.events) {
+      routeChangeHandlerRegistered = true;
+
+      const handleRouteChange = () => {
+        setTimeout(() => {
+          const allAdElements = document.querySelectorAll(
+            "ins.692e0776457ec2706b483e16"
+          );
+          allAdElements.forEach((adElement) => {
+            const container = adElement.parentElement;
+            if (container) {
+              const existingScript = container.querySelector(
+                `script[data-bitmedia-ad="${adElement.id}"]`
+              );
+              if (!existingScript) {
+                const script = document.createElement("script");
+                script.setAttribute("data-bitmedia-ad", adElement.id);
+                script.textContent = `!function(e,n,c,t,o,r,d){!function e(n,c,t,o,r,m,d,s,a){s=c.getElementsByTagName(t)[0],(a=c.createElement(t)).async=!0,a.src="https://"+r[m]+"/js/"+o+".js?v="+d,a.onerror=function(){a.remove(),(m+=1)>=r.length||e(n,c,t,o,r,m)},s.parentNode.insertBefore(a,s)}(window,document,"script","692e0776457ec2706b483e16",["cdn.bmcdn6.com"], 0, new Date().getTime())}();`;
+                container.appendChild(script);
+              }
+            }
+          });
+        }, 800);
+      };
+
+      router.events.on("routeChangeComplete", handleRouteChange);
+    }
+  }, [router, isDevelopment]);
+
+  useEffect(() => {
     if (typeof window === "undefined" || isDevelopment) return;
 
     if (!containerRef.current || !adRef.current) return;
@@ -29,11 +68,20 @@ const BannerAd = ({ className = "", style = {}, id }) => {
       const existingScript = containerRef.current.querySelector(
         `script[data-bitmedia-ad="${uniqueId}"]`
       );
-      if (existingScript) return;
+      if (existingScript && scriptLoadedRef.current) {
+        existingScript.remove();
+        scriptLoadedRef.current = false;
+      }
+
+      if (scriptLoadedRef.current) return;
 
       const script = document.createElement("script");
       script.setAttribute("data-bitmedia-ad", uniqueId);
       script.textContent = `!function(e,n,c,t,o,r,d){!function e(n,c,t,o,r,m,d,s,a){s=c.getElementsByTagName(t)[0],(a=c.createElement(t)).async=!0,a.src="https://"+r[m]+"/js/"+o+".js?v="+d,a.onerror=function(){a.remove(),(m+=1)>=r.length||e(n,c,t,o,r,m)},s.parentNode.insertBefore(a,s)}(window,document,"script","692e0776457ec2706b483e16",["cdn.bmcdn6.com"], 0, new Date().getTime())}();`;
+
+      script.onload = () => {
+        scriptLoadedRef.current = true;
+      };
 
       containerRef.current.appendChild(script);
     };
@@ -42,8 +90,11 @@ const BannerAd = ({ className = "", style = {}, id }) => {
       loadScriptForThisAd();
     }, 100);
 
-    return () => clearTimeout(timer);
-  }, [isDevelopment, uniqueId]);
+    return () => {
+      clearTimeout(timer);
+      scriptLoadedRef.current = false;
+    };
+  }, [isDevelopment, uniqueId, router.pathname]);
 
   if (isDevelopment) {
     return (
