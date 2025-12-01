@@ -2,9 +2,12 @@ import { useEffect, useRef, useState } from "react";
 
 let bitmediaScriptLoaded = false;
 
-const BannerAd = ({ className = "", style = {}, id = "banner-ad" }) => {
+const BannerAd = ({ className = "", style = {}, id }) => {
   const adRef = useRef(null);
   const [isDevelopment, setIsDevelopment] = useState(false);
+  const [uniqueId] = useState(
+    () => id || `banner-ad-${Math.random().toString(36).substr(2, 9)}`
+  );
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -74,7 +77,7 @@ const BannerAd = ({ className = "", style = {}, id = "banner-ad" }) => {
           margin: "20px 0",
           ...style,
         }}
-        id={id}
+        id={uniqueId}
       >
         <div>
           <div
@@ -99,7 +102,7 @@ const BannerAd = ({ className = "", style = {}, id = "banner-ad" }) => {
       ref={adRef}
       className={`692e0776457ec2706b483e16 ${className}`}
       style={{ display: "inline-block", width: "1px", height: "1px", ...style }}
-      id={id}
+      id={uniqueId}
     />
   );
 };
