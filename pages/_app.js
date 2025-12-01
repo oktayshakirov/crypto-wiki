@@ -6,6 +6,8 @@ import Script from "next/script";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import TagManager from "react-gtm-module";
+import StickyAdLeft from "@components/ads/StickyAd-Left";
+import StickyAdRight from "@components/ads/StickyAd-Right";
 import "styles/style.scss";
 
 function getIsAppFlag() {
@@ -106,6 +108,8 @@ const MyApp = ({ Component, pageProps }) => {
           ></script>
         </>
       )} */}
+      {!isApp && <StickyAdLeft />}
+      {!isApp && <StickyAdRight />}
       <Component {...pageProps} isApp={isApp} />
     </JsonContext>
   );
