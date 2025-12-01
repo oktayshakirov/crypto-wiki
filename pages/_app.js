@@ -8,8 +8,6 @@ import { useRouter } from "next/router";
 import TagManager from "react-gtm-module";
 import "styles/style.scss";
 
-let bitmediaScriptLoaded = false;
-
 function getIsAppFlag() {
   if (typeof window === "undefined") return false;
   const urlParams = new URLSearchParams(window.location.search);
@@ -60,51 +58,6 @@ const MyApp = ({ Component, pageProps }) => {
         TagManager.initialize(tagManagerArgs);
       }, 5000);
     }
-  }, [isApp]);
-
-  useEffect(() => {
-    if (isApp || typeof window === "undefined") return;
-
-    const loadBitmediaScript = () => {
-      if (bitmediaScriptLoaded) return;
-
-      const existingScript = document.querySelector(
-        'script[src*="692e0776457ec2706b483e16"]'
-      );
-      if (existingScript) {
-        bitmediaScriptLoaded = true;
-        return;
-      }
-
-      setTimeout(() => {
-        !(function (e, n, c, t, o, r, d) {
-          !(function e(n, c, t, o, r, m, d, s, a) {
-            s = c.getElementsByTagName(t)[0];
-            a = c.createElement(t);
-            a.async = !0;
-            a.src = "https://" + r[m] + "/js/" + o + ".js?v=" + d;
-            a.onload = function () {
-              bitmediaScriptLoaded = true;
-            };
-            a.onerror = function () {
-              a.remove();
-              m + 1 >= r.length || e(n, c, t, o, r, m);
-            };
-            s.parentNode.insertBefore(a, s);
-          })(
-            window,
-            document,
-            "script",
-            "692e0776457ec2706b483e16",
-            ["cdn.bmcdn6.com"],
-            0,
-            new Date().getTime()
-          );
-        })();
-      }, 3000);
-    };
-
-    loadBitmediaScript();
   }, [isApp]);
 
   const noIndexPages = ["/contact", "/faq", "/authors"];
