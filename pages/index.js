@@ -6,7 +6,7 @@ import CryptoOGs from "@partials/CryptoOGs";
 import Exchanges from "@partials/Exchanges";
 import { markdownify } from "@lib/utils/textConverter";
 import FearAndGreedIndex from "@layouts/components/FearAndGreedIndex";
-import BannerAd from "@components/BannerAd";
+import BannerAd from "@components/ads/BannerAd";
 import Link from "next/link";
 
 import {
@@ -43,11 +43,11 @@ const Home = ({
     >
       <section>
         <div className="container my-7 text-center">
+          {!isApp && <BannerAd />}
           <h1 className="mb-8 text-3xl font-bold leading-tight sm:text-4xl">
             Uncover the World of{" "}
             <span className="font-mono text-primary">CRYPTO</span>
           </h1>
-          {!isApp && <BannerAd />}
           {markdownify("LATEST POSTS", "h3", "mb-8")}
           <Posts posts={posts} />
           <Pagination
