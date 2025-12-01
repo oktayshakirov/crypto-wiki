@@ -5,6 +5,7 @@ import Base from "./Baseof";
 import Social from "@components/Social";
 import Authors from "@components/Authors";
 import ExchangeButton from "@components/ExchangeButton";
+import BannerAd from "@layouts/components/BannerAd";
 import { FaCalendarAlt, FaExclamationTriangle } from "react-icons/fa";
 import Link from "next/link";
 import dateFormat from "@lib/utils/dateFormat";
@@ -68,9 +69,11 @@ const ExchangeSingle = ({
             )}
             {markdownify(title, "h1", "h1 mb-8")}
             <Social source={social} className="social-icons-simple" />
+            {!isApp && <BannerAd id={`exchange-${slug}-ad-1`} />}
             <div className="content text-start">
               <MDXRemote {...mdxContent} components={{ ExchangeButton }} />
             </div>
+            {!isApp && <BannerAd id={`exchange-${slug}-ad-2`} />}
             <div className="mt-4 rounded-lg border-2 border-orange-400 p-4 text-center">
               <p className="m-0">
                 Explore other platforms on our{" "}

@@ -2,6 +2,7 @@ import config from "@config/config.json";
 import Base from "@layouts/Baseof";
 import { getTaxonomy } from "@lib/taxonomyParser";
 import { humanize, markdownify } from "@lib/utils/textConverter";
+import BannerAd from "@layouts/components/BannerAd";
 import Link from "next/link";
 const { blog_folder } = config.settings;
 
@@ -18,6 +19,7 @@ const Tags = ({ tags, isApp }) => {
       <section className="section">
         <div className="container text-center">
           {markdownify("TAGS", "h1", "h1 mb-16")}
+          {!isApp && <BannerAd id="tags-index-ad-1" />}
           <ul className="flex flex-wrap justify-center gap-2">
             {tags.map((category, i) => (
               <li key={`category-${i}`}>

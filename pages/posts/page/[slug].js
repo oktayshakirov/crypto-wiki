@@ -3,6 +3,7 @@ import config from "@config/config.json";
 import Base from "@layouts/Baseof";
 import { getSinglePage, getListPage } from "@lib/contentParser";
 import Posts from "@partials/Posts";
+import BannerAd from "@layouts/components/BannerAd";
 import { humanize, markdownify } from "@lib/utils/textConverter";
 import Link from "next/link";
 import { getTaxonomy } from "@lib/taxonomyParser";
@@ -61,7 +62,9 @@ const PostPagination = ({
             </ul>
           </div>
           {markdownify(title, "h1", "h1 mb-8")}
+          {!isApp && <BannerAd id={`posts-page-${currentPage}-ad-1`} />}
           <Posts posts={posts} />
+          {!isApp && <BannerAd id={`posts-page-${currentPage}-ad-2`} />}
           <Pagination
             section="posts"
             totalPages={totalPages}
