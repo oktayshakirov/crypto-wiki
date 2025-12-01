@@ -6,7 +6,7 @@ import CryptoOGs from "@partials/CryptoOGs";
 import Exchanges from "@partials/Exchanges";
 import { markdownify } from "@lib/utils/textConverter";
 import FearAndGreedIndex from "@layouts/components/FearAndGreedIndex";
-import BannerAd from "@components/ads/BannerAd";
+import BannerAd from "@layouts/components/BannerAd";
 import Link from "next/link";
 
 import {
@@ -55,7 +55,7 @@ const Home = ({
             currentPage={currentPage}
             totalPages={postPages}
           />
-          <div className="mb-20 mt-6 flex flex-col justify-center space-y-3 md:flex-row md:space-x-3 md:space-y-0">
+          <div className="mb-10 mt-6 flex flex-col justify-center space-y-3 md:flex-row md:space-x-3 md:space-y-0">
             <Link className="btn-primary flex items-center gap-2" href="/posts">
               <FaRegNewspaper />
               <span>ALL POSTS</span>
@@ -72,7 +72,8 @@ const Home = ({
               <span>TAGS</span>
             </Link>
           </div>
-          <div className="card-secondary mb-10 p-10">
+          {!isApp && <BannerAd />}
+          <div className="card-secondary my-10 p-10">
             <div className="mb-20">
               {markdownify("MARKET MOOD", "h3")}
               {markdownify(
@@ -105,6 +106,7 @@ const Home = ({
               </Link>
             </div>
           </div>
+          {!isApp && <BannerAd />}
           <div className="mb-20">
             {markdownify("CRYPTO LEGENDS", "h3", "mb-8")}
             <CryptoOGs ogs={ogs} />
@@ -130,7 +132,8 @@ const Home = ({
               </Link>
             </div>
           </div>
-          <div className="mb-20">
+          {!isApp && <BannerAd />}
+          <div className="my-20">
             {markdownify("CRYPTO EXCHANGES", "h3", "mb-8")}
             <Exchanges exchanges={exchanges} />
             <Pagination
@@ -155,6 +158,7 @@ const Home = ({
               </Link>
             </div>
           </div>
+          {!isApp && <BannerAd />}
         </div>
       </section>
     </Base>
