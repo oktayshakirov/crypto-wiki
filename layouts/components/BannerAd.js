@@ -1,8 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 
-let bitmediaScriptLoaded = false;
-let bitmediaLoadTimeout = null;
-
 const BannerAd = ({ className = "", style = {}, id }) => {
   const adRef = useRef(null);
   const [isDevelopment, setIsDevelopment] = useState(false);
@@ -22,60 +19,7 @@ const BannerAd = ({ className = "", style = {}, id }) => {
 
       setIsDevelopment(isDev);
     }
-
-    if (typeof window === "undefined") return;
-
-    const loadBitmediaScript = () => {
-      if (bitmediaScriptLoaded) return;
-
-      const existingScript = document.querySelector(
-        'script[src*="692e0776457ec2706b483e16"]'
-      );
-      if (existingScript) {
-        bitmediaScriptLoaded = true;
-        return;
-      }
-
-      if (bitmediaLoadTimeout) {
-        clearTimeout(bitmediaLoadTimeout);
-      }
-
-      bitmediaLoadTimeout = setTimeout(() => {
-        !(function (e, n, c, t, o, r, d) {
-          !(function e(n, c, t, o, r, m, d, s, a) {
-            s = c.getElementsByTagName(t)[0];
-            a = c.createElement(t);
-            a.async = !0;
-            a.src = "https://" + r[m] + "/js/" + o + ".js?v=" + d;
-            a.onload = function () {
-              bitmediaScriptLoaded = true;
-            };
-            a.onerror = function () {
-              a.remove();
-              m + 1 >= r.length || e(n, c, t, o, r, m);
-            };
-            s.parentNode.insertBefore(a, s);
-          })(
-            window,
-            document,
-            "script",
-            "692e0776457ec2706b483e16",
-            ["cdn.bmcdn6.com"],
-            0,
-            new Date().getTime()
-          );
-        })();
-      }, 1500);
-    };
-
-    loadBitmediaScript();
-
-    return () => {
-      if (bitmediaLoadTimeout) {
-        clearTimeout(bitmediaLoadTimeout);
-      }
-    };
-  }, [isDevelopment]);
+  }, []);
 
   if (isDevelopment) {
     return (
