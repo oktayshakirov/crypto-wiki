@@ -47,7 +47,7 @@ const Home = ({
             Uncover the World of{" "}
             <span className="font-mono text-primary">CRYPTO</span>
           </h1>
-          {/* {!isApp && <BannerAd />} */}
+          {!isApp && <BannerAd />}
           {markdownify("LATEST POSTS", "h3", "mb-8")}
           <Posts posts={posts} />
           <Pagination
