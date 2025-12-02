@@ -3,11 +3,11 @@ import config from "@config/config.json";
 import Base from "@layouts/Baseof";
 import { getSinglePage, getListPage } from "@lib/contentParser";
 import Posts from "@partials/Posts";
-import BannerAd from "@layouts/components/BannerAd";
 import { humanize, markdownify } from "@lib/utils/textConverter";
 import Link from "next/link";
 import { getTaxonomy } from "@lib/taxonomyParser";
 import { FaTags } from "react-icons/fa";
+import BannerAd from "@layouts/components/BannerAd";
 
 const PostPagination = ({
   postIndex,
@@ -33,6 +33,7 @@ const PostPagination = ({
     >
       <section className="section">
         <div className="container text-center">
+          {!isApp && <BannerAd />}
           <div className="mb-8">
             <div className="block md:hidden">
               <Link
@@ -62,14 +63,13 @@ const PostPagination = ({
             </ul>
           </div>
           {markdownify(title, "h1", "h1 mb-8")}
-          {!isApp && <BannerAd id={`posts-page-${currentPage}-ad-1`} />}
           <Posts posts={posts} />
-          {!isApp && <BannerAd id={`posts-page-${currentPage}-ad-2`} />}
           <Pagination
             section="posts"
             totalPages={totalPages}
             currentPage={currentPage}
           />
+          {!isApp && <BannerAd />}
         </div>
       </section>
     </Base>
