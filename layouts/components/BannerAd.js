@@ -1,10 +1,120 @@
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
 
-// Global cleanup state - tracks the last route that was cleaned up
-let lastCleanedRoute = null;
-let cleanupTimestamp = 0;
+// Global ad slot registry and script management
+let registeredSlots = new Set();
+let scriptInjected = false;
+let scriptInjectionInProgress = false;
+let lastRoute = null;
 let cleanupInProgress = false;
+let scriptInjectionTimer = null;
+
+// Global cleanup function
+const performGlobalCleanup = () => {
+  // Remove all Bitmedia scripts from document head and body
+  const allScripts = document.querySelectorAll(
+    'script[src*="cdn.bmcdn6.com"], script[src*="bmcdn6.com"], script[id*="G5hF8MZvNqn"], script[data-bitmedia-global]'
+  );
+  allScripts.forEach((script) => script.remove());
+
+  // Remove any Bitmedia iframes
+  const iframes = document.querySelectorAll('iframe[src*="bmcdn6.com"]');
+  iframes.forEach((iframe) => iframe.remove());
+
+  // Clear all ad slot content - this is critical
+  const allAdSlots = document.querySelectorAll(
+    'ins[class*="692e0776457ec2706b483e16"]'
+  );
+  allAdSlots.forEach((slot) => {
+    slot.innerHTML = "";
+    slot.style.display = "inline-block";
+    slot.style.width = "1px";
+    slot.style.height = "1px";
+    // Remove any data attributes Bitmedia might have added
+    Array.from(slot.attributes).forEach((attr) => {
+      if (attr.name.startsWith("data-") && attr.name !== "data-bitmedia-ad") {
+        slot.removeAttribute(attr.name);
+      }
+    });
+  });
+
+  // Aggressively clear Bitmedia's global state
+  try {
+    if (window.bm) {
+      if (typeof window.bm.destroy === "function") {
+        window.bm.destroy();
+      }
+      if (typeof window.bm.clear === "function") {
+        window.bm.clear();
+      }
+      if (typeof window.bm.reset === "function") {
+        window.bm.reset();
+      }
+      // Clear any tracking arrays or objects
+      if (Array.isArray(window.bm.slots)) {
+        window.bm.slots.length = 0;
+      }
+      if (window.bm.slots && typeof window.bm.slots === "object") {
+        Object.keys(window.bm.slots).forEach((key) => {
+          delete window.bm.slots[key];
+        });
+      }
+    }
+  } catch (e) {
+    // Ignore errors
+  }
+
+  // Delete global Bitmedia variables
+  try {
+    delete window.bm;
+    delete window._bm;
+    delete window.bitmedia;
+    delete window.Bitmedia;
+  } catch (e) {
+    // Ignore errors
+  }
+};
+
+// Inject the Bitmedia script once per page
+const injectBitmediaScript = () => {
+  if (scriptInjectionInProgress || scriptInjected) return;
+
+  scriptInjectionInProgress = true;
+
+  // Check if script already exists
+  const existingScript = document.querySelector("script[data-bitmedia-global]");
+  if (existingScript) {
+    scriptInjected = true;
+    scriptInjectionInProgress = false;
+    return;
+  }
+
+  // Create and inject the script
+  const script = document.createElement("script");
+  script.setAttribute("data-bitmedia-global", "true");
+  script.textContent = `!function(e,n,c,t,o,r,d){!function e(n,c,t,o,r,m,d,s,a){s=c.getElementsByTagName(t)[0],(a=c.createElement(t)).async=!0,a.src="https://"+r[m]+"/js/"+o+".js?v="+d,a.onerror=function(){a.remove(),(m+=1)>=r.length||e(n,c,t,o,r,m)},s.parentNode.insertBefore(a,s)}(window,document,"script","692e0776457ec2706b483e16",["cdn.bmcdn6.com"], 0, new Date().getTime())}();`;
+
+  document.head.appendChild(script);
+  scriptInjected = true;
+  scriptInjectionInProgress = false;
+};
+
+// Schedule script injection after all slots are ready
+const scheduleScriptInjection = () => {
+  if (scriptInjectionTimer) {
+    clearTimeout(scriptInjectionTimer);
+  }
+
+  scriptInjectionTimer = setTimeout(() => {
+    // Double-check that we have slots registered
+    const allSlots = document.querySelectorAll(
+      'ins[class*="692e0776457ec2706b483e16"]'
+    );
+    if (allSlots.length > 0) {
+      injectBitmediaScript();
+    }
+  }, 300); // Wait 300ms for all components to mount
+};
 
 const BannerAd = ({ className = "", style = {}, id }) => {
   const containerRef = useRef(null);
@@ -30,158 +140,76 @@ const BannerAd = ({ className = "", style = {}, id }) => {
     }
   }, []);
 
-  // Global cleanup - runs once per route change, before any ads load
+  // Global cleanup on route change
   useEffect(() => {
     // Don't run on server or in development
     if (typeof window === "undefined" || isDevelopment) return;
 
     // Only cleanup if this is a new route
-    if (lastCleanedRoute === router.asPath && !cleanupInProgress) return;
+    if (lastRoute === router.asPath) return;
 
     // Mark cleanup as in progress
     cleanupInProgress = true;
-    lastCleanedRoute = router.asPath;
-    cleanupTimestamp = Date.now();
+    lastRoute = router.asPath;
 
-    // Comprehensive cleanup function
-    const performGlobalCleanup = () => {
-      // Remove all Bitmedia scripts from document head and body
-      const allScripts = document.querySelectorAll(
-        'script[src*="cdn.bmcdn6.com"], script[src*="bmcdn6.com"], script[id*="G5hF8MZvNqn"]'
-      );
-      allScripts.forEach((script) => script.remove());
+    // Reset script injection state
+    scriptInjected = false;
+    scriptInjectionInProgress = false;
+    registeredSlots.clear();
 
-      // Remove any Bitmedia iframes
-      const iframes = document.querySelectorAll('iframe[src*="bmcdn6.com"]');
-      iframes.forEach((iframe) => iframe.remove());
+    // Clear any pending script injection
+    if (scriptInjectionTimer) {
+      clearTimeout(scriptInjectionTimer);
+      scriptInjectionTimer = null;
+    }
 
-      // Clear all ad slot content - this is critical
-      const allAdSlots = document.querySelectorAll(
-        'ins[class*="692e0776457ec2706b483e16"]'
-      );
-      allAdSlots.forEach((slot) => {
-        slot.innerHTML = "";
-        slot.style.display = "inline-block";
-        slot.style.width = "1px";
-        slot.style.height = "1px";
-        // Remove any data attributes Bitmedia might have added
-        Array.from(slot.attributes).forEach((attr) => {
-          if (
-            attr.name.startsWith("data-") &&
-            attr.name !== "data-bitmedia-ad"
-          ) {
-            slot.removeAttribute(attr.name);
-          }
-        });
-      });
-
-      // Aggressively clear Bitmedia's global state
-      try {
-        if (window.bm) {
-          if (typeof window.bm.destroy === "function") {
-            window.bm.destroy();
-          }
-          if (typeof window.bm.clear === "function") {
-            window.bm.clear();
-          }
-          if (typeof window.bm.reset === "function") {
-            window.bm.reset();
-          }
-          // Clear any tracking arrays or objects
-          if (Array.isArray(window.bm.slots)) {
-            window.bm.slots.length = 0;
-          }
-          if (window.bm.slots && typeof window.bm.slots === "object") {
-            Object.keys(window.bm.slots).forEach((key) => {
-              delete window.bm.slots[key];
-            });
-          }
-        }
-      } catch (e) {
-        // Ignore errors
-      }
-
-      // Delete global Bitmedia variables
-      try {
-        delete window.bm;
-        delete window._bm;
-        delete window.bitmedia;
-        delete window.Bitmedia;
-      } catch (e) {
-        // Ignore errors
-      }
-
-      // Mark cleanup as complete after a short delay to ensure everything is cleared
-      setTimeout(() => {
-        cleanupInProgress = false;
-      }, 100);
-    };
-
-    // Perform cleanup immediately
+    // Perform cleanup
     performGlobalCleanup();
+
+    // Mark cleanup as complete after a delay
+    setTimeout(() => {
+      cleanupInProgress = false;
+    }, 150);
   }, [router.asPath, isDevelopment]);
 
-  // Load/reload Bitmedia script for this specific ad
+  // Register this ad slot and trigger script injection
   useEffect(() => {
     // Don't run on server or in development
     if (typeof window === "undefined" || isDevelopment) return;
 
-    if (!containerRef.current || !adRef.current) return;
+    if (!adRef.current) return;
 
-    // Wait for cleanup to complete and DOM to be ready
-    const loadAdScript = () => {
-      // Wait for cleanup to complete
+    // Wait for cleanup to complete
+    const registerSlot = () => {
       if (cleanupInProgress) {
-        setTimeout(loadAdScript, 50);
+        setTimeout(registerSlot, 50);
         return;
       }
 
-      // Ensure cleanup has happened for this route
-      const timeSinceCleanup = Date.now() - cleanupTimestamp;
-      const minWaitTime = 200; // Minimum wait after cleanup completes
+      // Register this slot
+      if (!registeredSlots.has(uniqueId)) {
+        registeredSlots.add(uniqueId);
 
-      if (timeSinceCleanup < minWaitTime) {
-        setTimeout(loadAdScript, minWaitTime - timeSinceCleanup);
-        return;
+        // Reset the ad element
+        if (adRef.current) {
+          adRef.current.innerHTML = "";
+          adRef.current.style.display = "inline-block";
+          adRef.current.style.width = "1px";
+          adRef.current.style.height = "1px";
+        }
+
+        // Schedule script injection (will be debounced)
+        scheduleScriptInjection();
       }
-
-      // Reset the ad element
-      if (adRef.current) {
-        adRef.current.innerHTML = "";
-        adRef.current.style.display = "inline-block";
-        adRef.current.style.width = "1px";
-        adRef.current.style.height = "1px";
-      }
-
-      // Clean up any existing scripts for this specific ad
-      const existingScripts = containerRef.current.querySelectorAll(
-        `script[data-bitmedia-ad="${uniqueId}"]`
-      );
-      existingScripts.forEach((script) => script.remove());
-
-      // Create and inject the script with a fresh timestamp to avoid caching
-      const script = document.createElement("script");
-      script.setAttribute("data-bitmedia-ad", uniqueId);
-      script.textContent = `!function(e,n,c,t,o,r,d){!function e(n,c,t,o,r,m,d,s,a){s=c.getElementsByTagName(t)[0],(a=c.createElement(t)).async=!0,a.src="https://"+r[m]+"/js/"+o+".js?v="+d,a.onerror=function(){a.remove(),(m+=1)>=r.length||e(n,c,t,o,r,m)},s.parentNode.insertBefore(a,s)}(window,document,"script","692e0776457ec2706b483e16",["cdn.bmcdn6.com"], 0, new Date().getTime())}();`;
-
-      containerRef.current.appendChild(script);
     };
 
-    // Start loading after ensuring DOM is ready
-    const timer = setTimeout(() => {
-      loadAdScript();
-    }, 250);
+    // Small delay to ensure DOM is ready
+    const timer = setTimeout(registerSlot, 100);
 
     return () => {
       clearTimeout(timer);
-      // Clean up this ad's scripts on unmount
-      const container = containerRef.current;
-      if (container) {
-        const scripts = container.querySelectorAll(
-          `script[data-bitmedia-ad="${uniqueId}"]`
-        );
-        scripts.forEach((script) => script.remove());
-      }
+      // Unregister on unmount
+      registeredSlots.delete(uniqueId);
     };
   }, [isDevelopment, uniqueId, router.asPath]);
 
