@@ -74,7 +74,7 @@ const Home = ({
           </div>
           {!isApp && <BannerAd />}
           <div className="card-secondary my-10 p-10">
-            <div className="mb-20">
+            <div className="mb-10">
               {markdownify("MARKET MOOD", "h3")}
               {markdownify(
                 "[Uncover Market Emotions with the Fear and Greed Index](/tools/fear-and-greed-index)"
@@ -107,7 +107,7 @@ const Home = ({
             </div>
           </div>
           {!isApp && <BannerAd />}
-          <div className="mb-20">
+          <div className="mb-10">
             {markdownify("CRYPTO LEGENDS", "h3", "mb-8")}
             <CryptoOGs ogs={ogs} />
             <Pagination
@@ -133,7 +133,7 @@ const Home = ({
             </div>
           </div>
           {!isApp && <BannerAd />}
-          <div className="my-20">
+          <div className="my-10">
             {markdownify("CRYPTO EXCHANGES", "h3", "mb-8")}
             <Exchanges exchanges={exchanges} />
             <Pagination
