@@ -68,13 +68,75 @@ const BannerAd = ({ className = "", style = {}, id }) => {
       containerRef.current.appendChild(script);
     };
 
-    // Load script with a small delay to ensure DOM is ready
+    // Load script with a delay to ensure cleanup completes and DOM is ready
     const timer = setTimeout(() => {
       loadScriptForThisAd();
-    }, 100);
+    }, 200);
 
     return () => clearTimeout(timer);
   }, [isDevelopment, uniqueId, router.asPath]); // Re-run on route change
+
+  // Global cleanup of Bitmedia scripts on route changes
+  useEffect(() => {
+    // Don't run on server or in development
+    if (typeof window === "undefined" || isDevelopment) return;
+
+    // Clean up all Bitmedia scripts and state on route change
+    const cleanupGlobalScripts = () => {
+      // Remove all Bitmedia scripts from document head
+      const headScripts = document.head.querySelectorAll(
+        'script[src*="cdn.bmcdn6.com"], script[src*="bmcdn6.com"]'
+      );
+      headScripts.forEach((script) => script.remove());
+
+      // Also remove any Bitmedia source scripts
+      const sourceScripts = document.head.querySelectorAll(
+        'script[id*="G5hF8MZvNqn"], script[src*="bmcdn6.com/js/source"]'
+      );
+      sourceScripts.forEach((script) => script.remove());
+
+      // Clear all ad slot content to force fresh initialization
+      const allAdSlots = document.querySelectorAll(
+        "ins.692e0776457ec2706b483e16"
+      );
+      allAdSlots.forEach((slot) => {
+        slot.innerHTML = "";
+        slot.style.display = "inline-block";
+        slot.style.width = "1px";
+        slot.style.height = "1px";
+      });
+
+      // Clear Bitmedia's global state if it exists
+      if (window.bm) {
+        try {
+          if (window.bm.destroy) window.bm.destroy();
+          if (window.bm.clear) window.bm.clear();
+          // Clear any arrays that might track ad slots
+          if (Array.isArray(window.bm.slots)) {
+            window.bm.slots = [];
+          }
+        } catch (e) {
+          // Ignore errors
+        }
+      }
+
+      // Clear any other Bitmedia global variables
+      try {
+        delete window.bm;
+        delete window._bm;
+      } catch (e) {
+        // Ignore errors
+      }
+    };
+
+    // Cleanup immediately on route change
+    cleanupGlobalScripts();
+
+    return () => {
+      // Also cleanup in cleanup function
+      cleanupGlobalScripts();
+    };
+  }, [router.asPath, isDevelopment]);
 
   if (isDevelopment) {
     return (
@@ -120,6 +182,7 @@ const BannerAd = ({ className = "", style = {}, id }) => {
     <div
       ref={containerRef}
       style={{ display: "inline-block", width: "100%", ...style }}
+      key={`banner-ad-container-${router.asPath}-${uniqueId}`}
     >
       <ins
         ref={adRef}
