@@ -96,8 +96,9 @@ const BannerAd = ({ className = "", style = {}, id }) => {
       sourceScripts.forEach((script) => script.remove());
 
       // Clear all ad slot content to force fresh initialization
+      // Use attribute selector since class name starts with a number (invalid CSS selector)
       const allAdSlots = document.querySelectorAll(
-        "ins.692e0776457ec2706b483e16"
+        'ins[class*="692e0776457ec2706b483e16"]'
       );
       allAdSlots.forEach((slot) => {
         slot.innerHTML = "";
