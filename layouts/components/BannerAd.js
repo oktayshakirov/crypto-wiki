@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/router";
 
 const BannerAd = ({ className = "", style = {}, id }) => {
   const containerRef = useRef(null);
   const adRef = useRef(null);
   const [isDevelopment, setIsDevelopment] = useState(false);
+  const router = useRouter();
   const [uniqueId] = useState(
     () => id || `banner-ad-${Math.random().toString(36).substr(2, 9)}`
   );
@@ -20,30 +22,54 @@ const BannerAd = ({ className = "", style = {}, id }) => {
 
       setIsDevelopment(isDev);
     }
+  }, []);
 
+  useEffect(() => {
     if (typeof window === "undefined" || isDevelopment) return;
-
     if (!containerRef.current || !adRef.current) return;
 
+    // Copy ref values for use in cleanup function
+    const container = containerRef.current;
+    const adElement = adRef.current;
+
     const loadScriptForThisAd = () => {
-      const existingScript = containerRef.current.querySelector(
+      // Remove existing script to allow reinitializing on route change
+      const existingScript = container?.querySelector(
         `script[data-bitmedia-ad="${uniqueId}"]`
       );
-      if (existingScript) return;
+      if (existingScript) {
+        existingScript.remove();
+      }
+
+      // Clear the ins element content to reset the ad
+      if (adElement) {
+        adElement.innerHTML = "";
+      }
 
       const script = document.createElement("script");
       script.setAttribute("data-bitmedia-ad", uniqueId);
       script.textContent = `!function(e,n,c,t,o,r,d){!function e(n,c,t,o,r,m,d,s,a){s=c.getElementsByTagName(t)[0],(a=c.createElement(t)).async=!0,a.src="https://"+r[m]+"/js/"+o+".js?v="+d,a.onerror=function(){a.remove(),(m+=1)>=r.length||e(n,c,t,o,r,m)},s.parentNode.insertBefore(a,s)}(window,document,"script","692e0776457ec2706b483e16",["cdn.bmcdn6.com"], 0, new Date().getTime())}();`;
 
-      containerRef.current.appendChild(script);
+      container.appendChild(script);
     };
 
     const timer = setTimeout(() => {
       loadScriptForThisAd();
     }, 100);
 
-    return () => clearTimeout(timer);
-  }, [isDevelopment, uniqueId]);
+    return () => {
+      clearTimeout(timer);
+      // Clean up script on unmount or route change
+      if (container) {
+        const existingScript = container.querySelector(
+          `script[data-bitmedia-ad="${uniqueId}"]`
+        );
+        if (existingScript) {
+          existingScript.remove();
+        }
+      }
+    };
+  }, [isDevelopment, uniqueId, router.asPath]);
 
   if (isDevelopment) {
     return (
