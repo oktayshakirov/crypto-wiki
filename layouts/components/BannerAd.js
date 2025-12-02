@@ -1,8 +1,11 @@
 import { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/router";
 
 const BannerAd = ({ className = "", style = {}, id }) => {
   const containerRef = useRef(null);
   const adRef = useRef(null);
+  const scriptRef = useRef(null);
+  const router = useRouter();
   const [isDevelopment, setIsDevelopment] = useState(false);
   const [uniqueId] = useState(
     () => id || `banner-ad-${Math.random().toString(36).substr(2, 9)}`
@@ -20,30 +23,50 @@ const BannerAd = ({ className = "", style = {}, id }) => {
 
       setIsDevelopment(isDev);
     }
+  }, []);
 
+  // Load script on mount and route changes
+  useEffect(() => {
     if (typeof window === "undefined" || isDevelopment) return;
 
-    if (!containerRef.current || !adRef.current) return;
-
     const loadScriptForThisAd = () => {
+      if (!containerRef.current || !adRef.current) return;
+
+      // Remove existing script for this ad if it exists
       const existingScript = containerRef.current.querySelector(
         `script[data-bitmedia-ad="${uniqueId}"]`
       );
-      if (existingScript) return;
+      if (existingScript) {
+        existingScript.remove();
+      }
+
+      const mainScript = document.querySelector(
+        'script[src*="692e0776457ec2706b483e16"]'
+      );
+      if (mainScript && mainScript.parentNode) {
+        mainScript.remove();
+      }
 
       const script = document.createElement("script");
       script.setAttribute("data-bitmedia-ad", uniqueId);
       script.textContent = `!function(e,n,c,t,o,r,d){!function e(n,c,t,o,r,m,d,s,a){s=c.getElementsByTagName(t)[0],(a=c.createElement(t)).async=!0,a.src="https://"+r[m]+"/js/"+o+".js?v="+d,a.onerror=function(){a.remove(),(m+=1)>=r.length||e(n,c,t,o,r,m)},s.parentNode.insertBefore(a,s)}(window,document,"script","692e0776457ec2706b483e16",["cdn.bmcdn6.com"], 0, new Date().getTime())}();`;
 
       containerRef.current.appendChild(script);
+      scriptRef.current = script;
     };
 
     const timer = setTimeout(() => {
       loadScriptForThisAd();
     }, 100);
 
-    return () => clearTimeout(timer);
-  }, [isDevelopment, uniqueId]);
+    return () => {
+      clearTimeout(timer);
+      // Cleanup script on unmount
+      if (scriptRef.current && scriptRef.current.parentNode) {
+        scriptRef.current.remove();
+      }
+    };
+  }, [isDevelopment, uniqueId, router.asPath]);
 
   if (isDevelopment) {
     return (
