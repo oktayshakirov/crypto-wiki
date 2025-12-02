@@ -1,6 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
 
+// Global flag to coordinate main script reload across all ad instances
+let mainScriptReloadInProgress = false;
+let currentRoute = null;
+let retryCounts = new Map(); // Track retry counts per ad to prevent infinite loops
+
 const BannerAd = ({ className = "", style = {}, id }) => {
   const containerRef = useRef(null);
   const adRef = useRef(null);
@@ -29,8 +34,27 @@ const BannerAd = ({ className = "", style = {}, id }) => {
   useEffect(() => {
     if (typeof window === "undefined" || isDevelopment) return;
 
-    const loadScriptForThisAd = () => {
+    const injectLoaderScript = () => {
       if (!containerRef.current || !adRef.current) return;
+
+      // Verify the <ins> element is actually in the DOM
+      const insElement = document.getElementById(uniqueId);
+      if (!insElement || !insElement.parentNode) {
+        // Retry if element isn't ready yet (max 5 retries = 250ms total)
+        const retries = retryCounts.get(uniqueId) || 0;
+        if (retries < 5) {
+          retryCounts.set(uniqueId, retries + 1);
+          setTimeout(() => {
+            injectLoaderScript();
+          }, 50);
+          return;
+        }
+        // If element still not found after retries, proceed anyway
+        retryCounts.delete(uniqueId);
+      } else {
+        // Reset retry count on success
+        retryCounts.delete(uniqueId);
+      }
 
       // Remove existing script for this ad if it exists
       const existingScript = containerRef.current.querySelector(
@@ -38,13 +62,6 @@ const BannerAd = ({ className = "", style = {}, id }) => {
       );
       if (existingScript) {
         existingScript.remove();
-      }
-
-      const mainScript = document.querySelector(
-        'script[src*="692e0776457ec2706b483e16"]'
-      );
-      if (mainScript && mainScript.parentNode) {
-        mainScript.remove();
       }
 
       const script = document.createElement("script");
@@ -55,9 +72,58 @@ const BannerAd = ({ className = "", style = {}, id }) => {
       scriptRef.current = script;
     };
 
+    const loadScriptForThisAd = () => {
+      if (!containerRef.current || !adRef.current) return;
+
+      // Check if route has changed - if so, we need to reload the main script
+      const routeChanged = currentRoute !== router.asPath;
+
+      if (routeChanged) {
+        // Reset the flag if route changed
+        if (currentRoute !== null) {
+          mainScriptReloadInProgress = false;
+        }
+        currentRoute = router.asPath;
+      }
+
+      // Only the first ad on a new route should handle main script reload
+      // This prevents race conditions where multiple ads try to reload simultaneously
+      if (routeChanged && !mainScriptReloadInProgress) {
+        mainScriptReloadInProgress = true;
+
+        const mainScript = document.querySelector(
+          'script[src*="692e0776457ec2706b483e16"]'
+        );
+        if (mainScript && mainScript.parentNode) {
+          mainScript.remove();
+          // Wait a bit longer for the first ad to ensure DOM is fully ready
+          // Then inject this ad's loader script which will trigger the main script reload
+          setTimeout(() => {
+            injectLoaderScript();
+          }, 150);
+          return;
+        }
+      }
+
+      // For subsequent ads on route change, wait a bit longer to ensure
+      // the first ad has finished removing the main script
+      if (routeChanged && mainScriptReloadInProgress) {
+        setTimeout(() => {
+          injectLoaderScript();
+        }, 150);
+        return;
+      }
+
+      // For same route or initial load, inject loader immediately
+      injectLoaderScript();
+    };
+
+    // Use appropriate delay based on whether it's initial load or route change
+    const routeChanged = currentRoute !== router.asPath;
+    const delay = currentRoute === null ? 150 : routeChanged ? 100 : 100;
     const timer = setTimeout(() => {
       loadScriptForThisAd();
-    }, 100);
+    }, delay);
 
     return () => {
       clearTimeout(timer);
