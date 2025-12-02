@@ -7,7 +7,12 @@ let scriptInjected = false;
 let scriptInjectionInProgress = false;
 let lastRoute = null;
 let cleanupInProgress = false;
-let scriptInjectionTimer = null;
+let pollingAnimationFrame = null;
+let lastSlotCount = 0;
+let stableCountStartTime = null;
+let pollingStartTime = null;
+const STABLE_PERIOD_MS = 300; // Wait 300ms of stable slot count before injecting
+const MAX_WAIT_MS = 2000; // Maximum wait time before giving up
 
 // Global cleanup function
 const performGlobalCleanup = () => {
@@ -89,31 +94,104 @@ const injectBitmediaScript = () => {
     return;
   }
 
+  // Verify all registered slots are actually in the DOM
+  const domSlots = document.querySelectorAll(
+    'ins[class*="692e0776457ec2706b483e16"]'
+  );
+
+  // Only inject if we have slots in the DOM
+  if (domSlots.length === 0) {
+    scriptInjectionInProgress = false;
+    return;
+  }
+
   // Create and inject the script
+  // Inject into body to ensure all DOM elements are ready
   const script = document.createElement("script");
   script.setAttribute("data-bitmedia-global", "true");
   script.textContent = `!function(e,n,c,t,o,r,d){!function e(n,c,t,o,r,m,d,s,a){s=c.getElementsByTagName(t)[0],(a=c.createElement(t)).async=!0,a.src="https://"+r[m]+"/js/"+o+".js?v="+d,a.onerror=function(){a.remove(),(m+=1)>=r.length||e(n,c,t,o,r,m)},s.parentNode.insertBefore(a,s)}(window,document,"script","692e0776457ec2706b483e16",["cdn.bmcdn6.com"], 0, new Date().getTime())}();`;
 
-  document.head.appendChild(script);
+  // Append to body instead of head to ensure DOM is fully ready
+  if (document.body) {
+    document.body.appendChild(script);
+  } else {
+    // Fallback to head if body isn't ready (shouldn't happen)
+    document.head.appendChild(script);
+  }
   scriptInjected = true;
   scriptInjectionInProgress = false;
 };
 
-// Schedule script injection after all slots are ready
-const scheduleScriptInjection = () => {
-  if (scriptInjectionTimer) {
-    clearTimeout(scriptInjectionTimer);
+// Poll for all slots to be ready before injecting script
+const pollForAllSlots = () => {
+  if (cleanupInProgress || scriptInjected) {
+    if (pollingAnimationFrame) {
+      cancelAnimationFrame(pollingAnimationFrame);
+      pollingAnimationFrame = null;
+    }
+    return;
   }
 
-  scriptInjectionTimer = setTimeout(() => {
-    // Double-check that we have slots registered
-    const allSlots = document.querySelectorAll(
+  const now = Date.now();
+
+  // Check if we've waited too long
+  if (pollingStartTime && now - pollingStartTime > MAX_WAIT_MS) {
+    // Timeout - inject anyway if we have at least one slot
+    const domSlots = document.querySelectorAll(
       'ins[class*="692e0776457ec2706b483e16"]'
     );
-    if (allSlots.length > 0) {
+    if (domSlots.length > 0) {
       injectBitmediaScript();
     }
-  }, 300); // Wait 300ms for all components to mount
+    if (pollingAnimationFrame) {
+      cancelAnimationFrame(pollingAnimationFrame);
+      pollingAnimationFrame = null;
+    }
+    return;
+  }
+
+  // Count slots in DOM
+  const domSlots = document.querySelectorAll(
+    'ins[class*="692e0776457ec2706b483e16"]'
+  );
+  const currentSlotCount = domSlots.length;
+
+  // If count changed, reset stability timer
+  if (currentSlotCount !== lastSlotCount) {
+    lastSlotCount = currentSlotCount;
+    stableCountStartTime = now;
+    pollingAnimationFrame = requestAnimationFrame(pollForAllSlots);
+    return;
+  }
+
+  // If count is stable and greater than 0
+  if (currentSlotCount > 0 && stableCountStartTime) {
+    const timeStable = now - stableCountStartTime;
+
+    if (timeStable >= STABLE_PERIOD_MS) {
+      // Slots are stable, inject script
+      injectBitmediaScript();
+      if (pollingAnimationFrame) {
+        cancelAnimationFrame(pollingAnimationFrame);
+        pollingAnimationFrame = null;
+      }
+      return;
+    }
+  }
+
+  // Continue polling
+  pollingAnimationFrame = requestAnimationFrame(pollForAllSlots);
+};
+
+// Start polling for slots
+const startPollingForSlots = () => {
+  if (pollingAnimationFrame) {
+    cancelAnimationFrame(pollingAnimationFrame);
+  }
+  lastSlotCount = 0;
+  stableCountStartTime = null;
+  pollingStartTime = Date.now();
+  pollingAnimationFrame = requestAnimationFrame(pollForAllSlots);
 };
 
 const BannerAd = ({ className = "", style = {}, id }) => {
@@ -148,6 +226,12 @@ const BannerAd = ({ className = "", style = {}, id }) => {
     // Only cleanup if this is a new route
     if (lastRoute === router.asPath) return;
 
+    // Stop any ongoing polling
+    if (pollingAnimationFrame) {
+      cancelAnimationFrame(pollingAnimationFrame);
+      pollingAnimationFrame = null;
+    }
+
     // Mark cleanup as in progress
     cleanupInProgress = true;
     lastRoute = router.asPath;
@@ -156,12 +240,9 @@ const BannerAd = ({ className = "", style = {}, id }) => {
     scriptInjected = false;
     scriptInjectionInProgress = false;
     registeredSlots.clear();
-
-    // Clear any pending script injection
-    if (scriptInjectionTimer) {
-      clearTimeout(scriptInjectionTimer);
-      scriptInjectionTimer = null;
-    }
+    lastSlotCount = 0;
+    stableCountStartTime = null;
+    pollingStartTime = null;
 
     // Perform cleanup
     performGlobalCleanup();
@@ -198,8 +279,11 @@ const BannerAd = ({ className = "", style = {}, id }) => {
           adRef.current.style.height = "1px";
         }
 
-        // Schedule script injection (will be debounced)
-        scheduleScriptInjection();
+        // Start polling for all slots to be ready after a short delay
+        // This gives React time to finish rendering all components
+        setTimeout(() => {
+          startPollingForSlots();
+        }, 100);
       }
     };
 
