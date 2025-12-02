@@ -5,6 +5,8 @@ import { useRouter } from "next/router";
 let mainScriptReloadInProgress = false;
 let currentRoute = null;
 let retryCounts = new Map(); // Track retry counts per ad to prevent infinite loops
+let registeredAds = new Set(); // Track all ad IDs that have registered for the current route
+let routeChangeTimeout = null; // Timeout to batch ad registrations
 
 const BannerAd = ({ className = "", style = {}, id }) => {
   const containerRef = useRef(null);
@@ -72,55 +74,113 @@ const BannerAd = ({ className = "", style = {}, id }) => {
       scriptRef.current = script;
     };
 
+    const reloadMainScript = () => {
+      // Verify all registered ads have their <ins> elements in the DOM
+      const allReady = Array.from(registeredAds).every((adId) => {
+        const element = document.getElementById(adId);
+        return element && element.parentNode;
+      });
+
+      if (!allReady) {
+        // If not all ready, wait a bit more and retry
+        setTimeout(() => {
+          reloadMainScript();
+        }, 100);
+        return;
+      }
+
+      // Remove the main Bitmedia script to force reload
+      const mainScript = document.querySelector(
+        'script[src*="692e0776457ec2706b483e16"]'
+      );
+      if (mainScript && mainScript.parentNode) {
+        mainScript.remove();
+      }
+
+      // Set a flag that main script has been removed, so all ads can inject their loaders
+      // Each ad will inject its own loader script, and the first one will load the main script
+      window.__bitmediaMainScriptRemoved = true;
+
+      // Clear the flag after a delay to allow all ads to inject their loaders
+      setTimeout(() => {
+        window.__bitmediaMainScriptRemoved = false;
+      }, 500);
+    };
+
     const loadScriptForThisAd = () => {
       if (!containerRef.current || !adRef.current) return;
 
-      // Check if route has changed - if so, we need to reload the main script
+      // Verify the <ins> element is in the DOM
+      const insElement = document.getElementById(uniqueId);
+      if (!insElement || !insElement.parentNode) {
+        // Retry if element isn't ready yet
+        const retries = retryCounts.get(uniqueId) || 0;
+        if (retries < 10) {
+          retryCounts.set(uniqueId, retries + 1);
+          setTimeout(() => {
+            loadScriptForThisAd();
+          }, 50);
+          return;
+        }
+        retryCounts.delete(uniqueId);
+      } else {
+        retryCounts.delete(uniqueId);
+      }
+
+      // Check if route has changed
       const routeChanged = currentRoute !== router.asPath;
 
       if (routeChanged) {
-        // Reset the flag if route changed
+        // Clear previous route's ads and reset flags
         if (currentRoute !== null) {
+          registeredAds.clear();
           mainScriptReloadInProgress = false;
+          if (routeChangeTimeout) {
+            clearTimeout(routeChangeTimeout);
+          }
         }
         currentRoute = router.asPath;
       }
 
-      // Only the first ad on a new route should handle main script reload
-      // This prevents race conditions where multiple ads try to reload simultaneously
-      if (routeChanged && !mainScriptReloadInProgress) {
-        mainScriptReloadInProgress = true;
+      // Register this ad for the current route
+      registeredAds.add(uniqueId);
 
-        const mainScript = document.querySelector(
-          'script[src*="692e0776457ec2706b483e16"]'
-        );
-        if (mainScript && mainScript.parentNode) {
-          mainScript.remove();
-          // Wait a bit longer for the first ad to ensure DOM is fully ready
-          // Then inject this ad's loader script which will trigger the main script reload
-          setTimeout(() => {
-            injectLoaderScript();
-          }, 150);
-          return;
+      // On route change, wait for all ads to register before reloading main script
+      if (routeChanged) {
+        // Clear any existing timeout
+        if (routeChangeTimeout) {
+          clearTimeout(routeChangeTimeout);
         }
-      }
 
-      // For subsequent ads on route change, wait a bit longer to ensure
-      // the first ad has finished removing the main script
-      if (routeChanged && mainScriptReloadInProgress) {
-        setTimeout(() => {
-          injectLoaderScript();
-        }, 150);
+        // Wait a bit to collect all ads, then reload main script and inject loaders
+        routeChangeTimeout = setTimeout(() => {
+          if (!mainScriptReloadInProgress) {
+            mainScriptReloadInProgress = true;
+            reloadMainScript();
+
+            // After removing main script, inject loader for all registered ads
+            // Use a small delay to ensure main script is removed
+            setTimeout(() => {
+              // Inject this ad's loader script
+              injectLoaderScript();
+            }, 100);
+          } else {
+            // Another ad already triggered the reload, just inject this ad's loader
+            setTimeout(() => {
+              injectLoaderScript();
+            }, 150);
+          }
+        }, 300); // Wait 300ms for all ads to mount and be ready
         return;
       }
 
-      // For same route or initial load, inject loader immediately
+      // For initial load or same route, inject loader immediately
       injectLoaderScript();
     };
 
     // Use appropriate delay based on whether it's initial load or route change
     const routeChanged = currentRoute !== router.asPath;
-    const delay = currentRoute === null ? 150 : routeChanged ? 100 : 100;
+    const delay = currentRoute === null ? 150 : 50; // Shorter delay on route change since we batch
     const timer = setTimeout(() => {
       loadScriptForThisAd();
     }, delay);
