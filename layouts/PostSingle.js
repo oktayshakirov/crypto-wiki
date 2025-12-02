@@ -7,7 +7,6 @@ import Link from "next/link";
 import { FaCalendarAlt, FaTag, FaUser, FaExchangeAlt } from "react-icons/fa";
 import NextPrevNavigation from "@partials/NextPrevNavigation";
 import GoBackLink from "@partials/GoBackLink";
-import BannerAd from "@layouts/components/BannerAd";
 import Base from "./Baseof";
 import config from "@config/config.json";
 
@@ -154,11 +153,9 @@ const PostSingle = ({
                 priority
               />
             )}
-            {!isApp && <BannerAd id={`post-${slug}-ad-1`} />}
             <div className="content mb-16 text-left text-white">
               <MDXRemote {...mdxContent} />
             </div>
-            {!isApp && <BannerAd id={`post-${slug}-ad-2`} />}
             <div className="flex flex-wrap items-center justify-center">
               <ul className="flex flex-wrap justify-center gap-2">
                 {tags.map((tag, i) => (
@@ -189,7 +186,6 @@ const PostSingle = ({
         <section className="section">
           <div className="container">
             <h2 className="mb-8 text-center">Similar Posts</h2>
-            {!isApp && <BannerAd id={`post-${slug}-ad-3`} />}
             <SimilarPosts posts={similarPosts} />
           </div>
         </section>

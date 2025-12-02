@@ -1,6 +1,5 @@
 import Base from "@layouts/Baseof";
 import { markdownify } from "@lib/utils/textConverter";
-import BannerAd from "@layouts/components/BannerAd";
 import Link from "next/link";
 import config from "@config/config.json";
 import { useRouter } from "next/router";
@@ -89,7 +88,6 @@ const Tools = ({ isApp }) => {
               market confidently
             </p>
           </div>
-          {!isApp && <BannerAd id="tools-index-ad-1" />}
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {tools.map((tool, i) => (
               <Link
@@ -123,7 +121,6 @@ const Tools = ({ isApp }) => {
               </Link>
             ))}
           </div>
-          {!isApp && <BannerAd id="tools-index-ad-2" />}
         </div>
       </section>
     </Base>

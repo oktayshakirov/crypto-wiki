@@ -4,7 +4,6 @@ import { getSinglePage } from "@lib/contentParser";
 import { getTaxonomy } from "@lib/taxonomyParser";
 import { slugify } from "@lib/utils/textConverter";
 import Posts from "@partials/Posts";
-import BannerAd from "@layouts/components/BannerAd";
 const { blog_folder } = config.settings;
 
 const Tag = ({ tag, posts, authors, cryptoOgs, exchanges, isApp }) => {
@@ -23,14 +22,12 @@ const Tag = ({ tag, posts, authors, cryptoOgs, exchanges, isApp }) => {
           <h1 className="h2 mb-8 text-center">
             Showing posts from <span className="text-primary">{tag}</span> tag
           </h1>
-          {!isApp && <BannerAd id={`tag-${tag}-ad-1`} />}
           <Posts
             posts={posts}
             authors={authors}
             cryptoOgs={cryptoOgs}
             exchanges={exchanges}
           />
-          {!isApp && <BannerAd id={`tag-${tag}-ad-2`} />}
         </div>
       </div>
     </Base>
