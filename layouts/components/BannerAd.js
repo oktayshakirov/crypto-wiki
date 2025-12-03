@@ -204,82 +204,79 @@ const BannerAd = ({
             );
           }
 
-          // Remove old Bitmedia scripts from previous routes
+          // Remove ALL Bitmedia scripts (main + inline) to force complete reload
           const allScripts = document.querySelectorAll(
             `script[data-bitmedia-ad], script[src*="/js/${adUnitId}.js"]`
           );
 
-          allScripts.forEach((script) => {
-            const scriptRoute = script.getAttribute("data-route");
-            // Remove scripts from old routes or if route doesn't match
-            if (scriptRoute && scriptRoute !== url) {
-              script.remove();
+          // Store inline scripts data for current route before removing
+          const currentRouteScripts = [];
+          allInsTags.forEach((insTag) => {
+            const existingScript = insTag.nextElementSibling;
+            if (
+              existingScript &&
+              existingScript.getAttribute("data-bitmedia-ad")
+            ) {
+              currentRouteScripts.push({
+                insTag: insTag,
+                textContent: existingScript.textContent,
+                dataAttr: existingScript.getAttribute("data-bitmedia-ad"),
+                parent: insTag.parentNode,
+              });
             }
           });
 
-          // Remove main Bitmedia script to force reload
-          const bitmediaScript = document.querySelector(
-            `script[src*="/js/${adUnitId}.js"]`
-          );
+          // Remove all scripts
+          allScripts.forEach((script) => {
+            script.remove();
+          });
 
-          if (bitmediaScript) {
-            const src = bitmediaScript.src;
-            const baseUrl = src.split("?")[0];
-            bitmediaScript.remove();
+          // Clear Bitmedia global state
+          if (window.bitmedia) {
+            delete window.bitmedia;
+          }
+          if (window.Bitmedia) {
+            delete window.Bitmedia;
+          }
 
-            // Re-add with cache buster
-            setTimeout(() => {
-              const newScript = document.createElement("script");
-              newScript.async = true;
-              newScript.src = `${baseUrl}?v=${new Date().getTime()}&route=${encodeURIComponent(
-                url
-              )}`;
+          // Wait a moment, then re-execute all inline scripts for current route
+          // This will cause Bitmedia to reload and scan for all ads
+          setTimeout(() => {
+            if (debug) {
+              console.log(
+                `[BannerAd] Re-executing ${currentRouteScripts.length} inline script(s) for route: ${url}`
+              );
+            }
 
-              if (document.body) {
-                document.body.appendChild(newScript);
-              } else {
-                document.head.appendChild(newScript);
-              }
+            currentRouteScripts.forEach((scriptData) => {
+              try {
+                const newScript = document.createElement("script");
+                newScript.textContent = scriptData.textContent;
+                newScript.setAttribute("data-bitmedia-ad", scriptData.dataAttr);
+                newScript.setAttribute("data-route", url);
 
-              if (debug) {
-                console.log(
-                  `[BannerAd] Bitmedia script reloaded for route: ${url}, should detect ${allInsTags.length} ad(s)`
-                );
-              }
-            }, 200);
-          } else {
-            // If no main script, re-execute inline scripts for visible ads
-            allInsTags.forEach((insTag) => {
-              const existingScript = insTag.nextElementSibling;
-              if (
-                existingScript &&
-                existingScript.getAttribute("data-bitmedia-ad")
-              ) {
-                // Re-execute the script
-                const scriptContent = existingScript.textContent;
-                existingScript.remove();
-
-                setTimeout(() => {
-                  const newScript = document.createElement("script");
-                  newScript.textContent = scriptContent;
-                  newScript.setAttribute(
-                    "data-bitmedia-ad",
-                    existingScript.getAttribute("data-bitmedia-ad")
+                // Insert right after the <ins> tag
+                if (scriptData.insTag.nextSibling) {
+                  scriptData.parent.insertBefore(
+                    newScript,
+                    scriptData.insTag.nextSibling
                   );
-                  newScript.setAttribute("data-route", url);
-
-                  if (insTag.nextSibling) {
-                    insTag.parentNode.insertBefore(
-                      newScript,
-                      insTag.nextSibling
-                    );
-                  } else {
-                    insTag.parentNode.appendChild(newScript);
-                  }
-                }, 100);
+                } else {
+                  scriptData.parent.appendChild(newScript);
+                }
+              } catch (e) {
+                if (debug) {
+                  console.warn(`[BannerAd] Error re-executing script:`, e);
+                }
               }
             });
-          }
+
+            if (debug) {
+              console.log(
+                `[BannerAd] All scripts re-executed for route: ${url}, Bitmedia should reload and detect ${allInsTags.length} ad(s)`
+              );
+            }
+          }, 300); // Wait 300ms before re-executing
         } catch (error) {
           if (debug) {
             console.error(`[BannerAd] Error reinitializing:`, error);
