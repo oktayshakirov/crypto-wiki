@@ -5,7 +5,6 @@ const BannerAd = ({ className = "", style = {}, id }) => {
   const router = useRouter();
   const containerRef = useRef(null);
   const adRef = useRef(null);
-  const scriptRef = useRef(null);
   const [isDevelopment, setIsDevelopment] = useState(false);
   const [routeKey, setRouteKey] = useState(0); // Force re-render on route change
   const [uniqueId] = useState(
@@ -61,37 +60,39 @@ const BannerAd = ({ className = "", style = {}, id }) => {
     }
   }, [router.pathname, router.asPath]);
 
-  // Initialize ad script (runs on mount and route changes)
+  // Load ad script globally (only once)
   useEffect(() => {
     if (typeof window === "undefined" || isDevelopment) return;
-    if (!containerRef.current || !adRef.current) return;
+
+    // Check if script is already loaded globally
+    const existingGlobalScript = document.querySelector(
+      'script[data-bitmedia-global="true"]'
+    );
+    const scriptLoaded = existingGlobalScript || window.bmcdn6;
+
+    if (!scriptLoaded) {
+      // Load script once globally in document head
+      const script = document.createElement("script");
+      script.setAttribute("data-bitmedia-global", "true");
+      script.textContent = `!function(e,n,c,t,o,r,d){!function e(n,c,t,o,r,m,d,s,a){s=c.getElementsByTagName(t)[0],(a=c.createElement(t)).async=!0,a.src="https://"+r[m]+"/js/"+o+".js?v="+d,a.onerror=function(){a.remove(),(m+=1)>=r.length||e(n,c,t,o,r,m)},s.parentNode.insertBefore(a,s)}(window,document,"script","692e0776457ec2706b483e16",["cdn.bmcdn6.com"], 0, new Date().getTime())}();`;
+      document.head.appendChild(script);
+    }
+  }, [isDevelopment]);
+
+  // Initialize ad element (runs on mount and route changes)
+  useEffect(() => {
+    if (typeof window === "undefined" || isDevelopment) return;
+    if (!adRef.current) return;
 
     const initializeAd = () => {
-      // Remove existing script if it exists
-      if (scriptRef.current && scriptRef.current.parentNode) {
-        scriptRef.current.parentNode.removeChild(scriptRef.current);
-        scriptRef.current = null;
-      }
+      // Wait for script to load, then trigger ad detection
+      const checkAndInit = () => {
+        const scriptLoaded =
+          document.querySelector('script[data-bitmedia-global="true"]') ||
+          window.bmcdn6;
 
-      // Remove existing ad element and create a new one to force re-initialization
-      const existingAd = containerRef.current.querySelector(
-        `.692e0776457ec2706b483e16`
-      );
-      if (existingAd && existingAd !== adRef.current) {
-        existingAd.remove();
-      }
-
-      // Create new script for this ad instance
-      const script = document.createElement("script");
-      script.setAttribute("data-bitmedia-ad", `${uniqueId}-${routeKey}`);
-      script.textContent = `!function(e,n,c,t,o,r,d){!function e(n,c,t,o,r,m,d,s,a){s=c.getElementsByTagName(t)[0],(a=c.createElement(t)).async=!0,a.src="https://"+r[m]+"/js/"+o+".js?v="+d,a.onerror=function(){a.remove(),(m+=1)>=r.length||e(n,c,t,o,r,m)},s.parentNode.insertBefore(a,s)}(window,document,"script","692e0776457ec2706b483e16",["cdn.bmcdn6.com"], 0, new Date().getTime())}();`;
-
-      containerRef.current.appendChild(script);
-      scriptRef.current = script;
-
-      // Force ad script to re-scan by cloning the ad element
-      setTimeout(() => {
-        if (adRef.current && containerRef.current) {
+        if (scriptLoaded && adRef.current) {
+          // Force ad script to detect this element by cloning it
           const currentAd = adRef.current;
           const parent = currentAd.parentNode;
           if (parent) {
@@ -100,8 +101,14 @@ const BannerAd = ({ className = "", style = {}, id }) => {
             parent.replaceChild(clonedAd, currentAd);
             adRef.current = clonedAd;
           }
+        } else {
+          // Script not loaded yet, retry
+          setTimeout(checkAndInit, 200);
         }
-      }, 300);
+      };
+
+      // Start checking after a delay to ensure DOM is ready
+      setTimeout(checkAndInit, 500);
     };
 
     // Delay initialization to ensure DOM is ready
@@ -111,11 +118,6 @@ const BannerAd = ({ className = "", style = {}, id }) => {
 
     return () => {
       clearTimeout(timer);
-      // Cleanup script on unmount
-      if (scriptRef.current && scriptRef.current.parentNode) {
-        scriptRef.current.parentNode.removeChild(scriptRef.current);
-        scriptRef.current = null;
-      }
     };
   }, [isDevelopment, uniqueId, routeKey]);
 
