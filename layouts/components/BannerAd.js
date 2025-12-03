@@ -1,8 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import { useState, useEffect } from "react";
+import Script from "next/script";
 
 const BannerAd = ({ className = "", style = {}, id }) => {
-  const containerRef = useRef(null);
-  const adRef = useRef(null);
   const [isDevelopment, setIsDevelopment] = useState(false);
   const [uniqueId] = useState(
     () => id || `banner-ad-${Math.random().toString(36).substr(2, 9)}`
@@ -20,30 +19,7 @@ const BannerAd = ({ className = "", style = {}, id }) => {
 
       setIsDevelopment(isDev);
     }
-
-    if (typeof window === "undefined" || isDevelopment) return;
-
-    if (!containerRef.current || !adRef.current) return;
-
-    const loadScriptForThisAd = () => {
-      const existingScript = containerRef.current.querySelector(
-        `script[data-bitmedia-ad="${uniqueId}"]`
-      );
-      if (existingScript) return;
-
-      const script = document.createElement("script");
-      script.setAttribute("data-bitmedia-ad", uniqueId);
-      script.textContent = `!function(e,n,c,t,o,r,d){!function e(n,c,t,o,r,m,d,s,a){s=c.getElementsByTagName(t)[0],(a=c.createElement(t)).async=!0,a.src="https://"+r[m]+"/js/"+o+".js?v="+d,a.onerror=function(){a.remove(),(m+=1)>=r.length||e(n,c,t,o,r,m)},s.parentNode.insertBefore(a,s)}(window,document,"script","692e0776457ec2706b483e16",["cdn.bmcdn6.com"], 0, new Date().getTime())}();`;
-
-      containerRef.current.appendChild(script);
-    };
-
-    const timer = setTimeout(() => {
-      loadScriptForThisAd();
-    }, 100);
-
-    return () => clearTimeout(timer);
-  }, [isDevelopment, uniqueId]);
+  }, []);
 
   if (isDevelopment) {
     return (
@@ -86,17 +62,24 @@ const BannerAd = ({ className = "", style = {}, id }) => {
   }
 
   return (
-    <div
-      ref={containerRef}
-      style={{ display: "inline-block", width: "100%", ...style }}
-    >
-      <ins
-        ref={adRef}
-        className={`692e0776457ec2706b483e16 ${className}`}
-        style={{ display: "inline-block", width: "1px", height: "1px" }}
+    <>
+      <div
+        style={{ display: "inline-block", width: "100%", ...style }}
         id={uniqueId}
+      >
+        <ins
+          className={`692e0776457ec2706b483e16 ${className}`}
+          style={{ display: "inline-block", width: "1px", height: "1px" }}
+        />
+      </div>
+      <Script
+        id={`bitmedia-ad-${uniqueId}`}
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `!function(e,n,c,t,o,r,d){!function e(n,c,t,o,r,m,d,s,a){s=c.getElementsByTagName(t)[0],(a=c.createElement(t)).async=!0,a.src="https://"+r[m]+"/js/"+o+".js?v="+d,a.onerror=function(){a.remove(),(m+=1)>=r.length||e(n,c,t,o,r,m)},s.parentNode.insertBefore(a,s)}(window,document,"script","692e0776457ec2706b483e16",["cdn.bmcdn6.com"], 0, new Date().getTime())}();`,
+        }}
       />
-    </div>
+    </>
   );
 };
 
