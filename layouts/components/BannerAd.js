@@ -129,49 +129,120 @@ const BannerAd = ({
               document.body.contains(ins)
           );
 
-          // Find the main Bitmedia JS file script
-          const bitmediaScript = document.querySelector(
-            `script[src*="/js/${adUnitId}.js"]`
-          );
-
-          if (bitmediaScript && allInsTags.length > 0) {
+          if (allInsTags.length === 0) {
             if (debug) {
-              console.log(
-                `[BannerAd] Found ${allInsTags.length} ad(s), forcing Bitmedia re-scan`
-              );
+              console.log(`[BannerAd] No ads found on this page`);
             }
+            return;
+          }
 
-            // Remove the existing Bitmedia script
-            const src = bitmediaScript.src;
-            const baseUrl = src.split("?")[0];
-            bitmediaScript.remove();
+          if (debug) {
+            console.log(
+              `[BannerAd] Found ${allInsTags.length} ad(s), attempting to trigger Bitmedia re-scan`
+            );
+          }
 
-            // Re-add with cache buster to force re-execution
-            setTimeout(() => {
-              const newScript = document.createElement("script");
-              newScript.async = true;
-              newScript.src = `${baseUrl}?v=${new Date().getTime()}&rescan=1`;
+          // Strategy 1: Try to use Bitmedia's API if it exists
+          let apiCalled = false;
+          const bitmediaApi =
+            window.bitmedia ||
+            window.Bitmedia ||
+            window[`bitmedia_${adUnitId}`];
 
-              if (document.body) {
-                document.body.appendChild(newScript);
-              } else {
-                document.head.appendChild(newScript);
+          if (bitmediaApi) {
+            // Try common API methods
+            const methods = ["reload", "reloadAds", "init", "refresh", "scan"];
+            for (const method of methods) {
+              if (typeof bitmediaApi[method] === "function") {
+                try {
+                  if (debug) {
+                    console.log(
+                      `[BannerAd] Calling window.bitmedia.${method}()`
+                    );
+                  }
+                  bitmediaApi[method]();
+                  apiCalled = true;
+                  break;
+                } catch (e) {
+                  if (debug) {
+                    console.warn(`[BannerAd] Error calling ${method}:`, e);
+                  }
+                }
               }
+            }
+          }
 
+          // Strategy 2: If API doesn't exist or didn't work, reload the script
+          if (!apiCalled) {
+            const bitmediaScript = document.querySelector(
+              `script[src*="/js/${adUnitId}.js"]`
+            );
+
+            if (bitmediaScript) {
               if (debug) {
                 console.log(
-                  `[BannerAd] Bitmedia script reloaded, should detect ${allInsTags.length} ad(s)`
+                  `[BannerAd] Reloading Bitmedia script to force re-scan`
                 );
               }
-            }, 100);
-          } else if (debug) {
-            if (!bitmediaScript) {
-              console.log(
-                `[BannerAd] Bitmedia script not loaded yet, inline scripts will load it`
+
+              // Remove the existing Bitmedia script
+              const src = bitmediaScript.src;
+              const baseUrl = src.split("?")[0];
+              bitmediaScript.remove();
+
+              // Re-add with cache buster to force re-execution
+              setTimeout(() => {
+                const newScript = document.createElement("script");
+                newScript.async = true;
+                newScript.src = `${baseUrl}?v=${new Date().getTime()}&rescan=1&t=${Math.random()}`;
+
+                if (document.body) {
+                  document.body.appendChild(newScript);
+                } else {
+                  document.head.appendChild(newScript);
+                }
+
+                if (debug) {
+                  console.log(
+                    `[BannerAd] Bitmedia script reloaded, should detect ${allInsTags.length} ad(s)`
+                  );
+                }
+              }, 100);
+            } else {
+              // Strategy 3: If script not loaded yet, re-execute all inline scripts
+              if (debug) {
+                console.log(
+                  `[BannerAd] Bitmedia script not loaded yet, re-executing inline scripts`
+                );
+              }
+
+              // Find all inline scripts that load Bitmedia and re-execute them
+              const inlineScripts = document.querySelectorAll(
+                `script[data-bitmedia-ad]`
               );
-            }
-            if (allInsTags.length === 0) {
-              console.log(`[BannerAd] No ads found on this page`);
+
+              inlineScripts.forEach((script) => {
+                try {
+                  // Clone and re-execute the script
+                  const newScript = document.createElement("script");
+                  newScript.textContent = script.textContent;
+                  newScript.setAttribute(
+                    "data-bitmedia-ad",
+                    script.getAttribute("data-bitmedia-ad")
+                  );
+                  script.parentNode?.insertBefore(
+                    newScript,
+                    script.nextSibling
+                  );
+                } catch (e) {
+                  if (debug) {
+                    console.warn(
+                      `[BannerAd] Error re-executing inline script:`,
+                      e
+                    );
+                  }
+                }
+              });
             }
           }
         } catch (error) {
@@ -179,7 +250,7 @@ const BannerAd = ({
             console.error(`[BannerAd] Error forcing re-scan:`, error);
           }
         }
-      }, 1200); // Wait 1.2s for new ads to initialize
+      }, 1500); // Wait 1.5s for new ads to initialize
     };
 
     if (router.events) {
