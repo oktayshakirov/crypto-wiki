@@ -24,6 +24,7 @@ const BannerAd = ({
   className = "",
   style = {},
   id,
+  debug = true, // Debug enabled globally - set to false or window.__BITMEDIA_DEBUG__ = false to disable
 }) => {
   const containerRef = useRef(null);
   const adRef = useRef(null);
@@ -52,12 +53,31 @@ const BannerAd = ({
 
   // Shared initialization function - memoized to avoid recreating on every render
   const initializeAdScript = useCallback(
-    (element = null) => {
+    (element = null, source = "unknown") => {
+      if (debug) {
+        console.log(
+          `[BannerAd:${uniqueId}] initializeAdScript called from:`,
+          source
+        );
+      }
+
       // Use provided element or try to find it
       const adElement = element || document.getElementById(uniqueId);
 
       if (!adElement) {
+        if (debug) {
+          console.warn(`[BannerAd:${uniqueId}] Element not found in DOM`);
+        }
         return false; // Element not found
+      }
+
+      if (debug) {
+        console.log(`[BannerAd:${uniqueId}] Element found:`, {
+          id: adElement.id,
+          className: adElement.className,
+          hasParent: !!adElement.parentNode,
+          nextSibling: adElement.nextElementSibling?.tagName,
+        });
       }
 
       // Verify this is the right element (has the correct class and ID)
@@ -65,6 +85,16 @@ const BannerAd = ({
         adElement.id !== uniqueId ||
         !adElement.classList.contains(adUnitId)
       ) {
+        if (debug) {
+          console.warn(
+            `[BannerAd:${uniqueId}] Wrong element - ID mismatch or missing class`,
+            {
+              expectedId: uniqueId,
+              actualId: adElement.id,
+              hasClass: adElement.classList.contains(adUnitId),
+            }
+          );
+        }
         return false; // Wrong element
       }
 
@@ -72,7 +102,14 @@ const BannerAd = ({
       const existingInlineScript =
         adElement.nextElementSibling?.getAttribute("data-bitmedia-ad");
       if (existingInlineScript === uniqueId) {
+        if (debug) {
+          console.log(`[BannerAd:${uniqueId}] Script already exists, skipping`);
+        }
         return true; // Already initialized
+      }
+
+      if (debug) {
+        console.log(`[BannerAd:${uniqueId}] Creating and inserting script`);
       }
 
       // According to Bitmedia documentation, place script right after <ins> tag
@@ -84,11 +121,20 @@ const BannerAd = ({
       // Insert script right after the <ins> tag (as per Bitmedia docs)
       if (adElement.parentNode) {
         adElement.parentNode.insertBefore(inlineScript, adElement.nextSibling);
+        if (debug) {
+          console.log(`[BannerAd:${uniqueId}] Script inserted successfully`);
+        }
         return true;
+      }
+
+      if (debug) {
+        console.error(
+          `[BannerAd:${uniqueId}] Failed to insert script - no parent node`
+        );
       }
       return false;
     },
-    [uniqueId, adUnitId]
+    [uniqueId, adUnitId, debug]
   );
 
   // Initialize ad when element is rendered and on route changes
@@ -107,10 +153,20 @@ const BannerAd = ({
 
     // Handle route changes for Next.js client-side navigation
     const handleRouteChange = () => {
+      if (debug) {
+        console.log(`[BannerAd:${uniqueId}] Route change detected`);
+      }
+
       // Initialize ads on new page after route change
       // Don't remove existing scripts - just check if they exist and add if missing
       const initOnRouteChange = (retryCount = 0) => {
         const maxRetries = 20; // Increased retries for navigation
+
+        if (debug && retryCount > 0) {
+          console.log(
+            `[BannerAd:${uniqueId}] Route change retry ${retryCount}/${maxRetries}`
+          );
+        }
 
         // Try to find the element by ID (this component's specific ad)
         const adElement = document.getElementById(uniqueId);
@@ -118,12 +174,29 @@ const BannerAd = ({
         if (adElement) {
           // Verify this is actually our element (check it's in the viewport or has correct class)
           // This ensures we're not getting an old element from previous page
-          const isVisible =
-            adElement.offsetParent !== null ||
-            adElement.getBoundingClientRect().width > 0;
+          const rect = adElement.getBoundingClientRect();
+          const isVisible = adElement.offsetParent !== null || rect.width > 0;
+
+          if (debug) {
+            console.log(
+              `[BannerAd:${uniqueId}] Element found on route change:`,
+              {
+                id: adElement.id,
+                className: adElement.className,
+                isVisible,
+                rect: { width: rect.width, height: rect.height },
+                hasParent: !!adElement.parentNode,
+              }
+            );
+          }
 
           if (!isVisible && retryCount < 5) {
             // Element might not be rendered yet, retry
+            if (debug) {
+              console.log(
+                `[BannerAd:${uniqueId}] Element not visible, retrying...`
+              );
+            }
             setTimeout(() => initOnRouteChange(retryCount + 1), 50);
             return;
           }
@@ -131,18 +204,38 @@ const BannerAd = ({
           // Check if script already exists - if it does, we're done
           const existingScript = adElement.nextElementSibling;
           if (existingScript?.getAttribute("data-bitmedia-ad") === uniqueId) {
+            if (debug) {
+              console.log(
+                `[BannerAd:${uniqueId}] Script already exists, skipping`
+              );
+            }
             return; // Already initialized, no need to do anything
           }
 
           // Script doesn't exist, so initialize it
-          if (initializeAd(adElement)) {
+          if (initializeAd(adElement, `routeChange-retry${retryCount}`)) {
+            if (debug) {
+              console.log(
+                `[BannerAd:${uniqueId}] Successfully initialized on route change`
+              );
+            }
             return; // Successfully initialized
+          }
+        } else {
+          if (debug && retryCount < 3) {
+            console.log(
+              `[BannerAd:${uniqueId}] Element not found, retrying...`
+            );
           }
         }
 
         // Element not found yet, retry
         if (retryCount < maxRetries) {
           setTimeout(() => initOnRouteChange(retryCount + 1), 100);
+        } else if (debug) {
+          console.error(
+            `[BannerAd:${uniqueId}] Failed after ${maxRetries} retries on route change`
+          );
         }
       };
 
@@ -249,6 +342,7 @@ const BannerAd = ({
     uniqueId,
     router,
     initializeAdScript,
+    debug,
   ]);
 
   // Use callback ref to initialize when element is actually rendered
@@ -257,6 +351,14 @@ const BannerAd = ({
   const adRefCallback = useCallback(
     (element) => {
       adRef.current = element;
+
+      if (debug) {
+        console.log(`[BannerAd:${uniqueId}] Ref callback called`, {
+          hasElement: !!element,
+          isMounted,
+          isDevelopment,
+        });
+      }
 
       // Initialize immediately when ref is set (for initial load and navigation)
       if (
@@ -268,11 +370,11 @@ const BannerAd = ({
         // Use requestAnimationFrame to ensure element is fully in DOM
         requestAnimationFrame(() => {
           // Use the shared initialization function
-          initializeAdScript(element);
+          initializeAdScript(element, "refCallback");
         });
       }
     },
-    [isMounted, isDevelopment, initializeAdScript]
+    [isMounted, isDevelopment, initializeAdScript, uniqueId, debug]
   );
 
   // Show placeholder in development mode
