@@ -4,6 +4,7 @@ import Base from "@layouts/Baseof";
 import { getListPage, getSinglePage } from "@lib/contentParser";
 import { markdownify } from "@lib/utils/textConverter";
 import CryptoOGs from "@partials/CryptoOGs";
+import BannerAd from "@layouts/components/BannerAd";
 
 const CryptoOgPagination = ({
   ogIndex,
@@ -26,6 +27,7 @@ const CryptoOgPagination = ({
     >
       <section className="section">
         <div className="container text-center">
+          {!isApp && <BannerAd />}
           {markdownify(title, "h1", "h1 mb-16")}
           <CryptoOGs ogs={ogs} />
           <Pagination
@@ -33,6 +35,7 @@ const CryptoOgPagination = ({
             totalPages={totalPages}
             currentPage={currentPage}
           />
+          {!isApp && <BannerAd />}
         </div>
       </section>
     </Base>
