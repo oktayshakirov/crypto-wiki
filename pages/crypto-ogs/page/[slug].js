@@ -27,7 +27,12 @@ const CryptoOgPagination = ({
     >
       <section className="section">
         <div className="container text-center">
-          {!isApp && <BannerAd />}
+          {!isApp && (
+            <BannerAd
+              key="banner-ad-crypto-ogs-1"
+              id="banner-ad-crypto-ogs-1"
+            />
+          )}
           {markdownify(title, "h1", "h1 mb-16")}
           <CryptoOGs ogs={ogs} />
           <Pagination
@@ -35,7 +40,12 @@ const CryptoOgPagination = ({
             totalPages={totalPages}
             currentPage={currentPage}
           />
-          {!isApp && <BannerAd />}
+          {!isApp && (
+            <BannerAd
+              key="banner-ad-crypto-ogs-2"
+              id="banner-ad-crypto-ogs-2"
+            />
+          )}
         </div>
       </section>
     </Base>

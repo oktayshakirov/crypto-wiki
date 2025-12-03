@@ -82,7 +82,9 @@ const Tools = ({ isApp }) => {
     >
       <section className="section">
         <div className="container max-w-6xl">
-          {!isApp && <BannerAd />}
+          {!isApp && (
+            <BannerAd key="banner-ad-tools-1" id="banner-ad-tools-1" />
+          )}
           <div className="mb-16 text-center">
             {markdownify("CRYPTO TOOLS", "h1", "h1 mb-4")}
             <p className="text-lg text-gray-200 ">
@@ -123,7 +125,9 @@ const Tools = ({ isApp }) => {
               </Link>
             ))}
           </div>
-          {!isApp && <BannerAd />}
+          {!isApp && (
+            <BannerAd key="banner-ad-tools-2" id="banner-ad-tools-2" />
+          )}
         </div>
       </section>
     </Base>
