@@ -97,7 +97,7 @@ const MyApp = ({ Component, pageProps }) => {
           });
         `}
       </Script>
-      {/* {!isApp && (
+      {!isApp && (
         <>
           <script
             async
@@ -105,7 +105,7 @@ const MyApp = ({ Component, pageProps }) => {
             crossorigin="anonymous"
           ></script>
         </>
-      )} */}
+      )}
       <Component {...pageProps} isApp={isApp} />
     </JsonContext>
   );
