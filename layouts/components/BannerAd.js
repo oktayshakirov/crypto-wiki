@@ -253,13 +253,18 @@ const BannerAd = ({
               document.getElementsByTagName("ins")
             ).filter((ins) => ins.classList.contains(adUnitId));
 
+            // Verify all <ins> tags are in the DOM and have parents
+            const validInsTags = allInsTags.filter(
+              (ins) => ins.parentNode && document.body.contains(ins)
+            );
+
             if (debug) {
               console.log(
-                `[BannerAd:${uniqueId}] Found ${bitmediaScripts.length} Bitmedia script(s) and ${allInsTags.length} <ins> tag(s), forcing re-scan`
+                `[BannerAd:${uniqueId}] Found ${bitmediaScripts.length} Bitmedia script(s) and ${allInsTags.length} <ins> tag(s) (${validInsTags.length} valid), forcing re-scan`
               );
             }
 
-            if (bitmediaScripts.length > 0 && allInsTags.length > 0) {
+            if (bitmediaScripts.length > 0 && validInsTags.length > 0) {
               // Get the first script's source to re-add
               const firstScript = bitmediaScripts[0];
               const src = firstScript.src;
@@ -267,18 +272,67 @@ const BannerAd = ({
                 ? src.split("?")[0]
                 : `https://cdn.bmcdn6.com/js/${adUnitId}.js`;
 
-              // Remove all existing Bitmedia scripts
-              bitmediaScripts.forEach((script) => {
+              // Remove only the main Bitmedia JS file scripts (not the inline loaders)
+              // Filter to only remove scripts that are the actual Bitmedia JS file
+              const mainBitmediaScripts = Array.from(bitmediaScripts).filter(
+                (script) =>
+                  script.src && script.src.includes(`/js/${adUnitId}.js`)
+              );
+
+              if (debug) {
+                console.log(
+                  `[BannerAd:${uniqueId}] Removing ${mainBitmediaScripts.length} main Bitmedia script(s) (keeping inline loaders)`
+                );
+              }
+
+              mainBitmediaScripts.forEach((script) => {
                 if (script.parentNode) {
                   script.remove();
                 }
               });
 
               // Wait a moment, then re-add a single script to force re-scan
+              // This will cause Bitmedia to re-execute and scan all <ins> tags
               setTimeout(() => {
                 const newScript = document.createElement("script");
                 newScript.async = true;
-                newScript.src = `${baseUrl}?v=${new Date().getTime()}&rescan=1`;
+                // Use a strong cache buster to ensure fresh load
+                const cacheBuster = `v=${new Date().getTime()}&rescan=1&t=${Math.random()}`;
+                newScript.src = `${baseUrl}?${cacheBuster}`;
+
+                // Add load handler to verify script loaded
+                newScript.onload = () => {
+                  if (debug) {
+                    console.log(
+                      `[BannerAd:${uniqueId}] Bitmedia script reloaded successfully, should now detect ${validInsTags.length} ad(s)`
+                    );
+                  }
+
+                  // Give Bitmedia a moment to process after load
+                  setTimeout(() => {
+                    if (debug) {
+                      const currentInsTags = Array.from(
+                        document.getElementsByTagName("ins")
+                      ).filter(
+                        (ins) =>
+                          ins.classList.contains(adUnitId) &&
+                          ins.parentNode &&
+                          document.body.contains(ins)
+                      );
+                      console.log(
+                        `[BannerAd:${uniqueId}] After re-scan: ${currentInsTags.length} valid <ins> tags still present`
+                      );
+                    }
+                  }, 500);
+                };
+
+                newScript.onerror = () => {
+                  if (debug) {
+                    console.error(
+                      `[BannerAd:${uniqueId}] Failed to reload Bitmedia script`
+                    );
+                  }
+                };
 
                 // Insert at the end of body to ensure it loads
                 if (document.body) {
@@ -290,10 +344,10 @@ const BannerAd = ({
 
                 if (debug) {
                   console.log(
-                    `[BannerAd:${uniqueId}] Re-added Bitmedia script to force re-scan for ${allInsTags.length} ad(s)`
+                    `[BannerAd:${uniqueId}] Re-added Bitmedia script to force re-scan for ${validInsTags.length} ad(s)`
                   );
                 }
-              }, 100);
+              }, 200); // Increased delay to ensure scripts are fully removed
             } else if (debug) {
               if (bitmediaScripts.length === 0) {
                 console.log(
