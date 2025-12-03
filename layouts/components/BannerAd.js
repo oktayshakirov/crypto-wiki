@@ -53,13 +53,19 @@ const BannerAd = ({
   // Initialize ad on mount and route changes
   useEffect(() => {
     if (!isMounted || typeof window === "undefined" || isDevelopment) return;
-    if (!containerRef.current || !adRef.current) return;
 
-    const initializeAd = () => {
-      if (!containerRef.current || !adRef.current) return;
+    const initializeAd = (retryCount = 0) => {
+      const maxRetries = 15; // Try up to 15 times (1.5 seconds total)
 
       const adElement = document.getElementById(uniqueId);
-      if (!adElement) return;
+
+      if (!adElement) {
+        // Element not in DOM yet, retry
+        if (retryCount < maxRetries) {
+          setTimeout(() => initializeAd(retryCount + 1), 100);
+        }
+        return;
+      }
 
       // Check if script already exists for this ad instance
       const existingInlineScript =
@@ -82,16 +88,58 @@ const BannerAd = ({
 
     // Handle route changes for Next.js client-side navigation
     const handleRouteChange = () => {
-      // Re-initialize after route change with a delay to ensure DOM is ready
+      // Reset and re-initialize after route change
+      const adElement = document.getElementById(uniqueId);
+      if (adElement) {
+        // Remove existing script to allow re-initialization
+        const existingScript = adElement.nextElementSibling;
+        if (existingScript?.getAttribute("data-bitmedia-ad") === uniqueId) {
+          existingScript.remove();
+        }
+      }
+
+      // Re-initialize after route change
       setTimeout(() => {
         initializeAd();
-      }, 400);
+      }, 300);
     };
 
-    // Initialize on mount
-    const timer = setTimeout(() => {
-      initializeAd();
-    }, 200);
+    // Initialize on mount - use multiple strategies to ensure it runs on initial load
+    let timers = [];
+
+    // Strategy 1: Immediate check (for fast DOM)
+    timers.push(setTimeout(() => initializeAd(), 50));
+
+    // Strategy 2: After DOMContentLoaded (for initial page load)
+    if (document.readyState === "loading") {
+      const domReadyHandler = () => {
+        timers.push(setTimeout(() => initializeAd(), 100));
+      };
+      document.addEventListener("DOMContentLoaded", domReadyHandler, {
+        once: true,
+      });
+    } else {
+      // DOM already ready
+      timers.push(setTimeout(() => initializeAd(), 150));
+    }
+
+    // Strategy 3: After window load (ensures everything is ready)
+    if (document.readyState !== "complete") {
+      const loadHandler = () => {
+        timers.push(setTimeout(() => initializeAd(), 100));
+      };
+      window.addEventListener("load", loadHandler, { once: true });
+    } else {
+      timers.push(setTimeout(() => initializeAd(), 250));
+    }
+
+    // Strategy 4: Fallback with requestAnimationFrame (for next paint)
+    requestAnimationFrame(() => {
+      timers.push(setTimeout(() => initializeAd(), 100));
+    });
+
+    // Strategy 5: Additional fallback after longer delay
+    timers.push(setTimeout(() => initializeAd(), 800));
 
     // Listen for route changes
     if (router.events) {
@@ -99,7 +147,7 @@ const BannerAd = ({
     }
 
     return () => {
-      clearTimeout(timer);
+      timers.forEach((timer) => clearTimeout(timer));
       if (router.events) {
         router.events.off("routeChangeComplete", handleRouteChange);
       }
