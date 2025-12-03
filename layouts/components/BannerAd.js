@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { useRouter } from "next/router";
 
 /**
@@ -50,11 +50,9 @@ const BannerAd = ({
     }
   }, []);
 
-  // Initialize ad when element is rendered and on route changes
-  useEffect(() => {
-    if (!isMounted || typeof window === "undefined" || isDevelopment) return;
-
-    const initializeAd = (element = null) => {
+  // Shared initialization function - memoized to avoid recreating on every render
+  const initializeAdScript = useCallback(
+    (element = null) => {
       // Use provided element or try to find it
       const adElement = element || document.getElementById(uniqueId);
 
@@ -81,33 +79,61 @@ const BannerAd = ({
         return true;
       }
       return false;
-    };
+    },
+    [uniqueId, adUnitId]
+  );
+
+  // Initialize ad when element is rendered and on route changes
+  useEffect(() => {
+    if (!isMounted || typeof window === "undefined" || isDevelopment) return;
+
+    const initializeAd = initializeAdScript;
 
     // Initialize when ref is set (for initial load)
     const tryInitializeWithRef = () => {
       if (adRef.current) {
-        initializeAd(adRef.current);
+        return initializeAd(adRef.current);
       }
+      return false;
     };
 
     // Handle route changes for Next.js client-side navigation
     const handleRouteChange = () => {
       // Reset and re-initialize after route change
-      const adElement = document.getElementById(uniqueId);
-      if (adElement) {
-        // Remove existing script to allow re-initialization
-        const existingScript = adElement.nextElementSibling;
-        if (existingScript?.getAttribute("data-bitmedia-ad") === uniqueId) {
-          existingScript.remove();
-        }
-      }
+      const resetAndInit = (retryCount = 0) => {
+        const maxRetries = 15;
 
-      // Re-initialize after route change - try with ref first, then fallback
-      setTimeout(() => {
-        if (!initializeAd(adRef.current)) {
-          initializeAd(); // Fallback to getElementById
+        const adElement = document.getElementById(uniqueId);
+
+        if (adElement) {
+          // Remove existing script to allow re-initialization
+          const existingScript = adElement.nextElementSibling;
+          if (existingScript?.getAttribute("data-bitmedia-ad") === uniqueId) {
+            existingScript.remove();
+          }
+
+          // Re-initialize the ad
+          if (initializeAd(adElement)) {
+            return; // Successfully initialized
+          }
         }
-      }, 300);
+
+        // Element not found yet, retry
+        if (retryCount < maxRetries) {
+          setTimeout(() => resetAndInit(retryCount + 1), 100);
+        }
+      };
+
+      // Start re-initialization after route change
+      // Use multiple delays to catch different timing scenarios
+      setTimeout(() => resetAndInit(), 200);
+      setTimeout(() => resetAndInit(), 400);
+      setTimeout(() => resetAndInit(), 600);
+
+      // Also use requestAnimationFrame for next paint
+      requestAnimationFrame(() => {
+        setTimeout(() => resetAndInit(), 100);
+      });
     };
 
     // Initialize on mount - use multiple strategies to ensure it runs on initial load
@@ -189,44 +215,38 @@ const BannerAd = ({
         router.events.off("routeChangeComplete", handleRouteChange);
       }
     };
-  }, [isMounted, isDevelopment, adUnitId, uniqueId, router]);
+  }, [
+    isMounted,
+    isDevelopment,
+    adUnitId,
+    uniqueId,
+    router,
+    initializeAdScript,
+  ]);
 
   // Use callback ref to initialize when element is actually rendered
   // This ensures ads initialize on initial page load, not just on navigation
-  const adRefCallback = (element) => {
-    adRef.current = element;
+  // Memoized to prevent unnecessary re-renders
+  const adRefCallback = useCallback(
+    (element) => {
+      adRef.current = element;
 
-    // Initialize immediately when ref is set (for initial load)
-    if (
-      element &&
-      isMounted &&
-      !isDevelopment &&
-      typeof window !== "undefined"
-    ) {
-      // Use requestAnimationFrame to ensure element is fully in DOM
-      requestAnimationFrame(() => {
-        const adElement = document.getElementById(uniqueId);
-        if (adElement) {
-          // Check if script already exists
-          const existingInlineScript =
-            adElement.nextElementSibling?.getAttribute("data-bitmedia-ad");
-          if (existingInlineScript !== uniqueId) {
-            // Initialize the ad
-            const inlineScript = document.createElement("script");
-            inlineScript.setAttribute("data-bitmedia-ad", uniqueId);
-            inlineScript.textContent = `!function(e,n,c,t,o,r,d){!function e(n,c,t,o,r,m,d,s,a){s=c.getElementsByTagName(t)[0],(a=c.createElement(t)).async=!0,a.src="https://"+r[m]+"/js/"+o+".js?v="+d,a.onerror=function(){a.remove(),(m+=1)>=r.length||e(n,c,t,o,r,m)},s.parentNode.insertBefore(a,s)}(window,document,"script","${adUnitId}",["cdn.bmcdn6.com"], 0, new Date().getTime())}();`;
-
-            if (adElement.parentNode) {
-              adElement.parentNode.insertBefore(
-                inlineScript,
-                adElement.nextSibling
-              );
-            }
-          }
-        }
-      });
-    }
-  };
+      // Initialize immediately when ref is set (for initial load and navigation)
+      if (
+        element &&
+        isMounted &&
+        !isDevelopment &&
+        typeof window !== "undefined"
+      ) {
+        // Use requestAnimationFrame to ensure element is fully in DOM
+        requestAnimationFrame(() => {
+          // Use the shared initialization function
+          initializeAdScript(element);
+        });
+      }
+    },
+    [isMounted, isDevelopment, initializeAdScript]
+  );
 
   // Show placeholder in development mode
   if (isDevelopment) {
