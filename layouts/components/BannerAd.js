@@ -50,28 +50,23 @@ const BannerAd = ({
     }
   }, []);
 
-  // Initialize ad on mount and route changes
+  // Initialize ad when element is rendered and on route changes
   useEffect(() => {
     if (!isMounted || typeof window === "undefined" || isDevelopment) return;
 
-    const initializeAd = (retryCount = 0) => {
-      const maxRetries = 15; // Try up to 15 times (1.5 seconds total)
-
-      const adElement = document.getElementById(uniqueId);
+    const initializeAd = (element = null) => {
+      // Use provided element or try to find it
+      const adElement = element || document.getElementById(uniqueId);
 
       if (!adElement) {
-        // Element not in DOM yet, retry
-        if (retryCount < maxRetries) {
-          setTimeout(() => initializeAd(retryCount + 1), 100);
-        }
-        return;
+        return false; // Element not found
       }
 
       // Check if script already exists for this ad instance
       const existingInlineScript =
         adElement.nextElementSibling?.getAttribute("data-bitmedia-ad");
       if (existingInlineScript === uniqueId) {
-        return; // Already initialized
+        return true; // Already initialized
       }
 
       // According to Bitmedia documentation, place script right after <ins> tag
@@ -83,6 +78,15 @@ const BannerAd = ({
       // Insert script right after the <ins> tag (as per Bitmedia docs)
       if (adElement.parentNode) {
         adElement.parentNode.insertBefore(inlineScript, adElement.nextSibling);
+        return true;
+      }
+      return false;
+    };
+
+    // Initialize when ref is set (for initial load)
+    const tryInitializeWithRef = () => {
+      if (adRef.current) {
+        initializeAd(adRef.current);
       }
     };
 
@@ -98,48 +102,80 @@ const BannerAd = ({
         }
       }
 
-      // Re-initialize after route change
+      // Re-initialize after route change - try with ref first, then fallback
       setTimeout(() => {
-        initializeAd();
+        if (!initializeAd(adRef.current)) {
+          initializeAd(); // Fallback to getElementById
+        }
       }, 300);
     };
 
     // Initialize on mount - use multiple strategies to ensure it runs on initial load
     let timers = [];
 
-    // Strategy 1: Immediate check (for fast DOM)
-    timers.push(setTimeout(() => initializeAd(), 50));
+    // Strategy 1: Use ref callback (most reliable for initial load)
+    // The ref will be set when React renders the element
+    const refInitTimer = setTimeout(() => {
+      tryInitializeWithRef();
+    }, 0);
 
     // Strategy 2: After DOMContentLoaded (for initial page load)
     if (document.readyState === "loading") {
       const domReadyHandler = () => {
-        timers.push(setTimeout(() => initializeAd(), 100));
+        setTimeout(() => {
+          if (!tryInitializeWithRef()) {
+            initializeAd(); // Fallback
+          }
+        }, 50);
       };
       document.addEventListener("DOMContentLoaded", domReadyHandler, {
         once: true,
       });
     } else {
       // DOM already ready
-      timers.push(setTimeout(() => initializeAd(), 150));
+      setTimeout(() => {
+        if (!tryInitializeWithRef()) {
+          initializeAd(); // Fallback
+        }
+      }, 100);
     }
 
     // Strategy 3: After window load (ensures everything is ready)
     if (document.readyState !== "complete") {
       const loadHandler = () => {
-        timers.push(setTimeout(() => initializeAd(), 100));
+        setTimeout(() => {
+          if (!tryInitializeWithRef()) {
+            initializeAd(); // Fallback
+          }
+        }, 50);
       };
       window.addEventListener("load", loadHandler, { once: true });
     } else {
-      timers.push(setTimeout(() => initializeAd(), 250));
+      setTimeout(() => {
+        if (!tryInitializeWithRef()) {
+          initializeAd(); // Fallback
+        }
+      }, 150);
     }
 
     // Strategy 4: Fallback with requestAnimationFrame (for next paint)
     requestAnimationFrame(() => {
-      timers.push(setTimeout(() => initializeAd(), 100));
+      setTimeout(() => {
+        if (!tryInitializeWithRef()) {
+          initializeAd(); // Fallback
+        }
+      }, 50);
     });
 
-    // Strategy 5: Additional fallback after longer delay
-    timers.push(setTimeout(() => initializeAd(), 800));
+    // Strategy 5: Additional fallback with retry mechanism
+    const retryInit = (attempt = 0) => {
+      if (attempt < 10) {
+        if (!tryInitializeWithRef() && !initializeAd()) {
+          setTimeout(() => retryInit(attempt + 1), 100);
+        }
+      }
+    };
+    timers.push(setTimeout(() => retryInit(), 200));
 
     // Listen for route changes
     if (router.events) {
@@ -147,12 +183,50 @@ const BannerAd = ({
     }
 
     return () => {
+      clearTimeout(refInitTimer);
       timers.forEach((timer) => clearTimeout(timer));
       if (router.events) {
         router.events.off("routeChangeComplete", handleRouteChange);
       }
     };
   }, [isMounted, isDevelopment, adUnitId, uniqueId, router]);
+
+  // Use callback ref to initialize when element is actually rendered
+  // This ensures ads initialize on initial page load, not just on navigation
+  const adRefCallback = (element) => {
+    adRef.current = element;
+
+    // Initialize immediately when ref is set (for initial load)
+    if (
+      element &&
+      isMounted &&
+      !isDevelopment &&
+      typeof window !== "undefined"
+    ) {
+      // Use requestAnimationFrame to ensure element is fully in DOM
+      requestAnimationFrame(() => {
+        const adElement = document.getElementById(uniqueId);
+        if (adElement) {
+          // Check if script already exists
+          const existingInlineScript =
+            adElement.nextElementSibling?.getAttribute("data-bitmedia-ad");
+          if (existingInlineScript !== uniqueId) {
+            // Initialize the ad
+            const inlineScript = document.createElement("script");
+            inlineScript.setAttribute("data-bitmedia-ad", uniqueId);
+            inlineScript.textContent = `!function(e,n,c,t,o,r,d){!function e(n,c,t,o,r,m,d,s,a){s=c.getElementsByTagName(t)[0],(a=c.createElement(t)).async=!0,a.src="https://"+r[m]+"/js/"+o+".js?v="+d,a.onerror=function(){a.remove(),(m+=1)>=r.length||e(n,c,t,o,r,m)},s.parentNode.insertBefore(a,s)}(window,document,"script","${adUnitId}",["cdn.bmcdn6.com"], 0, new Date().getTime())}();`;
+
+            if (adElement.parentNode) {
+              adElement.parentNode.insertBefore(
+                inlineScript,
+                adElement.nextSibling
+              );
+            }
+          }
+        }
+      });
+    }
+  };
 
   // Show placeholder in development mode
   if (isDevelopment) {
@@ -213,7 +287,7 @@ const BannerAd = ({
       }}
     >
       <ins
-        ref={adRef}
+        ref={adRefCallback}
         className={`${adUnitId} ${className}`}
         style={{
           display: "inline-block",
