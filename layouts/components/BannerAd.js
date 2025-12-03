@@ -1,65 +1,101 @@
-import { useId, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
-// Global counter to ensure unique IDs across all instances
-let adCounter = 0;
-
-const BannerAd = ({ id }) => {
-  const uniqueId = useId();
-  const instanceId = useRef(adCounter++);
-  const adId =
-    id || `banner-ad-${instanceId.current}-${uniqueId.replace(/:/g, "-")}`;
+const BannerAd = ({ className = "", style = {}, id }) => {
+  const containerRef = useRef(null);
   const adRef = useRef(null);
+  const [isDevelopment, setIsDevelopment] = useState(false);
+  const [uniqueId] = useState(
+    () => id || `banner-ad-${Math.random().toString(36).substr(2, 9)}`
+  );
 
   useEffect(() => {
-    if (adRef.current && typeof window !== "undefined") {
-      const element = adRef.current;
+    if (typeof window !== "undefined") {
+      const hostname = window.location.hostname;
+      const isDev =
+        hostname === "localhost" ||
+        hostname === "127.0.0.1" ||
+        hostname.includes("localhost") ||
+        hostname.includes("127.0.0.1") ||
+        hostname === "";
 
-      // Ensure this element is marked as ready for ad initialization
-      // The ad script should detect all elements with the class
-      element.setAttribute("data-ad-slot", adId);
-
-      // Try to trigger ad script re-scan after a delay
-      // This helps if the script loaded before this component mounted
-      const triggerRescan = () => {
-        // Create a custom event that might trigger ad re-initialization
-        const event = new CustomEvent("adSlotAdded", {
-          detail: { element, adClass: "692e0776457ec2706b483e16" },
-        });
-        document.dispatchEvent(event);
-
-        // Also try to manually trigger if there's a global ad function
-        if (window.bmcdn6 && typeof window.bmcdn6.refresh === "function") {
-          window.bmcdn6.refresh();
-        }
-      };
-
-      // Trigger immediately and after delays to catch script loading at different times
-      triggerRescan();
-      const timeout1 = setTimeout(triggerRescan, 200);
-      const timeout2 = setTimeout(triggerRescan, 1000);
-      const timeout3 = setTimeout(triggerRescan, 2000);
-
-      return () => {
-        clearTimeout(timeout1);
-        clearTimeout(timeout2);
-        clearTimeout(timeout3);
-      };
+      setIsDevelopment(isDev);
     }
-  }, [adId]);
+
+    if (typeof window === "undefined" || isDevelopment) return;
+
+    if (!containerRef.current || !adRef.current) return;
+
+    const loadScriptForThisAd = () => {
+      const existingScript = containerRef.current.querySelector(
+        `script[data-bitmedia-ad="${uniqueId}"]`
+      );
+      if (existingScript) return;
+
+      const script = document.createElement("script");
+      script.setAttribute("data-bitmedia-ad", uniqueId);
+      script.textContent = `!function(e,n,c,t,o,r,d){!function e(n,c,t,o,r,m,d,s,a){s=c.getElementsByTagName(t)[0],(a=c.createElement(t)).async=!0,a.src="https://"+r[m]+"/js/"+o+".js?v="+d,a.onerror=function(){a.remove(),(m+=1)>=r.length||e(n,c,t,o,r,m)},s.parentNode.insertBefore(a,s)}(window,document,"script","692e0776457ec2706b483e16",["cdn.bmcdn6.com"], 0, new Date().getTime())}();`;
+
+      containerRef.current.appendChild(script);
+    };
+
+    const timer = setTimeout(() => {
+      loadScriptForThisAd();
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, [isDevelopment, uniqueId]);
+
+  if (isDevelopment) {
+    return (
+      <div
+        className={`banner-ad-placeholder ${className}`}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          minHeight: "90px",
+          width: "100%",
+          backgroundColor: "#1f2937",
+          border: "2px dashed #4b5563",
+          borderRadius: "4px",
+          color: "#ffffff",
+          fontSize: "14px",
+          textAlign: "center",
+          padding: "20px",
+          margin: "20px 0",
+          ...style,
+        }}
+        id={uniqueId}
+      >
+        <div>
+          <div
+            style={{
+              fontWeight: "bold",
+              marginBottom: "8px",
+              color: "#ffffff",
+            }}
+          >
+            Ad Placeholder
+          </div>
+          <div style={{ fontSize: "12px", opacity: 0.7, color: "#d1d5db" }}>
+            Bitmedia ads only display in production
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div
-      data-banner-ad-wrapper={adId}
-      style={{ display: "block", width: "100%" }}
+      ref={containerRef}
+      style={{ display: "inline-block", width: "100%", ...style }}
     >
       <ins
         ref={adRef}
-        className="692e0776457ec2706b483e16"
-        data-ad-id={adId}
-        id={adId}
-        data-ad-slot={adId}
+        className={`692e0776457ec2706b483e16 ${className}`}
         style={{ display: "inline-block", width: "1px", height: "1px" }}
-      ></ins>
+        id={uniqueId}
+      />
     </div>
   );
 };
