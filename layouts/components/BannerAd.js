@@ -77,21 +77,36 @@ const BannerAd = ({
           className: adElement.className,
           hasParent: !!adElement.parentNode,
           nextSibling: adElement.nextElementSibling?.tagName,
+          tagName: adElement.tagName,
         });
       }
 
-      // Verify this is the right element (has the correct class and ID)
-      if (
-        adElement.id !== uniqueId ||
-        !adElement.classList.contains(adUnitId)
-      ) {
+      // Verify this is the right element
+      // If element was passed directly (e.g., from ref callback), trust it more
+      // React might not have set the ID yet when ref callback fires
+      const wasPassedDirectly = element !== null;
+      const hasCorrectId = adElement.id === uniqueId;
+      const hasCorrectClass = adElement.classList.contains(adUnitId);
+      const isInsTag = adElement.tagName === "INS";
+
+      // Validation logic:
+      // - If element was passed directly AND has the correct class, trust it (ID might not be set yet)
+      // - If element was found by ID, it must have the correct ID
+      // - In all cases, it must have the correct class and be an INS tag
+      const isValidElement =
+        isInsTag && hasCorrectClass && (wasPassedDirectly || hasCorrectId);
+
+      if (!isValidElement) {
         if (debug) {
           console.warn(
-            `[BannerAd:${uniqueId}] Wrong element - ID mismatch or missing class`,
+            `[BannerAd:${uniqueId}] Wrong element - validation failed`,
             {
               expectedId: uniqueId,
               actualId: adElement.id,
-              hasClass: adElement.classList.contains(adUnitId),
+              hasClass: hasCorrectClass,
+              isInsTag,
+              wasPassedDirectly,
+              hasCorrectId,
             }
           );
         }
@@ -158,11 +173,11 @@ const BannerAd = ({
       }
 
       // Initialize ads on new page after route change
-      // Don't remove existing scripts - just check if they exist and add if missing
+      // Only initialize if this component is still mounted and on the current page
       const initOnRouteChange = (retryCount = 0) => {
-        const maxRetries = 20; // Increased retries for navigation
+        const maxRetries = 15; // Reduced retries - if element doesn't exist after this, component is likely unmounted
 
-        if (debug && retryCount > 0) {
+        if (debug && retryCount > 0 && retryCount < 5) {
           console.log(
             `[BannerAd:${uniqueId}] Route change retry ${retryCount}/${maxRetries}`
           );
@@ -172,32 +187,36 @@ const BannerAd = ({
         const adElement = document.getElementById(uniqueId);
 
         if (adElement) {
-          // Verify this is actually our element (check it's in the viewport or has correct class)
-          // This ensures we're not getting an old element from previous page
-          const rect = adElement.getBoundingClientRect();
-          const isVisible = adElement.offsetParent !== null || rect.width > 0;
+          // Verify this is actually our element and it's on the current page
+          // Check that it has the correct class and is an INS tag
+          const hasCorrectClass = adElement.classList.contains(adUnitId);
+          const isInsTag = adElement.tagName === "INS";
+          const hasCorrectId = adElement.id === uniqueId;
+          const isInDocument = document.body.contains(adElement);
 
-          if (debug) {
+          if (debug && retryCount === 0) {
             console.log(
               `[BannerAd:${uniqueId}] Element found on route change:`,
               {
                 id: adElement.id,
                 className: adElement.className,
-                isVisible,
-                rect: { width: rect.width, height: rect.height },
+                hasCorrectClass,
+                isInsTag,
+                hasCorrectId,
+                isInDocument,
                 hasParent: !!adElement.parentNode,
               }
             );
           }
 
-          if (!isVisible && retryCount < 5) {
-            // Element might not be rendered yet, retry
-            if (debug) {
+          // If element doesn't match our criteria, it might be from a previous page
+          if (!isInDocument || !isInsTag || !hasCorrectClass || !hasCorrectId) {
+            if (debug && retryCount < 3) {
               console.log(
-                `[BannerAd:${uniqueId}] Element not visible, retrying...`
+                `[BannerAd:${uniqueId}] Element validation failed, might be from previous page`
               );
             }
-            setTimeout(() => initOnRouteChange(retryCount + 1), 50);
+            // Don't retry if validation fails - this is likely an old element
             return;
           }
 
@@ -222,19 +241,22 @@ const BannerAd = ({
             return; // Successfully initialized
           }
         } else {
+          // Element not found - might not be on this page (component unmounted)
+          // Only log first few retries to avoid spam
           if (debug && retryCount < 3) {
             console.log(
-              `[BannerAd:${uniqueId}] Element not found, retrying...`
+              `[BannerAd:${uniqueId}] Element not found on route change (component may be unmounted)`
             );
           }
         }
 
-        // Element not found yet, retry
+        // Element not found yet, retry (but only if we haven't exceeded max retries)
         if (retryCount < maxRetries) {
           setTimeout(() => initOnRouteChange(retryCount + 1), 100);
-        } else if (debug) {
-          console.error(
-            `[BannerAd:${uniqueId}] Failed after ${maxRetries} retries on route change`
+        } else if (debug && retryCount === maxRetries) {
+          // Only log once when max retries reached
+          console.log(
+            `[BannerAd:${uniqueId}] Element not found after ${maxRetries} retries (likely not on this page)`
           );
         }
       };
@@ -244,8 +266,6 @@ const BannerAd = ({
       setTimeout(() => initOnRouteChange(), 100);
       setTimeout(() => initOnRouteChange(), 300);
       setTimeout(() => initOnRouteChange(), 500);
-      setTimeout(() => initOnRouteChange(), 700);
-      setTimeout(() => initOnRouteChange(), 900);
 
       // Also use requestAnimationFrame for next paint
       requestAnimationFrame(() => {
@@ -253,7 +273,7 @@ const BannerAd = ({
       });
 
       // Additional fallback after longer delay
-      setTimeout(() => initOnRouteChange(), 1200);
+      setTimeout(() => initOnRouteChange(), 800);
     };
 
     // Initialize on mount - use multiple strategies to ensure it runs on initial load
@@ -357,24 +377,44 @@ const BannerAd = ({
           hasElement: !!element,
           isMounted,
           isDevelopment,
+          elementId: element?.id,
+          elementClass: element?.className,
         });
       }
 
-      // Initialize immediately when ref is set (for initial load and navigation)
+      // Initialize when ref is set (for initial load and navigation)
       if (
         element &&
         isMounted &&
         !isDevelopment &&
         typeof window !== "undefined"
       ) {
-        // Use requestAnimationFrame to ensure element is fully in DOM
+        // Use multiple strategies to ensure element is fully ready
+        // Strategy 1: Immediate with requestAnimationFrame (for when element is ready)
         requestAnimationFrame(() => {
-          // Use the shared initialization function
-          initializeAdScript(element, "refCallback");
+          // Check if element has the class (more reliable than ID which might not be set yet)
+          if (element.classList.contains(adUnitId)) {
+            initializeAdScript(element, "refCallback-raf");
+          } else {
+            // Class not set yet, wait a bit
+            setTimeout(() => {
+              initializeAdScript(element, "refCallback-delayed");
+            }, 10);
+          }
         });
+
+        // Strategy 2: Small delay to ensure React has set all attributes
+        setTimeout(() => {
+          // Only initialize if script doesn't already exist
+          const existingScript =
+            element.nextElementSibling?.getAttribute("data-bitmedia-ad");
+          if (existingScript !== uniqueId) {
+            initializeAdScript(element, "refCallback-timeout");
+          }
+        }, 50);
       }
     },
-    [isMounted, isDevelopment, initializeAdScript, uniqueId, debug]
+    [isMounted, isDevelopment, initializeAdScript, uniqueId, adUnitId, debug]
   );
 
   // Show placeholder in development mode
