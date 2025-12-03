@@ -62,6 +62,7 @@ const MyApp = ({ Component, pageProps }) => {
 
   useEffect(() => {
     if (!isApp && typeof window !== "undefined") {
+      // Load the ad script
       !(function e(n, c, t, o, r, m, d, s, a) {
         (s = c.getElementsByTagName(t)[0]),
           ((a = c.createElement(t)).async = !0),
@@ -79,6 +80,37 @@ const MyApp = ({ Component, pageProps }) => {
         0,
         new Date().getTime()
       );
+
+      // Set up MutationObserver to detect new ad slots and ensure they're initialized
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          mutation.addedNodes.forEach((node) => {
+            if (
+              node.nodeType === 1 &&
+              node.classList &&
+              node.classList.contains("692e0776457ec2706b483e16")
+            ) {
+              // New ad slot detected, trigger re-initialization if possible
+              if (
+                window.bmcdn6 &&
+                typeof window.bmcdn6.refresh === "function"
+              ) {
+                setTimeout(() => window.bmcdn6.refresh(), 100);
+              }
+            }
+          });
+        });
+      });
+
+      // Start observing the document for new ad slots
+      observer.observe(document.body, {
+        childList: true,
+        subtree: true,
+      });
+
+      return () => {
+        observer.disconnect();
+      };
     }
   }, [isApp]);
 
