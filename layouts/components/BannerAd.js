@@ -71,19 +71,24 @@ const BannerAd = ({ className = "", style = {}, id }) => {
     };
   }, [isDevelopment, uniqueId, router.pathname]);
 
-  // Handle route changes - update route registration
-  // The manager will handle re-initialization via route change listener in _app.js
+  // Handle route changes - re-register with new route
+  // Don't update existing instance route - let manager handle cleanup and re-initialization
   useEffect(() => {
     if (typeof window === "undefined" || isDevelopment) return;
-    if (!containerRef.current || !managerRef.current) return;
+    if (!containerRef.current || !adRef.current) return;
+
+    const manager = getBitmediaManager();
+    if (!manager) return;
 
     const currentRoute = router.pathname;
-    const instance = managerRef.current.adInstances.get(uniqueId);
+    const instance = manager.adInstances.get(uniqueId);
 
-    if (instance) {
-      // Update route for this ad instance
-      // The manager's handleRouteChange will trigger re-initialization
-      instance.route = currentRoute;
+    // If instance exists but route changed, re-register with new route
+    if (instance && instance.route !== currentRoute) {
+      // Unregister old instance
+      manager.unregisterAd(uniqueId);
+      // Register with new route
+      manager.registerAd(uniqueId, containerRef.current, currentRoute);
     }
   }, [router.pathname, uniqueId, isDevelopment]);
 
