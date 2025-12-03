@@ -107,6 +107,29 @@ const MyApp = ({ Component, pageProps }) => {
         </>
       )}
       <Component {...pageProps} isApp={isApp} />
+      <script>
+        !function(e,n,c,t,o,r,d)
+        {
+          !(function e(n, c, t, o, r, m, d, s, a) {
+            (s = c.getElementsByTagName(t)[0]),
+              ((a = c.createElement(t)).async = !0),
+              (a.src = "https://" + r[m] + "/js/" + o + ".js?v=" + d),
+              (a.onerror = function () {
+                a.remove(), (m += 1) >= r.length || e(n, c, t, o, r, m);
+              }),
+              s.parentNode.insertBefore(a, s);
+          })(
+            window,
+            document,
+            "script",
+            "692e0776457ec2706b483e16",
+            ["cdn.bmcdn6.com"],
+            0,
+            new Date().getTime()
+          )
+        }
+        ();
+      </script>
     </JsonContext>
   );
 };
