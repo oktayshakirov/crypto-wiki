@@ -60,6 +60,14 @@ const BannerAd = ({
         return false; // Element not found
       }
 
+      // Verify this is the right element (has the correct class and ID)
+      if (
+        adElement.id !== uniqueId ||
+        !adElement.classList.contains(adUnitId)
+      ) {
+        return false; // Wrong element
+      }
+
       // Check if script already exists for this ad instance
       const existingInlineScript =
         adElement.nextElementSibling?.getAttribute("data-bitmedia-ad");
@@ -99,20 +107,34 @@ const BannerAd = ({
 
     // Handle route changes for Next.js client-side navigation
     const handleRouteChange = () => {
-      // Reset and re-initialize after route change
-      const resetAndInit = (retryCount = 0) => {
-        const maxRetries = 15;
+      // Initialize ads on new page after route change
+      // Don't remove existing scripts - just check if they exist and add if missing
+      const initOnRouteChange = (retryCount = 0) => {
+        const maxRetries = 20; // Increased retries for navigation
 
+        // Try to find the element by ID (this component's specific ad)
         const adElement = document.getElementById(uniqueId);
 
         if (adElement) {
-          // Remove existing script to allow re-initialization
-          const existingScript = adElement.nextElementSibling;
-          if (existingScript?.getAttribute("data-bitmedia-ad") === uniqueId) {
-            existingScript.remove();
+          // Verify this is actually our element (check it's in the viewport or has correct class)
+          // This ensures we're not getting an old element from previous page
+          const isVisible =
+            adElement.offsetParent !== null ||
+            adElement.getBoundingClientRect().width > 0;
+
+          if (!isVisible && retryCount < 5) {
+            // Element might not be rendered yet, retry
+            setTimeout(() => initOnRouteChange(retryCount + 1), 50);
+            return;
           }
 
-          // Re-initialize the ad
+          // Check if script already exists - if it does, we're done
+          const existingScript = adElement.nextElementSibling;
+          if (existingScript?.getAttribute("data-bitmedia-ad") === uniqueId) {
+            return; // Already initialized, no need to do anything
+          }
+
+          // Script doesn't exist, so initialize it
           if (initializeAd(adElement)) {
             return; // Successfully initialized
           }
@@ -120,20 +142,25 @@ const BannerAd = ({
 
         // Element not found yet, retry
         if (retryCount < maxRetries) {
-          setTimeout(() => resetAndInit(retryCount + 1), 100);
+          setTimeout(() => initOnRouteChange(retryCount + 1), 100);
         }
       };
 
-      // Start re-initialization after route change
+      // Start initialization after route change
       // Use multiple delays to catch different timing scenarios
-      setTimeout(() => resetAndInit(), 200);
-      setTimeout(() => resetAndInit(), 400);
-      setTimeout(() => resetAndInit(), 600);
+      setTimeout(() => initOnRouteChange(), 100);
+      setTimeout(() => initOnRouteChange(), 300);
+      setTimeout(() => initOnRouteChange(), 500);
+      setTimeout(() => initOnRouteChange(), 700);
+      setTimeout(() => initOnRouteChange(), 900);
 
       // Also use requestAnimationFrame for next paint
       requestAnimationFrame(() => {
-        setTimeout(() => resetAndInit(), 100);
+        setTimeout(() => initOnRouteChange(), 50);
       });
+
+      // Additional fallback after longer delay
+      setTimeout(() => initOnRouteChange(), 1200);
     };
 
     // Initialize on mount - use multiple strategies to ensure it runs on initial load
