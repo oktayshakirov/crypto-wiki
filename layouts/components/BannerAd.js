@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/router";
 
 /**
  * BannerAd Component for Bitmedia Ads
@@ -26,11 +27,14 @@ const BannerAd = ({
 }) => {
   const containerRef = useRef(null);
   const adRef = useRef(null);
+  const router = useRouter();
   const [isDevelopment, setIsDevelopment] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   const [uniqueId] = useState(
     () => id || `banner-ad-${Math.random().toString(36).substr(2, 9)}`
   );
 
+  // Initialize development mode check
   useEffect(() => {
     if (typeof window !== "undefined") {
       const hostname = window.location.hostname;
@@ -42,42 +46,65 @@ const BannerAd = ({
         hostname === "";
 
       setIsDevelopment(isDev);
+      setIsMounted(true);
     }
+  }, []);
 
-    if (typeof window === "undefined" || isDevelopment) return;
-
+  // Initialize ad on mount and route changes
+  useEffect(() => {
+    if (!isMounted || typeof window === "undefined" || isDevelopment) return;
     if (!containerRef.current || !adRef.current) return;
 
-    // Load script only once per page per adUnitId (global check)
-    // This allows reusing the same ad unit across the website efficiently
-    const loadScriptGlobally = () => {
-      const scriptId = `bitmedia-script-${adUnitId}`;
+    const initializeAd = () => {
+      if (!containerRef.current || !adRef.current) return;
 
-      // Check if script already exists globally (prevents duplicate scripts)
-      if (document.getElementById(scriptId)) {
-        return; // Script already loaded, Bitmedia will handle all <ins> tags
+      const adElement = document.getElementById(uniqueId);
+      if (!adElement) return;
+
+      // Check if script already exists for this ad instance
+      const existingInlineScript =
+        adElement.nextElementSibling?.getAttribute("data-bitmedia-ad");
+      if (existingInlineScript === uniqueId) {
+        return; // Already initialized
       }
 
-      // Create the Bitmedia script according to their documentation
-      const script = document.createElement("script");
-      script.id = scriptId;
-      script.textContent = `!function(e,n,c,t,o,r,d){!function e(n,c,t,o,r,m,d,s,a){s=c.getElementsByTagName(t)[0],(a=c.createElement(t)).async=!0,a.src="https://"+r[m]+"/js/"+o+".js?v="+d,a.onerror=function(){a.remove(),(m+=1)>=r.length||e(n,c,t,o,r,m)},s.parentNode.insertBefore(a,s)}(window,document,"script","${adUnitId}",["cdn.bmcdn6.com"], 0, new Date().getTime())}();`;
+      // According to Bitmedia documentation, place script right after <ins> tag
+      // The script loads the Bitmedia JS file which finds all <ins> tags with the class
+      const inlineScript = document.createElement("script");
+      inlineScript.setAttribute("data-bitmedia-ad", uniqueId);
+      inlineScript.textContent = `!function(e,n,c,t,o,r,d){!function e(n,c,t,o,r,m,d,s,a){s=c.getElementsByTagName(t)[0],(a=c.createElement(t)).async=!0,a.src="https://"+r[m]+"/js/"+o+".js?v="+d,a.onerror=function(){a.remove(),(m+=1)>=r.length||e(n,c,t,o,r,m)},s.parentNode.insertBefore(a,s)}(window,document,"script","${adUnitId}",["cdn.bmcdn6.com"], 0, new Date().getTime())}();`;
 
-      // Insert script in the document head or body
-      const firstScript = document.getElementsByTagName("script")[0];
-      if (firstScript && firstScript.parentNode) {
-        firstScript.parentNode.insertBefore(script, firstScript);
-      } else {
-        document.body.appendChild(script);
+      // Insert script right after the <ins> tag (as per Bitmedia docs)
+      if (adElement.parentNode) {
+        adElement.parentNode.insertBefore(inlineScript, adElement.nextSibling);
       }
     };
 
-    const timer = setTimeout(() => {
-      loadScriptGlobally();
-    }, 100);
+    // Handle route changes for Next.js client-side navigation
+    const handleRouteChange = () => {
+      // Re-initialize after route change with a delay to ensure DOM is ready
+      setTimeout(() => {
+        initializeAd();
+      }, 400);
+    };
 
-    return () => clearTimeout(timer);
-  }, [isDevelopment, adUnitId]);
+    // Initialize on mount
+    const timer = setTimeout(() => {
+      initializeAd();
+    }, 200);
+
+    // Listen for route changes
+    if (router.events) {
+      router.events.on("routeChangeComplete", handleRouteChange);
+    }
+
+    return () => {
+      clearTimeout(timer);
+      if (router.events) {
+        router.events.off("routeChangeComplete", handleRouteChange);
+      }
+    };
+  }, [isMounted, isDevelopment, adUnitId, uniqueId, router]);
 
   // Show placeholder in development mode
   if (isDevelopment) {
