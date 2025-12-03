@@ -1,11 +1,10 @@
 import { useEffect, useRef, useState, useCallback } from "react";
-import { useRouter } from "next/router";
 
 /**
- * BannerAd Component for Bitmedia Ads - Next.js Optimized
+ * BannerAd Component for Bitmedia Ads
  *
- * Handles Next.js client-side navigation by tracking ads per route
- * and only initializing ads that are on the current active route.
+ * Simple implementation that works with separate ad units per page.
+ * Each page can use a different adUnitId, eliminating navigation issues.
  *
  * @param {string} adUnitId - Your Bitmedia ad unit ID
  * @param {number} width - Ad width in pixels (default: 1 for adaptive)
@@ -26,15 +25,14 @@ const BannerAd = ({
     process.env.NEXT_PUBLIC_BITMEDIA_DEBUG !== "false",
 }) => {
   const adRef = useRef(null);
-  const router = useRouter();
+  const scriptInsertedRef = useRef(false);
   const [isDevelopment, setIsDevelopment] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
-  const [currentRoute, setCurrentRoute] = useState(null);
   const [uniqueId] = useState(
     () => id || `banner-ad-${Math.random().toString(36).substr(2, 9)}`
   );
 
-  // Initialize development mode and track route
+  // Initialize development mode check
   useEffect(() => {
     if (typeof window !== "undefined") {
       const hostname = window.location.hostname;
@@ -47,61 +45,21 @@ const BannerAd = ({
 
       setIsDevelopment(isDev);
       setIsMounted(true);
-      setCurrentRoute(router.asPath);
     }
-  }, [router.asPath]);
+  }, []);
 
-  // Track route changes
-  useEffect(() => {
-    const handleRouteChange = (url) => {
-      setCurrentRoute(url);
-
-      if (debug) {
-        console.log(`[BannerAd:${uniqueId}] Route changed to: ${url}`);
-      }
-    };
-
-    if (router.events) {
-      router.events.on("routeChangeComplete", handleRouteChange);
-    }
-
-    return () => {
-      if (router.events) {
-        router.events.off("routeChangeComplete", handleRouteChange);
-      }
-    };
-  }, [router, uniqueId, debug]);
-
-  // Check if this ad is on the current route
-  const isOnCurrentRoute = useCallback(() => {
-    if (!currentRoute || !adRef.current) return false;
-
-    // Check if the ad element is actually visible and in the viewport
-    const element = adRef.current;
-    const rect = element.getBoundingClientRect();
-    const isVisible =
-      element.offsetParent !== null &&
-      rect.width > 0 &&
-      rect.height > 0 &&
-      document.body.contains(element);
-
-    return isVisible;
-  }, [currentRoute]);
-
-  // Initialize ad script for this specific ad instance
+  // Initialize ad script - simple and straightforward
   const initializeAd = useCallback(() => {
     if (!isMounted || isDevelopment || typeof window === "undefined") {
       return false;
     }
 
-    // Only initialize if on current route
-    if (!isOnCurrentRoute()) {
+    // Prevent duplicate script insertion
+    if (scriptInsertedRef.current) {
       if (debug) {
-        console.log(
-          `[BannerAd:${uniqueId}] Not on current route, skipping initialization`
-        );
+        console.log(`[BannerAd:${uniqueId}] Script already inserted`);
       }
-      return false;
+      return true;
     }
 
     const adElement = adRef.current || document.getElementById(uniqueId);
@@ -113,9 +71,12 @@ const BannerAd = ({
     }
 
     // Check if script already exists
-    const existingScript =
-      adElement.nextElementSibling?.getAttribute("data-bitmedia-ad");
-    if (existingScript === uniqueId) {
+    const existingScript = adElement.nextElementSibling;
+    if (
+      existingScript &&
+      existingScript.getAttribute("data-bitmedia-ad") === uniqueId
+    ) {
+      scriptInsertedRef.current = true;
       if (debug) {
         console.log(`[BannerAd:${uniqueId}] Script already exists`);
       }
@@ -125,206 +86,56 @@ const BannerAd = ({
     // Create and insert the Bitmedia script
     const script = document.createElement("script");
     script.setAttribute("data-bitmedia-ad", uniqueId);
-    script.setAttribute("data-route", currentRoute || "");
     script.textContent = `!function(e,n,c,t,o,r,d){!function e(n,c,t,o,r,m,d,s,a){s=c.getElementsByTagName(t)[0],(a=c.createElement(t)).async=!0,a.src="https://"+r[m]+"/js/"+o+".js?v="+d,a.onerror=function(){a.remove(),(m+=1)>=r.length||e(n,c,t,o,r,m)},s.parentNode.insertBefore(a,s)}(window,document,"script","${adUnitId}",["cdn.bmcdn6.com"], 0, new Date().getTime())}();`;
 
     if (adElement.parentNode) {
       adElement.parentNode.insertBefore(script, adElement.nextSibling);
+      scriptInsertedRef.current = true;
       if (debug) {
         console.log(
-          `[BannerAd:${uniqueId}] Script inserted for route: ${currentRoute}`
+          `[BannerAd:${uniqueId}] Script inserted for ad unit: ${adUnitId}`
         );
       }
       return true;
     }
 
     return false;
-  }, [
-    uniqueId,
-    adUnitId,
-    isMounted,
-    isDevelopment,
-    currentRoute,
-    isOnCurrentRoute,
-    debug,
-  ]);
+  }, [uniqueId, adUnitId, isMounted, isDevelopment, debug]);
 
-  // Global handler to reinitialize Bitmedia after route change
+  // Initialize ad when element is mounted
   useEffect(() => {
-    if (!isMounted || isDevelopment || typeof window === "undefined") {
+    if (!isMounted || isDevelopment) {
       return;
     }
 
-    const globalRescanKey = `__bitmedia_rescan_${adUnitId}`;
+    // Reset script inserted flag on mount (for new page loads)
+    scriptInsertedRef.current = false;
 
-    const handleRouteChange = (url) => {
-      if (debug) {
-        console.log(
-          `[BannerAd] Route change to: ${url}, will reinitialize Bitmedia`
-        );
-      }
-
-      // Only rescan once per route change
-      if (window[globalRescanKey]) {
-        return;
-      }
-      window[globalRescanKey] = true;
-
-      setTimeout(() => {
-        window[globalRescanKey] = false;
-      }, 3000);
-
-      // Wait for new page to render, then reinitialize
-      setTimeout(() => {
-        try {
-          // Find all <ins> tags that are visible on the current route
-          const allInsTags = Array.from(
-            document.getElementsByTagName("ins")
-          ).filter((ins) => {
-            if (!ins.classList.contains(adUnitId)) return false;
-            if (!ins.parentNode || !document.body.contains(ins)) return false;
-
-            // Check if element is visible
-            const rect = ins.getBoundingClientRect();
-            return (
-              ins.offsetParent !== null && rect.width > 0 && rect.height > 0
-            );
-          });
-
-          if (allInsTags.length === 0) {
-            if (debug) {
-              console.log(`[BannerAd] No visible ads found on route: ${url}`);
-            }
-            return;
-          }
-
-          if (debug) {
-            console.log(
-              `[BannerAd] Found ${allInsTags.length} visible ad(s) on route: ${url}`
-            );
-          }
-
-          // Remove ALL Bitmedia scripts (main + inline) to force complete reload
-          const allScripts = document.querySelectorAll(
-            `script[data-bitmedia-ad], script[src*="/js/${adUnitId}.js"]`
-          );
-
-          // Store inline scripts data for current route before removing
-          const currentRouteScripts = [];
-          allInsTags.forEach((insTag) => {
-            const existingScript = insTag.nextElementSibling;
-            if (
-              existingScript &&
-              existingScript.getAttribute("data-bitmedia-ad")
-            ) {
-              currentRouteScripts.push({
-                insTag: insTag,
-                textContent: existingScript.textContent,
-                dataAttr: existingScript.getAttribute("data-bitmedia-ad"),
-                parent: insTag.parentNode,
-              });
-            }
-          });
-
-          // Remove all scripts
-          allScripts.forEach((script) => {
-            script.remove();
-          });
-
-          // Clear Bitmedia global state
-          if (window.bitmedia) {
-            delete window.bitmedia;
-          }
-          if (window.Bitmedia) {
-            delete window.Bitmedia;
-          }
-
-          // Wait a moment, then re-execute all inline scripts for current route
-          // This will cause Bitmedia to reload and scan for all ads
-          setTimeout(() => {
-            if (debug) {
-              console.log(
-                `[BannerAd] Re-executing ${currentRouteScripts.length} inline script(s) for route: ${url}`
-              );
-            }
-
-            currentRouteScripts.forEach((scriptData) => {
-              try {
-                const newScript = document.createElement("script");
-                newScript.textContent = scriptData.textContent;
-                newScript.setAttribute("data-bitmedia-ad", scriptData.dataAttr);
-                newScript.setAttribute("data-route", url);
-
-                // Insert right after the <ins> tag
-                if (scriptData.insTag.nextSibling) {
-                  scriptData.parent.insertBefore(
-                    newScript,
-                    scriptData.insTag.nextSibling
-                  );
-                } else {
-                  scriptData.parent.appendChild(newScript);
-                }
-              } catch (e) {
-                if (debug) {
-                  console.warn(`[BannerAd] Error re-executing script:`, e);
-                }
-              }
-            });
-
-            if (debug) {
-              console.log(
-                `[BannerAd] All scripts re-executed for route: ${url}, Bitmedia should reload and detect ${allInsTags.length} ad(s)`
-              );
-            }
-          }, 300); // Wait 300ms before re-executing
-        } catch (error) {
-          if (debug) {
-            console.error(`[BannerAd] Error reinitializing:`, error);
-          }
-        }
-      }, 1000); // Wait 1s for new page to render
-    };
-
-    if (router.events) {
-      router.events.on("routeChangeComplete", handleRouteChange);
+    // Try to initialize immediately
+    if (adRef.current) {
+      initializeAd();
     }
 
-    return () => {
-      if (router.events) {
-        router.events.off("routeChangeComplete", handleRouteChange);
-      }
-    };
-  }, [isMounted, isDevelopment, adUnitId, router, debug]);
-
-  // Initialize ad when element is mounted and on current route
-  useEffect(() => {
-    if (!isMounted || isDevelopment || !currentRoute) {
-      return;
-    }
-
-    // Wait a bit for route to settle
+    // Also try after a short delay to ensure DOM is ready
     const timer = setTimeout(() => {
-      if (isOnCurrentRoute()) {
-        initializeAd();
-      }
-    }, 200);
+      initializeAd();
+    }, 100);
 
     return () => clearTimeout(timer);
-  }, [isMounted, isDevelopment, currentRoute, isOnCurrentRoute, initializeAd]);
+  }, [isMounted, isDevelopment, initializeAd]);
 
   // Ref callback to initialize when element is rendered
   const adRefCallback = useCallback(
     (element) => {
       adRef.current = element;
-      if (element && isMounted && !isDevelopment && currentRoute) {
+      if (element && isMounted && !isDevelopment) {
+        // Initialize after element is in DOM
         requestAnimationFrame(() => {
-          if (isOnCurrentRoute()) {
-            initializeAd();
-          }
+          initializeAd();
         });
       }
     },
-    [isMounted, isDevelopment, currentRoute, isOnCurrentRoute, initializeAd]
+    [isMounted, isDevelopment, initializeAd]
   );
 
   // Show placeholder in development mode
@@ -362,6 +173,9 @@ const BannerAd = ({
           </div>
           <div style={{ fontSize: "12px", opacity: 0.7 }}>
             Bitmedia ads only display in production
+          </div>
+          <div style={{ fontSize: "10px", opacity: 0.5, marginTop: "4px" }}>
+            Ad Unit: {adUnitId}
           </div>
         </div>
       </div>
