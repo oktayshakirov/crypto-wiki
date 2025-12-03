@@ -8,7 +8,6 @@ import { useRouter } from "next/router";
  * https://bitmedia.io/guides/publisher/implement-js-code-on-website
  *
  * You can reuse the same ad unit across your entire website.
- * The script is loaded only once per page, even if you use multiple <BannerAd /> components.
  *
  * @param {string} adUnitId - Your Bitmedia ad unit ID (default: "692e0776457ec2706b483e16")
  * @param {number} width - Ad width in pixels (default: 1 for adaptive/responsive ads)
@@ -18,15 +17,16 @@ import { useRouter } from "next/router";
  * @param {string} id - Unique ID for the ad instance
  */
 const BannerAd = ({
-  adUnitId = "692e0776457ec2706b483e16", // Your ad unit ID - can be reused across the website
-  width = 1, // 1px for adaptive/responsive ads (matches your Bitmedia code)
-  height = 1, // 1px for adaptive/responsive ads (matches your Bitmedia code)
+  adUnitId = "692e0776457ec2706b483e16",
+  width = 1,
+  height = 1,
   className = "",
   style = {},
   id,
-  debug = true, // Debug enabled globally - set to false or window.__BITMEDIA_DEBUG__ = false to disable
+  debug = typeof window !== "undefined" &&
+    window.__BITMEDIA_DEBUG__ !== false &&
+    process.env.NEXT_PUBLIC_BITMEDIA_DEBUG !== "false",
 }) => {
-  const containerRef = useRef(null);
   const adRef = useRef(null);
   const router = useRouter();
   const [isDevelopment, setIsDevelopment] = useState(false);
@@ -51,575 +51,179 @@ const BannerAd = ({
     }
   }, []);
 
-  // Shared initialization function - memoized to avoid recreating on every render
-  const initializeAdScript = useCallback(
-    (element = null, source = "unknown") => {
+  // Initialize ad script for this specific ad instance
+  const initializeAd = useCallback(() => {
+    if (!isMounted || isDevelopment || typeof window === "undefined") {
+      return false;
+    }
+
+    const adElement = adRef.current || document.getElementById(uniqueId);
+    if (!adElement) {
       if (debug) {
-        console.log(
-          `[BannerAd:${uniqueId}] initializeAdScript called from:`,
-          source
-        );
-      }
-
-      // Use provided element or try to find it
-      const adElement = element || document.getElementById(uniqueId);
-
-      if (!adElement) {
-        if (debug) {
-          console.warn(`[BannerAd:${uniqueId}] Element not found in DOM`);
-        }
-        return false; // Element not found
-      }
-
-      if (debug) {
-        console.log(`[BannerAd:${uniqueId}] Element found:`, {
-          id: adElement.id,
-          className: adElement.className,
-          hasParent: !!adElement.parentNode,
-          nextSibling: adElement.nextElementSibling?.tagName,
-          tagName: adElement.tagName,
-        });
-      }
-
-      // Verify this is the right element
-      // If element was passed directly (e.g., from ref callback), trust it more
-      // React might not have set the ID yet when ref callback fires
-      const wasPassedDirectly = element !== null;
-      const hasCorrectId = adElement.id === uniqueId;
-      const hasCorrectClass = adElement.classList.contains(adUnitId);
-      const isInsTag = adElement.tagName === "INS";
-
-      // Validation logic:
-      // - If element was passed directly AND has the correct class, trust it (ID might not be set yet)
-      // - If element was found by ID, it must have the correct ID
-      // - In all cases, it must have the correct class and be an INS tag
-      const isValidElement =
-        isInsTag && hasCorrectClass && (wasPassedDirectly || hasCorrectId);
-
-      if (!isValidElement) {
-        if (debug) {
-          console.warn(
-            `[BannerAd:${uniqueId}] Wrong element - validation failed`,
-            {
-              expectedId: uniqueId,
-              actualId: adElement.id,
-              hasClass: hasCorrectClass,
-              isInsTag,
-              wasPassedDirectly,
-              hasCorrectId,
-            }
-          );
-        }
-        return false; // Wrong element
-      }
-
-      // Check if script already exists for this ad instance
-      const existingInlineScript =
-        adElement.nextElementSibling?.getAttribute("data-bitmedia-ad");
-      if (existingInlineScript === uniqueId) {
-        if (debug) {
-          console.log(`[BannerAd:${uniqueId}] Script already exists, skipping`);
-        }
-        return true; // Already initialized
-      }
-
-      if (debug) {
-        console.log(`[BannerAd:${uniqueId}] Creating and inserting script`);
-      }
-
-      // According to Bitmedia documentation, place script right after <ins> tag
-      // The script loads the Bitmedia JS file which finds all <ins> tags with the class
-      // Use a cache-busting timestamp to ensure the script re-runs on navigation
-      // This is important because Bitmedia needs to re-scan for new <ins> tags after navigation
-      const cacheBuster = new Date().getTime();
-      const inlineScript = document.createElement("script");
-      inlineScript.setAttribute("data-bitmedia-ad", uniqueId);
-      inlineScript.textContent = `!function(e,n,c,t,o,r,d){!function e(n,c,t,o,r,m,d,s,a){s=c.getElementsByTagName(t)[0],(a=c.createElement(t)).async=!0,a.src="https://"+r[m]+"/js/"+o+".js?v="+d,a.onerror=function(){a.remove(),(m+=1)>=r.length||e(n,c,t,o,r,m)},s.parentNode.insertBefore(a,s)}(window,document,"script","${adUnitId}",["cdn.bmcdn6.com"], 0, ${cacheBuster})}();`;
-
-      // Insert script right after the <ins> tag (as per Bitmedia docs)
-      if (adElement.parentNode) {
-        adElement.parentNode.insertBefore(inlineScript, adElement.nextSibling);
-        if (debug) {
-          console.log(`[BannerAd:${uniqueId}] Script inserted successfully`);
-        }
-
-        // After inserting script, if this is during navigation, try to trigger Bitmedia re-scan
-        // Wait a bit for the script to load, then try to trigger refresh
-        if (source.includes("routeChange") || source.includes("refCallback")) {
-          setTimeout(() => {
-            // Try to find and trigger Bitmedia refresh if it exposes an API
-            // Bitmedia might store its instance in window or have a global function
-            if (typeof window !== "undefined") {
-              // Look for common Bitmedia global objects
-              const bitmediaGlobals = [
-                window.bitmedia,
-                window.Bitmedia,
-                window[`bitmedia_${adUnitId}`],
-                window[`Bitmedia_${adUnitId}`],
-              ];
-
-              for (const bitmedia of bitmediaGlobals) {
-                if (bitmedia && typeof bitmedia.refresh === "function") {
-                  if (debug) {
-                    console.log(
-                      `[BannerAd:${uniqueId}] Triggering Bitmedia refresh`
-                    );
-                  }
-                  try {
-                    bitmedia.refresh();
-                  } catch (e) {
-                    if (debug) {
-                      console.warn(
-                        `[BannerAd:${uniqueId}] Failed to trigger refresh:`,
-                        e
-                      );
-                    }
-                  }
-                  break;
-                }
-              }
-
-              // Also try dispatching a custom event that might trigger re-scan
-              if (document.body) {
-                const event = new CustomEvent("bitmedia:refresh", {
-                  detail: { adUnitId },
-                });
-                document.body.dispatchEvent(event);
-              }
-            }
-          }, 500);
-        }
-
-        return true;
-      }
-
-      if (debug) {
-        console.error(
-          `[BannerAd:${uniqueId}] Failed to insert script - no parent node`
-        );
+        console.log(`[BannerAd:${uniqueId}] Element not found`);
       }
       return false;
-    },
-    [uniqueId, adUnitId, debug]
-  );
+    }
 
-  // Initialize ad when element is rendered and on route changes
+    // Check if script already exists
+    const existingScript =
+      adElement.nextElementSibling?.getAttribute("data-bitmedia-ad");
+    if (existingScript === uniqueId) {
+      if (debug) {
+        console.log(`[BannerAd:${uniqueId}] Script already exists`);
+      }
+      return true;
+    }
+
+    // Create and insert the Bitmedia script
+    const script = document.createElement("script");
+    script.setAttribute("data-bitmedia-ad", uniqueId);
+    script.textContent = `!function(e,n,c,t,o,r,d){!function e(n,c,t,o,r,m,d,s,a){s=c.getElementsByTagName(t)[0],(a=c.createElement(t)).async=!0,a.src="https://"+r[m]+"/js/"+o+".js?v="+d,a.onerror=function(){a.remove(),(m+=1)>=r.length||e(n,c,t,o,r,m)},s.parentNode.insertBefore(a,s)}(window,document,"script","${adUnitId}",["cdn.bmcdn6.com"], 0, new Date().getTime())}();`;
+
+    if (adElement.parentNode) {
+      adElement.parentNode.insertBefore(script, adElement.nextSibling);
+      if (debug) {
+        console.log(`[BannerAd:${uniqueId}] Script inserted`);
+      }
+      return true;
+    }
+
+    return false;
+  }, [uniqueId, adUnitId, isMounted, isDevelopment, debug]);
+
+  // Force Bitmedia to re-scan after navigation
+  // This is called once per route change, globally
   useEffect(() => {
-    if (!isMounted || typeof window === "undefined" || isDevelopment) return;
+    if (!isMounted || isDevelopment || typeof window === "undefined") {
+      return;
+    }
 
-    const initializeAd = initializeAdScript;
+    const globalRescanKey = `__bitmedia_rescan_${adUnitId}`;
 
-    // Initialize when ref is set (for initial load)
-    const tryInitializeWithRef = () => {
-      if (adRef.current) {
-        return initializeAd(adRef.current);
-      }
-      return false;
-    };
-
-    // Handle route changes for Next.js client-side navigation
     const handleRouteChange = () => {
       if (debug) {
-        console.log(`[BannerAd:${uniqueId}] Route change detected`);
+        console.log(`[BannerAd] Route change detected, will force re-scan`);
       }
 
-      // Force Bitmedia to re-scan by ensuring the script re-executes
-      // Use a global flag to only do this once per route change
-      const globalRescanKey = `__bitmedia_rescan_${adUnitId}`;
-      const forceBitmediaRescan = () => {
-        // Only rescan once per route change to avoid multiple re-scans
-        if (window[globalRescanKey]) {
-          return;
-        }
-        window[globalRescanKey] = true;
+      // Only rescan once per route change
+      if (window[globalRescanKey]) {
+        return;
+      }
+      window[globalRescanKey] = true;
 
-        // Reset the flag after a delay
-        setTimeout(() => {
-          window[globalRescanKey] = false;
-        }, 3000);
+      // Reset flag after 2 seconds
+      setTimeout(() => {
+        window[globalRescanKey] = false;
+      }, 2000);
 
-        // Wait a bit to ensure new inline scripts have had time to load Bitmedia
-        // Then force re-scan
-        setTimeout(() => {
-          try {
-            // Find all Bitmedia script tags for this adUnitId
-            const bitmediaScripts = document.querySelectorAll(
-              `script[src*="/js/${adUnitId}.js"]`
-            );
+      // Wait for new ads to initialize, then force re-scan
+      setTimeout(() => {
+        try {
+          // Find all <ins> tags with the ad unit class
+          const allInsTags = Array.from(
+            document.getElementsByTagName("ins")
+          ).filter(
+            (ins) =>
+              ins.classList.contains(adUnitId) &&
+              ins.parentNode &&
+              document.body.contains(ins)
+          );
 
-            // Count how many <ins> tags with the adUnitId class exist
-            // Use getElementsByTagName + filter since class names starting with numbers aren't valid CSS selectors
-            const allInsTags = Array.from(
-              document.getElementsByTagName("ins")
-            ).filter((ins) => ins.classList.contains(adUnitId));
+          // Find the main Bitmedia JS file script
+          const bitmediaScript = document.querySelector(
+            `script[src*="/js/${adUnitId}.js"]`
+          );
 
-            // Verify all <ins> tags are in the DOM and have parents
-            const validInsTags = allInsTags.filter(
-              (ins) => ins.parentNode && document.body.contains(ins)
-            );
-
+          if (bitmediaScript && allInsTags.length > 0) {
             if (debug) {
               console.log(
-                `[BannerAd:${uniqueId}] Found ${bitmediaScripts.length} Bitmedia script(s) and ${allInsTags.length} <ins> tag(s) (${validInsTags.length} valid), forcing re-scan`
+                `[BannerAd] Found ${allInsTags.length} ad(s), forcing Bitmedia re-scan`
               );
             }
 
-            if (bitmediaScripts.length > 0 && validInsTags.length > 0) {
-              // Get the first script's source to re-add
-              const firstScript = bitmediaScripts[0];
-              const src = firstScript.src;
-              const baseUrl = src
-                ? src.split("?")[0]
-                : `https://cdn.bmcdn6.com/js/${adUnitId}.js`;
+            // Remove the existing Bitmedia script
+            const src = bitmediaScript.src;
+            const baseUrl = src.split("?")[0];
+            bitmediaScript.remove();
 
-              // Remove only the main Bitmedia JS file scripts (not the inline loaders)
-              // Filter to only remove scripts that are the actual Bitmedia JS file
-              const mainBitmediaScripts = Array.from(bitmediaScripts).filter(
-                (script) =>
-                  script.src && script.src.includes(`/js/${adUnitId}.js`)
-              );
+            // Re-add with cache buster to force re-execution
+            setTimeout(() => {
+              const newScript = document.createElement("script");
+              newScript.async = true;
+              newScript.src = `${baseUrl}?v=${new Date().getTime()}&rescan=1`;
+
+              if (document.body) {
+                document.body.appendChild(newScript);
+              } else {
+                document.head.appendChild(newScript);
+              }
 
               if (debug) {
                 console.log(
-                  `[BannerAd:${uniqueId}] Removing ${mainBitmediaScripts.length} main Bitmedia script(s) (keeping inline loaders)`
+                  `[BannerAd] Bitmedia script reloaded, should detect ${allInsTags.length} ad(s)`
                 );
               }
-
-              mainBitmediaScripts.forEach((script) => {
-                if (script.parentNode) {
-                  script.remove();
-                }
-              });
-
-              // Wait a moment, then re-add a single script to force re-scan
-              // This will cause Bitmedia to re-execute and scan all <ins> tags
-              setTimeout(() => {
-                const newScript = document.createElement("script");
-                newScript.async = true;
-                // Use a strong cache buster to ensure fresh load
-                const cacheBuster = `v=${new Date().getTime()}&rescan=1&t=${Math.random()}`;
-                newScript.src = `${baseUrl}?${cacheBuster}`;
-
-                // Add load handler to verify script loaded
-                newScript.onload = () => {
-                  if (debug) {
-                    console.log(
-                      `[BannerAd:${uniqueId}] Bitmedia script reloaded successfully, should now detect ${validInsTags.length} ad(s)`
-                    );
-                  }
-
-                  // Give Bitmedia a moment to process after load
-                  setTimeout(() => {
-                    if (debug) {
-                      const currentInsTags = Array.from(
-                        document.getElementsByTagName("ins")
-                      ).filter(
-                        (ins) =>
-                          ins.classList.contains(adUnitId) &&
-                          ins.parentNode &&
-                          document.body.contains(ins)
-                      );
-                      console.log(
-                        `[BannerAd:${uniqueId}] After re-scan: ${currentInsTags.length} valid <ins> tags still present`
-                      );
-                    }
-                  }, 500);
-                };
-
-                newScript.onerror = () => {
-                  if (debug) {
-                    console.error(
-                      `[BannerAd:${uniqueId}] Failed to reload Bitmedia script`
-                    );
-                  }
-                };
-
-                // Insert at the end of body to ensure it loads
-                if (document.body) {
-                  document.body.appendChild(newScript);
-                } else {
-                  // Fallback: insert in head
-                  document.head.appendChild(newScript);
-                }
-
-                if (debug) {
-                  console.log(
-                    `[BannerAd:${uniqueId}] Re-added Bitmedia script to force re-scan for ${validInsTags.length} ad(s)`
-                  );
-                }
-              }, 200); // Increased delay to ensure scripts are fully removed
-            } else if (debug) {
-              if (bitmediaScripts.length === 0) {
-                console.log(
-                  `[BannerAd:${uniqueId}] No Bitmedia scripts found yet, new inline scripts will load it`
-                );
-              }
-              if (allInsTags.length === 0) {
-                console.log(
-                  `[BannerAd:${uniqueId}] No <ins> tags found, skipping re-scan`
-                );
-              }
-            }
-          } catch (error) {
-            if (debug) {
-              console.error(
-                `[BannerAd:${uniqueId}] Error in forceBitmediaRescan:`,
-                error
-              );
-            }
-          }
-        }, 800); // Wait 800ms for new inline scripts to load Bitmedia first
-      };
-
-      // Initialize ads on new page after route change
-      // Only initialize if this component is still mounted and on the current page
-      const initOnRouteChange = (retryCount = 0) => {
-        const maxRetries = 15; // Reduced retries - if element doesn't exist after this, component is likely unmounted
-
-        if (debug && retryCount > 0 && retryCount < 5) {
-          console.log(
-            `[BannerAd:${uniqueId}] Route change retry ${retryCount}/${maxRetries}`
-          );
-        }
-
-        // Try to find the element by ID (this component's specific ad)
-        const adElement = document.getElementById(uniqueId);
-
-        if (adElement) {
-          // Verify this is actually our element and it's on the current page
-          // Check that it has the correct class and is an INS tag
-          const hasCorrectClass = adElement.classList.contains(adUnitId);
-          const isInsTag = adElement.tagName === "INS";
-          const hasCorrectId = adElement.id === uniqueId;
-          const isInDocument = document.body.contains(adElement);
-
-          if (debug && retryCount === 0) {
-            console.log(
-              `[BannerAd:${uniqueId}] Element found on route change:`,
-              {
-                id: adElement.id,
-                className: adElement.className,
-                hasCorrectClass,
-                isInsTag,
-                hasCorrectId,
-                isInDocument,
-                hasParent: !!adElement.parentNode,
-              }
-            );
-          }
-
-          // If element doesn't match our criteria, it might be from a previous page
-          if (!isInDocument || !isInsTag || !hasCorrectClass || !hasCorrectId) {
-            if (debug && retryCount < 3) {
+            }, 100);
+          } else if (debug) {
+            if (!bitmediaScript) {
               console.log(
-                `[BannerAd:${uniqueId}] Element validation failed, might be from previous page`
+                `[BannerAd] Bitmedia script not loaded yet, inline scripts will load it`
               );
             }
-            // Don't retry if validation fails - this is likely an old element
-            return;
-          }
-
-          // Check if script already exists - if it does, we're done
-          const existingScript = adElement.nextElementSibling;
-          if (existingScript?.getAttribute("data-bitmedia-ad") === uniqueId) {
-            if (debug) {
-              console.log(
-                `[BannerAd:${uniqueId}] Script already exists, skipping`
-              );
+            if (allInsTags.length === 0) {
+              console.log(`[BannerAd] No ads found on this page`);
             }
-            return; // Already initialized, no need to do anything
           }
-
-          // Script doesn't exist, so initialize it
-          if (initializeAd(adElement, `routeChange-retry${retryCount}`)) {
-            if (debug) {
-              console.log(
-                `[BannerAd:${uniqueId}] Successfully initialized on route change`
-              );
-            }
-            return; // Successfully initialized
-          }
-        } else {
-          // Element not found - might not be on this page (component unmounted)
-          // Only log first few retries to avoid spam
-          if (debug && retryCount < 3) {
-            console.log(
-              `[BannerAd:${uniqueId}] Element not found on route change (component may be unmounted)`
-            );
+        } catch (error) {
+          if (debug) {
+            console.error(`[BannerAd] Error forcing re-scan:`, error);
           }
         }
-
-        // Element not found yet, retry (but only if we haven't exceeded max retries)
-        if (retryCount < maxRetries) {
-          setTimeout(() => initOnRouteChange(retryCount + 1), 100);
-        } else if (debug && retryCount === maxRetries) {
-          // Only log once when max retries reached
-          console.log(
-            `[BannerAd:${uniqueId}] Element not found after ${maxRetries} retries (likely not on this page)`
-          );
-        }
-      };
-
-      // Start initialization after route change
-      // Use multiple delays to catch different timing scenarios
-      setTimeout(() => initOnRouteChange(), 100);
-      setTimeout(() => initOnRouteChange(), 300);
-      setTimeout(() => initOnRouteChange(), 500);
-
-      // Also use requestAnimationFrame for next paint
-      requestAnimationFrame(() => {
-        setTimeout(() => {
-          initOnRouteChange();
-        }, 50);
-      });
-
-      // Force Bitmedia to re-scan AFTER new ads have initialized
-      // Wait longer to ensure new inline scripts have had time to load Bitmedia
-      // Then force re-scan to ensure Bitmedia detects all new <ins> tags
-      setTimeout(() => {
-        forceBitmediaRescan();
-      }, 1000); // Wait 1s for new ads to initialize and their scripts to load
+      }, 1200); // Wait 1.2s for new ads to initialize
     };
 
-    // Initialize on mount - use multiple strategies to ensure it runs on initial load
-    let timers = [];
-
-    // Strategy 1: Use ref callback (most reliable for initial load)
-    // The ref will be set when React renders the element
-    const refInitTimer = setTimeout(() => {
-      tryInitializeWithRef();
-    }, 0);
-
-    // Strategy 2: After DOMContentLoaded (for initial page load)
-    if (document.readyState === "loading") {
-      const domReadyHandler = () => {
-        setTimeout(() => {
-          if (!tryInitializeWithRef()) {
-            initializeAd(); // Fallback
-          }
-        }, 50);
-      };
-      document.addEventListener("DOMContentLoaded", domReadyHandler, {
-        once: true,
-      });
-    } else {
-      // DOM already ready
-      setTimeout(() => {
-        if (!tryInitializeWithRef()) {
-          initializeAd(); // Fallback
-        }
-      }, 100);
-    }
-
-    // Strategy 3: After window load (ensures everything is ready)
-    if (document.readyState !== "complete") {
-      const loadHandler = () => {
-        setTimeout(() => {
-          if (!tryInitializeWithRef()) {
-            initializeAd(); // Fallback
-          }
-        }, 50);
-      };
-      window.addEventListener("load", loadHandler, { once: true });
-    } else {
-      setTimeout(() => {
-        if (!tryInitializeWithRef()) {
-          initializeAd(); // Fallback
-        }
-      }, 150);
-    }
-
-    // Strategy 4: Fallback with requestAnimationFrame (for next paint)
-    requestAnimationFrame(() => {
-      setTimeout(() => {
-        if (!tryInitializeWithRef()) {
-          initializeAd(); // Fallback
-        }
-      }, 50);
-    });
-
-    // Strategy 5: Additional fallback with retry mechanism
-    const retryInit = (attempt = 0) => {
-      if (attempt < 10) {
-        if (!tryInitializeWithRef() && !initializeAd()) {
-          setTimeout(() => retryInit(attempt + 1), 100);
-        }
-      }
-    };
-    timers.push(setTimeout(() => retryInit(), 200));
-
-    // Listen for route changes
     if (router.events) {
       router.events.on("routeChangeComplete", handleRouteChange);
     }
 
     return () => {
-      clearTimeout(refInitTimer);
-      timers.forEach((timer) => clearTimeout(timer));
       if (router.events) {
         router.events.off("routeChangeComplete", handleRouteChange);
       }
     };
-  }, [
-    isMounted,
-    isDevelopment,
-    adUnitId,
-    uniqueId,
-    router,
-    initializeAdScript,
-    debug,
-  ]);
+  }, [isMounted, isDevelopment, adUnitId, router, debug]);
 
-  // Use callback ref to initialize when element is actually rendered
-  // This ensures ads initialize on initial page load, not just on navigation
-  // Memoized to prevent unnecessary re-renders
+  // Initialize ad when element is mounted
+  useEffect(() => {
+    if (!isMounted || isDevelopment) {
+      return;
+    }
+
+    // Try to initialize immediately
+    if (adRef.current) {
+      initializeAd();
+    }
+
+    // Also try after a short delay
+    const timer = setTimeout(() => {
+      initializeAd();
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, [isMounted, isDevelopment, initializeAd]);
+
+  // Ref callback to initialize when element is rendered
   const adRefCallback = useCallback(
     (element) => {
       adRef.current = element;
-
-      if (debug) {
-        console.log(`[BannerAd:${uniqueId}] Ref callback called`, {
-          hasElement: !!element,
-          isMounted,
-          isDevelopment,
-          elementId: element?.id,
-          elementClass: element?.className,
-        });
-      }
-
-      // Initialize when ref is set (for initial load and navigation)
-      if (
-        element &&
-        isMounted &&
-        !isDevelopment &&
-        typeof window !== "undefined"
-      ) {
-        // Use multiple strategies to ensure element is fully ready
-        // Strategy 1: Immediate with requestAnimationFrame (for when element is ready)
+      if (element && isMounted && !isDevelopment) {
+        // Initialize after a short delay to ensure element is fully in DOM
         requestAnimationFrame(() => {
-          // Check if element has the class (more reliable than ID which might not be set yet)
-          if (element.classList.contains(adUnitId)) {
-            initializeAdScript(element, "refCallback-raf");
-          } else {
-            // Class not set yet, wait a bit
-            setTimeout(() => {
-              initializeAdScript(element, "refCallback-delayed");
-            }, 10);
-          }
+          initializeAd();
         });
-
-        // Strategy 2: Small delay to ensure React has set all attributes
-        setTimeout(() => {
-          // Only initialize if script doesn't already exist
-          const existingScript =
-            element.nextElementSibling?.getAttribute("data-bitmedia-ad");
-          if (existingScript !== uniqueId) {
-            initializeAdScript(element, "refCallback-timeout");
-          }
-        }, 50);
       }
     },
-    [isMounted, isDevelopment, initializeAdScript, uniqueId, adUnitId, debug]
+    [isMounted, isDevelopment, initializeAd]
   );
 
   // Show placeholder in development mode
@@ -649,19 +253,13 @@ const BannerAd = ({
         id={uniqueId}
       >
         <div>
-          <div
-            style={{
-              fontWeight: "bold",
-              marginBottom: "8px",
-              color: "#ffffff",
-            }}
-          >
+          <div style={{ fontWeight: "bold", marginBottom: "8px" }}>
             Ad Placeholder{" "}
             {width === 1 && height === 1
               ? "(Adaptive)"
               : `(${width}x${height})`}
           </div>
-          <div style={{ fontSize: "12px", opacity: 0.7, color: "#d1d5db" }}>
+          <div style={{ fontSize: "12px", opacity: 0.7 }}>
             Bitmedia ads only display in production
           </div>
         </div>
@@ -670,10 +268,8 @@ const BannerAd = ({
   }
 
   // Production: Render actual Bitmedia ad
-  // Matches your Bitmedia code: width:1px;height:1px for adaptive/responsive ads
   return (
     <div
-      ref={containerRef}
       style={{
         display: "inline-block",
         width: "100%",
