@@ -1,13 +1,20 @@
 import { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/router";
+import { getBitmediaManager } from "@lib/utils/bitmediaManager";
 
 const BannerAd = ({ className = "", style = {}, id }) => {
+  const router = useRouter();
   const containerRef = useRef(null);
   const adRef = useRef(null);
   const [isDevelopment, setIsDevelopment] = useState(false);
   const [uniqueId] = useState(
     () => id || `banner-ad-${Math.random().toString(36).substr(2, 9)}`
   );
+  const managerRef = useRef(null);
+  const initializationTimeoutRef = useRef(null);
+  const observerRef = useRef(null);
 
+  // Determine if we're in development
   useEffect(() => {
     if (typeof window !== "undefined") {
       const hostname = window.location.hostname;
@@ -20,30 +27,95 @@ const BannerAd = ({ className = "", style = {}, id }) => {
 
       setIsDevelopment(isDev);
     }
+  }, []);
 
+  // Register ad with manager and initialize
+  useEffect(() => {
     if (typeof window === "undefined" || isDevelopment) return;
-
     if (!containerRef.current || !adRef.current) return;
 
-    const loadScriptForThisAd = () => {
-      const existingScript = containerRef.current.querySelector(
-        `script[data-bitmedia-ad="${uniqueId}"]`
+    const manager = getBitmediaManager();
+    if (!manager) return;
+
+    managerRef.current = manager;
+    const currentRoute = router.pathname;
+
+    // Register this ad instance
+    manager.registerAd(uniqueId, containerRef.current, currentRoute);
+
+    // Initialize after a short delay to ensure DOM is ready
+    const initTimer = setTimeout(() => {
+      const insElement = containerRef.current.querySelector(
+        `ins.692e0776457ec2706b483e16#${uniqueId}`
       );
-      if (existingScript) return;
 
-      const script = document.createElement("script");
-      script.setAttribute("data-bitmedia-ad", uniqueId);
-      script.textContent = `!function(e,n,c,t,o,r,d){!function e(n,c,t,o,r,m,d,s,a){s=c.getElementsByTagName(t)[0],(a=c.createElement(t)).async=!0,a.src="https://"+r[m]+"/js/"+o+".js?v="+d,a.onerror=function(){a.remove(),(m+=1)>=r.length||e(n,c,t,o,r,m)},s.parentNode.insertBefore(a,s)}(window,document,"script","692e0776457ec2706b483e16",["cdn.bmcdn6.com"], 0, new Date().getTime())}();`;
-
-      containerRef.current.appendChild(script);
-    };
-
-    const timer = setTimeout(() => {
-      loadScriptForThisAd();
+      if (insElement) {
+        const instance = manager.adInstances.get(uniqueId);
+        if (instance && !instance.initialized) {
+          // Check if element is visible or near viewport
+          if (manager.isElementNearViewport(insElement)) {
+            manager.initializeSingleAd(uniqueId, instance, insElement);
+          } else {
+            // Set up intersection observer for lazy loading
+            const observer = new IntersectionObserver(
+              (entries) => {
+                entries.forEach((entry) => {
+                  if (entry.isIntersecting) {
+                    const currentInstance = manager.adInstances.get(uniqueId);
+                    if (currentInstance && !currentInstance.initialized) {
+                      manager.initializeSingleAd(
+                        uniqueId,
+                        currentInstance,
+                        insElement
+                      );
+                    }
+                    observer.unobserve(insElement);
+                  }
+                });
+              },
+              {
+                rootMargin: "500px", // Start loading 500px before entering viewport
+              }
+            );
+            observer.observe(insElement);
+            observerRef.current = observer;
+          }
+        }
+      }
     }, 100);
 
-    return () => clearTimeout(timer);
-  }, [isDevelopment, uniqueId]);
+    initializationTimeoutRef.current = initTimer;
+
+    // Cleanup on unmount
+    return () => {
+      if (initializationTimeoutRef.current) {
+        clearTimeout(initializationTimeoutRef.current);
+      }
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+        observerRef.current = null;
+      }
+      if (managerRef.current) {
+        managerRef.current.unregisterAd(uniqueId);
+      }
+    };
+  }, [isDevelopment, uniqueId, router.pathname]);
+
+  // Handle route changes - update route registration
+  // The manager will handle re-initialization via route change listener in _app.js
+  useEffect(() => {
+    if (typeof window === "undefined" || isDevelopment) return;
+    if (!containerRef.current || !managerRef.current) return;
+
+    const currentRoute = router.pathname;
+    const instance = managerRef.current.adInstances.get(uniqueId);
+
+    if (instance) {
+      // Update route for this ad instance
+      // The manager's handleRouteChange will trigger re-initialization
+      instance.route = currentRoute;
+    }
+  }, [router.pathname, uniqueId, isDevelopment]);
 
   if (isDevelopment) {
     return (
