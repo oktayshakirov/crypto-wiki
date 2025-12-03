@@ -68,22 +68,26 @@ const MyApp = ({ Component, pageProps }) => {
     const manager = getBitmediaManager();
     if (!manager) return;
 
-    // Initialize ads for initial route (use pathname for consistent route matching)
-    const currentRoute = router.pathname;
-    manager.handleRouteChange(currentRoute);
+    // Wait a bit for components to mount and register their ads
+    const initTimer = setTimeout(() => {
+      const currentRoute = router.pathname;
+      manager.handleRouteChange(currentRoute);
+    }, 500);
 
     // Listen for route changes
     const handleRouteChangeComplete = (url) => {
-      // Use pathname from router for consistent route matching
-      // This ensures we match the route pattern, not the full URL
-      const newRoute = router.pathname;
-      manager.handleRouteChange(newRoute);
+      // Wait a bit for components to mount and register their ads
+      setTimeout(() => {
+        const newRoute = router.pathname;
+        manager.handleRouteChange(newRoute);
+      }, 300);
     };
 
     router.events.on("routeChangeComplete", handleRouteChangeComplete);
 
     // Cleanup
     return () => {
+      clearTimeout(initTimer);
       router.events.off("routeChangeComplete", handleRouteChangeComplete);
     };
   }, [router, isApp]);
