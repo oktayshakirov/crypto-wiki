@@ -236,34 +236,44 @@ const BannerAd = ({
         // Reset the flag after a delay
         setTimeout(() => {
           window[globalRescanKey] = false;
-        }, 2000);
+        }, 3000);
 
-        // Find all Bitmedia script tags for this adUnitId
-        const bitmediaScripts = document.querySelectorAll(
-          `script[src*="/js/${adUnitId}.js"]`
-        );
+        // Wait a bit to ensure new inline scripts have had time to load Bitmedia
+        // Then force re-scan
+        setTimeout(() => {
+          // Find all Bitmedia script tags for this adUnitId
+          const bitmediaScripts = document.querySelectorAll(
+            `script[src*="/js/${adUnitId}.js"]`
+          );
 
-        if (bitmediaScripts.length > 0) {
+          // Count how many <ins> tags with the adUnitId class exist
+          const allInsTags = document.querySelectorAll(`ins.${adUnitId}`);
+
           if (debug) {
             console.log(
-              `[BannerAd:${uniqueId}] Found ${bitmediaScripts.length} Bitmedia script(s), forcing re-scan`
+              `[BannerAd:${uniqueId}] Found ${bitmediaScripts.length} Bitmedia script(s) and ${allInsTags.length} <ins> tag(s), forcing re-scan`
             );
           }
 
-          // Remove old Bitmedia script tags to force re-load
-          // This will cause Bitmedia to re-scan all <ins> tags
-          bitmediaScripts.forEach((script) => {
-            const src = script.src;
-            const parent = script.parentNode;
-            if (parent && src) {
-              script.remove();
+          if (bitmediaScripts.length > 0 && allInsTags.length > 0) {
+            // Get the first script's source to re-add
+            const firstScript = bitmediaScripts[0];
+            const src = firstScript.src;
+            const baseUrl = src
+              ? src.split("?")[0]
+              : `https://cdn.bmcdn6.com/js/${adUnitId}.js`;
 
-              // Re-add the script with a new cache-busting parameter
-              // This forces the browser to re-execute the script, which will re-scan for <ins> tags
+            // Remove all existing Bitmedia scripts
+            bitmediaScripts.forEach((script) => {
+              if (script.parentNode) {
+                script.remove();
+              }
+            });
+
+            // Wait a moment, then re-add a single script to force re-scan
+            setTimeout(() => {
               const newScript = document.createElement("script");
               newScript.async = true;
-              // Extract base URL and add new cache buster
-              const baseUrl = src.split("?")[0];
               newScript.src = `${baseUrl}?v=${new Date().getTime()}&rescan=1`;
 
               // Insert at the end of body to ensure it loads
@@ -276,16 +286,23 @@ const BannerAd = ({
 
               if (debug) {
                 console.log(
-                  `[BannerAd:${uniqueId}] Re-added Bitmedia script to force re-scan`
+                  `[BannerAd:${uniqueId}] Re-added Bitmedia script to force re-scan for ${allInsTags.length} ad(s)`
                 );
               }
+            }, 100);
+          } else if (debug) {
+            if (bitmediaScripts.length === 0) {
+              console.log(
+                `[BannerAd:${uniqueId}] No Bitmedia scripts found yet, new inline scripts will load it`
+              );
             }
-          });
-        } else if (debug) {
-          console.log(
-            `[BannerAd:${uniqueId}] No existing Bitmedia scripts found, will load fresh`
-          );
-        }
+            if (allInsTags.length === 0) {
+              console.log(
+                `[BannerAd:${uniqueId}] No <ins> tags found, skipping re-scan`
+              );
+            }
+          }
+        }, 600); // Wait 600ms for new inline scripts to load Bitmedia first
       };
 
       // Initialize ads on new page after route change
@@ -377,12 +394,6 @@ const BannerAd = ({
         }
       };
 
-      // Force Bitmedia to re-scan first (before initializing new ads)
-      // This ensures Bitmedia is ready to detect new <ins> tags
-      setTimeout(() => {
-        forceBitmediaRescan();
-      }, 50);
-
       // Start initialization after route change
       // Use multiple delays to catch different timing scenarios
       setTimeout(() => initOnRouteChange(), 100);
@@ -392,16 +403,16 @@ const BannerAd = ({
       // Also use requestAnimationFrame for next paint
       requestAnimationFrame(() => {
         setTimeout(() => {
-          forceBitmediaRescan();
           initOnRouteChange();
         }, 50);
       });
 
-      // Additional fallback after longer delay
+      // Force Bitmedia to re-scan AFTER new ads have initialized
+      // Wait longer to ensure new inline scripts have had time to load Bitmedia
+      // Then force re-scan to ensure Bitmedia detects all new <ins> tags
       setTimeout(() => {
         forceBitmediaRescan();
-        initOnRouteChange();
-      }, 800);
+      }, 1000); // Wait 1s for new ads to initialize and their scripts to load
     };
 
     // Initialize on mount - use multiple strategies to ensure it runs on initial load
