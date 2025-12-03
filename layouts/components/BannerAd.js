@@ -172,68 +172,91 @@ const BannerAd = ({
             }
           }
 
-          // Strategy 2: If API doesn't exist or didn't work, reload the script
+          // Strategy 2: If API doesn't exist or didn't work, completely reset Bitmedia
           if (!apiCalled) {
+            if (debug) {
+              console.log(
+                `[BannerAd] No API found, performing complete Bitmedia reset`
+              );
+            }
+
+            // Find and store all inline scripts with their corresponding <ins> tags
+            const inlineScripts = Array.from(
+              document.querySelectorAll(`script[data-bitmedia-ad]`)
+            );
+            const inlineScriptsData = inlineScripts.map((script) => {
+              // Find the <ins> tag that this script belongs to (it should be the previous sibling)
+              let insTag = script.previousElementSibling;
+              while (insTag && insTag.tagName !== "INS") {
+                insTag = insTag.previousElementSibling;
+              }
+
+              return {
+                textContent: script.textContent,
+                dataAttr: script.getAttribute("data-bitmedia-ad"),
+                insTag: insTag, // Store reference to the <ins> tag
+                parent: script.parentNode,
+              };
+            });
+
+            // Remove ALL Bitmedia scripts (main script + all inline scripts)
             const bitmediaScript = document.querySelector(
               `script[src*="/js/${adUnitId}.js"]`
             );
-
             if (bitmediaScript) {
-              if (debug) {
-                console.log(
-                  `[BannerAd] Reloading Bitmedia script to force re-scan`
-                );
-              }
-
-              // Remove the existing Bitmedia script
-              const src = bitmediaScript.src;
-              const baseUrl = src.split("?")[0];
               bitmediaScript.remove();
+            }
 
-              // Re-add with cache buster to force re-execution
-              setTimeout(() => {
-                const newScript = document.createElement("script");
-                newScript.async = true;
-                newScript.src = `${baseUrl}?v=${new Date().getTime()}&rescan=1&t=${Math.random()}`;
+            inlineScripts.forEach((script) => {
+              if (script.parentNode) {
+                script.remove();
+              }
+            });
 
-                if (document.body) {
-                  document.body.appendChild(newScript);
-                } else {
-                  document.head.appendChild(newScript);
-                }
+            // Also clear any Bitmedia global state
+            if (window.bitmedia) {
+              delete window.bitmedia;
+            }
+            if (window.Bitmedia) {
+              delete window.Bitmedia;
+            }
 
-                if (debug) {
-                  console.log(
-                    `[BannerAd] Bitmedia script reloaded, should detect ${allInsTags.length} ad(s)`
-                  );
-                }
-              }, 100);
-            } else {
-              // Strategy 3: If script not loaded yet, re-execute all inline scripts
+            // Wait a moment, then re-execute all inline scripts
+            // This will cause a fresh load of Bitmedia
+            setTimeout(() => {
               if (debug) {
                 console.log(
-                  `[BannerAd] Bitmedia script not loaded yet, re-executing inline scripts`
+                  `[BannerAd] Re-executing ${inlineScriptsData.length} inline script(s) to reload Bitmedia`
                 );
               }
 
-              // Find all inline scripts that load Bitmedia and re-execute them
-              const inlineScripts = document.querySelectorAll(
-                `script[data-bitmedia-ad]`
-              );
-
-              inlineScripts.forEach((script) => {
+              inlineScriptsData.forEach((scriptData) => {
                 try {
-                  // Clone and re-execute the script
+                  if (!scriptData.insTag || !scriptData.parent) {
+                    if (debug) {
+                      console.warn(
+                        `[BannerAd] Skipping script - no <ins> tag or parent found`
+                      );
+                    }
+                    return;
+                  }
+
                   const newScript = document.createElement("script");
-                  newScript.textContent = script.textContent;
+                  newScript.textContent = scriptData.textContent;
                   newScript.setAttribute(
                     "data-bitmedia-ad",
-                    script.getAttribute("data-bitmedia-ad")
+                    scriptData.dataAttr
                   );
-                  script.parentNode?.insertBefore(
-                    newScript,
-                    script.nextSibling
-                  );
+
+                  // Insert right after the <ins> tag (as per Bitmedia docs)
+                  if (scriptData.insTag.nextSibling) {
+                    scriptData.parent.insertBefore(
+                      newScript,
+                      scriptData.insTag.nextSibling
+                    );
+                  } else {
+                    scriptData.parent.appendChild(newScript);
+                  }
                 } catch (e) {
                   if (debug) {
                     console.warn(
@@ -243,7 +266,13 @@ const BannerAd = ({
                   }
                 }
               });
-            }
+
+              if (debug) {
+                console.log(
+                  `[BannerAd] All scripts re-executed, Bitmedia should reload and detect ${allInsTags.length} ad(s)`
+                );
+              }
+            }, 300); // Wait 300ms before re-executing
           }
         } catch (error) {
           if (debug) {
