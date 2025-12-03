@@ -1,20 +1,13 @@
 import { useEffect, useRef, useState } from "react";
-import { useRouter } from "next/router";
-import { getBitmediaManager } from "@lib/utils/bitmediaManager";
 
 const BannerAd = ({ className = "", style = {}, id }) => {
-  const router = useRouter();
   const containerRef = useRef(null);
   const adRef = useRef(null);
   const [isDevelopment, setIsDevelopment] = useState(false);
   const [uniqueId] = useState(
     () => id || `banner-ad-${Math.random().toString(36).substr(2, 9)}`
   );
-  const managerRef = useRef(null);
-  const initializationTimeoutRef = useRef(null);
-  const observerRef = useRef(null);
 
-  // Determine if we're in development
   useEffect(() => {
     if (typeof window !== "undefined") {
       const hostname = window.location.hostname;
@@ -27,82 +20,30 @@ const BannerAd = ({ className = "", style = {}, id }) => {
 
       setIsDevelopment(isDev);
     }
-  }, []);
 
-  // Register ad with manager - let manager handle initialization
-  useEffect(() => {
     if (typeof window === "undefined" || isDevelopment) return;
+
     if (!containerRef.current || !adRef.current) return;
 
-    const manager = getBitmediaManager();
-    if (!manager) return;
+    const loadScriptForThisAd = () => {
+      const existingScript = containerRef.current.querySelector(
+        `script[data-bitmedia-ad="${uniqueId}"]`
+      );
+      if (existingScript) return;
 
-    managerRef.current = manager;
-    const currentRoute = router.pathname;
+      const script = document.createElement("script");
+      script.setAttribute("data-bitmedia-ad", uniqueId);
+      script.textContent = `!function(e,n,c,t,o,r,d){!function e(n,c,t,o,r,m,d,s,a){s=c.getElementsByTagName(t)[0],(a=c.createElement(t)).async=!0,a.src="https://"+r[m]+"/js/"+o+".js?v="+d,a.onerror=function(){a.remove(),(m+=1)>=r.length||e(n,c,t,o,r,m)},s.parentNode.insertBefore(a,s)}(window,document,"script","692e0776457ec2706b483e16",["cdn.bmcdn6.com"], 0, new Date().getTime())}();`;
 
-    // Register this ad instance
-    manager.registerAd(uniqueId, containerRef.current, currentRoute);
-
-    // If manager is already on this route, trigger initialization after a delay
-    // This handles the case where the ad registers after the route change handler runs
-    if (manager.currentRoute === currentRoute) {
-      const initTimer = setTimeout(() => {
-        // Only initialize if still on the same route and not already initializing
-        if (manager.currentRoute === currentRoute && !manager.isInitializing) {
-          manager.initializeAdsForRoute(currentRoute);
-        }
-      }, 500);
-
-      initializationTimeoutRef.current = initTimer;
-    }
-
-    // Cleanup on unmount - delay unregistration to avoid race conditions during navigation
-    return () => {
-      if (initializationTimeoutRef.current) {
-        clearTimeout(initializationTimeoutRef.current);
-      }
-      if (observerRef.current) {
-        observerRef.current.disconnect();
-        observerRef.current = null;
-      }
-      // Delay unregistration to allow route change handler to process first
-      // The manager will handle cleanup during route changes
-      const unregisterTimer = setTimeout(() => {
-        if (managerRef.current) {
-          const instance = managerRef.current.adInstances.get(uniqueId);
-          // Only unregister if route doesn't match current route (component truly unmounted, not just route change)
-          if (instance && instance.route !== managerRef.current.currentRoute) {
-            managerRef.current.unregisterAd(uniqueId);
-          }
-        }
-      }, 1000); // Delay to allow route change to complete
-
-      return () => {
-        clearTimeout(unregisterTimer);
-      };
+      containerRef.current.appendChild(script);
     };
-  }, [isDevelopment, uniqueId, router.pathname]);
 
-  // Handle route changes - re-register with new route
-  // Don't update existing instance route - let manager handle cleanup and re-initialization
-  useEffect(() => {
-    if (typeof window === "undefined" || isDevelopment) return;
-    if (!containerRef.current || !adRef.current) return;
+    const timer = setTimeout(() => {
+      loadScriptForThisAd();
+    }, 100);
 
-    const manager = getBitmediaManager();
-    if (!manager) return;
-
-    const currentRoute = router.pathname;
-    const instance = manager.adInstances.get(uniqueId);
-
-    // If instance exists but route changed, re-register with new route
-    if (instance && instance.route !== currentRoute) {
-      // Unregister old instance
-      manager.unregisterAd(uniqueId);
-      // Register with new route
-      manager.registerAd(uniqueId, containerRef.current, currentRoute);
-    }
-  }, [router.pathname, uniqueId, isDevelopment]);
+    return () => clearTimeout(timer);
+  }, [isDevelopment, uniqueId]);
 
   if (isDevelopment) {
     return (

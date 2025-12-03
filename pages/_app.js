@@ -6,7 +6,6 @@ import Script from "next/script";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import TagManager from "react-gtm-module";
-import { getBitmediaManager } from "@lib/utils/bitmediaManager";
 import "styles/style.scss";
 
 function getIsAppFlag() {
@@ -60,37 +59,6 @@ const MyApp = ({ Component, pageProps }) => {
       }, 5000);
     }
   }, [isApp]);
-
-  // Handle Bitmedia ads on route changes
-  useEffect(() => {
-    if (isApp || typeof window === "undefined") return;
-
-    const manager = getBitmediaManager();
-    if (!manager) return;
-
-    // Wait a bit for components to mount and register their ads
-    const initTimer = setTimeout(() => {
-      const currentRoute = router.pathname;
-      manager.handleRouteChange(currentRoute);
-    }, 500);
-
-    // Listen for route changes
-    const handleRouteChangeComplete = (url) => {
-      // Wait a bit for components to mount and register their ads
-      setTimeout(() => {
-        const newRoute = router.pathname;
-        manager.handleRouteChange(newRoute);
-      }, 300);
-    };
-
-    router.events.on("routeChangeComplete", handleRouteChangeComplete);
-
-    // Cleanup
-    return () => {
-      clearTimeout(initTimer);
-      router.events.off("routeChangeComplete", handleRouteChangeComplete);
-    };
-  }, [router, isApp]);
 
   const noIndexPages = ["/contact", "/faq", "/authors"];
 
