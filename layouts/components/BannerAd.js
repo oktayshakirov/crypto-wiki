@@ -1,13 +1,18 @@
 import { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/router";
 
 const BannerAd = ({ className = "", style = {}, id }) => {
+  const router = useRouter();
   const containerRef = useRef(null);
   const adRef = useRef(null);
+  const scriptRef = useRef(null);
   const [isDevelopment, setIsDevelopment] = useState(false);
+  const [routeKey, setRouteKey] = useState(0); // Force re-render on route change
   const [uniqueId] = useState(
     () => id || `banner-ad-${Math.random().toString(36).substr(2, 9)}`
   );
 
+  // Detect development environment
   useEffect(() => {
     if (typeof window !== "undefined") {
       const hostname = window.location.hostname;
@@ -20,30 +25,99 @@ const BannerAd = ({ className = "", style = {}, id }) => {
 
       setIsDevelopment(isDev);
     }
+  }, []);
 
+  // Listen to route changes and force re-initialization
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const handleRouteChange = () => {
+      // Increment routeKey to force re-initialization
+      setRouteKey((prev) => prev + 1);
+    };
+
+    // Listen to route change completion (Next.js router events)
+    if (router.events) {
+      router.events.on("routeChangeComplete", handleRouteChange);
+    }
+
+    return () => {
+      if (router.events) {
+        router.events.off("routeChangeComplete", handleRouteChange);
+      }
+    };
+  }, [router]);
+
+  // Fallback: Watch router pathname changes (for cases where events aren't available)
+  const prevPathRef = useRef(router.asPath);
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    // Only trigger if path actually changed
+    if (prevPathRef.current !== router.asPath) {
+      prevPathRef.current = router.asPath;
+      // Trigger re-initialization when pathname changes
+      setRouteKey((prev) => prev + 1);
+    }
+  }, [router.pathname, router.asPath]);
+
+  // Initialize ad script (runs on mount and route changes)
+  useEffect(() => {
     if (typeof window === "undefined" || isDevelopment) return;
-
     if (!containerRef.current || !adRef.current) return;
 
-    const loadScriptForThisAd = () => {
-      const existingScript = containerRef.current.querySelector(
-        `script[data-bitmedia-ad="${uniqueId}"]`
-      );
-      if (existingScript) return;
+    const initializeAd = () => {
+      // Remove existing script if it exists
+      if (scriptRef.current && scriptRef.current.parentNode) {
+        scriptRef.current.parentNode.removeChild(scriptRef.current);
+        scriptRef.current = null;
+      }
 
+      // Remove existing ad element and create a new one to force re-initialization
+      const existingAd = containerRef.current.querySelector(
+        `.692e0776457ec2706b483e16`
+      );
+      if (existingAd && existingAd !== adRef.current) {
+        existingAd.remove();
+      }
+
+      // Create new script for this ad instance
       const script = document.createElement("script");
-      script.setAttribute("data-bitmedia-ad", uniqueId);
+      script.setAttribute("data-bitmedia-ad", `${uniqueId}-${routeKey}`);
       script.textContent = `!function(e,n,c,t,o,r,d){!function e(n,c,t,o,r,m,d,s,a){s=c.getElementsByTagName(t)[0],(a=c.createElement(t)).async=!0,a.src="https://"+r[m]+"/js/"+o+".js?v="+d,a.onerror=function(){a.remove(),(m+=1)>=r.length||e(n,c,t,o,r,m)},s.parentNode.insertBefore(a,s)}(window,document,"script","692e0776457ec2706b483e16",["cdn.bmcdn6.com"], 0, new Date().getTime())}();`;
 
       containerRef.current.appendChild(script);
+      scriptRef.current = script;
+
+      // Force ad script to re-scan by cloning the ad element
+      setTimeout(() => {
+        if (adRef.current && containerRef.current) {
+          const currentAd = adRef.current;
+          const parent = currentAd.parentNode;
+          if (parent) {
+            // Clone the element to trigger ad script detection
+            const clonedAd = currentAd.cloneNode(true);
+            parent.replaceChild(clonedAd, currentAd);
+            adRef.current = clonedAd;
+          }
+        }
+      }, 300);
     };
 
+    // Delay initialization to ensure DOM is ready
     const timer = setTimeout(() => {
-      loadScriptForThisAd();
+      initializeAd();
     }, 100);
 
-    return () => clearTimeout(timer);
-  }, [isDevelopment, uniqueId]);
+    return () => {
+      clearTimeout(timer);
+      // Cleanup script on unmount
+      if (scriptRef.current && scriptRef.current.parentNode) {
+        scriptRef.current.parentNode.removeChild(scriptRef.current);
+        scriptRef.current = null;
+      }
+    };
+  }, [isDevelopment, uniqueId, routeKey]);
 
   if (isDevelopment) {
     return (

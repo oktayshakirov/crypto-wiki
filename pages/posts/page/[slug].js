@@ -33,7 +33,9 @@ const PostPagination = ({
     >
       <section className="section">
         <div className="container text-center">
-          {!isApp && <BannerAd />}
+          {!isApp && (
+            <BannerAd key="banner-ad-posts-1" id="banner-ad-posts-1" />
+          )}
           <div className="mb-8">
             <div className="block md:hidden">
               <Link
@@ -69,7 +71,9 @@ const PostPagination = ({
             totalPages={totalPages}
             currentPage={currentPage}
           />
-          {!isApp && <BannerAd />}
+          {!isApp && (
+            <BannerAd key="banner-ad-posts-2" id="banner-ad-posts-2" />
+          )}
         </div>
       </section>
     </Base>
