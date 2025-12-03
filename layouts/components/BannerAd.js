@@ -29,7 +29,7 @@ const BannerAd = ({ className = "", style = {}, id }) => {
     }
   }, []);
 
-  // Register ad with manager and initialize
+  // Register ad with manager - let manager handle initialization
   useEffect(() => {
     if (typeof window === "undefined" || isDevelopment) return;
     if (!containerRef.current || !adRef.current) return;
@@ -43,48 +43,18 @@ const BannerAd = ({ className = "", style = {}, id }) => {
     // Register this ad instance
     manager.registerAd(uniqueId, containerRef.current, currentRoute);
 
-    // Initialize after a short delay to ensure DOM is ready
-    const initTimer = setTimeout(() => {
-      const insElement = containerRef.current.querySelector(
-        `ins.692e0776457ec2706b483e16#${uniqueId}`
-      );
-
-      if (insElement) {
-        const instance = manager.adInstances.get(uniqueId);
-        if (instance && !instance.initialized) {
-          // Check if element is visible or near viewport
-          if (manager.isElementNearViewport(insElement)) {
-            manager.initializeSingleAd(uniqueId, instance, insElement);
-          } else {
-            // Set up intersection observer for lazy loading
-            const observer = new IntersectionObserver(
-              (entries) => {
-                entries.forEach((entry) => {
-                  if (entry.isIntersecting) {
-                    const currentInstance = manager.adInstances.get(uniqueId);
-                    if (currentInstance && !currentInstance.initialized) {
-                      manager.initializeSingleAd(
-                        uniqueId,
-                        currentInstance,
-                        insElement
-                      );
-                    }
-                    observer.unobserve(insElement);
-                  }
-                });
-              },
-              {
-                rootMargin: "500px", // Start loading 500px before entering viewport
-              }
-            );
-            observer.observe(insElement);
-            observerRef.current = observer;
-          }
+    // If manager is already on this route, trigger initialization after a delay
+    // This handles the case where the ad registers after the route change handler runs
+    if (manager.currentRoute === currentRoute) {
+      const initTimer = setTimeout(() => {
+        // Only initialize if still on the same route and not already initializing
+        if (manager.currentRoute === currentRoute && !manager.isInitializing) {
+          manager.initializeAdsForRoute(currentRoute);
         }
-      }
-    }, 100);
+      }, 500);
 
-    initializationTimeoutRef.current = initTimer;
+      initializationTimeoutRef.current = initTimer;
+    }
 
     // Cleanup on unmount
     return () => {
