@@ -60,6 +60,51 @@ const MyApp = ({ Component, pageProps }) => {
     }
   }, [isApp]);
 
+  // Load Bitmedia ad script once globally
+  useEffect(() => {
+    if (!isApp && typeof window !== "undefined") {
+      // Check if script is already loaded
+      const existingScript = document.querySelector(
+        'script[data-bitmedia="true"]'
+      );
+
+      if (!existingScript) {
+        // Load the Bitmedia ad script
+        const script = document.createElement("script");
+        script.setAttribute("data-bitmedia", "true");
+        script.textContent = `!function(e,n,c,t,o,r,d){!function e(n,c,t,o,r,m,d,s,a){s=c.getElementsByTagName(t)[0],(a=c.createElement(t)).async=!0,a.src="https://"+r[m]+"/js/"+o+".js?v="+d,a.onerror=function(){a.remove(),(m+=1)>=r.length||e(n,c,t,o,r,m)},s.parentNode.insertBefore(a,s)}(window,document,"script","692e0776457ec2706b483e16",["cdn.bmcdn6.com"], 0, new Date().getTime())}();`;
+        document.head.appendChild(script);
+
+        // Trigger ad refresh on route changes
+        const handleRouteChange = () => {
+          setTimeout(() => {
+            // Find all ad elements and clone them to trigger re-initialization
+            const adElements = document.querySelectorAll(
+              ".692e0776457ec2706b483e16"
+            );
+            adElements.forEach((ad) => {
+              const parent = ad.parentNode;
+              if (parent) {
+                const cloned = ad.cloneNode(true);
+                parent.replaceChild(cloned, ad);
+              }
+            });
+          }, 300);
+        };
+
+        if (router.events) {
+          router.events.on("routeChangeComplete", handleRouteChange);
+        }
+
+        return () => {
+          if (router.events) {
+            router.events.off("routeChangeComplete", handleRouteChange);
+          }
+        };
+      }
+    }
+  }, [isApp, router]);
+
   const noIndexPages = ["/contact", "/faq", "/authors"];
 
   return (
