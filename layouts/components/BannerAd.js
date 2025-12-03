@@ -56,7 +56,7 @@ const BannerAd = ({ className = "", style = {}, id }) => {
       initializationTimeoutRef.current = initTimer;
     }
 
-    // Cleanup on unmount
+    // Cleanup on unmount - delay unregistration to avoid race conditions during navigation
     return () => {
       if (initializationTimeoutRef.current) {
         clearTimeout(initializationTimeoutRef.current);
@@ -65,9 +65,21 @@ const BannerAd = ({ className = "", style = {}, id }) => {
         observerRef.current.disconnect();
         observerRef.current = null;
       }
-      if (managerRef.current) {
-        managerRef.current.unregisterAd(uniqueId);
-      }
+      // Delay unregistration to allow route change handler to process first
+      // The manager will handle cleanup during route changes
+      const unregisterTimer = setTimeout(() => {
+        if (managerRef.current) {
+          const instance = managerRef.current.adInstances.get(uniqueId);
+          // Only unregister if route doesn't match current route (component truly unmounted, not just route change)
+          if (instance && instance.route !== managerRef.current.currentRoute) {
+            managerRef.current.unregisterAd(uniqueId);
+          }
+        }
+      }, 1000); // Delay to allow route change to complete
+
+      return () => {
+        clearTimeout(unregisterTimer);
+      };
     };
   }, [isDevelopment, uniqueId, router.pathname]);
 
