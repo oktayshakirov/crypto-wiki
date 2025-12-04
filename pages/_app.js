@@ -6,7 +6,7 @@ import Script from "next/script";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import TagManager from "react-gtm-module";
-import BitmediaAdManager from "@layouts/components/BitmediaAdManager";
+import BitmediaAdManager from "@layouts/components/ads/BitmediaAdManager";
 import "styles/style.scss";
 
 function getIsAppFlag() {
