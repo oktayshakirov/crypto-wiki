@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { useRouter } from "next/router";
 
 const BannerAd = ({ className = "", style = {}, id }) => {
@@ -6,6 +6,7 @@ const BannerAd = ({ className = "", style = {}, id }) => {
   const adRef = useRef(null);
   const scriptRef = useRef(null);
   const router = useRouter();
+  const prevPathRef = useRef(null);
   const [isDevelopment, setIsDevelopment] = useState(false);
   const [uniqueId] = useState(
     () => id || `banner-ad-${Math.random().toString(36).substr(2, 9)}`
@@ -27,54 +28,62 @@ const BannerAd = ({ className = "", style = {}, id }) => {
     }
   }, []);
 
+  const loadBitmediaScript = useCallback(() => {
+    if (!containerRef.current || !adRef.current) return;
+
+    const existingScript = containerRef.current.querySelector(
+      `script[data-bitmedia-ad="${uniqueId}"]`
+    );
+    if (existingScript) {
+      existingScript.remove();
+    }
+
+    const script = document.createElement("script");
+    script.setAttribute("data-bitmedia-ad", uniqueId);
+    script.textContent = `!function(e,n,c,t,o,r,d){!function e(n,c,t,o,r,m,d,s,a){s=c.getElementsByTagName(t)[0],(a=c.createElement(t)).async=!0,a.src="https://"+r[m]+"/js/"+o+".js?v="+d,a.onerror=function(){a.remove(),(m+=1)>=r.length||e(n,c,t,o,r,m)},s.parentNode.insertBefore(a,s)}(window,document,"script","692e0776457ec2706b483e16",["cdn.bmcdn6.com"], 0, new Date().getTime())}();`;
+
+    containerRef.current.appendChild(script);
+    scriptRef.current = script;
+
+    if (process.env.NODE_ENV === "development") {
+      script.onload = () => {
+        const bitmediaGlobals = {
+          bmblocks: window.bmblocks,
+          bm: window.bm,
+        };
+        console.log("Bitmedia window objects:", bitmediaGlobals);
+      };
+    }
+  }, [uniqueId]);
+
   useEffect(() => {
     if (typeof window === "undefined" || isDevelopment || !isMounted) return;
 
     if (!containerRef.current || !adRef.current) return;
 
-    const loadBitmediaScript = () => {
-      if (!containerRef.current || !adRef.current) return;
+    const currentPath = router.asPath;
+    const prevPath = prevPathRef.current;
 
-      const existingScript = containerRef.current.querySelector(
-        `script[data-bitmedia-ad="${uniqueId}"]`
-      );
-      if (existingScript) return;
+    if (prevPath !== currentPath) {
+      prevPathRef.current = currentPath;
 
-      const script = document.createElement("script");
-      script.setAttribute("data-bitmedia-ad", uniqueId);
-      script.textContent = `!function(e,n,c,t,o,r,d){!function e(n,c,t,o,r,m,d,s,a){s=c.getElementsByTagName(t)[0],(a=c.createElement(t)).async=!0,a.src="https://"+r[m]+"/js/"+o+".js?v="+d,a.onerror=function(){a.remove(),(m+=1)>=r.length||e(n,c,t,o,r,m)},s.parentNode.insertBefore(a,s)}(window,document,"script","692e0776457ec2706b483e16",["cdn.bmcdn6.com"], 0, new Date().getTime())}();`;
-
-      containerRef.current.appendChild(script);
-      scriptRef.current = script;
-
-      if (process.env.NODE_ENV === "development") {
-        script.onload = () => {
-          const bitmediaGlobals = {
-            bmblocks: window.bmblocks,
-            bm: window.bm,
-          };
-          console.log("Bitmedia window objects:", bitmediaGlobals);
-        };
-      }
-    };
-
-    const timer = setTimeout(() => {
-      loadBitmediaScript();
-    }, 150);
-
-    const handleRouteChange = () => {
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         loadBitmediaScript();
       }, 200);
-    };
 
-    router.events.on("routeChangeComplete", handleRouteChange);
+      return () => {
+        clearTimeout(timer);
+      };
+    } else {
+      const timer = setTimeout(() => {
+        loadBitmediaScript();
+      }, 150);
 
-    return () => {
-      clearTimeout(timer);
-      router.events.off("routeChangeComplete", handleRouteChange);
-    };
-  }, [isDevelopment, uniqueId, isMounted, router]);
+      return () => {
+        clearTimeout(timer);
+      };
+    }
+  }, [router.asPath, isDevelopment, uniqueId, isMounted, loadBitmediaScript]);
 
   if (isDevelopment) {
     return (
