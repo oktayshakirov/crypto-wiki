@@ -6,6 +6,7 @@ import Script from "next/script";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import TagManager from "react-gtm-module";
+import BitmediaAdManager from "@layouts/components/BitmediaAdManager";
 import "styles/style.scss";
 
 function getIsAppFlag() {
@@ -64,6 +65,7 @@ const MyApp = ({ Component, pageProps }) => {
 
   return (
     <JsonContext>
+      <BitmediaAdManager />
       <Head>
         <link
           rel="preconnect"

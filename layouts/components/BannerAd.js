@@ -1,14 +1,17 @@
 import { useEffect, useRef, useState, useCallback } from "react";
-import Router from "next/router";
+import { useRouter } from "next/router";
+import { registerAdInstance } from "./BitmediaAdManager";
 
 const BannerAd = ({ className = "", style = {}, id }) => {
   const containerRef = useRef(null);
   const adRef = useRef(null);
+  const router = useRouter();
   const [isDevelopment, setIsDevelopment] = useState(false);
   const [uniqueId] = useState(
     () => id || `banner-ad-${Math.random().toString(36).substr(2, 9)}`
   );
   const [isMounted, setIsMounted] = useState(false);
+  const [routeKey, setRouteKey] = useState(router.asPath);
 
   useEffect(() => {
     setIsMounted(true);
@@ -24,6 +27,10 @@ const BannerAd = ({ className = "", style = {}, id }) => {
       setIsDevelopment(isDev);
     }
   }, []);
+
+  useEffect(() => {
+    setRouteKey(router.asPath);
+  }, [router.asPath]);
 
   const loadBitmediaScript = useCallback(() => {
     if (!containerRef.current || !adRef.current) return;
@@ -60,33 +67,34 @@ const BannerAd = ({ className = "", style = {}, id }) => {
     }
   }, [uniqueId]);
 
-  const handleRouteChange = useCallback(() => {
-    setTimeout(() => {
-      loadBitmediaScript();
-    }, 300);
-  }, [loadBitmediaScript]);
-
   useEffect(() => {
     if (typeof window === "undefined" || isDevelopment || !isMounted) return;
 
     if (!containerRef.current || !adRef.current) return;
 
+    const refreshAd = () => {
+      if (!containerRef.current || !adRef.current) return;
+
+      const existingScript = containerRef.current.querySelector(
+        `script[data-bitmedia-ad="${uniqueId}"]`
+      );
+      if (existingScript) {
+        existingScript.remove();
+      }
+
+      setTimeout(() => {
+        loadBitmediaScript();
+      }, 100);
+    };
+
     loadBitmediaScript();
 
-    if (typeof window !== "undefined") {
-      Router.events.on("routeChangeComplete", handleRouteChange);
+    const unregister = registerAdInstance(uniqueId, refreshAd);
 
-      return () => {
-        Router.events.off("routeChangeComplete", handleRouteChange);
-      };
-    }
-  }, [
-    isDevelopment,
-    uniqueId,
-    isMounted,
-    loadBitmediaScript,
-    handleRouteChange,
-  ]);
+    return () => {
+      unregister();
+    };
+  }, [isDevelopment, uniqueId, isMounted, loadBitmediaScript, routeKey]);
 
   if (isDevelopment) {
     return (
