@@ -1,12 +1,9 @@
 import { useEffect, useRef, useState, useCallback } from "react";
-import { useRouter } from "next/router";
+import Router from "next/router";
 
 const BannerAd = ({ className = "", style = {}, id }) => {
   const containerRef = useRef(null);
   const adRef = useRef(null);
-  const scriptRef = useRef(null);
-  const router = useRouter();
-  const prevPathRef = useRef(null);
   const [isDevelopment, setIsDevelopment] = useState(false);
   const [uniqueId] = useState(
     () => id || `banner-ad-${Math.random().toString(36).substr(2, 9)}`
@@ -38,52 +35,58 @@ const BannerAd = ({ className = "", style = {}, id }) => {
       existingScript.remove();
     }
 
-    const script = document.createElement("script");
-    script.setAttribute("data-bitmedia-ad", uniqueId);
-    script.textContent = `!function(e,n,c,t,o,r,d){!function e(n,c,t,o,r,m,d,s,a){s=c.getElementsByTagName(t)[0],(a=c.createElement(t)).async=!0,a.src="https://"+r[m]+"/js/"+o+".js?v="+d,a.onerror=function(){a.remove(),(m+=1)>=r.length||e(n,c,t,o,r,m)},s.parentNode.insertBefore(a,s)}(window,document,"script","692e0776457ec2706b483e16",["cdn.bmcdn6.com"], 0, new Date().getTime())}();`;
+    try {
+      if (containerRef.current && adRef.current) {
+        const script = document.createElement("script");
+        script.setAttribute("data-bitmedia-ad", uniqueId);
+        script.textContent = `!function(e,n,c,t,o,r,d){!function e(n,c,t,o,r,m,d,s,a){s=c.getElementsByTagName(t)[0],(a=c.createElement(t)).async=!0,a.src="https://"+r[m]+"/js/"+o+".js?v="+d,a.onerror=function(){a.remove(),(m+=1)>=r.length||e(n,c,t,o,r,m)},s.parentNode.insertBefore(a,s)}(window,document,"script","692e0776457ec2706b483e16",["cdn.bmcdn6.com"], 0, new Date().getTime())}();`;
 
-    containerRef.current.appendChild(script);
-    scriptRef.current = script;
+        containerRef.current.appendChild(script);
 
-    if (process.env.NODE_ENV === "development") {
-      script.onload = () => {
-        const bitmediaGlobals = {
-          bmblocks: window.bmblocks,
-          bm: window.bm,
-        };
-        console.log("Bitmedia window objects:", bitmediaGlobals);
-      };
+        if (process.env.NODE_ENV === "development") {
+          script.onload = () => {
+            const bitmediaGlobals = {
+              bmblocks: window.bmblocks,
+              bm: window.bm,
+            };
+            console.log("Bitmedia window objects:", bitmediaGlobals);
+          };
+        }
+      }
+    } catch (err) {
+      if (process.env.NODE_ENV === "development") {
+        console.error("Error loading Bitmedia ad:", err);
+      }
     }
   }, [uniqueId]);
+
+  const handleRouteChange = useCallback(() => {
+    setTimeout(() => {
+      loadBitmediaScript();
+    }, 300);
+  }, [loadBitmediaScript]);
 
   useEffect(() => {
     if (typeof window === "undefined" || isDevelopment || !isMounted) return;
 
     if (!containerRef.current || !adRef.current) return;
 
-    const currentPath = router.asPath;
-    const prevPath = prevPathRef.current;
+    loadBitmediaScript();
 
-    if (prevPath !== currentPath) {
-      prevPathRef.current = currentPath;
-
-      const timer = setTimeout(() => {
-        loadBitmediaScript();
-      }, 200);
+    if (typeof window !== "undefined") {
+      Router.events.on("routeChangeComplete", handleRouteChange);
 
       return () => {
-        clearTimeout(timer);
-      };
-    } else {
-      const timer = setTimeout(() => {
-        loadBitmediaScript();
-      }, 150);
-
-      return () => {
-        clearTimeout(timer);
+        Router.events.off("routeChangeComplete", handleRouteChange);
       };
     }
-  }, [router.asPath, isDevelopment, uniqueId, isMounted, loadBitmediaScript]);
+  }, [
+    isDevelopment,
+    uniqueId,
+    isMounted,
+    loadBitmediaScript,
+    handleRouteChange,
+  ]);
 
   if (isDevelopment) {
     return (
