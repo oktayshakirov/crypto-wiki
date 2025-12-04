@@ -6,7 +6,6 @@ import Script from "next/script";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import TagManager from "react-gtm-module";
-import BitmediaScript from "@layouts/components/ads/BitmediaScript";
 import "styles/style.scss";
 
 function getIsAppFlag() {
@@ -105,7 +104,6 @@ const MyApp = ({ Component, pageProps }) => {
             src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5852582960793521"
             crossorigin="anonymous"
           ></script>
-          <BitmediaScript />
         </>
       )}
       <Component {...pageProps} isApp={isApp} />
