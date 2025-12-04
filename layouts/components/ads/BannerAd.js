@@ -1,5 +1,5 @@
-import AdUnit from "./ads/AdUnit";
-import AdWrapper from "./ads/AdWrapper";
+import AdUnit from "./AdUnit";
+import AdWrapper from "./AdWrapper";
 
 const BannerAd = ({ className = "", style = {}, id }) => {
   return (

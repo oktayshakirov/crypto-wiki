@@ -6,7 +6,7 @@ import CryptoOGs from "@partials/CryptoOGs";
 import Exchanges from "@partials/Exchanges";
 import { markdownify } from "@lib/utils/textConverter";
 import FearAndGreedIndex from "@layouts/components/FearAndGreedIndex";
-import BannerAd from "@layouts/components/BannerAd";
+import BannerAd from "@layouts/components/ads/BannerAd";
 import Link from "next/link";
 
 import {

@@ -4,7 +4,7 @@ import Base from "@layouts/Baseof";
 import { getListPage, getSinglePage } from "@lib/contentParser";
 import { markdownify } from "@lib/utils/textConverter";
 import Exchanges from "@partials/Exchanges";
-import BannerAd from "@layouts/components/BannerAd";
+import BannerAd from "@layouts/components/ads/BannerAd";
 
 const ExchangePagination = ({
   exchangeIndex,
