@@ -43,9 +43,7 @@ const Home = ({
     >
       <section>
         <div className="container my-7 text-center">
-          {!isApp && (
-            <BannerAd key="banner-ad-index-1" id="banner-ad-index-1" />
-          )}
+          {!isApp && <BannerAd />}
           <h1 className="mb-8 text-3xl font-bold leading-tight sm:text-4xl">
             Uncover the World of{" "}
             <span className="font-mono text-primary">CRYPTO</span>
@@ -74,9 +72,7 @@ const Home = ({
               <span>TAGS</span>
             </Link>
           </div>
-          {!isApp && (
-            <BannerAd key="banner-ad-index-2" id="banner-ad-index-2" />
-          )}
+          {!isApp && <BannerAd />}
           <div className="card-secondary my-10 p-10">
             <div className="mb-10">
               {markdownify("MARKET MOOD", "h3")}
@@ -110,9 +106,7 @@ const Home = ({
               </Link>
             </div>
           </div>
-          {!isApp && (
-            <BannerAd key="banner-ad-index-3" id="banner-ad-index-3" />
-          )}
+          {!isApp && <BannerAd />}
           <div className="mb-10">
             {markdownify("CRYPTO LEGENDS", "h3", "mb-8")}
             <CryptoOGs ogs={ogs} />
@@ -138,9 +132,7 @@ const Home = ({
               </Link>
             </div>
           </div>
-          {!isApp && (
-            <BannerAd key="banner-ad-index-4" id="banner-ad-index-4" />
-          )}
+          {!isApp && <BannerAd />}
           <div className="my-10">
             {markdownify("CRYPTO EXCHANGES", "h3", "mb-8")}
             <Exchanges exchanges={exchanges} />
@@ -166,9 +158,7 @@ const Home = ({
               </Link>
             </div>
           </div>
-          {!isApp && (
-            <BannerAd key="banner-ad-index-5" id="banner-ad-index-5" />
-          )}
+          {!isApp && <BannerAd />}
         </div>
       </section>
     </Base>
