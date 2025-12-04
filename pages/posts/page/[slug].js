@@ -7,7 +7,7 @@ import { humanize, markdownify } from "@lib/utils/textConverter";
 import Link from "next/link";
 import { getTaxonomy } from "@lib/taxonomyParser";
 import { FaTags } from "react-icons/fa";
-import BannerAd from "@layouts/components/ads/BannerAd";
+import BannerAd from "@layouts/components/BannerAd";
 
 const PostPagination = ({
   postIndex,
