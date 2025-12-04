@@ -1,103 +1,81 @@
-import { useEffect, useRef, useState } from "react";
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import loadScript from "../services/loadScript";
 
-const BannerAd = ({ className = "", style = {}, id }) => {
-  const containerRef = useRef(null);
-  const adRef = useRef(null);
-  const [isDevelopment, setIsDevelopment] = useState(false);
-  const [uniqueId] = useState(
-    () => id || `banner-ad-${Math.random().toString(36).substr(2, 9)}`
-  );
+export default class BannersLoader extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			bannerTypeForLoad: "",
+		};
+		this.bannersConfig = {
+			typeOne: {
+				code: "idBanner",
+				style: { display: "inline-block", width: "300px", height: "250px" },
+			},
+			typeTwo: {
+				code: "idBanner",
+				style: { display: "inline-block", width: "300px", height: "250px" },
+			},
+			typeThree: {
+				code: "idBanner",
+				style: { display: "inline-block", width: "1px", height: "1px" },
+			},
+		};
+		this.bmScript = null;
+	}
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const hostname = window.location.hostname;
-      const isDev =
-        hostname === "localhost" ||
-        hostname === "127.0.0.1" ||
-        hostname.includes("localhost") ||
-        hostname.includes("127.0.0.1") ||
-        hostname === "";
+	componentDidMount() {
+		const bannerTypeForLoad = "bitmedia";
+		this.setState({ bannerTypeForLoad });
+		this.setCounterBannerLoaded();
+	}
 
-      setIsDevelopment(isDev);
-    }
+	componentWillUnmount() {
+		if (this.bmScript) {
+			this.bmScript.remove();
+			if (window.bmblocks && window.bmblocks[this.bannersConfig[this.props.name].code]) {
+				delete window.bmblocks[this.bannersConfig[this.props.name].code];
+			}
+		}
+	}
 
-    if (typeof window === "undefined" || isDevelopment) return;
+	componentDidUpdate(prevProps, prevState) {
+		if (prevState.bannerTypeForLoad !== this.state.bannerTypeForLoad) {
+			this.bmScript = loadScript(`//bmcdn5.com/js/${this.bannersConfig[this.props.name].code}.js`);
+		}
+	}
 
-    if (!containerRef.current || !adRef.current) return;
+	setCounterBannerLoaded() {
+		const dataFromStorage = localStorage.getItem("banners");
+		let bannersCounterObj = {};
+		const setItem = {};
+		setItem[this.props.name] = 1;
+		if (dataFromStorage) {
+			try {
+				bannersCounterObj = JSON.parse(dataFromStorage);
+				if (bannersCounterObj[this.props.name]) {
+					setItem[this.props.name] += +bannersCounterObj[this.props.name];
+				}
+			} catch (e) {
+				bannersCounterObj = {};
+			}
+		}
 
-    const loadScriptForThisAd = () => {
-      const existingScript = containerRef.current.querySelector(
-        `script[data-bitmedia-ad="${uniqueId}"]`
-      );
-      if (existingScript) return;
+		localStorage.setItem("banners", JSON.stringify({ ...bannersCounterObj, ...setItem }));
+	}
 
-      const script = document.createElement("script");
-      script.setAttribute("data-bitmedia-ad", uniqueId);
-      script.textContent = `!function(e,n,c,t,o,r,d){!function e(n,c,t,o,r,m,d,s,a){s=c.getElementsByTagName(t)[0],(a=c.createElement(t)).async=!0,a.src="https://"+r[m]+"/js/"+o+".js?v="+d,a.onerror=function(){a.remove(),(m+=1)>=r.length||e(n,c,t,o,r,m)},s.parentNode.insertBefore(a,s)}(window,document,"script","692e0776457ec2706b483e16",["cdn.bmcdn6.com"], 0, new Date().getTime())}();`;
+	render() {
+		const { name } = this.props;
+		const selectedBanner = this.bannersConfig[name];
+		return (
+			<div className="banners-container">
+				<ins className={`${selectedBanner.code}`} style={selectedBanner.style} />
+			</div>
+		);
+	}
+}
 
-      containerRef.current.appendChild(script);
-    };
-
-    const timer = setTimeout(() => {
-      loadScriptForThisAd();
-    }, 100);
-
-    return () => clearTimeout(timer);
-  }, [isDevelopment, uniqueId]);
-
-  if (isDevelopment) {
-    return (
-      <div
-        className={`banner-ad-placeholder ${className}`}
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          minHeight: "90px",
-          width: "100%",
-          backgroundColor: "#1f2937",
-          border: "2px dashed #4b5563",
-          borderRadius: "4px",
-          color: "#ffffff",
-          fontSize: "14px",
-          textAlign: "center",
-          padding: "20px",
-          margin: "20px 0",
-          ...style,
-        }}
-        id={uniqueId}
-      >
-        <div>
-          <div
-            style={{
-              fontWeight: "bold",
-              marginBottom: "8px",
-              color: "#ffffff",
-            }}
-          >
-            Ad Placeholder
-          </div>
-          <div style={{ fontSize: "12px", opacity: 0.7, color: "#d1d5db" }}>
-            Bitmedia ads only display in production
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  return (
-    <div
-      ref={containerRef}
-      style={{ display: "inline-block", width: "100%", ...style }}
-    >
-      <ins
-        ref={adRef}
-        className={`692e0776457ec2706b483e16 ${className}`}
-        style={{ display: "inline-block", width: "1px", height: "1px" }}
-        id={uniqueId}
-      />
-    </div>
-  );
+BannersLoader.propTypes = {
+	name: PropTypes.string.isRequired,
 };
-
-export default BannerAd;
