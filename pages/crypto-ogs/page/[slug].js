@@ -4,7 +4,7 @@ import Base from "@layouts/Baseof";
 import { getListPage, getSinglePage } from "@lib/contentParser";
 import { markdownify } from "@lib/utils/textConverter";
 import CryptoOGs from "@partials/CryptoOGs";
-import BannerAd from "@layouts/components/ads/BannerAd";
+import BannerAd from "@layouts/components/BannerAd";
 
 const CryptoOgPagination = ({
   ogIndex,
