@@ -4,12 +4,12 @@ export const isProduction = () => {
   }
 
   const hostname = window.location.hostname;
-  return (
-    hostname !== "localhost" &&
-    hostname !== "127.0.0.1" &&
-    !hostname.includes("localhost") &&
-    !hostname.includes("127.0.0.1") &&
-    hostname !== "" &&
-    process.env.NODE_ENV === "production"
-  );
+  const isLocalhost =
+    hostname === "localhost" ||
+    hostname === "127.0.0.1" ||
+    hostname.includes("localhost") ||
+    hostname.includes("127.0.0.1") ||
+    hostname === "";
+
+  return !isLocalhost;
 };
