@@ -12,12 +12,12 @@ export const registerAdInstance = (instanceId, refreshCallback) => {
 };
 
 export const refreshAllAds = () => {
-  adInstances.forEach((refreshCallback, instanceId) => {
+  adInstances.forEach((refreshCallback) => {
     try {
       refreshCallback();
     } catch (err) {
       if (process.env.NODE_ENV === "development") {
-        console.error(`Error refreshing ad instance ${instanceId}:`, err);
+        console.error("Error refreshing ad instance:", err);
       }
     }
   });

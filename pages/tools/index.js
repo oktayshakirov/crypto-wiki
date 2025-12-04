@@ -3,7 +3,7 @@ import { markdownify } from "@lib/utils/textConverter";
 import Link from "next/link";
 import config from "@config/config.json";
 import { useRouter } from "next/router";
-import BannerAd from "@layouts/components/BannerAd";
+import BannerAd from "@layouts/components/ads/BannerAd";
 
 const Tools = ({ isApp }) => {
   const router = useRouter();
