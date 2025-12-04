@@ -1,7 +1,13 @@
+import { useMemo } from "react";
 import AdUnit from "./ads/AdUnit";
 import AdWrapper from "./ads/AdWrapper";
 
 const BannerAd = ({ className = "", style = {}, id }) => {
+  const uniqueId = useMemo(
+    () => id || `banner-ad-${Math.random().toString(36).substr(2, 9)}`,
+    [id]
+  );
+
   return (
     <AdWrapper className={className} style={style}>
       <AdUnit>
@@ -13,7 +19,8 @@ const BannerAd = ({ className = "", style = {}, id }) => {
             height: "1px",
             ...style,
           }}
-          id={id || `banner-ad-${Math.random().toString(36).substr(2, 9)}`}
+          id={uniqueId}
+          data-ad-id={uniqueId}
         />
       </AdUnit>
     </AdWrapper>
