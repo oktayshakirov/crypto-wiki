@@ -4,6 +4,7 @@ import { getTaxonomy } from "@lib/taxonomyParser";
 import { humanize, markdownify } from "@lib/utils/textConverter";
 import Link from "next/link";
 const { blog_folder } = config.settings;
+import BannerAd from "@layouts/components/ads/BannerAd";
 
 const Categories = ({ categories, isApp }) => {
   return (
@@ -17,6 +18,7 @@ const Categories = ({ categories, isApp }) => {
     >
       <section className="section">
         <div className="container text-center">
+          {!isApp && <BannerAd />}
           {markdownify("Categories", "h1", "h1 mb-16")}
           <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
             {categories.map((category, i) => (
@@ -30,6 +32,7 @@ const Categories = ({ categories, isApp }) => {
               </li>
             ))}
           </ul>
+          {!isApp && <BannerAd />}
         </div>
       </section>
     </Base>
