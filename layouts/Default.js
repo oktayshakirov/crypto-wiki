@@ -1,5 +1,6 @@
 import { markdownify } from "@lib/utils/textConverter";
 import { MDXRemote } from "next-mdx-remote";
+import { mdxComponents } from "@lib/mdxComponents";
 
 const Default = ({ data }) => {
   const { frontmatter, mdxContent } = data;
@@ -9,7 +10,7 @@ const Default = ({ data }) => {
       <div className="container">
         {markdownify(title, "h1", "h1 mb-8 text-center")}
         <div className="content">
-          <MDXRemote {...mdxContent} />
+          <MDXRemote {...mdxContent} components={mdxComponents} />
         </div>
       </div>
     </section>
