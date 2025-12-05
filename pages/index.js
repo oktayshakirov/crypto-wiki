@@ -43,7 +43,6 @@ const Home = ({
     >
       <section>
         <div className="container my-7 text-center">
-          {!isApp && <BannerAd />}
           <h1 className="mb-8 text-3xl font-bold leading-tight sm:text-4xl">
             Uncover the World of{" "}
             <span className="font-mono text-primary">CRYPTO</span>
@@ -158,7 +157,6 @@ const Home = ({
               </Link>
             </div>
           </div>
-          {!isApp && <BannerAd />}
         </div>
       </section>
     </Base>

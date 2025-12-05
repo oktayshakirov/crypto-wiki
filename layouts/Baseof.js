@@ -6,6 +6,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import CoinTracker from "@components/CoinTracker";
 import AppDownloadPopup from "@components/AppDownloadPopup";
+import BannerAd from "@layouts/components/ads/BannerAd";
 
 const Base = ({
   title,
@@ -87,7 +88,9 @@ const Base = ({
       <div className="container">
         <CoinTracker />
       </div>
+      <div className="container">{!isApp && <BannerAd />}</div>
       <main>{children}</main>
+      <div className="container">{!isApp && <BannerAd />}</div>
       <Footer isApp={isApp} />
       {!isApp && <AppDownloadPopup />}
     </>

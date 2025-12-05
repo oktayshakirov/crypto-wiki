@@ -7,7 +7,6 @@ import { humanize, markdownify } from "@lib/utils/textConverter";
 import Link from "next/link";
 import { getTaxonomy } from "@lib/taxonomyParser";
 import { FaTags } from "react-icons/fa";
-import BannerAd from "@layouts/components/ads/BannerAd";
 
 const PostPagination = ({
   postIndex,
@@ -33,7 +32,6 @@ const PostPagination = ({
     >
       <section className="section">
         <div className="container text-center">
-          {!isApp && <BannerAd />}
           <div className="mb-8">
             <div className="block md:hidden">
               <Link
@@ -69,7 +67,6 @@ const PostPagination = ({
             totalPages={totalPages}
             currentPage={currentPage}
           />
-          {!isApp && <BannerAd />}
         </div>
       </section>
     </Base>
