@@ -70,7 +70,8 @@ const ArticleAd = ({ className = "", style = {}, id }) => {
   return (
     <div
       ref={containerRef}
-      style={{ display: "inline-block", width: "100%", ...style }}
+      className="flex justify-center"
+      style={{ width: "100%", ...style }}
     >
       {isMounted && isDevelopment ? (
         <div
