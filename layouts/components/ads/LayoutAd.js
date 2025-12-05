@@ -67,12 +67,15 @@ const LayoutAd = ({ className = "", style = {}, id }) => {
     };
   }, [isDevelopment, uniqueId, isMounted, loadBitmediaScript]);
 
+  const showPlaceholder = isMounted && isDevelopment;
+
   return (
     <div
       ref={containerRef}
       style={{ display: "inline-block", width: "100%", ...style }}
+      suppressHydrationWarning
     >
-      {isMounted && isDevelopment ? (
+      {showPlaceholder ? (
         <div
           className={`banner-ad-placeholder ${className}`}
           style={{

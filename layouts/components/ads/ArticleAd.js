@@ -67,13 +67,16 @@ const ArticleAd = ({ className = "", style = {}, id }) => {
     };
   }, [isDevelopment, uniqueId, isMounted, loadBitmediaScript]);
 
+  const showPlaceholder = isMounted && isDevelopment;
+
   return (
     <div
       ref={containerRef}
       className="flex justify-center"
       style={{ width: "100%", ...style }}
+      suppressHydrationWarning
     >
-      {isMounted && isDevelopment ? (
+      {showPlaceholder ? (
         <div
           className={`banner-ad-placeholder ${className}`}
           style={{
