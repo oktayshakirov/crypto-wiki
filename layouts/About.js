@@ -2,6 +2,7 @@ import Social from "@components/Social";
 import { markdownify } from "@lib/utils/textConverter";
 import { MDXRemote } from "next-mdx-remote";
 import Image from "next/image";
+import { mdxComponents } from "@lib/mdxComponents";
 
 const About = ({ data }) => {
   const { frontmatter, mdxContent } = data;
@@ -25,7 +26,7 @@ const About = ({ data }) => {
         <Social source={social} className="social-icons-simple my-8" />
 
         <div className="content">
-          <MDXRemote {...mdxContent} />
+          <MDXRemote {...mdxContent} components={mdxComponents} />
         </div>
       </div>
     </section>

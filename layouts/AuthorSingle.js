@@ -4,6 +4,7 @@ import Image from "next/image";
 import Base from "./Baseof";
 import Social from "./components/Social";
 import GoBackLink from "@partials/GoBackLink";
+import { mdxComponents } from "@lib/mdxComponents";
 
 const AuthorSingle = ({ frontmatter, content, mdxContent, isApp }) => {
   const { description, social, title, image } = frontmatter;
@@ -34,7 +35,7 @@ const AuthorSingle = ({ frontmatter, content, mdxContent, isApp }) => {
             {markdownify(title, "h1", "h1 mb-8")}
             <Social source={social} className="social-icons-simple" />
             <div className="content text-start">
-              <MDXRemote {...mdxContent} />
+              <MDXRemote {...mdxContent} components={mdxComponents} />
             </div>
           </div>
         </div>

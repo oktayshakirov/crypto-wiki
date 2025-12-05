@@ -9,6 +9,7 @@ import NextPrevNavigation from "@partials/NextPrevNavigation";
 import GoBackLink from "@partials/GoBackLink";
 import Base from "./Baseof";
 import config from "@config/config.json";
+import { mdxComponents } from "@lib/mdxComponents";
 
 const PostSingle = ({
   post,
@@ -154,7 +155,7 @@ const PostSingle = ({
               />
             )}
             <div className="content mb-16 text-left text-white">
-              <MDXRemote {...mdxContent} />
+              <MDXRemote {...mdxContent} components={mdxComponents} />
             </div>
             <div className="flex flex-wrap items-center justify-center">
               <ul className="flex flex-wrap justify-center gap-2">
