@@ -6,7 +6,7 @@ import CryptoOGs from "@partials/CryptoOGs";
 import Exchanges from "@partials/Exchanges";
 import { markdownify } from "@lib/utils/textConverter";
 import FearAndGreedIndex from "@layouts/components/FearAndGreedIndex";
-import BannerAd from "@layouts/components/ads/LayoutAd";
+import LayoutAd from "@layouts/components/ads/LayoutAd";
 import Link from "next/link";
 
 import {
@@ -71,7 +71,7 @@ const Home = ({
               <span>TAGS</span>
             </Link>
           </div>
-          {!isApp && <BannerAd />}
+          {!isApp && <LayoutAd />}
           <div className="card-secondary my-10 p-10">
             <div className="mb-10">
               {markdownify("MARKET MOOD", "h3")}
@@ -105,7 +105,7 @@ const Home = ({
               </Link>
             </div>
           </div>
-          {!isApp && <BannerAd />}
+          {!isApp && <LayoutAd />}
           <div className="mb-10">
             {markdownify("CRYPTO LEGENDS", "h3", "mb-8")}
             <CryptoOGs ogs={ogs} />
@@ -131,7 +131,7 @@ const Home = ({
               </Link>
             </div>
           </div>
-          {!isApp && <BannerAd />}
+          {!isApp && <LayoutAd />}
           <div className="my-10">
             {markdownify("CRYPTO EXCHANGES", "h3", "mb-8")}
             <Exchanges exchanges={exchanges} />
