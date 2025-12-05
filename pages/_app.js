@@ -90,13 +90,12 @@ const MyApp = ({ Component, pageProps }) => {
         `}
       </Script>
       {!isApp && (
-        <>
-          <script
-            async
-            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5852582960793521"
-            crossorigin="anonymous"
-          ></script>
-        </>
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5852582960793521"
+          crossOrigin="anonymous"
+          strategy="lazyOnload"
+        />
       )}
       <Component {...pageProps} isApp={isApp} />
     </JsonContext>
