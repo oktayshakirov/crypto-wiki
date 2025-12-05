@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import { registerAdInstance } from "./BitmediaAdManager";
 
-const BannerAd = ({ className = "", style = {}, id }) => {
+const LayoutAd = ({ className = "", style = {}, id }) => {
   const containerRef = useRef(null);
   const adRef = useRef(null);
   const [uniqueId] = useState(
@@ -119,4 +119,4 @@ const BannerAd = ({ className = "", style = {}, id }) => {
   );
 };
 
-export default BannerAd;
+export default LayoutAd;
