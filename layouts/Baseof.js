@@ -6,7 +6,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import CoinTracker from "@components/CoinTracker";
 import AppDownloadPopup from "@components/AppDownloadPopup";
-import BannerAd from "@layouts/components/ads/BannerAd";
+import BannerAd from "@layouts/components/ads/LayoutAd";
 
 const Base = ({
   title,
