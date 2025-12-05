@@ -3,7 +3,6 @@ import { markdownify } from "@lib/utils/textConverter";
 import Link from "next/link";
 import config from "@config/config.json";
 import { useRouter } from "next/router";
-import BannerAd from "@layouts/components/ads/BannerAd";
 
 const Tools = ({ isApp }) => {
   const router = useRouter();
@@ -82,7 +81,6 @@ const Tools = ({ isApp }) => {
     >
       <section className="section">
         <div className="container max-w-6xl">
-          {!isApp && <BannerAd />}
           <div className="mb-16 text-center">
             {markdownify("CRYPTO TOOLS", "h1", "h1 mb-4")}
             <p className="text-lg text-gray-200 ">
@@ -123,7 +121,6 @@ const Tools = ({ isApp }) => {
               </Link>
             ))}
           </div>
-          {!isApp && <BannerAd />}
         </div>
       </section>
     </Base>
