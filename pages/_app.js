@@ -9,16 +9,6 @@ import TagManager from "react-gtm-module";
 import BitmediaAdManager from "@layouts/components/ads/BitmediaAdManager";
 import "styles/style.scss";
 
-function getIsAppFlag() {
-  if (typeof window === "undefined") return false;
-  const urlParams = new URLSearchParams(window.location.search);
-  return (
-    urlParams.get("isApp") === "true" ||
-    !!window.isApp ||
-    localStorage.getItem("isApp") === "true"
-  );
-}
-
 const MyApp = ({ Component, pageProps }) => {
   const router = useRouter();
   const pf = theme.fonts.font_family.primary;
