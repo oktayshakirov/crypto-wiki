@@ -55,7 +55,7 @@ const MyApp = ({ Component, pageProps }) => {
 
   return (
     <JsonContext>
-      <BitmediaAdManager />
+      {!isApp && <BitmediaAdManager />}
       <Head>
         <link
           rel="preconnect"
