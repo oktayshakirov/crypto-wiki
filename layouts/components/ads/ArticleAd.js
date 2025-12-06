@@ -9,6 +9,7 @@ const ArticleAd = ({ className = "", style = {}, id }) => {
   );
   const [isMounted, setIsMounted] = useState(false);
   const [isDevelopment, setIsDevelopment] = useState(false);
+  const [isApp, setIsApp] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
@@ -21,6 +22,13 @@ const ArticleAd = ({ className = "", style = {}, id }) => {
         hostname.includes("127.0.0.1") ||
         hostname === "";
       setIsDevelopment(isDev);
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const appCheck =
+        urlParams.get("isApp") === "true" ||
+        !!window.isApp ||
+        localStorage.getItem("isApp") === "true";
+      setIsApp(appCheck);
     }
   }, []);
 
@@ -68,6 +76,10 @@ const ArticleAd = ({ className = "", style = {}, id }) => {
   }, [isDevelopment, uniqueId, isMounted, loadBitmediaScript]);
 
   const showPlaceholder = isMounted && isDevelopment;
+
+  if (isApp) {
+    return null;
+  }
 
   return (
     <div
