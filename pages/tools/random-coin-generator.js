@@ -96,7 +96,7 @@ const RandomCoinPage = ({ isApp }) => {
               investments, but to offer a random starting point if you want to
               learn about a coin you might not have encountered otherwise.
             </p>
-            <LayoutAd />
+            <div className="container mt-5 text-center">{!isApp && <LayoutAd />}</div>
             <h2 className="h3 my-4">How Does This Generator Work?</h2>
             <ul>
               <li>
@@ -247,7 +247,7 @@ const RandomCoinPage = ({ isApp }) => {
                 perspective.
               </li>
             </ul>
-            <LayoutAd />
+            <div className="container mt-5 text-center">{!isApp && <LayoutAd />}</div>
             <h2 className="h3 my-4">Frequently Asked Questions (FAQ)</h2>
             <div className="border-t border-gray-200 dark:border-gray-700">
               <div className="border-b border-gray-200 py-5 dark:border-gray-700">

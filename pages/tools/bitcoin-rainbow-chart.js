@@ -182,7 +182,9 @@ const BitcoinRainbowChartPage = ({ isApp }) => {
               potential undervaluation (&apos;buy zones&apos;) to periods of
               potential overvaluation (&apos;sell zones&apos;).
             </p>
-            <LayoutAd />
+            <div className="container mt-5 text-center">
+              {!isApp && <LayoutAd />}
+            </div>
             <h2 className="h3 my-4">
               How the Bitcoin Rainbow Chart Works (Methodology)
             </h2>
@@ -348,7 +350,9 @@ const BitcoinRainbowChartPage = ({ isApp }) => {
               analysis puzzle, primarily for historical context and
               visualization. Never trade based solely on its colors.
             </p>
-            <LayoutAd />
+            <div className="container mt-5 text-center">
+              {!isApp && <LayoutAd />}
+            </div>
             <h2 className="h3 my-4">Frequently Asked Questions (FAQ)</h2>
             <div className="border-t border-gray-200 dark:border-gray-700">
               <div className="border-b border-gray-200 py-5 dark:border-gray-700">

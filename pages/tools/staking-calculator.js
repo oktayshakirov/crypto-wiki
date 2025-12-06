@@ -117,7 +117,9 @@ const StakingCalculatorPage = ({ isApp }) => {
                 What is Crypto Staking?
               </Link>
             </p>
-            <LayoutAd />
+            <div className="container mt-5 text-center">
+              {!isApp && <LayoutAd />}
+            </div>
             <h2 className="h3 my-4">
               How Staking Rewards Work & APY Explained
             </h2>
@@ -241,7 +243,9 @@ const StakingCalculatorPage = ({ isApp }) => {
               Always weigh the potential rewards against these significant
               risks.
             </p>
-            <LayoutAd />
+            <div className="container mt-5 text-center">
+              {!isApp && <LayoutAd />}
+            </div>
             <h2 className="h3 my-4">Frequently Asked Questions (FAQ)</h2>
             <div className="border-t border-gray-200 dark:border-gray-700">
               <div className="border-b border-gray-200 py-5 dark:border-gray-700">
