@@ -5,6 +5,7 @@ import { FaExclamationTriangle } from "react-icons/fa";
 import Link from "next/link";
 import GoBackLink from "@partials/GoBackLink";
 import config from "@config/config.json";
+import LayoutAd from "@components/ads/LayoutAd";
 
 const legendData = [
   {
@@ -208,7 +209,7 @@ const FearAndGreedIndexPage = ({ isApp }) => {
               </a>
               , inspired by the traditional market Fear & Greed Index.
             </p>
-
+            <LayoutAd />
             <h2 className="h3 my-4">
               How is the Index Calculated? (Methodology)
             </h2>
@@ -335,7 +336,7 @@ const FearAndGreedIndexPage = ({ isApp }) => {
                 always mean a top is imminent.
               </li>
             </ul>
-
+            <LayoutAd />
             <h2 className="h3 my-4">Frequently Asked Questions (FAQ)</h2>
             <div className="border-t border-gray-200 dark:border-gray-700">
               <div className="border-b border-gray-200 py-5 dark:border-gray-700">
