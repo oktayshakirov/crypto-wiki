@@ -209,7 +209,7 @@ const FearAndGreedIndexPage = ({ isApp }) => {
               </a>
               , inspired by the traditional market Fear & Greed Index.
             </p>
-            <LayoutAd />
+            <div className="container mt-5 text-center">{!isApp && <LayoutAd />}</div>
             <h2 className="h3 my-4">
               How is the Index Calculated? (Methodology)
             </h2>
@@ -336,7 +336,7 @@ const FearAndGreedIndexPage = ({ isApp }) => {
                 always mean a top is imminent.
               </li>
             </ul>
-            <LayoutAd />
+            <div className="container mt-5 text-center">{!isApp && <LayoutAd />}</div>
             <h2 className="h3 my-4">Frequently Asked Questions (FAQ)</h2>
             <div className="border-t border-gray-200 dark:border-gray-700">
               <div className="border-b border-gray-200 py-5 dark:border-gray-700">

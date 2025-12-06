@@ -144,7 +144,7 @@ const CryptoHeatmapPage = ({ isApp }) => {
               assess not only individual coin performance but also the overall
               market mood and the relative impact of different cryptocurrencies.
             </p>
-            <LayoutAd />
+            <div className="container mt-5 text-center">{!isApp && <LayoutAd />}</div>
             <h2 className="h3 my-4">How Does This Heatmap Work?</h2>
             <p>This heatmap tool functions by:</p>
             <ol>
@@ -251,7 +251,7 @@ const CryptoHeatmapPage = ({ isApp }) => {
                 automatically mean &quot;sell.&quot;
               </li>
             </ul>
-            <LayoutAd />
+            <div className="container mt-5 text-center">{!isApp && <LayoutAd />}</div>
             <h2 className="h3 my-4">Frequently Asked Questions (FAQ)</h2>
             <div className="border-t border-gray-200 dark:border-gray-700">
               <div className="border-b border-gray-200 py-5 dark:border-gray-700">
