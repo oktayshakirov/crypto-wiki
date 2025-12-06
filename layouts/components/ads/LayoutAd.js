@@ -51,7 +51,8 @@ const LayoutAd = ({ className = "", style = {}, id }) => {
   }, [uniqueId]);
 
   useEffect(() => {
-    if (typeof window === "undefined" || isDevelopment || !isMounted) return;
+    if (typeof window === "undefined" || isDevelopment || !isMounted || isApp)
+      return;
     if (!containerRef.current || !adRef.current) return;
 
     const refreshAd = () => {
@@ -73,7 +74,7 @@ const LayoutAd = ({ className = "", style = {}, id }) => {
     return () => {
       unregister();
     };
-  }, [isDevelopment, uniqueId, isMounted, loadBitmediaScript]);
+  }, [isDevelopment, uniqueId, isMounted, loadBitmediaScript, isApp]);
 
   const showPlaceholder = isMounted && isDevelopment;
 
