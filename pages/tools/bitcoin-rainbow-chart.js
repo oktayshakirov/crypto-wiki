@@ -5,6 +5,7 @@ import { FaExclamationTriangle } from "react-icons/fa";
 import Link from "next/link";
 import GoBackLink from "@partials/GoBackLink";
 import config from "@config/config.json";
+import LayoutAd from "@components/ads/LayoutAd";
 
 const BitcoinRainbowChartPage = ({ isApp }) => {
   const author = {
@@ -156,7 +157,6 @@ const BitcoinRainbowChartPage = ({ isApp }) => {
               investment choices.
             </p>
           </div>
-
           <div className="content">
             <h2 className="h3 my-4">What is the Bitcoin Rainbow Chart?</h2>
             <p>
@@ -182,7 +182,7 @@ const BitcoinRainbowChartPage = ({ isApp }) => {
               potential undervaluation (&apos;buy zones&apos;) to periods of
               potential overvaluation (&apos;sell zones&apos;).
             </p>
-
+            <LayoutAd />
             <h2 className="h3 my-4">
               How the Bitcoin Rainbow Chart Works (Methodology)
             </h2>
@@ -348,7 +348,7 @@ const BitcoinRainbowChartPage = ({ isApp }) => {
               analysis puzzle, primarily for historical context and
               visualization. Never trade based solely on its colors.
             </p>
-
+            <LayoutAd />
             <h2 className="h3 my-4">Frequently Asked Questions (FAQ)</h2>
             <div className="border-t border-gray-200 dark:border-gray-700">
               <div className="border-b border-gray-200 py-5 dark:border-gray-700">

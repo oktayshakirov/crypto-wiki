@@ -5,6 +5,7 @@ import { FaExclamationTriangle } from "react-icons/fa";
 import Link from "next/link";
 import GoBackLink from "@partials/GoBackLink";
 import config from "@config/config.json";
+import LayoutAd from "@components/ads/LayoutAd";
 
 const legendData = [
   {
@@ -143,7 +144,7 @@ const CryptoHeatmapPage = ({ isApp }) => {
               assess not only individual coin performance but also the overall
               market mood and the relative impact of different cryptocurrencies.
             </p>
-
+            <LayoutAd />
             <h2 className="h3 my-4">How Does This Heatmap Work?</h2>
             <p>This heatmap tool functions by:</p>
             <ol>
@@ -250,7 +251,7 @@ const CryptoHeatmapPage = ({ isApp }) => {
                 automatically mean &quot;sell.&quot;
               </li>
             </ul>
-
+            <LayoutAd />
             <h2 className="h3 my-4">Frequently Asked Questions (FAQ)</h2>
             <div className="border-t border-gray-200 dark:border-gray-700">
               <div className="border-b border-gray-200 py-5 dark:border-gray-700">
