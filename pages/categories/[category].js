@@ -27,7 +27,7 @@ export const getStaticProps = ({ params }) => {
   const posts = getSinglePage(`content/${blog_folder}`);
   const filteredPosts = posts.filter((post) =>
     post.frontmatter.categories.find((category) =>
-      slugify(category).includes(params.category)
+      slugify(category) === params.category
     )
   );
 

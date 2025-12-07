@@ -18,7 +18,7 @@ export const getStaticPaths = async () => {
   for (const category of allCategories) {
     const posts = getSinglePage(`content/${blog_folder}`);
     const filteredPosts = posts.filter((post) =>
-      post.frontmatter.categories.find((cat) => slugify(cat).includes(category))
+      post.frontmatter.categories.find((cat) => slugify(cat) === category)
     );
 
     const postsPerPage = 6;
@@ -43,8 +43,8 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async ({ params }) => {
   const posts = getSinglePage(`content/${blog_folder}`);
   const filteredPosts = posts.filter((post) =>
-    post.frontmatter.categories.find((category) =>
-      slugify(category).includes(params.category)
+    post.frontmatter.categories.find(
+      (category) => slugify(category) === params.category
     )
   );
 
