@@ -5,7 +5,7 @@ import { FaExclamationTriangle } from "react-icons/fa";
 const DisclaimerBanner = ({ className = "" }) => {
   return (
     <div
-      className={`mt-4 rounded-lg border-2 border-orange-400 bg-orange-400/10 p-4 text-center ${className}`}
+      className={`mb-4 mt-4 rounded-lg border-2 border-orange-400 bg-orange-400/10 p-4 text-center ${className}`}
     >
       <div className="mb-2 flex justify-center">
         <FaExclamationTriangle className="text-4xl text-orange-400" />
@@ -38,4 +38,3 @@ const DisclaimerBanner = ({ className = "" }) => {
 };
 
 export default DisclaimerBanner;
-
