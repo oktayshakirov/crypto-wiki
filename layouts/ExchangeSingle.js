@@ -4,13 +4,14 @@ import Image from "next/image";
 import Base from "./Baseof";
 import Social from "@components/Social";
 import Authors from "@components/Authors";
-import { FaCalendarAlt, FaExclamationTriangle } from "react-icons/fa";
+import { FaCalendarAlt } from "react-icons/fa";
 import Link from "next/link";
 import dateFormat from "@lib/utils/dateFormat";
 import NextPrevNavigation from "@partials/NextPrevNavigation";
 import GoBackLink from "@partials/GoBackLink";
 import config from "@config/config.json";
 import { mdxComponents } from "@lib/mdxComponents";
+import DisclaimerBanner from "@layouts/components/DisclaimerBanner";
 
 const ExchangeSingle = ({
   frontmatter,
@@ -35,21 +36,7 @@ const ExchangeSingle = ({
       <section className="section">
         <div className="container ">
           <GoBackLink option="exchanges" />
-          <div className="mt-4 rounded-lg border-2 border-orange-400 p-4 text-center">
-            <div className="mb-2 flex justify-center">
-              <FaExclamationTriangle className="text-4xl text-orange-400" />
-            </div>
-            <p className="m-0">
-              <strong>*Disclaimer:</strong> The information provided here is for
-              informational purposes only and does not constitute financial
-              advice. Cryptocurrency trading involves risks, so please DYOR. For
-              beginners, check out our{" "}
-              <Link href="/categories/beginners" className="text-primary">
-                Beginners Guides
-              </Link>{" "}
-              to learn more.
-            </p>
-          </div>
+          <DisclaimerBanner />
         </div>
       </section>
       <section className="section">

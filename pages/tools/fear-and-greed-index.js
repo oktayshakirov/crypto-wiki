@@ -1,11 +1,11 @@
 import React from "react";
 import Base from "@layouts/Baseof";
 import FearAndGreedIndexChart from "@components/FearAndGreedIndex";
-import { FaExclamationTriangle } from "react-icons/fa";
 import Link from "next/link";
 import GoBackLink from "@partials/GoBackLink";
 import config from "@config/config.json";
 import LayoutAd from "@components/ads/LayoutAd";
+import DisclaimerBanner from "@layouts/components/DisclaimerBanner";
 
 const legendData = [
   {
@@ -143,26 +143,7 @@ const FearAndGreedIndexPage = ({ isApp }) => {
         </div>
 
         <div className="container">
-          <div className="mt-5 rounded-lg border-2 border-orange-400 p-6 text-center">
-            <div className="mb-2 flex justify-center">
-              <FaExclamationTriangle className="text-4xl text-orange-400" />
-            </div>
-            <p className="m-0">
-              <strong>*Disclaimer: Not Financial Advice.</strong> The Crypto
-              Fear & Greed Index is a market sentiment indicator provided for
-              informational and educational purposes only. It reflects an
-              aggregation of data points and{" "}
-              <strong>
-                does not constitute investment advice or a recommendation to buy
-                or sell
-              </strong>{" "}
-              any asset. Market sentiment can be irrational and is only one
-              factor among many influencing price. Always conduct your own
-              thorough research (DYOR) and consult with a qualified independent
-              financial advisor before making any investment decisions.
-              Significant risk of loss exists in crypto markets.
-            </p>
-          </div>
+          <DisclaimerBanner />
 
           <div className="content prose mt-8 max-w-none lg:prose-lg dark:prose-invert">
             <h2 className="h3 my-4">

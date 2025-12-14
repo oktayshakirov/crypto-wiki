@@ -1,11 +1,11 @@
 import React from "react";
 import Base from "@layouts/Baseof";
 import StakingCalculator from "@components/StakingCalculator";
-import { FaExclamationTriangle } from "react-icons/fa";
 import Link from "next/link";
 import GoBackLink from "@partials/GoBackLink";
 import config from "@config/config.json";
 import LayoutAd from "@components/ads/LayoutAd";
+import DisclaimerBanner from "@layouts/components/DisclaimerBanner";
 
 const legendData = [
   {
@@ -75,26 +75,7 @@ const StakingCalculatorPage = ({ isApp }) => {
         </div>
 
         <div className="container">
-          <div className="mt-5 rounded-lg border-2 border-orange-400 p-6 text-center">
-            <div className="mb-2 flex justify-center">
-              <FaExclamationTriangle className="text-4xl text-orange-400" />
-            </div>
-            <p className="m-0">
-              <strong>
-                *Disclaimer: Estimates Only, Not Financial Advice.
-              </strong>{" "}
-              This calculator provides <strong>estimates</strong> based on the
-              inputs you provide.{" "}
-              <strong>Actual staking rewards are NOT guaranteed</strong> and can
-              vary significantly due to factors like network conditions,
-              validator performance, slashing penalties, changes in APY, and the
-              specific terms of your staking provider. Figures shown do not
-              account for potential fees, taxes, or impermanent loss (if
-              applicable). Staking involves risks. Always conduct thorough
-              research (DYOR) and consult a qualified financial advisor before
-              staking assets.
-            </p>
-          </div>
+          <DisclaimerBanner />
 
           <div className="content prose mt-8 max-w-none lg:prose-lg dark:prose-invert">
             <h2 className="h3 my-4">What is Crypto Staking?</h2>
