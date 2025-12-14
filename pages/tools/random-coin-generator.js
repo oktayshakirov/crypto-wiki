@@ -1,11 +1,12 @@
 import React from "react";
 import Base from "@layouts/Baseof";
 import RandomCoinGenerator from "@components/RandomCoinGenerator";
-import { FaExclamationTriangle, FaSkullCrossbones } from "react-icons/fa";
+import { FaSkullCrossbones } from "react-icons/fa";
 import Link from "next/link";
 import GoBackLink from "@partials/GoBackLink";
 import config from "@config/config.json";
 import LayoutAd from "@components/ads/LayoutAd";
+import DisclaimerBanner from "@layouts/components/DisclaimerBanner";
 
 const RandomCoinPage = ({ isApp }) => {
   const author = {
@@ -61,25 +62,7 @@ const RandomCoinPage = ({ isApp }) => {
             </p>
           </div>
 
-          <div className="mb-8 rounded-lg border-2 border-orange-400 p-6 text-center">
-            <div className="mb-2 flex justify-center">
-              <FaExclamationTriangle className="text-4xl text-orange-400" />
-            </div>
-            <p className="m-0">
-              <strong>*Disclaimer: Not Financial Advice.</strong> The Random
-              Coin Generator is intended solely for entertainment and
-              informational purposes.
-              <strong>
-                It provides absolutely no investment recommendation or financial
-                advice.
-              </strong>{" "}
-              Any coin generated should be thoroughly researched using
-              independent sources. Always conduct extensive due diligence (DYOR)
-              and consult a qualified independent financial advisor before
-              making <em>any</em> investment decisions, especially in the highly
-              volatile crypto market.
-            </p>
-          </div>
+          <DisclaimerBanner className="mb-8" />
 
           <div className="content prose max-w-none lg:prose-lg dark:prose-invert">
             <h2 className="h3 my-4">What is the Random Coin Generator?</h2>

@@ -10,6 +10,7 @@ import GoBackLink from "@partials/GoBackLink";
 import Base from "./Baseof";
 import config from "@config/config.json";
 import { mdxComponents } from "@lib/mdxComponents";
+import DisclaimerBanner from "@layouts/components/DisclaimerBanner";
 
 const PostSingle = ({
   post,
@@ -38,6 +39,7 @@ const PostSingle = ({
       <section className="section">
         <div className="container">
           <GoBackLink option="posts" />
+          <DisclaimerBanner />
           <article className="text-center">
             {markdownify(title, "h1", "h1 mb-4")}
             <div className="mb-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-gray-600 dark:text-gray-400">

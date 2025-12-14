@@ -1,11 +1,11 @@
 import React from "react";
 import Base from "@layouts/Baseof";
 import Heatmap from "@components/Heatmap";
-import { FaExclamationTriangle } from "react-icons/fa";
 import Link from "next/link";
 import GoBackLink from "@partials/GoBackLink";
 import config from "@config/config.json";
 import LayoutAd from "@components/ads/LayoutAd";
+import DisclaimerBanner from "@layouts/components/DisclaimerBanner";
 
 const legendData = [
   {
@@ -98,21 +98,7 @@ const CryptoHeatmapPage = ({ isApp }) => {
         </div>
 
         <div className="container">
-          <div className="mt-5 rounded-lg border-2 border-orange-400 p-6 text-center">
-            <div className="mb-2 flex justify-center">
-              <FaExclamationTriangle className="text-4xl text-orange-400" />
-            </div>
-            <p className="m-0">
-              <strong>*Disclaimer: Not Financial Advice.</strong> The Crypto
-              Market Heatmap is a data visualization tool provided for
-              informational and educational purposes only. It **should not** be
-              interpreted as financial advice, investment recommendations, or
-              endorsements of any specific cryptocurrency. Market data can
-              change rapidly. Always conduct your own thorough research (DYOR),
-              consider multiple factors, and consult with a qualified
-              independent financial advisor before making investment decisions.
-            </p>
-          </div>
+          <DisclaimerBanner />
 
           <div className="content prose mt-8 max-w-none lg:prose-lg dark:prose-invert">
             <h2 className="h3 my-4">What is a Crypto Heatmap?</h2>

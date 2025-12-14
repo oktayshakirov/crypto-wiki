@@ -1,11 +1,11 @@
 import React from "react";
 import Base from "@layouts/Baseof";
 import BitcoinRainbowChart from "@components/BitcoinRainbowChart";
-import { FaExclamationTriangle } from "react-icons/fa";
 import Link from "next/link";
 import GoBackLink from "@partials/GoBackLink";
 import config from "@config/config.json";
 import LayoutAd from "@components/ads/LayoutAd";
+import DisclaimerBanner from "@layouts/components/DisclaimerBanner";
 
 const BitcoinRainbowChartPage = ({ isApp }) => {
   const author = {
@@ -136,27 +136,7 @@ const BitcoinRainbowChartPage = ({ isApp }) => {
         </div>
 
         <div className="container">
-          <div className="mt-5 rounded-lg border-2 border-orange-400 p-6 text-center">
-            <div className="mb-2 flex justify-center">
-              <FaExclamationTriangle className="text-4xl text-orange-400" />
-            </div>
-            <p className="m-0">
-              <strong>*Disclaimer:</strong> The Bitcoin Rainbow Chart is
-              presented for{" "}
-              <strong>
-                informational, educational, and entertainment purposes only
-              </strong>{" "}
-              and should <strong>never</strong> be construed as financial advice
-              or used as the sole basis for making financial or investment
-              decisions. It is a visual tool designed to reflect historical
-              trends using a specific model, and any future projections are
-              purely speculative. Past performance is not indicative of future
-              results. Bitcoin investments carry significant risk. Always
-              conduct your own thorough research (DYOR) and consult with a
-              qualified independent financial advisor before making any
-              investment choices.
-            </p>
-          </div>
+          <DisclaimerBanner />
           <div className="content">
             <h2 className="h3 my-4">What is the Bitcoin Rainbow Chart?</h2>
             <p>
