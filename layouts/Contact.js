@@ -5,6 +5,7 @@ import {
   FaFacebook,
   FaInstagram,
   FaTelegramPlane,
+  FaTiktok,
 } from "react-icons/fa";
 import Link from "next/link";
 
@@ -68,6 +69,18 @@ const Contact = () => {
             className="text-yellow-500 hover:underline"
           >
             @TheCryptoWiki
+          </a>
+        </li>
+        <li className="mb-2">
+          <FaTiktok className="mr-2 inline-block text-yellow-500" />
+          <strong>TikTok:</strong>{" "}
+          <a
+            href="https://www.tiktok.com/@thecrypto.wiki"
+            className="text-yellow-500 hover:underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            @thecrypto.wiki
           </a>
         </li>
         <li className="mb-2">
