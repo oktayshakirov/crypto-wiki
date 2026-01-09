@@ -6,14 +6,14 @@ const Authors = ({ authors }) => {
   if (!authors || authors.length === 0) return null;
 
   return (
-    <div className="ml-4 mt-2 flex items-center md:mt-0">
+    <div className="flex items-center text-sm text-gray-600 dark:text-gray-400">
       {authors.map((author, i) => (
-        <span key={`author-${i}`} className="ml-2 flex items-center">
+        <span key={`author-${i}`} className="flex items-center">
           <Link
             href={`/authors/${slugify(author)}`}
             className="flex items-center hover:text-primary"
           >
-            <FaPencilAlt className="mr-2" />
+            <FaPencilAlt className="mr-2 opacity-80" />
             {author}
           </Link>
           {i < authors.length - 1 ? "," : ""}

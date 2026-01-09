@@ -11,6 +11,8 @@ import Base from "./Baseof";
 import config from "@config/config.json";
 import { mdxComponents } from "@lib/mdxComponents";
 import DisclaimerBanner from "@layouts/components/DisclaimerBanner";
+import ViewsCounter from "@components/ViewsCounter";
+import Authors from "@components/Authors";
 
 const PostSingle = ({
   post,
@@ -43,33 +45,14 @@ const PostSingle = ({
           <article className="text-center">
             {markdownify(title, "h1", "h1 mb-4")}
             <div className="mb-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-gray-600 dark:text-gray-400">
-              <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
-                <span className="flex items-center whitespace-nowrap">
-                  <FaCalendarAlt className="mr-1.5 opacity-80" />
-                  {dateFormat(date)}
-                </span>
-                {authors && authors.length > 0 && (
-                  <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
-                    <span className="flex items-center">
-                      <FaUser className="mr-1.5 opacity-80" />
-                    </span>
-                    {authors.map((author, i) => (
-                      <Link
-                        key={slugify(author)}
-                        href={`/authors/${slugify(author)}`}
-                        className="hover:text-primary hover:underline"
-                      >
-                        {author}
-                        {i < authors.length - 1 ? (
-                          <span className="ml-1 opacity-80">,</span>
-                        ) : (
-                          ""
-                        )}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
+              <span className="flex items-center whitespace-nowrap">
+                <FaCalendarAlt className="mr-2 opacity-80" />
+                {dateFormat(date)}
+              </span>
+              {authors && authors.length > 0 && <Authors authors={authors} />}
+              <ViewsCounter type="posts" slug={slug} />
+            </div>
+            <div className="mb-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-gray-600 dark:text-gray-400">
               {categories && categories.length > 0 && (
                 <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
                   <FaTag className="mr-1 opacity-80" />
