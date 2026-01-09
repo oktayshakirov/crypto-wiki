@@ -12,6 +12,7 @@ import GoBackLink from "@partials/GoBackLink";
 import config from "@config/config.json";
 import { mdxComponents } from "@lib/mdxComponents";
 import DisclaimerBanner from "@layouts/components/DisclaimerBanner";
+import ViewsCounter from "@components/ViewsCounter";
 
 const ExchangeSingle = ({
   frontmatter,
@@ -54,6 +55,14 @@ const ExchangeSingle = ({
               </div>
             )}
             {markdownify(title, "h1", "h1 mb-8")}
+            <div className="mb-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <span className="flex items-center md:mt-0">
+                <FaCalendarAlt className="mr-2 opacity-80" />
+                {dateFormat(date)}
+              </span>
+              <Authors authors={authors} />
+              <ViewsCounter type="exchanges" slug={slug} />
+            </div>
             <Social source={social} className="social-icons-simple" />
             <div className="content text-start">
               <MDXRemote {...mdxContent} components={mdxComponents} />
@@ -74,13 +83,6 @@ const ExchangeSingle = ({
                 </Link>
                 .
               </p>
-            </div>
-            <div className="mt-8 flex items-center justify-center">
-              <span className="flex items-center md:mt-0">
-                <FaCalendarAlt className="mr-2" />
-                {dateFormat(date)}
-              </span>
-              <Authors authors={authors} />
             </div>
           </div>
         </div>

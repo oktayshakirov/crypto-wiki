@@ -10,6 +10,7 @@ import NextPrevNavigation from "@partials/NextPrevNavigation";
 import GoBackLink from "@partials/GoBackLink";
 import config from "@config/config.json";
 import { mdxComponents } from "@lib/mdxComponents";
+import ViewsCounter from "@components/ViewsCounter";
 
 const CryptoOgSingle = ({
   frontmatter,
@@ -47,16 +48,17 @@ const CryptoOgSingle = ({
               </div>
             )}
             {markdownify(title, "h1", "h1 mb-8")}
-            <Social source={social} className="social-icons-simple" />
-            <div className="content text-start">
-              <MDXRemote {...mdxContent} components={mdxComponents} />
-            </div>
-            <div className="flex items-center justify-center">
-              <span className="mt-2 flex items-center md:mt-0">
-                <FaCalendarAlt className="mr-2" />
+            <div className="mb-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <span className="flex items-center md:mt-0">
+                <FaCalendarAlt className="mr-2 opacity-80" />
                 {dateFormat(date)}
               </span>
               <Authors authors={authors} />
+              <ViewsCounter type="crypto-ogs" slug={slug} />
+            </div>
+            <Social source={social} className="social-icons-simple" />
+            <div className="content text-start">
+              <MDXRemote {...mdxContent} components={mdxComponents} />
             </div>
           </div>
         </div>
