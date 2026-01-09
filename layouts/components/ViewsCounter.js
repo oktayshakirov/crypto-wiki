@@ -22,38 +22,31 @@ const ViewsCounter = ({ type, slug }) => {
       return;
     }
 
-    if (typeof window !== "undefined") {
-      const sessionIncremented = sessionStorage.getItem(viewKey);
-      if (sessionIncremented === "true") {
-        const getViews = async () => {
-          try {
+    isProcessingRef.current = true;
+
+    const processViews = async () => {
+      try {
+        if (typeof window !== "undefined") {
+          const sessionIncremented = sessionStorage.getItem(viewKey);
+          if (sessionIncremented === "true") {
             const getResponse = await fetch(`/api/views/${type}/${slug}`);
             if (getResponse.ok) {
               const data = await getResponse.json();
               setViews(data.views);
             }
-          } catch (err) {
-            console.error("Error fetching views:", err);
-          } finally {
             setIsLoading(false);
+            isProcessingRef.current = false;
+            return;
           }
-        };
-        getViews();
-        return;
-      }
-    }
-
-    isProcessingRef.current = true;
-
-    const incrementViews = async () => {
-      try {
-        if (typeof window !== "undefined") {
-          sessionStorage.setItem(viewKey, "true");
         }
 
         const incrementResponse = await fetch(`/api/views/${type}/${slug}`, {
           method: "POST",
         });
+
+        if (typeof window !== "undefined") {
+          sessionStorage.setItem(viewKey, "true");
+        }
 
         if (incrementResponse.ok) {
           const data = await incrementResponse.json();
@@ -85,7 +78,7 @@ const ViewsCounter = ({ type, slug }) => {
       }
     };
 
-    incrementViews();
+    processViews();
   }, [type, slug]);
 
   if (isLoading || views === null) {
