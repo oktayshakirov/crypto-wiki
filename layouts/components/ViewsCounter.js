@@ -15,6 +15,7 @@ const ViewsCounter = ({ type, slug }) => {
       setViews(null);
       setIsLoading(true);
       previousSlugRef.current = componentKey;
+      hasIncrementedRef.current[componentKey] = false;
     }
 
     const hasIncremented = hasIncrementedRef.current[componentKey] || false;
@@ -41,20 +42,6 @@ const ViewsCounter = ({ type, slug }) => {
     }
 
     if (hasIncremented) {
-      const getViews = async () => {
-        try {
-          const getResponse = await fetch(`/api/views/${type}/${slug}`);
-          if (getResponse.ok) {
-            const data = await getResponse.json();
-            setViews(data.views);
-          }
-        } catch (err) {
-          console.error("Error fetching views:", err);
-        } finally {
-          setIsLoading(false);
-        }
-      };
-      getViews();
       return;
     }
 
