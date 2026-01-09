@@ -106,7 +106,7 @@ const Home = ({
             </div>
           </div>
           {!isApp && <LayoutAd />}
-          <div className="mb-10">
+          <div className="my-10">
             {markdownify("CRYPTO LEGENDS", "h3", "mb-8")}
             <CryptoOGs ogs={ogs} />
             <Pagination
