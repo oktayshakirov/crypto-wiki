@@ -4,14 +4,24 @@ import { FaEye } from "react-icons/fa";
 const ViewsCounter = ({ type, slug }) => {
   const [views, setViews] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const hasIncremented = useRef(false);
+  const hasIncrementedRef = useRef({});
+  const currentKeyRef = useRef(null);
 
   useEffect(() => {
+    const componentKey = `${type}_${slug}`;
     const viewKey = `view_${type}_${slug}`;
+
+    if (currentKeyRef.current !== componentKey) {
+      currentKeyRef.current = componentKey;
+      setViews(null);
+      setIsLoading(true);
+    }
+
+    const hasIncremented = hasIncrementedRef.current[componentKey] || false;
 
     if (typeof window !== "undefined") {
       const sessionIncremented = sessionStorage.getItem(viewKey);
-      if (sessionIncremented === "true") {
+      if (sessionIncremented === "true" || hasIncremented) {
         const getViews = async () => {
           try {
             const getResponse = await fetch(`/api/views/${type}/${slug}`);
@@ -30,14 +40,10 @@ const ViewsCounter = ({ type, slug }) => {
       }
     }
 
-    if (hasIncremented.current) {
-      return;
-    }
+    hasIncrementedRef.current[componentKey] = true;
 
     const incrementViews = async () => {
       try {
-        hasIncremented.current = true;
-
         if (typeof window !== "undefined") {
           sessionStorage.setItem(viewKey, "true");
         }
@@ -58,7 +64,7 @@ const ViewsCounter = ({ type, slug }) => {
         }
       } catch (error) {
         console.error("Error updating views:", error);
-        hasIncremented.current = false;
+        hasIncrementedRef.current[componentKey] = false;
         if (typeof window !== "undefined") {
           sessionStorage.removeItem(viewKey);
         }
