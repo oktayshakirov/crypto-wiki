@@ -31,7 +31,7 @@ export default async function handler(req, res) {
       );
 
       const doc = await viewsRef.get();
-      const count = doc.data().count || 0;
+      const count = doc.data()?.count || 0;
       return res.status(200).json({ views: count });
     } else {
       return res.status(405).json({ error: "Method not allowed" });
