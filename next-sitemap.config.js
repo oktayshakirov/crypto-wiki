@@ -5,13 +5,12 @@ module.exports = {
   priority: 0.7,
   sitemapSize: 5000,
   autoLastmod: true,
-  exclude: ["/tags/*", "/tags"],
+  exclude: [],
 
   transform: async (config, path) => {
     if (
       path.match(/\/page\/\d+/) ||
-      path.startsWith("/search") ||
-      path.startsWith("/tags")
+      path.startsWith("/search")
     ) {
       return null;
     }
@@ -59,7 +58,7 @@ module.exports = {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/search/", "/authors", "/tags"],
+        disallow: ["/search/", "/authors"],
       },
     ],
   },

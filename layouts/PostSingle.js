@@ -25,7 +25,7 @@ const PostSingle = ({
   similarPosts,
 }) => {
   const { frontmatter, content, mdxContent } = post;
-  let { description, title, date, image, categories, tags, authors } =
+  let { description, title, date, image, categories, authors } =
     frontmatter;
   description = description ? description : content.slice(0, 120);
 
@@ -141,20 +141,6 @@ const PostSingle = ({
             )}
             <div className="content mb-16 text-left text-white">
               <MDXRemote {...mdxContent} components={mdxComponents} />
-            </div>
-            <div className="flex flex-wrap items-center justify-center">
-              <ul className="flex flex-wrap justify-center gap-2">
-                {tags.map((tag, i) => (
-                  <li key={`tag-${i}`} className="inline-block">
-                    <Link
-                      href={`/tags/${slugify(tag)}`}
-                      className="inline-block rounded-lg bg-theme-light px-3 py-1.5 text-sm font-medium text-light hover:text-primary"
-                    >
-                      #{humanize(tag)}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
             </div>
           </article>
         </div>

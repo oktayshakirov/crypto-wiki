@@ -23,10 +23,6 @@ const SearchPage = ({ authors, cryptoOgs, exchanges, isApp }) => {
       )
     ) {
       return true;
-    } else if (
-      post.frontmatter.tags.find((tag) => slugify(tag).includes(keyword))
-    ) {
-      return true;
     } else if (slugify(post.content).includes(keyword)) {
       return true;
     }
