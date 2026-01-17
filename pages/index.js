@@ -18,7 +18,6 @@ import {
   FaCalculator,
   FaChartLine,
   FaThermometerHalf,
-  FaHashtag,
 } from "react-icons/fa";
 import config from "@config/config.json";
 
@@ -65,10 +64,6 @@ const Home = ({
             >
               <FaTags />
               <span>CATEGORIES</span>
-            </Link>
-            <Link className="btn-primary flex items-center gap-2" href="/tags">
-              <FaHashtag />
-              <span>TAGS</span>
             </Link>
           </div>
           {!isApp && <LayoutAd />}
