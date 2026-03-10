@@ -20,7 +20,8 @@
   "params": {
     "tag_manager_id": "G-ZRW4Z84C8T",
     "contact_form_action": "#",
-    "copyright": "Copyright © 2024"
+    "copyright": "Copyright © 2024",
+    "adsEnabled": false
   },
 
   "metadata": {
