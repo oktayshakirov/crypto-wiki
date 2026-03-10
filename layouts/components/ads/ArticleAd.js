@@ -1,5 +1,8 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import { registerAdInstance } from "./BitmediaAdManager";
+import config from "@config/config.json";
+
+const adsEnabled = config?.params?.adsEnabled !== false;
 
 const ArticleAd = ({ className = "", style = {}, id }) => {
   const containerRef = useRef(null);
@@ -78,7 +81,7 @@ const ArticleAd = ({ className = "", style = {}, id }) => {
 
   const showPlaceholder = isMounted && isDevelopment;
 
-  if (isApp) {
+  if (isApp || !adsEnabled) {
     return null;
   }
 

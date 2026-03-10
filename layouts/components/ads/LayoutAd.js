@@ -1,5 +1,8 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import { registerAdInstance } from "./BitmediaAdManager";
+import config from "@config/config.json";
+
+const adsEnabled = config?.params?.adsEnabled !== false;
 
 const LayoutAd = ({ className = "", style = {}, id }) => {
   const containerRef = useRef(null);
@@ -51,7 +54,7 @@ const LayoutAd = ({ className = "", style = {}, id }) => {
   }, [uniqueId]);
 
   useEffect(() => {
-    if (typeof window === "undefined" || isDevelopment || !isMounted || isApp)
+    if (!adsEnabled || typeof window === "undefined" || isDevelopment || !isMounted || isApp)
       return;
     if (!containerRef.current || !adRef.current) return;
 
@@ -78,7 +81,7 @@ const LayoutAd = ({ className = "", style = {}, id }) => {
 
   const showPlaceholder = isMounted && isDevelopment;
 
-  if (isApp) {
+  if (isApp || !adsEnabled) {
     return null;
   }
 
