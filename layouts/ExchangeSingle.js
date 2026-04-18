@@ -37,7 +37,6 @@ const ExchangeSingle = ({
       <section className="section">
         <div className="container ">
           <GoBackLink option="exchanges" />
-          <DisclaimerBanner />
         </div>
       </section>
       <section className="section">
@@ -84,6 +83,7 @@ const ExchangeSingle = ({
                 .
               </p>
             </div>
+            <DisclaimerBanner />
           </div>
         </div>
       </section>
