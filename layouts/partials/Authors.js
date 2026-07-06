@@ -1,11 +1,7 @@
-import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
-import { FaUser } from "react-icons/fa";
 
 const Authors = ({ authors }) => {
-  const router = useRouter();
-
   return (
     <div className="row justify-center">
       {authors.map((author, i) => (
@@ -33,27 +29,9 @@ const Authors = ({ authors }) => {
                 {author.frontmatter.title}
               </Link>
             </h3>
-            <p
-              className="flex-grow text-center group-hover:text-primary"
-              style={{
-                overflow: "hidden",
-                textOverflow: "ellipsis",
-                display: "-webkit-box",
-                WebkitLineClamp: 3,
-                WebkitBoxOrient: "vertical",
-              }}
-            >
+            <p className="flex-grow text-center group-hover:text-primary">
               {author.frontmatter.description}
             </p>
-            <div className="mt-4 flex justify-center">
-              <button
-                className="btn btn-outline-primary flex items-center group-hover:border-primary group-hover:text-primary"
-                onClick={() => router.push(`/authors/${author.slug}`)}
-              >
-                <FaUser className="mr-2" />
-                View Profile
-              </button>
-            </div>
           </div>
         </div>
       ))}

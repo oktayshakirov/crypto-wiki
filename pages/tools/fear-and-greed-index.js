@@ -68,8 +68,8 @@ const calculationComponents = [
 
 const FearAndGreedIndexPage = ({ isApp }) => {
   const author = {
-    name: "Crypto Wiki Team",
-    profileUrl: "/authors/crypto-wiki-team",
+    name: "Oktay Shakirov",
+    profileUrl: "/authors/oktay-shakirov",
   };
 
   const today = new Date();

@@ -8,7 +8,7 @@ const AppsBanner = () => {
         <div className="flex flex-col items-center sm:max-w-[70%] sm:items-start">
           <h2 className="mb-2 text-xl font-semibold">Download our app</h2>
           <p className="mb-2 text-sm">
-            Master the crypto universe with The Crypto Wiki—your all-in-one hub
+            Master the crypto universe with The Crypto Wiki - your all-in-one hub
             for learning, investing and connecting with the visionaries
             reshaping finance.
           </p>

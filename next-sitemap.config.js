@@ -58,7 +58,7 @@ module.exports = {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/search/", "/authors"],
+        disallow: ["/search/"],
       },
     ],
   },
