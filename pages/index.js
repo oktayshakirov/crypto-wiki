@@ -35,7 +35,7 @@ const Home = ({
     <Base
       title="Crypto Wiki | Ultimate Resource for Crypto News, Guides & Analysis"
       meta_title="Crypto Wiki | Ultimate Resource for Crypto News, Guides & Analysis"
-      description="Explore Crypto Wiki – your all-in-one hub for crypto news, guides, exchange reviews, and market tools. Stay informed and master the world of Bitcoin, blockchain, and Web3."
+      description="Explore Crypto Wiki - your all-in-one hub for crypto news, guides, exchange reviews, and market tools. Stay informed and master the world of Bitcoin, blockchain, and Web3."
       image="/images/meta-image.png"
       canonical={`${config.site.base_url}/`}
       isApp={isApp}

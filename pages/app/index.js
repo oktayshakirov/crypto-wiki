@@ -194,7 +194,7 @@ const App = () => {
     <Base
       title="Crypto Wiki App | Your All-In-One Crypto Hub for iOS & Android"
       meta_title="Crypto Wiki App | Crypto Guides, News & Insights on iOS & Android"
-      description="Download the Crypto Wiki App for iOS and Android. Stay updated with real-time crypto news, expert analysis, and comprehensive guides—your go-to crypto resource on the go."
+      description="Download the Crypto Wiki App for iOS and Android. Stay updated with real-time crypto news, expert analysis, and comprehensive guides - your go-to crypto resource on the go."
       image="/images/app.jpg"
       canonical={`${config.site.base_url}/app`}
     >
@@ -223,7 +223,7 @@ const App = () => {
             Transform Your Crypto Journey
           </h2>
           <p className="mx-auto mb-8 max-w-3xl text-lg leading-relaxed">
-            Master the crypto universe with Crypto Wiki—your trusted companion
+            Master the crypto universe with Crypto Wiki - your trusted companion
             for learning, investing, and connecting with visionaries who are
             reshaping the future of finance.
           </p>

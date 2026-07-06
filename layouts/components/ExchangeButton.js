@@ -3,7 +3,7 @@ import React from "react";
 const ExchangeButton = ({
   href,
   text,
-  disclaimer = "We may earn a commission at no extra cost to you. This is not financial advice. Cryptocurrency exchanges involve significant risks, including potential loss of all funds. Always verify the platform is legal in your jurisdiction and never invest more than you can afford to lose.",
+  disclaimer = "This is not financial advice. Cryptocurrency exchanges involve significant risks, including potential loss of all funds. Always verify the platform is legal in your jurisdiction and never invest more than you can afford to lose.",
   className = "",
 }) => {
   return (
@@ -35,7 +35,7 @@ const ExchangeButton = ({
           style={{ backgroundColor: "#e5c200" }}
           onMouseEnter={(e) => (e.target.style.backgroundColor = "#d4b000")}
           onMouseLeave={(e) => (e.target.style.backgroundColor = "#e5c200")}
-          rel="sponsored nofollow"
+          rel="nofollow noopener"
           target="_blank"
         >
           {text}

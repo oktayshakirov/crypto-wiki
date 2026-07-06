@@ -4,7 +4,7 @@ description: "Explore how blockchain works, its key principles, and its game-cha
 date: 2024-09-01
 image: "/images/posts/blockchain-technology.jpg"
 categories: ["Technology", "Blockchain", "Beginners"]
-authors: ["Crypto Wiki Team"]
+authors: ["Oktay Shakirov"]
 draft: false
 ---
 
@@ -22,7 +22,7 @@ At its heart, a blockchain is a **distributed, immutable, and transparent digita
 - **Immutable:** Once a transaction (or block of transactions) is verified and added to the chain, it becomes extremely difficult, practically impossible, to alter or delete due to cryptographic linking.
 - **Transparent:** On public blockchains, transactions are typically visible to anyone on the network, allowing for public verification (though participant identities are often pseudonymous).
 
-This combination creates a system for recording information—transactions, records, contracts—in a way that builds trust and security without relying on a traditional central authority like a bank or government.
+This combination creates a system for recording information - transactions, records, contracts - in a way that builds trust and security without relying on a traditional central authority like a bank or government.
 
 <ArticleAd />
 
@@ -47,7 +47,7 @@ Blockchain is a specific type of DLT. The ledger (the record of all transactions
 
 Cryptography is fundamental to blockchain's security and integrity:
 
-- **Hashing:** Each block contains data (e.g., transactions, timestamp) and a unique "fingerprint" called a hash, generated using a cryptographic hash function (like SHA-256). Crucially, each block _also_ contains the hash of the _previous_ block. This creates a chronological chain – changing data in an earlier block would change its hash, breaking the link and invalidating all subsequent blocks, making tampering evident.
+- **Hashing:** Each block contains data (e.g., transactions, timestamp) and a unique "fingerprint" called a hash, generated using a cryptographic hash function (like SHA-256). Crucially, each block _also_ contains the hash of the _previous_ block. This creates a chronological chain - changing data in an earlier block would change its hash, breaking the link and invalidating all subsequent blocks, making tampering evident.
 - **Public/Private Keys:** Participants use a pair of cryptographic keys. A **public key** acts like an address others can send transactions to. A **private key** is kept secret and is used to digitally "sign" transactions, proving ownership and authorizing actions without revealing the key itself.
 - **Immutability:** The combination of cryptographic hashing linking blocks sequentially and the distributed nature of the ledger makes records effectively immutable. Altering past transactions would require immense computational power to recalculate all subsequent blocks and gain network consensus, which is infeasible on large networks.
 

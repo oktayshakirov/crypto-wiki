@@ -2,7 +2,6 @@
 User-agent: *
 Allow: /
 Disallow: /search/
-Disallow: /authors
 
 # Host
 Host: https://www.thecrypto.wiki

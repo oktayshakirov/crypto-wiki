@@ -4,13 +4,10 @@ import { JsonContext } from "context/state";
 import Head from "next/head";
 import Script from "next/script";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 import TagManager from "react-gtm-module";
-import BitmediaAdManager from "@layouts/components/ads/BitmediaAdManager";
 import "styles/style.scss";
 
 const MyApp = ({ Component, pageProps }) => {
-  const router = useRouter();
   const pf = theme.fonts.font_family.primary;
   const sf = theme.fonts.font_family.secondary;
   const [fontcss, setFontcss] = useState();
@@ -51,11 +48,8 @@ const MyApp = ({ Component, pageProps }) => {
     }
   }, [isApp]);
 
-  const noIndexPages = ["/contact", "/faq", "/authors"];
-
   return (
     <JsonContext>
-      {!isApp && <BitmediaAdManager />}
       <Head>
         <link
           rel="preconnect"
@@ -71,9 +65,6 @@ const MyApp = ({ Component, pageProps }) => {
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=5"
         />
-        {noIndexPages.includes(router.pathname) && (
-          <meta name="robots" content="noindex, follow" />
-        )}
       </Head>
       <Script
         strategy="afterInteractive"
