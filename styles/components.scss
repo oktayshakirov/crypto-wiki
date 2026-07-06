@@ -346,3 +346,16 @@
     }
   }
 }
+
+// CoinGecko heatmap widget: the custom element defaults to display:inline,
+// which collapses its container and locks the widget to a narrow fixed width
+// at init time (cropping the right-hand columns). Forcing block/full-width
+// before the widget script measures its parent lets it render full-width.
+.crypto-heatmap-widget {
+  width: 100%;
+
+  gecko-coin-heatmap-widget {
+    display: block;
+    width: 100%;
+  }
+}

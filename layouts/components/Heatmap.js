@@ -31,12 +31,14 @@ const Heatmap = () => {
   return (
     <div className="crypto-heatmap-widget" style={{ paddingTop: "20px" }}>
       {isLoaded ? (
-        <div>
+        <div style={{ width: "100%" }}>
           <gecko-coin-heatmap-widget
             locale="en"
             dark-mode="true"
             transparent-background="true"
             top="25"
+            width="0"
+            height="600"
           ></gecko-coin-heatmap-widget>
         </div>
       ) : (
