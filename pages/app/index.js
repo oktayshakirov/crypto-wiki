@@ -14,6 +14,9 @@ import {
   FaStar,
   FaWifi,
   FaMobile,
+  FaThLarge,
+  FaFire,
+  FaNewspaper,
 } from "react-icons/fa";
 import config from "@config/config.json";
 
@@ -111,6 +114,27 @@ const PORTFOLIO_FEATURES = [
     icon: <FaUsers className="text-3xl text-primary" />,
     title: "Secure Data Storage",
     description: "Your data stays on your device - no cloud storage required",
+  },
+];
+
+const WIDGETS_FEATURES = [
+  {
+    icon: <FaThLarge className="text-3xl text-primary" />,
+    title: "Portfolio at a Glance",
+    description:
+      "See your total value and 24h profit/loss right on your home screen",
+  },
+  {
+    icon: <FaFire className="text-3xl text-primary" />,
+    title: "Live Market Widgets",
+    description:
+      "Fear & Greed index and a color-coded market heatmap, always up to date",
+  },
+  {
+    icon: <FaNewspaper className="text-3xl text-primary" />,
+    title: "Latest Content",
+    description:
+      "Newest article, exchange review and crypto OG, just one tap away",
   },
 ];
 
@@ -300,6 +324,31 @@ const App = () => {
 
           <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-3">
             {PORTFOLIO_FEATURES.map((feature) => (
+              <div
+                key={feature.title}
+                className="flex h-full flex-col items-center gap-4 rounded-2xl border border-white/10 bg-[#1a1a1a] p-8 transition-all duration-300 hover:bg-white/5"
+              >
+                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#242424] text-primary shadow-lg">
+                  {feature.icon}
+                </div>
+                <div className="flex flex-1 flex-col text-center">
+                  <h3 className="mb-2 text-xl font-bold text-white">
+                    {feature.title}
+                  </h3>
+                  <p className="text-gray-400">{feature.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="my-20 rounded-2xl bg-gradient-to-b from-black/20 to-transparent p-12">
+          <SectionTitle subtitle="Your crypto, right on your home screen">
+            Home Screen Widgets
+          </SectionTitle>
+
+          <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-3">
+            {WIDGETS_FEATURES.map((feature) => (
               <div
                 key={feature.title}
                 className="flex h-full flex-col items-center gap-4 rounded-2xl border border-white/10 bg-[#1a1a1a] p-8 transition-all duration-300 hover:bg-white/5"
