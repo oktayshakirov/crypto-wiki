@@ -7,7 +7,7 @@ import {
   FaMobile,
   FaStar,
   FaShieldAlt,
-  FaDownload,
+  FaThLarge,
   FaBell,
   FaWifi,
   FaCheckCircle,
@@ -121,9 +121,9 @@ const AppDownloadPopup = () => {
         description: "Download articles for later",
       },
       {
-        icon: FaDownload,
-        title: "100% Free to download",
-        description: "No subscription required",
+        icon: FaThLarge,
+        title: "Home screen widgets",
+        description: "Portfolio, Fear & Greed & market heatmap at a glance",
       },
     ],
     []
