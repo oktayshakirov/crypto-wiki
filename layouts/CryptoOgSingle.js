@@ -53,13 +53,17 @@ const CryptoOgSingle = ({
                 <FaCalendarAlt className="mr-2 opacity-80" />
                 {dateFormat(date)}
               </span>
-              <Authors authors={authors} />
               <ViewsCounter type="crypto-ogs" slug={slug} />
             </div>
             <Social source={social} className="social-icons-simple" />
             <div className="content text-start">
               <MDXRemote {...mdxContent} components={mdxComponents} />
             </div>
+            {authors && authors.length > 0 && (
+              <div className="mt-8 flex justify-center">
+                <Authors authors={authors} />
+              </div>
+            )}
           </div>
         </div>
       </section>
