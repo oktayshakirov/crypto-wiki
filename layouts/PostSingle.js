@@ -44,10 +44,6 @@ const PostSingle = ({
           <article className="text-center">
             {markdownify(title, "h1", "h1 mb-4")}
             <div className="mb-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-gray-600 dark:text-gray-400">
-              <span className="flex items-center whitespace-nowrap">
-                <FaCalendarAlt className="mr-2 opacity-80" />
-                {dateFormat(date)}
-              </span>
               <ViewsCounter type="posts" slug={slug} />
             </div>
             <div className="mb-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-gray-600 dark:text-gray-400">
@@ -140,11 +136,15 @@ const PostSingle = ({
             <div className="content mb-16 text-left text-white">
               <MDXRemote {...mdxContent} components={mdxComponents} />
             </div>
-            {authors && authors.length > 0 && (
-              <div className="mb-6 flex justify-center">
+            <div className="mb-6 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <span className="flex items-center whitespace-nowrap">
+                <FaCalendarAlt className="mr-2 opacity-80" />
+                {dateFormat(date)}
+              </span>
+              {authors && authors.length > 0 && (
                 <Authors authors={authors} />
-              </div>
-            )}
+              )}
+            </div>
             <DisclaimerBanner />
           </article>
         </div>
