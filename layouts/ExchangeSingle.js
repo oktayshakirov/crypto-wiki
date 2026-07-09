@@ -54,21 +54,21 @@ const ExchangeSingle = ({
             )}
             {markdownify(title, "h1", "h1 mb-8")}
             <div className="mb-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-gray-600 dark:text-gray-400">
-              <span className="flex items-center md:mt-0">
-                <FaCalendarAlt className="mr-2 opacity-80" />
-                {dateFormat(date)}
-              </span>
               <ViewsCounter type="exchanges" slug={slug} />
             </div>
             <Social source={social} className="social-icons-simple" />
             <div className="content text-start">
               <MDXRemote {...mdxContent} components={mdxComponents} />
             </div>
-            {authors && authors.length > 0 && (
-              <div className="mt-8 flex justify-center">
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <span className="flex items-center md:mt-0">
+                <FaCalendarAlt className="mr-2 opacity-80" />
+                {dateFormat(date)}
+              </span>
+              {authors && authors.length > 0 && (
                 <Authors authors={authors} />
-              </div>
-            )}
+              )}
+            </div>
             <DisclaimerBanner />
           </div>
         </div>
