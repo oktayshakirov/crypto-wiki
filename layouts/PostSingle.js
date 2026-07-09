@@ -48,7 +48,6 @@ const PostSingle = ({
                 <FaCalendarAlt className="mr-2 opacity-80" />
                 {dateFormat(date)}
               </span>
-              {authors && authors.length > 0 && <Authors authors={authors} />}
               <ViewsCounter type="posts" slug={slug} />
             </div>
             <div className="mb-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-gray-600 dark:text-gray-400">
@@ -141,6 +140,11 @@ const PostSingle = ({
             <div className="content mb-16 text-left text-white">
               <MDXRemote {...mdxContent} components={mdxComponents} />
             </div>
+            {authors && authors.length > 0 && (
+              <div className="mb-6 flex justify-center">
+                <Authors authors={authors} />
+              </div>
+            )}
             <DisclaimerBanner />
           </article>
         </div>
