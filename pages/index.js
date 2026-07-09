@@ -4,6 +4,7 @@ import Posts from "@partials/Posts";
 import Pagination from "@components/Pagination";
 import CryptoOGs from "@partials/CryptoOGs";
 import Exchanges from "@partials/Exchanges";
+import Tools from "@partials/Tools";
 import { markdownify } from "@lib/utils/textConverter";
 import FearAndGreedIndex from "@layouts/components/FearAndGreedIndex";
 import LayoutAd from "@layouts/components/ads/LayoutAd";
@@ -151,6 +152,11 @@ const Home = ({
                 <span>REQUEST AN EXCHANGE</span>
               </Link>
             </div>
+          </div>
+          {!isApp && <LayoutAd />}
+          <div className="my-10">
+            {markdownify("CRYPTO TOOLS", "h3", "mb-8")}
+            <Tools />
           </div>
         </div>
       </section>
