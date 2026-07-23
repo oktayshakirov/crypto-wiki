@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 
-const StakingCalculator = () => {
+const StakingCalculator = ({ defaultApy = "", defaultUnit = "dollars" } = {}) => {
   const [amountStaked, setAmountStaked] = useState("");
-  const [amountUnit, setAmountUnit] = useState("dollars"); // Default to dollars
-  const [apy, setApy] = useState("");
+  const [amountUnit, setAmountUnit] = useState(defaultUnit);
+  const [apy, setApy] = useState(defaultApy ? String(defaultApy) : "");
   const [duration, setDuration] = useState("");
   const [durationUnit, setDurationUnit] = useState("months");
   const [estimatedRewards, setEstimatedRewards] = useState(0);

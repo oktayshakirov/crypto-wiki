@@ -13,6 +13,7 @@ import { mdxComponents } from "@lib/mdxComponents";
 import DisclaimerBanner from "@layouts/components/DisclaimerBanner";
 import ViewsCounter from "@components/ViewsCounter";
 import Authors from "@components/Authors";
+import { articleSchema, breadcrumbSchema } from "@lib/utils/jsonLd";
 
 const PostSingle = ({
   post,
@@ -25,9 +26,27 @@ const PostSingle = ({
   similarPosts,
 }) => {
   const { frontmatter, content, mdxContent } = post;
-  let { description, title, date, image, categories, authors } =
+  let { description, title, date, image, categories, authors, updated } =
     frontmatter;
   description = description ? description : content.slice(0, 120);
+
+  const url = `${config.site.base_url}/posts/${slug}`;
+  const jsonLd = [
+    articleSchema({
+      title,
+      description,
+      image,
+      datePublished: date,
+      dateModified: updated || date,
+      url,
+      type: "BlogPosting",
+    }),
+    breadcrumbSchema([
+      { name: "Home", path: "/" },
+      { name: "Posts", path: "/posts" },
+      { name: title, path: `/posts/${slug}` },
+    ]),
+  ];
 
   return (
     <Base
@@ -35,8 +54,9 @@ const PostSingle = ({
       meta_title={`${title} | Crypto Wiki`}
       description={description ? description : content.slice(0, 160)}
       image={image}
-      canonical={`${config.site.base_url}/posts/${slug}`}
+      canonical={url}
       isApp={isApp}
+      jsonLd={jsonLd}
     >
       <section className="section">
         <div className="container">

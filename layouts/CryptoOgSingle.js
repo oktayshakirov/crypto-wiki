@@ -11,6 +11,7 @@ import GoBackLink from "@partials/GoBackLink";
 import config from "@config/config.json";
 import { mdxComponents } from "@lib/mdxComponents";
 import ViewsCounter from "@components/ViewsCounter";
+import { breadcrumbSchema, personSchema } from "@lib/utils/jsonLd";
 
 const CryptoOgSingle = ({
   frontmatter,
@@ -23,14 +24,31 @@ const CryptoOgSingle = ({
 }) => {
   const { description, social, title, image, authors, date } = frontmatter;
 
+  const url = `${config.site.base_url}/crypto-ogs/${slug}`;
+  const jsonLd = [
+    personSchema({
+      name: title,
+      description: description ? description : content.slice(0, 200),
+      image,
+      url: `/crypto-ogs/${slug}`,
+      sameAs: social ? Object.values(social) : [],
+    }),
+    breadcrumbSchema([
+      { name: "Home", path: "/" },
+      { name: "Crypto OGs", path: "/crypto-ogs" },
+      { name: title, path: `/crypto-ogs/${slug}` },
+    ]),
+  ];
+
   return (
     <Base
       title={`${title} | Contributions & Impact in the Crypto Space - Crypto Wiki`}
       meta_title={`${title} | Achievements, Contributions & Impact - Crypto Wiki`}
       description={description ? description : content.slice(0, 160)}
       image={image}
-      canonical={`${config.site.base_url}/crypto-ogs/${slug}`}
+      canonical={url}
       isApp={isApp}
+      jsonLd={jsonLd}
     >
       <section className="section">
         <div className="container">

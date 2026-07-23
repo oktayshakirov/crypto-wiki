@@ -6,6 +6,7 @@ import GoBackLink from "@partials/GoBackLink";
 import config from "@config/config.json";
 import LayoutAd from "@components/ads/LayoutAd";
 import DisclaimerBanner from "@layouts/components/DisclaimerBanner";
+import { breadcrumbSchema, softwareAppSchema } from "@lib/utils/jsonLd";
 
 const BitcoinRainbowChartPage = ({ isApp }) => {
   const author = {
@@ -95,6 +96,19 @@ const BitcoinRainbowChartPage = ({ isApp }) => {
       description="Explore the updated Bitcoin Rainbow Chart. Understand BTC's long-term logarithmic growth, market sentiment zones & how to interpret them. Educational tool, not financial advice."
       image="/images/meta-image.png"
       canonical={`${config.site.base_url}/tools/bitcoin-rainbow-chart`}
+      jsonLd={[
+        softwareAppSchema({
+          name: "Bitcoin Rainbow Chart",
+          description:
+            "Interactive Bitcoin Rainbow Chart visualizing BTC long-term logarithmic price cycles and sentiment zones.",
+          url: `${config.site.base_url}/tools/bitcoin-rainbow-chart`,
+        }),
+        breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Tools", path: "/tools" },
+          { name: "Bitcoin Rainbow Chart", path: "/tools/bitcoin-rainbow-chart" },
+        ]),
+      ]}
       dateModified={lastUpdated}
       author={author.name}
       isApp={isApp}

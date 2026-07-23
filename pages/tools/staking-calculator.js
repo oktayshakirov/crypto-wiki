@@ -6,6 +6,41 @@ import GoBackLink from "@partials/GoBackLink";
 import config from "@config/config.json";
 import LayoutAd from "@components/ads/LayoutAd";
 import DisclaimerBanner from "@layouts/components/DisclaimerBanner";
+import stakingCoins from "@config/stakingCoins";
+import {
+  breadcrumbSchema,
+  faqSchema,
+  softwareAppSchema,
+} from "@lib/utils/jsonLd";
+
+// Mirrors the visible FAQ section below so the FAQPage schema stays in sync.
+const faqData = [
+  {
+    question: "Are the staking rewards shown by the calculator guaranteed?",
+    answer:
+      "No. The results are purely mathematical estimates based on the APY you enter. Actual rewards depend on real-time network conditions, validator performance, and changes in the APY itself, so they can be higher or lower than the estimate.",
+  },
+  {
+    question: "Where can I find the correct APY to enter?",
+    answer:
+      "Find the current estimated APY offered by the specific validator, staking pool, liquid staking protocol, or exchange you plan to use. Compare rates, but be cautious of rates that seem too good to be true.",
+  },
+  {
+    question: "What are the main risks of staking crypto?",
+    answer:
+      "Key risks include a drop in the staked asset's price (market risk), inability to access funds during lock-up periods, loss of funds from validator slashing, variable APY, platform security and counterparty risk, and smart-contract vulnerabilities.",
+  },
+  {
+    question: "What is the difference between APY and APR in staking?",
+    answer:
+      "APR usually represents the simple interest earned over a year, while APY accounts for compounding (earning interest on interest). APY is generally slightly higher than APR when rewards are compounded frequently.",
+  },
+  {
+    question: "Can I lose my staked crypto?",
+    answer:
+      "Yes. You can lose principal through slashing penalties if your validator misbehaves, effectively lose value if the asset's market price drops, or lose funds through platform hacks or smart-contract bugs.",
+  },
+];
 
 const legendData = [
   {
@@ -33,16 +68,31 @@ const StakingCalculatorPage = ({ isApp }) => {
     day: "numeric",
   });
 
+  const url = `${config.site.base_url}/tools/staking-calculator`;
+  const jsonLd = [
+    softwareAppSchema({
+      name: "Crypto Staking Calculator",
+      description:
+        "Estimate potential crypto staking rewards based on your amount, estimated APY, and duration.",
+      url,
+    }),
+    breadcrumbSchema([
+      { name: "Home", path: "/" },
+      { name: "Tools", path: "/tools" },
+      { name: "Staking Calculator", path: "/tools/staking-calculator" },
+    ]),
+    faqSchema(faqData),
+  ];
+
   return (
     <Base
       title="Crypto Staking Calculator | Estimate Potential Rewards - Crypto Wiki"
       meta_title="Crypto Staking Calculator | Estimate Potential Rewards - Crypto Wiki"
       description="Estimate potential crypto staking rewards based on your amount, estimated APY, and duration. Understand risks & APY variability. For informational purposes only."
       image="/images/meta-image.png"
-      canonical={`${config.site.base_url}/tools/staking-calculator`}
-      dateModified={lastUpdated}
-      author={author.name}
+      canonical={url}
       isApp={isApp}
+      jsonLd={jsonLd}
     >
       <section className="section pt-10">
         <div className="container">
@@ -72,6 +122,25 @@ const StakingCalculatorPage = ({ isApp }) => {
           <p className="mt-2 text-center text-xs text-gray-500 dark:text-gray-400">
             Results are estimates. Last page update: {lastUpdated}.
           </p>
+        </div>
+
+        <div className="container mb-10">
+          <h2 className="h3 mb-3 text-center">Staking Calculators by Coin</h2>
+          <p className="mb-4 text-center text-sm text-gray-600 dark:text-gray-400">
+            Prefer a calculator tailored to a specific coin, with its typical APY
+            and lock-up details? Pick one below.
+          </p>
+          <div className="flex flex-wrap justify-center gap-3">
+            {stakingCoins.map((coin) => (
+              <Link
+                key={coin.slug}
+                href={`/tools/staking-calculator/${coin.slug}`}
+                className="rounded-lg border border-gray-300 px-4 py-2 text-sm font-medium hover:border-primary hover:text-primary dark:border-gray-700"
+              >
+                {coin.name} ({coin.symbol})
+              </Link>
+            ))}
+          </div>
         </div>
 
         <div className="container">
