@@ -3,6 +3,7 @@ import { markdownify } from "@lib/utils/textConverter";
 import Link from "next/link";
 import config from "@config/config.json";
 import { useRouter } from "next/router";
+import { breadcrumbSchema } from "@lib/utils/jsonLd";
 
 const Tools = ({ isApp }) => {
   const router = useRouter();
@@ -78,6 +79,10 @@ const Tools = ({ isApp }) => {
       image="/images/meta-image.png"
       canonical={`${config.site.base_url}/tools`}
       isApp={isApp}
+      jsonLd={breadcrumbSchema([
+        { name: "Home", path: "/" },
+        { name: "Tools", path: "/tools" },
+      ])}
     >
       <section className="section">
         <div className="container max-w-6xl">

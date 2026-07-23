@@ -7,6 +7,8 @@ import { useRouter } from "next/router";
 import CoinTracker from "@components/CoinTracker";
 import AppDownloadPopup from "@components/AppDownloadPopup";
 import LayoutAd from "@layouts/components/ads/LayoutAd";
+import JsonLd from "@components/JsonLd";
+import { organizationSchema, websiteSchema } from "@lib/utils/jsonLd";
 
 const Base = ({
   title,
@@ -17,6 +19,7 @@ const Base = ({
   canonical,
   children,
   isApp,
+  jsonLd,
 }) => {
   const { meta_image, meta_author, meta_description } = config.metadata;
   const { base_url } = config.site;
@@ -83,6 +86,8 @@ const Base = ({
           content={`${base_url}${image ? image : meta_image}`}
         />
         <meta name="twitter:card" content="summary_large_image" />
+        <JsonLd data={[organizationSchema(), websiteSchema()]} />
+        {jsonLd && <JsonLd data={jsonLd} />}
       </Head>
       <Header isApp={isApp} />
       <div className="container">

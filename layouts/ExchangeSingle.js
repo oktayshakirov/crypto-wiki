@@ -12,6 +12,14 @@ import config from "@config/config.json";
 import { mdxComponents } from "@lib/mdxComponents";
 import DisclaimerBanner from "@layouts/components/DisclaimerBanner";
 import ViewsCounter from "@components/ViewsCounter";
+import ExchangeFaq from "@components/ExchangeFaq";
+import ExchangeQuickFacts from "@components/ExchangeQuickFacts";
+import RelatedTools from "@components/RelatedTools";
+import {
+  breadcrumbSchema,
+  exchangeReviewSchema,
+  faqSchema,
+} from "@lib/utils/jsonLd";
 
 const ExchangeSingle = ({
   frontmatter,
@@ -22,16 +30,49 @@ const ExchangeSingle = ({
   slug,
   isApp,
 }) => {
-  const { description, social, title, image, authors, date } = frontmatter;
+  const {
+    description,
+    social,
+    title,
+    image,
+    authors,
+    date,
+    updated,
+    faqs,
+    quickFacts,
+  } = frontmatter;
+
+  const url = `${config.site.base_url}/exchanges/${slug}`;
+  const metaDescription = description ? description : content.slice(0, 160);
+
+  const jsonLd = [
+    exchangeReviewSchema({
+      title,
+      description: metaDescription,
+      image,
+      datePublished: date,
+      dateModified: updated || date,
+      url,
+      quickFacts,
+      website: social && social.website,
+    }),
+    breadcrumbSchema([
+      { name: "Home", path: "/" },
+      { name: "Exchanges", path: "/exchanges" },
+      { name: title, path: `/exchanges/${slug}` },
+    ]),
+    faqSchema(faqs),
+  ].filter(Boolean);
 
   return (
     <Base
       title={`${title} Review | In-Depth Exchange Analysis - Crypto Wiki`}
       meta_title={`${title} Review | In-Depth Exchange Analysis - Crypto Wiki`}
-      description={description ? description : content.slice(0, 160)}
+      description={metaDescription}
       image={image}
-      canonical={`${config.site.base_url}/exchanges/${slug}`}
+      canonical={url}
       isApp={isApp}
+      jsonLd={jsonLd}
     >
       <section className="section">
         <div className="container ">
@@ -57,16 +98,25 @@ const ExchangeSingle = ({
               <ViewsCounter type="exchanges" slug={slug} />
             </div>
             <Social source={social} className="social-icons-simple" />
+            <ExchangeQuickFacts facts={quickFacts} title={title} />
             <div className="content text-start">
               <MDXRemote {...mdxContent} components={mdxComponents} />
             </div>
+            {faqs && faqs.length > 0 && (
+              <ExchangeFaq title={title} faqs={faqs} />
+            )}
+            <RelatedTools />
             <div className="mb-8 mt-8 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-gray-600 dark:text-gray-400">
               <span className="flex items-center md:mt-0">
                 <FaCalendarAlt className="mr-2 opacity-80" />
-                {dateFormat(date)}
+                {updated ? "Last updated: " : ""}
+                {dateFormat(updated || date)}
               </span>
               {authors && authors.length > 0 && (
-                <Authors authors={authors} />
+                <span className="flex items-center md:mt-0">
+                  <span className="mr-2 opacity-80">Reviewed by</span>
+                  <Authors authors={authors} />
+                </span>
               )}
             </div>
             <DisclaimerBanner />

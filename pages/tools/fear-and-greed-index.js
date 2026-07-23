@@ -6,6 +6,7 @@ import GoBackLink from "@partials/GoBackLink";
 import config from "@config/config.json";
 import LayoutAd from "@components/ads/LayoutAd";
 import DisclaimerBanner from "@layouts/components/DisclaimerBanner";
+import { breadcrumbSchema, softwareAppSchema } from "@lib/utils/jsonLd";
 
 const legendData = [
   {
@@ -93,6 +94,19 @@ const FearAndGreedIndexPage = ({ isApp }) => {
       description="Track the current Crypto Fear and Greed Index score. Understand the factors driving crypto market sentiment (volatility, social media, etc.) & its limitations. Not financial advice."
       image="/images/meta-image.png"
       canonical={`${config.site.base_url}/tools/fear-and-greed-index`}
+      jsonLd={[
+        softwareAppSchema({
+          name: "Crypto Fear & Greed Index",
+          description:
+            "Live crypto Fear and Greed Index tracking market sentiment and the factors that drive it.",
+          url: `${config.site.base_url}/tools/fear-and-greed-index`,
+        }),
+        breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Tools", path: "/tools" },
+          { name: "Fear & Greed Index", path: "/tools/fear-and-greed-index" },
+        ]),
+      ]}
       dateModified={lastUpdated}
       author={author.name}
       isApp={isApp}

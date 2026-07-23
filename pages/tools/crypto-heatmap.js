@@ -6,6 +6,7 @@ import GoBackLink from "@partials/GoBackLink";
 import config from "@config/config.json";
 import LayoutAd from "@components/ads/LayoutAd";
 import DisclaimerBanner from "@layouts/components/DisclaimerBanner";
+import { breadcrumbSchema, softwareAppSchema } from "@lib/utils/jsonLd";
 
 const legendData = [
   {
@@ -45,6 +46,19 @@ const CryptoHeatmapPage = ({ isApp }) => {
       description={`Visualize live crypto market performance (${timePeriod}) with our interactive heatmap. Track price changes & market cap dominance for top cryptocurrencies. Not financial advice.`}
       image="/images/meta-image.png"
       canonical={`${config.site.base_url}/tools/crypto-heatmap`}
+      jsonLd={[
+        softwareAppSchema({
+          name: "Crypto Market Heatmap",
+          description:
+            "Interactive live heatmap visualizing cryptocurrency price changes and market cap dominance.",
+          url: `${config.site.base_url}/tools/crypto-heatmap`,
+        }),
+        breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Tools", path: "/tools" },
+          { name: "Crypto Heatmap", path: "/tools/crypto-heatmap" },
+        ]),
+      ]}
       dateModified={lastUpdated}
       author={author.name}
       isApp={isApp}

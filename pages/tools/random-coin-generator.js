@@ -7,6 +7,7 @@ import GoBackLink from "@partials/GoBackLink";
 import config from "@config/config.json";
 import LayoutAd from "@components/ads/LayoutAd";
 import DisclaimerBanner from "@layouts/components/DisclaimerBanner";
+import { breadcrumbSchema, softwareAppSchema } from "@lib/utils/jsonLd";
 
 const RandomCoinPage = ({ isApp }) => {
   const author = {
@@ -32,6 +33,19 @@ const RandomCoinPage = ({ isApp }) => {
       description={`Discover random cryptocurrencies from the ${coinListScope} for educational and entertainment purposes. Learn how to research coins responsibly. Not investment advice.`}
       image="/images/meta-image.png"
       canonical={`${config.site.base_url}/tools/random-coin-generator`}
+      jsonLd={[
+        softwareAppSchema({
+          name: "Random Coin Generator",
+          description:
+            "Generate random cryptocurrency suggestions to explore and research responsibly.",
+          url: `${config.site.base_url}/tools/random-coin-generator`,
+        }),
+        breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Tools", path: "/tools" },
+          { name: "Random Coin Generator", path: "/tools/random-coin-generator" },
+        ]),
+      ]}
       dateModified={lastUpdated}
       author={author.name}
       isApp={isApp}
