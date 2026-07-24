@@ -159,7 +159,8 @@ const PostSingle = ({
             <div className="mb-6 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-gray-600 dark:text-gray-400">
               <span className="flex items-center whitespace-nowrap">
                 <FaCalendarAlt className="mr-2 opacity-80" />
-                {dateFormat(date)}
+                {updated ? "Last updated: " : ""}
+                {dateFormat(updated || date)}
               </span>
               {authors && authors.length > 0 && (
                 <Authors authors={authors} />
