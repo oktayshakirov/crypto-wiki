@@ -10,7 +10,10 @@ module.exports = {
   transform: async (config, path) => {
     if (
       path.match(/\/page\/\d+/) ||
-      path.startsWith("/search")
+      path.startsWith("/search") ||
+      // Embeddable widget renderings are noindex and canonical to the real
+      // tool pages, so they must not be submitted in the sitemap.
+      path.startsWith("/embed")
     ) {
       return null;
     }

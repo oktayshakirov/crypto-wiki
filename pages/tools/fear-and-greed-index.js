@@ -6,6 +6,7 @@ import GoBackLink from "@partials/GoBackLink";
 import config from "@config/config.json";
 import LayoutAd from "@components/ads/LayoutAd";
 import DisclaimerBanner from "@layouts/components/DisclaimerBanner";
+import EmbedSnippet from "@components/EmbedSnippet";
 import { breadcrumbSchema, softwareAppSchema } from "@lib/utils/jsonLd";
 
 const legendData = [
@@ -413,6 +414,7 @@ const FearAndGreedIndexPage = ({ isApp }) => {
               </div>
             </div>
           </div>
+          <EmbedSnippet slug="fear-and-greed-index" />
         </div>
       </section>
     </Base>

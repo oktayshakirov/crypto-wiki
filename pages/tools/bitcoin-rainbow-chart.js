@@ -6,6 +6,7 @@ import GoBackLink from "@partials/GoBackLink";
 import config from "@config/config.json";
 import LayoutAd from "@components/ads/LayoutAd";
 import DisclaimerBanner from "@layouts/components/DisclaimerBanner";
+import EmbedSnippet from "@components/EmbedSnippet";
 import { breadcrumbSchema, softwareAppSchema } from "@lib/utils/jsonLd";
 
 const BitcoinRainbowChartPage = ({ isApp }) => {
@@ -436,6 +437,7 @@ const BitcoinRainbowChartPage = ({ isApp }) => {
               </div>
             </div>
           </div>
+          <EmbedSnippet slug="bitcoin-rainbow-chart" />
         </div>
       </section>
     </Base>
