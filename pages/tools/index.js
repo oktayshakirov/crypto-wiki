@@ -36,20 +36,6 @@ const Tools = ({ isApp }) => {
         ]
       : []),
     {
-      name: "Bitcoin Halving Countdown",
-      path: "/tools/bitcoin-halving-countdown",
-      description:
-        "Live countdown to the next Bitcoin halving, with block height and estimated date",
-      icon: "⏳",
-    },
-    {
-      name: "Bitcoin Investment Calculator",
-      path: "/tools/bitcoin-roi-calculator",
-      description:
-        "See what a Bitcoin investment made on any past date would be worth today",
-      icon: "📈",
-    },
-    {
       name: "Bitcoin Rainbow Chart",
       path: "/tools/bitcoin-rainbow-chart",
       description:
@@ -82,6 +68,20 @@ const Tools = ({ isApp }) => {
       description:
         "Calculate potential returns from crypto staking investments",
       icon: "💰",
+    },
+    {
+      name: "Bitcoin Halving Countdown",
+      path: "/tools/bitcoin-halving-countdown",
+      description:
+        "Live countdown to the next Bitcoin halving, with block height and estimated date",
+      icon: "⏳",
+    },
+    {
+      name: "Bitcoin Investment Calculator",
+      path: "/tools/bitcoin-roi-calculator",
+      description:
+        "See what a Bitcoin investment made on any past date would be worth today",
+      icon: "📈",
     },
   ];
 
