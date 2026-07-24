@@ -6,6 +6,7 @@ import GoBackLink from "@partials/GoBackLink";
 import config from "@config/config.json";
 import LayoutAd from "@components/ads/LayoutAd";
 import DisclaimerBanner from "@layouts/components/DisclaimerBanner";
+import EmbedSnippet from "@components/EmbedSnippet";
 import stakingCoins from "@config/stakingCoins";
 import {
   breadcrumbSchema,
@@ -374,6 +375,7 @@ const StakingCalculatorPage = ({ isApp }) => {
               </div>
             </div>
           </div>
+          <EmbedSnippet slug="staking-calculator" />
         </div>
       </section>
     </Base>
