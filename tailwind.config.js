@@ -67,7 +67,10 @@ module.exports = {
         h6: h6 + "rem",
       },
       fontFamily: {
-        primary: [fontPrimary, fontPrimaryType],
+        // next/font self-hosts the primary font and exposes it as --font-primary
+        // (set in pages/_app.js). Falls back to the theme.json family name if
+        // the variable is unavailable.
+        primary: [`var(--font-primary, ${fontPrimary})`, fontPrimaryType],
         secondary: [fontSecondary, fontSecondaryType],
       },
     },

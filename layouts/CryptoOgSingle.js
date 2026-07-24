@@ -11,7 +11,9 @@ import GoBackLink from "@partials/GoBackLink";
 import config from "@config/config.json";
 import { mdxComponents } from "@lib/mdxComponents";
 import ViewsCounter from "@components/ViewsCounter";
-import { breadcrumbSchema, personSchema } from "@lib/utils/jsonLd";
+import PersonQuickFacts from "@components/PersonQuickFacts";
+import ExchangeFaq from "@components/ExchangeFaq";
+import { breadcrumbSchema, faqSchema, personSchema } from "@lib/utils/jsonLd";
 
 const CryptoOgSingle = ({
   frontmatter,
@@ -22,7 +24,8 @@ const CryptoOgSingle = ({
   slug,
   isApp,
 }) => {
-  const { description, social, title, image, authors, date } = frontmatter;
+  const { description, social, title, image, authors, date, updated, faqs, quickFacts } =
+    frontmatter;
 
   const url = `${config.site.base_url}/crypto-ogs/${slug}`;
   const jsonLd = [
@@ -32,13 +35,15 @@ const CryptoOgSingle = ({
       image,
       url: `/crypto-ogs/${slug}`,
       sameAs: social ? Object.values(social) : [],
+      quickFacts,
     }),
     breadcrumbSchema([
       { name: "Home", path: "/" },
       { name: "Crypto OGs", path: "/crypto-ogs" },
       { name: title, path: `/crypto-ogs/${slug}` },
     ]),
-  ];
+    faqSchema(faqs),
+  ].filter(Boolean);
 
   return (
     <Base
@@ -70,13 +75,16 @@ const CryptoOgSingle = ({
               <ViewsCounter type="crypto-ogs" slug={slug} />
             </div>
             <Social source={social} className="social-icons-simple" />
+            <PersonQuickFacts facts={quickFacts} title={title} />
             <div className="content text-start">
               <MDXRemote {...mdxContent} components={mdxComponents} />
             </div>
+            {faqs && faqs.length > 0 && <ExchangeFaq title={title} faqs={faqs} />}
             <div className="mt-8 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-gray-600 dark:text-gray-400">
               <span className="flex items-center md:mt-0">
                 <FaCalendarAlt className="mr-2 opacity-80" />
-                {dateFormat(date)}
+                {updated ? "Last updated: " : ""}
+                {dateFormat(updated || date)}
               </span>
               {authors && authors.length > 0 && (
                 <Authors authors={authors} />

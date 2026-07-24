@@ -1,16 +1,24 @@
 import config from "@config/config.json";
-import theme from "@config/theme.json";
 import { JsonContext } from "context/state";
 import Head from "next/head";
 import Script from "next/script";
+import { Mulish } from "next/font/google";
 import { useEffect, useState } from "react";
 import TagManager from "react-gtm-module";
 import "styles/style.scss";
 
+// Self-hosted at build time by next/font. This replaces a client-side fetch of
+// the Google Fonts stylesheet, which only ran after hydration and so shipped
+// `<style>undefined</style>` in the static HTML, then caused a flash of
+// unstyled text once the CSS finally arrived. Weights match theme.json.
+const mulish = Mulish({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  display: "swap",
+  variable: "--font-primary",
+});
+
 const MyApp = ({ Component, pageProps }) => {
-  const pf = theme.fonts.font_family.primary;
-  const sf = theme.fonts.font_family.secondary;
-  const [fontcss, setFontcss] = useState();
   const [isApp, setIsApp] = useState(() => {
     if (typeof window !== "undefined") {
       const urlParams = new URLSearchParams(window.location.search);
@@ -30,14 +38,6 @@ const MyApp = ({ Component, pageProps }) => {
   }, [isApp]);
 
   useEffect(() => {
-    fetch(
-      `https://fonts.googleapis.com/css2?family=${pf}${
-        sf ? "&family=" + sf : ""
-      }&display=swap`
-    ).then((res) => res.text().then((css) => setFontcss(css)));
-  }, [pf, sf]);
-
-  useEffect(() => {
     const tagManagerArgs = {
       gtmId: config.params.tag_manager_id,
     };
@@ -51,21 +51,16 @@ const MyApp = ({ Component, pageProps }) => {
   return (
     <JsonContext>
       <Head>
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="true"
-        />
-        <style
-          dangerouslySetInnerHTML={{
-            __html: `${fontcss}`,
-          }}
-        />
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=5"
         />
       </Head>
+      <style jsx global>{`
+        :root {
+          --font-primary: ${mulish.style.fontFamily};
+        }
+      `}</style>
       <Script
         strategy="afterInteractive"
         src="https://www.googletagmanager.com/gtag/js?id=G-ZRW4Z84C8T"
@@ -80,6 +75,14 @@ const MyApp = ({ Component, pageProps }) => {
           });
         `}
       </Script>
+      {/*
+        AdSense script — commented out while no ad units are being served.
+        LayoutAd and ArticleAd currently render nothing (config.params.adsEnabled
+        is false), so loading this only added a third-party request and set
+        advertising cookies without any consent flow. Uncomment when reapplying
+        for AdSense review, and add a consent banner (CMP) at the same time:
+        the privacy policy already tells users one exists.
+
       {!isApp && (
         <Script
           async
@@ -88,6 +91,7 @@ const MyApp = ({ Component, pageProps }) => {
           strategy="lazyOnload"
         />
       )}
+      */}
       <Component {...pageProps} isApp={isApp} />
     </JsonContext>
   );
