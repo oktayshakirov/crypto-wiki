@@ -35,6 +35,13 @@ const defaultTools = [
       "Calculate potential returns from crypto staking investments.",
     icon: "💰",
   },
+  {
+    name: "All Crypto Tools",
+    path: "/tools",
+    description:
+      "Browse every tool, including the Bitcoin halving countdown and investment calculator.",
+    icon: "🧰",
+  },
 ];
 
 const Tools = ({ tools = defaultTools }) => {

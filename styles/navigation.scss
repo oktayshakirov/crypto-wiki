@@ -60,7 +60,9 @@ input#nav-toggle:checked ~ #nav-menu {
 }
 
 .nav-dropdown-link {
-  @apply min-w-[250px] py-1 text-lg font-semibold text-dark transition hover:text-primary;
+  // Wider from md up so longer tool names stay on one line in the dropdown.
+  // Left narrower below md, where the menu is inline and full-width already.
+  @apply min-w-[250px] py-1 text-lg font-semibold text-dark transition hover:text-primary md:min-w-[330px] md:whitespace-nowrap;
   position: relative;
 
   &::after {
