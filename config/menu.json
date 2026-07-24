@@ -22,14 +22,6 @@
       "hasChildren": true,
       "children": [
         {
-          "name": "⏳ Bitcoin Halving Countdown",
-          "url": "/tools/bitcoin-halving-countdown"
-        },
-        {
-          "name": "📈 Bitcoin Investment Calculator",
-          "url": "/tools/bitcoin-roi-calculator"
-        },
-        {
           "name": "🌈 Bitcoin Rainbow Chart",
           "url": "/tools/bitcoin-rainbow-chart"
         },
@@ -48,6 +40,14 @@
         {
           "name": "💰 Staking Calculator",
           "url": "/tools/staking-calculator"
+        },
+        {
+          "name": "⏳ Bitcoin Halving Countdown",
+          "url": "/tools/bitcoin-halving-countdown"
+        },
+        {
+          "name": "📈 Bitcoin Investment Calculator",
+          "url": "/tools/bitcoin-roi-calculator"
         }
       ]
     }
