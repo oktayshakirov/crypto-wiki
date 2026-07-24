@@ -38,8 +38,7 @@ const defaultTools = [
   {
     name: "All Crypto Tools",
     path: "/tools",
-    description:
-      "Browse every tool, including the Bitcoin halving countdown and investment calculator.",
+    description: "Explore the full collection of free crypto tools.",
     icon: "🧰",
   },
 ];
