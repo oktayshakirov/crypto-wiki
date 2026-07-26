@@ -85,14 +85,24 @@ const ViewsCounter = ({ type, slug }) => {
     incrementViews();
   }, [type, slug]);
 
-  if (isLoading || views === null) {
-    return null;
-  }
+  const hasViews = !isLoading && views !== null;
 
+  // The counter occupies its final footprint from first paint and fades in as a
+  // single unit once the count arrives, so nothing around it shifts and there is
+  // no half-rendered state where the icon sits next to an empty space.
   return (
-    <span className="flex items-center text-sm text-gray-600 dark:text-gray-400">
-      <FaEye className="mr-2 opacity-80" />
-      {views.toLocaleString()} {views === 1 ? "view" : "views"}
+    <span
+      aria-hidden={!hasViews}
+      className={`flex min-h-[1.5rem] min-w-[9ch] items-center text-sm text-gray-600 transition-opacity duration-200 ease-in motion-reduce:transition-none dark:text-gray-400 ${
+        hasViews ? "opacity-100" : "opacity-0"
+      }`}
+    >
+      {hasViews && (
+        <>
+          <FaEye className="mr-2 opacity-80" />
+          {views.toLocaleString()} {views === 1 ? "view" : "views"}
+        </>
+      )}
     </span>
   );
 };
