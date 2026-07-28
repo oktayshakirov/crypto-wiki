@@ -18,6 +18,14 @@ export default async function handler(req, res) {
     if (req.method === "GET") {
       const doc = await viewsRef.get();
       const count = doc.exists ? doc.data().count || 0 : 0;
+      // Served from Vercel's edge cache rather than Firestore for a minute at a
+      // time. Read volume here scales with traffic, and a view count that is up
+      // to a minute stale is indistinguishable from a fresh one. Only the GET is
+      // cached - the POST below must reach Firestore every time to increment.
+      res.setHeader(
+        "Cache-Control",
+        "public, s-maxage=60, stale-while-revalidate=300"
+      );
       return res.status(200).json({ views: count });
     } else if (req.method === "POST") {
       await viewsRef.set(
