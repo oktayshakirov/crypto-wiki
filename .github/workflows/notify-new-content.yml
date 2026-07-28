@@ -1,0 +1,47 @@
+# Sends the app push notification for newly published content.
+#
+# This is the automatic path: push content to main and, once Vercel has the
+# deployment live, the notification goes out on its own.
+#
+# It deliberately does not run during `npm run build`. The sync used to live
+# there, and because a Vercel build finishes before the production alias is
+# promoted, notifications went out while the URL still returned 404.
+name: Notify on new content
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "content/**"
+  # Lets a timed-out or failed run be retried by hand without an empty commit.
+  workflow_dispatch:
+
+concurrency:
+  # Two pushes in quick succession must not race each other into Firestore.
+  group: notify-new-content
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      # The sync only needs these two. Installing them directly avoids a full
+      # site install, and this repo does not track a lockfile.
+      - name: Install sync dependencies
+        run: npm install --no-save firebase-admin gray-matter
+
+      - name: Wait for the deployment to go live
+        run: node scripts/waitForDeploy.js
+
+      - name: Sync content and send notifications
+        run: node scripts/syncContent.js
+        env:
+          FIREBASE_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
+          FIREBASE_CLIENT_EMAIL: ${{ secrets.FIREBASE_CLIENT_EMAIL }}
+          FIREBASE_PRIVATE_KEY: ${{ secrets.FIREBASE_PRIVATE_KEY }}
