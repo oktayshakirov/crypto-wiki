@@ -3,12 +3,21 @@ import React from "react";
 const ExchangeButton = ({
   href,
   text,
+  // Set on links that carry a referral code. Drives both rel="sponsored" and
+  // the visible label German law expects next to the link itself — a linked
+  // disclosure page alone is not sufficient labelling.
+  affiliate = false,
   disclaimer = "This is not financial advice. Cryptocurrency exchanges involve significant risks, including potential loss of all funds. Always verify the platform is legal in your jurisdiction and never invest more than you can afford to lose.",
   className = "",
 }) => {
   return (
     <div className={`my-8 ${className}`}>
       <div className="card p-6 text-center">
+        {affiliate && (
+          <p className="mb-4 text-xs font-semibold uppercase tracking-wide text-gray-400">
+            Werbung / Affiliate-Link
+          </p>
+        )}
         <div className="mb-4">
           <div
             className="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-full"
@@ -35,7 +44,11 @@ const ExchangeButton = ({
           style={{ backgroundColor: "#e5c200" }}
           onMouseEnter={(e) => (e.target.style.backgroundColor = "#d4b000")}
           onMouseLeave={(e) => (e.target.style.backgroundColor = "#e5c200")}
-          rel="nofollow noopener"
+          rel={
+            affiliate
+              ? "sponsored nofollow noopener"
+              : "nofollow noopener"
+          }
           target="_blank"
         >
           {text}
@@ -54,6 +67,17 @@ const ExchangeButton = ({
             />
           </svg>
         </a>
+        {affiliate && (
+          <p className="mt-4 text-xs text-gray-400">
+            This is an affiliate link. If you sign up through it we may earn a
+            commission, at no extra cost to you. It does not influence our
+            rating or what we write. See our{" "}
+            <a href="/affiliate-disclosure" className="underline">
+              Affiliate Disclosure
+            </a>
+            .
+          </p>
+        )}
         <p className="mt-4 text-xs text-gray-400">{disclaimer}</p>
       </div>
     </div>
