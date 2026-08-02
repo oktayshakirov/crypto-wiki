@@ -13,7 +13,10 @@ module.exports = {
       path.startsWith("/search") ||
       // Embeddable widget renderings are noindex and canonical to the real
       // tool pages, so they must not be submitted in the sitemap.
-      path.startsWith("/embed")
+      path.startsWith("/embed") ||
+      // The Impressum carries the operator's postal address. It stays linked
+      // and crawlable as § 5 DDG requires, but is noindex and not submitted.
+      path === "/impressum"
     ) {
       return null;
     }
