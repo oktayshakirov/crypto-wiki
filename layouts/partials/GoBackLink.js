@@ -20,9 +20,10 @@ const GoBackLink = ({ option }) => {
   const { href, text } = getLinkConfig(option);
 
   // Mobile-only control, so the tap area has to clear 44px. The negative
-  // margin keeps the extra height from shifting the layout.
+  // margins keep the extra height from shifting the layout, and pull the link
+  // up into the section's top padding, which left a wide dead band above it.
   return (
-    <div className="-ml-2 block pb-2 lg:hidden">
+    <div className="-ml-2 -mt-4 block pb-2 lg:hidden">
       <NextLink href={href}>
         <div className="inline-flex min-h-[44px] items-center px-2 text-white no-underline">
           <svg
