@@ -40,7 +40,12 @@ module.exports = {
     },
     container: {
       center: true,
-      padding: "2rem",
+      // 2rem a side costs a phone ~17% of its width; keep the roomier gutter
+      // from the sm breakpoint up.
+      padding: {
+        DEFAULT: "1.25rem",
+        sm: "2rem",
+      },
     },
     extend: {
       colors: {

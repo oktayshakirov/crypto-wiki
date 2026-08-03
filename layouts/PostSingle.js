@@ -15,6 +15,11 @@ import ViewsCounter from "@components/ViewsCounter";
 import Authors from "@components/Authors";
 import { articleSchema, breadcrumbSchema } from "@lib/utils/jsonLd";
 
+// These used to be comma-separated inline links about 20px tall. As chips they
+// read as tappable and carry a 40px touch area (see .meta-chip) without the
+// separating commas, but stay visually compact.
+const META_CHIP = "meta-chip";
+
 const PostSingle = ({
   post,
   prevPost,
@@ -66,32 +71,31 @@ const PostSingle = ({
             <div className="mb-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-gray-600 dark:text-gray-400">
               <ViewsCounter type="posts" slug={slug} />
             </div>
-            <div className="mb-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-gray-600 dark:text-gray-400">
+            {/* Categories, OGs and exchanges share one wrapping row so each
+                group does not claim a line of its own. gap-y-2 is what the
+                chips' expanded touch areas are sized against. */}
+            <div className="mb-4 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-xs text-gray-600 dark:text-gray-400">
               {categories && categories.length > 0 && (
-                <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
-                  <FaTag className="mr-1 opacity-80" />
+                <div className="flex flex-wrap items-center justify-center gap-x-1.5 gap-y-2">
+                  <FaTag className="opacity-80" aria-hidden="true" />
                   {categories.map((category, i) => (
                     <Link
                       key={`category-${i}`}
                       href={`/categories/${slugify(category)}`}
-                      className="hover:text-primary hover:underline"
+                      className={META_CHIP}
                     >
                       {humanize(category)}
-                      {i < categories.length - 1 ? (
-                        <span className="ml-1">,</span>
-                      ) : (
-                        ""
-                      )}
                     </Link>
                   ))}
                 </div>
               )}
-            </div>
-            <div className="mb-6 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-gray-600 dark:text-gray-400">
               {(frontmatter["crypto-ogs"] || []).length > 0 && cryptoOgs && (
-                <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
+                <div className="flex flex-wrap items-center justify-center gap-x-1.5 gap-y-2">
+                  {/* The icon carries the meaning visually; the words cost a
+                      whole extra row at 375px, so they go to screen readers. */}
                   <span className="flex items-center font-medium">
-                    <FaUser className="mr-1.5 opacity-80" /> OGs:
+                    <FaUser className="opacity-80" aria-hidden="true" />
+                    <span className="sr-only">Crypto OGs:</span>
                   </span>
                   {cryptoOgs
                     .filter((og) =>
@@ -103,22 +107,18 @@ const PostSingle = ({
                       <Link
                         key={`cryptoOg-${i}`}
                         href={`/crypto-ogs/${slugify(og.frontmatter.title)}`}
-                        className="hover:text-primary hover:underline"
+                        className={META_CHIP}
                       >
                         {og.frontmatter.title}
-                        {i < arr.length - 1 ? (
-                          <span className="ml-1 opacity-80">,</span>
-                        ) : (
-                          ""
-                        )}
                       </Link>
                     ))}
                 </div>
               )}
               {(frontmatter["exchanges"] || []).length > 0 && exchanges && (
-                <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
+                <div className="flex flex-wrap items-center justify-center gap-x-1.5 gap-y-2">
                   <span className="flex items-center font-medium">
-                    <FaExchangeAlt className="mr-1.5 opacity-80" /> Exchanges:
+                    <FaExchangeAlt className="opacity-80" aria-hidden="true" />
+                    <span className="sr-only">Exchanges:</span>
                   </span>
                   {exchanges
                     .filter((ex) =>
@@ -130,14 +130,9 @@ const PostSingle = ({
                       <Link
                         key={`exchange-${i}`}
                         href={`/exchanges/${slugify(ex.frontmatter.title)}`}
-                        className="hover:text-primary hover:underline"
+                        className={META_CHIP}
                       >
                         {ex.frontmatter.title}
-                        {i < arr.length - 1 ? (
-                          <span className="ml-1 opacity-80">,</span>
-                        ) : (
-                          ""
-                        )}
                       </Link>
                     ))}
                 </div>
