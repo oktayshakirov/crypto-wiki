@@ -350,11 +350,85 @@ $table-surface-strong: #292929; // surface + 5% white
   }
 }
 
-// Metadata chips under an article title. The painted box stays small so the
-// header does not eat the viewport, while ::after grows the touch area to 40px.
-// That height tiles exactly with the 8px row gap, so no two chips overlap.
+// The taxonomy block under a post title. Its contents vary per post, so on
+// phones it stays a single summary row until the reader opens it; from md up
+// the chips are always shown and the toggle is dropped. The switch is pure CSS
+// so the server output is right at every width.
+.post-meta {
+  @apply mx-auto mb-4 w-full max-w-[560px] text-left text-xs text-gray-600 dark:text-gray-400;
+}
+
+.post-meta__toggle {
+  // Centred rather than spread: posts with few items left a wide dead gap
+  // between the summary and a chevron pinned to the right edge.
+  @apply flex w-full items-center justify-center gap-2 rounded-lg border border-white/10 bg-theme-light px-3 py-2 transition;
+  min-height: 44px;
+
+  &:hover {
+    @apply border-white/20;
+  }
+
+  &:focus-visible {
+    @apply outline outline-2 outline-primary;
+    outline-offset: 2px;
+  }
+}
+
+.post-meta__summary {
+  @apply flex flex-wrap items-center justify-center gap-x-3 gap-y-1;
+}
+
+.post-meta__count {
+  @apply inline-flex items-center gap-1.5 whitespace-nowrap;
+}
+
+.post-meta__chevron {
+  @apply shrink-0 opacity-70 transition-transform duration-200;
+}
+
+.post-meta[data-expanded="true"] .post-meta__chevron {
+  transform: rotate(180deg);
+}
+
+.post-meta__panel {
+  display: none;
+  @apply flex-col gap-2 pt-3;
+}
+
+.post-meta[data-expanded="true"] .post-meta__panel {
+  display: flex;
+}
+
+// Each row hangs off a shared icon column, so the groups line up instead of
+// wrapping ragged the way centred rows did.
+.post-meta__group {
+  @apply flex flex-wrap items-center gap-x-1.5 gap-y-2;
+}
+
+.post-meta__group-icon {
+  @apply mr-1 shrink-0 opacity-80;
+}
+
+@media (min-width: 768px) {
+  .post-meta {
+    @apply max-w-none;
+  }
+
+  .post-meta__toggle {
+    display: none;
+  }
+
+  .post-meta__panel,
+  .post-meta[data-expanded="true"] .post-meta__panel {
+    @apply flex flex-wrap flex-row items-center justify-center gap-x-4 pt-0;
+  }
+}
+
+// Metadata chips. The painted box stays small so the header does not eat the
+// viewport, while ::after grows the touch area to 40px. That height tiles
+// exactly with the 8px row gap, so no two chips overlap.
 .meta-chip {
-  @apply relative inline-flex items-center rounded-md bg-theme-light px-2 text-xs leading-none transition;
+  @apply relative inline-flex items-center rounded-md bg-theme-light px-2 text-xs leading-none text-gray-300 transition;
   min-height: 32px;
 
   &::after {
