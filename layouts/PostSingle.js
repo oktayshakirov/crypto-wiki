@@ -3,7 +3,6 @@ import { humanize, markdownify, slugify } from "@lib/utils/textConverter";
 import SimilarPosts from "@partials/SimilarPosts";
 import { MDXRemote } from "next-mdx-remote";
 import Image from "next/image";
-import Link from "next/link";
 import { FaCalendarAlt, FaTag, FaUser, FaExchangeAlt } from "react-icons/fa";
 import NextPrevNavigation from "@partials/NextPrevNavigation";
 import GoBackLink from "@partials/GoBackLink";
@@ -14,11 +13,16 @@ import DisclaimerBanner from "@layouts/components/DisclaimerBanner";
 import ViewsCounter from "@components/ViewsCounter";
 import Authors from "@components/Authors";
 import { articleSchema, breadcrumbSchema } from "@lib/utils/jsonLd";
+import PostMeta from "@components/PostMeta";
 
-// These used to be comma-separated inline links about 20px tall. As chips they
-// read as tappable and carry a 40px touch area (see .meta-chip) without the
-// separating commas, but stay visually compact.
-const META_CHIP = "meta-chip";
+// Frontmatter lists entities by title; the full pages live in a separate array.
+// Match them on slug so casing and punctuation differences do not drop links.
+const matchFrontmatter = (pages, titles) => {
+  const wanted = (titles || []).map((title) => slugify(title));
+  return (pages || []).filter((page) =>
+    wanted.includes(slugify(page.frontmatter.title))
+  );
+};
 
 const PostSingle = ({
   post,
@@ -68,76 +72,56 @@ const PostSingle = ({
           <GoBackLink option="posts" />
           <article className="text-center">
             {markdownify(title, "h1", "h1 mb-4")}
-            <div className="mb-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-gray-600 dark:text-gray-400">
+            <div className="mb-4 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-sm text-gray-600 dark:text-gray-400">
+              <span className="inline-flex items-center">
+                <FaCalendarAlt className="mr-2 opacity-80" aria-hidden="true" />
+                {dateFormat(date)}
+              </span>
+              {/* No separator glyph: the counter fades in later, and a lone
+                  middot sitting next to the date looks like a typo. */}
               <ViewsCounter type="posts" slug={slug} />
             </div>
-            {/* Categories, OGs and exchanges share one wrapping row so each
-                group does not claim a line of its own. gap-y-2 is what the
-                chips' expanded touch areas are sized against. */}
-            <div className="mb-4 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-xs text-gray-600 dark:text-gray-400">
-              {categories && categories.length > 0 && (
-                <div className="flex flex-wrap items-center justify-center gap-x-1.5 gap-y-2">
-                  <FaTag className="opacity-80" aria-hidden="true" />
-                  {categories.map((category, i) => (
-                    <Link
-                      key={`category-${i}`}
-                      href={`/categories/${slugify(category)}`}
-                      className={META_CHIP}
-                    >
-                      {humanize(category)}
-                    </Link>
-                  ))}
-                </div>
-              )}
-              {(frontmatter["crypto-ogs"] || []).length > 0 && cryptoOgs && (
-                <div className="flex flex-wrap items-center justify-center gap-x-1.5 gap-y-2">
-                  {/* The icon carries the meaning visually; the words cost a
-                      whole extra row at 375px, so they go to screen readers. */}
-                  <span className="flex items-center font-medium">
-                    <FaUser className="opacity-80" aria-hidden="true" />
-                    <span className="sr-only">Crypto OGs:</span>
-                  </span>
-                  {cryptoOgs
-                    .filter((og) =>
-                      (frontmatter["crypto-ogs"] || [])
-                        .map((name) => slugify(name))
-                        .includes(slugify(og.frontmatter.title))
-                    )
-                    .map((og, i, arr) => (
-                      <Link
-                        key={`cryptoOg-${i}`}
-                        href={`/crypto-ogs/${slugify(og.frontmatter.title)}`}
-                        className={META_CHIP}
-                      >
-                        {og.frontmatter.title}
-                      </Link>
-                    ))}
-                </div>
-              )}
-              {(frontmatter["exchanges"] || []).length > 0 && exchanges && (
-                <div className="flex flex-wrap items-center justify-center gap-x-1.5 gap-y-2">
-                  <span className="flex items-center font-medium">
-                    <FaExchangeAlt className="opacity-80" aria-hidden="true" />
-                    <span className="sr-only">Exchanges:</span>
-                  </span>
-                  {exchanges
-                    .filter((ex) =>
-                      (frontmatter["exchanges"] || [])
-                        .map((name) => slugify(name))
-                        .includes(slugify(ex.frontmatter.title))
-                    )
-                    .map((ex, i, arr) => (
-                      <Link
-                        key={`exchange-${i}`}
-                        href={`/exchanges/${slugify(ex.frontmatter.title)}`}
-                        className={META_CHIP}
-                      >
-                        {ex.frontmatter.title}
-                      </Link>
-                    ))}
-                </div>
-              )}
-            </div>
+            {/* Ordered to match the main menu: Posts, Exchanges, OG's. */}
+            <PostMeta
+              groups={[
+                {
+                  key: "topics",
+                  icon: FaTag,
+                  singular: "topic",
+                  plural: "topics",
+                  items: (categories || []).map((category) => ({
+                    title: humanize(category),
+                    href: `/categories/${slugify(category)}`,
+                  })),
+                },
+                {
+                  key: "exchanges",
+                  icon: FaExchangeAlt,
+                  singular: "exchange",
+                  plural: "exchanges",
+                  items: matchFrontmatter(
+                    exchanges,
+                    frontmatter["exchanges"]
+                  ).map((ex) => ({
+                    title: ex.frontmatter.title,
+                    href: `/exchanges/${slugify(ex.frontmatter.title)}`,
+                  })),
+                },
+                {
+                  key: "crypto-ogs",
+                  icon: FaUser,
+                  singular: "OG",
+                  plural: "OG's",
+                  items: matchFrontmatter(
+                    cryptoOgs,
+                    frontmatter["crypto-ogs"]
+                  ).map((og) => ({
+                    title: og.frontmatter.title,
+                    href: `/crypto-ogs/${slugify(og.frontmatter.title)}`,
+                  })),
+                },
+              ]}
+            />
             {image && (
               <Image
                 src={image}
