@@ -143,6 +143,13 @@
     },
     {
       "type": "crypto-ogs",
+      "slug": "paolo-ardoino",
+      "title": "Paolo Ardoino",
+      "url": "https://www.thecrypto.wiki/crypto-ogs/paolo-ardoino",
+      "date": "2026-08-01T00:00:00.000Z"
+    },
+    {
+      "type": "crypto-ogs",
       "slug": "pavel-durov",
       "title": "Pavel Durov",
       "url": "https://www.thecrypto.wiki/crypto-ogs/pavel-durov",
@@ -535,6 +542,13 @@
     },
     {
       "type": "posts",
+      "slug": "how-ai-agents-pay-with-crypto",
+      "title": "How AI Agents Pay With Crypto",
+      "url": "https://www.thecrypto.wiki/posts/how-ai-agents-pay-with-crypto",
+      "date": "2026-07-29T00:00:00.000Z"
+    },
+    {
+      "type": "posts",
       "slug": "how-to-avoid-crypto-scams",
       "title": "Crypto Scams: How to Spot and Avoid Them",
       "url": "https://www.thecrypto.wiki/posts/how-to-avoid-crypto-scams",
@@ -668,6 +682,13 @@
     },
     {
       "type": "posts",
+      "slug": "what-are-gas-fees",
+      "title": "What Are Gas Fees?",
+      "url": "https://www.thecrypto.wiki/posts/what-are-gas-fees",
+      "date": "2026-07-31T00:00:00.000Z"
+    },
+    {
+      "type": "posts",
       "slug": "what-are-layer-2-blockchains",
       "title": "What Are Layer 2 Blockchains?",
       "url": "https://www.thecrypto.wiki/posts/what-are-layer-2-blockchains",
@@ -686,6 +707,20 @@
       "title": "What Are Stablecoins?",
       "url": "https://www.thecrypto.wiki/posts/what-are-stablecoins",
       "date": "2026-07-09T00:00:00.000Z"
+    },
+    {
+      "type": "posts",
+      "slug": "what-happens-to-crypto-when-you-die",
+      "title": "What Happens to Crypto When You Die?",
+      "url": "https://www.thecrypto.wiki/posts/what-happens-to-crypto-when-you-die",
+      "date": "2026-07-28T00:00:00.000Z"
+    },
+    {
+      "type": "posts",
+      "slug": "what-is-a-dao",
+      "title": "What Is A DAO?",
+      "url": "https://www.thecrypto.wiki/posts/what-is-a-dao",
+      "date": "2026-07-31T00:00:00.000Z"
     },
     {
       "type": "posts",

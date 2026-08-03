@@ -7,6 +7,7 @@ import config from "@config/config.json";
 import LayoutAd from "@components/ads/LayoutAd";
 import DisclaimerBanner from "@layouts/components/DisclaimerBanner";
 import EmbedSnippet from "@components/EmbedSnippet";
+import MdxTable from "@components/MdxTable";
 import { breadcrumbSchema, softwareAppSchema } from "@lib/utils/jsonLd";
 
 const BitcoinRainbowChartPage = ({ isApp }) => {
@@ -222,42 +223,29 @@ const BitcoinRainbowChartPage = ({ isApp }) => {
               historical sentiment associated with each band:
             </p>
 
-            <div className=" my-6 overflow-x-auto">
-              <table className="w-full table-auto border-collapse border border-gray-300 dark:border-gray-600">
-                <thead className="bg-gray-100 dark:bg-gray-800">
-                  <tr>
-                    <th className="border border-gray-300 px-4 py-2 text-left font-semibold dark:border-gray-600">
-                      Color
-                    </th>
-                    <th className="border border-gray-300 px-4 py-2 text-left font-semibold dark:border-gray-600">
-                      Band Name / Sentiment
-                    </th>
-                    <th className="border border-gray-300 px-4 py-2 text-left font-semibold dark:border-gray-600">
-                      Historical Interpretation
-                    </th>
+            <MdxTable>
+              <thead>
+                <tr>
+                  <th>Band Name / Sentiment</th>
+                  <th>Historical Interpretation</th>
+                </tr>
+              </thead>
+              <tbody>
+                {rainbowBands.map((band, index) => (
+                  <tr key={index}>
+                    {/* The swatch rides along with the name so the band name can
+                        act as the row label on narrow screens. */}
+                    <td className={band.textColor}>
+                      <span
+                        className={`mr-2 inline-block h-3 w-3 shrink-0 rounded-full border border-gray-400 align-middle dark:border-gray-500 ${band.colorClass}`}
+                      ></span>
+                      {band.name}
+                    </td>
+                    <td>{band.interpretation}</td>
                   </tr>
-                </thead>
-                <tbody>
-                  {rainbowBands.map((band, index) => (
-                    <tr key={index}>
-                      <td className="border border-gray-300 px-4 py-2 align-top dark:border-gray-600">
-                        <span
-                          className={`inline-block h-5 w-5 rounded-full border border-gray-400 dark:border-gray-500 ${band.colorClass}`}
-                        ></span>
-                      </td>
-                      <td
-                        className={`border border-gray-300 px-4 py-2 align-top font-medium dark:border-gray-600 ${band.textColor}`}
-                      >
-                        {band.name}
-                      </td>
-                      <td className="border border-gray-300 px-4 py-2 align-top text-sm dark:border-gray-600">
-                        {band.interpretation}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+                ))}
+              </tbody>
+            </MdxTable>
 
             <p className="mt-3 italic">
               <strong>Remember:</strong> These interpretations are based

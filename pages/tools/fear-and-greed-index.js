@@ -7,6 +7,7 @@ import config from "@config/config.json";
 import LayoutAd from "@components/ads/LayoutAd";
 import DisclaimerBanner from "@layouts/components/DisclaimerBanner";
 import EmbedSnippet from "@components/EmbedSnippet";
+import MdxTable from "@components/MdxTable";
 import { breadcrumbSchema, softwareAppSchema } from "@lib/utils/jsonLd";
 
 const legendData = [
@@ -216,38 +217,24 @@ const FearAndGreedIndexPage = ({ isApp }) => {
               according to {originalSource.name}:
             </p>
 
-            <div className="my-6 overflow-x-auto">
-              <table className="w-full table-auto border-collapse border border-gray-300 dark:border-gray-600">
-                <thead className="bg-gray-100 dark:bg-gray-800">
-                  <tr>
-                    <th className="border border-gray-300 px-4 py-2 text-left font-semibold dark:border-gray-600">
-                      Component
-                    </th>
-                    <th className="border border-gray-300 px-4 py-2 text-left font-semibold dark:border-gray-600">
-                      Weight
-                    </th>
-                    <th className="border border-gray-300 px-4 py-2 text-left font-semibold dark:border-gray-600">
-                      Description
-                    </th>
+            <MdxTable>
+              <thead>
+                <tr>
+                  <th>Component</th>
+                  <th>Weight</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                {calculationComponents.map((component, index) => (
+                  <tr key={index}>
+                    <td>{component.name}</td>
+                    <td>{component.weight}</td>
+                    <td>{component.description}</td>
                   </tr>
-                </thead>
-                <tbody>
-                  {calculationComponents.map((component, index) => (
-                    <tr key={index}>
-                      <td className="border border-gray-300 px-4 py-2 align-top font-medium dark:border-gray-600">
-                        {component.name}
-                      </td>
-                      <td className="border border-gray-300 px-4 py-2 align-top dark:border-gray-600">
-                        {component.weight}
-                      </td>
-                      <td className="border border-gray-300 px-4 py-2 align-top text-sm dark:border-gray-600">
-                        {component.description}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+                ))}
+              </tbody>
+            </MdxTable>
             <p>
               Understanding these components helps appreciate that the index is
               a complex blend of market activity and online behavior analysis.

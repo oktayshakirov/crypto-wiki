@@ -31,14 +31,14 @@ const SimilarPosts = ({ posts }) => {
                       <li className="mr-3" key={`category-${i}`}>
                         <Link
                           href={`/categories/${slugify(category)}`}
-                          className="hover:text-primary"
+                          className="inline-flex min-h-[44px] items-center hover:text-primary"
                         >
                           &#9635; {humanize(category)}
                         </Link>
                       </li>
                     ))}
                   {post.frontmatter.categories?.length > 2 && (
-                    <li className="mr-3 inline-block">
+                    <li className="mr-3 inline-flex min-h-[44px] items-center">
                       +{post.frontmatter.categories.length - 2}
                     </li>
                   )}
@@ -48,7 +48,7 @@ const SimilarPosts = ({ posts }) => {
             <h5>
               <Link
                 href={`/posts/${post.slug}`}
-                className="block hover:text-primary"
+                className="flex min-h-[44px] items-center hover:text-primary"
               >
                 {post.frontmatter.title}
               </Link>

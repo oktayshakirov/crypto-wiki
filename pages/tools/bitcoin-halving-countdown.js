@@ -8,6 +8,7 @@ import DisclaimerBanner from "@layouts/components/DisclaimerBanner";
 import HalvingCountdown from "@components/HalvingCountdown";
 import ExchangeFaq from "@components/ExchangeFaq";
 import EmbedSnippet from "@components/EmbedSnippet";
+import MdxTable from "@components/MdxTable";
 import {
   breadcrumbSchema,
   faqSchema,
@@ -120,26 +121,24 @@ const HalvingPage = ({ isApp }) => {
             </div>
 
             <h2 className="h3 my-4">Every Bitcoin Halving So Far</h2>
-            <div className="overflow-x-auto">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Halving</th>
-                    <th>Block</th>
-                    <th>Date</th>
-                    <th>Reward</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr><td>Genesis</td><td>0</td><td>January 2009</td><td>50 BTC</td></tr>
-                  <tr><td>First</td><td>210,000</td><td>November 2012</td><td>25 BTC</td></tr>
-                  <tr><td>Second</td><td>420,000</td><td>July 2016</td><td>12.5 BTC</td></tr>
-                  <tr><td>Third</td><td>630,000</td><td>May 2020</td><td>6.25 BTC</td></tr>
-                  <tr><td>Fourth</td><td>840,000</td><td>April 2024</td><td>3.125 BTC</td></tr>
-                  <tr><td>Fifth</td><td>1,050,000</td><td>Estimated 2028</td><td>1.5625 BTC</td></tr>
-                </tbody>
-              </table>
-            </div>
+            <MdxTable>
+              <thead>
+                <tr>
+                  <th>Halving</th>
+                  <th>Block</th>
+                  <th>Date</th>
+                  <th>Reward</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Genesis</td><td>0</td><td>January 2009</td><td>50 BTC</td></tr>
+                <tr><td>First</td><td>210,000</td><td>November 2012</td><td>25 BTC</td></tr>
+                <tr><td>Second</td><td>420,000</td><td>July 2016</td><td>12.5 BTC</td></tr>
+                <tr><td>Third</td><td>630,000</td><td>May 2020</td><td>6.25 BTC</td></tr>
+                <tr><td>Fourth</td><td>840,000</td><td>April 2024</td><td>3.125 BTC</td></tr>
+                <tr><td>Fifth</td><td>1,050,000</td><td>Estimated 2028</td><td>1.5625 BTC</td></tr>
+              </tbody>
+            </MdxTable>
 
             <h2 className="h3 my-4 text-red-700 dark:text-red-500">
               ⚠️ A Note on Halving Price Predictions
