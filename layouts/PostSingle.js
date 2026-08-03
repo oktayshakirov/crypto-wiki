@@ -85,10 +85,10 @@ const PostSingle = ({
             <PostMeta
               groups={[
                 {
-                  key: "topics",
+                  key: "categories",
                   icon: FaTag,
-                  singular: "topic",
-                  plural: "topics",
+                  singular: "category",
+                  plural: "categories",
                   items: (categories || []).map((category) => ({
                     title: humanize(category),
                     href: `/categories/${slugify(category)}`,
