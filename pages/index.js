@@ -23,8 +23,8 @@ import {
 } from "react-icons/fa";
 import config from "@config/config.json";
 
-// Two rows of cards on the widest grid, so the section never leaves a gap.
-const MOST_READ_COUNT = 4;
+// Matches the Latest Posts row above it.
+const MOST_READ_COUNT = 6;
 
 const Home = ({
   posts,
@@ -59,19 +59,12 @@ const Home = ({
             currentPage={currentPage}
             totalPages={postPages}
           />
+          {/* No button of its own: the ALL POSTS row below already leads to
+              /posts, where Most popular is one tab away. */}
           {mostRead.length > 0 && (
             <div className="mt-12">
               {markdownify("MOST POPULAR", "h3", "mb-8")}
               <Posts posts={mostRead} />
-              <div className="mb-4 mt-6 flex justify-center">
-                <Link
-                  className="btn-primary flex items-center gap-2"
-                  href="/posts/popular"
-                >
-                  <FaRegNewspaper />
-                  <span>ALL POPULAR POSTS</span>
-                </Link>
-              </div>
             </div>
           )}
           <div className="mb-10 mt-6 flex flex-col justify-center space-y-3 md:flex-row md:space-x-3 md:space-y-0">
