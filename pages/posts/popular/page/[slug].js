@@ -8,8 +8,8 @@ import Posts from "@partials/Posts";
 
 const PopularPosts = ({ posts, currentPage, totalPages, isApp }) => (
   <Base
-    title="Most Viewed Crypto Posts | Crypto Wiki"
-    meta_title="Most Viewed Crypto Posts | Crypto Wiki"
+    title="Most Popular Crypto Posts | Crypto Wiki"
+    meta_title="Most Popular Crypto Posts | Crypto Wiki"
     description="The crypto guides and explainers our readers open most often, ranked by total views."
     image="/images/meta-image.png"
     canonical={`${config.site.base_url}/posts/popular`}
@@ -17,7 +17,7 @@ const PopularPosts = ({ posts, currentPage, totalPages, isApp }) => (
   >
     <section className="section">
       <div className="container text-center">
-        <h1 className="h1 mb-8">Most Viewed Posts</h1>
+        <h1 className="h1 mb-8">Most Popular Posts</h1>
         <ListingTabs basePath="/posts" active="popular" />
         <Posts posts={posts} />
         <Pagination

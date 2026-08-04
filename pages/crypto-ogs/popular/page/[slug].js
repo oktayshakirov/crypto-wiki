@@ -8,8 +8,8 @@ import CryptoOGs from "@partials/CryptoOGs";
 
 const PopularCryptoOGs = ({ ogs, currentPage, totalPages, isApp }) => (
   <Base
-    title="Most Viewed Crypto OG's | Crypto Wiki"
-    meta_title="Most Viewed Crypto OG's | Crypto Wiki"
+    title="Most Popular Crypto OG's | Crypto Wiki"
+    meta_title="Most Popular Crypto OG's | Crypto Wiki"
     description="The crypto figures our readers look up most often, ranked by total views."
     image="/images/meta-image.png"
     canonical={`${config.site.base_url}/crypto-ogs/popular`}
@@ -17,8 +17,12 @@ const PopularCryptoOGs = ({ ogs, currentPage, totalPages, isApp }) => (
   >
     <section className="section">
       <div className="container text-center">
-        <h1 className="h1 mb-8">Most Viewed Crypto OG&apos;s</h1>
-        <ListingTabs basePath="/crypto-ogs" active="popular" defaultLabel="Featured" />
+        <h1 className="h1 mb-8">Most Popular Crypto OG&apos;s</h1>
+        <ListingTabs
+          basePath="/crypto-ogs"
+          active="popular"
+          defaultLabel="Featured"
+        />
         <CryptoOGs ogs={ogs} />
         <Pagination
           basePath="/crypto-ogs/popular"

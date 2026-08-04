@@ -8,8 +8,8 @@ import Exchanges from "@partials/Exchanges";
 
 const PopularExchanges = ({ exchanges, currentPage, totalPages, isApp }) => (
   <Base
-    title="Most Viewed Crypto Exchanges | Crypto Wiki"
-    meta_title="Most Viewed Crypto Exchanges | Crypto Wiki"
+    title="Most Popular Crypto Exchanges | Crypto Wiki"
+    meta_title="Most Popular Crypto Exchanges | Crypto Wiki"
     description="The exchange reviews our readers open most often, ranked by total views."
     image="/images/meta-image.png"
     canonical={`${config.site.base_url}/exchanges/popular`}
@@ -17,8 +17,12 @@ const PopularExchanges = ({ exchanges, currentPage, totalPages, isApp }) => (
   >
     <section className="section">
       <div className="container text-center">
-        <h1 className="h1 mb-8">Most Viewed Exchanges</h1>
-        <ListingTabs basePath="/exchanges" active="popular" defaultLabel="Featured" />
+        <h1 className="h1 mb-8">Most Popular Exchanges</h1>
+        <ListingTabs
+          basePath="/exchanges"
+          active="popular"
+          defaultLabel="Featured"
+        />
         <Exchanges exchanges={exchanges} />
         <Pagination
           basePath="/exchanges/popular"

@@ -61,7 +61,7 @@ const Home = ({
           />
           {mostRead.length > 0 && (
             <div className="mt-12">
-              {markdownify("MOST READ", "h3", "mb-8")}
+              {markdownify("MOST POPULAR", "h3", "mb-8")}
               <Posts posts={mostRead} />
               <div className="mb-4 mt-6 flex justify-center">
                 <Link
@@ -69,7 +69,7 @@ const Home = ({
                   href="/posts/popular"
                 >
                   <FaRegNewspaper />
-                  <span>ALL MOST VIEWED</span>
+                  <span>ALL POPULAR POSTS</span>
                 </Link>
               </div>
             </div>
