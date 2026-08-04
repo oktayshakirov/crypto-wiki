@@ -424,6 +424,17 @@ $table-surface-strong: #292929; // surface + 5% white
   }
 }
 
+// An ad slot that renders nothing must not leave its spacing behind. Covers
+// both the current placeholder state, where the components return null, and a
+// real AdSense unit that comes back unfilled.
+.container:empty {
+  display: none;
+}
+
+div:has(> ins.adsbygoogle[data-ad-status="unfilled"]) {
+  display: none !important;
+}
+
 // Sort tabs above a listing. Two static routes rather than a toggle, so the
 // active one is whichever page you are on.
 .listing-tabs {

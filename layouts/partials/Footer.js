@@ -35,7 +35,7 @@ const Footer = ({ isApp }) => {
               <li key={menu.name} className="flex items-center">
                 <Link
                   href={menu.url}
-                  className="whitespace-nowrap text-sm text-light hover:text-white"
+                  className="inline-flex min-h-[44px] items-center whitespace-nowrap px-2 text-sm text-light hover:text-white"
                 >
                   {menu.name}
                 </Link>

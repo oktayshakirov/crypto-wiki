@@ -93,9 +93,9 @@ const Base = ({
       <div className="container">
         <CoinTracker />
       </div>
-      <div className="container mt-5 text-center">{!isApp && <LayoutAd />}</div>
+      {!isApp && <LayoutAd />}
       <main>{children}</main>
-      <div className="container mt-5 text-center">{!isApp && <LayoutAd />}</div>
+      {!isApp && <LayoutAd />}
       <Footer isApp={isApp} />
       {!isApp && <AppDownloadPopup />}
     </>

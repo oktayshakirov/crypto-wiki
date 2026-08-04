@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-04T01:25:13.138Z",
+  "generatedAt": "2026-08-04T01:35:52.284Z",
   "counts": {
     "crypto-ogs/anatoly-yakovenko": 110,
     "crypto-ogs/billy-markus": 78,
@@ -36,7 +36,7 @@
     "exchanges/binance": 172,
     "exchanges/bingx": 82,
     "exchanges/bitfinex": 124,
-    "exchanges/bitget": 147,
+    "exchanges/bitget": 148,
     "exchanges/bithumb": 22,
     "exchanges/bitmart": 26,
     "exchanges/bitpanda": 87,
@@ -52,7 +52,7 @@
     "exchanges/kraken": 65,
     "exchanges/kucoin": 173,
     "exchanges/lbank": 41,
-    "exchanges/mexc": 69,
+    "exchanges/mexc": 71,
     "exchanges/nexo": 136,
     "exchanges/okx": 304,
     "exchanges/trade-republic": 115,
