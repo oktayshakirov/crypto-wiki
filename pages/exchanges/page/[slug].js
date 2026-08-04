@@ -4,6 +4,7 @@ import Base from "@layouts/Baseof";
 import { getListPage, getSinglePage } from "@lib/contentParser";
 import { markdownify } from "@lib/utils/textConverter";
 import Exchanges from "@partials/Exchanges";
+import ListingTabs from "@components/ListingTabs";
 
 const ExchangePagination = ({
   exchangeIndex,
@@ -26,7 +27,8 @@ const ExchangePagination = ({
     >
       <section className="section">
         <div className="container text-center">
-          {markdownify(title, "h1", "h1 mb-16")}
+          {markdownify(title, "h1", "h1 mb-8")}
+          <ListingTabs basePath="/exchanges" active="latest" />
           <Exchanges exchanges={exchanges} />
           <Pagination
             section="exchanges"

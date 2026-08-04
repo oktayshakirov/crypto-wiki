@@ -7,6 +7,7 @@ import { humanize, markdownify } from "@lib/utils/textConverter";
 import Link from "next/link";
 import { getTaxonomy } from "@lib/taxonomyParser";
 import { FaTags } from "react-icons/fa";
+import ListingTabs from "@components/ListingTabs";
 
 const PostPagination = ({
   postIndex,
@@ -61,6 +62,7 @@ const PostPagination = ({
             </ul>
           </div>
           {markdownify(title, "h1", "h1 mb-8")}
+          <ListingTabs basePath="/posts" active="latest" />
           <Posts posts={posts} />
           <Pagination
             section="posts"

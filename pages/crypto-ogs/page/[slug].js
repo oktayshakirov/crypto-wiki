@@ -4,6 +4,7 @@ import Base from "@layouts/Baseof";
 import { getListPage, getSinglePage } from "@lib/contentParser";
 import { markdownify } from "@lib/utils/textConverter";
 import CryptoOGs from "@partials/CryptoOGs";
+import ListingTabs from "@components/ListingTabs";
 
 const CryptoOgPagination = ({
   ogIndex,
@@ -26,7 +27,8 @@ const CryptoOgPagination = ({
     >
       <section className="section">
         <div className="container text-center">
-          {markdownify(title, "h1", "h1 mb-16")}
+          {markdownify(title, "h1", "h1 mb-8")}
+          <ListingTabs basePath="/crypto-ogs" active="latest" />
           <CryptoOGs ogs={ogs} />
           <Pagination
             section="crypto-ogs"
