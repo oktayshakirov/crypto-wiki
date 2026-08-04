@@ -28,7 +28,7 @@ const CryptoOgPagination = ({
       <section className="section">
         <div className="container text-center">
           {markdownify(title, "h1", "h1 mb-8")}
-          <ListingTabs basePath="/crypto-ogs" active="latest" />
+          <ListingTabs basePath="/crypto-ogs" active="latest" defaultLabel="Featured" />
           <CryptoOGs ogs={ogs} />
           <Pagination
             section="crypto-ogs"

@@ -28,7 +28,7 @@ const ExchangePagination = ({
       <section className="section">
         <div className="container text-center">
           {markdownify(title, "h1", "h1 mb-8")}
-          <ListingTabs basePath="/exchanges" active="latest" />
+          <ListingTabs basePath="/exchanges" active="latest" defaultLabel="Featured" />
           <Exchanges exchanges={exchanges} />
           <Pagination
             section="exchanges"

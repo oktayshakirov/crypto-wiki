@@ -1,5 +1,6 @@
 import Base from "@layouts/Baseof";
 import { getSinglePage } from "@lib/contentParser";
+import { rankByViews } from "@lib/popularity";
 import Posts from "@partials/Posts";
 import Pagination from "@components/Pagination";
 import CryptoOGs from "@partials/CryptoOGs";
@@ -22,8 +23,12 @@ import {
 } from "react-icons/fa";
 import config from "@config/config.json";
 
+// Two rows of cards on the widest grid, so the section never leaves a gap.
+const MOST_READ_COUNT = 4;
+
 const Home = ({
   posts,
+  mostRead,
   ogs,
   exchanges,
   currentPage,
@@ -54,6 +59,21 @@ const Home = ({
             currentPage={currentPage}
             totalPages={postPages}
           />
+          {mostRead.length > 0 && (
+            <div className="mt-12">
+              {markdownify("MOST READ", "h3", "mb-8")}
+              <Posts posts={mostRead} />
+              <div className="mb-4 mt-6 flex justify-center">
+                <Link
+                  className="btn-primary flex items-center gap-2"
+                  href="/posts/popular"
+                >
+                  <FaRegNewspaper />
+                  <span>ALL MOST VIEWED</span>
+                </Link>
+              </div>
+            </div>
+          )}
           <div className="mb-10 mt-6 flex flex-col justify-center space-y-3 md:flex-row md:space-x-3 md:space-y-0">
             <Link className="btn-primary flex items-center gap-2" href="/posts">
               <FaRegNewspaper />
@@ -181,11 +201,28 @@ export const getStaticProps = async () => {
   );
 
   const currentPosts = allPosts.slice(0, paginationPosts);
+  // Anything already sitting in "Latest" above is skipped, so the two rows
+  // never show the same card twice on one screen.
+  const latestSlugs = new Set(currentPosts.map((post) => post.slug));
+  const mostRead = rankByViews(allPosts, "posts")
+    .filter((post) => !latestSlugs.has(post.slug))
+    .slice(0, MOST_READ_COUNT);
   const currentOGs = allOGs.slice(0, paginationOGs);
   const currentExchanges = allExchanges.slice(0, paginationExchanges);
 
   return {
     props: {
+      mostRead: mostRead.map((post) => ({
+        frontmatter: {
+          title: post.frontmatter.title,
+          description: post.frontmatter.description,
+          image: post.frontmatter.image,
+          categories: post.frontmatter.categories,
+          "crypto-ogs": post.frontmatter["crypto-ogs"] || [],
+          exchanges: post.frontmatter.exchanges || [],
+        },
+        slug: post.slug,
+      })),
       posts: currentPosts.map((post) => ({
         frontmatter: {
           title: post.frontmatter.title,
