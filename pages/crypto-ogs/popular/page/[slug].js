@@ -18,7 +18,7 @@ const PopularCryptoOGs = ({ ogs, currentPage, totalPages, isApp }) => (
     <section className="section">
       <div className="container text-center">
         <h1 className="h1 mb-8">Most Viewed Crypto OG&apos;s</h1>
-        <ListingTabs basePath="/crypto-ogs" active="popular" />
+        <ListingTabs basePath="/crypto-ogs" active="popular" defaultLabel="Featured" />
         <CryptoOGs ogs={ogs} />
         <Pagination
           basePath="/crypto-ogs/popular"

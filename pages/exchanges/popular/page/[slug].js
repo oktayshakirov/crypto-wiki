@@ -18,7 +18,7 @@ const PopularExchanges = ({ exchanges, currentPage, totalPages, isApp }) => (
     <section className="section">
       <div className="container text-center">
         <h1 className="h1 mb-8">Most Viewed Exchanges</h1>
-        <ListingTabs basePath="/exchanges" active="popular" />
+        <ListingTabs basePath="/exchanges" active="popular" defaultLabel="Featured" />
         <Exchanges exchanges={exchanges} />
         <Pagination
           basePath="/exchanges/popular"
