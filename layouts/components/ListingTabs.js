@@ -20,7 +20,7 @@ const ListingTabs = ({ basePath, active, defaultLabel = "Latest" }) => (
       className="listing-tabs__tab"
       aria-current={active === "popular" ? "page" : undefined}
     >
-      Most viewed
+      Most popular
     </Link>
   </div>
 );

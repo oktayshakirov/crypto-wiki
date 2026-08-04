@@ -31,8 +31,7 @@ const defaultTools = [
   {
     name: "Staking Calculator",
     path: "/tools/staking-calculator",
-    description:
-      "Calculate potential returns from crypto staking investments.",
+    description: "Calculate potential returns from crypto staking investments.",
     icon: "💰",
   },
   {
@@ -43,20 +42,25 @@ const defaultTools = [
   },
 ];
 
+// Compact tiles rather than full cards: on the homepage these are a shortcut
+// bar, not something to read, and at card size the six of them ran three
+// screens deep on a phone. The description survives as the link title.
 const Tools = ({ tools = defaultTools }) => {
   return (
-    <div className="row">
+    <div className="row justify-center">
       {tools.map((tool, i) => (
-        <div className="col-12 mb-8 sm:col-6 md:col-4" key={`tool-${i}`}>
+        <div className="col-4 mb-4 md:col-2" key={`tool-${i}`}>
           <Link
             href={tool.path}
-            className="card flex h-full cursor-pointer flex-col justify-between"
+            title={tool.description}
+            className="card flex h-full cursor-pointer flex-col items-center justify-start gap-2 p-3 text-center"
           >
-            <div className="mb-4 flex h-36 items-center justify-center overflow-hidden rounded-lg bg-gradient-to-b from-black/20 to-transparent">
-              <span className="text-6xl">{tool.icon}</span>
-            </div>
-            <h3 className="h4 mb-2 text-center">{tool.name}</h3>
-            <p>{tool.description}</p>
+            <span className="text-3xl leading-none" aria-hidden="true">
+              {tool.icon}
+            </span>
+            <span className="text-xs font-medium leading-tight sm:text-sm">
+              {tool.name}
+            </span>
           </Link>
         </div>
       ))}
