@@ -5,8 +5,8 @@
   "private": false,
   "license": "MIT",
   "scripts": {
-    "dev": "node lib/jsonGenerator.js && node scripts/generateContentIndex.js && next dev",
-    "build": "npm run clean && node lib/jsonGenerator.js && node scripts/generateContentIndex.js && next build && next-sitemap",
+    "dev": "node lib/jsonGenerator.js && node scripts/generateContentIndex.js && node scripts/generateViews.js && next dev",
+    "build": "npm run clean && node lib/jsonGenerator.js && node scripts/generateContentIndex.js && node scripts/generateViews.js && next build && next-sitemap",
     "sync-content": "node scripts/syncContent.js",
     "export": "next build && next export && next-sitemap",
     "lint": "next lint",

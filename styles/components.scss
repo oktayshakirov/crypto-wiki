@@ -424,6 +424,28 @@ $table-surface-strong: #292929; // surface + 5% white
   }
 }
 
+// Sort tabs above a listing. Two static routes rather than a toggle, so the
+// active one is whichever page you are on.
+.listing-tabs {
+  @apply mb-6 inline-flex rounded-lg border border-white/10 bg-theme-light p-1;
+}
+
+.listing-tabs__tab {
+  @apply inline-flex min-h-[40px] items-center rounded-md px-4 text-sm transition;
+
+  &:hover {
+    @apply text-primary;
+  }
+
+  &[aria-current="page"] {
+    @apply bg-primary font-semibold text-body;
+  }
+
+  &[aria-current="page"]:hover {
+    @apply text-body;
+  }
+}
+
 // Metadata chips. The painted box stays small so the header does not eat the
 // viewport, while ::after grows the touch area to 40px. That height tiles
 // exactly with the 8px row gap, so no two chips overlap.
