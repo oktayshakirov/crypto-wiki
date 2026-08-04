@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-04T00:17:09.975Z",
+  "generatedAt": "2026-08-04T01:04:34.129Z",
   "counts": {
     "crypto-ogs/anatoly-yakovenko": 110,
     "crypto-ogs/billy-markus": 78,
@@ -18,7 +18,7 @@
     "crypto-ogs/jackson-palmer": 94,
     "crypto-ogs/jesse-powell": 25,
     "crypto-ogs/joseph-lubin": 77,
-    "crypto-ogs/justin-sun": 258,
+    "crypto-ogs/justin-sun": 259,
     "crypto-ogs/michael-saylor": 133,
     "crypto-ogs/nayib-bukele": 31,
     "crypto-ogs/nick-szabo": 30,
@@ -100,7 +100,7 @@
     "posts/understanding-crypto-exchanges": 1038,
     "posts/understanding-crypto-taxes": 39,
     "posts/what-are-altcoins": 77,
-    "posts/what-are-gas-fees": 13,
+    "posts/what-are-gas-fees": 14,
     "posts/what-are-layer-2-blockchains": 12,
     "posts/what-are-memecoins": 45,
     "posts/what-are-stablecoins": 21,
