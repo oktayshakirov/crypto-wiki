@@ -6,6 +6,7 @@ import {
   FaInstagram,
   FaTelegramPlane,
   FaTiktok,
+  FaYoutube,
 } from "react-icons/fa";
 import Link from "next/link";
 
@@ -81,6 +82,18 @@ const Contact = () => {
             rel="noopener noreferrer"
           >
             @thecrypto.wiki
+          </a>
+        </li>
+        <li className="mb-2">
+          <FaYoutube className="mr-2 inline-block text-yellow-500" />
+          <strong>YouTube:</strong>{" "}
+          <a
+            href="https://www.youtube.com/@TheCrypto_Wiki"
+            className="text-yellow-500 hover:underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            @TheCrypto_Wiki
           </a>
         </li>
         <li className="mb-2">
