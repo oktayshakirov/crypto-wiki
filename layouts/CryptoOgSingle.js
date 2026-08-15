@@ -13,7 +13,15 @@ import { mdxComponents } from "@lib/mdxComponents";
 import ViewsCounter from "@components/ViewsCounter";
 import PersonQuickFacts from "@components/PersonQuickFacts";
 import ExchangeFaq from "@components/ExchangeFaq";
-import { breadcrumbSchema, faqSchema, personSchema } from "@lib/utils/jsonLd";
+import {
+  breadcrumbSchema,
+  faqSchema,
+  personSchema,
+  videoObjectSchema,
+} from "@lib/utils/jsonLd";
+import PostVideo from "@components/PostVideo";
+import { PageVideoProvider } from "context/video";
+import { getPageVideo } from "@lib/videos";
 
 const CryptoOgSingle = ({
   frontmatter,
@@ -28,6 +36,7 @@ const CryptoOgSingle = ({
     frontmatter;
 
   const url = `${config.site.base_url}/crypto-ogs/${slug}`;
+  const video = getPageVideo("crypto-ogs", slug);
   const jsonLd = [
     personSchema({
       name: title,
@@ -43,6 +52,7 @@ const CryptoOgSingle = ({
       { name: title, path: `/crypto-ogs/${slug}` },
     ]),
     faqSchema(faqs),
+    videoObjectSchema(video),
   ].filter(Boolean);
 
   return (
@@ -75,10 +85,19 @@ const CryptoOgSingle = ({
               <ViewsCounter type="crypto-ogs" slug={slug} />
             </div>
             <Social source={social} className="social-icons-simple" />
-            <PersonQuickFacts facts={quickFacts} title={title} />
-            <div className="content text-start">
-              <MDXRemote {...mdxContent} components={mdxComponents} />
-            </div>
+            <PageVideoProvider video={video}>
+              {/* Above the quick facts, not below: the facts table runs most of
+                  a screen on its own and would push the video out of sight. */}
+              {video?.placement === "auto" && (
+                <div className="text-start">
+                  <PostVideo video={video} />
+                </div>
+              )}
+              <PersonQuickFacts facts={quickFacts} title={title} />
+              <div className="content text-start">
+                <MDXRemote {...mdxContent} components={mdxComponents} />
+              </div>
+            </PageVideoProvider>
             {faqs && faqs.length > 0 && <ExchangeFaq title={title} faqs={faqs} />}
             <div className="mt-8 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-gray-600 dark:text-gray-400">
               <span className="flex items-center md:mt-0">

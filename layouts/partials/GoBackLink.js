@@ -12,6 +12,8 @@ const GoBackLink = ({ option }) => {
         return { href: "/crypto-ogs", text: "All Crypto OGs" };
       case "tools":
         return { href: "/tools", text: "All Tools" };
+      case "videos":
+        return { href: "/videos", text: "All Videos" };
       case "authors":
         return { href: "/authors", text: "All Authors" };
     }

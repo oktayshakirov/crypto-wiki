@@ -122,6 +122,13 @@
     },
     {
       "type": "crypto-ogs",
+      "slug": "kris-marszalek",
+      "title": "Kris Marszalek",
+      "url": "https://www.thecrypto.wiki/crypto-ogs/kris-marszalek",
+      "date": "2026-08-08T00:00:00.000Z"
+    },
+    {
+      "type": "crypto-ogs",
       "slug": "michael-saylor",
       "title": "Michael Saylor",
       "url": "https://www.thecrypto.wiki/crypto-ogs/michael-saylor",
@@ -217,6 +224,13 @@
       "title": "Yi He",
       "url": "https://www.thecrypto.wiki/crypto-ogs/yi-he",
       "date": "2024-09-10T00:00:00.000Z"
+    },
+    {
+      "type": "exchanges",
+      "slug": "aster",
+      "title": "Aster",
+      "url": "https://www.thecrypto.wiki/exchanges/aster",
+      "date": "2026-08-10T00:00:00.000Z"
     },
     {
       "type": "exchanges",
@@ -717,10 +731,38 @@
     },
     {
       "type": "posts",
+      "slug": "what-is-a-crypto-whale",
+      "title": "What Is a Crypto Whale?",
+      "url": "https://www.thecrypto.wiki/posts/what-is-a-crypto-whale",
+      "date": "2026-08-14T00:00:00.000Z"
+    },
+    {
+      "type": "posts",
       "slug": "what-is-a-dao",
       "title": "What Is A DAO?",
       "url": "https://www.thecrypto.wiki/posts/what-is-a-dao",
       "date": "2026-07-31T00:00:00.000Z"
+    },
+    {
+      "type": "posts",
+      "slug": "what-is-a-dex",
+      "title": "What Is a DEX?",
+      "url": "https://www.thecrypto.wiki/posts/what-is-a-dex",
+      "date": "2026-08-05T00:00:00.000Z"
+    },
+    {
+      "type": "posts",
+      "slug": "what-is-a-hardware-wallet",
+      "title": "What Is a Hardware Wallet?",
+      "url": "https://www.thecrypto.wiki/posts/what-is-a-hardware-wallet",
+      "date": "2026-08-11T00:00:00.000Z"
+    },
+    {
+      "type": "posts",
+      "slug": "what-is-a-seed-phrase",
+      "title": "What Is a Seed Phrase?",
+      "url": "https://www.thecrypto.wiki/posts/what-is-a-seed-phrase",
+      "date": "2026-08-06T00:00:00.000Z"
     },
     {
       "type": "posts",

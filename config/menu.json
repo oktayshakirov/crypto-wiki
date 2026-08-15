@@ -58,6 +58,10 @@
       "url": "/about"
     },
     {
+      "name": "Videos",
+      "url": "/videos"
+    },
+    {
       "name": "FAQ",
       "url": "/faq"
     },

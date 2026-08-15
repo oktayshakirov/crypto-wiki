@@ -20,8 +20,14 @@ import {
   FaCalculator,
   FaChartLine,
   FaThermometerHalf,
+  FaYoutube,
 } from "react-icons/fa";
 import config from "@config/config.json";
+import VideoCard from "@components/VideoCard";
+import { longVideos } from "@lib/videos";
+
+// Matches the Latest Posts row.
+const HOME_VIDEO_COUNT = 3;
 
 // Matches the Latest Posts row above it.
 const MOST_READ_COUNT = 6;
@@ -35,6 +41,7 @@ const Home = ({
   postPages,
   ogPages,
   exchangePages,
+  videos,
   isApp,
 }) => {
   return (
@@ -67,11 +74,35 @@ const Home = ({
               <Posts posts={mostRead} />
             </div>
           )}
+          {videos.length > 0 && (
+            <div className="mt-12">
+              {markdownify("WATCH", "h3", "mb-8")}
+              <div className="flex flex-wrap justify-center text-left">
+                {videos.map((video) => (
+                  <div
+                    key={video.slug}
+                    className="w-full p-4 sm:w-1/2 md:w-1/3 xl:w-1/3"
+                  >
+                    <VideoCard video={video} />
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
           <div className="mb-10 mt-6 flex flex-col justify-center space-y-3 md:flex-row md:space-x-3 md:space-y-0">
             <Link className="btn-primary flex items-center gap-2" href="/posts">
               <FaRegNewspaper />
               <span>ALL POSTS</span>
             </Link>
+            {videos.length > 0 && (
+              <Link
+                className="btn-primary flex items-center gap-2"
+                href="/videos"
+              >
+                <FaYoutube />
+                <span>ALL VIDEOS</span>
+              </Link>
+            )}
             <Link
               className="btn-primary flex items-center gap-2"
               href="/categories"
@@ -243,6 +274,7 @@ export const getStaticProps = async () => {
         },
         slug: exchange.slug,
       })),
+      videos: longVideos().slice(0, HOME_VIDEO_COUNT),
       postPages: totalPostsPages,
       ogPages: totalOGsPages,
       exchangePages: totalExchangesPages,
