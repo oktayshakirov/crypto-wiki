@@ -30,6 +30,12 @@ module.exports = {
     } else if (/^\/tools(\/.+)?$/.test(path)) {
       priority = 0.9;
       changefreq = "weekly";
+    } else if (/^\/videos(\/.+)?$/.test(path)) {
+      // The only pages here whose main content is video, so they are the ones
+      // worth submitting eagerly. Without this branch /videos/<slug> falls
+      // through to the config default rather than the single-segment rule.
+      priority = 0.8;
+      changefreq = "weekly";
     } else if (/^\/(exchanges|crypto-ogs)(\/.+)?$/.test(path)) {
       priority = 0.9;
       changefreq = "weekly";

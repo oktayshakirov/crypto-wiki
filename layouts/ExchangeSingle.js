@@ -19,7 +19,11 @@ import {
   breadcrumbSchema,
   exchangeReviewSchema,
   faqSchema,
+  videoObjectSchema,
 } from "@lib/utils/jsonLd";
+import PostVideo from "@components/PostVideo";
+import { PageVideoProvider } from "context/video";
+import { getPageVideo } from "@lib/videos";
 
 const ExchangeSingle = ({
   frontmatter,
@@ -44,6 +48,7 @@ const ExchangeSingle = ({
 
   const url = `${config.site.base_url}/exchanges/${slug}`;
   const metaDescription = description ? description : content.slice(0, 160);
+  const video = getPageVideo("exchanges", slug);
 
   const jsonLd = [
     exchangeReviewSchema({
@@ -62,6 +67,7 @@ const ExchangeSingle = ({
       { name: title, path: `/exchanges/${slug}` },
     ]),
     faqSchema(faqs),
+    videoObjectSchema(video),
   ].filter(Boolean);
 
   return (
@@ -98,10 +104,19 @@ const ExchangeSingle = ({
               <ViewsCounter type="exchanges" slug={slug} />
             </div>
             <Social source={social} className="social-icons-simple" />
-            <ExchangeQuickFacts facts={quickFacts} title={title} />
-            <div className="content text-start">
-              <MDXRemote {...mdxContent} components={mdxComponents} />
-            </div>
+            <PageVideoProvider video={video}>
+              {/* Above the quick facts, not below: the facts table runs most of
+                  a screen on its own and would push the video out of sight. */}
+              {video?.placement === "auto" && (
+                <div className="text-start">
+                  <PostVideo video={video} />
+                </div>
+              )}
+              <ExchangeQuickFacts facts={quickFacts} title={title} />
+              <div className="content text-start">
+                <MDXRemote {...mdxContent} components={mdxComponents} />
+              </div>
+            </PageVideoProvider>
             {faqs && faqs.length > 0 && (
               <ExchangeFaq title={title} faqs={faqs} />
             )}

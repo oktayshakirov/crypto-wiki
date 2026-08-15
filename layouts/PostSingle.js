@@ -12,8 +12,11 @@ import { mdxComponents } from "@lib/mdxComponents";
 import DisclaimerBanner from "@layouts/components/DisclaimerBanner";
 import ViewsCounter from "@components/ViewsCounter";
 import Authors from "@components/Authors";
-import { articleSchema, breadcrumbSchema } from "@lib/utils/jsonLd";
+import { articleSchema, breadcrumbSchema, videoObjectSchema } from "@lib/utils/jsonLd";
 import PostMeta from "@components/PostMeta";
+import PostVideo from "@components/PostVideo";
+import { PageVideoProvider } from "context/video";
+import { getPageVideo } from "@lib/videos";
 
 // Frontmatter lists entities by title; the full pages live in a separate array.
 // Match them on slug so casing and punctuation differences do not drop links.
@@ -40,6 +43,7 @@ const PostSingle = ({
   description = description ? description : content.slice(0, 120);
 
   const url = `${config.site.base_url}/posts/${slug}`;
+  const video = getPageVideo("posts", slug);
   const jsonLd = [
     articleSchema({
       title,
@@ -55,7 +59,8 @@ const PostSingle = ({
       { name: "Posts", path: "/posts" },
       { name: title, path: `/posts/${slug}` },
     ]),
-  ];
+    videoObjectSchema(video),
+  ].filter(Boolean);
 
   return (
     <Base
@@ -132,9 +137,19 @@ const PostSingle = ({
                 priority
               />
             )}
-            <div className="content mb-16 text-left text-white">
-              <MDXRemote {...mdxContent} components={mdxComponents} />
-            </div>
+            <PageVideoProvider video={video}>
+              {/* "auto" is the volume path: the layout places the video and the
+                  MDX file is never touched. "inline" means the body carries a
+                  <PostVideo /> tag and places it itself. */}
+              {video?.placement === "auto" && (
+                <div className="text-left">
+                  <PostVideo video={video} />
+                </div>
+              )}
+              <div className="content mb-16 text-left text-white">
+                <MDXRemote {...mdxContent} components={mdxComponents} />
+              </div>
+            </PageVideoProvider>
             <div className="mb-6 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-gray-600 dark:text-gray-400">
               <span className="flex items-center whitespace-nowrap">
                 <FaCalendarAlt className="mr-2 opacity-80" />
