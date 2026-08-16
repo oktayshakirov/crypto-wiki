@@ -190,7 +190,7 @@
   "_fields": {
     "kind": "long = article explainer, one per page, rendered as a compact bar. short = vertical, feed only, never on an article.",
     "target": "The page it renders on. type is posts | exchanges | crypto-ogs.",
-    "alsoOn": "Extra pages to show it on. Spreading one video over a few neighbouring posts is how to get page coverage without more uploads.",
+    "alsoOn": "Extra pages to show it on. Deliberately empty on every video: spreading one video over neighbouring posts was tried as a way to get page coverage cheaply and reversed on 2026-08-16 - a video under a page it does not answer is worse than no video, and an embed was never a ranking input. One video, one post: its own.",
     "placement": "auto = the layout places it. inline = the MDX body carries <PostVideo /> and places it. none = registry only, off every page.",
     "chapters": "start (seconds), title, and the narration spoken in that chapter. Long form only. Drives the transcript and the jump links on /videos/<slug>; the text is the script, which exists nowhere else on the site."
   }
