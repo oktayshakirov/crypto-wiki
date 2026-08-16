@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Base from "./Baseof";
 import GoBackLink from "@partials/GoBackLink";
@@ -24,6 +25,31 @@ const VideoSingle = ({ video, related, isApp }) => {
   const url = `${config.site.base_url}/videos/${video.slug}`;
   const sourceHref = videoSourceHref(video);
   const chapters = video.chapters || [];
+  const words = chapters.reduce(
+    (total, chapter) => total + chapter.text.split(/\s+/).length,
+    0
+  );
+
+  const transcriptId = `transcript-${video.slug}`;
+  const [transcriptOpen, setTranscriptOpen] = useState(false);
+  const [pendingJump, setPendingJump] = useState(null);
+
+  // A chapter link points into the transcript, so it has to open it first, and
+  // the jump has to wait for that: while collapsed the target has no box to
+  // scroll to. Hence the effect rather than the browser's own anchor handling.
+  useEffect(() => {
+    if (pendingJump === null) return;
+    document
+      .getElementById(`t-${pendingJump}`)
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
+    setPendingJump(null);
+  }, [pendingJump]);
+
+  const jumpToChapter = (start) => (event) => {
+    event.preventDefault();
+    setTranscriptOpen(true);
+    setPendingJump(start);
+  };
 
   const jsonLd = [
     videoObjectSchema(video, { withClips: true }),
@@ -73,6 +99,7 @@ const VideoSingle = ({ video, related, isApp }) => {
                     <li key={chapter.start} className="mb-1">
                       <a
                         href={`#t-${chapter.start}`}
+                        onClick={jumpToChapter(chapter.start)}
                         className="inline-flex min-h-[36px] items-center hover:text-primary"
                       >
                         <span className="mr-3 tabular-nums text-primary">
@@ -85,13 +112,38 @@ const VideoSingle = ({ video, related, isApp }) => {
                 </ul>
 
                 <h2 className="h4 mb-4">Transcript</h2>
-                <div className="mb-12 text-left">
+                {/* Folded away by default. Nobody opens a video page to read
+                    six hundred words, and a wall of narration under the player
+                    buries the article link and the other videos.
+
+                    Hidden with CSS rather than unmounted: the text has to stay
+                    in the served HTML, because being indexable is the entire
+                    point of having a transcript. Google reads collapsed content
+                    the same either way, but it cannot read what was never
+                    rendered. */}
+                <button
+                  type="button"
+                  aria-expanded={transcriptOpen}
+                  aria-controls={transcriptId}
+                  onClick={() => setTranscriptOpen((open) => !open)}
+                  className="mb-2 inline-flex min-h-[44px] items-center text-primary"
+                >
+                  {transcriptOpen
+                    ? "Hide the transcript"
+                    : `Read the transcript (${words} words)`}
+                </button>
+                <div
+                  id={transcriptId}
+                  className={`mb-12 text-left ${
+                    transcriptOpen ? "" : "hidden"
+                  }`}
+                >
                   {chapters.map((chapter) => (
                     <div key={chapter.start} id={`t-${chapter.start}`}>
                       {/* Deliberately outside `.content`: that wrapper styles
                           headings at article scale, which makes a seven-part
                           transcript read as seven new articles. */}
-                      <h3 className="mb-2 mt-8 text-lg font-semibold">
+                      <h3 className="mb-2 mt-8 scroll-mt-4 text-lg font-semibold">
                         <span className="mr-3 tabular-nums text-primary">
                           {timestamp(chapter.start)}
                         </span>
