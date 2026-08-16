@@ -110,6 +110,55 @@
       ]
     },
     {
+      "slug": "mining-rig",
+      "id": "5zSrDhjLFZQ",
+      "kind": "long",
+      "title": "How To Build a Crypto Mining Rig (And Whether You Should)",
+      "description": "Every part that goes into a GPU mining rig, the one that starts fires, and the number that decides whether any of it pays.",
+      "uploadDate": "2026-08-16T11:11:28Z",
+      "duration": "PT3M52S",
+      "seconds": 232,
+      "poster": "/images/videos/mining-rig.webp",
+      "target": {
+        "type": "posts",
+        "slug": "how-to-build-a-mining-rig"
+      },
+      "alsoOn": [],
+      "placement": "auto",
+      "chapters": [
+        {
+          "start": 0,
+          "title": "The number under the photo",
+          "text": "You have seen the picture. A metal frame, six graphics cards, a wall of fans in somebody's garage. It looks like a money printer. Is it one? Stay to the end and you will know whether to build one. Because the whole thing turns on a single figure, and it is not on the box. Five cents. That is roughly what a profitable miner pays for one kilowatt hour of electricity. Ordinary home power costs considerably more, so the first thing to check is your bill, not your budget. Along the way: every part that goes in, the one that starts fires, and how to run the sum yourself."
+        },
+        {
+          "start": 33,
+          "title": "What are you actually competing with?",
+          "text": "Mining is not really a hardware hobby. It is an energy business wearing a hardware costume. And this is who you are bidding against. A handful of cards. Power at the price your utility charges. Heat and noise you live with. Thousands of machines in one building. Built beside a dam or a geothermal field. Electricity bought in industrial bulk. It also gets harder on its own. As more machines join, difficulty rises, so the same rig earns less each month for the same work. Four numbers decide this, and only one is the hardware. Your electricity cost. Your hardware's efficiency. The coin's price. The network's difficulty. Put all four into a mining calculator before you buy a single part."
+        },
+        {
+          "start": 80,
+          "title": "So what goes into a rig?",
+          "text": "Assume the sum works. Here is the shopping list. One thing first. Bitcoin is mined by purpose-built machines you buy, not build. Everything here is the other family: graphics cards, mining coins designed to stay out of their reach. Six parts carry the build. A motherboard with enough slots. A cheap processor. Eight gigabytes of memory. The graphics cards themselves. A serious power supply. An open frame, so air can move. Then the small things that are not small: riser cards to space the graphics cards apart, extra fans, and a drive for the software. One rule on the power supply. Add the wattage up, then buy twenty percent more. A supply running flat out wastes power as heat."
+        },
+        {
+          "start": 124,
+          "title": "The cheapest part is the dangerous one",
+          "text": "Everyone worries about the graphics cards. They cost the most, so they get the attention. The part that burns houses down costs about two dollars. Riser cards need their own power, and there is a cheap adapter that lets you take it from the drive connector instead. It fits. It works. It is a known fire hazard. Those connectors were designed for a hard drive, not for a card pulling seventy-five watts. Run a proper six-pin cable from the power supply to every riser. Directly. Every time. It is the one instruction in this build with no acceptable shortcut."
+        },
+        {
+          "start": 161,
+          "title": "So where is the money actually made?",
+          "text": "Bolting the frame together is a Saturday afternoon. The half that decides your result happens after it boots, and nobody photographs it. You install the mining system. Then the drivers. Then the mining software. You join a pool, which shares the work. And then you turn the power down. That last one sounds backwards. It is the whole game. Undervolting lowers what each card draws while keeping almost all of its speed \u2014 and electricity was the deciding number. Watch the temperatures while you do it. Above seventy-five degrees you are trading the hardware's life for numbers you can read today."
+        },
+        {
+          "start": 198,
+          "title": "So is it worth it?",
+          "text": "Back to that garage. The frame and the fans were never the hard part. The hard part is that you are running a small power station against people who built theirs next to a dam. So the honest version of the question is not: can I build one. It is: what does your electricity cost? Work that out first. The full parts list and the safety warnings are linked below \u2014 and nothing here is financial advice. If that was useful, subscribe for more videos like this one."
+        }
+      ]
+    },
+    {
       "slug": "satoshi-proof-short",
       "id": "xadIOyR6aUo",
       "kind": "short",
