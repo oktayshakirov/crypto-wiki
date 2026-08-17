@@ -58,16 +58,6 @@ const defaultTools = [
     description: "Generate random cryptocurrency suggestions for research.",
     icon: "🎲",
   },
-  // Every tool is on this row already, so this is not a way in - it is the
-  // page that describes them, and the only link the home page gives /tools.
-  // It also makes the counts land: eight tiles on the web, nine in the apps.
-  {
-    name: "All Crypto Tools",
-    label: "All Tools",
-    path: "/tools",
-    description: "Explore the full collection of free crypto tools.",
-    icon: "🧰",
-  },
 ];
 
 // There is no web portfolio, so this tile exists only in the apps. It carries no
@@ -86,10 +76,12 @@ const portfolioTool = {
 // not something to read, and at card size they ran three screens deep on a
 // phone. The description survives as the link title.
 //
-// Four across on a desktop and three on a phone, which is what the counts are
-// built around: the web's eight tiles fill two desktop rows exactly, and the
-// apps' nine - the portfolio tile makes the ninth - fill three phone rows,
-// which is the only shape an app is ever seen in.
+// One row on a desktop, two rows of four on a phone.
+//
+// Flex rather than the theme's twelve-column grid: eight across is 12.5% of a
+// row, which no `col-*` can express. The widths subtract the gap so a row still
+// adds up to 100%, and `justify-center` means the web's seven tiles centre
+// themselves instead of leaving a hole where the eighth would be.
 const Tools = ({ tools, isApp = false }) => {
   const items = tools ?? (isApp ? [portfolioTool, ...defaultTools] : defaultTools);
 
@@ -102,9 +94,12 @@ const Tools = ({ tools, isApp = false }) => {
   };
 
   return (
-    <div className="row justify-center">
+    <div className="flex flex-wrap justify-center gap-2">
       {items.map((tool, i) => (
-        <div className="col-4 mb-3 md:col-3" key={`tool-${i}`}>
+        <div
+          className="w-[calc(25%-0.5rem)] md:w-[calc(12.5%-0.5rem)]"
+          key={`tool-${i}`}
+        >
           <Link
             href={tool.path}
             title={tool.description}
