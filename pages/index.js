@@ -59,6 +59,19 @@ const Home = ({
             Uncover the World of{" "}
             <span className="font-mono text-primary">CRYPTO</span>
           </h1>
+
+          {/* Directly under the hero, not at the foot of the page. The tools
+              are the part of this site people come back to rather than read
+              once, and in the apps they had no route at all: the site's own
+              nav is hidden there to avoid a second navbar under the native
+              one, and the tab bar has no room for them. One row of six on a
+              desktop, two rows of three on a phone - a shortcut bar, so it
+              costs the feed one screen of height at most. */}
+          <div className="mb-12">
+            {markdownify("CRYPTO TOOLS", "h3", "mb-6")}
+            <Tools />
+          </div>
+
           {markdownify("LATEST POSTS", "h3", "mb-8")}
           <Posts posts={posts} />
           <Pagination
@@ -198,10 +211,6 @@ const Home = ({
             </div>
           </div>
           {!isApp && <LayoutAd />}
-          <div className="my-10">
-            {markdownify("CRYPTO TOOLS", "h3", "mb-8")}
-            <Tools />
-          </div>
         </div>
       </section>
     </Base>
