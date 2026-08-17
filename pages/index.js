@@ -69,7 +69,9 @@ const Home = ({
               costs the feed one screen of height at most. */}
           <div className="mb-12">
             {markdownify("CRYPTO TOOLS", "h3", "mb-6")}
-            <Tools />
+            {/* isApp adds the portfolio tile: it is a native screen, so it
+                exists in the apps and nowhere else. */}
+            <Tools isApp={isApp} />
           </div>
 
           {markdownify("LATEST POSTS", "h3", "mb-8")}
