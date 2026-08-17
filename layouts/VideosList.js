@@ -44,8 +44,10 @@ const VideosList = ({ videos, isApp }) => {
     >
       <section className="section">
         <div className="container text-center">
-          {markdownify("Videos", "h1", "h1 mb-4")}
-          <p className="mx-auto mb-10 max-w-2xl text-gray-400">{description}</p>
+          {/* No intro paragraph: /posts, /exchanges and the rest go straight
+              from the heading into the grid. `description` is still the meta
+              description, which is where it does some work. */}
+          {markdownify("Videos", "h1", "h1 mb-10")}
           {videos.length === 0 ? (
             <p>No videos published yet.</p>
           ) : (
