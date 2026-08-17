@@ -15,7 +15,7 @@ const defaultTools = [
   },
   {
     name: "Crypto Heatmap",
-    label: "Heatmap",
+    label: "Crypto Heatmap",
     path: "/tools/crypto-heatmap",
     description:
       "Visualize cryptocurrency market performance with an interactive heatmap.",
@@ -31,7 +31,7 @@ const defaultTools = [
   },
   {
     name: "Bitcoin Halving Countdown",
-    label: "Halving",
+    label: "Next Halving",
     path: "/tools/bitcoin-halving-countdown",
     description: "Count down to the next Bitcoin halving, block by block.",
     icon: "⏳",
@@ -42,7 +42,7 @@ const defaultTools = [
     path: "/tools/bitcoin-roi-calculator",
     description:
       "Work out what a Bitcoin investment would be worth if you had bought earlier.",
-    icon: "📈",
+    icon: "🧮",
   },
   {
     name: "Staking Calculator",
@@ -65,10 +65,10 @@ const defaultTools = [
 // screen, the same handshake /tools already uses.
 const portfolioTool = {
   name: "Portfolio Tracker",
-  label: "Portfolio",
+  label: "Portfolio Tracker",
   path: "/portfolio",
   description: "Track the real-time value and performance of all your assets.",
-  icon: "💼",
+  icon: "📈",
   isAppOnly: true,
 };
 
@@ -82,6 +82,13 @@ const portfolioTool = {
 // row, which no `col-*` can express. The widths subtract the gap so a row still
 // adds up to 100%, and `justify-center` means the web's seven tiles centre
 // themselves instead of leaving a hole where the eighth would be.
+// Splits at the last space, so a two-word label becomes two lines and
+// "Fear & Greed" breaks as "Fear &" / "Greed" rather than three lines.
+const splitLabel = (label) => {
+  const at = label.lastIndexOf(" ");
+  return at === -1 ? [label] : [label.slice(0, at), label.slice(at + 1)];
+};
+
 const Tools = ({ tools, isApp = false }) => {
   const items = tools ?? (isApp ? [portfolioTool, ...defaultTools] : defaultTools);
 
@@ -116,8 +123,17 @@ const Tools = ({ tools, isApp = false }) => {
             >
               {tool.icon}
             </span>
+            {/* Broken onto two lines rather than left to wrap. Wrapping is a
+                function of how wide the tile happens to be, so "Heatmap" sat
+                on one line while "Rainbow Chart" took two and the row looked
+                ragged. Every label is two words and the break is explicit, so
+                all eight tiles are the same height at any width. */}
             <span className="text-xs font-medium leading-tight sm:text-sm">
-              {tool.label ?? tool.name}
+              {splitLabel(tool.label ?? tool.name).map((line) => (
+                <span className="block" key={line}>
+                  {line}
+                </span>
+              ))}
             </span>
           </Link>
         </div>
