@@ -9,6 +9,10 @@
       "url": "/posts"
     },
     {
+      "name": "Videos",
+      "url": "/videos"
+    },
+    {
       "name": "Exchanges",
       "url": "/exchanges"
     },
@@ -56,10 +60,6 @@
     {
       "name": "About",
       "url": "/about"
-    },
-    {
-      "name": "Videos",
-      "url": "/videos"
     },
     {
       "name": "FAQ",
