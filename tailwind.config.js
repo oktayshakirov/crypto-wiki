@@ -48,6 +48,15 @@ module.exports = {
       },
     },
     extend: {
+      keyframes: {
+        "fade-in": {
+          from: { opacity: "0" },
+          to: { opacity: "1" },
+        },
+      },
+      animation: {
+        "fade-in": "fade-in 200ms ease-in both",
+      },
       colors: {
         text: theme.colors.default.text_color.default,
         light: theme.colors.default.text_color.light,

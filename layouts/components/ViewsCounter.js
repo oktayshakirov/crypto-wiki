@@ -87,21 +87,25 @@ const ViewsCounter = ({ type, slug }) => {
 
   const hasViews = !isLoading && views !== null;
 
-  // The counter occupies its final footprint from first paint and fades in as a
-  // single unit once the count arrives, so nothing around it shifts and there is
-  // no half-rendered state where the icon sits next to an empty space.
+  // The counter keeps its footprint from first paint: the eye icon is always
+  // there and a skeleton bar stands in for the number until the count arrives,
+  // so there is never an empty gap and nothing around it shifts.
   return (
     <span
-      aria-hidden={!hasViews}
-      className={`flex min-h-[1.5rem] min-w-[9ch] items-center text-sm text-gray-600 transition-opacity duration-200 ease-in motion-reduce:transition-none dark:text-gray-400 ${
-        hasViews ? "opacity-100" : "opacity-0"
-      }`}
+      className="flex min-h-[1.5rem] min-w-[9ch] items-center text-sm text-gray-600 dark:text-gray-400"
+      aria-live="polite"
+      aria-busy={!hasViews}
     >
-      {hasViews && (
-        <>
-          <FaEye className="mr-2 opacity-80" />
+      <FaEye className="mr-2 shrink-0 opacity-80" />
+      {hasViews ? (
+        <span className="animate-fade-in">
           {views.toLocaleString()} {views === 1 ? "view" : "views"}
-        </>
+        </span>
+      ) : (
+        <span
+          className="h-[0.7em] w-[5.5ch] animate-pulse rounded-full bg-current opacity-20"
+          aria-label="Loading views"
+        />
       )}
     </span>
   );
