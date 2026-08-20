@@ -1,12 +1,4 @@
-import VideosList from "@layouts/VideosList";
-import { longVideos } from "@lib/videos";
+import VideosPagination, { getStaticProps } from "./page/[slug]";
 
-const VideosPage = ({ videos, isApp }) => (
-  <VideosList videos={videos} isApp={isApp} />
-);
-
-export const getStaticProps = async () => ({
-  props: { videos: longVideos() },
-});
-
-export default VideosPage;
+export { getStaticProps };
+export default VideosPagination;
