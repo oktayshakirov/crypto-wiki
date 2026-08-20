@@ -1,11 +1,13 @@
 import Base from "./Baseof";
+import Pagination from "@components/Pagination";
 import VideoCard from "@components/VideoCard";
 import { markdownify } from "@lib/utils/textConverter";
 import config from "@config/config.json";
 import { breadcrumbSchema, videoObjectSchema } from "@lib/utils/jsonLd";
 
-const VideosList = ({ videos, isApp }) => {
-  const url = `${config.site.base_url}/videos`;
+const VideosList = ({ videos, currentPage, totalPages, isApp }) => {
+  const path = currentPage > 1 ? `/videos/page/${currentPage}` : "/videos";
+  const url = `${config.site.base_url}${path}`;
   const title = "Crypto Videos | Explainers from Crypto Wiki";
   const description =
     "Short explainers on Bitcoin, blockchain and crypto history - each one with chapters and a full transcript, and the article it came from.";
@@ -51,16 +53,25 @@ const VideosList = ({ videos, isApp }) => {
           {videos.length === 0 ? (
             <p>No videos published yet.</p>
           ) : (
-            <div className="flex flex-wrap justify-center text-left">
-              {videos.map((video) => (
-                <div
-                  key={video.slug}
-                  className="w-full p-4 sm:w-1/2 md:w-1/3 xl:w-1/3"
-                >
-                  <VideoCard video={video} />
-                </div>
-              ))}
-            </div>
+            <>
+              {/* Same bootstrap-grid row the /posts listing uses, so a short
+                  last row stays left-aligned instead of centring itself. */}
+              <div className="row text-left">
+                {videos.map((video) => (
+                  <div
+                    key={video.slug}
+                    className="col-12 mb-7 min-[650px]:col-6 lg:col-4"
+                  >
+                    <VideoCard video={video} />
+                  </div>
+                ))}
+              </div>
+              <Pagination
+                section="videos"
+                totalPages={totalPages}
+                currentPage={currentPage}
+              />
+            </>
           )}
         </div>
       </section>
