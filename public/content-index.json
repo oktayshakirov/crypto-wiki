@@ -388,6 +388,13 @@
     },
     {
       "type": "exchanges",
+      "slug": "pancakeswap",
+      "title": "PancakeSwap",
+      "url": "https://www.thecrypto.wiki/exchanges/pancakeswap",
+      "date": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "type": "exchanges",
       "slug": "trade-republic",
       "title": "Trade Republic",
       "url": "https://www.thecrypto.wiki/exchanges/trade-republic",
@@ -759,6 +766,13 @@
     },
     {
       "type": "posts",
+      "slug": "what-is-a-rug-pull",
+      "title": "What Is a Rug Pull?",
+      "url": "https://www.thecrypto.wiki/posts/what-is-a-rug-pull",
+      "date": "2026-08-19T00:00:00.000Z"
+    },
+    {
+      "type": "posts",
       "slug": "what-is-a-seed-phrase",
       "title": "What Is a Seed Phrase?",
       "url": "https://www.thecrypto.wiki/posts/what-is-a-seed-phrase",
@@ -840,6 +854,13 @@
       "title": "Who Controls Bitcoin's Price? Whales, Dev's or Governments?",
       "url": "https://www.thecrypto.wiki/posts/who-controls-bitcoins-price",
       "date": "2025-09-05T00:00:00.000Z"
+    },
+    {
+      "type": "videos",
+      "slug": "crypto-exchanges",
+      "title": "Crypto Exchanges Explained: Who Actually Holds Your Coins?",
+      "url": "https://www.thecrypto.wiki/videos/crypto-exchanges",
+      "date": "2026-08-19T14:23:41.000Z"
     },
     {
       "type": "videos",
