@@ -75,14 +75,6 @@ const MyApp = ({ Component, pageProps }) => {
           });
         `}
       </Script>
-      {/*
-        AdSense script — commented out while no ad units are being served.
-        LayoutAd and ArticleAd currently render nothing (config.params.adsEnabled
-        is false), so loading this only added a third-party request and set
-        advertising cookies without any consent flow. Uncomment when reapplying
-        for AdSense review, and add a consent banner (CMP) at the same time:
-        the privacy policy already tells users one exists.
-
       {!isApp && (
         <Script
           async
@@ -91,7 +83,6 @@ const MyApp = ({ Component, pageProps }) => {
           strategy="lazyOnload"
         />
       )}
-      */}
       <Component {...pageProps} isApp={isApp} />
     </JsonContext>
   );
