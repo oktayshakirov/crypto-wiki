@@ -234,6 +234,55 @@
           "text": "Before you trust any platform with a single coin, run the same five checks. App-based two-factor. Most coins in cold storage. A licence you have heard of. Fees you can find without hunting. A history you can look up. Miss one of those and you are not choosing an exchange, you are hoping. And once you are in, four habits do most of the work. Turn the two-factor on first. Start with an amount you can afford to lose. Learn limit orders before market orders. Then move what you are not trading off the platform. So, back to the balance on your screen. The question was never which exchange is the best one. It is: who is holding it right now? Know that, and you already know whether it should still be sitting there."
         }
       ]
+    },
+    {
+      "slug": "bitcoin-price",
+      "id": "1SyGwA-iDFE",
+      "kind": "long",
+      "title": "Who Controls Bitcoin's Price? Not Who You Think",
+      "description": "Whales, developers and governments all get blamed. The real answer is stranger, and it changes what is worth watching.",
+      "uploadDate": "2026-08-23T22:34:00Z",
+      "duration": "PT4M6S",
+      "seconds": 246,
+      "poster": "/images/videos/bitcoin-price.webp",
+      "target": {
+        "type": "posts",
+        "slug": "who-controls-bitcoins-price"
+      },
+      "alsoOn": [],
+      "placement": "auto",
+      "chapters": [
+        {
+          "start": 0,
+          "title": "Who moved it?",
+          "text": "Bitcoin moved while you were asleep. You wake up, and the number on your screen is a different number. So who did that? There is no central bank here. No committee sets this price. And yet something clearly moved it. Stay to the end and you will know which forces move Bitcoin in hours, which move it in years, and the one number to watch instead. Twenty-one million coins. That is all there will ever be. It was written into the code before most of them existed. No committee can raise it. No emergency can print more."
+        },
+        {
+          "start": 32,
+          "title": "So where does a price come from?",
+          "text": "A price is not a fact about an object. It is an agreement between two people. One person willing to sell. One willing to buy. Where they meet is the price. So Bitcoin has two sides, and only one is up for grabs. The supply side was settled in the code. New coins arrive on a schedule that only ever slows down. Fifty new coins a block. Then twenty-five. Then twelve and a half. Then six and a quarter. Now just over three. Every four years it halves, and nobody votes on it. So every argument about the price is an argument about demand."
+        },
+        {
+          "start": 71,
+          "title": "Who moves it in hours?",
+          "text": "Start with the whales. A whale is one wallet holding a thousand bitcoin or more. Their power is not the size of the pile. It is that almost none of it is for sale. Most bitcoin sits in wallets that have not moved in years. What is on an exchange today is a sliver of the total. So the order book is thin - just a queue of offers to buy and to sell. A thin queue moves easily, and they have names for how that gets done. A sell wall. Spoofing. A pump and a dump. But none of that is choosing the price. It is exploiting how few people are selling."
+        },
+        {
+          "start": 109,
+          "title": "And who moves it in years?",
+          "text": "Developers never touch the price. They maintain the protocol - the rules every computer on the network follows. SegWit, in twenty seventeen, changed how transactions pack into a block. It did not move the price that week. It decides whether the network is worth anything in ten years. Governments are the loud ones. China banned trading and mining in twenty twenty-one, and the market fell. The United States approved spot bitcoin exchange traded funds in early twenty twenty-four, and it ran to new highs. So put the two speeds side by side. In hours. A whale's sell order. A regulator's announcement. A headline anyone can trade. Now the ones that work in years. A change to the protocol. Legal clarity, or none. Whether the thing still works."
+        },
+        {
+          "start": 159,
+          "title": "Nobody is driving",
+          "text": "Ask it properly. Who sets the price of bitcoin right now, this second? The biggest whale? The core developers? A regulator in Washington? Or the last person willing to sell? The price is whatever the next buyer and the next seller agree on. Which is why size is not control. A whale holding a hundred thousand coins cannot sell them at today's price. The moment they start, it stops being today's price. There is a plainer way to say it. The price is set by the last person willing to sell. So who controls Bitcoin's price? Nobody does. Everybody does."
+        },
+        {
+          "start": 202,
+          "title": "So what should you watch?",
+          "text": "Which changes what is worth watching. Not the whale wallets. By the time a big transfer shows up, the trade is already done. Watch how much bitcoin is sitting on exchanges instead. Coins moving onto an exchange are getting ready to sell. Coins moving off are going to sleep. So - back to the morning you woke up to a different number. The question was never who moved it. It is how few people were left to buy. Know that, and it stops looking like a decision, and starts looking like a room changing its mind at once. The full breakdown is linked below, and nothing here is financial advice. If that was useful, subscribe."
+        }
+      ]
     }
   ],
   "_fields": {
