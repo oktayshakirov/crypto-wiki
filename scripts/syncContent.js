@@ -14,7 +14,21 @@
 // not live yet, so the notification would link to a page that still 404s.
 const path = require("path");
 const admin = require("firebase-admin");
+const { loadEnvConfig } = require("@next/env");
 const { collectContent, parsePublishedAt } = require("../lib/contentIndex");
+
+// **`.env` has to be loaded explicitly here.** Next loads it for `next dev` and
+// `next build`, but this script is a bare `node scripts/syncContent.js`, which
+// gets none of that - so it threw "Missing Firebase credentials" and exited
+// before writing anything. `npm run sync-content` had therefore never worked
+// from a developer machine, which is why videos and posts reached the site and
+// the apps never got their push: the only thing still picking them up was each
+// app's scheduled reconciler, on its own slower cadence.
+//
+// `@next/env` rather than `dotenv` because Next already ships it and it applies
+// the same .env precedence the rest of the site is built with. In CI, where the
+// credentials are real environment variables, this is a no-op.
+loadEnvConfig(path.join(__dirname, ".."));
 
 if (!admin.apps.length) {
   const privateKey = process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, "\n");
