@@ -8,6 +8,11 @@ import Link from "next/link";
 import { getTaxonomy } from "@lib/taxonomyParser";
 import { FaTags } from "react-icons/fa";
 import ListingTabs from "@components/ListingTabs";
+import {
+  paginatedCanonical,
+  paginatedTitle,
+  paginatedDescription,
+} from "@lib/utils/pagination";
 
 const PostPagination = ({
   postIndex,
@@ -21,14 +26,21 @@ const PostPagination = ({
   const totalPages = Math.ceil(totalPosts / pagination);
   const { frontmatter } = postIndex;
   const { title } = frontmatter;
+  const metaTitle = paginatedTitle(
+    "All Crypto Posts | Guides, News & Expert Insights - Crypto Wiki",
+    currentPage
+  );
 
   return (
     <Base
-      title="All Crypto Posts | Guides, News & Expert Insights - Crypto Wiki"
-      meta_title="All Crypto Posts | Guides, News & Expert Insights - Crypto Wiki"
-      description="Browse comprehensive crypto articles, including guides, news, and expert analysis. Perfect for beginners and seasoned investors seeking valuable tips and insights."
+      title={metaTitle}
+      meta_title={metaTitle}
+      description={paginatedDescription(
+        "Browse comprehensive crypto articles, including guides, news, and expert analysis. Perfect for beginners and seasoned investors seeking valuable tips and insights.",
+        currentPage
+      )}
       image="/images/meta-image.png"
-      canonical={`${config.site.base_url}/posts`}
+      canonical={paginatedCanonical("/posts", currentPage)}
       isApp={isApp}
     >
       <section className="section">

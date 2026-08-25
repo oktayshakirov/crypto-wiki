@@ -5,14 +5,30 @@ import ListingTabs from "@components/ListingTabs";
 import { getSinglePage } from "@lib/contentParser";
 import { rankByViews } from "@lib/popularity";
 import Exchanges from "@partials/Exchanges";
+import {
+  paginatedCanonical,
+  paginatedTitle,
+  paginatedDescription,
+  sortedListingRobots,
+} from "@lib/utils/pagination";
 
 const PopularExchanges = ({ exchanges, currentPage, totalPages, isApp }) => (
   <Base
-    title="Most Popular Crypto Exchanges | Crypto Wiki"
-    meta_title="Most Popular Crypto Exchanges | Crypto Wiki"
-    description="The exchange reviews our readers open most often, ranked by total views."
+    title={paginatedTitle(
+      "Most Popular Crypto Exchanges | Crypto Wiki",
+      currentPage
+    )}
+    meta_title={paginatedTitle(
+      "Most Popular Crypto Exchanges | Crypto Wiki",
+      currentPage
+    )}
+    description={paginatedDescription(
+      "The exchange reviews our readers open most often, ranked by total views.",
+      currentPage
+    )}
     image="/images/meta-image.png"
-    canonical={`${config.site.base_url}/exchanges/popular`}
+    canonical={paginatedCanonical("/exchanges/popular", currentPage)}
+    noindex={sortedListingRobots(currentPage)}
     isApp={isApp}
   >
     <section className="section">

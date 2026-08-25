@@ -5,14 +5,30 @@ import ListingTabs from "@components/ListingTabs";
 import { getSinglePage } from "@lib/contentParser";
 import { rankByViews } from "@lib/popularity";
 import CryptoOGs from "@partials/CryptoOGs";
+import {
+  paginatedCanonical,
+  paginatedTitle,
+  paginatedDescription,
+  sortedListingRobots,
+} from "@lib/utils/pagination";
 
 const PopularCryptoOGs = ({ ogs, currentPage, totalPages, isApp }) => (
   <Base
-    title="Most Popular Crypto OG's | Crypto Wiki"
-    meta_title="Most Popular Crypto OG's | Crypto Wiki"
-    description="The crypto figures our readers look up most often, ranked by total views."
+    title={paginatedTitle(
+      "Most Popular Crypto OG's | Crypto Wiki",
+      currentPage
+    )}
+    meta_title={paginatedTitle(
+      "Most Popular Crypto OG's | Crypto Wiki",
+      currentPage
+    )}
+    description={paginatedDescription(
+      "The crypto figures our readers look up most often, ranked by total views.",
+      currentPage
+    )}
     image="/images/meta-image.png"
-    canonical={`${config.site.base_url}/crypto-ogs/popular`}
+    canonical={paginatedCanonical("/crypto-ogs/popular", currentPage)}
+    noindex={sortedListingRobots(currentPage)}
     isApp={isApp}
   >
     <section className="section">

@@ -4,6 +4,11 @@ import Base from "@layouts/Baseof";
 import { getListPage, getSinglePage } from "@lib/contentParser";
 import { markdownify } from "@lib/utils/textConverter";
 import Authors from "@partials/Authors";
+import {
+  paginatedCanonical,
+  paginatedTitle,
+  paginatedDescription,
+} from "@lib/utils/pagination";
 
 const AuthorPagination = ({
   authorIndex,
@@ -18,14 +23,21 @@ const AuthorPagination = ({
   const currentAuthors = authors.slice(indexOfFirstAuthor, indexOfLastAuthor);
   const { frontmatter, content } = authorIndex;
   const { title } = frontmatter;
+  const metaTitle = paginatedTitle(
+    "Meet the Crypto Wiki Authors | Expert Writers & Analysts",
+    currentPage
+  );
 
   return (
     <Base
-      title="Meet the Crypto Wiki Authors | Expert Writers & Analysts"
-      meta_title="Meet the Crypto Wiki Authors | Expert Writers & Analysts"
-      description="Discover the expert contributors behind Crypto Wiki. Learn about their insights, articles, and analysis that keep you informed on the latest crypto trends and developments."
+      title={metaTitle}
+      meta_title={metaTitle}
+      description={paginatedDescription(
+        "Discover the expert contributors behind Crypto Wiki. Learn about their insights, articles, and analysis that keep you informed on the latest crypto trends and developments.",
+        currentPage
+      )}
       image="/images/meta-image.png"
-      canonical={`${config.site.base_url}/authors`}
+      canonical={paginatedCanonical("/authors", currentPage)}
       isApp={isApp}
     >
       <section className="section">

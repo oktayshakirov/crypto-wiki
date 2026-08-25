@@ -4,13 +4,19 @@ import VideoCard from "@components/VideoCard";
 import { markdownify } from "@lib/utils/textConverter";
 import config from "@config/config.json";
 import { breadcrumbSchema, videoObjectSchema } from "@lib/utils/jsonLd";
+import { paginatedTitle, paginatedDescription } from "@lib/utils/pagination";
 
 const VideosList = ({ videos, currentPage, totalPages, isApp }) => {
   const path = currentPage > 1 ? `/videos/page/${currentPage}` : "/videos";
   const url = `${config.site.base_url}${path}`;
-  const title = "Crypto Videos | Explainers from Crypto Wiki";
-  const description =
-    "Short explainers on Bitcoin, blockchain and crypto history - each one with chapters and a full transcript, and the article it came from.";
+  const title = paginatedTitle(
+    "Crypto Videos | Explainers from Crypto Wiki",
+    currentPage
+  );
+  const description = paginatedDescription(
+    "Short explainers on Bitcoin, blockchain and crypto history - each one with chapters and a full transcript, and the article it came from.",
+    currentPage
+  );
 
   const jsonLd = [
     // Video is the main content of this page, so the VideoObjects are the page

@@ -5,6 +5,11 @@ import { getListPage, getSinglePage } from "@lib/contentParser";
 import { markdownify } from "@lib/utils/textConverter";
 import Exchanges from "@partials/Exchanges";
 import ListingTabs from "@components/ListingTabs";
+import {
+  paginatedCanonical,
+  paginatedTitle,
+  paginatedDescription,
+} from "@lib/utils/pagination";
 
 const ExchangePagination = ({
   exchangeIndex,
@@ -15,20 +20,31 @@ const ExchangePagination = ({
 }) => {
   const { frontmatter } = exchangeIndex;
   const { title } = frontmatter;
+  const metaTitle = paginatedTitle(
+    "Crypto Exchanges | Reviews & Ratings - Crypto Wiki",
+    currentPage
+  );
 
   return (
     <Base
-      title="Crypto Exchanges | Reviews & Ratings - Crypto Wiki"
-      meta_title="Crypto Exchanges | Reviews & Ratings - Crypto Wiki"
-      description="Explore detailed reviews of top crypto exchanges trusted by investors worldwide. Find expert insights, ratings, and updates to choose the best platform for your trading needs."
+      title={metaTitle}
+      meta_title={metaTitle}
+      description={paginatedDescription(
+        "Explore detailed reviews of top crypto exchanges trusted by investors worldwide. Find expert insights, ratings, and updates to choose the best platform for your trading needs.",
+        currentPage
+      )}
       image="/images/meta-image.png"
-      canonical={`${config.site.base_url}/exchanges`}
+      canonical={paginatedCanonical("/exchanges", currentPage)}
       isApp={isApp}
     >
       <section className="section">
         <div className="container text-center">
           {markdownify(title, "h1", "h1 mb-8")}
-          <ListingTabs basePath="/exchanges" active="latest" defaultLabel="Featured" />
+          <ListingTabs
+            basePath="/exchanges"
+            active="latest"
+            defaultLabel="Featured"
+          />
           <Exchanges exchanges={exchanges} />
           <Pagination
             section="exchanges"
@@ -46,8 +62,8 @@ export default ExchangePagination;
 export const getStaticPaths = () => {
   const getAllSlug = getSinglePage("content/exchanges");
   const allSlug = getAllSlug.map((item) => item.slug);
-  const { paginationCryptoOGs } = config.settings;
-  const totalPages = Math.ceil(allSlug.length / paginationCryptoOGs);
+  const { paginationExchanges } = config.settings;
+  const totalPages = Math.ceil(allSlug.length / paginationExchanges);
   let paths = [];
 
   for (let i = 1; i <= totalPages; i++) {

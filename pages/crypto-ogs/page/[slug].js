@@ -5,6 +5,11 @@ import { getListPage, getSinglePage } from "@lib/contentParser";
 import { markdownify } from "@lib/utils/textConverter";
 import CryptoOGs from "@partials/CryptoOGs";
 import ListingTabs from "@components/ListingTabs";
+import {
+  paginatedCanonical,
+  paginatedTitle,
+  paginatedDescription,
+} from "@lib/utils/pagination";
 
 const CryptoOgPagination = ({
   ogIndex,
@@ -15,20 +20,31 @@ const CryptoOgPagination = ({
 }) => {
   const { frontmatter } = ogIndex;
   const { title } = frontmatter;
+  const metaTitle = paginatedTitle(
+    "Crypto OGs | Pioneers & Visionaries of the Crypto World - Crypto Wiki",
+    currentPage
+  );
 
   return (
     <Base
-      title="Crypto OGs | Pioneers & Visionaries of the Crypto World - Crypto Wiki"
-      meta_title="Crypto OGs | Pioneers & Visionaries of the Crypto World - Crypto Wiki"
-      description="Discover the legends of crypto like Satoshi Nakamoto, Vitalik Buterin, and CZ. Explore their innovations, investments, and lasting impact on blockchain technology."
+      title={metaTitle}
+      meta_title={metaTitle}
+      description={paginatedDescription(
+        "Discover the legends of crypto like Satoshi Nakamoto, Vitalik Buterin, and CZ. Explore their innovations, investments, and lasting impact on blockchain technology.",
+        currentPage
+      )}
       image="/images/meta-image.png"
-      canonical={`${config.site.base_url}/crypto-ogs`}
+      canonical={paginatedCanonical("/crypto-ogs", currentPage)}
       isApp={isApp}
     >
       <section className="section">
         <div className="container text-center">
           {markdownify(title, "h1", "h1 mb-8")}
-          <ListingTabs basePath="/crypto-ogs" active="latest" defaultLabel="Featured" />
+          <ListingTabs
+            basePath="/crypto-ogs"
+            active="latest"
+            defaultLabel="Featured"
+          />
           <CryptoOGs ogs={ogs} />
           <Pagination
             section="crypto-ogs"

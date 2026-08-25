@@ -4,7 +4,6 @@ import Head from "next/head";
 import Script from "next/script";
 import { Mulish } from "next/font/google";
 import { useEffect, useState } from "react";
-import TagManager from "react-gtm-module";
 import "styles/style.scss";
 
 // Self-hosted at build time by next/font. This replaces a client-side fetch of
@@ -34,17 +33,6 @@ const MyApp = ({ Component, pageProps }) => {
   useEffect(() => {
     if (isApp) {
       localStorage.setItem("isApp", "true");
-    }
-  }, [isApp]);
-
-  useEffect(() => {
-    const tagManagerArgs = {
-      gtmId: config.params.tag_manager_id,
-    };
-    if (!isApp && config.params.tag_manager_id) {
-      setTimeout(() => {
-        TagManager.initialize(tagManagerArgs);
-      }, 5000);
     }
   }, [isApp]);
 

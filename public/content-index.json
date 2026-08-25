@@ -66,6 +66,13 @@
     },
     {
       "type": "crypto-ogs",
+      "slug": "emin-gun-sirer",
+      "title": "Emin Gün Sirer",
+      "url": "https://www.thecrypto.wiki/crypto-ogs/emin-gun-sirer",
+      "date": "2026-08-24T00:00:00.000Z"
+    },
+    {
+      "type": "crypto-ogs",
       "slug": "gavin-wood",
       "title": "Gavin Wood",
       "url": "https://www.thecrypto.wiki/crypto-ogs/gavin-wood",
@@ -854,6 +861,13 @@
       "title": "Who Controls Bitcoin's Price? Whales, Dev's or Governments?",
       "url": "https://www.thecrypto.wiki/posts/who-controls-bitcoins-price",
       "date": "2025-09-05T00:00:00.000Z"
+    },
+    {
+      "type": "videos",
+      "slug": "bitcoin-price",
+      "title": "Who Controls Bitcoin's Price? Not Who You Think",
+      "url": "https://www.thecrypto.wiki/videos/bitcoin-price",
+      "date": "2026-08-23T22:34:00.000Z"
     },
     {
       "type": "videos",

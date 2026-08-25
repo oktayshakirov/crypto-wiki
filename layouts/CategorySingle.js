@@ -1,9 +1,13 @@
-import config from "@config/config.json";
 import Base from "@layouts/Baseof";
 import Posts from "@partials/Posts";
 import Pagination from "@components/Pagination";
 import { FaArrowLeft } from "react-icons/fa";
 import Link from "next/link";
+import {
+  paginatedCanonical,
+  paginatedTitle,
+  paginatedDescription,
+} from "@lib/utils/pagination";
 
 const CategoryLayout = ({
   category,
@@ -14,13 +18,24 @@ const CategoryLayout = ({
   totalPages,
   isApp,
 }) => {
+  const metaTitle = paginatedTitle(
+    `Discover ${category} posts | News, Guides & Analysis - Crypto Wiki`,
+    currentPage
+  );
+
   return (
     <Base
-      title={`Discover ${category} posts | News, Guides & Analysis - Crypto Wiki`}
-      meta_title={`Discover ${category} posts | News, Guides & Analysis - Crypto Wiki`}
-      description={`Explore the latest Crypto ${category} trends, expert analysis, and detailed guides. Perfect for beginners and enthusiasts looking to deepen their crypto knowledge.`}
+      title={metaTitle}
+      meta_title={metaTitle}
+      description={paginatedDescription(
+        `Explore the latest Crypto ${category} trends, expert analysis, and detailed guides. Perfect for beginners and enthusiasts looking to deepen their crypto knowledge.`,
+        currentPage
+      )}
       image="/images/meta-image.png"
-      canonical={`${config.site.base_url}/categories/${category.toLowerCase()}`}
+      canonical={paginatedCanonical(
+        `/categories/${category.toLowerCase()}`,
+        currentPage
+      )}
       isApp={isApp}
     >
       <div className="section">
