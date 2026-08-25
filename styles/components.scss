@@ -202,7 +202,11 @@ $table-surface-strong: #292929; // surface + 5% white
 
     &::before {
       left: 0;
-      background: linear-gradient(to right, $table-surface, rgba(30, 30, 30, 0));
+      background: linear-gradient(
+        to right,
+        $table-surface,
+        rgba(30, 30, 30, 0)
+      );
     }
 
     &::after {
@@ -420,7 +424,7 @@ $table-surface-strong: #292929; // surface + 5% white
 
   .post-meta__panel,
   .post-meta[data-expanded="true"] .post-meta__panel {
-    @apply flex flex-wrap flex-row items-center justify-center gap-x-4 pt-0;
+    @apply flex flex-row flex-wrap items-center justify-center gap-x-4 pt-0;
   }
 }
 
@@ -435,14 +439,15 @@ div:has(> ins.adsbygoogle[data-ad-status="unfilled"]) {
   display: none !important;
 }
 
-// Sort tabs above a listing. Two static routes rather than a toggle, so the
-// active one is whichever page you are on.
+// Sort tabs above a listing. A static route per ordering rather than a toggle,
+// so the active one is whichever page you are on. Sections with three of them
+// wrap rather than overflow on a narrow screen.
 .listing-tabs {
-  @apply mb-6 inline-flex rounded-lg border border-white/10 bg-theme-light p-1;
+  @apply mb-6 inline-flex max-w-full flex-wrap justify-center rounded-lg border border-white/10 bg-theme-light p-1;
 }
 
 .listing-tabs__tab {
-  @apply inline-flex min-h-[40px] items-center rounded-md px-4 text-sm transition;
+  @apply inline-flex min-h-[40px] items-center rounded-md px-3 text-sm transition sm:px-4;
 
   &:hover {
     @apply text-primary;

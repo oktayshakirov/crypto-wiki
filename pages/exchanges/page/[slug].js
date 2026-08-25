@@ -42,8 +42,9 @@ const ExchangePagination = ({
           {markdownify(title, "h1", "h1 mb-8")}
           <ListingTabs
             basePath="/exchanges"
-            active="latest"
+            active="default"
             defaultLabel="Featured"
+            hasLatest
           />
           <Exchanges exchanges={exchanges} />
           <Pagination

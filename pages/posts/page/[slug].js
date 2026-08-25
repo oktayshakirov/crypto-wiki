@@ -74,7 +74,7 @@ const PostPagination = ({
             </ul>
           </div>
           {markdownify(title, "h1", "h1 mb-8")}
-          <ListingTabs basePath="/posts" active="latest" />
+          <ListingTabs basePath="/posts" active="default" />
           <Posts posts={posts} />
           <Pagination
             section="posts"

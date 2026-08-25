@@ -42,8 +42,9 @@ const CryptoOgPagination = ({
           {markdownify(title, "h1", "h1 mb-8")}
           <ListingTabs
             basePath="/crypto-ogs"
-            active="latest"
+            active="default"
             defaultLabel="Featured"
+            hasLatest
           />
           <CryptoOGs ogs={ogs} />
           <Pagination
