@@ -1,4 +1,3 @@
-import config from "@config/config.json";
 import { JsonContext } from "context/state";
 import Head from "next/head";
 import Script from "next/script";
