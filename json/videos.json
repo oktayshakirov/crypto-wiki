@@ -283,6 +283,55 @@
           "text": "Which changes what is worth watching. Not the whale wallets. By the time a big transfer shows up, the trade is already done. Watch how much bitcoin is sitting on exchanges instead. Coins moving onto an exchange are getting ready to sell. Coins moving off are going to sleep. So - back to the morning you woke up to a different number. The question was never who moved it. It is how few people were left to buy. Know that, and it stops looking like a decision, and starts looking like a room changing its mind at once. The full breakdown is linked below, and nothing here is financial advice. If that was useful, subscribe."
         }
       ]
+    },
+    {
+      "slug": "proof-of-stake",
+      "id": "qvlEdGrduW0",
+      "kind": "long",
+      "title": "What Is Proof of Stake? The Blockchain Without Miners",
+      "description": "Ethereum turned off every miner it had in 2022 and nothing broke. Here is what actually replaced the hardware.",
+      "uploadDate": "2026-08-26T23:12:35Z",
+      "duration": "PT3M27S",
+      "seconds": 207,
+      "poster": "/images/videos/proof-of-stake.webp",
+      "target": {
+        "type": "posts",
+        "slug": "what-is-proof-of-stake"
+      },
+      "alsoOn": [],
+      "placement": "auto",
+      "chapters": [
+        {
+          "start": 0,
+          "title": "The night mining stopped",
+          "text": "In twenty twenty-two, one of the biggest networks in crypto turned off every miner it had. Overnight. Nothing broke. So what was actually securing it instead? Stay to the end and you will know how a blockchain stays honest without burning a single watt to prove it - and the number that made the switch possible. Ninety-nine percent. That is roughly how much less electricity the network now uses. Not a smaller mining operation. No mining at all."
+        },
+        {
+          "start": 28,
+          "title": "So what replaced the machines?",
+          "text": "Proof of work spends electricity to prove you did not cheat. Proof of stake spends something else instead. Money. Validators lock up a stake of the network's own coin as collateral. It works like a security deposit. Behave, and you earn rewards. Cheat, and the protocol can take the deposit itself. No warehouse. No fans. No electricity bill to win."
+        },
+        {
+          "start": 55,
+          "title": "So how do you actually become a validator?",
+          "text": "On Ethereum, the entry price is 32 ETH. Lock it up, and you are one of the validators. From there, it is the same five steps every time. Lock the stake as collateral. Get picked - stake weight, plus randomness. Propose the block. Other validators vote yes. Get paid, or get slashed. The randomness matters. Otherwise the richest wallet would win every single time. And once two-thirds of the validators agree, the block is done. No more waiting for another rig to catch up."
+        },
+        {
+          "start": 89,
+          "title": "So what actually stops them lying?",
+          "text": "The word for this is slashing. In proof of work, a bad miner just wastes electricity. In proof of stake, a bad validator loses money - automatically. Four things trigger it, and the protocol catches all of them itself. Signing two conflicting blocks. Going offline for too long. Proposing an invalid block. Trying to rewrite old history. Any one of those, and part of the stake is gone before you can argue about it. No court. No refund. The code just runs."
+        },
+        {
+          "start": 122,
+          "title": "So did it just trade one problem for another?",
+          "text": "Proof of stake fixed the energy problem. It did not fix scale. It swapped one kind of advantage for another. Three problems came with it. The rich can compound. Staking pools concentrate the vote. An old key could still try to rewrite the past. None of them is hypothetical. All three are on the criticism list of every major network. The richest wallets do not need a warehouse. They just need to already be rich. So call it a fair trade, or call it a new kind of gatekeeper. Either way, it is not neutral."
+        },
+        {
+          "start": 159,
+          "title": "So which one actually wins?",
+          "text": "Neither one is free. Proof of work and proof of stake are just two different bets on what keeps a stranger honest. Put them side by side. Proof of work. Expensive hardware. A real electricity bill. Anyone with a rig can try. Now proof of stake. A staked deposit instead. Almost no running cost. Money buys the entry, not effort. Neither one asks you to trust a stranger. Both ask you to trust the cost of lying. So - back to that night in twenty twenty-two. The miners did not need saving. They needed replacing. And they were - by a deposit, not a machine. The full breakdown is linked below, and nothing here is financial advice. If that was useful, subscribe."
+        }
+      ]
     }
   ],
   "_fields": {
