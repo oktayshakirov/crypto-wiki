@@ -332,6 +332,55 @@
           "text": "Neither one is free. Proof of work and proof of stake are just two different bets on what keeps a stranger honest. Put them side by side. Proof of work. Expensive hardware. A real electricity bill. Anyone with a rig can try. Now proof of stake. A staked deposit instead. Almost no running cost. Money buys the entry, not effort. Neither one asks you to trust a stranger. Both ask you to trust the cost of lying. So - back to that night in twenty twenty-two. The miners did not need saving. They needed replacing. And they were - by a deposit, not a machine. The full breakdown is linked below, and nothing here is financial advice. If that was useful, subscribe."
         }
       ]
+    },
+    {
+      "slug": "quantum-crypto",
+      "id": "gV3bjCBv-ug",
+      "kind": "long",
+      "title": "Quantum Computers vs. Crypto: What Actually Breaks",
+      "description": "A quantum computer cracking Bitcoin overnight is the headline. The real risk right now is narrower - and it is already on the chain.",
+      "uploadDate": "2026-08-31T00:53:37Z",
+      "duration": "PT3M27S",
+      "seconds": 207,
+      "poster": "/images/videos/quantum-crypto.webp",
+      "target": {
+        "type": "posts",
+        "slug": "quantum-computers-and-crypto"
+      },
+      "alsoOn": [],
+      "placement": "auto",
+      "chapters": [
+        {
+          "start": 0,
+          "title": "What quantum computers threaten",
+          "text": "Quantum computers are coming for crypto. But not the way the headlines say. The scary version is one machine. It cracks Bitcoin overnight. Every wallet, drained at once. That machine needs millions of error-free qubits. The best one today has a few hundred. And they are noisy. Nobody serious names a date before the twenty-thirties. So the chain is not falling this year. But the clock has already started. And some of your coins are exposed right now."
+        },
+        {
+          "start": 28,
+          "title": "What can a quantum computer break?",
+          "text": "Every blockchain runs on two kinds of math. Signatures prove a coin is yours. Hashing runs mining, and builds your address. Signatures. They prove a coin is yours. One-way math, for now. A quantum computer can reverse it. Now hashing. It runs mining and addresses. A quantum computer only half-dents it. A longer hash fixes that. So a quantum computer does not break the chain. It breaks the signature. It comes for your key."
+        },
+        {
+          "start": 59,
+          "title": "Is your key already public?",
+          "text": "It depends on one thing. Have you ever spent from that address? Start with your private key. It creates your public key. Your address is just a hash of that. While you only receive, the key stays hidden. Your first spend puts it in the open. Never spent from an address? Then there is nothing there to break. Yet. But spend once, and your wallet publishes the key. Onto the permanent record. Forever. Every address you have spent from is exposed. Reuse one, and it just sits there. Waiting."
+        },
+        {
+          "start": 92,
+          "title": "Harvest now, decrypt later",
+          "text": "Here is why today matters. An attacker copies your exposed key now. It is public. It is free. It is already on chain. Then they wait for the hardware. And break it years later. The name for this is: harvest now, decrypt later. And a blockchain is the perfect thing to harvest. It is a public record that never forgets. You cannot un-publish a key from twenty seventeen."
+        },
+        {
+          "start": 119,
+          "title": "Can't they just patch it?",
+          "text": "They can. It has already started. Researchers picked new signature schemes. Quantum computers cannot reverse them. The first ones were locked in, in twenty twenty-four. The math is the easy part. Moving everyone onto it is not. A coordinated upgrade? Doable. A new address format? Doable. Every wallet moving at once? Doable. Coins with lost keys? Never. Small networks that planned ahead have it easy. The big chains are still working on it. But that last answer never changes. Lost wallets. Forgotten coins. The oldest ones of all. They stay on the old math. In the open. For good."
+        },
+        {
+          "start": 160,
+          "title": "The chain holds. Your key is the target.",
+          "text": "So, how worried should you be? The overnight-doomsday version is still years away. And the networks would get a warning. The real risk is quieter than that. Exposed keys on every address you have spent from. A record that keeps them forever. A migration no one has run at this scale. None of it needs the doomsday machine. It just needs time. So, a question for you. Are you worried about quantum computers yet? And what are you doing to keep your crypto safe? Tell me in the comments. The full breakdown is linked below, and nothing here is financial advice. If this helped, subscribe for more."
+        }
+      ]
     }
   ],
   "_fields": {
