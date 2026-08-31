@@ -149,12 +149,12 @@
         {
           "start": 161,
           "title": "So where is the money actually made?",
-          "text": "Bolting the frame together is a Saturday afternoon. The half that decides your result happens after it boots, and nobody photographs it. You install the mining system. Then the drivers. Then the mining software. You join a pool, which shares the work. And then you turn the power down. That last one sounds backwards. It is the whole game. Undervolting lowers what each card draws while keeping almost all of its speed \u2014 and electricity was the deciding number. Watch the temperatures while you do it. Above seventy-five degrees you are trading the hardware's life for numbers you can read today."
+          "text": "Bolting the frame together is a Saturday afternoon. The half that decides your result happens after it boots, and nobody photographs it. You install the mining system. Then the drivers. Then the mining software. You join a pool, which shares the work. And then you turn the power down. That last one sounds backwards. It is the whole game. Undervolting lowers what each card draws while keeping almost all of its speed — and electricity was the deciding number. Watch the temperatures while you do it. Above seventy-five degrees you are trading the hardware's life for numbers you can read today."
         },
         {
           "start": 198,
           "title": "So is it worth it?",
-          "text": "Back to that garage. The frame and the fans were never the hard part. The hard part is that you are running a small power station against people who built theirs next to a dam. So the honest version of the question is not: can I build one. It is: what does your electricity cost? Work that out first. The full parts list and the safety warnings are linked below \u2014 and nothing here is financial advice. If that was useful, subscribe for more videos like this one."
+          "text": "Back to that garage. The frame and the fans were never the hard part. The hard part is that you are running a small power station against people who built theirs next to a dam. So the honest version of the question is not: can I build one. It is: what does your electricity cost? Work that out first. The full parts list and the safety warnings are linked below — and nothing here is financial advice. If that was useful, subscribe for more videos like this one."
         }
       ]
     },
@@ -379,6 +379,60 @@
           "start": 160,
           "title": "The chain holds. Your key is the target.",
           "text": "So, how worried should you be? The overnight-doomsday version is still years away. And the networks would get a warning. The real risk is quieter than that. Exposed keys on every address you have spent from. A record that keeps them forever. A migration no one has run at this scale. None of it needs the doomsday machine. It just needs time. So, a question for you. Are you worried about quantum computers yet? And what are you doing to keep your crypto safe? Tell me in the comments. The full breakdown is linked below, and nothing here is financial advice. If this helped, subscribe for more."
+        }
+      ]
+    },
+    {
+      "slug": "ruja-ignatova",
+      "id": "L0guMaj8z_I",
+      "kind": "long",
+      "title": "How OneCoin Sold $4 Billion of a Coin That Didn't Exist",
+      "description": "OneCoin took in over $4 billion with no blockchain and no coins. Here is how the con worked, and the check that would have caught it.",
+      "uploadDate": "2026-08-31T15:40:10Z",
+      "duration": "PT3M56S",
+      "seconds": 236,
+      "poster": "/images/videos/ruja-ignatova.webp",
+      "target": {
+        "type": "crypto-ogs",
+        "slug": "ruja-ignatova"
+      },
+      "alsoOn": [],
+      "placement": "auto",
+      "chapters": [
+        {
+          "start": 0,
+          "title": "The coin that was never there",
+          "text": "In 2016, a woman filled Wembley Arena and told a sold-out crowd her cryptocurrency would bury Bitcoin. Her name was Dr. Ruja Ignatova. The cryptocurrency was called OneCoin. Investors put in more than four billion dollars, and some estimates run far higher. There was one problem with OneCoin. It did not exist. There was no blockchain, no coins were ever mined, and that was true from the very first day. Stay to the end and you will know the one check that would have caught it in a minute."
+        },
+        {
+          "start": 31,
+          "title": "Why would anyone believe this?",
+          "text": "Ruja Ignatova was not an obvious con artist. She held a law doctorate from a German university, had studied at Oxford, and had worked at McKinsey. That record did the work a real product could not. OneCoin did not sell a coin. It sold education packages and a commission for every friend you brought in, so money from new members paid the members who joined before them. That is the definition of a Ponzi scheme. On the slides: a coin you could mine, a price that only rose, an exchange to cash out. What was real: a database they could edit, a price set in an office, a system with no way out."
+        },
+        {
+          "start": 72,
+          "title": "So what was OneCoin actually?",
+          "text": "Strip away the events and the branding, and OneCoin was three things. A private database of balances. A website that played a mining animation. An internal exchange where withdrawals mostly failed. No independent blockchain existed. You could not send a OneCoin to anyone outside the system, and no real exchange ever listed it. When members asked to see the blockchain, the company stalled, then said it was being rebuilt. For a coin sold to millions as the next Bitcoin, that is a remarkable thing to be missing."
+        },
+        {
+          "start": 106,
+          "title": "The warnings started in year one",
+          "text": "None of this was hidden. Independent experts flagged OneCoin in its first year. By 2016, financial regulators in Britain, Germany, Italy and more than a dozen other countries had issued public warnings. And OneCoin kept growing anyway. 2014, OneCoin launches. 2016, regulators warn worldwide. October 2017, Ruja disappears. 2019, her brother is arrested. 2022, the FBI Ten Most Wanted list. The warnings were loud. The money was louder."
+        },
+        {
+          "start": 143,
+          "title": "What would have caught it?",
+          "text": "Put yourself in 2016, at one of those events. You do not have to be an expert to check a cryptocurrency. You need four questions. Can you inspect the blockchain yourself? Is it listed somewhere you do not control? Does the product work without recruiting? Can you withdraw today, without a reason? For OneCoin, every honest answer was the same. No. No. No. No. Any one of them, asked out loud in that arena, ended the pitch."
+        },
+        {
+          "start": 170,
+          "title": "Where did she go?",
+          "text": "On the 25th of October 2017, Ruja Ignatova flew from Sofia to Athens. She has not been seen in public since. In 2022 she became the first woman on the FBI's Ten Most Wanted list, and the reward for information reached five million dollars. The people around her did not vanish: Karl Sebastian Greenwood, co-founder; Mark Scott, the lawyer who moved the money; Gilbert Armenta, who laundered hundreds of millions; Irina Dilkinska, head of legal. Her brother Konstantin pleaded guilty and testified against her. Ruja is still missing."
+        },
+        {
+          "start": 207,
+          "title": "A scam, or a lesson?",
+          "text": "Back to that arena in 2016. OneCoin worked because a crowd wanted a coin that only went up, and someone with the right resume told them she had one. The technology was never the point. The check would have taken a minute. Nothing in this video is financial advice. So, what do you think? If you had been in that arena, would you have asked to see the blockchain?"
         }
       ]
     }
