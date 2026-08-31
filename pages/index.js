@@ -222,28 +222,35 @@ const Home = ({
 export default Home;
 
 export const getStaticProps = async () => {
-  const paginationPosts = 6;
-  const paginationOGs = 6;
-  const paginationExchanges = 6;
+  // How many cards each home-page row shows (independent of the listing pages).
+  const homePosts = 6;
+  const homeOGs = 6;
+  const homeExchanges = 6;
   const allPosts = getSinglePage("content/posts");
   const allOGs = getSinglePage("content/crypto-ogs");
   const allExchanges = getSinglePage("content/exchanges");
   const currentPage = 1;
-  const totalPostsPages = Math.ceil(allPosts.length / paginationPosts);
-  const totalOGsPages = Math.ceil(allOGs.length / paginationOGs);
+  // The pagination links point at the listing sections, so the page counts have
+  // to use the sections' own page sizes, not the number of cards shown here.
+  const totalPostsPages = Math.ceil(
+    allPosts.length / config.settings.paginationPosts
+  );
+  const totalOGsPages = Math.ceil(
+    allOGs.length / config.settings.paginationCryptoOGs
+  );
   const totalExchangesPages = Math.ceil(
-    allExchanges.length / paginationExchanges
+    allExchanges.length / config.settings.paginationExchanges
   );
 
-  const currentPosts = allPosts.slice(0, paginationPosts);
+  const currentPosts = allPosts.slice(0, homePosts);
   // Anything already sitting in "Latest" above is skipped, so the two rows
   // never show the same card twice on one screen.
   const latestSlugs = new Set(currentPosts.map((post) => post.slug));
   const mostRead = rankByViews(allPosts, "posts")
     .filter((post) => !latestSlugs.has(post.slug))
     .slice(0, MOST_READ_COUNT);
-  const currentOGs = allOGs.slice(0, paginationOGs);
-  const currentExchanges = allExchanges.slice(0, paginationExchanges);
+  const currentOGs = allOGs.slice(0, homeOGs);
+  const currentExchanges = allExchanges.slice(0, homeExchanges);
 
   return {
     props: {
