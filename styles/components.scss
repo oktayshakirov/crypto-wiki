@@ -83,6 +83,24 @@ $table-surface-strong: #292929; // surface + 5% white
   @apply bg-primary text-primary;
 }
 
+// The outline scroller sits on the dark card surface, so the default scrollbar
+// would paint light-on-dark. Dark-only site, so no light-scheme branch needed.
+.toc-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    @apply rounded-full;
+    background: rgba(255, 255, 255, 0.25);
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
 // The header is sticky and 76px tall, so an in-page anchor would otherwise
 // land its heading underneath it. Applies to instant jumps as well as smooth
 // ones, so it is needed regardless of scroll-behaviour.

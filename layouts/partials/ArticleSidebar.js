@@ -1,7 +1,9 @@
+import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { slugify } from "@lib/utils/textConverter";
 import TableOfContents from "@components/TableOfContents";
+import useStickyRailHeight from "@hooks/useStickyRailHeight";
 
 /**
  * Cards for the exchanges or crypto OGs an article references.
@@ -20,42 +22,40 @@ const MentionedCards = ({ items, heading, basePath, imageShape = "logo" }) => {
       <h2 className="mb-3 text-sm font-bold uppercase tracking-wide opacity-70">
         {heading}
       </h2>
-      {/* Wrapping chips rather than one full-width row per item: a post can
-          reference 5+ exchanges or OGs, and a stack of bordered rows (each
-          with a subtitle line) was the single biggest contributor to the
-          rail's height. Chips pack several per line and need no fixed column
-          count - they degrade gracefully whether there's 1 item or 5. The
-          heading above already says what a click does, so there's no
-          "Read the review/bio" subtitle to make room for here. */}
-      <div className="flex flex-wrap gap-2">
+      <div className="grid grid-cols-1 gap-3">
         {items.map((item) => (
           <Link
             key={item.slug}
             href={`/${basePath}/${slugify(item.frontmatter.title)}`}
-            className="flex items-center gap-2 rounded-full border border-gray-700 py-1 pl-1 pr-3 transition-colors hover:border-primary"
+            className="flex items-center gap-3 rounded-lg border border-gray-700 p-3 transition-colors hover:border-primary"
           >
             {item.frontmatter.image && (
               // base.scss sets a global `img { width: 100% }`, so the image
-              // needs a sized wrapper to stay a thumbnail at chip scale.
-              // Exchange logos are wide banners; OG portraits are square, so
-              // they get a circle instead.
+              // needs a sized wrapper to stay a thumbnail. Exchange logos are
+              // wide banners (8:5 box); OG portraits are square, so they get a
+              // circle instead.
               <span
-                className={`h-6 w-6 shrink-0 overflow-hidden ${
+                className={`flex h-10 w-16 shrink-0 items-center justify-center overflow-hidden ${
                   imageShape === "portrait" ? "rounded-full" : "rounded"
                 }`}
               >
                 <Image
                   src={item.frontmatter.image}
                   alt={item.frontmatter.title}
-                  width={48}
-                  height={48}
+                  width={128}
+                  height={80}
                   className="h-full w-full object-cover"
                   loading="lazy"
                 />
               </span>
             )}
-            <span className="whitespace-nowrap text-xs font-semibold">
-              {item.frontmatter.title}
+            <span className="min-w-0">
+              <span className="block truncate font-semibold">
+                {item.frontmatter.title}
+              </span>
+              <span className="block text-xs opacity-80">
+                {basePath === "exchanges" ? "Read the review" : "Read the bio"}
+              </span>
             </span>
           </Link>
         ))}
@@ -69,27 +69,39 @@ const MentionedCards = ({ items, heading, basePath, imageShape = "logo" }) => {
  * the outline appears as a collapsed <details> above the article instead.
  */
 const ArticleSidebar = ({ toc, exchanges, cryptoOgs }) => {
-  // Matches the H2-only filter TableOfContents applies for variant="sidebar" -
-  // a post with plenty of H3s but under 3 H2s would otherwise pass this guard
-  // while the TOC itself renders nothing, leaving an empty nav in the rail.
-  const hasToc = (toc || []).filter((h) => h.level === 2).length >= 3;
+  const hasToc = toc && toc.length >= 3;
   const hasExchanges = exchanges && exchanges.length > 0;
   const hasCryptoOgs = cryptoOgs && cryptoOgs.length > 0;
+
+  // Hooks run unconditionally, before the early return below.
+  const railRef = useRef(null);
+  const measuredMaxHeight = useStickyRailHeight(railRef);
+
   if (!hasToc && !hasExchanges && !hasCryptoOgs) return null;
 
   return (
     <aside className="hidden text-left xl:sticky xl:top-24 xl:block xl:w-[320px] xl:shrink-0">
-      {/* No inner scroll box: a nested scrollbar next to the page's own read as
-          a "double scroll" and, worse, could crop the last card until the
-          reader also scrolled the main content - the inner box's height was
-          fixed to the viewport, but a sticky element releases and shifts
-          position as the article runs out, so the two didn't stay in sync.
-          Left alone, position: sticky pins the rail while there's room and
-          lets it scroll away with the page as the article ends - one scroll
-          mechanism, always eventually reachable. On a very long outline the
-          tail just isn't visible until later in the article, which is the
-          normal, well-understood tradeoff for a sticky sidebar. */}
-      <div className="flex flex-col gap-8">
+      {/* The rail is bounded to the viewport and scrolls as a single block:
+          anything below the fold of a sticky element can otherwise never be
+          scrolled into view. One scroller rather than a scroller per section -
+          nested ones let a long outline overflow its own box and paint over
+          the cards beneath it.
+
+          max-height is measured live by useStickyRailHeight and kept in sync
+          with the rail's actual on-screen top, not just assumed from the
+          sticky offset - `top-24` only describes where the rail sits while
+          fully pinned. Near the end of the article, position: sticky starts
+          releasing it early so it doesn't overflow the row, and its real top
+          shifts down as that happens. A static `calc(100vh - Xrem)` has no way
+          to know that and can let the box's own bottom edge drift below the
+          true viewport edge - the scrollbar maxes out with the last item still
+          off-screen. The Tailwind class here is only the fallback for the
+          instant before that first measurement lands (SSR and initial paint). */}
+      <div
+        ref={railRef}
+        className="toc-scroll flex max-h-[calc(100vh-7rem)] flex-col gap-8 overflow-y-auto overscroll-contain pr-2"
+        style={measuredMaxHeight ? { maxHeight: measuredMaxHeight } : undefined}
+      >
         <TableOfContents toc={toc} variant="sidebar" />
         <MentionedCards
           items={exchanges}
