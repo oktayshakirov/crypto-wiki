@@ -80,7 +80,7 @@ const PostSingle = ({
       jsonLd={jsonLd}
     >
       <section className="section">
-        <div className="container max-w-[1240px]">
+        <div className="container max-w-[1200px]">
           <GoBackLink option="posts" />
           {/* No max-width on this row: it fills the container so the article
               shares a left edge with the Similar Posts grid below. Only the
@@ -186,7 +186,7 @@ const PostSingle = ({
         </div>
       </section>
       <section className="section">
-        <div className="container max-w-[1240px]">
+        <div className="container max-w-[1200px]">
           <NextPrevNavigation
             prevItem={prevPost}
             nextItem={nextPost}
@@ -196,7 +196,7 @@ const PostSingle = ({
       </section>
       {similarPosts && similarPosts.length > 0 && (
         <section className="section">
-          <div className="container max-w-[1240px]">
+          <div className="container max-w-[1200px]">
             <h2 className="mb-8 text-center">Similar Posts</h2>
             <SimilarPosts posts={similarPosts} />
           </div>
