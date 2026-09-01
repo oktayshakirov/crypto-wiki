@@ -179,7 +179,7 @@ const VideoSingle = ({ video, related, isApp }) => {
               {related.map((item) => (
                 <div
                   key={item.slug}
-                  className="w-full p-4 sm:w-1/2 md:w-1/3 xl:w-1/3"
+                  className="w-full p-4 sm:w-1/2 md:w-1/3 xl:w-1/4"
                 >
                   <VideoCard video={item} />
                 </div>

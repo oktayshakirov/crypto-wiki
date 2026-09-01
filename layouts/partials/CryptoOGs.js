@@ -2,11 +2,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaUser } from "react-icons/fa";
 
+// 1 / 2 / 4 columns, deliberately skipping a 3-across step: these feeds show 8
+// per page, and 8 never divides into rows of 3 without leaving a short one.
+// Four across starts at lg, where the cards come out ~228px - the same density
+// the 3-across md layout already shipped at.
 const CryptoOGs = ({ ogs }) => {
   return (
     <div className="row">
       {ogs.map((og, i) => (
-        <div className="col-12 mb-8 sm:col-6 md:col-4" key={`key-${i}`}>
+        <div className="col-12 mb-8 sm:col-6 lg:col-3" key={`key-${i}`}>
           <Link
             href={`/crypto-ogs/${og.slug}`}
             className="card flex h-full cursor-pointer flex-col justify-between"

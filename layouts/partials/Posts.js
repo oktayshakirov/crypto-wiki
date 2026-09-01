@@ -7,19 +7,19 @@ const Posts = ({ posts }) => {
   return (
     <div className="row">
       {posts.map((post, index) => (
-        <div key={post.slug} className="col-12 mb-7 min-[650px]:col-6">
+        <div key={post.slug} className="col-12 mb-7 min-[650px]:col-6 xl:col-4">
           <Link
             href={`/posts/${post.slug}`}
             className="card flex h-full cursor-pointer flex-col justify-between"
           >
             {post.frontmatter.image && (
-              <div className="relative h-64 w-full">
+              <div className="relative h-64 w-full xl:h-52">
                 <Image
                   className="rounded-lg object-cover"
                   src={post.frontmatter.image}
                   alt={post.frontmatter.title}
                   fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   priority={index === 0}
                   fetchPriority={index === 0 ? "high" : undefined}
                   {...(index !== 0 ? { loading: "lazy" } : {})}

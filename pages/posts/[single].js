@@ -1,6 +1,6 @@
 import PostSingle from "@layouts/PostSingle";
 import { getSinglePage } from "@lib/contentParser";
-import parseMDX from "@lib/utils/mdxParser";
+import { parseMDXWithHeadings } from "@lib/utils/mdxParser";
 import config from "@config/config.json";
 import similerItems from "@lib/utils/similarItems";
 
@@ -9,6 +9,7 @@ const { blog_folder } = config.settings;
 const Article = ({
   post,
   mdxContent,
+  toc,
   prevPost,
   nextPost,
   cryptoOgs,
@@ -23,6 +24,7 @@ const Article = ({
         ...post,
         mdxContent,
       }}
+      toc={toc}
       prevPost={prevPost}
       nextPost={nextPost}
       cryptoOgs={cryptoOgs}
@@ -55,7 +57,9 @@ export const getStaticProps = async ({ params }) => {
   if (!post[0]) {
     return { notFound: true };
   }
-  const mdxContent = await parseMDX(post[0].content);
+  const { mdxSource: mdxContent, toc } = await parseMDXWithHeadings(
+    post[0].content
+  );
 
   const referencedCryptoOgs = post[0].frontmatter["crypto-ogs"] || [];
   const referencedExchanges = post[0].frontmatter.exchanges || [];
@@ -115,6 +119,7 @@ export const getStaticProps = async ({ params }) => {
     props: {
       post: post[0],
       mdxContent: mdxContent,
+      toc: toc,
       prevPost: formatPost(prevPost),
       nextPost: formatPost(nextPost),
       cryptoOgs: cryptoOgs,

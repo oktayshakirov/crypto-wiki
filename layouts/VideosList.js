@@ -66,7 +66,7 @@ const VideosList = ({ videos, currentPage, totalPages, isApp }) => {
                 {videos.map((video) => (
                   <div
                     key={video.slug}
-                    className="col-12 mb-7 min-[650px]:col-6 lg:col-4"
+                    className="col-12 mb-7 min-[650px]:col-6 lg:col-3"
                   >
                     <VideoCard video={video} />
                   </div>

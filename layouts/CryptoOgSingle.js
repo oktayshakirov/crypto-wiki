@@ -68,7 +68,7 @@ const CryptoOgSingle = ({
       <section className="section">
         <div className="container">
           <GoBackLink option="crypto-ogs" />
-          <div className="mb-4 text-center md:px-24">
+          <div className="prose-column mb-4 text-center">
             {image && (
               <div className="mb-8">
                 <Image

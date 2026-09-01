@@ -99,7 +99,7 @@ const Tools = ({ isApp }) => {
       ])}
     >
       <section className="section">
-        <div className="container max-w-6xl">
+        <div className="container">
           <div className="mb-16 text-center">
             {markdownify("CRYPTO TOOLS", "h1", "h1 mb-4")}
             <p className="text-lg text-gray-200 ">
@@ -107,7 +107,7 @@ const Tools = ({ isApp }) => {
               market confidently
             </p>
           </div>
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
             {tools.map((tool, i) => (
               <Link
                 key={`tool-${i}`}

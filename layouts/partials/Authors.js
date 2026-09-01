@@ -5,7 +5,7 @@ const Authors = ({ authors }) => {
   return (
     <div className="row justify-center">
       {authors.map((author, i) => (
-        <div className="col-12 mb-8 sm:col-6 md:col-4" key={`key-${i}`}>
+        <div className="col-12 mb-8 sm:col-6 md:col-4 2xl:col-3" key={`key-${i}`}>
           <div className="group flex h-full flex-col justify-between rounded-lg border border-white p-4 hover:border-primary hover:bg-black hover:bg-opacity-40">
             {author.frontmatter.image && (
               <div className="mb-4 flex items-center justify-center">

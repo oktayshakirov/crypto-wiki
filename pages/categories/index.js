@@ -18,7 +18,7 @@ const Categories = ({ categories, isApp }) => {
       <section className="section">
         <div className="container text-center">
           {markdownify("Categories", "h1", "h1 mb-16")}
-          <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+          <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-8">
             {categories.map((category, i) => (
               <li key={`category-${i}`} className="mb-2">
                 <Link

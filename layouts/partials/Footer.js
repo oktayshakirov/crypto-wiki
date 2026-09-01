@@ -45,7 +45,7 @@ const Footer = ({ isApp }) => {
               </li>
             ))}
           </ul>
-          <div className="flex w-full flex-col items-center space-y-4 lg:flex-row lg:justify-between lg:space-x-8 lg:space-y-0">
+          <div className="flex w-full flex-col items-center space-y-4 lg:mx-auto lg:max-w-4xl lg:flex-row lg:justify-between lg:space-x-8 lg:space-y-0">
             {!isApp && <Social source={social} className="social-icons" />}
             <div className="text-center">
               {markdownify(copyrightText, "p", "text-light")}

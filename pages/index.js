@@ -26,8 +26,10 @@ import config from "@config/config.json";
 import VideoCard from "@components/VideoCard";
 import { longVideos } from "@lib/videos";
 
-// Matches the Latest Posts row.
-const HOME_VIDEO_COUNT = 3;
+// Eight, matching the page size of the /videos, /exchanges and /crypto-ogs
+// feeds these rows preview. Their 1/2/4 column track divides 8 evenly at every
+// width, so no breakpoint ends on a short row.
+const HOME_VIDEO_COUNT = 8;
 
 // Matches the Latest Posts row above it.
 const MOST_READ_COUNT = 6;
@@ -42,6 +44,7 @@ const Home = ({
   ogPages,
   exchangePages,
   videos,
+  videoPages,
   isApp,
 }) => {
   return (
@@ -96,12 +99,17 @@ const Home = ({
                 {videos.map((video) => (
                   <div
                     key={video.slug}
-                    className="w-full p-4 sm:w-1/2 md:w-1/3 xl:w-1/3"
+                    className="w-full p-4 sm:w-1/2 lg:w-1/4"
                   >
                     <VideoCard video={video} />
                   </div>
                 ))}
               </div>
+              <Pagination
+                section="videos"
+                currentPage={currentPage}
+                totalPages={videoPages}
+              />
             </div>
           )}
           <div className="mb-10 mt-6 flex flex-col justify-center space-y-3 md:flex-row md:space-x-3 md:space-y-0">
@@ -224,8 +232,10 @@ export default Home;
 export const getStaticProps = async () => {
   // How many cards each home-page row shows (independent of the listing pages).
   const homePosts = 6;
-  const homeOGs = 6;
-  const homeExchanges = 6;
+  // Match the feed page size so the home preview and the listing pages show
+  // the same number of cards.
+  const homeOGs = 8;
+  const homeExchanges = 8;
   const allPosts = getSinglePage("content/posts");
   const allOGs = getSinglePage("content/crypto-ogs");
   const allExchanges = getSinglePage("content/exchanges");
@@ -240,6 +250,9 @@ export const getStaticProps = async () => {
   );
   const totalExchangesPages = Math.ceil(
     allExchanges.length / config.settings.paginationExchanges
+  );
+  const totalVideoPages = Math.ceil(
+    longVideos().length / config.settings.paginationVideos
   );
 
   const currentPosts = allPosts.slice(0, homePosts);
@@ -296,6 +309,7 @@ export const getStaticProps = async () => {
       postPages: totalPostsPages,
       ogPages: totalOGsPages,
       exchangePages: totalExchangesPages,
+      videoPages: totalVideoPages,
       currentPage,
     },
   };

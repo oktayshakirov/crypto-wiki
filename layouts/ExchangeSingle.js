@@ -87,7 +87,7 @@ const ExchangeSingle = ({
       </section>
       <section className="section">
         <div className="container">
-          <div className="text-center md:px-24">
+          <div className="prose-column text-center">
             {image && (
               <div className="mb-8">
                 <Image

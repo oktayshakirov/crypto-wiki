@@ -35,8 +35,12 @@ module.exports = {
       sm: "540px",
       md: "768px",
       lg: "1024px",
-      xl: "1280px",
-      "2xl": "1536px",
+      // xl/2xl stop short of the conventional 1280/1536 so that the breakpoint
+      // where a grid gains a column is the same width where the container stops
+      // growing. Keeping one scale means `.container` is the only width
+      // authority and `xl:`/`2xl:` variants can never drift out of step with it.
+      xl: "1200px",
+      "2xl": "1440px",
     },
     container: {
       center: true,
@@ -46,6 +50,9 @@ module.exports = {
         DEFAULT: "1.25rem",
         sm: "2rem",
       },
+      // No `screens` override: the container inherits the scale above, so it
+      // caps at 1200px from xl and 1440px from 2xl. The padding sits inside
+      // those numbers - the usable content box is 1136px and 1376px.
     },
     extend: {
       keyframes: {
