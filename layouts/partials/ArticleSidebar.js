@@ -74,12 +74,17 @@ const ArticleSidebar = ({ toc, exchanges, cryptoOgs }) => {
 
   return (
     <aside className="hidden text-left xl:sticky xl:top-24 xl:block xl:w-[320px] xl:shrink-0">
-      {/* 7rem = the 6rem sticky offset plus breathing room. The rail is bounded
-          to the viewport and scrolls as a single block: anything below the fold
-          of a sticky element can otherwise never be scrolled into view. One
-          scroller rather than a scroller per section - nested ones let a long
-          outline overflow its own box and paint over the cards beneath it. */}
-      <div className="toc-scroll flex max-h-[calc(100vh-7rem)] flex-col gap-8 overflow-y-auto overscroll-contain pr-2">
+      {/* No inner scroll box: a nested scrollbar next to the page's own read as
+          a "double scroll" and, worse, could crop the last card until the
+          reader also scrolled the main content - the inner box's height was
+          fixed to the viewport, but a sticky element releases and shifts
+          position as the article runs out, so the two didn't stay in sync.
+          Left alone, position: sticky pins the rail while there's room and
+          lets it scroll away with the page as the article ends - one scroll
+          mechanism, always eventually reachable. On a very long outline the
+          tail just isn't visible until later in the article, which is the
+          normal, well-understood tradeoff for a sticky sidebar. */}
+      <div className="flex flex-col gap-8">
         <TableOfContents toc={toc} variant="sidebar" />
         <MentionedCards
           items={exchanges}
