@@ -177,7 +177,11 @@ const PostSingle = ({
               </div>
               <DisclaimerBanner />
             </article>
-            <ArticleSidebar toc={toc} exchanges={exchanges} />
+            <ArticleSidebar
+              toc={toc}
+              exchanges={exchanges}
+              cryptoOgs={cryptoOgs}
+            />
           </div>
         </div>
       </section>

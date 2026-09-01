@@ -84,8 +84,19 @@ const Home = ({
             currentPage={currentPage}
             totalPages={postPages}
           />
-          {/* No button of its own: the ALL POSTS row below already leads to
-              /posts, where Most popular is one tab away. */}
+          <div className="mb-10 mt-6 flex flex-col justify-center space-y-3 md:flex-row md:space-x-3 md:space-y-0">
+            <Link className="btn-primary flex items-center gap-2" href="/posts">
+              <FaRegNewspaper />
+              <span>ALL POSTS</span>
+            </Link>
+            <Link
+              className="btn-primary flex items-center gap-2"
+              href="/categories"
+            >
+              <FaTags />
+              <span>CATEGORIES</span>
+            </Link>
+          </div>
           {mostRead.length > 0 && (
             <div className="mt-12">
               {markdownify("MOST POPULAR", "h3", "mb-8")}
@@ -94,7 +105,7 @@ const Home = ({
           )}
           {videos.length > 0 && (
             <div className="mt-12">
-              {markdownify("WATCH", "h3", "mb-8")}
+              {markdownify("LATEST VIDEOS", "h3", "mb-8")}
               <div className="flex flex-wrap justify-center text-left">
                 {videos.map((video) => (
                   <div
@@ -110,30 +121,17 @@ const Home = ({
                 currentPage={currentPage}
                 totalPages={videoPages}
               />
+              <div className="mb-10 mt-6 flex justify-center">
+                <Link
+                  className="btn-primary flex items-center gap-2"
+                  href="/videos"
+                >
+                  <FaYoutube />
+                  <span>ALL VIDEOS</span>
+                </Link>
+              </div>
             </div>
           )}
-          <div className="mb-10 mt-6 flex flex-col justify-center space-y-3 md:flex-row md:space-x-3 md:space-y-0">
-            <Link className="btn-primary flex items-center gap-2" href="/posts">
-              <FaRegNewspaper />
-              <span>ALL POSTS</span>
-            </Link>
-            {videos.length > 0 && (
-              <Link
-                className="btn-primary flex items-center gap-2"
-                href="/videos"
-              >
-                <FaYoutube />
-                <span>ALL VIDEOS</span>
-              </Link>
-            )}
-            <Link
-              className="btn-primary flex items-center gap-2"
-              href="/categories"
-            >
-              <FaTags />
-              <span>CATEGORIES</span>
-            </Link>
-          </div>
           {!isApp && <LayoutAd />}
           <div className="card-secondary my-10 p-10">
             <div className="mb-10">
