@@ -1,8 +1,8 @@
 import CryptoOgSingle from "@layouts/CryptoOgSingle";
 import { getSinglePage } from "@lib/contentParser";
-import parseMDX from "@lib/utils/mdxParser";
+import { parseMDXWithHeadings } from "@lib/utils/mdxParser";
 
-const Article = ({ og, mdxContent, prevOg, nextOg, slug, isApp }) => {
+const Article = ({ og, mdxContent, toc, prevOg, nextOg, slug, isApp }) => {
   const { frontmatter, content } = og[0];
 
   return (
@@ -10,6 +10,7 @@ const Article = ({ og, mdxContent, prevOg, nextOg, slug, isApp }) => {
       frontmatter={frontmatter}
       content={content}
       mdxContent={mdxContent}
+      toc={toc}
       prevOg={prevOg}
       nextOg={nextOg}
       slug={slug}
@@ -36,7 +37,9 @@ export const getStaticProps = async ({ params }) => {
   const { single } = params;
   const getOGs = getSinglePage("content/crypto-ogs");
   const og = getOGs.filter((og) => og.slug === single);
-  const mdxContent = await parseMDX(og[0].content);
+  const { mdxSource: mdxContent, toc } = await parseMDXWithHeadings(
+    og[0].content
+  );
 
   const currentIndex = getOGs.findIndex((og) => og.slug === single);
   const prevOg = currentIndex > 0 ? getOGs[currentIndex - 1] : null;
@@ -47,6 +50,7 @@ export const getStaticProps = async ({ params }) => {
     props: {
       og: og,
       mdxContent: mdxContent,
+      toc: toc,
       prevOg: prevOg,
       nextOg: nextOg,
       slug: single,

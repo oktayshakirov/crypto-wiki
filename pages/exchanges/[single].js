@@ -1,10 +1,11 @@
 import ExchangeSingle from "@layouts/ExchangeSingle";
 import { getSinglePage } from "@lib/contentParser";
-import parseMDX from "@lib/utils/mdxParser";
+import { parseMDXWithHeadings } from "@lib/utils/mdxParser";
 
 const Article = ({
   exchange,
   mdxContent,
+  toc,
   prevExchange,
   nextExchange,
   slug,
@@ -17,6 +18,7 @@ const Article = ({
       frontmatter={frontmatter}
       content={content}
       mdxContent={mdxContent}
+      toc={toc}
       prevExchange={prevExchange}
       nextExchange={nextExchange}
       slug={slug}
@@ -43,7 +45,9 @@ export const getStaticProps = async ({ params }) => {
   const { single } = params;
   const getExchanges = getSinglePage("content/exchanges");
   const exchange = getExchanges.filter((exchange) => exchange.slug === single);
-  const mdxContent = await parseMDX(exchange[0].content);
+  const { mdxSource: mdxContent, toc } = await parseMDXWithHeadings(
+    exchange[0].content
+  );
 
   const currentIndex = getExchanges.findIndex(
     (exchange) => exchange.slug === single
@@ -75,6 +79,7 @@ export const getStaticProps = async ({ params }) => {
     props: {
       exchange,
       mdxContent,
+      toc,
       prevExchange,
       nextExchange,
       slug: single,

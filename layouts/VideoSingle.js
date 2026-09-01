@@ -5,6 +5,7 @@ import GoBackLink from "@partials/GoBackLink";
 import PostVideo from "@components/PostVideo";
 import VideoCard from "@components/VideoCard";
 import DisclaimerBanner from "@layouts/components/DisclaimerBanner";
+import VideoSidebar from "@partials/VideoSidebar";
 import config from "@config/config.json";
 import { formatDuration, videoSourceHref } from "@lib/videos";
 import { breadcrumbSchema, videoObjectSchema } from "@lib/utils/jsonLd";
@@ -21,7 +22,7 @@ const timestamp = (seconds) => formatDuration(seconds);
  * which is written narration rather than the article's prose, so it is 450-700
  * words that exist nowhere else on the site.
  */
-const VideoSingle = ({ video, related, isApp }) => {
+const VideoSingle = ({ video, related, source, isApp }) => {
   const url = `${config.site.base_url}/videos/${video.slug}`;
   const sourceHref = videoSourceHref(video);
   const chapters = video.chapters || [];
@@ -71,48 +72,53 @@ const VideoSingle = ({ video, related, isApp }) => {
       jsonLd={jsonLd}
     >
       <section className="section">
-        <div className="container">
+        <div className="container max-w-[1200px]">
           <GoBackLink option="videos" />
-          <article className="mx-auto max-w-4xl">
-            <h1 className="h2 mb-4">{video.title}</h1>
-            <p className="mb-6 text-gray-400">
-              {formatDuration(video.seconds)}
-              {sourceHref && (
-                <>
-                  {" · "}
-                  <Link href={sourceHref} className="text-primary">
-                    Read the full article
-                  </Link>
-                </>
-              )}
-            </p>
+          {/* Same two-column shape as a post: the body keeps a reading measure
+              and the rail takes the source article and the chapter list.
+              `items-start` is what makes the rail's sticky positioning work -
+              stretched to row height it would silently stop sticking. */}
+          <div className="flex flex-col gap-10 xl:flex-row xl:items-start">
+            <article className="min-w-0 flex-1 xl:max-w-[760px]">
+              <h1 className="h2 mb-4">{video.title}</h1>
+              <p className="mb-6 text-gray-400">
+                {formatDuration(video.seconds)}
+                {sourceHref && (
+                  <>
+                    {" · "}
+                    <Link href={sourceHref} className="text-primary">
+                      Read the full article
+                    </Link>
+                  </>
+                )}
+              </p>
 
-            {/* Open by default: on this page the video is what the visitor
+              {/* Open by default: on this page the video is what the visitor
                 came for, unlike the collapsed bar on an article. */}
-            <PostVideo video={video} autoExpand />
+              <PostVideo video={video} autoExpand />
 
-            {chapters.length > 0 && (
-              <>
-                <h2 className="h4 mb-4 mt-10">Chapters</h2>
-                <ul className="mb-10 list-none pl-0">
-                  {chapters.map((chapter) => (
-                    <li key={chapter.start} className="mb-1">
-                      <a
-                        href={`#t-${chapter.start}`}
-                        onClick={jumpToChapter(chapter.start)}
-                        className="inline-flex min-h-[36px] items-center hover:text-primary"
-                      >
-                        <span className="mr-3 tabular-nums text-primary">
-                          {timestamp(chapter.start)}
-                        </span>
-                        {chapter.title}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
+              {chapters.length > 0 && (
+                <>
+                  <h2 className="h4 mb-4 mt-10 xl:hidden">Chapters</h2>
+                  <ul className="mb-10 list-none pl-0 xl:hidden">
+                    {chapters.map((chapter) => (
+                      <li key={chapter.start} className="mb-1">
+                        <a
+                          href={`#t-${chapter.start}`}
+                          onClick={jumpToChapter(chapter.start)}
+                          className="inline-flex min-h-[36px] items-center hover:text-primary"
+                        >
+                          <span className="mr-3 tabular-nums text-primary">
+                            {timestamp(chapter.start)}
+                          </span>
+                          {chapter.title}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
 
-                <h2 className="h4 mb-4">Transcript</h2>
-                {/* Folded away by default. Nobody opens a video page to read
+                  <h2 className="h4 mb-4">Transcript</h2>
+                  {/* Folded away by default. Nobody opens a video page to read
                     six hundred words, and a wall of narration under the player
                     buries the article link and the other videos.
 
@@ -121,59 +127,65 @@ const VideoSingle = ({ video, related, isApp }) => {
                     point of having a transcript. Google reads collapsed content
                     the same either way, but it cannot read what was never
                     rendered. */}
-                <button
-                  type="button"
-                  aria-expanded={transcriptOpen}
-                  aria-controls={transcriptId}
-                  onClick={() => setTranscriptOpen((open) => !open)}
-                  className="mb-2 inline-flex min-h-[44px] items-center text-primary"
-                >
-                  {transcriptOpen
-                    ? "Hide the transcript"
-                    : `Read the transcript (${words} words)`}
-                </button>
-                <div
-                  id={transcriptId}
-                  className={`mb-12 text-left ${
-                    transcriptOpen ? "" : "hidden"
-                  }`}
-                >
-                  {chapters.map((chapter) => (
-                    <div key={chapter.start} id={`t-${chapter.start}`}>
-                      {/* Deliberately outside `.content`: that wrapper styles
+                  <button
+                    type="button"
+                    aria-expanded={transcriptOpen}
+                    aria-controls={transcriptId}
+                    onClick={() => setTranscriptOpen((open) => !open)}
+                    className="mb-2 inline-flex min-h-[44px] items-center text-primary"
+                  >
+                    {transcriptOpen
+                      ? "Hide the transcript"
+                      : `Read the transcript (${words} words)`}
+                  </button>
+                  <div
+                    id={transcriptId}
+                    className={`mb-12 text-left ${
+                      transcriptOpen ? "" : "hidden"
+                    }`}
+                  >
+                    {chapters.map((chapter) => (
+                      <div key={chapter.start} id={`t-${chapter.start}`}>
+                        {/* Deliberately outside `.content`: that wrapper styles
                           headings at article scale, which makes a seven-part
                           transcript read as seven new articles. */}
-                      <h3 className="mb-2 mt-8 scroll-mt-4 text-lg font-semibold">
-                        <span className="mr-3 tabular-nums text-primary">
-                          {timestamp(chapter.start)}
-                        </span>
-                        {chapter.title}
-                      </h3>
-                      <div className="content">
-                        <p>{chapter.text}</p>
+                        <h3 className="mb-2 mt-8 scroll-mt-4 text-lg font-semibold">
+                          <span className="mr-3 tabular-nums text-primary">
+                            {timestamp(chapter.start)}
+                          </span>
+                          {chapter.title}
+                        </h3>
+                        <div className="content">
+                          <p>{chapter.text}</p>
+                        </div>
                       </div>
-                    </div>
-                  ))}
-                </div>
-              </>
-            )}
+                    ))}
+                  </div>
+                </>
+              )}
 
-            {sourceHref && (
-              <p className="mb-8">
-                <Link href={sourceHref} className="text-primary">
-                  Read the full article, with sources &rarr;
-                </Link>
-              </p>
-            )}
+              {sourceHref && (
+                <p className="mb-8">
+                  <Link href={sourceHref} className="text-primary">
+                    Read the full article, with sources &rarr;
+                  </Link>
+                </p>
+              )}
 
-            <DisclaimerBanner />
-          </article>
+              <DisclaimerBanner />
+            </article>
+            <VideoSidebar
+              source={source}
+              chapters={chapters}
+              onJump={jumpToChapter}
+            />
+          </div>
         </div>
       </section>
 
       {related.length > 0 && (
         <section className="section">
-          <div className="container">
+          <div className="container max-w-[1200px]">
             <h2 className="mb-8 text-center">More videos</h2>
             <div className="flex flex-wrap justify-center">
               {related.map((item) => (

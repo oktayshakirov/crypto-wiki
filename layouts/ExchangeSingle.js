@@ -15,6 +15,8 @@ import ViewsCounter from "@components/ViewsCounter";
 import ExchangeFaq from "@components/ExchangeFaq";
 import ExchangeQuickFacts from "@components/ExchangeQuickFacts";
 import RelatedTools from "@components/RelatedTools";
+import EntitySidebar from "@partials/EntitySidebar";
+import TableOfContents from "@components/TableOfContents";
 import {
   breadcrumbSchema,
   exchangeReviewSchema,
@@ -29,6 +31,7 @@ const ExchangeSingle = ({
   frontmatter,
   content,
   mdxContent,
+  toc,
   prevExchange,
   nextExchange,
   slug,
@@ -81,66 +84,85 @@ const ExchangeSingle = ({
       jsonLd={jsonLd}
     >
       <section className="section">
-        <div className="container ">
+        <div className="container max-w-[1200px]">
           <GoBackLink option="exchanges" />
         </div>
       </section>
       <section className="section">
-        <div className="container">
-          <div className="prose-column text-center">
-            {image && (
-              <div className="mb-8">
-                <Image
-                  src={image}
-                  className="mx-auto aspect-auto rounded-lg"
-                  height={250}
-                  width={250}
-                  alt={title}
-                />
-              </div>
-            )}
-            {markdownify(title, "h1", "h1 mb-8")}
-            <div className="mb-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-gray-600 dark:text-gray-400">
-              <ViewsCounter type="exchanges" slug={slug} />
-            </div>
-            <Social source={social} className="social-icons-simple" />
-            <PageVideoProvider video={video}>
-              {/* Above the quick facts, not below: the facts table runs most of
-                  a screen on its own and would push the video out of sight. */}
-              {video?.placement === "auto" && (
-                <div className="text-start">
-                  <PostVideo video={video} />
+        <div className="container max-w-[1200px]">
+          {/* Same two-column shape as a post: the body keeps a reading measure
+              and the rail takes the reference material. `items-start` is what
+              makes the rail's sticky positioning work - stretched to row
+              height it would silently stop sticking. */}
+          <div className="flex flex-col gap-10 xl:flex-row xl:items-start">
+            <div className="min-w-0 flex-1 text-center xl:max-w-[760px]">
+              {image && (
+                <div className="mb-8">
+                  <Image
+                    src={image}
+                    className="mx-auto aspect-auto rounded-lg"
+                    height={250}
+                    width={250}
+                    alt={title}
+                  />
                 </div>
               )}
-              <ExchangeQuickFacts facts={quickFacts} title={title} />
-              <div className="content text-start">
-                <MDXRemote {...mdxContent} components={mdxComponents} />
+              {markdownify(title, "h1", "h1 mb-8")}
+              <div className="mb-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-gray-600 dark:text-gray-400">
+                <ViewsCounter type="exchanges" slug={slug} />
               </div>
-            </PageVideoProvider>
-            {faqs && faqs.length > 0 && (
-              <ExchangeFaq title={title} faqs={faqs} />
-            )}
-            <RelatedTools />
-            <div className="mb-8 mt-8 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-gray-600 dark:text-gray-400">
-              <span className="flex items-center md:mt-0">
-                <FaCalendarAlt className="mr-2 opacity-80" />
-                {updated ? "Last updated: " : ""}
-                {dateFormat(updated || date)}
-              </span>
-              {authors && authors.length > 0 && (
-                <span className="flex items-center md:mt-0">
-                  <span className="mr-2 opacity-80">Reviewed by</span>
-                  <Authors authors={authors} />
-                </span>
+              <div className="xl:hidden">
+                <Social source={social} className="social-icons-simple" />
+              </div>
+              <TableOfContents toc={toc} variant="inline" />
+              <PageVideoProvider video={video}>
+                {/* Above the quick facts, not below: the facts table runs most of
+                  a screen on its own and would push the video out of sight. */}
+                {video?.placement === "auto" && (
+                  <div className="text-start">
+                    <PostVideo video={video} />
+                  </div>
+                )}
+                <div className="xl:hidden">
+                  <ExchangeQuickFacts facts={quickFacts} title={title} />
+                </div>
+                <div className="content text-start">
+                  <MDXRemote {...mdxContent} components={mdxComponents} />
+                </div>
+              </PageVideoProvider>
+              {faqs && faqs.length > 0 && (
+                <ExchangeFaq title={title} faqs={faqs} />
               )}
+              <RelatedTools />
+              <div className="mb-8 mt-8 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-gray-600 dark:text-gray-400">
+                <span className="flex items-center md:mt-0">
+                  <FaCalendarAlt className="mr-2 opacity-80" />
+                  {updated ? "Last updated: " : ""}
+                  {dateFormat(updated || date)}
+                </span>
+                {authors && authors.length > 0 && (
+                  <span className="flex items-center md:mt-0">
+                    <span className="mr-2 opacity-80">Reviewed by</span>
+                    <Authors authors={authors} />
+                  </span>
+                )}
+              </div>
+              <DisclaimerBanner />
             </div>
-            <DisclaimerBanner />
+            <EntitySidebar
+              toc={toc}
+              quickFacts={
+                <ExchangeQuickFacts facts={quickFacts} title={title} compact />
+              }
+              social={social}
+              linksTitle="Official Links"
+            />
           </div>
         </div>
       </section>
       {(prevExchange || nextExchange) && (
         <section className="section">
-          <div className="container">
+          <div className="container max-w-[1200px]">
             <NextPrevNavigation
               prevItem={prevExchange}
               nextItem={nextExchange}

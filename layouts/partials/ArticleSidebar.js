@@ -1,9 +1,8 @@
-import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { slugify } from "@lib/utils/textConverter";
 import TableOfContents from "@components/TableOfContents";
-import useStickyRailHeight from "@hooks/useStickyRailHeight";
+import StickyRail, { RailSection } from "@partials/StickyRail";
 
 /**
  * Cards for the exchanges or crypto OGs an article references.
@@ -18,10 +17,7 @@ const MentionedCards = ({ items, heading, basePath, imageShape = "logo" }) => {
   if (!items || !items.length) return null;
 
   return (
-    <div className="text-start">
-      <h2 className="mb-3 text-sm font-bold uppercase tracking-wide opacity-70">
-        {heading}
-      </h2>
+    <RailSection title={heading}>
       <div className="grid grid-cols-1 gap-3">
         {items.map((item) => (
           <Link
@@ -60,63 +56,35 @@ const MentionedCards = ({ items, heading, basePath, imageShape = "logo" }) => {
           </Link>
         ))}
       </div>
-    </div>
+    </RailSection>
   );
 };
 
 /**
- * The sticky desktop rail beside a post. Rendered only from xl up - below that
- * the outline appears as a collapsed <details> above the article instead.
+ * The rail beside a post: its outline, plus the exchanges and OGs it cites.
  */
 const ArticleSidebar = ({ toc, exchanges, cryptoOgs }) => {
   const hasToc = toc && toc.length >= 3;
   const hasExchanges = exchanges && exchanges.length > 0;
   const hasCryptoOgs = cryptoOgs && cryptoOgs.length > 0;
-
-  // Hooks run unconditionally, before the early return below.
-  const railRef = useRef(null);
-  const measuredMaxHeight = useStickyRailHeight(railRef);
-
   if (!hasToc && !hasExchanges && !hasCryptoOgs) return null;
 
   return (
-    <aside className="hidden text-left xl:sticky xl:top-24 xl:block xl:w-[320px] xl:shrink-0">
-      {/* The rail is bounded to the viewport and scrolls as a single block:
-          anything below the fold of a sticky element can otherwise never be
-          scrolled into view. One scroller rather than a scroller per section -
-          nested ones let a long outline overflow its own box and paint over
-          the cards beneath it.
-
-          max-height is measured live by useStickyRailHeight and kept in sync
-          with the rail's actual on-screen top, not just assumed from the
-          sticky offset - `top-24` only describes where the rail sits while
-          fully pinned. Near the end of the article, position: sticky starts
-          releasing it early so it doesn't overflow the row, and its real top
-          shifts down as that happens. A static `calc(100vh - Xrem)` has no way
-          to know that and can let the box's own bottom edge drift below the
-          true viewport edge - the scrollbar maxes out with the last item still
-          off-screen. The Tailwind class here is only the fallback for the
-          instant before that first measurement lands (SSR and initial paint). */}
-      <div
-        ref={railRef}
-        className="toc-scroll flex max-h-[calc(100vh-7rem)] flex-col gap-8 overflow-y-auto overscroll-contain pr-2"
-        style={measuredMaxHeight ? { maxHeight: measuredMaxHeight } : undefined}
-      >
-        <TableOfContents toc={toc} variant="sidebar" />
-        <MentionedCards
-          items={exchanges}
-          heading="Mentioned Exchanges"
-          basePath="exchanges"
-          imageShape="logo"
-        />
-        <MentionedCards
-          items={cryptoOgs}
-          heading="Mentioned Crypto OGs"
-          basePath="crypto-ogs"
-          imageShape="portrait"
-        />
-      </div>
-    </aside>
+    <StickyRail>
+      <TableOfContents toc={toc} variant="sidebar" />
+      <MentionedCards
+        items={exchanges}
+        heading="Mentioned Exchanges"
+        basePath="exchanges"
+        imageShape="logo"
+      />
+      <MentionedCards
+        items={cryptoOgs}
+        heading="Mentioned Crypto OGs"
+        basePath="crypto-ogs"
+        imageShape="portrait"
+      />
+    </StickyRail>
   );
 };
 
