@@ -101,9 +101,7 @@ const CryptoOgSingle = ({
               <div className="mb-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-gray-600 dark:text-gray-400">
                 <ViewsCounter type="crypto-ogs" slug={slug} />
               </div>
-              <div className="xl:hidden">
-                <Social source={social} className="social-icons-simple" />
-              </div>
+              <Social source={social} className="social-icons-simple" />
               <TableOfContents toc={toc} variant="inline" />
               <PageVideoProvider video={video}>
                 {/* Above the quick facts, not below: the facts table runs most of
@@ -113,9 +111,7 @@ const CryptoOgSingle = ({
                     <PostVideo video={video} />
                   </div>
                 )}
-                <div className="xl:hidden">
-                  <PersonQuickFacts facts={quickFacts} title={title} />
-                </div>
+                <PersonQuickFacts facts={quickFacts} title={title} />
                 <div className="content text-start">
                   <MDXRemote {...mdxContent} components={mdxComponents} />
                 </div>
@@ -134,17 +130,18 @@ const CryptoOgSingle = ({
             </div>
             <EntitySidebar
               toc={toc}
-              quickFacts={
-                <PersonQuickFacts facts={quickFacts} title={title} compact />
-              }
-              social={social}
-              linksTitle="Links"
+              prevItem={prevOg}
+              nextItem={nextOg}
+              basePath="crypto-ogs"
+              imageShape="portrait"
             />
           </div>
         </div>
       </section>
       {(prevOg || nextOg) && (
-        <section className="section">
+        // xl:hidden: the rail already shows these as compact cards under the
+        // outline from xl up.
+        <section className="section xl:hidden">
           <div className="container max-w-[1200px]">
             <NextPrevNavigation
               prevItem={prevOg}

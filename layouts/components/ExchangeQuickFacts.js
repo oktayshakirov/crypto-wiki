@@ -23,32 +23,10 @@ const FIELDS = [
   ["availability", "Availability"],
 ];
 
-const ExchangeQuickFacts = ({ facts, title, compact = false }) => {
+const ExchangeQuickFacts = ({ facts, title }) => {
   if (!facts) return null;
   const rows = FIELDS.filter(([key]) => facts[key]);
   if (!rows.length) return null;
-
-  // In the sidebar rail the two-column table has nowhere to go: `sm:` is a
-  // viewport query, not a container query, so it would render two ~140px
-  // columns inside a 320px rail. Stacked label-over-value rows read better at
-  // that width, and RailSection already supplies the section heading.
-  if (compact) {
-    return (
-      <dl className="grid grid-cols-1 gap-y-2">
-        {rows.map(([key, label]) => (
-          <div
-            key={key}
-            className="flex flex-col border-b border-gray-800 pb-2 last:border-b-0 last:pb-0"
-          >
-            <dt className="text-xs font-semibold uppercase tracking-wide opacity-60">
-              {label}
-            </dt>
-            <dd className="m-0 text-sm">{facts[key]}</dd>
-          </div>
-        ))}
-      </dl>
-    );
-  }
 
   // Dividers separate rows, so the bottom row must not draw one. The grid is
   // 1 column on mobile and 2 from `sm` up, so which items sit in that bottom
