@@ -20,40 +20,42 @@ const MentionedCards = ({ items, heading, basePath, imageShape = "logo" }) => {
       <h2 className="mb-3 text-sm font-bold uppercase tracking-wide opacity-70">
         {heading}
       </h2>
-      <div className="grid grid-cols-1 gap-3">
+      {/* Wrapping chips rather than one full-width row per item: a post can
+          reference 5+ exchanges or OGs, and a stack of bordered rows (each
+          with a subtitle line) was the single biggest contributor to the
+          rail's height. Chips pack several per line and need no fixed column
+          count - they degrade gracefully whether there's 1 item or 5. The
+          heading above already says what a click does, so there's no
+          "Read the review/bio" subtitle to make room for here. */}
+      <div className="flex flex-wrap gap-2">
         {items.map((item) => (
           <Link
             key={item.slug}
             href={`/${basePath}/${slugify(item.frontmatter.title)}`}
-            className="flex items-center gap-3 rounded-lg border border-gray-700 p-3 transition-colors hover:border-primary"
+            className="flex items-center gap-2 rounded-full border border-gray-700 py-1 pl-1 pr-3 transition-colors hover:border-primary"
           >
             {item.frontmatter.image && (
               // base.scss sets a global `img { width: 100% }`, so the image
-              // needs a sized wrapper to stay a thumbnail. Exchange logos are
-              // wide banners (8:5 box); OG portraits are square, so they get a
-              // circle instead.
+              // needs a sized wrapper to stay a thumbnail at chip scale.
+              // Exchange logos are wide banners; OG portraits are square, so
+              // they get a circle instead.
               <span
-                className={`flex h-10 w-16 shrink-0 items-center justify-center overflow-hidden ${
+                className={`h-6 w-6 shrink-0 overflow-hidden ${
                   imageShape === "portrait" ? "rounded-full" : "rounded"
                 }`}
               >
                 <Image
                   src={item.frontmatter.image}
                   alt={item.frontmatter.title}
-                  width={128}
-                  height={80}
+                  width={48}
+                  height={48}
                   className="h-full w-full object-cover"
                   loading="lazy"
                 />
               </span>
             )}
-            <span className="min-w-0">
-              <span className="block truncate font-semibold">
-                {item.frontmatter.title}
-              </span>
-              <span className="block text-xs opacity-80">
-                {basePath === "exchanges" ? "Read the review" : "Read the bio"}
-              </span>
+            <span className="whitespace-nowrap text-xs font-semibold">
+              {item.frontmatter.title}
             </span>
           </Link>
         ))}
@@ -67,7 +69,10 @@ const MentionedCards = ({ items, heading, basePath, imageShape = "logo" }) => {
  * the outline appears as a collapsed <details> above the article instead.
  */
 const ArticleSidebar = ({ toc, exchanges, cryptoOgs }) => {
-  const hasToc = toc && toc.length >= 3;
+  // Matches the H2-only filter TableOfContents applies for variant="sidebar" -
+  // a post with plenty of H3s but under 3 H2s would otherwise pass this guard
+  // while the TOC itself renders nothing, leaving an empty nav in the rail.
+  const hasToc = (toc || []).filter((h) => h.level === 2).length >= 3;
   const hasExchanges = exchanges && exchanges.length > 0;
   const hasCryptoOgs = cryptoOgs && cryptoOgs.length > 0;
   if (!hasToc && !hasExchanges && !hasCryptoOgs) return null;

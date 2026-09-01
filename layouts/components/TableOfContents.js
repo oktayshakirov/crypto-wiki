@@ -13,14 +13,25 @@ const MIN_HEADINGS = 3;
  * links are in the HTML for crawlers rather than appearing after hydration.
  */
 const TableOfContents = ({ toc, variant = "sidebar" }) => {
-  // Hooks run unconditionally; the early return happens after.
-  const activeId = useScrollSpy(variant === "sidebar" ? toc : null);
+  // Chapter-level nav on desktop: H2+H3 both regularly push a post's outline
+  // past a single viewport (worst case 25 headings), and the sidebar has
+  // nowhere to grow without either an internal scroll or making readers hunt
+  // for the tail near the end of the article - both tried, both bad. Mobile's
+  // tap-open accordion isn't height-constrained, so it keeps full detail.
+  // Computed before the hook call below since scroll-spy needs to track the
+  // same entries the nav actually lists - highlighting an H3 that isn't shown
+  // would leave the visible H2 above it looking inactive while reading it.
+  const entries =
+    variant === "sidebar" ? (toc || []).filter((h) => h.level === 2) : toc;
 
-  if (!toc || toc.length < MIN_HEADINGS) return null;
+  // Hooks run unconditionally; the early return happens after.
+  const activeId = useScrollSpy(variant === "sidebar" ? entries : null);
+
+  if (!entries || entries.length < MIN_HEADINGS) return null;
 
   const list = (
     <ul className="space-y-1 text-sm">
-      {toc.map((heading) => {
+      {entries.map((heading) => {
         const isActive = variant === "sidebar" && activeId === heading.id;
         return (
           <li key={heading.id} className={heading.level === 3 ? "pl-4" : ""}>
