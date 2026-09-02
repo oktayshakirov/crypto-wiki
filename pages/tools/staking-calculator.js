@@ -365,9 +365,40 @@ const StakingCalculatorPage = ({ isApp }) => {
               </div>
             </div>
 
-            <div className="mt-8 border-t border-gray-200 pt-6 text-center dark:border-gray-700">
-              <h2 className="h4 mb-3">Explore More Crypto Resources</h2>
-              <p>Learn more about crypto and related tools:</p>
+            <div className="mt-8 border-t border-gray-200 pt-6 dark:border-gray-700">
+              <h2 className="h4 mb-3">Where to Stake &amp; Learn More</h2>
+              <p>
+                Many people stake through an exchange rather than running a
+                validator. Compare staking options on{" "}
+                <Link className="text-primary" href="/exchanges/kraken">
+                  Kraken
+                </Link>
+                ,{" "}
+                <Link className="text-primary" href="/exchanges/coinbase">
+                  Coinbase
+                </Link>
+                ,{" "}
+                <Link className="text-primary" href="/exchanges/kucoin">
+                  KuCoin
+                </Link>{" "}
+                and{" "}
+                <Link className="text-primary" href="/exchanges/nexo">
+                  Nexo
+                </Link>
+                , or browse{" "}
+                <Link className="text-primary" href="/exchanges">
+                  all exchanges
+                </Link>
+                . New to the concept? Read{" "}
+                <Link className="text-primary" href="/posts/what-is-proof-of-stake">
+                  what proof of stake is
+                </Link>{" "}
+                and our{" "}
+                <Link className="text-primary" href="/posts/crypto-staking">
+                  guide to crypto staking
+                </Link>
+                .
+              </p>
               <div className="mt-4 flex flex-wrap justify-center gap-4">
                 <Link href="/tools" className="btn btn-primary">
                   View All Tools

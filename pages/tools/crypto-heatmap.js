@@ -339,9 +339,39 @@ const CryptoHeatmapPage = ({ isApp }) => {
               </div>
             </div>
 
-            <div className="mt-8 border-t border-gray-200 pt-6 text-center dark:border-gray-700">
-              <h2 className="h4 mb-3">Explore More Crypto Tools</h2>
-              <p>Check out other visualization and analysis tools:</p>
+            <div className="mt-8 border-t border-gray-200 pt-6 dark:border-gray-700">
+              <h2 className="h4 mb-3">Related Tools &amp; Reading</h2>
+              <p>
+                Pair the heatmap with our{" "}
+                <Link className="text-primary" href="/tools/fear-and-greed-index">
+                  Fear &amp; Greed Index
+                </Link>{" "}
+                for market sentiment and the{" "}
+                <Link className="text-primary" href="/tools/bitcoin-rainbow-chart">
+                  Bitcoin Rainbow Chart
+                </Link>{" "}
+                for long-term cycle context. To understand what drives the moves,
+                read{" "}
+                <Link className="text-primary" href="/posts/crypto-volatility">
+                  why crypto is so volatile
+                </Link>
+                ,{" "}
+                <Link
+                  className="text-primary"
+                  href="/posts/who-controls-bitcoins-price"
+                >
+                  who actually controls Bitcoin&apos;s price
+                </Link>{" "}
+                and{" "}
+                <Link className="text-primary" href="/posts/bear-market-in-crypto">
+                  how to read a bear market
+                </Link>
+                . When you are ready to act, compare{" "}
+                <Link className="text-primary" href="/exchanges">
+                  crypto exchanges
+                </Link>
+                .
+              </p>
               <div className="mt-4 flex flex-wrap justify-center gap-4">
                 <Link href="/tools" className="btn btn-primary">
                   View All Tools

@@ -391,9 +391,31 @@ const FearAndGreedIndexPage = ({ isApp }) => {
               </div>
             </div>
 
-            <div className="mt-8 border-t border-gray-200 pt-6 text-center dark:border-gray-700">
-              <h2 className="h4 mb-3">Explore More Crypto Resources</h2>
-              <p>Further your understanding of crypto markets:</p>
+            <div className="mt-8 border-t border-gray-200 pt-6 dark:border-gray-700">
+              <h2 className="h4 mb-3">Related Tools &amp; Reading</h2>
+              <p>
+                Combine the index with our{" "}
+                <Link className="text-primary" href="/tools/crypto-heatmap">
+                  market heatmap
+                </Link>{" "}
+                and the{" "}
+                <Link className="text-primary" href="/tools/bitcoin-rainbow-chart">
+                  Bitcoin Rainbow Chart
+                </Link>
+                . For the psychology behind the number, read{" "}
+                <Link className="text-primary" href="/posts/crypto-volatility">
+                  why crypto is so volatile
+                </Link>{" "}
+                and{" "}
+                <Link className="text-primary" href="/posts/bear-market-in-crypto">
+                  how bear markets work
+                </Link>
+                . When sentiment shifts, compare{" "}
+                <Link className="text-primary" href="/exchanges">
+                  crypto exchanges
+                </Link>
+                .
+              </p>
               <div className="mt-4 flex flex-wrap justify-center gap-4">
                 <Link href="/tools" className="btn btn-primary">
                   View All Crypto Tools
