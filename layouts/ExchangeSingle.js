@@ -47,10 +47,16 @@ const ExchangeSingle = ({
     updated,
     faqs,
     quickFacts,
+    meta_title,
   } = frontmatter;
 
   const url = `${config.site.base_url}/exchanges/${slug}`;
   const metaDescription = description ? description : content.slice(0, 160);
+  // The default title answers review intent. A large share of demand on these
+  // pages is encyclopedia intent instead ("trade republic wiki"), which the
+  // word "Review" actively mismatches - so a page can override it outright.
+  const pageTitle =
+    meta_title || `${title} Review | In-Depth Exchange Analysis - Crypto Wiki`;
   const video = getPageVideo("exchanges", slug);
 
   const jsonLd = [
@@ -75,8 +81,8 @@ const ExchangeSingle = ({
 
   return (
     <Base
-      title={`${title} Review | In-Depth Exchange Analysis - Crypto Wiki`}
-      meta_title={`${title} Review | In-Depth Exchange Analysis - Crypto Wiki`}
+      title={pageTitle}
+      meta_title={pageTitle}
       description={metaDescription}
       image={image}
       canonical={url}

@@ -353,6 +353,13 @@
     },
     {
       "type": "exchanges",
+      "slug": "jupiter",
+      "title": "Jupiter",
+      "url": "https://www.thecrypto.wiki/exchanges/jupiter",
+      "date": "2026-08-29T00:00:00.000Z"
+    },
+    {
+      "type": "exchanges",
       "slug": "kraken",
       "title": "Kraken",
       "url": "https://www.thecrypto.wiki/exchanges/kraken",
@@ -731,6 +738,13 @@
     },
     {
       "type": "posts",
+      "slug": "what-are-perpetual-futures",
+      "title": "What Are Perpetual Futures?",
+      "url": "https://www.thecrypto.wiki/posts/what-are-perpetual-futures",
+      "date": "2026-09-01T00:00:00.000Z"
+    },
+    {
+      "type": "posts",
       "slug": "what-are-stablecoins",
       "title": "What Are Stablecoins?",
       "url": "https://www.thecrypto.wiki/posts/what-are-stablecoins",
@@ -843,6 +857,13 @@
     },
     {
       "type": "posts",
+      "slug": "what-is-the-genius-act",
+      "title": "What Is the GENIUS Act?",
+      "url": "https://www.thecrypto.wiki/posts/what-is-the-genius-act",
+      "date": "2026-08-28T00:00:00.000Z"
+    },
+    {
+      "type": "posts",
       "slug": "what-is-web3",
       "title": "What is Web3? The Decentralized Web of the Future",
       "url": "https://www.thecrypto.wiki/posts/what-is-web3",
@@ -882,6 +903,27 @@
       "title": "How To Build a Crypto Mining Rig (And Whether You Should)",
       "url": "https://www.thecrypto.wiki/videos/mining-rig",
       "date": "2026-08-16T11:11:28.000Z"
+    },
+    {
+      "type": "videos",
+      "slug": "proof-of-stake",
+      "title": "What Is Proof of Stake? The Blockchain Without Miners",
+      "url": "https://www.thecrypto.wiki/videos/proof-of-stake",
+      "date": "2026-08-26T23:12:35.000Z"
+    },
+    {
+      "type": "videos",
+      "slug": "quantum-crypto",
+      "title": "Quantum Computers vs. Crypto: What Actually Breaks",
+      "url": "https://www.thecrypto.wiki/videos/quantum-crypto",
+      "date": "2026-08-31T00:53:37.000Z"
+    },
+    {
+      "type": "videos",
+      "slug": "ruja-ignatova",
+      "title": "How OneCoin Sold $4 Billion of a Coin That Didn't Exist",
+      "url": "https://www.thecrypto.wiki/videos/ruja-ignatova",
+      "date": "2026-08-31T15:40:10.000Z"
     },
     {
       "type": "videos",

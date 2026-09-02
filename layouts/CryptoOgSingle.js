@@ -45,9 +45,15 @@ const CryptoOgSingle = ({
     updated,
     faqs,
     quickFacts,
+    meta_title,
   } = frontmatter;
 
   const url = `${config.site.base_url}/crypto-ogs/${slug}`;
+  // Default answers "who is X" intent. Pages with encyclopedia demand
+  // ("michael saylor wiki") override it outright via frontmatter.
+  const pageTitle =
+    meta_title ||
+    `${title} | Achievements, Contributions & Impact - Crypto Wiki`;
   const video = getPageVideo("crypto-ogs", slug);
   const jsonLd = [
     personSchema({
@@ -69,8 +75,8 @@ const CryptoOgSingle = ({
 
   return (
     <Base
-      title={`${title} | Contributions & Impact in the Crypto Space - Crypto Wiki`}
-      meta_title={`${title} | Achievements, Contributions & Impact - Crypto Wiki`}
+      title={pageTitle}
+      meta_title={pageTitle}
       description={description ? description : content.slice(0, 160)}
       image={image}
       canonical={url}

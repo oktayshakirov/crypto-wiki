@@ -17,6 +17,11 @@ const FIELDS = [
   ["owner", "Owner / Operator"],
   ["ceo", "CEO"],
   ["type", "Type"],
+  // Scale figures sit above the operational fields because encyclopedia intent
+  // ("how big is X", "how many users") is usually what the reader came for.
+  ["users", "Users"],
+  ["assets", "Client assets"],
+  ["valuation", "Valuation"],
   ["custody", "Custody"],
   ["regulation", "Regulation"],
   ["token", "Native token"],
