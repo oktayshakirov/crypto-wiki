@@ -8,7 +8,36 @@ import LayoutAd from "@components/ads/LayoutAd";
 import DisclaimerBanner from "@layouts/components/DisclaimerBanner";
 import EmbedSnippet from "@components/EmbedSnippet";
 import MdxTable from "@components/MdxTable";
-import { breadcrumbSchema, softwareAppSchema } from "@lib/utils/jsonLd";
+import { breadcrumbSchema, faqSchema, softwareAppSchema } from "@lib/utils/jsonLd";
+
+// Mirrors the visible FAQ section below; feeds faqSchema().
+const faqs = [
+  {
+    question: "Is the Bitcoin Rainbow Chart accurate or predictive?",
+    answer:
+      "No. It is not predictive, and its accuracy is only descriptive of past price movements within its own model. It cannot predict future prices.",
+  },
+  {
+    question: "Who created the Bitcoin Rainbow Chart?",
+    answer:
+      "The concept evolved within the online Bitcoin community. A Bitcointalk forum user known as 'Trolololo' is often credited with popularizing one of the earliest versions around 2014.",
+  },
+  {
+    question: "What do the different colors mean?",
+    answer:
+      "The colors represent zones based on how far the price sits above or below a long-term logarithmic growth trendline, historically correlating with different phases of market sentiment: blue for potential lows, red for potential highs.",
+  },
+  {
+    question: "Should I buy or sell Bitcoin based on this chart?",
+    answer:
+      "No. This chart is an educational and historical visualization tool. Making investment decisions based on it alone is risky and discouraged. Always do your own research and consult a qualified financial advisor.",
+  },
+  {
+    question: "How often is the chart updated?",
+    answer:
+      "The chart uses daily price data and refreshes periodically. Check the timestamp on the chart component for the latest update time.",
+  },
+];
 
 const BitcoinRainbowChartPage = ({ isApp }) => {
   const author = {
@@ -105,6 +134,7 @@ const BitcoinRainbowChartPage = ({ isApp }) => {
             "Interactive Bitcoin Rainbow Chart visualizing BTC long-term logarithmic price cycles and sentiment zones.",
           url: `${config.site.base_url}/tools/bitcoin-rainbow-chart`,
         }),
+        faqSchema(faqs),
         breadcrumbSchema([
           { name: "Home", path: "/" },
           { name: "Tools", path: "/tools" },

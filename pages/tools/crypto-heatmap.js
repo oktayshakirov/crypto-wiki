@@ -6,7 +6,37 @@ import GoBackLink from "@partials/GoBackLink";
 import config from "@config/config.json";
 import LayoutAd from "@components/ads/LayoutAd";
 import DisclaimerBanner from "@layouts/components/DisclaimerBanner";
-import { breadcrumbSchema, softwareAppSchema } from "@lib/utils/jsonLd";
+import { breadcrumbSchema, faqSchema, softwareAppSchema } from "@lib/utils/jsonLd";
+
+// Mirrors the visible FAQ section below; feeds faqSchema() so the structured
+// data and the on-page text come from one place.
+const faqs = [
+  {
+    question: "What do the colors on the heatmap mean?",
+    answer:
+      "Green indicates a positive price change over the period, while red indicates a negative price change. Brighter colors signify larger percentage changes.",
+  },
+  {
+    question: "What determines the size of the boxes?",
+    answer:
+      "The area of each rectangle represents the cryptocurrency's market capitalization. Larger boxes mean higher market caps.",
+  },
+  {
+    question: "How often is the heatmap data updated?",
+    answer:
+      "The heatmap updates frequently based on live market data, though slight delays can occur.",
+  },
+  {
+    question: "What cryptocurrencies are included in the heatmap?",
+    answer:
+      "It generally displays the largest cryptocurrencies by market capitalization, though the exact list can vary with data availability.",
+  },
+  {
+    question: "Can I use the heatmap to decide when to buy or sell crypto?",
+    answer:
+      "No. The heatmap is an informational tool for visualizing past performance. It does not predict future movements and should never be the sole basis for an investment decision. Always do your own research and consult a financial advisor.",
+  },
+];
 
 const legendData = [
   {
@@ -58,6 +88,7 @@ const CryptoHeatmapPage = ({ isApp }) => {
           { name: "Tools", path: "/tools" },
           { name: "Crypto Heatmap", path: "/tools/crypto-heatmap" },
         ]),
+        faqSchema(faqs),
       ]}
       dateModified={lastUpdated}
       author={author.name}
