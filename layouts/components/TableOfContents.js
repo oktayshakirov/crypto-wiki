@@ -1,4 +1,5 @@
 import useScrollSpy from "@hooks/useScrollSpy";
+import { FaListUl, FaChevronDown } from "react-icons/fa";
 
 // Below this an outline is more noise than navigation, so we render nothing
 // and the sidebar/summary collapses on its own.
@@ -43,12 +44,15 @@ const TableOfContents = ({ toc, variant = "sidebar" }) => {
 
   if (variant === "inline") {
     return (
-      <details className="card mb-8 text-left xl:hidden">
-        <summary className="cursor-pointer list-none font-bold">
-          <span className="mr-2 text-primary">&#9662;</span>
-          On this page
+      <details className="group mb-8 text-left xl:hidden">
+        <summary className="flex min-h-[44px] w-full cursor-pointer list-none items-center justify-between gap-2 rounded-lg border border-white/10 bg-theme-light px-3 py-2 text-dark transition hover:border-white/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+          <span className="flex items-center gap-2">
+            <FaListUl className="text-sm" />
+            On this page
+          </span>
+          <FaChevronDown className="shrink-0 text-xs opacity-70 transition-transform duration-200 group-open:rotate-180" />
         </summary>
-        <nav className="mt-3" aria-label="Article sections">
+        <nav className="mt-3 px-1" aria-label="Article sections">
           {list}
         </nav>
       </details>

@@ -1,7 +1,8 @@
 import { slugify } from "@lib/utils/textConverter";
 import Image from "next/image";
 import Link from "next/link";
-import { FaTag, FaUser, FaAt } from "react-icons/fa";
+import { FaTag, FaUser, FaAt, FaVideo } from "react-icons/fa";
+import { hasPageVideo } from "@lib/videos";
 
 const Posts = ({ posts }) => {
   return (
@@ -24,6 +25,11 @@ const Posts = ({ posts }) => {
                   fetchPriority={index === 0 ? "high" : undefined}
                   {...(index !== 0 ? { loading: "lazy" } : {})}
                 />
+                {hasPageVideo("posts", post.slug) && (
+                  <span className="absolute right-2 top-2 flex h-6 w-6 items-center justify-center rounded bg-black/70 text-white">
+                    <FaVideo className="text-xs" />
+                  </span>
+                )}
               </div>
             )}
             <ul className="my-4">
