@@ -435,6 +435,55 @@
           "text": "Back to that arena in 2016. OneCoin worked because a crowd wanted a coin that only went up, and someone with the right resume told them she had one. The technology was never the point. The check would have taken a minute. Nothing in this video is financial advice. So, what do you think? If you had been in that arena, would you have asked to see the blockchain?"
         }
       ]
+    },
+    {
+      "slug": "perpetual-futures",
+      "id": "6gN56asaJ6s",
+      "kind": "long",
+      "title": "What Are Perpetual Futures?",
+      "description": "You can open a Bitcoin trade and never have to close it. So what stops the price from drifting away from the real one?",
+      "uploadDate": "2026-09-04T18:01:37Z",
+      "duration": "PT3M23S",
+      "seconds": 203,
+      "poster": "/images/videos/what-are-perpetual-futures.webp",
+      "target": {
+        "type": "posts",
+        "slug": "what-are-perpetual-futures"
+      },
+      "alsoOn": [],
+      "placement": "auto",
+      "chapters": [
+        {
+          "start": 0,
+          "title": "The trade that never closes",
+          "text": "You can open a Bitcoin trade, and never have to close it. No expiration date. Ever. So what actually stops the price you are paying from drifting away from the real one? Stay to the end, and you will know exactly what pulls it back - and why the same mechanism can wipe out your account in seconds. Twenty sixteen - the year the first contract like this went live, with no settlement date at all."
+        },
+        {
+          "start": 23,
+          "title": "So what replaced the deadline?",
+          "text": "A normal futures contract has a deadline, and that deadline is what pulls the price back to reality. Perpetuals removed it completely. So one thing has to do that job instead - a fee, paid directly between the two sides of the trade. It is called the funding rate. Trade above the real price, and the buyers pay the sellers. Trade below it, and the sellers pay the buyers."
+        },
+        {
+          "start": 48,
+          "title": "So how big is that fee, really?",
+          "text": "On a quiet day it is tiny - a fraction of a percent, every eight hours. In a heated market, it can spike ten times higher. And it is paid trader to trader, not to the exchange. Liquidations are not checked against the last trade though - they are checked against a mark price, an index built from several exchanges at once. So a single ugly wick cannot wipe you out by accident."
+        },
+        {
+          "start": 75,
+          "title": "So where is the actual danger?",
+          "text": "The funding fee is not what wipes people out. Leverage is. With one thousand dollars of margin at five times leverage, you control five thousand dollars of exposure. A two percent move in the real price becomes roughly a ten percent swing on your money. Push that higher, and the room to be wrong shrinks fast. Five times leverage, and the price can move twenty percent against you. Twenty times, and that drops to five percent. One hundred times, and one percent is enough. That is the whole trade-off. More leverage, less room to be wrong."
+        },
+        {
+          "start": 112,
+          "title": "So what actually protects you?",
+          "text": "Two settings decide how contained the damage is. Isolated margin. Only that position's margin is at risk. One bad trade stays contained. The rest of your account is untouched. Cross margin. Draws on your whole balance. Useful for hedging several positions. One bad trade can drain everything. There is also a backstop, if a position cannot close in time - but here is the honest list of what can still go wrong. Prolonged funding, eating into your profits. A thin market, with a brief but violent wick. An exchange outage, at the worst possible moment. Auto deleveraging, if the insurance fund cannot cover it. None of that is rare in theory. All four have happened, on real exchanges, in real crashes."
+        },
+        {
+          "start": 161,
+          "title": "So who actually decides this price?",
+          "text": "Neither a company, nor a court decides where this price sits. A number, recalculated every few hours, does that instead. It trades day and night, on centralized platforms and on-chain ones alike. Binance. Bybit. Kraken. Or fully on-chain, like Hyperliquid. So back to that trade with no expiration date. It never closes on its own. But every few hours, it still has to prove it is honest. Nothing in this video is financial advice. So next time you see a position with no expiration date - what do you think is quietly deciding when it is actually over?"
+        }
+      ]
     }
   ],
   "_fields": {
