@@ -484,6 +484,55 @@
           "text": "Neither a company, nor a court decides where this price sits. A number, recalculated every few hours, does that instead. It trades day and night, on centralized platforms and on-chain ones alike. Binance. Bybit. Kraken. Or fully on-chain, like Hyperliquid. So back to that trade with no expiration date. It never closes on its own. But every few hours, it still has to prove it is honest. Nothing in this video is financial advice. So next time you see a position with no expiration date - what do you think is quietly deciding when it is actually over?"
         }
       ]
+    },
+    {
+      "slug": "vitalik-ethereum",
+      "id": "Yk4UoynTb9w",
+      "kind": "long",
+      "title": "Why Was Ethereum Created?",
+      "description": "A 19-year-old wanted Bitcoin to run any program. The Bitcoin developers turned him down, so he built his own network - and then built it so nobody, himself included, controls it.",
+      "uploadDate": "2026-09-06T11:51:58Z",
+      "duration": "PT3M53S",
+      "seconds": 233,
+      "poster": "/images/videos/vitalik-ethereum.webp",
+      "target": {
+        "type": "crypto-ogs",
+        "slug": "vitalik-buterin"
+      },
+      "alsoOn": [],
+      "placement": "auto",
+      "chapters": [
+        {
+          "start": 0,
+          "title": "It started as a complaint about Bitcoin",
+          "text": "Ethereum started as a complaint about Bitcoin. The complaint came from Vitalik Buterin. He was nineteen. At seventeen he had co-founded Bitcoin Magazine, and he had been writing about the technology ever since. Bitcoin was built to move money. That was the only job it was ever given. Vitalik wanted something wider. A blockchain that could run any program you could write. He wrote the idea up and took it to the developers who maintain Bitcoin. They turned him down. So in twenty thirteen, he went and built his own. Stay to the end, and you will know who actually decides what Ethereum does."
+        },
+        {
+          "start": 35,
+          "title": "A calculator, or a computer?",
+          "text": "Think of Bitcoin as a pocket calculator. It does one job, and it does it extremely well. It moves money from one person to another. Ask it to do anything else, and it cannot. On Bitcoin. Send coins. Lock them with simple rules. That is close to the whole list. On Ethereum. Run any program you can write. Store data that stays forever. Let apps build on other apps. Vitalik wanted the opposite of a calculator. He wanted a blank computer that anyone on earth could program. You write a program and upload it to the network. Every machine on that network runs it and they all agree on the answer. Those programs are called smart contracts. Code that runs exactly as written, and that nobody can stop once it is running. Vitalik put it simply. If Bitcoin is a calculator, Ethereum is a smartphone."
+        },
+        {
+          "start": 84,
+          "title": "So what did that make possible?",
+          "text": "Ethereum went live in twenty fifteen. Eight founders, a public crowd sale, and a working network. Now anyone could write code that held real money. People built things Bitcoin never could. Lending and trading with no bank in the middle. Tokens that stand in for art or property. Coins pegged to the value of a dollar. Groups voting on a shared budget in the open. Some of it worked. Some of it collapsed. And almost all of it was copied onto every blockchain that came after. But the shape was set. A base layer that does not care what you build on top of it."
+        },
+        {
+          "start": 120,
+          "title": "So who is in charge?",
+          "text": "Here is where Ethereum stops behaving like a normal technology company. There is no Ethereum company. There is no chief executive. Vitalik has never held that title. There is a non-profit called the Ethereum Foundation. It pays for research and it runs events. It cannot change the network. It cannot freeze your account, reverse your payment, or switch anything off. Ask how many people can override Ethereum on their own, and the honest answer is a round number. So if nobody is in charge, how does anything ever change?"
+        },
+        {
+          "start": 153,
+          "title": "How does a change actually happen?",
+          "text": "Every change to Ethereum starts as a written proposal. Anyone can write one. Someone writes the proposal. Developers argue it out in the open. Independent teams build it into their software. The people running the network choose to upgrade. If enough of them do, it is live. Nobody signs it off. It ships when enough people decide to run it. In twenty twenty-two, Ethereum replaced its entire engine this way. They called it the Merge. Mining was switched off overnight. Only once has the community forced a change by hand. In twenty sixteen, a project on Ethereum was drained of millions, and most of the network voted to rewind it. The minority refused. They kept the original chain running, and it still exists today, as Ethereum Classic."
+        },
+        {
+          "start": 199,
+          "title": "So what did he actually build?",
+          "text": "Go back to the nineteen-year-old who wanted to change Bitcoin. He did not just want software that could run anything. He wanted a network that nobody could run. Both halves are the same idea. General purpose, all the way down. It makes Ethereum very hard to shut down. It also makes it slow to agree, and hard to fix. Nothing in this video is financial advice. So, here is the question. If nobody is in charge, who do you hold responsible when it breaks?"
+        }
+      ]
     }
   ],
   "_fields": {
