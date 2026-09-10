@@ -15,6 +15,8 @@ const Logo = ({ src }) => {
           src={src ? src : logo}
           alt={title}
           priority
+          // Fixed-size brand asset on every page - skip Vercel optimization.
+          unoptimized
           style={{
             height: logo_height.replace("px", "") + "px",
             width: logo_width.replace("px", "") + "px",

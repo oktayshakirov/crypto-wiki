@@ -29,6 +29,7 @@ const AuthorSingle = ({ frontmatter, content, mdxContent, isApp }) => {
                   height={150}
                   width={150}
                   alt={title}
+                  unoptimized
                 />
               </div>
             )}

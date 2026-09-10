@@ -28,6 +28,7 @@ const AppsBanner = () => {
               width={120}
               height={40}
               className="h-10 w-auto"
+              unoptimized
             />
           </a>
           <a
@@ -41,6 +42,7 @@ const AppsBanner = () => {
               width={123}
               height={40}
               className="h-10 w-auto"
+              unoptimized
             />
           </a>
         </div>

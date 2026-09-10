@@ -317,6 +317,7 @@ const AppDownloadPopup = () => {
                   width={160}
                   height={53}
                   className="h-12 w-auto"
+                  unoptimized
                 />
               </Link>
               <Link
@@ -332,6 +333,7 @@ const AppDownloadPopup = () => {
                   width={160}
                   height={53}
                   className="h-12 w-auto"
+                  unoptimized
                 />
               </Link>
             </div>
