@@ -416,6 +416,13 @@
     },
     {
       "type": "exchanges",
+      "slug": "robinhood-crypto",
+      "title": "Robinhood Crypto",
+      "url": "https://www.thecrypto.wiki/exchanges/robinhood-crypto",
+      "date": "2026-09-05T00:00:00.000Z"
+    },
+    {
+      "type": "exchanges",
       "slug": "trade-republic",
       "title": "Trade Republic",
       "url": "https://www.thecrypto.wiki/exchanges/trade-republic",
@@ -878,6 +885,13 @@
     },
     {
       "type": "posts",
+      "slug": "what-is-yield-farming",
+      "title": "What Is Yield Farming?",
+      "url": "https://www.thecrypto.wiki/posts/what-is-yield-farming",
+      "date": "2026-09-07T00:00:00.000Z"
+    },
+    {
+      "type": "posts",
       "slug": "what-it-actually-takes-to-prove-someone-is-satoshi-nakamoto",
       "title": "What it actually takes to prove someone is Satoshi Nakamoto",
       "url": "https://www.thecrypto.wiki/posts/what-it-actually-takes-to-prove-someone-is-satoshi-nakamoto",
@@ -913,6 +927,13 @@
     },
     {
       "type": "videos",
+      "slug": "perpetual-futures",
+      "title": "What Are Perpetual Futures?",
+      "url": "https://www.thecrypto.wiki/videos/perpetual-futures",
+      "date": "2026-09-04T18:01:37.000Z"
+    },
+    {
+      "type": "videos",
       "slug": "proof-of-stake",
       "title": "What Is Proof of Stake? The Blockchain Without Miners",
       "url": "https://www.thecrypto.wiki/videos/proof-of-stake",
@@ -945,6 +966,13 @@
       "title": "Michael Saylor: The $35 Billion Bitcoin Bet That Changed Corporate Finance",
       "url": "https://www.thecrypto.wiki/videos/saylor-treasury",
       "date": "2026-08-14T11:56:24.000Z"
+    },
+    {
+      "type": "videos",
+      "slug": "vitalik-ethereum",
+      "title": "Why Was Ethereum Created?",
+      "url": "https://www.thecrypto.wiki/videos/vitalik-ethereum",
+      "date": "2026-09-06T11:51:58.000Z"
     }
   ]
 }

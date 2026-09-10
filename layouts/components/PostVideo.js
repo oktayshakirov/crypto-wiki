@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { FaPlay, FaYoutube } from "react-icons/fa";
 import { usePageVideo } from "context/video";
 import { getVideoById, formatDuration } from "@lib/videos";
@@ -33,6 +34,20 @@ const PostVideo = ({
 
   const length = formatDuration(video.seconds);
 
+  // A contextual link from the article to the video's own page: it gives
+  // /videos/<slug> an inlink from the page it belongs to (otherwise the feed is
+  // its only one, and older videos fall off it), and readers get the transcript
+  // and chapter list. Skipped on /videos/<slug> itself, where it would self-link.
+  const transcriptLink =
+    !autoExpand && video.slug ? (
+      <Link
+        href={`/videos/${video.slug}`}
+        className="mt-2 inline-flex items-center gap-1 text-sm text-gray-400 transition hover:text-primary"
+      >
+        Read the transcript and chapters
+      </Link>
+    ) : null;
+
   if (playing) {
     return (
       <div className={`mb-8 ${className}`}>
@@ -49,16 +64,18 @@ const PostVideo = ({
             className="absolute inset-0 h-full w-full border-0"
           />
         </div>
+        {transcriptLink}
       </div>
     );
   }
 
   return (
+    <div className={`mb-8 ${className}`}>
     <button
       type="button"
       onClick={() => setPlaying(true)}
       aria-label={`Play video: ${video.title}${length ? ` (${length})` : ""}`}
-      className={`group mb-8 flex w-full items-center gap-4 rounded-lg border border-gray-700 bg-gray-900/40 p-3 text-left transition hover:border-primary ${className}`}
+      className="group flex w-full items-center gap-4 rounded-lg border border-gray-700 bg-gray-900/40 p-3 text-left transition hover:border-primary"
     >
       <span className="relative block shrink-0 overflow-hidden rounded">
         <Image
@@ -87,6 +104,8 @@ const PostVideo = ({
         </span>
       </span>
     </button>
+      {transcriptLink}
+    </div>
   );
 };
 
