@@ -17,6 +17,7 @@ const Authors = ({ authors }) => {
                     height={150}
                     className="rounded-lg object-cover"
                     loading="lazy"
+                    unoptimized
                   />
                 </Link>
               </div>

@@ -40,6 +40,7 @@ const AppStoreBadges = () => (
         alt="Download on the App Store"
         width={180}
         height={60}
+        unoptimized
       />
     </Link>
     <Link
@@ -51,6 +52,7 @@ const AppStoreBadges = () => (
         alt="Get it on Google Play"
         width={185}
         height={60}
+        unoptimized
       />
     </Link>
   </div>
