@@ -533,6 +533,55 @@
           "text": "Go back to the nineteen-year-old who wanted to change Bitcoin. He did not just want software that could run anything. He wanted a network that nobody could run. Both halves are the same idea. General purpose, all the way down. It makes Ethereum very hard to shut down. It also makes it slow to agree, and hard to fix. Nothing in this video is financial advice. So, here is the question. If nobody is in charge, who do you hold responsible when it breaks?"
         }
       ]
+    },
+    {
+      "slug": "rug-pull",
+      "id": "3OEIkWZNxN0",
+      "kind": "long",
+      "title": "How to Spot a Crypto Rug Pull",
+      "description": "A new token jumps, then it is worth nothing and the team is gone. Here is the one mechanism behind almost every rug pull - and the two-minute check that catches them before you buy.",
+      "uploadDate": "2026-09-10T22:44:00Z",
+      "duration": "PT3M13S",
+      "seconds": 193,
+      "poster": "/images/videos/what-is-a-rug-pull.webp",
+      "target": {
+        "type": "posts",
+        "slug": "what-is-a-rug-pull"
+      },
+      "alsoOn": [],
+      "placement": "auto",
+      "chapters": [
+        {
+          "start": 0,
+          "title": "The vanishing act",
+          "text": "You buy a new token. It jumps for a day. Then the price falls to almost nothing, and the people who made it are gone. That is a rug pull - and almost all of them work the exact same way. Stay to the end, and you will be able to check any new token for this yourself, in about two minutes, before you ever buy. By the summer of twenty twenty, anyone could launch a token in minutes - including the people setting out to rob you."
+        },
+        {
+          "start": 25,
+          "title": "What actually holds the price up?",
+          "text": "So what is actually holding the price up? A brand new token is not listed on a big exchange. It trades on a decentralized exchange, against a pool of real money the creators put up themselves. That pool is the price. Buy, and you push the price up. Sell, and you pull it down. And that same pool is the only thing you can ever sell back into. So if the people who created the token also control that pool - they can take the real money out, and leave you holding a token that no longer trades."
+        },
+        {
+          "start": 56,
+          "title": "How the trick actually works",
+          "text": "So here is the whole trick, in four moves. From the other side of the screen, a rug pull is just four moves. First, they seed a pool - the token, paired with real money. Then they market it hard - hype, a countdown, a promise. Buyers pour their own money in, and the price climbs. Then they pull the pool, and the price is zero. The whole thing can take an afternoon - and every step was planned before the token existed."
+        },
+        {
+          "start": 81,
+          "title": "Is it always the liquidity?",
+          "text": "So is it always the liquidity pool? Not quite. The liquidity pull is just the fastest version. There are five shapes worth knowing. The liquidity pull, where the pool vanishes within the hour. The team dump, where they keep most of the supply and sell it into you. The hidden backdoor, where the contract lets them mint or freeze at will. The honeypot, where you are allowed to buy, but the code will not let you sell. And the slow bleed, where a team just quietly cashes out for months. Different speeds. Same ending."
+        },
+        {
+          "start": 112,
+          "title": "What if the pool is locked?",
+          "text": "So what if the liquidity really is locked? Some of these scams really do lock the pool - sometimes for years, and the lock is completely real. The money genuinely cannot be pulled. But then look at who holds the tokens. If the team kept most of the supply for themselves, they never needed the pool at all. They just sell, in stages, into every buyer who shows up, until the chart is a staircase heading straight down. A healthy launch keeps any handful of wallets well under a fifth of the whole supply. When the top few wallets are holding seventy or eighty percent, one decision ends it."
+        },
+        {
+          "start": 147,
+          "title": "So how do you check?",
+          "text": "So how do you actually check one? You do not need to read code. You need a block explorer and four questions. Can the team still move the liquidity, or is it genuinely locked. Who holds the supply, and is it a few wallets or thousands. Can the owner still change the rules - mint, pause, or tax. And does the yield have a real source, or is it just paying you with new tokens. If a token cannot pass those four, there is always another one that can. Because a rug pull is not bad luck. It is a design - and a design leaves fingerprints. Nothing in this video is financial advice. So the next time a new coin is climbing on your timeline - who do you think is actually holding the pool?"
+        }
+      ]
     }
   ],
   "_fields": {
