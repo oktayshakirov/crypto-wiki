@@ -582,6 +582,55 @@
           "text": "So how do you actually check one? You do not need to read code. You need a block explorer and four questions. Can the team still move the liquidity, or is it genuinely locked. Who holds the supply, and is it a few wallets or thousands. Can the owner still change the rules - mint, pause, or tax. And does the yield have a real source, or is it just paying you with new tokens. If a token cannot pass those four, there is always another one that can. Because a rug pull is not bad luck. It is a design - and a design leaves fingerprints. Nothing in this video is financial advice. So the next time a new coin is climbing on your timeline - who do you think is actually holding the pool?"
         }
       ]
+    },
+    {
+      "slug": "fear-greed-index",
+      "id": "sOz3SXabjWo",
+      "kind": "long",
+      "title": "What Is the Crypto Fear and Greed Index?",
+      "description": "One number claims to measure whether the crypto market is scared or greedy. Here is exactly how that score is built, why it swings so hard between the two - and what it can never tell you.",
+      "uploadDate": "2026-09-13T21:35:16Z",
+      "duration": "PT3M12S",
+      "seconds": 192,
+      "poster": "/images/videos/fear-greed-index.webp",
+      "target": {
+        "type": "posts",
+        "slug": "crypto-fear-and-greed-index-for-beginners"
+      },
+      "alsoOn": [],
+      "placement": "auto",
+      "chapters": [
+        {
+          "start": 0,
+          "title": "The mood ring",
+          "text": "One number claims to know the crypto market's mood. It runs from zero to a hundred - fear on one end, greed on the other. Plenty of people check it before they check the price itself - because a mood is easier to read than a chart. Stay to the end, and you will know exactly what this number is measuring - and just as importantly, what it is not."
+        },
+        {
+          "start": 20,
+          "title": "What does the number actually measure?",
+          "text": "It is not a price. It is a sentiment score - one figure standing in for how fearful or how greedy the market feels at any given moment. Score under fifty, and the reading leans toward fear. Score over fifty, and it leans toward greed. It updates every single day, sometimes more than once, as fresh data rolls in. Five bands, from extreme fear to extreme greed. But a mood is not something you can just read off one sensor - so how does one number claim to summarize an entire market's feelings?"
+        },
+        {
+          "start": 53,
+          "title": "How does that score get built?",
+          "text": "So the score is not one measurement - it is six, blended into one. Volatility, twenty-five percent - how wild the price swings have been, market momentum and trading volume, another twenty-five, social media chatter, fifteen percent, historical survey data, fifteen percent, when it is running, bitcoin's share of the whole market, ten percent, and search trends - what people are actually typing into Google - the last ten. It pulls straight from Bitcoin's own trading data, and from what people are actually saying about it. None of that is a price. All of it is a mood."
+        },
+        {
+          "start": 89,
+          "title": "Why does it swing so hard?",
+          "text": "The reason the number swings so hard is not mysterious - sentiment feeds on itself. Prices dip, fear spreads, because a falling chart reads as danger, and fear turns into more selling - which drops the price further, and starts the loop again. Flip it around, and greed runs the exact same loop upward - which is why extremes on this index can run so far, in either direction."
+        },
+        {
+          "start": 116,
+          "title": "Why do millions watch a mood?",
+          "text": "There's a reason this index has millions of readers, and it traces back to one old line about market psychology. Be fearful when others are greedy, and greedy when others are fearful. Extreme readings on this index have shown up again and again, in cycle after cycle - long before this particular chart ever existed. The index itself is not a crystal ball - it is just a number trying to measure which side of that line the crowd is standing on."
+        },
+        {
+          "start": 146,
+          "title": "Can you trade off this number?",
+          "text": "Here is what that score cannot do, no matter which way it points. It cannot predict where the price goes next, it cannot tell you whether any project is actually any good, it cannot replace your own research, and it was never built to be a signal to buy or sell anything. It only measures one thing - how the crowd feels, this minute, and nothing else. That is not a flaw somebody forgot to fix - it is the entire design: never built to predict, only to describe. Nothing in this video is financial advice. So the next time that number swings from fear to greed - whose mood do you think it is actually measuring: the market's, or yours?"
+        }
+      ]
     }
   ],
   "_fields": {
