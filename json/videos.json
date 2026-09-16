@@ -631,6 +631,55 @@
           "text": "Here is what that score cannot do, no matter which way it points. It cannot predict where the price goes next, it cannot tell you whether any project is actually any good, it cannot replace your own research, and it was never built to be a signal to buy or sell anything. It only measures one thing - how the crowd feels, this minute, and nothing else. That is not a flaw somebody forgot to fix - it is the entire design: never built to predict, only to describe. Nothing in this video is financial advice. So the next time that number swings from fear to greed - whose mood do you think it is actually measuring: the market's, or yours?"
         }
       ]
+    },
+    {
+      "slug": "bitcoin-miners-ai",
+      "id": "ISZ5lbYZd8s",
+      "kind": "long",
+      "title": "Why Are Bitcoin Miners Switching to AI?",
+      "description": "AI's real shortage is not chips - it is power already connected to the grid. Here is why Bitcoin mining sites have it, what they still lack, and what could go wrong.",
+      "uploadDate": "2026-09-16T12:01:44Z",
+      "duration": "PT3M1S",
+      "seconds": 181,
+      "poster": "/images/videos/bitcoin-miners-ai.webp",
+      "target": {
+        "type": "posts",
+        "slug": "why-wall-street-is-betting-big-on-bitcoin-miners-for-ai"
+      },
+      "alsoOn": [],
+      "placement": "auto",
+      "chapters": [
+        {
+          "start": 0,
+          "title": "Not a chip shortage",
+          "text": "AI has a shortage, and it is not chips. It is power - megawatts that are already plugged into the grid. And some of the companies holding the most of it are Bitcoin miners. Which is why investors started treating mining companies as AI infrastructure. Stay to the end, and you will know exactly what a mining site has that AI needs - and what it still does not."
+        },
+        {
+          "start": 22,
+          "title": "What does an AI data center need?",
+          "text": "Training a model is not a software problem first. It is an electricity problem. And a Bitcoin mining site already has four of the things it needs. Power at scale - fifty to five hundred megawatts on one site, a substation and a grid connection already built, cooling designed for hot, dense machines, and years of practice turning its load up and down with the grid. For a decade, mining turned electricity into hashes. AI turns the same electricity into computation."
+        },
+        {
+          "start": 55,
+          "title": "Why is a grid connection worth so much?",
+          "text": "Because a brand-new data center has to wait for one. A new build can take two to three years to get powered, a mining site retooled for AI can take three to nine months. The transformers are already delivered. The permits already exist. In a market short on power, that head start is the product."
+        },
+        {
+          "start": 78,
+          "title": "How is hosting AI different from mining?",
+          "text": "Mining income moves with things no miner controls. In April twenty twenty-four, the halving cut the reward for every block from six point two five bitcoin to three point one two five. Take the mining side. It is paid in bitcoin, it moves with price and difficulty, and the reward halves roughly every four years. Now compare that with AI hosting. A client pays per rack or per kilowatt, under a contract that runs for years, tied to uptime, not to the price of a coin. That is why many miners do not pick one. They keep mining, and rent part of the site to AI."
+        },
+        {
+          "start": 118,
+          "title": "Is a mining site already an AI data center?",
+          "text": "Not by default. A typical mining hall is missing four things. Not the liquid cooling that GPU racks need, not the fast network that training clusters depend on, not the security standards enterprise clients check, and not the staff trained on GPUs instead of mining machines. Bolt GPU racks into an air-cooled hall, and they overheat and slow themselves down. The power is the head start. The retrofit is still real work."
+        },
+        {
+          "start": 150,
+          "title": "What could still go wrong?",
+          "text": "Hosting income depends on the AI build-out continuing. If AI spending slows, the miners that now rely on it feel it directly - right alongside the AI companies themselves. The grid connection does not change. What it is worth can. Nothing in this video is financial advice. So the next time you hear that AI is running out of chips - would you ask who has the power instead?"
+        }
+      ]
     }
   ],
   "_fields": {
