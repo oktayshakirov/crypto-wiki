@@ -633,6 +633,55 @@
       ]
     },
     {
+      "slug": "real-world-asset-tokenization",
+      "id": "ZsTS0MtTPPI",
+      "kind": "long",
+      "title": "What Is Real World Asset Tokenization?",
+      "description": "You can own a hundred dollars of an office building as a token - but the token is not the building. Here is how real world asset tokenization works, what the blockchain can and cannot see, and where it can break.",
+      "uploadDate": "2026-09-19T00:00:00Z",
+      "duration": "PT2M34S",
+      "seconds": 154,
+      "poster": "/images/videos/real-world-asset-tokenization.webp",
+      "target": {
+        "type": "posts",
+        "slug": "real-world-asset-tokenization"
+      },
+      "alsoOn": [],
+      "placement": "auto",
+      "chapters": [
+        {
+          "start": 0,
+          "title": "A slice of a building",
+          "text": "You can own a hundred dollars of an office building. Not a share of a fund - a token, in a wallet, that you can send at midnight. That is real world asset tokenization. But the token is not the building. Stay to the end, and you will know exactly what that token gives you - and where it can break."
+        },
+        {
+          "start": 18,
+          "title": "What is real world asset tokenization?",
+          "text": "What is real world asset tokenization? It turns a claim on something real into a token on a blockchain. Take one building, worth twelve million dollars, and split it into a hundred and twenty thousand tokens, at a hundred dollars each. The same trick works for government bonds, for gold in a vault, even for music royalties. Something that used to need a hundred thousand dollars to enter can now be bought in slices."
+        },
+        {
+          "start": 45,
+          "title": "How does a building become a token?",
+          "text": "How does a building become a token? A blockchain cannot hold a deed. So the building goes through a chain of paperwork first. First, the building itself. A company is set up only to own it, a custodian keeps the legal title safe, and the token is your claim on that company. Lawyers call that company a special purpose vehicle. Its only job is to own the one asset."
+        },
+        {
+          "start": 70,
+          "title": "Why put it on a blockchain?",
+          "text": "Why put it on a blockchain? Because the rules can travel with the token. Here is what a token does over its life. It can only be sent to approved wallets, the rent is paid out to every holder, it can change hands at any hour, and at the end, it is redeemed for its share of the sale. A traditional trade can take a day or more to settle. A token can settle in minutes."
+        },
+        {
+          "start": 94,
+          "title": "What does the blockchain actually know?",
+          "text": "What does the blockchain actually know? Less than it looks like. Start with what the chain can see. Who holds each token, how many exist, and every single transfer. Now compare that with what it cannot. Whether the building exists, who really holds the title, and whether the rent was ever paid. Everything on the right lives in paperwork, audits and courts. The token proves you own a slice. The paperwork decides what the slice is."
+        },
+        {
+          "start": 121,
+          "title": "What can still go wrong?",
+          "text": "What can still go wrong? Putting an asset on a blockchain does not remove its risks. It adds some. The asset can lose value, the law can change, the company or custodian can fail, and the code or the keys can break. A token can settle in minutes. A building still sells like a building. Nothing in this video is financial advice. So if someone handed you a token for a slice of a building - would you check the blockchain, or the paperwork?"
+        }
+      ]
+    },
+    {
       "slug": "bitcoin-miners-ai",
       "id": "ISZ5lbYZd8s",
       "kind": "long",
