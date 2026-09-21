@@ -729,6 +729,55 @@
           "text": "Hosting income depends on the AI build-out continuing. If AI spending slows, the miners that now rely on it feel it directly - right alongside the AI companies themselves. The grid connection does not change. What it is worth can. Nothing in this video is financial advice. So the next time you hear that AI is running out of chips - would you ask who has the power instead?"
         }
       ]
+    },
+    {
+      "slug": "satoshi-nakamoto",
+      "id": "Yb3uppkFLHI",
+      "kind": "long",
+      "title": "Who Is Satoshi Nakamoto? The Creator of Bitcoin",
+      "description": "The person who invented Bitcoin has never been identified. Here is what Satoshi Nakamoto published, what is hidden inside Bitcoin's first block, how Satoshi disappeared, and why no candidate has ever been proven.",
+      "uploadDate": "2026-09-21T13:14:15Z",
+      "duration": "PT2M58S",
+      "seconds": 178,
+      "poster": "/images/videos/satoshi-nakamoto.webp",
+      "target": {
+        "type": "crypto-ogs",
+        "slug": "satoshi-nakamoto"
+      },
+      "alsoOn": [],
+      "placement": "auto",
+      "chapters": [
+        {
+          "start": 0,
+          "title": "Nobody knows who invented Bitcoin",
+          "text": "The person who invented Bitcoin has never been identified. No face, no voice, no real name. Just a pen name - Satoshi Nakamoto. And about a million bitcoins that have never moved. Stay to the end, and you will know what Satoshi left behind - and why nobody has proved who it was."
+        },
+        {
+          "start": 18,
+          "title": "Where did Bitcoin come from?",
+          "text": "So where did Bitcoin actually come from? In October two thousand eight, a nine-page paper appeared on a cryptography mailing list. It was signed Satoshi Nakamoto, and it described digital cash with no bank in the middle. Money sent straight from one person to another, with a shared public record of every payment. That record is the blockchain. And somebody had to start it."
+        },
+        {
+          "start": 42,
+          "title": "What is inside the first block?",
+          "text": "So what is inside the very first block? On the third of January, two thousand nine, Satoshi mined block zero - the genesis block. Hidden inside it is one line of text, copied from that day's front page of The Times. Chancellor on brink of second bailout for banks. It works as a timestamp - and it reads like a note on why Bitcoin was built. One more detail. The fifty bitcoins from that block can never be spent."
+        },
+        {
+          "start": 69,
+          "title": "How did Satoshi disappear?",
+          "text": "Then how did Satoshi disappear? Slowly, and in public. For two years, Satoshi wrote code and answered questions on a forum called BitcoinTalk. Nine days after the genesis block, Satoshi sent ten bitcoins to a cryptographer named Hal Finney - the first Bitcoin transaction between two people. Here is how the rest of it played out. October two thousand eight, the whitepaper. January two thousand nine, the genesis block. Twenty ten, the code is handed to Gavin Andresen. April twenty eleven, the last known email. That email said: I've moved on to other things. After that, the name never wrote again."
+        },
+        {
+          "start": 109,
+          "title": "What did Satoshi leave behind?",
+          "text": "So what did Satoshi leave behind? A mountain of coins, mined in Bitcoin's first year. About one million bitcoins, spread over roughly twenty thousand block rewards, fifty coins each. Researchers traced them by a pattern in the early blocks, so the figure is an estimate, not a confirmed balance. And apart from that first payment to Hal Finney, not one of those coins has ever moved."
+        },
+        {
+          "start": 134,
+          "title": "So who is Satoshi Nakamoto?",
+          "text": "So who is Satoshi Nakamoto? Plenty of names have been put forward. Not one has held up. Hal Finney, who denied it before he died in twenty fourteen. Nick Szabo, who designed Bit Gold, and denies it. Dorian Nakamoto, named by Newsweek, who says he had no part in it. And a secret group, which nobody has shown either. None of them has produced the one proof that would count - a message signed with the keys to those early coins. So Satoshi is still exactly what the paper said. A name. Nothing in this video is financial advice. The code is public, and the coins are in plain sight. So would you want Satoshi to be found?"
+        }
+      ]
     }
   ],
   "_fields": {
