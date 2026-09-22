@@ -778,6 +778,60 @@
           "text": "So who is Satoshi Nakamoto? Plenty of names have been put forward. Not one has held up. Hal Finney, who denied it before he died in twenty fourteen. Nick Szabo, who designed Bit Gold, and denies it. Dorian Nakamoto, named by Newsweek, who says he had no part in it. And a secret group, which nobody has shown either. None of them has produced the one proof that would count - a message signed with the keys to those early coins. So Satoshi is still exactly what the paper said. A name. Nothing in this video is financial advice. The code is public, and the coins are in plain sight. So would you want Satoshi to be found?"
         }
       ]
+    },
+    {
+      "slug": "how-to-avoid-crypto-scams",
+      "id": "oWt_C2cYl_E",
+      "kind": "long",
+      "title": "How to Avoid Crypto Scams: The Two Things Every Scam Asks For",
+      "description": "Most crypto scams never hack anything - they ask you to hand over your seed phrase or send the coins yourself. Here is why crypto makes that so costly, the four stories scams arrive in, how phishing and clipper malware work, and what to do if it already happened.",
+      "uploadDate": "2026-09-22T12:00:00Z",
+      "duration": "PT3M11S",
+      "seconds": 191,
+      "poster": "/images/videos/how-to-avoid-crypto-scams.webp",
+      "target": {
+        "type": "posts",
+        "slug": "how-to-avoid-crypto-scams"
+      },
+      "alsoOn": [],
+      "placement": "auto",
+      "chapters": [
+        {
+          "start": 0,
+          "title": "Crypto scams need your help",
+          "text": "Most crypto scams never break into anything. They need your help - and they ask for it politely. You hand over your seed phrase, or you send the coins yourself. And once a crypto transaction confirms, nobody can reverse it. Stay to the end, and you will know the four stories scammers use - and the one rule that beats every one of them."
+        },
+        {
+          "start": 20,
+          "title": "Why is crypto such an easy target?",
+          "text": "So why is crypto such an easy target? Because the safety nets you are used to are missing. Take a bank transfer. It can be frozen. It can be reversed. And there is a name on the other end. Now compare that with a crypto transfer. Nobody can freeze it. Nobody can reverse it. And the other end is just an address. That is the whole appeal for a scammer. Get the coins moving once, and they are gone for good."
+        },
+        {
+          "start": 47,
+          "title": "What do crypto scams look like?",
+          "text": "So what do these scams actually look like? The story changes. The ending does not. There are four you will see again and again. A support agent who messages you first. A giveaway that promises to double your coins. An investment that pays a fixed daily profit. And a new friend online, with a platform to show you. Real support never messages you first, and never asks for your seed phrase. A real giveaway never asks you to send anything. And no honest investment guarantees a daily return."
+        },
+        {
+          "start": 79,
+          "title": "How does a fake website steal a wallet?",
+          "text": "So how does a fake website get into your wallet? Phishing works because the copy looks exactly like the original. A sponsored search result, a link in an email, one letter different in the address. You log in, or type your seed phrase to restore a wallet - and the person behind the copy now has it too. So remember this line. No real wallet, exchange or support team will ever ask for your seed phrase. Bookmark the sites you use, and only ever log in from the bookmark."
+        },
+        {
+          "start": 109,
+          "title": "Can malware change the address you paste?",
+          "text": "And can malware change an address after you paste it? Yes - and this one needs no story at all. It is called a clipper, and it hides on your computer. Here is what it does. You copy a friend's wallet address. The clipper swaps it for the scammer's address. You paste it, and send. And the coins go to the scammer. The fix takes five seconds. After you paste, check the first and last six characters against the original, before you confirm."
+        },
+        {
+          "start": 137,
+          "title": "What if it already happened?",
+          "text": "So what do you do if it has already happened? Stop, and send nothing more. Then work through this, in order. Move whatever is left to a brand new wallet. Report the address to the exchange or platform. File a report with the police, or the FBI's internet crime center. And ignore anyone offering to recover it for a fee. That last one matters most. A recovery offer is almost always a second scam."
+        },
+        {
+          "start": 165,
+          "title": "What is the one rule?",
+          "text": "So what is the one rule that beats all of them? Every story in this video ended the same way. Somebody asked for your seed phrase, or asked you to send first. So if anyone asks for either one, you already know what it is. Nothing in this video is financial advice. A scam needs your help to work. So the next time a stranger asks for it - would you notice?"
+        }
+      ]
     }
   ],
   "_fields": {
