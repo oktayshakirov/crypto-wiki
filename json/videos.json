@@ -832,6 +832,55 @@
           "text": "So what is the one rule that beats all of them? Every story in this video ended the same way. Somebody asked for your seed phrase, or asked you to send first. So if anyone asks for either one, you already know what it is. Nothing in this video is financial advice. A scam needs your help to work. So the next time a stranger asks for it - would you notice?"
         }
       ]
+    },
+    {
+      "slug": "what-is-a-crypto-whale",
+      "id": "Y_bngKrNkoY",
+      "kind": "long",
+      "title": "What Is a Crypto Whale? How Big Wallets Actually Work",
+      "description": "A crypto whale is any holder big enough to move a market on its own - but the biggest wallets on most chains are not people at all. Here is what counts as a whale, the five kinds of holder at that scale, why exchanges sit at the top of every rich list, and what a whale alert can and cannot tell you.",
+      "uploadDate": "2026-09-25T16:05:44Z",
+      "duration": "PT3M2S",
+      "seconds": 182,
+      "poster": "/images/videos/what-is-a-crypto-whale.webp",
+      "target": {
+        "type": "posts",
+        "slug": "what-is-a-crypto-whale"
+      },
+      "alsoOn": [],
+      "placement": "auto",
+      "chapters": [
+        {
+          "start": 0,
+          "title": "The biggest wallets are not people",
+          "text": "The biggest Bitcoin wallets on earth do not belong to people. They belong to exchanges. And almost every coin inside them belongs to somebody else. A crypto whale is a holder big enough to move a market on its own. But a wallet never tells you who is behind it, or whether the coins in it are even theirs to spend. Stay to the end, and you will know how to read a whale alert instead of reacting to one."
+        },
+        {
+          "start": 24,
+          "title": "What counts as a whale?",
+          "text": "What counts as a whale? There is no official line. The word is relative to the supply and to how much of it trades. In Bitcoin, watchers start using the word at a thousand coins. In Ethereum, the number people reach for is ten thousand. In a small token with a thin market, a fraction of one percent is enough. Twenty-one million bitcoin will ever exist, and about nineteen point seven million had been mined by twenty twenty-four. So a thousand coins is a rounding error against the supply, and still more than a thin market can absorb at once."
+        },
+        {
+          "start": 60,
+          "title": "Who is behind a whale wallet?",
+          "text": "Who is behind a whale wallet? Size tells you nothing about intent. There are five kinds of holder at this scale, and only one of them is the lone trader people picture. An early individual holder. A company holding coins as a treasury. A fund, or a market maker. A foundation, or a protocol treasury. And an exchange, or a custodian. Four of those are spending their own money. The fifth is holding yours."
+        },
+        {
+          "start": 89,
+          "title": "Whose coins is an exchange holding?",
+          "text": "Whose coins is an exchange holding? When you leave crypto on an exchange, the exchange holds the keys. Your balance is a number in its database. The coins themselves sit in wallets it controls. So one address can hold more bitcoin than almost anybody alive, and every coin in it is a claim somebody else has on that company. Which is why the biggest wallets on any chain are usually custodians. They are not investors. They are warehouses."
+        },
+        {
+          "start": 119,
+          "title": "Does a big wallet mean a big move?",
+          "text": "Does a big wallet mean a big move? A whale alert fires whenever a large transfer hits the chain. What it cannot tell you is why. Take coins moving onto an exchange. Somebody may be getting ready to sell. A fund may be rebalancing. Or a custodian may be moving its own inventory. Now compare that with coins moving off one. Somebody may be going to cold storage. A custodian may be topping up its reserves. Or it may mean nothing at all. The chain records the movement. It never records the reason."
+        },
+        {
+          "start": 152,
+          "title": "So what is worth watching?",
+          "text": "So what is worth watching? You cannot know who is behind an address, and you usually cannot know why it moved. What you can know is who is holding your own coins. Because if they are sitting on an exchange, you are one of the claims inside somebody else's whale. Nothing in this video is financial advice. So, what do you think - is a custodian holding a million coins really a whale at all?"
+        }
+      ]
     }
   ],
   "_fields": {
