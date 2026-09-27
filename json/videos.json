@@ -881,6 +881,55 @@
           "text": "So what is worth watching? You cannot know who is behind an address, and you usually cannot know why it moved. What you can know is who is holding your own coins. Because if they are sitting on an exchange, you are one of the claims inside somebody else's whale. Nothing in this video is financial advice. So, what do you think - is a custodian holding a million coins really a whale at all?"
         }
       ]
+    },
+    {
+      "slug": "musk-effect",
+      "id": "kJiMBgRm6Mw",
+      "kind": "long",
+      "title": "Why Do Elon Musk's Posts Move Crypto Prices?",
+      "description": "A post buys nothing and sells nothing, and crypto prices have moved on one anyway. Here is the actual mechanism - what a price is, why a queue of offers empties when everybody arrives at once, why the move always fades, and why the size of the reaction measures the market rather than the man.",
+      "uploadDate": "2026-09-27T01:15:55Z",
+      "duration": "PT3M41S",
+      "seconds": 221,
+      "poster": "/images/videos/musk-effect.webp",
+      "target": {
+        "type": "crypto-ogs",
+        "slug": "elon-musk"
+      },
+      "alsoOn": [],
+      "placement": "auto",
+      "chapters": [
+        {
+          "start": 0,
+          "title": "A post buys nothing",
+          "text": "A post from Elon Musk buys nothing, sells nothing, and changes nothing about a coin. Prices have moved on one anyway. Sometimes inside a minute. People gave that pattern a name. The Musk effect. But the interesting part was never the man. It is what those posts accidentally measured. Stay to the end, and you will know why the same post can shake one coin and barely move another."
+        },
+        {
+          "start": 24,
+          "title": "What is a price, actually?",
+          "text": "What is a price, actually? A price is not a measure of what something is worth. It is the last offer somebody actually filled. Behind every coin sits a queue of offers to sell, stacked at rising prices. Take the cheapest one, and the next offer up becomes the new price. So here is what a post actually does. A post lands in front of millions of people at once. A fraction of them decide to buy in the same few minutes. They take the cheapest offers in the queue, one after another. The number everybody sees moves, which brings more people to look. Nobody in that chain had to believe anything about the coin. They only had to arrive at the same time."
+        },
+        {
+          "start": 67,
+          "title": "Why does the move fade?",
+          "text": "Why does the move fade? Attention does not last. Within a day the post has been read, everyone who was going to act has acted, and the queue of offers refills. Draw the attention itself, and the shape is always the same. It climbs almost vertically the moment the post lands, and then it drains away for days, while nothing about the coin has changed at all. The record of these episodes is blunt about it. Sharp rallies, followed by sharp corrections. And that is the giveaway. A change in what something is worth would stay. A change in who is watching has to fade, because attention always does."
+        },
+        {
+          "start": 107,
+          "title": "Has it ever gone the other way?",
+          "text": "Has it ever gone the other way? This is the part that usually gets left out. In February twenty twenty-one, Tesla put one and a half billion dollars of its own cash into Bitcoin. What happened around it ran in both directions. Twenty fourteen. He denies being Bitcoin's creator. Twenty nineteen. A joke poll makes him chief executive of Dogecoin. Twenty twenty-one. Tesla buys Bitcoin, takes it for cars, then stops, over the energy that mining uses. Twenty twenty-two. Tesla sells about three quarters of what it bought. The same account was behind the moves up and the moves down. So a post was never a direction. It was only a crowd arriving."
+        },
+        {
+          "start": 151,
+          "title": "Why barely move Bitcoin?",
+          "text": "Why barely move Bitcoin? Because the effect was never really about the poster. It was about the queue. A deep market has offers stacked at every level above the price. Money arrives, gets absorbed, and the number hardly moves. Take a deep market. Offers stacked at every level. A wave of buying gets absorbed. The number barely moves. Now compare that with a thin one. Almost nothing sitting above the price. The same wave empties the queue. And the number jumps. So the size of the reaction was never a measure of how convincing the post was. It was a measure of how little was standing behind the price."
+        },
+        {
+          "start": 191,
+          "title": "So what was being measured?",
+          "text": "So what was being measured? Strip the name off it, and the Musk effect is not a story about one man at all. It is a measurement of how thin a market is. The posts were loud. The queue behind the price was short. Only one of those was ever about him. Nothing in this video is financial advice. So, what do you think - if one post can move a price that far, what was that price actually telling you?"
+        }
+      ]
     }
   ],
   "_fields": {
