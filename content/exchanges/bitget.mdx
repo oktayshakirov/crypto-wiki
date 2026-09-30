@@ -1,24 +1,30 @@
 ---
 title: "Bitget"
-meta_title: "Bitget Review: Copy Trading, BGB Fee Discounts & Futures"
+meta_title: "Bitget Wiki: Copy Trading, 2026 Hack & Protection Fund"
 image: "/images/exchanges/bitget.png"
-description: "Bitget is a derivatives-focused global exchange known for copy trading and BGB token fee discounts."
+description: "Bitget is a global exchange known for copy trading, BGB fee discounts and the protection fund that absorbed its 2026 breach."
 date: 2025-09-26
-updated: 2026-07-23
+updated: 2026-09-30
 order: 16
 authors: ["Oktay Shakirov"]
 quickFacts:
-  founded: "2018"
-  headquarters: "Seychelles"
-  type: "Centralized exchange (CEX), derivatives focus"
-  custody: "Custodial"
+  founded: "2018, in Singapore"
+  headquarters: "Seychelles; EU headquarters under construction in Vienna, Austria"
+  ceo: "Gracy Chen (CEO since 2024)"
+  type: "Centralized exchange (CEX), copy trading and derivatives focus"
+  users: "More than 120 million registered users (Bitget figure, 2026)"
+  custody: "Custodial; most client funds in cold storage, monthly proof of reserves"
   token: "BGB"
   availability: "Global; not available to US residents"
 faqs:
   - question: "What is Bitget?"
     answer: "Bitget is a global cryptocurrency exchange founded in 2018, known for derivatives trading and its copy trading product, alongside spot markets and earn products."
   - question: "Is Bitget safe?"
-    answer: "Bitget publishes proof-of-reserves and maintains a protection fund intended to cover user losses in specific scenarios. It is a centralized custodial exchange, so the usual counterparty and security risks apply."
+    answer: "Bitget publishes monthly proof of reserves and maintains a User Protection Fund that has now been tested in the most direct way possible. On September 24, 2026 attackers took 387.5 million US dollars from its hot and warm wallets, the largest crypto exchange hack of the year. No customer balance was lost, because the protection fund absorbed the entire amount. Cold wallets and private keys were not compromised. It remains a centralized custodial exchange, so counterparty and operational risk apply, and the episode shows both that the fund works and that the surrounding infrastructure can be breached at scale."
+  - question: "What happened in the September 2026 Bitget hack?"
+    answer: "On September 24, 2026, attackers exploited a zero-day vulnerability in a third-party security product to obtain credentials for Bitget's internal network, then issued fraudulent withdrawal instructions against its hot and warm wallets. The loss was initially estimated at about 351.6 million US dollars and later revised to 387.5 million. CEO Gracy Chen said no user withdrawal requests were forged and no private keys were obtained, and that IP addresses and on-chain patterns matched techniques associated with North Korean state-linked groups. It was the largest crypto hack of 2026 and among the ten largest on record."
+  - question: "Is Bitget's protection fund still funded?"
+    answer: "Yes. The fund was established in 2022 with 5,500 BTC and a minimum commitment of 300 million US dollars. Absorbing the September 2026 loss pushed it below 200 million. Gracy Chen pledged on September 28 to restore it above 300 million within a week from company capital, and by September 30 it held 3,705 BTC worth roughly 309 million. Bitget's proof of reserves at that point showed 131 percent overall coverage across 19 assets, including 142 percent for BTC, 110 percent for ETH and 107 percent for USDT."
   - question: "What are Bitget's fees?"
     answer: "Bitget uses a tiered maker and taker fee model for spot and futures trading, with discounts based on volume and BGB token holdings. Verify current rates on the official fee page."
   - question: "Does Bitget serve US customers?"
@@ -37,186 +43,83 @@ social:
   apple: "https://apps.apple.com/us/app/bitget-trade-bitcoin-crypto/id1442778704"
   android: "https://play.google.com/store/apps/details?id=com.bitget.exchange&hl=en-US"
 ---
-## **Bitget: Global Crypto Exchange Built Around Copy Trading and Derivatives**
 
-Bitget has carved out a distinct identity among centralized cryptocurrency exchanges by leaning into copy trading at scale and maintaining a strong derivatives suite for active traders. Founded in 2018 and registered in Seychelles, the platform serves a global user base with a broad catalog of digital assets, yield products, and a rapidly expanding **[Web3](/posts/what-is-web3)** wallet ecosystem.
+**Bitget is a global cryptocurrency exchange founded in Singapore in 2018 and best known for running the largest copy trading marketplace in the industry.** It offers spot and derivatives markets, an Earn suite and, increasingly, tokenized versions of assets that are not crypto at all. It is led by CEO Gracy Chen and reports more than 120 million registered users.
 
-Positioned as a derivatives-first venue with robust copy-trading features, Bitget appeals to traders seeking advanced tools, flexible automation, and high-liquidity perpetuals alongside familiar spot markets. Its ecosystem also includes Bitget Earn products, strategic listings, and an integrated self-custody wallet (via Bitget Wallet, formerly BitKeep) that connects users to **[DeFi](/posts/what-is-defi)** and multi-chain swaps - bridging centralized and decentralized finance in one brand.
+It is also, as of late September 2026, the exchange that absorbed the largest crypto hack of the year without a single customer losing money. That event tells you more about how Bitget is built than any feature list, so it is covered in full below.
 
-Key context for prospective users: Bitget continues to emphasize security through a public Proof of Reserves program and a sizable protection fund, while iterating on education (Bitget Academy) and user support to bring in both **[crypto beginners](/posts/crypto-for-beginners)** and professionals. Its market position is competitive among high-volume exchanges, particularly for users who value social trading, automation, and futures liquidity.
+## **Copy Trading Is the Actual Product**
 
-<ArticleAd />
+Plenty of exchanges offer copy trading as a checkbox feature. On Bitget it is the centre of the business, and the platform describes itself as the largest crypto copy trading venue in the world.
 
-## **Core Services**
+The mechanic is simple: traders publish their positions, followers allocate capital, and trades replicate automatically in the follower's account with the lead trader taking a share of profits. Bitget's edge is population density. A marketplace with enough lead traders across enough strategies produces useful selection, and rankings built on real track records are more informative than the handful of accounts smaller platforms can show.
 
-Bitget's core offerings span spot, derivatives, copy trading, and a suite of yield and automated strategies designed for diverse experience levels.
+The risk is equally structural and worth stating plainly. Ranking tables reward whoever most recently took the most leverage, which is the opposite of what a follower should want. A lead trader's incentive is a profit share with no downside exposure to your capital, so a blown-up account costs them their ranking and costs you your money. Historical returns on a leveraged perpetual strategy tell you almost nothing about survivability through a real drawdown, and **[crypto volatility](/posts/crypto-volatility)** punishes exactly the strategies that look best in a trending month.
 
-- **Trading Platform:**
+Copy trading is a genuine convenience if you treat it as allocating to a risky manager. It is not a substitute for knowing what the positions are.
 
-  - **Advanced Interface:** Bitget's web and mobile trading terminals feature TradingView-powered charting, multiple order types (limit, market, stop, OCO), and depth analytics. The platform supports custom layouts, multiple watchlists, and synchronized device settings for users who trade across desktop and mobile.
-  - **API & Programmatic Access:** REST and WebSocket APIs (plus FIX for institutions) enable market data streaming, order management, and account integrations. Popular bot tools connect via API for strategy automation.
+## **The Pivot to Assets That Are Not Crypto**
 
-- **Spot Trading:**
+Bitget has spent 2026 repositioning itself as what Chen calls a Universal Exchange, or UEX, and the numbers behind that pitch are the most interesting thing about the company's strategy.
 
-  - **Asset Coverage:** 600+ cryptocurrencies and 700+ trading pairs (figures vary by jurisdiction), covering large-cap assets, mid-caps, and emerging **[altcoin](/posts/what-are-altcoins)** listings. Pairs are typically denominated in USDT, with select BTC and other quote options.
-  - **Fees & Discounts:** Base spot fees are competitive in the industry, with maker/taker discounts available via VIP tiers and token-based reductions using BGB, the platform's native token.
+The platform now lists access to over two million tokens plus more than 500 tokenized stocks, ETFs, commodities, foreign exchange pairs and precious metals including gold. By Bitget's own first-quarter 2026 data, non-crypto assets accounted for roughly 40 percent of total platform trading volume. That is not a side product. Two fifths of the flow through a crypto exchange is now something other than crypto.
 
-- **Derivatives (Perpetual Futures):**
+The stated long-term direction is tokenization plus artificial intelligence, with a single account reaching multiple financial markets. Bitget Wallet serves as the on-chain layer, integrating modular decentralized applications, which keeps the **[Web3](/posts/what-is-web3)** and **[DeFi](/posts/what-is-defi)** side connected to the centralized order books rather than siloed.
 
-  - **Contract Variety:** 150+ perpetual pairs across USDT-M and coin-margined contracts, typically with leverage options up to 125x on select markets (note: high leverage is extremely risky; see risk warnings below).
-  - **Risk Controls:** Cross/isolated margin, auto-deleveraging (ADL), and optional features such as position TP/SL, trailing stops, and partial take-profit ladders. Liquidity is competitive, especially in high-volume BTC/ETH perpetuals.
-
-- **Margin Trading & Funding:**
-
-  - **Cross and Isolated:** Users can borrow assets to increase position size in spot and futures. Bitget provides real-time margin ratio metrics and liquidation warnings.
-  - **Funding Rate Transparency:** Standard funding rate mechanisms apply to perpetuals; traders can view historic and real-time funding data to manage carry and hedging strategies.
-
-- **Copy Trading (Flagship Feature):**
-
-  - **Role-Based Structure:** "Lead traders" share strategies while "followers" mirror trades automatically with flexible allocation rules.
-  - **Analytics & Controls:** Strategy dashboards expose PnL history, drawdown, win-rate, and risk metrics. Followers can cap allocations, set maximum slippage, and terminate copying at any time.
-  - **Diverse Strategies:** Futures-focused strategies dominate, but spot and grid-based strategies are also available for users seeking lower volatility.
-
-- **Automated & Structured Products:**
-
-  - **Grid, DCA, and Rebalancing Bots:** Built-in bots enable rules-based accumulation or market-making in spot and futures.
-  - **Dual Investment & "Shark Fin" Products:** Structured yield products offering variable returns within target price ranges; note that returns and capital risk vary with market conditions.
-  - **Launchpad/Launchpool:** Token sale and staking events for new projects (availability varies by region).
-
-- **Bitget Earn and Staking:**
-
-  - **Flexible and Fixed Terms:** Earn products include flexible savings, fixed-term yields, and occasional promotional rates.
-  - **On-Exchange Staking:** Users can **[stake](/posts/crypto-staking)** select assets through Bitget Earn; yields depend on network rewards, liquidity conditions, and promotional campaigns.
-
-- **On/Off-Ramps and P2P:**
-
-  - **Card, Bank, and Third-Party Providers:** Localized fiat gateways available in many regions via partnerships; fees, KYC requirements, and limits vary by country.
-  - **P2P Market:** Peer-to-peer trading supports multiple currencies with escrow; traders must practice diligence and adhere to platform guidelines.
-
-- **Web3 Integration (Bitget Wallet):**
-  - **Self-Custody Wallet:** Multi-chain wallet for on-chain swaps, **[NFTs](/posts/are-nfts-dead)**, and DeFi access. While separate from exchange custody, it complements Bitget's centralized services for users who want both CEX and Web3 functionality.
+Whether tokenized equities on an offshore crypto exchange are a good way to own equities is a separate question, and one worth asking before using them. The wrapper is not the asset, and your legal claim in a tokenized share is not the same as a share.
 
 ![Bitget trading interface with spot, futures, and copy trading modules displayed on desktop and mobile](/images/posts/bitget-trading.jpg)
 
-## **Security Measures**
+## **September 2026: A USD 387.5 Million Breach**
 
-Security is core to any centralized cryptocurrency exchange. Bitget publicizes multiple safeguards to protect accounts and platform-level assets, alongside transparency commitments via Proof of Reserves.
+On September 24, 2026, attackers exploited a zero-day vulnerability in a third-party security product to obtain high-level credentials for Bitget's internal network. With those credentials they issued fraudulent withdrawal instructions against the exchange's hot and warm wallets. The initial loss estimate of about USD 351.6 million was later revised to USD 387.5 million, making it the largest crypto exchange hack of 2026 and one of the ten largest ever recorded.
 
-- **Account Security:**
+The mechanics matter for judging the damage. Chen stated that the attackers did not forge user withdrawal requests and did not obtain private keys for the cold, hot or warm wallets. What they compromised was the internal authorisation path, so the exchange's own systems approved transfers the exchange had not intended. Cold storage, where the majority of client funds sit, was untouched. Chen also said IP addresses and on-chain patterns matched techniques associated with North Korean state-linked groups, and that the attacker had tested risk controls with small transfers before the main theft.
 
-  - **2FA and Passkeys:** Google Authenticator/SMS/Email 2FA and increasingly, passkey support for phishing-resistant login flows.
-  - **Device & Session Controls:** IP/device management and session history with one-click logout.
-  - **Withdrawal Protection:** Address allowlisting, anti-phishing codes, withdrawal cooldowns, and optional withdrawal confirmation layers.
-  - **KYC & AML:** Identity verification tiers are required for higher limits and certain products; enhanced monitoring is used to detect suspicious activity.
-
-- **Platform Security:**
-
-  - **Custody Segregation:** Hot/cold wallet architecture with multi-sig controls. Operational procedures aim to minimize hot wallet exposure.
-  - **Infrastructure & Monitoring:** Real-time risk engines for derivatives, DDoS mitigation, and internal alerting for anomalous withdrawals or trading spikes.
-  - **Third-Party Testing:** Regular penetration testing and security reviews are conducted; users should still apply best practices, including hardware keys and unique passwords.
-
-- **Proof of Reserves (PoR) and Transparency:**
-
-  - **Merkle-Tree Auditing:** Bitget publishes reserves snapshots and a public verification process for users to independently check inclusion in the Merkle tree.
-  - **High Reserve Ratios:** Bitget has reported reserve ratios exceeding 200% for major assets like BTC, ETH, USDT, and USDC during various snapshots; ratios can fluctuate over time.
-  - **Protection Fund:** A publicly disclosed protection fund (valued around hundreds of millions of USD) provides an additional buffer against extreme events; note that its scope and terms are set by the exchange and may change.
-
-- **Historical Incidents & Disclosures:**
-
-  - **Track Record:** As of recent years, Bitget has avoided widely reported, large-scale exchange hacks. It has, however, faced regulatory scrutiny (see compliance section) and occasional market-related incidents affecting specific users or strategies, as is common across the industry.
-  - **Custodial Disclaimer:** Assets held on Bitget are under Bitget's custody. Users should understand that exchange custody introduces counterparty risk. Long-term holders often diversify with self-custody where appropriate. Learn more about **[how to store crypto](/posts/how-to-store-crypto)** securely.
-
-- **Risk Warnings:**
-  - **Derivatives:** Trading derivatives, especially with high leverage, carries extreme risk and can result in the loss of your entire position rapidly.
-  - **Custody:** Assets held on Bitget are under Bitget's custody; assess counterparty risk and consider self-custody for long-term storage.
-  - **Scams/Phishing:** Always verify domains, enable anti-phishing codes, and never share your 2FA or recovery codes with anyone. Review **[how to avoid crypto scams](/posts/how-to-avoid-crypto-scams)** for additional protection.
+No customer balance was lost. The User Protection Fund absorbed the entire amount.
 
 <ArticleAd />
 
-## **User Experience**
+## **What the Protection Fund Did and Did Not Prove**
 
-Bitget focuses on reducing friction for both advanced traders and first-time crypto users, with a strong emphasis on copy trading and education.
+The fund was set up in 2022 with 5,500 BTC and a minimum commitment of USD 300 million. Covering the breach pushed it below USD 200 million. On September 28 Chen pledged to restore it above USD 300 million within a week using company capital, and by September 30 it held 3,705 BTC worth roughly USD 309 million. Proof of reserves at that point showed 131 percent overall coverage across 19 assets, with BTC at 142 percent, ETH at 110 percent, USDT at 107 percent and USDC at 154 percent.
 
-- **Interface & Mobile Apps:**
+Users voted with their balances anyway. Net outflows hit USD 463 million in the 24 hours spanning September 28 and 29, over 10 percent of reserves and the largest single-day outflow tracked at the exchange in four years. Withdrawals in BTC, ETH and USDT were restored first, with P2P, fiat and remaining tokens scheduled to resume on October 2 at 08:00 UTC.
 
-  - **Clean, Configurable UI:** Beginners can use simplified layouts, while pros can enable advanced modules, chart tools, and multi-panel workspaces.
-  - **Mobile Parity:** iOS and Android apps include core trading, copy trading, deposits/withdrawals, Earn, and portfolio views with performance metrics.
+Two conclusions follow, and they point in opposite directions.
 
-- **Social and Copy Trading:**
+The fund worked. A pre-funded, publicly verifiable reserve absorbed a nine-figure loss and was topped back up inside a week without socialising losses onto customers or imposing a haircut. Very few exchanges in this industry's history have handled a breach of that size that cleanly, and the ones that could not are mostly gone.
 
-  - **Discoverability:** Rich filters (ROI, drawdown, duration, volatility, asset focus) help followers find compatible strategies.
-  - **Transparency:** Public leaderboards and sharable profiles encourage responsible competition, though users must still review risk metrics carefully.
+The breach also happened. A third-party dependency produced a path to internal credentials, and the authorisation controls approved transfers that should have been impossible. Cold storage held, which is the single most important fact, but the layer above it failed comprehensively. A protection fund is compensation, not prevention, and it is only as good as the operator's willingness and ability to refill it. That willingness is a commercial decision, not a guarantee, and it is worth remembering when deciding **[how to store crypto](/posts/how-to-store-crypto)** rather than leaving it on any exchange.
 
-- **Education & Research:**
+## **Regulation: Seychelles Today, Vienna Tomorrow**
 
-  - **Bitget Academy:** Beginner-to-pro content on **[crypto trading](/posts/crypto-trading-vs-holding)**, technical analysis, and risk management.
-  - **Market Insights:** Periodic research reports, token overviews, and exchange announcements keep users updated on listings, **[crypto airdrops](/posts/understanding-crypto-airdrops)**, and product changes.
+Bitget's corporate base is in the Seychelles, which is common among global derivatives venues and offers users comparatively little regulatory recourse. That is changing at the edges.
 
-- **Customer Support:**
+The company is building an EU headquarters in Vienna and has said the operational launch is tied to approval under the Markets in Crypto-Assets regulation, with a licence application to Austria's Financial Market Authority. A MiCA authorisation would put the European business under a supervised framework with capital, custody and disclosure requirements that the Seychelles entity does not face.
 
-  - **24/7 Live Chat:** Multilingual chat support and ticketing for account, KYC, and technical issues.
-  - **Help Center:** Guides for deposits, withdrawals, fee schedules, API keys, bots, and copy trading operations.
-
-- **Onboarding & Compliance UX:**
-  - **KYC Flows:** Streamlined identity checks with document upload and liveness detection. Users in certain regions may encounter stricter verification steps.
-  - **Risk Reminders:** Prompted warnings for leverage, margin calls, and structured products to reinforce informed decision-making.
-
-## **Regulatory Compliance**
-
-Bitget operates globally but tailors its product availability to local regulations. The exchange emphasizes ongoing compliance efforts, including KYC expansion and Travel Rule integrations, while seeking registrations where available.
-
-- **Entity and Registrations:**
-
-  - **Primary Registration:** Bitget is registered in Seychelles and operates internationally.
-  - **EU VASP Registrations:** Bitget has pursued Virtual Asset Service Provider registrations in select EU jurisdictions (e.g., Lithuania and Poland), which support certain operational activities within the European market.
-  - **Other Jurisdictions:** Availability of specific features (derivatives, copy trading, Launchpad, Earn) varies and may be disabled in particular regions due to regulatory requirements.
-
-- **Restrictions & Availability:**
-
-  - **United States:** Bitget does not serve U.S. persons and typically restricts account creation or services for U.S. residents.
-  - **Canada & Singapore:** Access and product scope may be limited or subject to periodic changes as local rules evolve. Users in these markets should check the latest availability on the official site.
-  - **Sanctioned Regions:** Countries/regions under international sanctions or local prohibitions are generally blocked.
-
-- **Compliance Controls:**
-
-  - **KYC/AML:** Comprehensive KYC tiers, sanctions screening, and suspicious activity monitoring.
-  - **Travel Rule Integrations:** Information-sharing mechanisms for eligible transfers to meet FATF-aligned requirements.
-  - **Disclosure & Risk Statements:** Product-specific disclaimers for derivatives, staking, and structured products.
-
-- **Regulatory Risk Warning:**
-  - Users must verify the legality and availability of Bitget in their country. Regulations change frequently, and Bitget may modify, suspend, or discontinue products to maintain compliance.
+US residents are restricted, along with several other jurisdictions, and the terms of service are the authoritative list. Product availability for derivatives, Earn and tokenized assets varies by region.
 
 ![Bitget headquarters office building showcasing the company's global presence and modern corporate facilities](/images/posts/bitget-office.jpg)
 
-## **Points to Consider**
+## **What to Weigh Before Using Bitget**
 
-Before choosing any cryptocurrency exchange, evaluate the trade-offs, costs, and your own risk tolerance.
-
-- **Fees and VIP Tiers:**
-
-  - **Spot & Derivatives:** Base spot fees are competitive; futures fees typically favor makers with reduced rates. Larger traders can qualify for VIP tiers, while BGB-based discounts further lower costs. Always check the live fee schedule and consider your trading style (maker vs taker).
-
-- **Copy Trading Risk:**
-
-  - **No Guaranteed Returns:** Historical PnL does not guarantee future performance. Followers must review drawdown, strategy duration, and risk per trade. Start with small allocations, diversify across strategies, and set firm risk limits.
-
-- **Leverage & Liquidation:**
-
-  - **High-Leverage Danger:** Even modest price moves can trigger liquidation. Use isolated margin for experimental positions, revisit leverage assumptions regularly, and set stop-loss/take-profit conditions before opening positions.
-
-  - **Custody vs Self-Custody:**
-
-  - **Counterparty Considerations:** While Bitget publishes Proof of Reserves and maintains a protection fund, exchange custody is not risk-free. For long-term holdings, consider self-custody and distribute assets across secure wallets. Understanding **[crypto volatility](/posts/crypto-volatility)** is also crucial for risk management.
-
-- **Product Complexity:**
-  - **Structured Products & Earn:** Yields depend on market conditions and may include risks such as impermanent loss, price-path dependency, or principal risk. Understand payoff diagrams and lock-up terms before allocating capital.
+- **Read the September 2026 breach as information, not as a disqualification.** The protection fund performed exactly as designed. The infrastructure around it did not. Both facts are relevant, and an exchange that has been stress-tested in public is in some respects better understood than one that has not.
+- **Treat copy trading as manager selection.** Vet lead traders on drawdown and duration, not headline return. A profit share with no loss exposure is an incentive to take leverage that a follower would never choose.
+- **Keep only working capital on the platform.** This applies everywhere and it applied here. Cold storage protected the bulk of client funds; your own self-custody protects the rest.
+- **Understand tokenized equities before trading them.** A tokenized share on an offshore venue is a contractual claim, not registered share ownership, and the difference shows up precisely when it matters.
+- **Leverage is where retail loses money.** Derivatives depth is a feature for professionals and a hazard for everyone else. If you are still working through **[crypto for beginners](/posts/crypto-for-beginners)**, stay on spot.
+- **Check your jurisdiction, and check it again after MiCA.** The Vienna entity, once licensed, will offer European users a materially different legal footing from the Seychelles parent. Which entity you contract with matters.
+- **Promotional programmes are not free money.** Launchpool allocations and **[airdrops](/posts/understanding-crypto-airdrops)** come with lockups and conditions, and social-engineering **[crypto scams](/posts/how-to-avoid-crypto-scams)** cluster around them.
 
 <ArticleAd />
 
-## **Conclusion**
+## **Who Bitget Suits**
 
-Bitget stands out as a derivatives-focused cryptocurrency exchange with one of the industry's most active copy-trading ecosystems, competitive fees, and broad asset coverage. The platform balances advanced tooling - APIs, bots, grid/DCA automation - with approachable UX, educational content, and strong product breadth from spot to structured Earn products. Security-wise, its Proof of Reserves program and protection fund enhance transparency and resilience, though users should still consider the inherent risks of exchange custody. Regulatory access varies by country, and U.S. persons are restricted; prospective users must confirm local availability and the latest product scope.
+Bitget fits active traders who want derivatives depth, a genuinely large copy trading marketplace and broad access to **[altcoins](/posts/what-are-altcoins)** alongside tokenized traditional assets, and who are comfortable with an offshore counterparty. The BGB token's fee discounts reward consistent volume, and the **[staking](/posts/crypto-staking)** and Earn products give idle balances somewhere to sit.
 
-Ideal for active traders who value copy trading, futures liquidity, and an integrated Earn suite, Bitget also serves newer users who prefer guided strategies - provided they adopt conservative allocations and learn risk controls. Final verdict: Bitget offers robust copy trading and derivatives depth at competitive fees, but users must weigh leverage risks, regional restrictions, and the trade-offs of exchange custody. For those new to **crypto trading**, starting with small allocations and focusing on education remains essential.
+It fits conservative holders considerably less well. A custodial offshore exchange that was breached for USD 387.5 million in September 2026 is not where long-term positions belong, however well the compensation mechanism performed, and the choice between **[trading and holding](/posts/crypto-trading-vs-holding)** should determine where your assets actually live.
+
+The fair summary is that Bitget is a capable, fast-moving exchange with an unusual amount of capital committed to making users whole, and it has now demonstrated that commitment under real conditions. It is also an exchange whose internal controls were defeated by a third-party zero-day, which is a reminder that the security of any custodial venue includes every vendor it depends on. Use it for what it is good at, and do not confuse a well-funded protection fund with an absence of risk.
 
 <ExchangeButton href="https://www.bitget.com/" text="Join Bitget" />

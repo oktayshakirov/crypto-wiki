@@ -4,6 +4,7 @@ meta_title: "Deribit Wiki: Crypto Options Exchange, Coinbase Deal & Fees"
 image: "/images/exchanges/deribit.webp"
 description: "Deribit is the leading crypto options exchange, with deep BTC and ETH liquidity. Owned by Coinbase since 2025."
 date: 2026-09-20
+updated: 2026-09-30
 order: 31
 authors: ["Oktay Shakirov"]
 quickFacts:
@@ -15,14 +16,14 @@ quickFacts:
   type: "Centralized derivatives exchange: options, futures and perpetuals"
   custody: "Custodial"
   license: "VARA VASP licence in Dubai (conditional licence granted April 2024)"
-  availability: "Not available to U.S. residents and some other jurisdictions"
+  availability: "Closed to U.S. retail; U.S. institutions via a CFTC-regulated FCM since May 2026"
 faqs:
   - question: "What is Deribit?"
     answer: "Deribit is a centralized crypto derivatives exchange specializing in options, futures and perpetual swaps, best known for having the deepest Bitcoin and Ethereum options liquidity in the market. It was founded in the Netherlands in 2016 by John Jansen and Marius Jansen and is now owned by Coinbase."
   - question: "Who owns Deribit?"
     answer: "Coinbase owns Deribit. The deal was announced in May 2025 and completed on August 14, 2025, when Coinbase acquired Deribit's parent company Sentillia B.V. for cash and Coinbase Class A stock."
   - question: "Is Deribit available in the United States?"
-    answer: "No. Deribit does not accept U.S. residents and restricts some other jurisdictions based on local law. The sign-up flow is the authoritative source on who can open an account."
+    answer: "Not for retail. Deribit does not accept U.S. retail residents and restricts some other jurisdictions based on local law. Since May 2026, qualified U.S. institutions can reach Deribit's options and perpetual futures through Coinbase Financial Markets, a CFTC-regulated futures commission merchant. Coinbase has also said options will appear in its main app for eligible users in selected jurisdictions from late October 2026. The sign-up flow remains the authoritative source on who can open an account."
   - question: "Is Deribit safe?"
     answer: "Deribit is a custodial exchange, so you carry counterparty risk. It keeps most client assets in cold storage and publishes proof-of-reserves data. In November 2022 it lost around 28 million dollars from a hot wallet, covered the loss from company reserves, and client balances were not affected."
   - question: "Where is Deribit regulated?"
@@ -37,134 +38,80 @@ social:
   android: "https://play.google.com/store/apps/details?id=com.deribit"
 ---
 
-## Deribit: The Institutional-Grade Crypto Options and Perps Venue
+Deribit is a crypto derivatives exchange that trades options, futures and perpetual swaps, and it has held the deepest Bitcoin and Ethereum options order book in the market for most of its existence. Founded in the Netherlands in 2016 by John Jansen and Marius Jansen, it was built for market makers, funds and volatility desks rather than retail buyers, and it has never offered a meaningful spot business. Since Coinbase completed its USD 2.9 billion acquisition on August 14, 2025, Deribit has been the derivatives engine inside a US-listed public company, a change that is now reshaping both venues.
 
-Deribit is a crypto derivatives exchange specializing in options, futures and perpetual swaps, and the largest venue for Bitcoin and Ethereum options. Founded in the Netherlands in 2016 by John Jansen and Marius Jansen, it is a derivatives-first cryptocurrency exchange built for professional traders, market makers, and institutions. Long operated from Panama before moving its base to Dubai, and owned by **[Coinbase](/exchanges/coinbase)** since August 2025, Deribit has become the market's dominant venue for cash-settled options and perpetual futures on bellwether assets like **[Bitcoin](/posts/what-is-bitcoin)** and **[Ethereum](/posts/what-is-ethereum)**. Its core advantage is deep liquidity in options across maturities and strikes, fast matching, and a robust risk engine, all designed for low-latency, capital-efficient trading of digital assets.
+## The Options Book Is the Moat
 
-Deribit stands apart by specializing in derivatives rather than offering a retail-heavy spot experience. With order-book depth, block trade/RFQ capability, and portfolio margining, it serves as a central hub for funds and prop firms that require speed, size, and sophisticated tooling - while still remaining accessible to advanced individual traders who understand options and perpetual swaps built on **[blockchain](/posts/what-is-blockchain)** rails.
+Almost every crypto exchange lists perpetual futures. Very few have ever built a functioning options market, because options require liquidity spread across a grid of strikes and expiries rather than concentrated in a single contract. Liquidity begets liquidity on that grid, and Deribit won it early.
 
-<ArticleAd />
+The resulting share is extreme. Deribit still accounted for roughly 85 percent of crypto options open interest in 2026, and within the combined Coinbase derivatives complex it held between USD 27.4 billion and USD 27.8 billion of the nearly USD 28.9 billion in total open interest, around 95 percent of the group. Coinbase Derivatives reported USD 4.75 billion in daily volume across the integrated platforms following the merger.
 
-## Core Trading Platform
+That dominance is what professional traders actually come for. A vol desk needs to buy a specific strike at a specific expiry in size without moving the price, and outside Deribit the crypto options market has historically not been able to accommodate that.
 
-Deribit focuses on a narrow, high-performance product set: options, futures, and perpetual swaps (perps). That focus allows the exchange to maintain leading liquidity for options across expiries, robust risk controls, and analytics that support active hedging and volatility trading.
+## Where the Moat Is Starting to Leak
 
-- **Options (European-style, cash-settled):**  
-  - Contracts on major underlyings (e.g., BTC and ETH) across daily, weekly, monthly, and quarterly expirations.  
-  - Extensive strike ladders, rich implied-volatility surface, and options Greeks for professional risk management.  
-  - Block trading via RFQ for size execution and OTC-style workflows.  
-  - Popular with funds hedging long exposure, basis/vol arbitrage desks, and structured product issuers.
+The interesting development of 2026 is that Deribit's monopoly on scale is no longer unchallenged, and the competition is not another crypto exchange.
 
-- **Perpetual Swaps and Futures:**  
-  - High-liquidity perps on flagship assets with competitive funding mechanics and API access for quant strategies.  
-  - Futures across maturities for calendar spreads, term-structure views, and hedge overlays.  
-  - Understanding the nuances of perps is essential - start with the basics of **[what are perpetual futures](/posts/what-are-perpetual-futures)** to contextualize funding, premiums, and mark price.
+In April 2026, open interest in options on BlackRock's IBIT spot Bitcoin ETF reached USD 27.61 billion, overtaking Deribit's USD 26.9 billion and marking the first time a regulated US venue led offshore Bitcoin options open interest. Institutions that want Bitcoin volatility exposure inside a familiar regulatory wrapper can now get it without opening an offshore derivatives account at all.
 
-- **Portfolio Margin and Collateral Flexibility:**  
-  - Unified risk framework that recognizes strategy offsets (e.g., long/short options spreads, futures hedges) to improve margin efficiency.  
-  - Collateral support typically includes BTC, ETH, and stablecoins (e.g., USDC), with haircuts applied by asset and volatility regime.  
-  - Cross-asset netting can reduce capital usage for multi-leg strategies, a key differentiator for frequent options traders.
+This matters for anyone assessing Deribit's durability. Its structural advantage was that no regulated alternative existed at size. That is no longer true for Bitcoin, and the gap is being closed by listed products rather than by rival crypto venues.
 
-- **Pro-Grade Execution and Data:**  
-  - Low-latency matching engine, WebSocket/REST/FIX APIs, and advanced order types (post-only, reduce-only, stop/trigger varieties).  
-  - Live options analytics, volatility metrics (including exchange-produced volatility indices), and risk summaries at the account and portfolio level.  
-  - RFQ and block trade tooling to price complex structures and execute institutional tickets.
+## What You Can Trade and How the Margin Works
 
-- **Ecosystem Reach and Education:**  
-  - Though derivatives-focused, underlyings may include large-cap **[altcoins](/posts/what-are-altcoins)** alongside BTC/ETH, ebbing and flowing with market demand and liquidity conditions.  
-  - Derivatives also interact with **[DeFi](/posts/what-is-defi)** use cases: advanced participants hedge liquidity provision, automate basis trades, and construct structured yield with options overlays.  
-  - ETH's transition to **[Proof-of-Stake](/posts/what-is-proof-of-stake)** changed some market dynamics (funding, borrow, staking-derived yields) that sophisticated traders factor into their derivatives strategies.
+The product set is narrow by design: options, dated futures and perpetual swaps on **[Bitcoin](/posts/what-is-bitcoin)** and **[Ethereum](/posts/what-is-ethereum)**, with a rotating set of large-cap **[altcoins](/posts/what-are-altcoins)** as demand and liquidity allow.
+
+- **Options.** European-style, cash-settled, with strikes and expiries running from daily to quarterly and beyond. Settlement is in the underlying crypto rather than dollars, which changes the payoff arithmetic in ways newcomers routinely misjudge.
+- **Perpetual swaps.** Funding-rate contracts with no expiry. If funding, premiums and mark price are not yet second nature, start with **[what are perpetual futures](/posts/what-are-perpetual-futures)** before putting capital at risk.
+- **Portfolio margin.** The feature that keeps professional flow on the platform. Offsetting positions are margined as a book rather than individually, so a hedged structure ties up far less collateral than it would on a venue that margins each leg in isolation.
+- **Block trades and RFQ.** Large orders are negotiated off the order book and printed to it, avoiding the slippage that a size order would otherwise cause.
 
 ![Two hands passing a Bitcoin coin across a desk of price charts and a calculator](/images/posts/crypto-trade.jpg)
 
-## Security Measures
+## Custody, and the 2022 Hot Wallet Loss
 
-Security on a derivatives venue is an intertwined set of controls: safeguarding client assets, resilient risk/liquidation engines, and transparent backstops to maintain orderly markets even under stress.
+Deribit is fully custodial, so your collateral sits with the exchange and you carry its counterparty risk. The majority of client assets are held in cold storage, with proof-of-reserves data published for verification.
 
-- **Account Security:**  
-  - **Two-Factor Authentication (2FA):** Support for time-based 2FA and withdrawal confirmations.  
-  - **Withdrawal Controls:** Address whitelisting and configurable limits provide defense-in-depth for unauthorized transfer attempts.  
-  - **Session/Device Management:** Users can monitor and revoke active sessions; anti-phishing features reduce spoofing risk.
+The clearest test of that arrangement came in November 2022, when attackers drained roughly USD 28 million from a Deribit hot wallet. The company covered the shortfall from its own reserves and no client balance was affected. That is the outcome you want from an operator, and it is worth weighing against the many venues that have socialised such losses onto users.
 
-- **Custody and Cold Storage:**  
-  - The exchange operates a custodial model; users do not control private keys. Hot wallets are minimized for operational funds, with the majority of client assets held in cold storage.  
-  - For long-term holdings, some traders prefer external custody; if you plan to keep assets beyond active trading, learn **[how to store crypto](/posts/how-to-store-crypto)** securely.
-
-- **Proof of Reserves and Transparency:**  
-  - Deribit has published wallet information and proof-of-reserves updates to substantiate asset coverage. While methods and auditor participation have evolved across the industry, periodic attestations and publicly visible addresses are part of market-driven transparency.  
-  - Insurance funds - segregated by product/asset - aim to absorb platform shortfalls from liquidations before any impact to general users.
-
-- **Historical Incident Context (Nov 2022):**  
-  - In November 2022, Deribit reported a hot-wallet breach of around 28 million dollars. The exchange paused withdrawals temporarily, covered the loss from company reserves so client balances were untouched, and resumed operations after remediation.  
-  - Incidents of this kind underscore the importance of opsec hygiene, vigilance against **[crypto scams](/posts/how-to-avoid-crypto-scams)**, and the reality that custodial venues entail counterparty and operational risk.
+It does not change the underlying structure. Collateral on a derivatives exchange is working capital, not storage, and anything you are not actively trading against belongs elsewhere. If that separation is not yet part of your routine, **[how to store crypto](/posts/how-to-store-crypto)** covers the mechanics.
 
 <ArticleAd />
 
-## User Experience
+## Being Absorbed Into Coinbase
 
-Deribit is built for traders who live in options chains, volatility surfaces, and funding dashboards. The UX prioritizes dense information display and efficient execution over hand-holding.
+The acquisition has moved well past the paperwork stage, and the integration is now the main thing changing about this exchange.
 
-- **Interface and Tools:**  
-  - Multi-pane layouts for options strikes/expiries, Greeks, and real-time risk; position and P&L monitors; customizable themes and layouts.  
-  - Execution tickets designed for speed and specificity - particularly for options legs and spread building.  
-  - Paper trading or testnet environments help desk strategies rehearse before deploying real capital.
+As of October 1, 2026, perpetuals trading that previously ran on Coinbase International Exchange is handled through Deribit by Coinbase, consolidating the group's derivatives flow onto Deribit's infrastructure. In May 2026, Coinbase Financial Markets opened a route for US institutional clients to trade global crypto options and perpetual futures through a CFTC-regulated futures commission merchant with direct Deribit access. Coinbase has said options will appear directly in its main app for eligible users in selected jurisdictions from late October 2026.
 
-- **Onboarding and KYC:**  
-  - A standard identity verification process applies, and access varies by jurisdiction. The exchange restricts sign-ups from certain regions (including the U.S.).  
-  - For traders completely new to centralized venues, start with the fundamentals of **[understanding crypto exchanges](/posts/understanding-crypto-exchanges)** and our primer on **[crypto for beginners](/posts/crypto-for-beginners)**.
+The practical effect is that **[Coinbase](/exchanges/coinbase)** is becoming the retail-facing surface and Deribit the matching engine underneath. For existing Deribit users this has so far meant continuity rather than disruption, but the venue's independence is steadily dissolving, and product decisions now answer to a public company's disclosure and compliance posture.
 
-- **APIs and Market Maker Support:**  
-  - WebSocket, REST, and FIX APIs support low-latency strategies, market making, and analytics ingestion.  
-  - Maker programs, latency-sensitive endpoints, and block/RFQ tools are tuned for professional flow and liquidity provision.
+## Who Can Actually Open an Account
 
-- **Support and Education:**  
-  - Deribit's documentation, blog/insights, and status pages target technically literate traders. The knowledge base focuses on contract specs, risk/margin methodologies, and funding/settlement mechanics.  
-  - Because option mechanics can be complex, traders often complement exchange docs with third-party education on volatility, skew, and structured payoffs.
+Deribit does not accept US retail residents, and it restricts a number of other jurisdictions based on local law. The May 2026 institutional route is exactly that: a path for qualified US institutions through a regulated intermediary, not an opening for individual American traders.
 
-<ArticleAd />
+Its Dubai entity, Deribit FZE, holds a Virtual Asset Service Provider licence from Dubai's Virtual Asset Regulatory Authority, granted conditionally in April 2024 and among the first issued to a derivatives exchange there. The company operated from Panama for years before relocating, a history worth knowing when assessing how long its current regulatory footing has existed.
 
-## Regulatory Compliance and Geographic Availability
-
-Deribit has evolved alongside a shifting global regulatory landscape. Its corporate structure and operating entities have historically reflected the need to serve a global derivatives audience while restricting access where rules are clearest or most stringent.
-
-- **Licensing and Oversight:**  
-  - In April 2024 Deribit FZE received a conditional VASP licence from Dubai's Virtual Asset Regulatory Authority (VARA), and the same month commercial chief Luuk Strijers became CEO.  
-  - Coinbase announced its acquisition of Deribit in May 2025 and completed it on August 14, 2025, adding the dominant options venue to its derivatives business.  
-  - Deribit has pursued licensing in friendly jurisdictions as crypto derivatives rules mature, with a focus on clear perimeter definitions (derivatives, custody, market integrity) and fit-and-proper requirements.  
-  - Compliance routines align to AML/CFT standards, sanctions screening, and transaction monitoring, balancing user privacy with regulatory obligations.
-
-- **Jurisdictional Access:**  
-  - Deribit does not serve U.S. residents and restricts other jurisdictions based on local law. Availability can change as regulations evolve, so the sign-up flow is the authoritative source on eligibility.  
-  - Institutional onboarding typically involves additional due diligence and documentation; derivatives permissions may be tailored by entity and use case.
-
-- **Exchange Comparisons:**  
-  - Traders considering perps and options often compare venues such as **[Bybit](/exchanges/bybit)** or **[OKX](/exchanges/okx)** for alternative liquidity, listings, or promotional programs; however, Deribit's options depth in BTC/ETH remains a principal draw for vol desks and structured product traders.  
-  - The right venue mix depends on instrument availability, jurisdiction, latency, and fee tiers - diversification is common among professional desks.
+The sign-up flow remains the only authoritative answer on eligibility, and it changes. Traders comparing venues for perps liquidity commonly look at **[OKX](/exchanges/okx)** alongside it, though nothing matches the options depth.
 
 ![A night-time world map of city lights, representing the regions where Deribit is and is not available](/images/posts/global-map.jpg)
 
-## Points to Consider
+## Risks Specific to This Venue
 
-- **Fee Structure and Execution Quality:**  
-  - **Maker/Taker Dynamics:** Deribit uses a tiered maker/taker model with rebates and discounts based on monthly volume and role. Depth and slippage often matter more than headline fees for options; evaluate total cost of execution.  
-  - **Funding and Carry:** For perps, funding payments can add or subtract from P&L. Understand how funding aligns with your directional or hedged positions.
-
-- **Leverage and Risk Management:**  
-  - **Portfolio Margin:** While margin offsets can improve capital efficiency, leverage amplifies both gains and losses. Ensure you understand liquidation paths and your risk exposure in volatile markets.  
-  - **Insurance Funds and Backstops:** Know how insurance funds are capitalized and when they are tapped. Historical resilience during stress events is a critical due-diligence datapoint.
-
-- **Product Scope and Liquidity:**  
-  - **Options Depth:** If you trade complex structures or large sizes, confirm strike coverage and open interest for your target expiries.  
-  - **Underlying Coverage:** While BTC/ETH dominate, listings evolve with demand. Liquidity in non-core underlyings may be episodic.
-
-- **Operational Discipline:**  
-  - **Custodial Tradeoffs:** As a custodial venue, Deribit holds your funds; for longer-term vaulting, consider self-custody best practices.  
-  - **Workflow Readiness:** Test APIs, simulate orders on testnet, and pre-flight margin usage before deploying capital. Integrate market data, execution, and risk monitoring for end-to-end visibility.
+- **This is not a beginner venue, and the platform does not pretend otherwise.** Options pricing, the Greeks, funding mechanics and liquidation logic all have to be understood before the first trade, not after it. **[Understanding crypto exchanges](/posts/understanding-crypto-exchanges)** is the prerequisite, not the destination.
+- **Crypto-settled options behave differently.** Because contracts settle in BTC or ETH rather than dollars, your payoff is denominated in an asset whose price is itself moving. The hedge you think you have may not be the hedge you have.
+- **Leverage liquidates faster than most expect.** Deribit's risk engine will close positions on maintenance margin breaches without regard for your conviction. Position sizing is the entire game.
+- **Counterparty risk is real even with a clean record.** Cold storage, proof of reserves and a covered 2022 loss are good signs, not guarantees. Keep collateral to what the strategy requires.
+- **Ownership now shapes the roadmap.** Coinbase decides what this venue becomes. Expect continued consolidation of the two platforms, and read announcements about product migration as material to your access.
+- **Watch the regulated alternatives.** If IBIT options or CME products can express your view inside a wrapper your mandate already permits, the offshore account may not be worth the operational overhead.
 
 <ArticleAd />
 
-## Conclusion
+## The Verdict for 2026
 
-Deribit is the crypto derivatives specialist that made options a first-class citizen in digital-asset markets. Its strengths are deep BTC/ETH options liquidity, robust perps/futures, and professional-grade portfolio margin with strong APIs - features that have earned it a loyal institutional user base. It is less ideal for beginners or those primarily seeking a retail spot experience; understanding derivatives, margin, and funding is essential and complements a broader plan for **[crypto trading](/posts/crypto-trading-vs-holding)**. For traders who live in volatility, spreads, and execution nuance, Deribit remains a top-tier venue in a still-maturing market for digital-asset derivatives.
+Deribit remains the default venue for anyone whose strategy genuinely requires crypto options liquidity at size: volatility funds, market makers, prop desks, structured product issuers and the small population of individual traders who trade vol rather than direction. On options depth across the strike and expiry grid it has no real peer, and portfolio margining makes complex books capital-efficient in a way single-contract margining cannot.
 
-<ExchangeButton href="https://www.deribit.com" text="Join Deribit" />
+It suits almost nobody else. There is no retail spot experience, no on-ramp for a first crypto purchase, and no reason for a directional trader to be here rather than somewhere simpler. Anyone still learning the basics is better served by **[crypto for beginners](/posts/crypto-for-beginners)** and a plan for **[trading versus holding](/posts/crypto-trading-vs-holding)** than by a professional derivatives book.
+
+The live question for 2026 and beyond is not whether Deribit is good at what it does. It is whether an offshore specialist retains its advantage now that it sits inside Coinbase and regulated US products have started matching its open interest. For the moment the answer is yes on options depth, and increasingly no on everything else.
+
+<ExchangeButton href="https://www.deribit.com" text="Visit Deribit" />

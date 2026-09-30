@@ -1,18 +1,19 @@
 ---
 title: "Bitfinex"
-meta_title: "Bitfinex Review: Liquidity, Margin Trading & Tether Ties"
+meta_title: "Bitfinex Wiki: The 2016 Hack, LEO Burns & Tether Ties"
 image: "/images/exchanges/bitfinex.jpg"
 description: "Bitfinex is a 2012-era exchange known for deep liquidity, margin trading, and its ownership ties to Tether."
 date: 2025-11-19
-updated: 2026-07-23
+updated: 2026-09-30
 order: 20
 authors: ["Oktay Shakirov"]
 quickFacts:
   founded: "2012"
   headquarters: "British Virgin Islands (iFinex Inc.)"
-  type: "Centralized exchange (CEX)"
+  type: "Centralized exchange (CEX), professional and margin focus"
+  owner: "iFinex Inc., which also owns Tether"
   custody: "Custodial"
-  token: "LEO"
+  token: "LEO (UNUS SED LEO), issued 2019; 80 percent of recovered 2016 hack Bitcoin is committed to buying and burning it"
   availability: "Global; US retail customers restricted"
 faqs:
   - question: "What is Bitfinex?"
@@ -31,107 +32,74 @@ social:
   telegram: "https://t.me/bitfinex"
   discord: "https://discord.com/invite/bitfinex"
 ---
-## Bitfinex: A Veteran Global Cryptocurrency Exchange for Professionals
 
-Founded in 2012, Bitfinex is one of the longest-running centralized cryptocurrency exchanges in the industry. Operated by iFinex Inc., the platform has historically catered to professional traders thanks to deep order books in major pairs, advanced order types, and a robust API suite. While its corporate structure has ties to the British Virgin Islands and operations historically associated with Hong Kong, Bitfinex has developed a network of entities for specific services (including tokenized securities) as it expanded globally. Its longevity, liquidity in flagship markets like **[Bitcoin](/posts/what-is-bitcoin)** (BTC/USD) and **[Ethereum](/posts/what-is-ethereum)** (ETH/USD), and sophisticated trading stack make Bitfinex a notable venue for advanced crypto trading on digital assets.
+Bitfinex is a centralized cryptocurrency exchange launched in 2012, which makes it one of the two oldest venues still operating at scale. It is built for professional traders rather than newcomers, with deep order books, a margin system and a peer-to-peer funding market that has no real equivalent elsewhere. It is also the exchange that lost nearly 120,000 Bitcoin in 2016, and the consequences of that theft still determine how its token trades a decade later.
 
-<ArticleAd />
+## Built for Traders, Not Beginners
 
-## Core Trading Platform and Services
+Bitfinex's product set assumes you already know what you are doing. There is spot trading in **[Bitcoin](/posts/what-is-bitcoin)**, **[Ethereum](/posts/what-is-ethereum)** and a curated set of **[altcoins](/posts/what-are-altcoins)**, and on top of that an unusually complete professional toolkit: margin trading, derivatives, algorithmic order types, a full API stack and customisable multi-panel layouts.
 
-Bitfinex focuses on a feature-rich trading experience with a broad set of markets, margin capabilities, a P2P funding market, and derivatives offered in permitted jurisdictions. The platform is purpose-built for active traders who value reliable execution, low-latency APIs, and customizability.
+The genuinely distinctive piece is the funding market. Rather than the exchange lending you money for margin, Bitfinex runs an order book for credit: lenders offer capital at rates and durations they choose, borrowers take it, and the exchange matches them. That means margin borrowing costs are set by supply and demand in a visible book rather than by a platform-set rate, and it gives lenders a yield product whose risk is legible in a way most earn programmes are not. It is the feature professional users cite most, and almost nobody has copied it.
 
-- **Spot Trading:** Access 180+ cryptocurrencies and 400+ trading pairs, with deep liquidity in majors (e.g., BTC, ETH) and a curated selection of **[altcoins](/posts/what-are-altcoins)**. The interface supports TradingView-style charting, custom layouts, and 100+ indicators.
-- **Margin Trading (up to 10x):** Experienced users can trade on margin with configurable leverage settings. Margin availability depends on pair liquidity and market conditions. While leverage can amplify profits, it equally magnifies losses; prudent risk controls are essential.
-- **Funding Market (P2P Lending):** Unique among major exchanges, Bitfinex's P2P funding market lets users lend or borrow funds to support margin positions. Lenders can set rates and durations; borrowers can source liquidity dynamically. Rates are variable and can move quickly in volatile conditions.
-- **Derivatives (Perpetual Swaps):** In eligible jurisdictions, Bitfinex Derivatives offers perpetual contracts with competitive funding mechanics and up to 100x leverage on select markets. Sophisticated position management tools, cross/isolated margin, and portfolio margin (where available) can help optimize capital efficiency. Derivatives are high risk and can lead to rapid losses if unmanaged.
-- **OTC Desk:** For institutions and high-net-worth individuals, an OTC desk facilitates large block trades (commonly from $50,000+) with minimal market impact and dedicated settlement workflows.
-- **Staking Services:** Bitfinex provides **[staking](/posts/crypto-staking)** on select **[proof-of-stake](/posts/what-is-proof-of-stake)** assets with variable rewards. Availability, yields, and supported assets change over time and by jurisdiction. As with any custodial staking, consider counterparty and lockup constraints relative to self-custody options.
-- **Borrowing (Bitfinex Borrow):** Crypto-backed loans provide flexible liquidity using digital assets as collateral. Rates are market-driven, and liquidation thresholds should be monitored closely when collateral is volatile.
-- **Advanced Order Types:** Beyond limit/market orders, Bitfinex supports OCO, trailing stops, FOK/IOC, hidden and post-only orders, and "Scaled Orders" to algorithmically distribute entries/exits across price bands.
-- **API and Automation:** REST and WebSocket APIs are optimized for low-latency trading, order book streaming, and account management. The open-source "Honey Framework" enables custom strategies and execution logic for quants and power users.
-- **Mobile Apps:** Feature-rich iOS and Android apps mirror the desktop experience with spot, margin, derivatives (where available), and funding.
+The corollary is that Bitfinex is a poor first exchange. The interface density, the margin mechanics and the absence of hand-holding all assume competence, and **[crypto beginners](/posts/crypto-for-beginners)** will find a simpler venue serves them better.
+
+## August 2, 2016: 119,756 Bitcoin
+
+On August 2, 2016, attackers drained 119,756 BTC from Bitfinex, worth roughly USD 72 million at the time. It remains one of the largest exchange thefts ever recorded.
+
+What Bitfinex did next was unusual and is the reason the company still exists. Rather than declare insolvency, it socialised the loss across every account, applying a haircut of roughly 36 percent to all customer balances regardless of whether the individual had been affected. In place of the deducted funds it issued BFX tokens, redeemable claims against future recovery. Within about eight months it had redeemed all of them, either for cash or for equity in iFinex, its parent company.
+
+Judged one way, that is an impressive recovery that made customers whole where most exchanges of that era simply collapsed. Judged another, it means every Bitfinex user in 2016 involuntarily became a creditor of the exchange and absorbed a share of a loss they had no part in. Both readings are accurate, and the episode is the clearest illustration available of what custodial risk actually means: your balance at an exchange is a claim on that company, and a claim can be written down.
 
 ![Bitfinex advanced trading interface showing deep order books, charting, and custom layouts](/images/posts/bitfinex-ui.png)
 
-## Security Measures
+## LEO, and the Strangest Token in Crypto
 
-Bitfinex has endured and evolved through some of crypto's most formative security chapters, implementing layered defenses across custody and account protection. The platform emphasizes operational security and user controls.
+UNUS SED LEO was issued in 2019 to shore up iFinex's finances after a series of setbacks including the hack. It provides fee discounts and platform benefits, which is conventional. What is not conventional is the redemption mechanism.
 
-- **Cold Storage and Wallet Architecture:** The exchange states that 99%+ of customer assets are held in cold storage, with limited hot-wallet balances to support withdrawals. A multi-signature governance model and segregation of duties reduce single points of failure.
-- **Account Security Controls:** Users can enable 2FA via TOTP and FIDO2/U2F security keys, set withdrawal address whitelists, configure anti-phishing codes, and review active sessions and IPs. PGP email encryption is supported for secure communication.
-- **Withdrawal Safeguards:** Manual checks, velocity limits, and IP/device fingerprints help flag anomalies. Address whitelisting and optional withdrawal delays add situational friction for sensitive actions.
-- **Network and App Security:** DDoS protection, rate limiting, and hardened API gateways mitigate common attack vectors. Bitfinex runs ongoing vulnerability assessments and maintains a bug bounty to encourage responsible disclosure.
-- **Historical Incidents:** In August 2016, Bitfinex suffered a breach resulting in the loss of ~119,756 BTC. The exchange socialized losses via BFX tokens and later redeemed them, ultimately making customers whole over time. In 2022, U.S. authorities recovered a significant portion of the stolen BTC and arrested suspects. Past incidents underscore why layered defenses and user-side security hygiene remain critical. For comprehensive security best practices, review **[How to Avoid Crypto Scams](/posts/how-to-avoid-crypto-scams)**.
+Bitfinex has committed to using 80 percent of any Bitcoin recovered from the 2016 hack to buy LEO on the open market and burn it. That ties the token's value directly to the recovery of specific stolen coins, which makes LEO less an exchange token than a tradeable claim on a law enforcement outcome.
 
-As with any custodial platform, users should evaluate what portion of their long-term holdings they keep on an exchange versus in self-custody solutions. For guidance on secure storage practices, see **[How to Store Crypto](/posts/how-to-store-crypto)**. Shorter-term trading balances are generally more appropriate for custodial storage than long-term reserves.
+The mechanism has already moved. US authorities seized approximately 94,636 BTC linked to the hack in 2022, and LEO rose around 59 percent on the news. In February 2026 analysts noted a renewed premium on LEO as speculation grew about movement on those coins, which are reported to account for roughly 30 percent of the US Strategic Bitcoin Reserve.
+
+That is an extraordinary situation to hold a position in. The token's upside depends on whether and when the United States government releases Bitcoin it seized from criminals who stole it from Bitfinex, and that decision is a matter of US policy rather than of exchange performance. Anyone trading LEO should understand they are trading a legal and political process, and **[crypto volatility](/posts/crypto-volatility)** here has causes unrelated to the market.
 
 <ArticleAd />
 
-## User Experience
+## The Tether Relationship
 
-Bitfinex's interface is designed for professional-grade workstations without sacrificing clarity. While beginners can learn the ropes, the platform shines when traders leverage its advanced tooling.
+Bitfinex is operated by iFinex Inc., which also owns Tether, the issuer of USDt. The two companies share ownership, management and history, and the relationship is the most persistent source of scrutiny around both.
 
-- **Interface and Customization:** Modular panels, detachable charts, multiple watchlists, and rich order entry forms create a workspace suited for high-activity trading. Keyboard shortcuts and rapid order placement help reduce friction.
-- **Charting and Analytics:** Integrated advanced charting provides deep historical data, multiple timeframes, custom indicators, and drawing tools. Level 2 order books and aggregated depth views assist with liquidity analysis.
-- **Portfolio and Risk Tools:** Real-time PnL, margin utilization, and funding exposure views help traders monitor risk. Portfolio margin (where available) can optimize capital usage but also demands sophisticated risk management.
-- **Education and Research:** Bitfinex Learn and in-platform tips offer primers on trading, staking, security practices, and platform mechanics. Market insights and occasional reports help contextualize macro developments.
-- **Customer Support:** Support is delivered through a ticket system and detailed knowledge base documentation. Response times vary by load and issue complexity, with priority support available for institutional accounts.
+In 2021 the New York Attorney General concluded that Tether's representations about its reserves had been misleading for certain periods, and that funds had moved between the two entities in ways that had not been disclosed. Tether and Bitfinex paid USD 18.5 million and ceased serving New York customers. The CFTC brought a related action the same year. Those are findings, not allegations.
 
-## Regulatory Compliance and Global Operations
+The structural concern that follows is simple: the exchange with among the deepest order books in crypto shares an owner with the issuer of the dollar token most of the market settles in. Whatever the conduct today, that concentration means the two entities' fortunes are linked, and a problem at one would not stay contained.
 
-Compliance at Bitfinex is nuanced due to its history, corporate structure, and product mix. Availability and features differ significantly by jurisdiction.
+Both have since moved their centre of gravity. Tether relocated its headquarters from the British Virgin Islands to El Salvador in January 2025, and on May 12, 2026 Bitfinex secured a Digital Asset Service Provider licence there, completing a set alongside Bitfinex Securities and Bitfinex Derivatives that covers spot trading, derivatives and tokenised securities in a single jurisdiction.
 
-- **Corporate Structure:** Bitfinex is operated by iFinex Inc., historically associated with the British Virgin Islands, and leverages affiliated entities to offer particular services (e.g., derivatives and tokenized securities) to applicable markets.
-- **Licensing and Registrations:** While Bitfinex does not operate as a licensed money services business in certain regions, it has developed licensed tokenized securities offerings through Bitfinex Securities entities - first in the Astana International Financial Centre (AIFC) and subsequently in El Salvador - reflecting a targeted approach to regulated products.
-- **Jurisdictional Restrictions:** Bitfinex is not available to U.S. persons and restricts access from sanctioned jurisdictions and regions with specific regulatory prohibitions. Derivatives availability is additionally gated by regional policies and user verification status. For U.S. users seeking compliant alternatives, consider exchanges like **[Coinbase](/exchanges/coinbase)** or **[Kraken](/exchanges/kraken)** that operate under U.S. regulatory frameworks.
-- **Compliance Controls:** The exchange implements KYC/AML procedures aligned with product tiers. Advanced features like derivatives and higher withdrawal thresholds generally require full verification. Transaction monitoring and on-chain analytics support compliance operations.
-- **Regulatory Matters and Disclosures:** In 2021, Bitfinex and Tether's parent iFinex settled with the New York Attorney General for $18.5 million, agreeing to enhanced transparency commitments and ceasing business with New York residents. This history is notable when evaluating counterparty and regulatory risk profiles.
+![A figure in a suit beside a Bitcoin symbol, representing the regulatory findings and licensing that shape iFinex](/images/posts/suit-man-and-bitcoin.jpg)
 
-![Compliance and jurisdictional availability map illustrating where Bitfinex products are accessible](/images/posts/regulators.jpg)
+## Security and Transparency Since
 
-## Founders and Historical Context
+Bitfinex publishes proof-of-reserves data and keeps the majority of client assets in cold storage, with segregated multi-signature wallet infrastructure introduced after 2016. It has not suffered a comparable breach since, which after a decade is meaningful evidence rather than luck.
 
-Bitfinex was founded in 2012 by Raphael Nicolle and Giancarlo Devasini, initially operating as a peer-to-peer Bitcoin exchange before evolving into a full-featured trading platform.
+It remains custodial, unlicensed in most major markets, and restricted to non-US retail customers. Proof of reserves shows assets at a moment and says nothing about liabilities, so it is a weaker assurance than an audit. The practical conclusion is the one the 2016 haircut taught directly: trade here, hold elsewhere, and treat **[how to store crypto](/posts/how-to-store-crypto)** in self-custody as the default for anything you are not using as collateral.
 
-- **Origins (2012):** Bitfinex was created by Raphael Nicolle, evolving from an early Bitcoin margin trading platform into a full-fledged exchange. Over time, leadership roles have included figures such as Giancarlo Devasini and Paolo Ardoino (who has served in key executive roles).
-- **Early Innovation:** Bitfinex helped pioneer exchange-based margin trading and a P2P funding market, features that later influenced industry norms. The platform became known for deep liquidity and professional tooling.
-- **2016 Breach and Recovery:** The 2016 hack was a watershed moment. Bitfinex issued "BFX" tokens to affected customers and later redeemed them at face value, an unusual recovery path in the industry at that time.
-- **2022 Recovery and Legal Developments:** U.S. authorities recovered a large portion of stolen BTC, with the exchange stating it would use proceeds from any recovery (net of costs) to buy back and burn its UNUS SED LEO token per its whitepaper commitments.
+## Practical Cautions
 
-## Token Utility: UNUS SED LEO
-
-- **LEO Token Purpose:** UNUS SED LEO (LEO) is the iFinex ecosystem token, launched in 2019. Holding LEO can reduce maker/taker fees and provide discounts on lending and derivatives fees (where available). The scale of benefits depends on a user's LEO holdings and 30-day volume.
-- **Buyback and Burn:** iFinex commits a portion of its revenues and any net recovered proceeds from the 2016 incident to buying back and burning LEO. This mechanism seeks to align token economics with platform performance and extraordinary recoveries.
-- **Considerations:** LEO's utility is tied to actual usage of Bitfinex services and changes as fee schedules evolve. Token prices are volatile, and fee-benefit calculations should be weighed against portfolio and trading frequency.
+- **The 2016 haircut is the case study.** Your exchange balance is an unsecured claim on the operator. Bitfinex honoured it; that was a choice, not an obligation.
+- **LEO is not an ordinary exchange token.** Its central value driver is US government disposal of seized Bitcoin. Do not model it on BNB or similar.
+- **Margin here is real margin.** The funding market is excellent and the liquidation engine is indifferent to your reasoning. Size positions for the adverse case.
+- **iFinex concentration is a genuine exposure.** Shared ownership with Tether means a Tether problem is a Bitfinex problem, and USDt collateral on this venue compounds rather than diversifies that.
+- **El Salvador licensing is not EU or US licensing.** It is a real regulatory framework and a permissive one. Know which entity you are contracting with.
+- **Account hygiene matters more without support.** Hardware-key two-factor authentication and withdrawal allowlisting, and treat unsolicited contact as hostile, because **[crypto scams](/posts/how-to-avoid-crypto-scams)** aimed at you get no platform remedy.
 
 <ArticleAd />
 
-## Proof of Reserves and Transparency
+## Where Bitfinex Stands
 
-- **Wallet Transparency:** Bitfinex has historically published select wallet addresses and maintained public communication regarding on-chain activity of notable addresses. While helpful, address publication alone is not a full proof-of-reserves solution.
-- **Attestations and Methods:** The exchange has discussed or implemented various transparency measures over time, including Merkle tree-based approaches. Users should review current disclosures to understand coverage, scope (assets vs. liabilities), and third-party involvement.
-- **Industry Context:** Proof-of-reserves remains an evolving practice across the cryptocurrency exchange sector. Robust implementations typically combine cryptographic proofs, third-party oversight, and frequent updates, with liabilities included to give users a complete picture.
+For professional traders, Bitfinex remains genuinely strong: deep liquidity, a peer-to-peer funding market nobody else offers, serious API infrastructure and fourteen years of continuous operation through cycles that removed almost all of its contemporaries. Survival at this length in this industry is itself information, and its post-2016 security record supports the case.
 
-## Fees and Liquidity
+The reservations are structural rather than about execution. It is custodial and largely unlicensed in the markets with the strongest consumer protections, it shares an owner with the most systemically important stablecoin issuer, and both companies carry 2021 regulatory findings about how they described themselves. A trader who understands **[understanding crypto exchanges](/posts/understanding-crypto-exchanges)** as counterparty selection can weigh that. Someone choosing between **[trading and holding](/posts/crypto-trading-vs-holding)** should note that nothing here argues for holding.
 
-- **Spot Fees:** The standard schedule starts around 0.1% maker and 0.2% taker, with tiered discounts based on 30-day volume. LEO holdings can further reduce fees.
-- **Derivatives Fees:** Derivatives markets have their own maker/taker and funding fee schedules. Funding rates change continuously based on long/short imbalances.
-- **Funding Market Rates:** P2P lending rates are variable; during high volatility, rates can spike and availability can tighten.
-- **Liquidity Profile:** Bitfinex is renowned for deep liquidity in core pairs like BTC/USD and ETH/USD, with tight spreads and large resting orders attractive to sophisticated traders and institutions.
-
-## Points to Consider
-
-- **Fees and Discounts:** If you are an active trader, model your expected 30-day volume and potential LEO holdings to quantify fee savings. For infrequent traders, fee optimization via token holdings may be less compelling.
-- **Product Complexity:** Margin, funding markets, and derivatives require solid risk management. Use conservative leverage, plan for slippage during **[crypto volatility](/posts/crypto-volatility)**, and set strict liquidation buffers.
-- **Jurisdictional Access:** Availability depends on your location and verification tier. U.S. persons and residents of certain regions cannot use Bitfinex, especially for derivatives. Check eligibility before onboarding.
-- **Custody Strategy:** For long-term holdings, assess whether to keep assets on-exchange or in self-custody. Many traders maintain minimal balances for active strategies and sweep profits to external wallets. Learn more about secure storage options in **How to Store Crypto**.
-- **Platform Fit:** Bitfinex shines for professionals needing deep liquidity and advanced tooling. Beginners can use it, but the learning curve is steeper than simplified retail apps. New users may benefit from starting with **[Crypto for Beginners](/posts/crypto-for-beginners)** before diving into advanced trading features.
-
-<ArticleAd />
-
-## Conclusion
-
-Bitfinex stands out as a veteran cryptocurrency exchange purpose-built for professional traders who value deep liquidity, advanced order types, and refined API access. Its strengths include a mature P2P funding market, curated listings with depth in majors, and a comprehensive trading stack that scales from spot to derivatives (in eligible regions). Balancing those advantages are its complex product set, past security and regulatory headlines, and jurisdictional limitations. For experienced market participants and institutions, Bitfinex remains a formidable venue; for newcomers seeking simplicity, the platform may feel dense until skills catch up. If you're new to cryptocurrency exchanges, start with **[Understanding Crypto Exchanges](/posts/understanding-crypto-exchanges)** to build foundational knowledge.
+Bitfinex is best understood as the veteran that paid for its worst day out of its customers' balances and then earned them back. That is a better record than most, and it is still a reason to keep only what you are trading with on the platform.
 
 <ExchangeButton href="https://www.bitfinex.com/" text="Join Bitfinex" />
