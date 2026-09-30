@@ -10,6 +10,13 @@
     },
     {
       "type": "crypto-ogs",
+      "slug": "arthur-hayes",
+      "title": "Arthur Hayes",
+      "url": "https://www.thecrypto.wiki/crypto-ogs/arthur-hayes",
+      "date": "2026-09-22T00:00:00.000Z"
+    },
+    {
+      "type": "crypto-ogs",
       "slug": "billy-markus",
       "title": "Billy Markus",
       "url": "https://www.thecrypto.wiki/crypto-ogs/billy-markus",
@@ -185,6 +192,13 @@
     },
     {
       "type": "crypto-ogs",
+      "slug": "ross-ulbricht",
+      "title": "Ross Ulbricht",
+      "url": "https://www.thecrypto.wiki/crypto-ogs/ross-ulbricht",
+      "date": "2026-09-20T00:00:00.000Z"
+    },
+    {
+      "type": "crypto-ogs",
       "slug": "ruja-ignatova",
       "title": "Ruja Ignatova",
       "url": "https://www.thecrypto.wiki/crypto-ogs/ruja-ignatova",
@@ -332,6 +346,13 @@
     },
     {
       "type": "exchanges",
+      "slug": "deribit",
+      "title": "Deribit",
+      "url": "https://www.thecrypto.wiki/exchanges/deribit",
+      "date": "2026-09-20T00:00:00.000Z"
+    },
+    {
+      "type": "exchanges",
       "slug": "gate",
       "title": "Gate",
       "url": "https://www.thecrypto.wiki/exchanges/gate",
@@ -385,6 +406,13 @@
       "title": "LBank",
       "url": "https://www.thecrypto.wiki/exchanges/lbank",
       "date": "2026-03-24T00:00:00.000Z"
+    },
+    {
+      "type": "exchanges",
+      "slug": "lighter",
+      "title": "Lighter",
+      "url": "https://www.thecrypto.wiki/exchanges/lighter",
+      "date": "2026-09-27T00:00:00.000Z"
     },
     {
       "type": "exchanges",
@@ -759,10 +787,24 @@
     },
     {
       "type": "posts",
+      "slug": "what-are-prediction-markets",
+      "title": "What Are Prediction Markets?",
+      "url": "https://www.thecrypto.wiki/posts/what-are-prediction-markets",
+      "date": "2026-09-11T00:00:00.000Z"
+    },
+    {
+      "type": "posts",
       "slug": "what-are-stablecoins",
       "title": "What Are Stablecoins?",
       "url": "https://www.thecrypto.wiki/posts/what-are-stablecoins",
       "date": "2026-07-09T00:00:00.000Z"
+    },
+    {
+      "type": "posts",
+      "slug": "what-are-tokenized-stocks",
+      "title": "What Are Tokenized Stocks?",
+      "url": "https://www.thecrypto.wiki/posts/what-are-tokenized-stocks",
+      "date": "2026-09-30T00:00:00.000Z"
     },
     {
       "type": "posts",
@@ -850,6 +892,13 @@
     },
     {
       "type": "posts",
+      "slug": "what-is-market-cap-in-crypto",
+      "title": "What Is Market Cap in Crypto?",
+      "url": "https://www.thecrypto.wiki/posts/what-is-market-cap-in-crypto",
+      "date": "2026-09-21T00:00:00.000Z"
+    },
+    {
+      "type": "posts",
       "slug": "what-is-proof-of-stake",
       "title": "What is Proof-of-Stake (PoS)?",
       "url": "https://www.thecrypto.wiki/posts/what-is-proof-of-stake",
@@ -905,6 +954,20 @@
       "date": "2025-09-05T00:00:00.000Z"
     },
     {
+      "type": "posts",
+      "slug": "why-wall-street-is-betting-big-on-bitcoin-miners-for-ai",
+      "title": "Why Wall Street Is Betting Big on Bitcoin Miners for AI?",
+      "url": "https://www.thecrypto.wiki/posts/why-wall-street-is-betting-big-on-bitcoin-miners-for-ai",
+      "date": "2026-09-15T00:00:00.000Z"
+    },
+    {
+      "type": "videos",
+      "slug": "bitcoin-miners-ai",
+      "title": "Why Are Bitcoin Miners Switching to AI?",
+      "url": "https://www.thecrypto.wiki/videos/bitcoin-miners-ai",
+      "date": "2026-09-16T12:01:44.000Z"
+    },
+    {
       "type": "videos",
       "slug": "bitcoin-price",
       "title": "Who Controls Bitcoin's Price? Not Who You Think",
@@ -920,10 +983,31 @@
     },
     {
       "type": "videos",
+      "slug": "fear-greed-index",
+      "title": "What Is the Crypto Fear and Greed Index?",
+      "url": "https://www.thecrypto.wiki/videos/fear-greed-index",
+      "date": "2026-09-13T21:35:16.000Z"
+    },
+    {
+      "type": "videos",
+      "slug": "how-to-avoid-crypto-scams",
+      "title": "How to Avoid Crypto Scams: The Two Things Every Scam Asks For",
+      "url": "https://www.thecrypto.wiki/videos/how-to-avoid-crypto-scams",
+      "date": "2026-09-22T12:00:00.000Z"
+    },
+    {
+      "type": "videos",
       "slug": "mining-rig",
       "title": "How To Build a Crypto Mining Rig (And Whether You Should)",
       "url": "https://www.thecrypto.wiki/videos/mining-rig",
       "date": "2026-08-16T11:11:28.000Z"
+    },
+    {
+      "type": "videos",
+      "slug": "musk-effect",
+      "title": "Why Do Elon Musk's Posts Move Crypto Prices?",
+      "url": "https://www.thecrypto.wiki/videos/musk-effect",
+      "date": "2026-09-27T01:15:55.000Z"
     },
     {
       "type": "videos",
@@ -948,10 +1032,31 @@
     },
     {
       "type": "videos",
+      "slug": "real-world-asset-tokenization",
+      "title": "What Is Real World Asset Tokenization?",
+      "url": "https://www.thecrypto.wiki/videos/real-world-asset-tokenization",
+      "date": "2026-09-19T00:00:00.000Z"
+    },
+    {
+      "type": "videos",
+      "slug": "rug-pull",
+      "title": "How to Spot a Crypto Rug Pull",
+      "url": "https://www.thecrypto.wiki/videos/rug-pull",
+      "date": "2026-09-10T22:44:00.000Z"
+    },
+    {
+      "type": "videos",
       "slug": "ruja-ignatova",
       "title": "How OneCoin Sold $4 Billion of a Coin That Didn't Exist",
       "url": "https://www.thecrypto.wiki/videos/ruja-ignatova",
       "date": "2026-08-31T15:40:10.000Z"
+    },
+    {
+      "type": "videos",
+      "slug": "satoshi-nakamoto",
+      "title": "Who Is Satoshi Nakamoto? The Creator of Bitcoin",
+      "url": "https://www.thecrypto.wiki/videos/satoshi-nakamoto",
+      "date": "2026-09-21T13:14:15.000Z"
     },
     {
       "type": "videos",
@@ -973,6 +1078,13 @@
       "title": "Why Was Ethereum Created?",
       "url": "https://www.thecrypto.wiki/videos/vitalik-ethereum",
       "date": "2026-09-06T11:51:58.000Z"
+    },
+    {
+      "type": "videos",
+      "slug": "what-is-a-crypto-whale",
+      "title": "What Is a Crypto Whale? How Big Wallets Actually Work",
+      "url": "https://www.thecrypto.wiki/videos/what-is-a-crypto-whale",
+      "date": "2026-09-25T16:05:44.000Z"
     }
   ]
 }

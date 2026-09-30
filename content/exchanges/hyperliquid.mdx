@@ -1,10 +1,10 @@
 ---
 title: "Hyperliquid"
-meta_title: "Hyperliquid Review: On-Chain Perps DEX, Fees & HYPE Token"
+meta_title: "Hyperliquid Wiki: Perps DEX, HYPE Buybacks & JELLY"
 image: "/images/exchanges/hyperliquid.png"
 description: "Hyperliquid is a non-custodial perpetual futures DEX with a fully on-chain order book on its own layer-1 chain."
 date: 2026-07-28
-updated: 2026-07-28
+updated: 2026-09-30
 order: 26
 authors: ["Oktay Shakirov"]
 quickFacts:
@@ -12,8 +12,9 @@ quickFacts:
   headquarters: "No fixed headquarters; operates as an on-chain protocol"
   founder: "Jeff Yan and a pseudonymous co-founder known as iliensinc"
   type: "Decentralized exchange (DEX), on-chain perpetual futures order book"
+  assets: "About USD 9.6 billion open interest and USD 172.6 billion 30-day perp volume (January 2026)"
   custody: "Non-custodial; you keep control of your own keys"
-  token: "HYPE"
+  token: "HYPE; roughly 97 percent of protocol fees fund daily open-market buybacks"
   availability: "Permissionless protocol; the official front end restricts some regions"
 faqs:
   - question: "What is Hyperliquid?"
@@ -25,7 +26,11 @@ faqs:
   - question: "What is the HYPE token?"
     answer: "HYPE is the native asset of the Hyperliquid chain. It pays gas on HyperEVM, it is staked to secure HyperBFT consensus, and it carries governance rights over protocol parameters. It launched in November 2024 through a genesis airdrop of 310 million tokens, roughly 31 percent of the 1 billion capped supply, distributed to early users with no allocation to private investors."
   - question: "What are Hyperliquid's fees?"
-    answer: "Hyperliquid uses a maker and taker fee schedule with tiers based on rolling trading volume. On top of trading fees, perpetual positions pay or receive funding depending on the imbalance between longs and shorts, and you may incur bridging costs when moving collateral onto the chain. Check the official documentation for current rates."
+    answer: "Hyperliquid uses a maker and taker schedule tiered on rolling trading volume. On top of trading fees, perpetual positions pay or receive funding depending on the long and short imbalance, and bridging collateral onto the chain has its own cost. What is unusual is where the fees go: roughly 97 percent of protocol revenue flows to the Assistance Fund, which buys HYPE on the open market daily, so trading activity converts almost directly into buy pressure on the token. Check the official documentation for current rates."
+  - question: "How big is Hyperliquid compared with other perp DEXs?"
+    answer: "It is dominant. In January 2026 Hyperliquid held roughly 9.57 billion US dollars in open interest while Aster, Lighter, Variational, edgeX and Paradex combined held about 7.34 billion, and it captured over 70 percent of the decentralised perpetual futures market measured by open interest. It processed around 172.63 billion dollars in 30-day perp volume and took 31.9 percent of a 540.8 billion dollar market, leading the second-largest DEX by about 119.9 billion in volume."
+  - question: "What happened with JELLY on Hyperliquid?"
+    answer: "On March 26, 2025 a trader opened a roughly 4.1 million dollar short on JELLYJELLY, a memecoin with about a 25 million dollar market cap, then pushed the spot price up more than 400 percent within an hour to squeeze the protocol's own liquidity vault. Hyperliquid's validators voted to delist JELLY perps and settled all positions at 0.0095 dollars, with the Hyper Foundation making non-flagged users whole. The intervention prevented losses but drew heavy criticism, because a validator vote overriding a live market is hard to reconcile with the protocol's decentralisation claims."
 social:
   website: "https://hyperliquid.xyz/"
   twitter: "https://x.com/HyperliquidX"
@@ -34,73 +39,71 @@ social:
   telegram: "https://t.me/hyperliquid_announcements"
 ---
 
-## Hyperliquid: An On-Chain Order Book Exchange for Perpetual Futures
+Hyperliquid is a non-custodial decentralized exchange that runs a fully on-chain central limit order book for perpetual futures on its own layer-1 blockchain. Founded by Jeff Yan, a Harvard graduate and former Hudson River Trading quant, alongside a pseudonymous co-founder known as iliensinc, it opened to traders in early 2023 after Hyperliquid Labs formed the year before. It has since become the dominant venue in decentralized derivatives by a wide margin, and the most instructive case study in what "decentralized" actually means under pressure.
 
-Hyperliquid is a decentralized, non-custodial cryptocurrency exchange built around on-chain perpetual futures. It was founded by Jeff Yan, a Harvard graduate and former Hudson River Trading quant, together with a pseudonymous co-founder known as iliensinc. Hyperliquid Labs came together in 2022 and the exchange opened to traders in early 2023. Rather than a conventional company with a head office, Hyperliquid runs as a protocol on its own layer-1 blockchain, prioritizing speed, transparency, and self-custody across major assets like **[Bitcoin](/posts/what-is-bitcoin)**, **[Ethereum](/posts/what-is-ethereum)**, and a widening set of **[altcoins](/posts/what-are-altcoins)**.
+## What an On-Chain Order Book Buys You
 
-Its core differentiator is a fully on-chain central limit order book (CLOB) rather than an automated market maker. That means professional order types, low-latency matching, and transparent state updates, while traders keep control of their own keys and collateral.
+Most decentralized exchanges are automated market makers: you trade against a pool, and the price comes from a formula. **[Uniswap](/exchanges/uniswap)** made that model work for spot. It works badly for derivatives, where traders need limit orders, stops and a visible book.
 
-<ArticleAd />
+Hyperliquid instead runs a genuine central limit order book with every order, cancellation and fill written to its own chain via HyperBFT consensus. The result feels like a centralized derivatives venue, with professional order types and low-latency matching, while collateral stays in a wallet you control. No operator can freeze withdrawals or trade against your flow from a position of privileged information, because the book itself is public state.
 
-## Core Protocol: How Hyperliquid Works
+The trade-offs are real. Bridging collateral onto the chain costs money and introduces bridge risk. Mistaken transactions are irreversible with no support desk to call. Liquidation and oracle mechanics can work against you during brief dislocations in a way no customer service ticket will reverse. Self-custody moves the risk rather than removing it, which is why understanding **[how to store crypto](/posts/how-to-store-crypto)** properly matters more here, not less.
 
-Hyperliquid is purpose-built for derivatives. The protocol centers on perpetual futures with position-level risk management, funding-rate mechanics, and a native matching engine that settles on a chain the team wrote themselves.
+## The Numbers Are Not Close
 
-- **Trading Model:** On-chain CLOB matching with full price-time priority, visible depth, and transparent settlement. Unlike AMMs such as **[Uniswap](/exchanges/uniswap)**, orders rest on a book instead of relying on pools and bonding curves.
-- **Its Own Layer 1:** Hyperliquid does not rent blockspace from another network. It runs a purpose-built chain secured by a delegated proof-of-stake consensus called HyperBFT, which targets sub-second confirmations so that on-chain trading feels closer to a centralized venue.
-- **HyperCore and HyperEVM:** The exchange logic lives in HyperCore, while HyperEVM is an Ethereum-compatible execution layer secured by the same validator set. That lets developers deploy familiar smart contracts alongside the order book instead of bridging out to a separate chain.
-- **The HYPE Token:** HYPE is the network's native asset. It pays gas on HyperEVM, it is staked to secure consensus, and it carries governance rights over protocol parameters. It launched in November 2024 through a genesis airdrop of 310 million tokens, roughly 31 percent of the 1 billion capped supply, distributed to early users with no allocation to private investors.
-- **Collateral and Margin:** Traders post stablecoin collateral to open and maintain positions, with isolated and cross-margin modes available. Liquidations trigger once maintenance thresholds are breached.
-- **Risk Engine and Funding:** A continuous funding-rate system keeps perp prices anchored to their index. Leverage amplifies gains, but it magnifies losses just as quickly in volatile digital assets.
-- **Ecosystem Context:** As part of **[DeFi](/posts/what-is-defi)**, Hyperliquid sits inside a wider on-chain stack of wallets, bridges, and analytics. If the space is new to you, the basics of **[blockchain](/posts/what-is-blockchain)** are worth covering first, and this primer on **[staking](/posts/crypto-staking)** explains the validator economics that secure the chain.
+By January 2026 Hyperliquid held roughly USD 9.57 billion in open interest, while Aster, Lighter, Variational, edgeX and Paradex combined accounted for about USD 7.34 billion. Measured by open interest it took more than 70 percent of the entire decentralized perpetual futures market. Over a rolling 30 days it processed around USD 172.63 billion in perp volume, capturing 31.9 percent of a USD 540.8 billion market and leading the second-largest DEX by roughly USD 119.9 billion.
+
+Decentralized perps went from a curiosity to roughly a quarter of the futures market over 2025 and 2026, and Hyperliquid captured most of that shift. For a protocol with no company headquarters and no institutional sales team, that is a genuinely unusual outcome in **[DeFi](/posts/what-is-defi)**.
 
 ![A laptop displaying a live trading chart, representing Hyperliquid's on-chain order book interface](/images/posts/laptop-trading.jpg)
 
-## Security Measures
+## HYPE and the Buyback Machine
 
-As a decentralized exchange, Hyperliquid is non-custodial: you hold your keys and collateral through a compatible wallet at all times. That removes centralized custody risk, but it replaces it with a different set of exposures.
+HYPE launched in November 2024 through a genesis airdrop of 310 million tokens, about 31 percent of the 1 billion capped supply, distributed to early users with no allocation to private investors. That distribution is itself notable: no venture round, no insider unlock schedule to trade around.
 
-- **Smart-Contract and Protocol Risk:** Any protocol can carry logic or implementation bugs. Audits and continuous testing reduce that risk without eliminating it, so size positions against your own risk tolerance.
-- **The JELLY Incident:** In March 2025 a trader deliberately manipulated the thinly traded JELLYJELLY perp, opening offsetting longs and shorts and then pushing the token's spot price up more than 400 percent within an hour. The protocol's liquidity vault, HLP, inherited the losing short and faced roughly 12 million dollars of unrealized losses. Validators voted within minutes to delist the market and settle positions at the opening price, and affected traders were reimbursed. It ended without user losses, but it exposed both the tail risk in low-liquidity perps and the reality that a small validator set can step into a market.
-- **Oracle and Liquidation Mechanics:** Perp venues rely on index and mark prices to govern liquidations. Brief dislocations can trigger a liquidation even when spot recovers moments later, so keep leverage conservative.
-- **Self-Custody Practices:** Because you control the keys, harden your setup. Hardware wallets and disciplined operational hygiene matter here, so review our guide on **[how to store crypto](/posts/how-to-store-crypto)** and stay alert to phishing using the warning signs in **[crypto scams](/posts/how-to-avoid-crypto-scams)**.
-- **Market Conditions:** Extreme sentiment drives both volatility and funding rates in perps markets. A gauge like the **[Fear and Greed Index](/tools/fear-and-greed-index)** adds context to risk taking, though it is not a trading signal on its own.
+The mechanism that matters more is the Assistance Fund. Roughly 97 percent of protocol fees flow into it, and it buys HYPE on the open market daily. Almost all trading activity on the platform therefore converts into automated bid pressure on the token, which is a far tighter link between usage and token value than most protocols manage.
+
+HYPE also pays gas on HyperEVM, secures HyperBFT through **[staking](/posts/crypto-staking)**, and carries governance rights over protocol parameters. That last function is where the story gets complicated.
 
 <ArticleAd />
 
-## User Experience
+## JELLY: The Day Decentralization Was Tested
 
-The interface is built for derivatives specialists but stays approachable once margin and funding click. Order tickets are comprehensive, positions and PnL update in real time, and charting covers the common indicators.
+On March 26, 2025, shortly after 12:50 UTC, a trader opened a roughly USD 4.1 million short on JELLYJELLY, a memecoin with a market capitalisation around USD 25 million, then bought the thin spot market aggressively enough to push the price up more than 400 percent within the hour. The aim was to force Hyperliquid's own liquidity vault, which had absorbed the other side, into a catastrophic loss.
 
-- **Onboarding:** Connect a wallet, deposit supported collateral, and you are trading. There is no centralized sign-up because the protocol is non-custodial. If venues and order flow are new to you, start with **[understanding crypto exchanges](/posts/understanding-crypto-exchanges)** and our **[crypto for beginners](/posts/crypto-for-beginners)** guide.
-- **Performance and Latency:** Matching aims for near-instant feedback, which matters around funding prints, open interest shifts, and fast breakouts. The feel is deliberately closer to a centralized derivatives venue like **[Bybit](/exchanges/bybit)** than to a typical DEX.
-- **Order Types and Controls:** Limit, market, post-only, reduce-only, scaled, and conditional stop orders are all standard, alongside position tools for managing complex exposure.
-- **Fees and Funding:** Hyperliquid uses a maker and taker schedule with volume tiers, and you pay or receive funding depending on the long and short imbalance. Rates move with market conditions, so check current figures before sizing a strategy.
-- **APIs and Automation:** A public API and an official Python SDK support programmatic trading, with an active ecosystem of community connectors and bots built on top of them.
-- **Device Support:** The web app is primary, with a mobile app available. If you trade frequently, test your wallet and browser stack with a small amount before scaling up.
+The validator set convened and voted to delist JELLY perps. All positions were settled at the opening price of USD 0.0095, and the Hyper Foundation covered users other than flagged addresses. No ordinary trader lost money.
 
-For traders weighing active strategies against long-term allocation, this overview on **[crypto trading vs holding](/posts/crypto-trading-vs-holding)** is a useful frame.
+The criticism was immediate and it was not really about the money. A protocol whose pitch is that no operator can intervene had just intervened, closing a live market at a price of its own choosing. On-chain investigator ZachXBT pointed out the selectivity: Hyperliquid had previously said it could not act over North Korean-linked funds from the Radiant exploit, yet found a mechanism when its own vault was threatened.
 
-<ArticleAd />
+Hyperliquid's answer was to make the capability explicit rather than deny it, upgrading the chain so that a quorum of validator stake can trigger asset delistings fully on-chain without off-chain coordination. That is more honest and more auditable. It does not change the substance: on this platform, a sufficiently large stake quorum can close your market. Anyone trading low-liquidity perps here should treat that as a known parameter, not a scandal.
 
-## Decentralization and the Regulatory Landscape
+## USDH and Builder-Deployed Markets
 
-Hyperliquid is a protocol rather than a company-run exchange. It takes no custody of user funds and requires no KYC to interact with the contracts. Availability of the hosted front end does vary by jurisdiction, and several regions are geoblocked from the official interface even though the underlying chain stays permissionless. That gap between a restricted front end and an open protocol is a recurring theme across DeFi, and it is where most regulatory pressure currently lands.
+Two 2025 developments show where the protocol is heading.
 
-Users remain responsible for following local law, including derivatives rules that in many countries restrict leveraged products for retail traders. Check whether your jurisdiction permits access before depositing, and take independent advice if you are unsure.
+In September 2025 Hyperliquid auctioned the right to issue its native stablecoin, USDH, by validator vote. Native Markets, founded by Max Fiege, Anish Agnihotri and MC Lader, won with more than 70 percent of delegated stake, beating Paxos, Ethena and Agora, and proposed a revenue-sharing arrangement to become the default quote asset for new markets. Deployment began with capped USD 800 mint and redemption tests before the USDH/USDC spot market opened and limits were lifted. Auctioning a stablecoin mandate to the highest-utility bidder rather than striking a private deal is a governance experiment worth watching.
+
+HIP-3 goes further, letting third parties deploy their own perpetual markets on Hyperliquid by staking 500,000 HYPE. Around USD 3 billion in daily volume was trading on builder-deployed perps, much of it in markets outside crypto entirely. The protocol is becoming infrastructure other people build exchanges on top of.
 
 ![A blue crypto wallet surrounded by coins, representing the self-custody model behind Hyperliquid](/images/posts/defi.jpg)
 
-## Points to Consider
+## Known Hazards
 
-- **Who It Is For:** Hyperliquid suits experienced derivatives traders who want on-chain transparency and self-custody without giving up an order book. Pure spot buyers are usually better served by an AMM or a fiat on-ramp.
-- **Leverage Discipline:** Perps amplify both directions. Conservative sizing, stops, and attention to funding matter more than precision on entries.
-- **Fees and Costs:** Expect maker and taker fees plus variable funding, and budget for bridging costs when moving collateral onto the chain.
-- **Liquidity Profile:** Blue-chip markets carry deep books and tight spreads, while tail assets can be thin and volatile. The JELLY episode is a reminder that low-liquidity perps behave very differently under stress.
-- **Concentration Risk:** A small validator set and a lean core team deliver speed and decisiveness, but they also mean fewer hands on the emergency brake. Weigh that against the custody risk you avoid.
+- **There is no safety net, by design.** No password reset, no chargeback, no support queue. A wrong address or a lost seed phrase is a permanent loss, and **[crypto scams](/posts/how-to-avoid-crypto-scams)** targeting wallet users have no platform-level remedy.
+- **Validator intervention is now a documented feature.** JELLY established that a stake quorum can delist a market and settle your position at a price it picks. Size low-liquidity perps accordingly.
+- **Leverage on thin books is the real hazard.** The assets where Hyperliquid's depth is genuinely competitive are the majors. Small-cap perps can be manipulated, as March 2025 demonstrated in public.
+- **Bridge risk is separate from protocol risk.** Getting collateral onto the chain means trusting a bridge. That is an additional failure surface with its own history across the industry.
+- **The token and the venue are coupled.** Because 97 percent of fees buy HYPE, volume declines transmit directly to the token. Holding HYPE is a leveraged bet on the exchange's market share, not a diversifier.
+- **Know the product before the platform.** Perpetual futures liquidate. If funding rates, mark price and maintenance margin are not yet familiar, **[understanding crypto exchanges](/posts/understanding-crypto-exchanges)** and **[crypto for beginners](/posts/crypto-for-beginners)** come first. A centralized venue such as **[Bybit](/exchanges/bybit)** offers recourse that this one structurally cannot.
 
-## Conclusion
+<ArticleAd />
 
-Hyperliquid brought a professional order book fully on-chain, pairing the speed and control of a centralized derivatives venue with transparent settlement and self-custody. It rewards traders who already understand margin, funding, and liquidation dynamics, and it has grown into one of the most heavily used venues in on-chain derivatives without ever raising outside funding. Newer traders and long-term allocators may still prefer simpler spot rails and a patient view of **[the future of crypto](/posts/the-future-of-crypto)**.
+## Where This Leaves Hyperliquid
 
-<ExchangeButton href="https://hyperliquid.xyz" text="Join Hyperliquid" />
+Hyperliquid fits experienced derivatives traders who want centralized-exchange execution quality without handing custody to an operator, and who accept that the corresponding risks are technical rather than institutional. On order book depth, latency and product breadth it has no real peer among decentralized venues, and the fee-to-buyback design has given it an unusually aligned token.
+
+It does not fit anyone making a first crypto purchase, anyone who needs a fiat on-ramp, or anyone whose plan is closer to **[trading versus holding](/posts/crypto-trading-vs-holding)** than to active perps. There is no customer service, and the learning curve is unforgiving in a way that costs money rather than time.
+
+The interesting tension is the one JELLY exposed. Hyperliquid is the most successful attempt yet at putting a real derivatives exchange fully **[on-chain](/posts/what-is-blockchain)**, and it is also proof that a protocol at scale eventually acquires the ability to intervene in its own markets. It handled that moment by making the power explicit and auditable rather than pretending it did not exist, which is probably the best available answer. Trade here understanding that the guarantee is transparency, not the absence of discretion.
+
+<ExchangeButton href="https://hyperliquid.xyz/" text="Visit Hyperliquid" />
