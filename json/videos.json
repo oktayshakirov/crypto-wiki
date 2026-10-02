@@ -930,6 +930,55 @@
           "text": "So what was being measured? Strip the name off it, and the Musk effect is not a story about one man at all. It is a measurement of how thin a market is. The posts were loud. The queue behind the price was short. Only one of those was ever about him. Nothing in this video is financial advice. So, what do you think - if one post can move a price that far, what was that price actually telling you?"
         }
       ]
+    },
+    {
+      "slug": "first-bitcoin-transaction",
+      "id": "pajYNop1eHI",
+      "kind": "long",
+      "title": "What Was the First Bitcoin Transaction?",
+      "description": "On 12 January 2009, ten bitcoins moved from one computer to another - the first time Bitcoin was ever used to pay anybody. The man who received them, Hal Finney, had built digital cash of his own five years earlier, and it had still needed one trusted machine in the middle. Here is what those ten coins actually proved.",
+      "uploadDate": "2026-10-02T17:28:08Z",
+      "duration": "PT3M55S",
+      "seconds": 235,
+      "poster": "/images/videos/first-bitcoin-transaction.webp",
+      "target": {
+        "type": "crypto-ogs",
+        "slug": "hal-finney"
+      },
+      "alsoOn": [],
+      "placement": "auto",
+      "chapters": [
+        {
+          "start": 0,
+          "title": "Ten coins, worth nothing",
+          "text": "Ten bitcoins once moved to a cryptographer called Hal Finney. It was the twelfth of January, two thousand nine. The first time Bitcoin had ever been used to pay anybody. Three days after the software existed at all. And five years earlier, he had built digital money of his own. It worked. And it still needed somebody in the middle. Stay to the end, and you will know what those ten coins actually proved - and why the man who received them already knew exactly what he was looking at."
+        },
+        {
+          "start": 29,
+          "title": "What was Bitcoin on day one?",
+          "text": "What was Bitcoin on day one? The software was released on the ninth of January, two thousand nine. Finney downloaded it the same day. He was the first person other than its creator known to run it. His computer started mining, and it found block seventy-eight. But mining is not spending. Mining creates new coins and writes them into the ledger. It never once proves that a coin can be handed to somebody else. So for three days, Bitcoin was a system that could make money and had never moved any."
+        },
+        {
+          "start": 60,
+          "title": "So who was Hal Finney?",
+          "text": "So who was Hal Finney? He was a cryptographer, and he had been one for a long time. He studied engineering at Caltech. He worked on P G P, the encryption that first made private email possible for ordinary people. And he spent the nineteen nineties on the cypherpunk mailing lists, arguing that cryptography was how ordinary people would keep their privacy. His whole working life runs along one line. Nineteen seventy-nine. He leaves Caltech with an engineering degree. Two thousand four. He builds digital cash of his own. Two thousand nine. He receives the first Bitcoin payment ever sent. Two thousand fourteen. He dies of ALS."
+        },
+        {
+          "start": 104,
+          "title": "Why did digital money keep failing?",
+          "text": "Why did digital money keep failing? Every attempt before Bitcoin ran into the same wall. A digital coin is a file. And a file can be copied. Spend the same coin twice, and nobody can tell which payment was the real one. In two thousand four, Finney built the closest anyone had come to solving it. He called it reusable proof of work. You spent real computing time to make a token, and then you could pass that token on. But look at what had to happen every time it changed hands. You spend real computing power to make a token. You send it on to somebody else. Their copy gets checked against a register. And one machine, somewhere, is keeping that register. He protected that machine about as well as anyone could. It could even prove which program it was running. But it was still one machine. Trust it, or the money does not work."
+        },
+        {
+          "start": 159,
+          "title": "So what did ten coins prove?",
+          "text": "So what did ten coins prove? Which brings us back to the twelfth of January. Satoshi Nakamoto sent ten bitcoins, and Finney received them. It is written down in block one hundred and seventy. Now run the same four steps again. One person signs a payment. Every computer on the network checks it. And it is written into a ledger nobody owns. There is no fourth step. Nothing in that chain is a machine you have to trust. That is the whole difference between what he built and what he was sent."
+        },
+        {
+          "start": 194,
+          "title": "Worth nothing, and it still counted",
+          "text": "Worth nothing, and it still counted The ten coins were worth nothing. There was no price, no exchange, and almost nobody watching. What moved that day was not money. It was proof. And the man holding it had spent five years building the version that still needed a middle. He had written down what he thought the point of all of it was. The computer can be used as a tool to liberate and protect people, rather than to control them. Nothing in this video is financial advice. So, what do you think - if you had been sent those ten coins that morning, would you have known what you were holding?"
+        }
+      ]
     }
   ],
   "_fields": {
