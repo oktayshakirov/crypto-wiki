@@ -318,6 +318,13 @@
     },
     {
       "type": "exchanges",
+      "slug": "bitvavo",
+      "title": "Bitvavo",
+      "url": "https://www.thecrypto.wiki/exchanges/bitvavo",
+      "date": "2026-10-04T00:00:00.000Z"
+    },
+    {
+      "type": "exchanges",
       "slug": "bybit",
       "title": "Bybit",
       "url": "https://www.thecrypto.wiki/exchanges/bybit",
