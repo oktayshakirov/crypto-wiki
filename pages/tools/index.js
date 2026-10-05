@@ -1,6 +1,6 @@
 import Base from "@layouts/Baseof";
 import { markdownify } from "@lib/utils/textConverter";
-import Link from "next/link";
+import Link from "@components/NextLink";
 import config from "@config/config.json";
 import { useRouter } from "next/router";
 import { breadcrumbSchema } from "@lib/utils/jsonLd";

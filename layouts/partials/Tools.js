@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@components/NextLink";
 
 // `label` is what the tile shows; `name` stays the full title for the tooltip
 // and the accessible name. The tiles are three across on a phone, which leaves

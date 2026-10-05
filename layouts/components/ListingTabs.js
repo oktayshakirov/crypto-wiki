@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@components/NextLink";
 
 // Sort orders as separate static routes rather than one route with a query
 // parameter, so each ordering stays static and keeps its own URL.

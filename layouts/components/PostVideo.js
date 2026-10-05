@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@components/NextLink";
 import { FaPlay, FaYoutube } from "react-icons/fa";
 import { usePageVideo } from "context/video";
 import { getVideoById, formatDuration } from "@lib/videos";

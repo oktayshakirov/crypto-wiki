@@ -4,7 +4,7 @@ import Base from "@layouts/Baseof";
 import { getSinglePage, getListPage } from "@lib/contentParser";
 import Posts from "@partials/Posts";
 import { humanize, markdownify } from "@lib/utils/textConverter";
-import Link from "next/link";
+import Link from "@components/NextLink";
 import { getTaxonomy } from "@lib/taxonomyParser";
 import { FaTags } from "react-icons/fa";
 import ListingTabs from "@components/ListingTabs";

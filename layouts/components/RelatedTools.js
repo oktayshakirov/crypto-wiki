@@ -1,5 +1,5 @@
 import React from "react";
-import Link from "next/link";
+import Link from "@components/NextLink";
 
 // Internal links from exchange pages into the tools section.
 //

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Link from "next/link";
+import Link from "@components/NextLink";
 import { FaChevronDown } from "react-icons/fa";
 
 // The taxonomy links under a post title. Their count varies a lot per post, so

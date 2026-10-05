@@ -2,7 +2,7 @@ import config from "@config/config.json";
 import Base from "@layouts/Baseof";
 import { getTaxonomy } from "@lib/taxonomyParser";
 import { humanize, markdownify } from "@lib/utils/textConverter";
-import Link from "next/link";
+import Link from "@components/NextLink";
 const { blog_folder } = config.settings;
 
 const Categories = ({ categories, isApp }) => {

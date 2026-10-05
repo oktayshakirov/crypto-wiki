@@ -1,5 +1,5 @@
 import React from "react";
-import Link from "next/link";
+import Link from "@components/NextLink";
 import { FaExclamationTriangle } from "react-icons/fa";
 
 const DisclaimerBanner = ({ className = "" }) => {
