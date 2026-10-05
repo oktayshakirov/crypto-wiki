@@ -2,7 +2,7 @@ import React from "react";
 import Base from "@layouts/Baseof";
 import StakingCalculator from "@components/StakingCalculator";
 import ExchangeFaq from "@components/ExchangeFaq";
-import Link from "next/link";
+import Link from "@components/NextLink";
 import GoBackLink from "@partials/GoBackLink";
 import config from "@config/config.json";
 import LayoutAd from "@components/ads/LayoutAd";

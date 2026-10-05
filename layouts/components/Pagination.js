@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@components/NextLink";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { useState, useEffect } from "react";
 

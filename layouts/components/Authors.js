@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@components/NextLink";
 import { FaPencilAlt } from "react-icons/fa";
 import { slugify } from "@lib/utils/textConverter";
 

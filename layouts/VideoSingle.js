@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Link from "next/link";
+import Link from "@components/NextLink";
 import Base from "./Baseof";
 import GoBackLink from "@partials/GoBackLink";
 import PostVideo from "@components/PostVideo";

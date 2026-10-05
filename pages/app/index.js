@@ -1,7 +1,7 @@
 import React from "react";
 import Base from "@layouts/Baseof";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@components/NextLink";
 import {
   FaShieldAlt,
   FaBookReader,

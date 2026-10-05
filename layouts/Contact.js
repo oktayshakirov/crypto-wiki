@@ -8,7 +8,7 @@ import {
   FaTiktok,
   FaYoutube,
 } from "react-icons/fa";
-import Link from "next/link";
+import Link from "@components/NextLink";
 
 const Contact = () => {
   return (

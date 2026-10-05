@@ -1,7 +1,7 @@
 import Logo from "@components/Logo";
 import menu from "@config/menu.json";
 import SearchModal from "@layouts/partials/SearchModal";
-import Link from "next/link";
+import Link from "@components/NextLink";
 import React, { useState } from "react";
 import { IoSearch } from "react-icons/io5";
 import { useRouter } from "next/router";

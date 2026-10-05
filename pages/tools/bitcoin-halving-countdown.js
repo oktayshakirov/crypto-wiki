@@ -1,6 +1,6 @@
 import React from "react";
 import Base from "@layouts/Baseof";
-import Link from "next/link";
+import Link from "@components/NextLink";
 import GoBackLink from "@partials/GoBackLink";
 import config from "@config/config.json";
 import LayoutAd from "@components/ads/LayoutAd";

@@ -9,7 +9,7 @@ import Tools from "@partials/Tools";
 import { markdownify } from "@lib/utils/textConverter";
 import FearAndGreedIndex from "@layouts/components/FearAndGreedIndex";
 import LayoutAd from "@layouts/components/ads/LayoutAd";
-import Link from "next/link";
+import Link from "@components/NextLink";
 
 import {
   FaRegNewspaper,

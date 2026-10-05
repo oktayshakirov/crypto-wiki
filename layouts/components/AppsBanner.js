@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@components/NextLink";
 import Image from "next/image";
 
 const AppsBanner = () => {

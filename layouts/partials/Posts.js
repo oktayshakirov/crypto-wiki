@@ -1,6 +1,6 @@
 import { slugify } from "@lib/utils/textConverter";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@components/NextLink";
 import { FaTag, FaUser, FaAt, FaVideo } from "react-icons/fa";
 import { hasPageVideo } from "@lib/videos";
 

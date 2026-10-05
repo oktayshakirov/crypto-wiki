@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@components/NextLink";
 import { slugify } from "@lib/utils/textConverter";
 import TableOfContents from "@components/TableOfContents";
 import StickyRail, { RailSection } from "@partials/StickyRail";

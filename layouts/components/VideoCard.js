@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@components/NextLink";
 import { formatDuration } from "@lib/videos";
 
 // Feed card. Links to /videos/<slug> rather than out to YouTube: the video page

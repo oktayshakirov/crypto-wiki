@@ -2,7 +2,7 @@ import Base from "@layouts/Baseof";
 import Posts from "@partials/Posts";
 import Pagination from "@components/Pagination";
 import { FaArrowLeft } from "react-icons/fa";
-import Link from "next/link";
+import Link from "@components/NextLink";
 import {
   paginatedCanonical,
   paginatedTitle,
