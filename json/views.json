@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-04T16:55:04.647Z",
+  "generatedAt": "2026-10-04T17:08:54.805Z",
   "counts": {
     "crypto-ogs/anatoly-yakovenko": 152,
     "crypto-ogs/arthur-hayes": 7,
@@ -19,6 +19,7 @@
     "crypto-ogs/hayden-adams": 61,
     "crypto-ogs/jack-dorsey": 33,
     "crypto-ogs/jackson-palmer": 108,
+    "crypto-ogs/jeremy-allaire": 8,
     "crypto-ogs/jesse-powell": 70,
     "crypto-ogs/joseph-lubin": 90,
     "crypto-ogs/justin-sun": 463,
@@ -115,7 +116,7 @@
     "posts/what-are-gas-fees": 46,
     "posts/what-are-layer-2-blockchains": 27,
     "posts/what-are-memecoins": 108,
-    "posts/what-are-perpetual-futures": 53,
+    "posts/what-are-perpetual-futures": 54,
     "posts/what-are-prediction-markets": 16,
     "posts/what-are-stablecoins": 40,
     "posts/what-are-tokenized-stocks": 25,
