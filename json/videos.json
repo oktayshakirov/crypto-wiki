@@ -979,6 +979,65 @@
           "text": "Worth nothing, and it still counted The ten coins were worth nothing. There was no price, no exchange, and almost nobody watching. What moved that day was not money. It was proof. And the man holding it had spent five years building the version that still needed a middle. He had written down what he thought the point of all of it was. The computer can be used as a tool to liberate and protect people, rather than to control them. Nothing in this video is financial advice. So, what do you think - if you had been sent those ten coins that morning, would you have known what you were holding?"
         }
       ]
+    },
+    {
+      "slug": "market-cap",
+      "id": "tLx-_xNHaEQ",
+      "kind": "long",
+      "title": "What Is Market Cap in Crypto? Price x Supply Explained",
+      "description": "A five cent coin feels like it has more room to grow than a hundred dollar one. It does not - because a coin's size is its market cap, the price times the number of coins in circulation. Here is how it is calculated, why doubling takes the same money at any price, the difference between market cap, fully diluted value and free float, what unlocks do to the gap between them, and how a handful of trades can put a ten-billion-dollar valuation on a screen.",
+      "uploadDate": "2026-10-06T21:42:17Z",
+      "duration": "PT4M14S",
+      "seconds": 254,
+      "poster": "/images/videos/market-cap.webp",
+      "target": {
+        "type": "posts",
+        "slug": "what-is-market-cap-in-crypto"
+      },
+      "alsoOn": [],
+      "placement": "auto",
+      "chapters": [
+        {
+          "start": 0,
+          "title": "A cheap coin is not a small coin",
+          "text": "A five cent coin feels like an easier win than a hundred dollar one. But its size was never its price. Size is market cap, and it is one multiplication. Once you can do it, the cheap coin stops looking cheap. Stay to the end, and you will know why a low price is not room to grow, and which coins a market cap is quietly counting."
+        },
+        {
+          "start": 21,
+          "title": "How is market cap calculated?",
+          "text": "How is market cap calculated? Cut a pizza into eight slices, or into a thousand. Every slice gets cheaper. The pizza does not get any bigger. A coin's price is the price of one slice. Market cap is the whole pizza: the price, times the number of coins in circulation. So run three coins through it. A hundred dollar coin, with a hundred thousand of them, is ten million. A fifty dollar coin, with a million of them, is fifty million. And a five cent coin, with a billion of them, is fifty million as well. The cheapest coin on that list is five times the size of the dearest."
+        },
+        {
+          "start": 60,
+          "title": "Is a cheap coin easier to double?",
+          "text": "Is a cheap coin easier to double? Take the fifty dollar coin and the five cent coin from that list. For either one to double, the market has to value it at fifty million dollars more. Five cents to ten cents sounds like nothing. It is the same fifty million. Now push that arithmetic all the way. The whole world economy produces roughly a hundred trillion dollars a year. A coin with five hundred trillion in circulation, at one dollar each, would be worth five times that. A price with a lot of zeros in front is not room to grow. Usually, it is just a lot of coins."
+        },
+        {
+          "start": 98,
+          "title": "Which coins does it count?",
+          "text": "Which coins does it count? Circulating supply sounds like a precise number. It is a definition, and data sites draw it differently, so the same coin can be measured three ways. Market cap counts the coins circulating today. Fully diluted value counts every coin that will ever exist. And free float counts only the coins that can realistically trade. Team wallets, treasuries and locked tokens can sit inside the first number, and still be nowhere near a market."
+        },
+        {
+          "start": 128,
+          "title": "What happens when locked coins unlock?",
+          "text": "What happens when locked coins unlock? Many new tokens launch with a large share promised to a team, early investors and a treasury. Say a billion exist, and a hundred million circulate today. Its fully diluted value is then ten times its market cap. The other nine hundred million arrive on a vesting schedule. Draw the circulating supply over time, and it does not rise smoothly. It jumps, on the day a block of locked coins is released. Every unlock adds coins that were never part of the market cap you were shown."
+        },
+        {
+          "start": 163,
+          "title": "Who actually set that price?",
+          "text": "Who actually set that price? Go back to the pizza. Market cap prices every slice at whatever the last one sold for. But that price only came from the coins that actually traded. Take a new token with a billion minted, and only a hundred thousand on sale. A handful of trades in those hundred thousand tokens, prints a price of ten dollars. That price is then applied to all billion tokens, and the screen shows a ten billion dollar valuation. Nobody paid ten billion dollars. A few trades set a price, and the multiplication did the rest."
+        },
+        {
+          "start": 200,
+          "title": "What does market cap leave out?",
+          "text": "What does market cap leave out? How much of the supply can actually trade. When the locked coins arrive. Who holds most of it. And how deep the market behind it is. Market cap tells you none of them. A crowded market can absorb a large order. A thin one moves the moment you touch it. Even a five hundred million dollar coin with a shallow order book can slip five percent on one moderate order."
+        },
+        {
+          "start": 227,
+          "title": "So what is market cap good for?",
+          "text": "So what is market cap good for? It is the cleanest way to compare the size of two coins, and the reason a five cent coin is not automatically small, or automatically early. It is a starting line, not a verdict. Nothing in this video is financial advice. So, the next time a coin looks cheap, would you check how many of them there are?"
+        }
+      ]
     }
   ],
   "_fields": {
