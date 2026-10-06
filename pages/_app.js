@@ -1,17 +1,20 @@
 import { JsonContext } from "context/state";
 import Head from "next/head";
 import Script from "next/script";
-import { Mulish } from "next/font/google";
+import localFont from "next/font/local";
 import { useEffect, useState } from "react";
 import "styles/style.scss";
 
-// Self-hosted at build time by next/font. This replaces a client-side fetch of
-// the Google Fonts stylesheet, which only ran after hydration and so shipped
+// Self-hosted by next/font. This replaces a client-side fetch of the Google
+// Fonts stylesheet, which only ran after hydration and so shipped
 // `<style>undefined</style>` in the static HTML, then caused a flash of
-// unstyled text once the CSS finally arrived. Weights match theme.json.
-const mulish = Mulish({
-  subsets: ["latin"],
-  weight: ["400", "600", "700"],
+// unstyled text once the CSS finally arrived. The file is committed rather
+// than fetched by next/font/google at build time: that fetch failed two
+// production builds in a row on 2026-10-06. It is Google's Mulish v18 latin
+// variable font, one file covering every weight theme.json uses (400-700).
+const mulish = localFont({
+  src: "../styles/fonts/mulish-latin.woff2",
+  weight: "400 700",
   display: "swap",
   variable: "--font-primary",
 });
