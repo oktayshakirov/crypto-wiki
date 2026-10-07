@@ -1,0 +1,98 @@
+---
+title: "What Is a Crypto Liquidation?"
+description: "A crypto liquidation is the forced closing of a leveraged trade when margin runs out. Learn how liquidation prices work, why cascades happen, how to avoid them."
+date: 2026-10-07
+image: "/images/posts/what-is-a-crypto-liquidation.jpg"
+categories: ["Beginners", "Investing", "Security"]
+crypto-ogs: ["Arthur Hayes"]
+exchanges: ["Binance", "Hyperliquid"]
+authors: ["Oktay Shakirov"]
+draft: false
+---
+
+## What Is a Crypto Liquidation?
+
+A crypto liquidation is the forced closing of a leveraged trade or loan when the trader's collateral can no longer cover their losses. The exchange or lending protocol sells the position automatically, the trader loses most or all of the margin they put up, and the decision is made by software, not by the trader.
+
+Liquidations only happen when borrowed money is involved. If you buy Bitcoin on an exchange with your own cash and the price halves, you still own the same amount of Bitcoin. Nobody can force you to sell. The moment you add leverage, through margin trading, futures or a crypto loan, a price level appears at which your position stops being yours to manage. That level is your liquidation price.
+
+This guide explains how that price is calculated, why liquidations tend to arrive in waves rather than one at a time, what happened during the largest liquidation day in crypto history, and the practical habits that keep you on the right side of it. If leverage itself is new to you, our **[Crypto for Beginners](/posts/crypto-for-beginners)** guide covers the ground floor first.
+
+<ArticleAd />
+
+## How Leverage Creates a Liquidation Price
+
+Leverage lets you control a position larger than the money you deposit. With $1,000 at 10x leverage you hold a $10,000 position. The $1,000 is your margin, and it is the only thing standing between the exchange and a loss on money it effectively lent you.
+
+Because the position is ten times your margin, every 1 percent move in the price changes your margin by 10 percent. A 10 percent drop against a 10x long would wipe out the entire $1,000. Exchanges do not wait for that point. They set a **maintenance margin**, a minimum buffer that must stay in the account, often somewhere between 0.5 and 1 percent of the position on major pairs and higher for large or illiquid positions. When your remaining margin falls below that threshold, the liquidation engine takes over.
+
+A simple example makes the numbers concrete. Say you open a 10x long on Bitcoin at $100,000 with $1,000 of margin and the exchange's maintenance margin is 0.5 percent. Your liquidation price lands at roughly $90,500, a little less than 10 percent below your entry. At 20x the cushion shrinks to around 4.5 percent. At 100x it is less than a single percent, which in crypto can disappear within minutes on an ordinary day. The exact figure differs between exchanges, so always read it off the order screen rather than working it out in your head.
+
+Two details on that order screen matter more than most beginners realise:
+
+- **Mark price, not last price**: exchanges usually trigger liquidations off a mark price built from several spot markets, so a single strange trade on one venue does not wipe out everyone at once.
+- **Isolated vs cross margin**: isolated margin limits the damage to the collateral assigned to that one trade, while cross margin lets the position draw on your whole account balance, which delays liquidation but puts everything at stake.
+
+Fees and funding payments also eat into margin over time. On **[perpetual futures](/posts/what-are-perpetual-futures)**, a long held while funding is positive slowly pays shorts, which quietly moves your liquidation price closer to the market even when the price itself goes nowhere.
+
+![A Hand Holding A Gold Bitcoin Coin In Front Of A Monitor Showing A Price Chart](/images/posts/bitcoin-trading.jpg)
+
+## What Happens When You Get Liquidated
+
+When the mark price touches your liquidation level, the exchange's engine closes the position by placing orders into the market. You do not get a phone call or a grace period. Most of the remaining margin goes to cover the loss, and many exchanges charge a separate liquidation fee on top.
+
+If the market moves so fast that the position cannot be closed before the margin is gone, the loss would normally fall on the exchange. Two backstops exist for that. The first is an **insurance fund**, a pool the exchange builds up partly from liquidation fees and uses to absorb shortfalls. The second, used when the insurance fund is not enough, is **auto-deleveraging (ADL)**. ADL forcibly reduces the positions of profitable traders on the other side of the market to balance the books. It means that even a trader who called the move correctly can find part of a winning position closed at a price they did not choose.
+
+The derivatives products that made all of this mainstream trace back to BitMEX, co-founded by **[Arthur Hayes](/crypto-ogs/arthur-hayes)**, which launched its XBTUSD perpetual swap in 2016. Insurance funds and ADL queues became the standard design across centralized exchanges after that, and decentralized perp platforms later adopted their own versions.
+
+<ArticleAd />
+
+## Liquidations in DeFi Lending
+
+Liquidations are not limited to trading. In **[DeFi](/posts/what-is-defi)** lending protocols such as Aave, you deposit crypto as collateral and borrow against it, often borrowing **[stablecoins](/posts/what-are-stablecoins)** against ETH. Each collateral asset has a liquidation threshold, and the protocol tracks a single number called the health factor: the value of your collateral, adjusted by that threshold, divided by your debt.
+
+As long as the health factor stays above 1, the loan is safe. When it drops below 1, anyone can repay part of your debt and receive some of your collateral at a discount, known as the liquidation bonus, typically in the range of 5 to 15 percent depending on the asset. That bonus is your cost. It is also why liquidations in DeFi happen almost instantly. Automated bots compete to take the discount the moment a loan becomes eligible.
+
+On Aave, a position with a health factor just under 1 can usually only be liquidated up to 50 percent in a single call, but once it falls to 0.95 or below, or the position is small, the whole thing can be closed out. Many experienced borrowers keep their health factor above 1.5 so that an ordinary dip in **[Ethereum](/posts/what-is-ethereum)** does not put the loan at risk.
+
+## Why Liquidations Cascade
+
+A single liquidation is a private loss. Thousands of them at once can move the entire market. When a long position is liquidated, the exchange sells to close it. That selling pushes the price lower, which reaches the next cluster of liquidation prices, which triggers more forced selling. Short squeezes work the same way in reverse, with forced buying lifting the price into the next band of short liquidations.
+
+These clusters are not secret. Traders watch liquidation heatmaps showing where large amounts of leveraged positions would be closed, and large players, including the market participants we describe in our guide to the **[crypto whale](/posts/what-is-a-crypto-whale)**, can see the same data. When open interest is high and leverage is crowded on one side, it takes only a modest push to start the chain.
+
+Cascades help explain why crypto's daily moves look so violent compared with stock markets. Much of the extra **[volatility](/posts/crypto-volatility)** does not come from new information. It comes from forced orders hitting thin order books, often outside normal trading hours.
+
+<ArticleAd />
+
+## Case Study: October 10, 2025
+
+The largest liquidation event on record so far came on October 10, 2025. Late in the US trading day, President Trump announced a 100 percent tariff on Chinese imports. Crypto prices dropped sharply, and in less than 24 hours more than $19 billion of leveraged positions were liquidated across more than 1.6 million accounts, according to CoinGlass data. That was over $9 billion more than the previous record, set in April 2021.
+
+The damage was not evenly spread. **[Hyperliquid](/exchanges/hyperliquid)**, a decentralized perp exchange, had become the most leveraged venue in the market in the days before the crash, with open interest reported around $15.4 billion. More than $10 billion of positions were liquidated there, and the platform used auto-deleveraging to close out profitable positions where liquidations could not be filled. On **[Binance](/exchanges/binance)**, some collateral assets briefly priced far below their value on other markets, which triggered liquidations that would not have happened at fair prices and led the exchange to compensate affected users.
+
+The lessons were familiar ones at a much larger scale. Leverage was crowded on one side, altcoin order books were thin, and a single headline did the rest. Smaller versions of the same pattern have followed since. In early June 2026, roughly $5.4 billion of long positions were liquidated over five days as Bitcoin briefly fell to about $61,300, according to figures reported by DEXTools.
+
+![A Roaring Bear Standing Over Bitcoin Coins In Front Of A Falling Red Price Chart](/images/posts/bear-market.png)
+
+## How to Avoid Getting Liquidated
+
+The only certain way to avoid liquidation is not to use leverage. Spot holders can lose money, but they cannot be forced out of a position by a temporary wick. If you are unsure which approach suits you, our comparison of **[crypto trading vs holding](/posts/crypto-trading-vs-holding)** walks through the trade-offs.
+
+If you do trade with leverage, a few habits make the biggest difference:
+
+- **Use low leverage**: at 2x or 3x your liquidation price sits far below the market, and normal swings do not reach it.
+- **Prefer isolated margin**: keep each trade's risk separate, so one bad position cannot drain the whole account.
+- **Set a stop-loss above the liquidation price**: closing the trade yourself at a planned loss is almost always cheaper than letting the engine close it with fees added.
+- **Size positions by risk, not by leverage**: decide how much of your account you are willing to lose on a trade and work backwards from there.
+- **Watch the crowd**: when funding rates and the **[Fear & Greed Index](/posts/crypto-fear-and-greed-index-for-beginners)** both point to extreme optimism, longs are crowded and a cascade becomes more likely.
+
+Two short examples show the difference. One trader opens a 25x long with their whole account on cross margin and goes to sleep. A 5 percent overnight wick liquidates the position and takes the rest of the balance with it. Another trader opens a 3x long on isolated margin with a stop-loss 6 percent below entry. The same wick costs them a planned, limited loss, and they still have capital to trade the next day.
+
+## Conclusion: Leverage Has a Price
+
+A crypto liquidation is what happens when leverage runs out of room. The exchange or protocol closes your position automatically, your margin covers the loss, and in extreme conditions insurance funds and auto-deleveraging step in to keep the system solvent. Because liquidations feed each other, they also shape the market as a whole, turning ordinary dips into sudden crashes and sharp rallies into squeezes.
+
+The mechanics are simple once you see them: higher leverage means a liquidation price closer to the market, and a crowded market means a cascade can reach it faster than expected. Before opening any leveraged trade, find the liquidation price on the order screen, ask whether a normal day's move could reach it, and decide where you would close the trade yourself.
+
+If you want to see how these risks look in practice, start with our guide to **[how Bitcoin works](/posts/what-is-bitcoin)** and **[decentralized exchanges](/posts/what-is-a-dex)**, then try small positions with low leverage before committing anything you cannot afford to lose.
