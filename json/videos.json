@@ -1038,6 +1038,65 @@
           "text": "So what is market cap good for? It is the cleanest way to compare the size of two coins, and the reason a five cent coin is not automatically small, or automatically early. It is a starting line, not a verdict. Nothing in this video is financial advice. So, the next time a coin looks cheap, would you check how many of them there are?"
         }
       ]
+    },
+    {
+      "slug": "bitcoin-halving",
+      "id": "fTAIiTNxalQ",
+      "kind": "long",
+      "title": "What Is the Bitcoin Halving? How It Works and When the Next One Is",
+      "description": "The Bitcoin halving is not a date anyone sets. Every 210,000 blocks, roughly every four years, the code cuts the new bitcoin paid to miners in half. Here is where new bitcoin comes from, every halving so far and when the next one is expected, why the network keeps its pace when miners switch off, what the code guarantees and what it does not, and why half of all bitcoin was mined in four years while the last fraction takes until around 2140.",
+      "uploadDate": "2026-10-11T15:30:38Z",
+      "duration": "PT4M12S",
+      "seconds": 252,
+      "poster": "/images/videos/bitcoin-halving.webp",
+      "target": {
+        "type": "posts",
+        "slug": "the-bitcoin-halving"
+      },
+      "alsoOn": [],
+      "placement": "auto",
+      "chapters": [
+        {
+          "start": 0,
+          "title": "Not on anybody's calendar",
+          "text": "The Bitcoin halving is not on anybody's calendar. Every 210,000 blocks, the code cuts the pay for mining new bitcoin in half. There is no vote, and no one person can change it. It started at fifty new coins a block, and it has been cut in half every four years since. Stay to the end, and you will know when the next one lands, and what the code does not promise."
+        },
+        {
+          "start": 23,
+          "title": "Where do new bitcoins come from?",
+          "text": "So where do new bitcoins actually come from? Roughly every ten minutes, a miner adds a new block to Bitcoin's ledger. The network pays it the fees inside that block, and a batch of brand new bitcoin. That new batch, the block subsidy, is the only way a bitcoin is ever created. So the whole supply runs on three steps. A miner finds a block. The network pays it in new bitcoin. And every 210,000 blocks, that pay is cut in half. That last step is the halving. Think of it as a pay cut every four years, however good the miner's machines get. It is a rule in the software, and every computer running Bitcoin checks it."
+        },
+        {
+          "start": 64,
+          "title": "Why every four years?",
+          "text": "So why roughly every four years? 210,000 blocks, at about ten minutes each, comes to roughly four years. But the code counts blocks, not days. When miners find blocks faster, the halving arrives early. When they slow down, it arrives late. So any date you see for the next one is an estimate, not a deadline."
+        },
+        {
+          "start": 85,
+          "title": "How far has the pay fallen?",
+          "text": "So how far has the pay actually fallen? Fifty bitcoin a block, from 2009. Twenty-five, from November 2012. Twelve and a half, from July 2016. Six point two five, from May 2020. And three point one two five, since April 2024. Each bar is half the one above it. The next halving is expected around April 2028, at block 1,050,000. The pay drops to about one and a half bitcoin a block, and new supply to about two hundred and twenty-five coins a day."
+        },
+        {
+          "start": 121,
+          "title": "What happens to the miners?",
+          "text": "So what happens to the miners? Overnight, the part of their pay made of new coins is cut in half. Unless fees or the price make up the difference, the oldest, least efficient machines stop paying for their own electricity. And some of them get switched off. So does Bitcoin slow down? Miners leave, and the computing power drops. Blocks start arriving slower than ten minutes. Every 2,016 blocks, the network lowers the difficulty. And blocks settle back to about ten minutes. It works in reverse too, and it has held through every halving so far."
+        },
+        {
+          "start": 156,
+          "title": "Does the halving push the price up?",
+          "text": "So does the halving push the price up? It is the claim you hear most, every four years. Here is what the code guarantees. Half as many new coins per block, every 210,000 blocks, up to a cap of twenty-one million. And here is what it does not. Any move in the price, an exact date, or every miner staying online. The halving changes how many new coins arrive. Demand, the other half of any price, is not in the code at all."
+        },
+        {
+          "start": 185,
+          "title": "What happens when the halvings run out?",
+          "text": "So what happens when the halvings run out? Halving fifty, over and over, gets small very fast. The first four years alone minted ten and a half million coins, half of all the bitcoin there will ever be. Put that on a timeline, and the shape is lopsided. Mining starts in 2009. By 2024, about ninety-four percent of it is mined. And the last fraction of a coin is expected around 2140. Fifteen years for almost all of it, and more than a century for the rest. When the new coins finally stop, miners will be paid by fees alone. So over the coming decades, the network's security has to move from new coins to fees."
+        },
+        {
+          "start": 226,
+          "title": "A rule, not an event",
+          "text": "So the halving is a rule, not an event. It runs every 210,000 blocks, whoever is watching, and whatever the price is doing. It cuts new supply. It promises nothing else. Nothing in this video is financial advice. So, the next time someone gives you a date for the halving, would you check the block count instead?"
+        }
+      ]
     }
   ],
   "_fields": {
