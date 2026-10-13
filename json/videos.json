@@ -1097,6 +1097,55 @@
           "text": "So the halving is a rule, not an event. It runs every 210,000 blocks, whoever is watching, and whatever the price is doing. It cuts new supply. It promises nothing else. Nothing in this video is financial advice. So, the next time someone gives you a date for the halving, would you check the block count instead?"
         }
       ]
+    },
+    {
+      "slug": "bear-market-in-crypto",
+      "id": "LfWHMncOnGM",
+      "kind": "long",
+      "title": "What Is a Bear Market in Crypto? Why the Drops Go So Deep",
+      "description": "A bear market in stocks starts at a twenty percent fall. Bitcoin has had four that went past seventy-five percent. Here is how a bear market is measured, why crypto falls so much further - borrowed money, forced selling that feeds itself, and a market that never pauses - what one looks like from the inside, and why a forty percent jump in the middle of one can still leave a coin seventy-two percent below the top.",
+      "uploadDate": "2026-10-13T21:57:13Z",
+      "duration": "PT3M32S",
+      "seconds": 212,
+      "poster": "/images/videos/bear-market-in-crypto.webp",
+      "target": {
+        "type": "posts",
+        "slug": "bear-market-in-crypto"
+      },
+      "alsoOn": [],
+      "placement": "auto",
+      "chapters": [
+        {
+          "start": 0,
+          "title": "In stocks, twenty percent",
+          "text": "In stocks, a twenty percent fall makes a bear market. Bitcoin has had four that went past seventy-five percent. And along the way, there were rallies that looked like the end of it. So what is a bear market in crypto, and why does it go so much deeper? Stay to the end, and you will know why a forty percent jump does not mean it is over."
+        },
+        {
+          "start": 20,
+          "title": "How far does it have to fall?",
+          "text": "How far does it have to fall? A bear market is a long stretch of falling prices, measured from the last peak. In stocks, the usual line is twenty percent. Bitcoin in 2011 fell more than ninety. In 2014 and 2015, eighty-six. In 2018, eighty-four. And from 2021 to 2022, seventy-seven. Smaller coins often fall further, seventy to ninety-five percent, and some never come back. These stretches last, often six to eighteen months, with sharp rallies along the way. So a crypto bear market is not just a dip that went on too long. Swings get bigger, and money gets pickier about where it goes."
+        },
+        {
+          "start": 64,
+          "title": "Why does crypto fall so much further?",
+          "text": "Why does crypto fall so much further? Bear markets usually start when pressures stack up. Borrowing gets more expensive, a big lender or exchange fails, or new rules scare fresh money off. But two things make crypto's falls deeper, and the first is borrowed money. A leveraged trade puts a little money down, and borrows the rest. If the price falls far enough, the exchange closes the trade for you, by selling it. That forced sale is called a liquidation. And each forced sale can knock over the next, like a row of dominoes. The price falls. Leveraged trades hit their limit, and get sold. That selling pushes the price down again. And round it goes. When stocks fall that fast, the exchange can pause trading. It is called a circuit breaker. That is the second thing. Crypto has no pause, and trades every hour of every day. So a cascade that would take days elsewhere can run in hours."
+        },
+        {
+          "start": 120,
+          "title": "What does a bear market look like?",
+          "text": "What does a bear market look like? Each high lands lower than the last, and each low lands lower too. Then, near the bottom, the price jumps forty percent in a week. Traders call a jump like that a bear market rally. Even the green days can be ten percent up, and still go nowhere. Underneath, fewer buyers wait at each price, so every sale moves it further. And money huddles into Bitcoin, so its share of the whole market tends to rise. To plenty of people watching, every rally still looks like the end of it."
+        },
+        {
+          "start": 152,
+          "title": "Why doesn't a 40% jump end it?",
+          "text": "Why doesn't a 40% jump end it? Because a fall and a jump are not measured from the same place. Start with a hundred dollars at the top. An eighty percent fall leaves twenty. A forty percent jump on twenty takes it to twenty-eight. That is still seventy-two percent below the top. To get back to a hundred, twenty has to grow five times over. A four hundred percent gain, just to get back to where it started. And the deeper the fall, the steeper that climb gets. Bitcoin's fall in 2018 needed more than five hundred percent, just to get back to its old high."
+        },
+        {
+          "start": 189,
+          "title": "Measured from the top",
+          "text": "Measured from the top. A rally is measured from the bottom. That is why one green week can look like the end of it, and not be. Nothing in this video is financial advice. So, the next time a coin jumps forty percent in a week, would you check how far it still is from the top?"
+        }
+      ]
     }
   ],
   "_fields": {
