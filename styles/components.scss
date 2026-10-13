@@ -482,8 +482,12 @@ div:has(> ins.adsbygoogle[data-ad-status="unfilled"]) {
 // framing it at least makes it read as a placement rather than a broken
 // layout. The frame only paints once an ad is actually there, so blocked or
 // unfilled slots leave nothing behind.
+//
+// Centred here rather than by the call site: AdSense wraps the creative in an
+// inline-block host sized to the ad, so it follows the surrounding text-align
+// and sat flush left wherever the parent did not happen to be text-center.
 .ad-slot {
-  @apply mx-auto my-5;
+  @apply mx-auto my-5 text-center;
 
   ins.adsbygoogle {
     display: block;
