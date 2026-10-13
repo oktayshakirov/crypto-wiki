@@ -42,6 +42,7 @@ const VideosList = ({ videos, currentPage, totalPages, isApp }) => {
 
   return (
     <Base
+      layoutAds="top-and-bottom"
       title={title}
       meta_title={title}
       description={description}

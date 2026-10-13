@@ -1,15 +1,13 @@
-import config from "@config/config.json";
+import AdSlot from "@components/ads/AdSlot";
 
-const adsEnabled = config?.params?.adsEnabled !== false;
-
-// Placeholder in-article ad slot. Renders nothing until adsEnabled is true
-// and an ad unit (e.g. Google AdSense) is wired in below.
-const ArticleAd = () => {
-  if (!adsEnabled) {
-    return null;
-  }
-
-  return null;
-};
+// Native in-article unit, placed inside post, exchange and OG bodies from MDX
+// as <ArticleAd />.
+const ArticleAd = () => (
+  <AdSlot
+    slot="5145200170"
+    variant="in-article"
+    placeholder="Ad Example (Content)"
+  />
+);
 
 export default ArticleAd;

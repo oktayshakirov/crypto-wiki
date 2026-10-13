@@ -11,6 +11,7 @@ const AuthorSingle = ({ frontmatter, content, mdxContent, isApp }) => {
 
   return (
     <Base
+      layoutAds="none"
       title={`${title} | Author Profile & Articles - Crypto Wiki`}
       meta_title={`${title} | Expert Author & Crypto Insights - Crypto Wiki`}
       description={description ? description : content.slice(0, 160)}

@@ -14,6 +14,7 @@ import {
 
 const PopularExchanges = ({ exchanges, currentPage, totalPages, isApp }) => (
   <Base
+    layoutAds="top-and-bottom"
     title={paginatedTitle(
       "Most Popular Crypto Exchanges | Crypto Wiki",
       currentPage

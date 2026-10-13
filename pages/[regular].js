@@ -18,6 +18,8 @@ const RegularPages = ({ slug, data, isApp }) => {
       noindex={noindex}
       canonical={canonical}
       isApp={isApp}
+      // About, legal, contact and FAQ pages carry no ads, as on Tinnitus Help.
+      layoutAds="none"
     >
       {layout === "404" ? (
         <NotFound data={data} />

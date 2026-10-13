@@ -6,7 +6,7 @@ import React, { useState } from "react";
 import { IoSearch } from "react-icons/io5";
 import { useRouter } from "next/router";
 
-const Header = ({ isApp }) => {
+const Header = () => {
   const { main } = menu;
   const [searchModal, setSearchModal] = useState(false);
 
@@ -14,11 +14,8 @@ const Header = ({ isApp }) => {
 
   return (
     <>
-      <header
-        className={`sticky top-0 z-50 bg-theme-dark py-2 transition-all ${
-          isApp ? "hidden" : ""
-        }`}
-      >
+      {/* The app has its own native navigation. */}
+      <header className="web-only sticky top-0 z-50 bg-theme-dark py-2 transition-all">
         <nav className="navbar container">
           <div className="order-0">
             <Logo />

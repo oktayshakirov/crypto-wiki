@@ -1,3 +1,4 @@
+import { detectIsApp } from "@lib/utils/isApp";
 import { JsonContext } from "context/state";
 import Head from "next/head";
 import Script from "next/script";
@@ -20,23 +21,18 @@ const mulish = localFont({
 });
 
 const MyApp = ({ Component, pageProps }) => {
-  const [isApp, setIsApp] = useState(() => {
-    if (typeof window !== "undefined") {
-      const urlParams = new URLSearchParams(window.location.search);
-      return (
-        urlParams.get("isApp") === "true" ||
-        !!window.isApp ||
-        localStorage.getItem("isApp") === "true"
-      );
-    }
-    return false;
-  });
+  // False on the server and on the first client render alike, so hydration
+  // matches inside the app too; the real value lands right after mount. What
+  // the app must never see is hidden by CSS from first paint (see _document).
+  const [isApp, setIsApp] = useState(false);
 
   useEffect(() => {
-    if (isApp) {
+    if (detectIsApp()) {
+      document.documentElement.classList.add("is-app");
       localStorage.setItem("isApp", "true");
+      setIsApp(true);
     }
-  }, [isApp]);
+  }, []);
 
   return (
     <JsonContext>
@@ -65,14 +61,6 @@ const MyApp = ({ Component, pageProps }) => {
           });
         `}
       </Script>
-      {!isApp && (
-        <Script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5852582960793521"
-          crossOrigin="anonymous"
-          strategy="lazyOnload"
-        />
-      )}
       <Component {...pageProps} isApp={isApp} />
     </JsonContext>
   );

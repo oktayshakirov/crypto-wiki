@@ -7,17 +7,16 @@ import Link from "@components/NextLink";
 import AppsBanner from "@layouts/components/AppsBanner";
 import { usePathname } from "next/navigation";
 
-const Footer = ({ isApp }) => {
+const Footer = () => {
   const { copyright } = config.params;
   const pathname = usePathname();
-  const shouldHideAppsBanner = isApp || pathname === "/app";
   const currentYear = new Date().getFullYear();
   const copyrightText = copyright.replace("2024", `2024 - ${currentYear}`);
 
   return (
     <footer className="section bg-theme-dark">
-      {!shouldHideAppsBanner && (
-        <div className="container">
+      {pathname !== "/app" && (
+        <div className="web-only container">
           <AppsBanner />
         </div>
       )}
@@ -46,7 +45,7 @@ const Footer = ({ isApp }) => {
             ))}
           </ul>
           <div className="flex w-full flex-col items-center space-y-4 lg:mx-auto lg:max-w-4xl lg:flex-row lg:justify-between lg:space-x-8 lg:space-y-0">
-            {!isApp && <Social source={social} className="social-icons" />}
+            <Social source={social} className="web-only social-icons" />
             <div className="text-center">
               {markdownify(copyrightText, "p", "text-light")}
             </div>
