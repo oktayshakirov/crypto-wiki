@@ -30,6 +30,7 @@ const AuthorPagination = ({
 
   return (
     <Base
+      layoutAds="none"
       title={metaTitle}
       meta_title={metaTitle}
       description={paginatedDescription(

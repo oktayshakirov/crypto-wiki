@@ -25,6 +25,7 @@ const CategoryLayout = ({
 
   return (
     <Base
+      layoutAds="top-and-bottom"
       title={metaTitle}
       meta_title={metaTitle}
       description={paginatedDescription(

@@ -20,10 +20,19 @@ const Base = ({
   children,
   isApp,
   jsonLd,
+  // Layout ads, on top of any the page places itself:
+  //   "bottom" - after the page body only. Detail pages and the homepage: their
+  //     content carries its own ads, and one above the title would push the
+  //     article off a phone's first screen.
+  //   "top-and-bottom" - listings, which have no ads of their own.
+  //   "none" - screens that are not content: 404, search, legal and about
+  //     pages. AdSense does not allow ads on screens without publisher content.
+  layoutAds = "bottom",
 }) => {
   const { meta_image, meta_author, meta_description } = config.metadata;
   const { base_url } = config.site;
   const router = useRouter();
+  const showAds = !isApp && layoutAds !== "none";
 
   const getRobotsContent = () => {
     if (typeof noindex === "string") {
@@ -89,14 +98,22 @@ const Base = ({
         <JsonLd data={[organizationSchema(), websiteSchema()]} />
         {jsonLd && <JsonLd data={jsonLd} />}
       </Head>
-      <Header isApp={isApp} />
+      <Header />
       <div className="container">
         <CoinTracker />
       </div>
-      {!isApp && <LayoutAd />}
+      {showAds && layoutAds === "top-and-bottom" && (
+        <div className="container">
+          <LayoutAd />
+        </div>
+      )}
       <main>{children}</main>
-      {!isApp && <LayoutAd />}
-      <Footer isApp={isApp} />
+      {showAds && (
+        <div className="container">
+          <LayoutAd />
+        </div>
+      )}
+      <Footer />
       {!isApp && <AppDownloadPopup />}
     </>
   );

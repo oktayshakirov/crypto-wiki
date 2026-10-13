@@ -8,6 +8,9 @@ const { blog_folder } = config.settings;
 const Categories = ({ categories, isApp }) => {
   return (
     <Base
+      // A list of category buttons: a navigation screen, where AdSense does
+      // not allow ads. Each category page itself is a listing and has them.
+      layoutAds="none"
       title="All Crypto Categories | Blockchain, Web3, AI & More - Crypto Wiki"
       meta_title="All Crypto Categories | Blockchain, Web3, AI & More - Crypto Wiki"
       description="Explore a wide range of crypto topics on Crypto Wiki. From blockchain and Bitcoin to AI, security, and investing - access expert insights, guides, and the latest news."

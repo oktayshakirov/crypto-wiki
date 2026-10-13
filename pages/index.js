@@ -76,6 +76,11 @@ const Home = ({
                 exists in the apps and nowhere else. */}
             <Tools isApp={isApp} />
           </div>
+          {/* One ad after each section, as on Tinnitus Help: the first after the
+              hero rather than above it, and none at the end, where the layout
+              already places one. Each sits inside its section's condition, so
+              an empty section never leaves two ads back to back. */}
+          {!isApp && <LayoutAd />}
 
           {markdownify("LATEST POSTS", "h3", "mb-8")}
           <Posts posts={posts} />
@@ -97,11 +102,15 @@ const Home = ({
               <span>CATEGORIES</span>
             </Link>
           </div>
+          {!isApp && <LayoutAd />}
           {mostRead.length > 0 && (
-            <div className="mt-12">
-              {markdownify("MOST POPULAR", "h3", "mb-8")}
-              <Posts posts={mostRead} />
-            </div>
+            <>
+              <div className="mt-12">
+                {markdownify("MOST POPULAR", "h3", "mb-8")}
+                <Posts posts={mostRead} />
+              </div>
+              {!isApp && <LayoutAd />}
+            </>
           )}
           {videos.length > 0 && (
             <div className="mt-12">
@@ -130,9 +139,9 @@ const Home = ({
                   <span>ALL VIDEOS</span>
                 </Link>
               </div>
+              {!isApp && <LayoutAd />}
             </div>
           )}
-          {!isApp && <LayoutAd />}
           <div className="card-secondary my-10 p-10">
             <div className="mb-10">
               {markdownify("MARKET MOOD", "h3")}
@@ -218,7 +227,6 @@ const Home = ({
               </Link>
             </div>
           </div>
-          {!isApp && <LayoutAd />}
         </div>
       </section>
     </Base>

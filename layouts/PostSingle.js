@@ -23,6 +23,7 @@ import ArticleSidebar from "@partials/ArticleSidebar";
 import TableOfContents from "@components/TableOfContents";
 import { PageVideoProvider } from "context/video";
 import { getPageVideo } from "@lib/videos";
+import LayoutAd from "@layouts/components/ads/LayoutAd";
 
 // Frontmatter lists entities by title; the full pages live in a separate array.
 // Match them on slug so casing and punctuation differences do not drop links.
@@ -197,6 +198,9 @@ const PostSingle = ({
       {similarPosts && similarPosts.length > 0 && (
         <section className="section">
           <div className="container max-w-[1200px]">
+            {/* Where a reader who finished the article picks the next one, as
+                before Tinnitus Help's recommended posts. */}
+            {!isApp && <LayoutAd />}
             <h2 className="mb-8 text-center">Similar Posts</h2>
             <SimilarPosts posts={similarPosts} />
           </div>

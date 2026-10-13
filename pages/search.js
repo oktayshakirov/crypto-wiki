@@ -49,6 +49,7 @@ const SearchPage = ({ authors, cryptoOgs, exchanges, isApp }) => {
       title={`Search results for ${query.key}`}
       noindex={true}
       isApp={isApp}
+      layoutAds="none"
     >
       <div className="section">
         <div className="container">

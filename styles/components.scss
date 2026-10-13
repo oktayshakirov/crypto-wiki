@@ -456,7 +456,7 @@ $table-surface-strong: #292929; // surface + 5% white
 }
 
 // An ad slot that renders nothing must not leave its spacing behind. Covers
-// both the current placeholder state, where the components return null, and a
+// the slots that return null (server render, the app, ads off in config) and a
 // real AdSense unit that comes back unfilled.
 .container:empty {
   display: none;
@@ -464,6 +464,53 @@ $table-surface-strong: #292929; // surface + 5% white
 
 div:has(> ins.adsbygoogle[data-ad-status="unfilled"]) {
   display: none !important;
+}
+
+// Website chrome the native app replaces with its own (header, social links,
+// app download banner). `is-app` is set on <html> before first paint by
+// pages/_document.js, so this applies before React has even hydrated.
+.is-app .web-only {
+  display: none !important;
+}
+
+// Frame around an AdSense unit (layouts/components/ads/AdSlot.js).
+//
+// Fixed slots are a standard 300x250, so AdSense fills the box exactly and the
+// frame hugs the ad. Everything else is sized by AdSense from the slot width;
+// it can serve a shorter creative into the box it reserved, and that leftover
+// space is inside a cross-origin iframe we cannot measure or collapse -
+// framing it at least makes it read as a placement rather than a broken
+// layout. The frame only paints once an ad is actually there, so blocked or
+// unfilled slots leave nothing behind.
+.ad-slot {
+  @apply mx-auto my-5;
+
+  ins.adsbygoogle {
+    display: block;
+    width: 100%;
+  }
+
+  &[data-fixed="true"] {
+    width: fit-content;
+
+    ins.adsbygoogle {
+      display: inline-block;
+      width: 300px;
+      height: 250px;
+    }
+  }
+
+  &[data-filled="true"] {
+    @apply overflow-hidden rounded-xl border border-gray-800 bg-[#212121] pb-2 shadow-[5px_5px_8px_#1b1b1b,_-5px_-5px_8px_#272727];
+  }
+}
+
+.ad-slot__label {
+  @apply block px-4 py-2 text-left text-xs uppercase leading-none tracking-wider text-gray-400;
+}
+
+.ad-slot__placeholder {
+  @apply rounded-xl border border-dashed border-gray-600 p-10 text-center text-sm text-gray-400;
 }
 
 // Sort tabs above a listing. A static route per ordering rather than a toggle,

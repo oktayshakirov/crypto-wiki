@@ -18,6 +18,7 @@ const DESCRIPTION =
 
 const LatestCryptoOGs = ({ ogs, currentPage, totalPages, isApp }) => (
   <Base
+    layoutAds="top-and-bottom"
     title={paginatedTitle(TITLE, currentPage)}
     meta_title={paginatedTitle(TITLE, currentPage)}
     description={paginatedDescription(DESCRIPTION, currentPage)}

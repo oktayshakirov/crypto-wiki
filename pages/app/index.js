@@ -218,6 +218,7 @@ const REVIEWS = [
 const App = () => {
   return (
     <Base
+      layoutAds="none"
       title="Crypto Wiki App | Your All-In-One Crypto Hub for iOS & Android"
       meta_title="Crypto Wiki App | Crypto Guides, News & Insights on iOS & Android"
       description="Download the Crypto Wiki App for iOS and Android. Stay updated with real-time crypto news, expert analysis, and comprehensive guides - your go-to crypto resource on the go."

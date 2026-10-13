@@ -4,7 +4,7 @@ import { getRegularPage } from "@lib/contentParser";
 
 const notFound = ({ data }) => {
   return (
-    <Base>
+    <Base layoutAds="none">
       <NotFound data={data} />
     </Base>
   );

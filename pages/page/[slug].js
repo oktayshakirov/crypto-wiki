@@ -12,7 +12,7 @@ const BlogPagination = ({ posts, authors, currentPage, pagination, isApp }) => {
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
   return (
-    <Base isApp={isApp}>
+    <Base isApp={isApp} layoutAds="top-and-bottom">
       <section className="section">
         <div className="container">
           <Posts className="mb-16" posts={currentPosts} authors={authors} />

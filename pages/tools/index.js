@@ -87,6 +87,7 @@ const Tools = ({ isApp }) => {
 
   return (
     <Base
+      layoutAds="top-and-bottom"
       title="Crypto Tools | Crypto Wiki - Market Analysis, Staking, & More"
       meta_title="Crypto Tools | Crypto Wiki - Market Analysis, Staking, & More"
       description="Explore the best crypto tools on Crypto Wiki! From market heatmaps and staking calculators to Fear and Greed Index and random coin generators, boost your trading strategy today."
