@@ -1146,6 +1146,55 @@
           "text": "Measured from the top. A rally is measured from the bottom. That is why one green week can look like the end of it, and not be. Nothing in this video is financial advice. So, the next time a coin jumps forty percent in a week, would you check how far it still is from the top?"
         }
       ]
+    },
+    {
+      "slug": "decentralized-ai",
+      "id": "AJHib3YtDAk",
+      "kind": "long",
+      "title": "Can AI Run on the Blockchain? Decentralized AI Explained",
+      "description": "One word from the AI you use would fill hundreds of blockchain blocks, so it could not run on one. Here is why: what a blockchain actually is, the arithmetic of running a 7-billion-parameter model on Ethereum, what decentralized AI really puts on the chain instead, and the one thing a proof can never prove.",
+      "uploadDate": "2026-10-16T21:29:35Z",
+      "duration": "PT3M40S",
+      "seconds": 220,
+      "poster": "/images/videos/decentralized-ai.webp",
+      "target": {
+        "type": "posts",
+        "slug": "decentralized-ai-can-ai-run-on-the-blockchain"
+      },
+      "alsoOn": [],
+      "placement": "auto",
+      "chapters": [
+        {
+          "start": 0,
+          "title": "The AI you use",
+          "text": "One word from your AI would fill hundreds of blocks. So the AI you use could not run on a blockchain. And yet there is a whole field called decentralized AI. So what does a blockchain actually do for an AI, if it cannot run one? Stay to the end, and you will know the one thing the chain can check, and the one thing it never can."
+        },
+        {
+          "start": 21,
+          "title": "What is a blockchain good at?",
+          "text": "What is a blockchain good at? A blockchain is not one computer. It is thousands of them, keeping one record together. Every one of them repeats every step, and checks that the others got the same result. Send it one job, like a single word from an AI model, and every computer on the network does the same math, again. That repetition is the whole point. No one machine decides, so nobody has to trust one. But it also makes a blockchain the most expensive place there is to do math."
+        },
+        {
+          "start": 53,
+          "title": "Could a big AI model run on-chain?",
+          "text": "Could a big AI model run on-chain? On Ethereum, every step a program takes has a price, paid in units called gas. And every block has a ceiling on how much gas fits inside it. Now take a mid-sized AI model, with seven billion parameters. Every word it writes takes about seven billion multiplications, and as many additions. At the cheapest price Ethereum charges for those, that is fifty-six billion units of gas, for one word. A full block has room for well under a billion. That one word needs fifty-six billion. So a single word would take hundreds of blocks, back to back, twelve seconds apart. And storing the model itself on the chain would cost millions more. So the big models stay off the chain. What goes on it is something else."
+        },
+        {
+          "start": 101,
+          "title": "What does decentralized AI put on-chain?",
+          "text": "What does decentralized AI put on-chain? It splits the job in two. Off the chain, on ordinary hardware, the model itself, the heavy math, and the data it reads. And on the chain, a proof of what ran, the payment, and a deposit it can lose. The model runs on graphics cards, like any other AI. Then it hands back its answer, with a way to check it. A proof, which the chain checks with math. A challenge window, where anyone can dispute the answer. Or an oracle, a service you trust to vouch for it. Making a proof can take minutes. Checking it takes well under a second. And it costs, at most, about a fortieth of one block. With a challenge window, the answer stands unless someone proves it wrong. And a provider that lied loses the deposit it put down. So the chain does not do the thinking. It checks the work, and it holds the money."
+        },
+        {
+          "start": 154,
+          "title": "What can't a proof prove?",
+          "text": "What can't a proof prove? A proof says the math was done, exactly as written. It can prove which model ran, what it was given, and that the math was done. It cannot prove the answer is true. Train a model on poisoned data, and it gives a poisoned answer, with a perfect proof. And a cleverly worded prompt can talk a model into the wrong answer. The proof checks out anyway. So the hard rules cannot live inside the model. They live in the contract around it. A cap on what it can spend. A limit on how far a price can slip. A list of addresses it is allowed to pay. Those rules do not guess. The contract refuses anything outside them."
+        },
+        {
+          "start": 195,
+          "title": "Can AI run on a blockchain?",
+          "text": "Can AI run on a blockchain? Not the big models. What runs there is the receipt, the rules and the money. The blockchain does not think. It checks. Nothing in this video is financial advice. So, the next time a project says its AI runs on the blockchain, would you ask what the chain actually checks?"
+        }
+      ]
     }
   ],
   "_fields": {
