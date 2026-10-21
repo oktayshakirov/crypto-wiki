@@ -45,6 +45,7 @@ export const getStaticProps = ({ params }) => {
           title: post.frontmatter.title,
           description: post.frontmatter.description,
           image: post.frontmatter.image,
+          date: post.frontmatter.date || null,
           categories: post.frontmatter.categories,
           "crypto-ogs": post.frontmatter["crypto-ogs"] || [],
           exchanges: post.frontmatter.exchanges || [],

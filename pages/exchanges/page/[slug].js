@@ -104,6 +104,7 @@ export const getStaticProps = async ({ params }) => {
           title: exchange.frontmatter.title,
           description: exchange.frontmatter.description,
           image: exchange.frontmatter.image,
+          date: exchange.frontmatter.date || null,
         },
         slug: exchange.slug,
       })),

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "@components/NextLink";
 import { FaUser, FaVideo } from "react-icons/fa";
 import { hasPageVideo } from "@lib/videos";
+import NewBadge from "@components/NewBadge";
 
 // 1 / 2 / 4 columns, deliberately skipping a 3-across step: these feeds show 8
 // per page, and 8 never divides into rows of 3 without leaving a short one.
@@ -29,6 +30,7 @@ const CryptoOGs = ({ ogs }) => {
                   className="rounded-lg object-cover"
                   loading="lazy"
                 />
+                <NewBadge date={og.frontmatter.date} />
                 {hasPageVideo("crypto-ogs", og.slug) && (
                   <span className="absolute right-2 top-2 flex h-6 w-6 items-center justify-center rounded bg-black/70 text-white">
                     <FaVideo className="text-xs" />

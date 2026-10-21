@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "@components/NextLink";
 import { FaTag, FaUser, FaAt, FaVideo } from "react-icons/fa";
 import { hasPageVideo } from "@lib/videos";
+import NewBadge from "@components/NewBadge";
 
 const Posts = ({ posts }) => {
   return (
@@ -25,6 +26,7 @@ const Posts = ({ posts }) => {
                   fetchPriority={index === 0 ? "high" : undefined}
                   {...(index !== 0 ? { loading: "lazy" } : {})}
                 />
+                <NewBadge date={post.frontmatter.date} />
                 {hasPageVideo("posts", post.slug) && (
                   <span className="absolute right-2 top-2 flex h-6 w-6 items-center justify-center rounded bg-black/70 text-white">
                     <FaVideo className="text-xs" />

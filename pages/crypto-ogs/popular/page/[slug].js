@@ -84,6 +84,7 @@ export const getStaticProps = async ({ params }) => {
           title: og.frontmatter.title,
           description: og.frontmatter.description,
           image: og.frontmatter.image,
+          date: og.frontmatter.date || null,
         },
         slug: og.slug,
       })),
