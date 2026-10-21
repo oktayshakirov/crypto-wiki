@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "@components/NextLink";
 import { formatDuration } from "@lib/videos";
+import NewBadge from "@components/NewBadge";
 
 // Feed card. Links to /videos/<slug> rather than out to YouTube: the video page
 // has the player anyway, plus the transcript and the link back to the article,
@@ -16,6 +17,7 @@ const VideoCard = ({ video }) => (
         loading="lazy"
         sizes="(max-width: 768px) 100vw, 33vw"
       />
+      <NewBadge date={video.uploadDate} />
       <span className="absolute bottom-1.5 right-1.5 rounded bg-black/80 px-1 py-0.5 text-[11px] font-medium tabular-nums text-white">
         {formatDuration(video.seconds)}
       </span>
