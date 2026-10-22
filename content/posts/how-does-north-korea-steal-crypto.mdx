@@ -1,0 +1,102 @@
+---
+title: "How Does North Korea Steal Crypto?"
+description: "North Korea has stolen over $1 billion in crypto in 2026 alone. Learn how its hackers break into exchanges, launder the funds, and how to keep your coins safe."
+date: 2026-10-22
+image: "/images/posts/how-does-north-korea-steal-crypto.jpg"
+categories: ["Security", "Politics"]
+exchanges: ["Bybit", "Bitget"]
+authors: ["Oktay Shakirov"]
+draft: false
+---
+
+## How Does North Korea Steal Crypto?
+
+North Korea steals crypto mainly by tricking the people who control the money, not by breaking the cryptography. State-backed hacking units pose as recruiters, investors and job candidates, plant malware on employees' computers, and use that access to drain exchange and protocol wallets. The stolen coins are then swapped, bridged and mixed across dozens of blockchains until they can be cashed out.
+
+The scale is hard to overstate. Blockchain analytics firm Chainalysis counted at least $2.02 billion stolen by North Korean groups in 2025, a record year that pushed the country's all-time crypto haul to roughly $6.75 billion. In 2026 the pace has continued: Elliptic reported on 25 September 2026 that suspected North Korean thefts had passed $1 billion for the year across more than 51 incidents.
+
+This guide explains who is behind the attacks, the three main ways they get in, what happened in the two biggest heists of 2026, how the money disappears afterwards, and what all of it means for you as an ordinary holder. If you are new to how coins move between wallets, our **[guide to sending and receiving crypto safely](/posts/send-and-receive-crypto-safely)** is a good primer.
+
+## Who Is Behind the Attacks?
+
+Most of the activity is attributed to a cluster of units under North Korea's main intelligence agency, the Reconnaissance General Bureau. Security researchers track them under several names, and the most famous is the **Lazarus Group**. Others you will see in reports include **APT38**, which focuses on banks and financial institutions, and **TraderTraitor**, the label the FBI used when it attributed the 2025 Bybit theft. The names overlap and are best understood as teams inside one state program rather than separate gangs.
+
+What makes them different from ordinary cybercriminals is motive and patience. A typical criminal crew wants a quick payday. These units operate like a government department with revenue targets. They spend weeks or months building fake personas, studying a target's staff on LinkedIn and Telegram, and staging attack infrastructure long before a single coin moves. The Drift Protocol attack in 2026, covered below, began on-chain preparation three weeks before the actual theft.
+
+Crypto suits them for a simple reason. North Korea is cut off from most of the global banking system by sanctions, and a **[blockchain](/posts/what-is-blockchain)** does not ask who you are before it settles a transaction. Stolen digital assets can be moved across borders in minutes, without a correspondent bank that could freeze them.
+
+<ArticleAd />
+
+## The Biggest North Korean Crypto Heists
+
+North Korea's crypto campaign is not new. It shifted from bank fraud to crypto around 2017, and the size of individual thefts has grown steadily since. A few incidents define the pattern.
+
+In March 2022, attackers drained about $625 million from the Ronin bridge used by the game Axie Infinity, and the FBI attributed the theft to Lazarus weeks later. Reporting afterwards traced the entry point to a fake job offer sent to one of the developer's engineers. It showed how a single compromised laptop could unlock a bridge holding hundreds of millions of dollars.
+
+The record still belongs to the attack on **[Bybit](/exchanges/bybit)** on 21 February 2025, when roughly $1.46 billion in Ether was taken in a single transaction. Attackers had compromised a developer machine at Safe{Wallet}, the multisig service Bybit used, and altered the interface so that Bybit's signers approved what looked like a routine transfer. Five days later the FBI publicly named North Korea. That one theft made up about 72% of the country's 2025 total.
+
+2026 has brought two more nine-figure cases: roughly $285 million from the Solana derivatives exchange Drift Protocol on 1 April, and about $387 million from **[Bitget](/exchanges/bitget)** on 24 September. Both are covered in detail further down, because they show where the techniques are heading.
+
+## Three Ways In
+
+There is no single North Korean playbook, but almost every major theft starts with one of three entry points. All three exploit people and processes rather than the underlying code.
+
+**Fake recruiters and fake investors.** The oldest trick is a too-good-to-be-true job offer. A "recruiter" approaches a developer at an exchange or DeFi project, runs a convincing interview over several weeks, and finally sends a coding test or a PDF that installs malware. Variants include fake venture capitalists asking founders to join a video call through a malicious app. Once an employee's machine is compromised, the attackers wait for the moment that machine touches a wallet or signing system.
+
+**Supply-chain compromise.** Instead of attacking a well-defended exchange directly, the hackers go after a vendor it trusts. The Bybit theft is the clearest example: the exchange's own systems were never breached, but the wallet software its staff relied on had been tampered with. Poisoned open-source packages on code libraries like npm are another favorite, because developers install them without a second thought.
+
+**Fake IT workers.** The quietest channel is getting hired. North Korean operatives use stolen or rented identities to land remote developer jobs at Western companies, including crypto firms. In January 2025 the US Justice Department indicted two North Korean nationals over a scheme that placed workers at 64 US companies between 2018 and 2024. Reporting in September 2026 described a newer twist, in which people from third countries are paid to sit the job interviews before North Korean operatives quietly take over the role. Google's threat intelligence team has also documented such workers inside crypto projects in the UK, Germany, Portugal and Serbia, and some who were let go have tried to extort former employers by threatening to leak source code.
+
+![A hooded figure in black gloves typing on a laptop in a dark room](/images/posts/hacker.jpg)
+
+## Inside the 2026 Heists: Drift and Bitget
+
+The two largest suspected North Korean attacks of 2026 hit very different targets, a decentralized protocol and a centralized exchange, yet both followed the same logic of getting trusted insiders to approve something they did not understand.
+
+**Drift Protocol (1 April 2026).** Drift is a Solana-based exchange for **[perpetual futures](/posts/what-are-perpetual-futures)**. According to TRM Labs, attackers tricked members of Drift's Security Council into pre-signing transactions that looked routine but carried hidden admin permissions. Those signatures were kept valid using a Solana feature called durable nonces, so they could be executed weeks later. Separately, the attackers created a worthless token, minted 750 million units, and wash-traded it on a small pool until price oracles treated it as worth about $1. On the day, they listed that token as collateral, raised withdrawal limits and made 31 withdrawals in about 12 minutes. TRM and Elliptic both described the attack as likely, though not confirmed, North Korean work.
+
+**Bitget (24 September 2026).** Bitget first reported about $351.6 million in unauthorized transfers from its hot and warm wallets, then raised the figure to roughly $387 million after finding further stolen assets on other chains. CEO Gracy Chen said no private keys were compromised. Instead, the attackers reportedly breached a backend system in the wallet infrastructure and spoofed transaction data so that fraudulent withdrawals looked legitimate. Cold wallets were untouched, Bitget said its User Protection Fund covers the loss, and withdrawals resumed in stages between 28 September and 2 October. Chainalysis attributed the theft to North Korea-linked actors in a 1 October report, and Elliptic called the link highly likely.
+
+<ArticleAd />
+
+The lesson from both is uncomfortable. Neither required breaking encryption or finding a bug in a **[smart contract](/posts/smart-contracts-and-industries-beyond-crypto)** in the classic sense. They required patience, convincing social engineering and a gap in how humans verify what they sign. Drift had moved its Security Council to a 2-of-5 threshold with no timelock just five days before the attack, which removed the delay that might have let someone notice.
+
+## How the Stolen Crypto Gets Laundered
+
+Stealing the coins is only half the job. Every exchange, stablecoin issuer and analytics firm starts watching the moment a hack is announced, so the next phase is a race to move funds before they can be frozen.
+
+The first step is almost always to dump anything that can be frozen. Stablecoins like USDT and USDC can be blocked by their issuers, so attackers swap them for native assets such as ETH as fast as possible, usually through a **[decentralized exchange](/posts/what-is-a-dex)** that has no account to suspend. Our guide to **[stablecoins](/posts/what-are-stablecoins)** explains why issuers hold that power. In the Bitget case, Circle and Tether managed to freeze only about $318,000.
+
+Next comes chain-hopping. Funds are pushed through cross-chain bridges and swap protocols to split the trail across networks. Chainalysis found the Bitget loot moved in 23 transfers across four blockchains within the first three hours, with about half on Ethereum and around 41% on the XRP Ledger. Some of the XRP was converted into Bitcoin through a cross-chain liquidity protocol, and a share was moved into Zcash's shielded pool, where balances and transfers are hidden by design. Elliptic also linked Bitget funds to addresses used to launder the 2025 Bybit theft, a sign that the same laundering infrastructure is reused from heist to heist.
+
+The final step is cashing out, which is where the money touches the real world. A multinational monitoring team set up by the US and ten allies reported in October 2025 that North Korean groups relied heavily on Chinese brokers and on Cambodian platforms, including Huione Pay, to turn crypto into usable currency. Over-the-counter traders who ask few questions are the weakest link in the chain, and the place where law enforcement has the best chance to intervene.
+
+## Why It Matters Beyond the Victims
+
+It is tempting to treat these thefts as a problem for exchanges and their insurers. The money, however, goes somewhere. A United Nations panel of experts reported in March 2024 that, according to one member state, cyber operations generated about 50% of North Korea's foreign currency income, and another member state estimated that 40% of its weapons of mass destruction programs were funded through illicit cyber means. Both are estimates rather than audited figures, but they explain why governments treat crypto security as a national security issue.
+
+That panel no longer exists. Its mandate expired in April 2024 after Russia vetoed its renewal, and monitoring passed to the smaller multinational team mentioned above. Its October 2025 report put North Korean crypto theft at about $2.84 billion between January 2024 and September 2025.
+
+For the industry, the consequences show up as tighter rules. Exchanges face stricter withdrawal monitoring, travel-rule checks and pressure to freeze flagged funds quickly, and DeFi protocols are increasingly expected to add timelocks and stronger multisig controls. The broader debate about privacy tools, mixers and sanctions is shaped heavily by what North Korean launderers do with them.
+
+<ArticleAd />
+
+## What This Means for You
+
+You are very unlikely to be the direct target of a state hacking unit. North Korea goes where the money is concentrated, which means exchanges, bridges and protocols. The risk to you is indirect, and it can be managed.
+
+**Spread your exchange exposure.** Even large, reputable platforms get hacked. Bybit and Bitget both covered their losses, but that depended on having the reserves to do so. Read our guide to **[understanding crypto exchanges](/posts/understanding-crypto-exchanges)** for what to look for, and avoid keeping more on any single platform than you would be comfortable waiting weeks to withdraw.
+
+**Hold long-term savings yourself.** Coins on a **[hardware wallet](/posts/what-is-a-hardware-wallet)** cannot be drained by an exchange breach. The trade-off is that you become responsible for your **[seed phrase](/posts/what-is-a-seed-phrase)**, so learn how to back it up properly before moving serious amounts.
+
+**Be suspicious of unsolicited opportunities.** The same tactics that compromise exchange engineers also work on individuals: a recruiter with a "coding test", an investor asking you to install a meeting app, or a stranger sharing a file. If you work in crypto, never run code from a job interview on the machine that holds your keys. More warning signs are covered in our guide on **[how to avoid crypto scams](/posts/how-to-avoid-crypto-scams)**.
+
+**Read before you sign.** Bybit's signers and Drift's council both approved transactions they did not fully verify. When your wallet asks you to sign something, check what it actually does, and treat unlimited token approvals with extra care.
+
+![Close-up of a brass combination lock on a black leather briefcase](/images/posts/security-combination-lock.jpg)
+
+## Conclusion
+
+North Korea has turned crypto theft into one of its most important sources of income, with roughly $6.75 billion stolen by the end of 2025 and more than $1 billion added in 2026 so far. Its hackers rarely break code. They break trust, through fake recruiters, tampered vendor software, planted employees and transactions that look routine until it is too late. The stolen funds are then swapped, bridged and mixed across chains within hours.
+
+For most holders the practical answer is not fear but good habits. Keep long-term holdings in self-custody, limit how much sits on any one exchange, and treat unexpected job offers and signing requests with healthy suspicion. A good next step is our guide on **[how to store crypto](/posts/how-to-store-crypto)**, which walks through the options from hot wallets to cold storage.
