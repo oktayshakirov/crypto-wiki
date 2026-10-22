@@ -1244,6 +1244,60 @@
           "text": "Will GTA 6 have crypto? A joke one, yes. A real one, no. The Bitcoin was a rumor. The coin is a joke. The scams are real. Nothing in this video is financial advice. So, when a coin with GTA in its name shows up in your feed next month, would you check who is selling it?"
         }
       ]
+    },
+    {
+      "slug": "what-are-memecoins",
+      "id": "TInwuo0aYrs",
+      "kind": "long",
+      "title": "What Are Meme Coins and How Do They Work?",
+      "description": "Dogecoin was made as a joke, and at its peak it was worth about $90 billion. Here is what a meme coin actually is, where its price comes from, why there are thousands of them, how a rug pull drains the money behind one in minutes, and the four things anyone can check.",
+      "uploadDate": "2026-10-22T15:24:01Z",
+      "duration": "PT4M9S",
+      "seconds": 249,
+      "poster": "/images/videos/what-are-memecoins.webp",
+      "target": {
+        "type": "posts",
+        "slug": "what-are-memecoins"
+      },
+      "alsoOn": [],
+      "placement": "auto",
+      "chapters": [
+        {
+          "start": 0,
+          "title": "Meme coins",
+          "text": "Dogecoin was made as a joke, and at its peak, it was worth about ninety billion dollars. It has no company behind it, no profits, and no limit on how many coins can exist. Thousands of coins have copied it since. So what is a meme coin, and where does its price actually come from? Stay to the end, and you will know how the money behind one can vanish in minutes, and what to check first."
+        },
+        {
+          "start": 24,
+          "title": "What makes a coin a meme coin?",
+          "text": "What makes a coin a meme coin? In December 2013, two software engineers, Billy Markus and Jackson Palmer, launched Dogecoin. They named it after a viral meme, a Shiba Inu called Kabosu, and they meant it as a joke about crypto hype. A crowd formed around the joke, and the joke became the product. That is a meme coin. A coin whose value is its meme and its crowd, not anything it does. Shiba Inu, Pepe, and thousands of others followed the same recipe. Take Bitcoin. It started as a research paper. It stops at twenty-one million coins. And its price rests on adoption. Now compare that with Dogecoin. It started as a joke. It has no supply limit at all. And its price rests on attention. And how far does no limit go? Ten thousand new Dogecoins are created every minute, forever."
+        },
+        {
+          "start": 76,
+          "title": "Where does a meme coin's price come from?",
+          "text": "Where does a meme coin's price come from? Not from profits. A meme coin has none to share. Not from a product. Most launch with nothing to use. So a meme coin is worth exactly what the next buyer will pay for it. And the next buyer only shows up while people are talking about it. In 2021, Elon Musk's posts about Dogecoin moved its price again and again, and fans started calling him the Dogefather. That May, he hosted Saturday Night Live, and millions tuned in. But Dogecoin fell sharply while the show was still on air. Attention moves a meme coin both ways, and nobody controls which."
+        },
+        {
+          "start": 115,
+          "title": "Why are there so many meme coins?",
+          "text": "Why are there so many meme coins? Because making one now takes four steps, and a few minutes. Pick a joke. Create the token. Put it in a trading pool, next to some real money. Then post it everywhere. Whoever creates the coin decides who holds it on day one. Dogecoin's creators kept no hidden pile. Billy Markus says he sold all of his coins in 2015, for about the price of a used Honda Civic. Plenty of newer coins start the other way round, with the creator and their friends holding most of the supply before anyone else can buy. Then every coin they sell is paid for by someone who arrived later."
+        },
+        {
+          "start": 154,
+          "title": "How does a rug pull work?",
+          "text": "How does a rug pull work? Buying a meme coin usually means trading with a pool, not with a person. On one side of the pool sit the coins. On the other, the real money that buyers paid in. Pull the money side out, and every coin left has nothing to sell into. That is a rug pull. In 2021, a token named after the show Squid Game climbed for days. But its buyers could not sell. One line in its code blocked them. On November first, its creators pulled the pool, an estimated three point four million dollars, and the price fell to almost zero within minutes. A rug pull needs no hack. Only a creator who still controls the pool."
+        },
+        {
+          "start": 198,
+          "title": "What can you actually check?",
+          "text": "What can you actually check? Nothing tells you where a meme coin's price goes next. But four things tell you who could take the money. Who made it, and are they named? Who holds the supply, and how much of it? Is the pool locked, so nobody can pull it? And has the code been checked by an outside firm? All four are public, on the blockchain or the project's own pages, if you look."
+        },
+        {
+          "start": 222,
+          "title": "So what is a meme coin?",
+          "text": "So what is a meme coin? A coin whose only product is attention. Dogecoin was made as a joke. Every meme coin since is priced by a crowd, and the money stays only as long as the crowd does. Nothing in this video is financial advice. So, the next time a meme coin is all over your feed, would you check who controls its pool?"
+        }
+      ]
     }
   ],
   "_fields": {
