@@ -25,6 +25,9 @@ const PostVideo = ({
   // /videos/<slug> opens with the player already there: the video is what the
   // visitor came for, so the collapsed bar would be an extra click for nothing.
   autoExpand = false,
+  // The bar's eyebrow. "Watch instead" assumes an article beside it; a page
+  // whose main content is the video, like /audiobook, says what it is.
+  label = "Watch instead",
 }) => {
   const [playing, setPlaying] = useState(autoExpand);
   const pageVideo = usePageVideo();
@@ -91,7 +94,7 @@ const PostVideo = ({
       </span>
       <span className="min-w-0">
         <span className="block text-xs font-semibold uppercase tracking-wide text-primary">
-          Watch instead
+          {label}
         </span>
         {/* Clamped: a four-line title on mobile turns a "compact" bar into a
             160px block sitting between the reader and the article. */}
