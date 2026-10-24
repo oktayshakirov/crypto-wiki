@@ -5,6 +5,7 @@ import social from "@config/social.json";
 import { markdownify } from "@lib/utils/textConverter";
 import Link from "@components/NextLink";
 import AppsBanner from "@layouts/components/AppsBanner";
+import AudiobookBanner from "@layouts/components/AudiobookBanner";
 import { usePathname } from "next/navigation";
 
 const Footer = () => {
@@ -15,11 +16,12 @@ const Footer = () => {
 
   return (
     <footer className="section bg-theme-dark">
-      {pathname !== "/app" && (
-        <div className="web-only container">
-          <AppsBanner />
-        </div>
-      )}
+      {/* The app and audiobook cards, side by side on desktop. Stretch keeps
+          the pair the same height when one description runs a line longer. */}
+      <div className="web-only container mb-2.5 flex flex-wrap items-stretch gap-2.5">
+        {pathname !== "/app" && <AppsBanner />}
+        {pathname !== "/audiobook" && <AudiobookBanner />}
+      </div>
       <div className="bg-primary py-4 text-center text-sm text-black">
         <p>
           Nothing on this website constitutes financial advice. The content is
