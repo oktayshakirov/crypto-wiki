@@ -1324,6 +1324,60 @@
           "text": "Chapter One. The Man Who Took the Keys to His Grave. On the fourteenth of January, twenty nineteen, the biggest crypto exchange in Canada made an announcement its customers would never forget. Its founder and chief executive, Gerald Cotten, had died in India the month before. He was on his honeymoon. The exchange was called QuadrigaCX. It had opened in December twenty thirteen, when Cotten was twenty five and Bitcoin had just had its first big run. It made it easy for Canadians to turn dollars into Bitcoin and back again, and by the time he died it had more than seventy six thousand customers. Within weeks the exchange stopped trading and filed for creditor protection. Those customers were owed, between them, about two hundred and fifteen million Canadian dollars. And then came the story the whole world heard. Cotten, it was said, was the only person who could move the coins. His widow stated in a sworn affidavit that the laptop he ran the business from was encrypted, and that she did not know the password and could not find it written down anywhere. The cold wallets, the offline storage where an exchange keeps its customers' coins safe, were supposedly locked behind that laptop and behind his memory. Now he was gone. The coins were still out there on the blockchain, perfectly intact, and nobody on Earth could touch them. It was the perfect crypto horror story. A young founder. A sudden death far from home. A fortune frozen forever behind a password nobody knew. There is only one problem with that story. It was not true. In June of twenty twenty, after about ten months of digging through trading records and blockchain data, staff at the Ontario Securities Commission published their review of what had happened. On the question everyone had been asking, they were blunt. It had been widely believed, they wrote, that the losses came from keys lost when Cotten died. In our assessment, they wrote, this was not the case. There was no frozen fortune. The money was already gone. Here is what they found. From the very first month, Cotten had been trading against his own customers through fake accounts. Most of that trading ran through an account under the name Chris Markay. Some of the others had names that read like a joke nobody else was in on. One was called Aretwo Deetwo. He did not fund those accounts with money. He typed numbers into the exchange's own records. Fake dollars. Fake Bitcoin. In twenty seventeen and early twenty eighteen, he credited the Chris Markay account with single deposits of one hundred million dollars and fifty million dollars that did not exist. Then he traded that invented money with real customers, who had no idea that the person on the other side of their trade was the boss, playing with money he had made up. When his trades lost, and over the life of the exchange they lost about a hundred and fifteen million dollars, he covered the hole with other customers' deposits. New money paid out old customers. The regulator's staff said that in effect, Quadriga operated like a Ponzi scheme. It gets worse. He lost another twenty eight million trading customer funds on other exchanges, without telling anyone. Between May twenty sixteen and January twenty eighteen he moved about twenty four million dollars of customer money to himself and his wife. There was a Tesla, a Lexus, a yacht, a plane, a share in a private jet, and multiple properties. And the cold storage? The exchange's website had told customers that most of their Bitcoin was kept offline. On Reddit, customers were told ninety nine percent. The regulator's staff found those claims were untrue. Most of the crypto was never in cold storage at all. And from twenty sixteen, exactly one person controlled the customers' coins. By the time Cotten died, the review concluded, the exchange owed around two hundred and fifteen million dollars and had almost no assets to cover it. It would most likely have collapsed even if he had lived. The people who trusted it lost at least one hundred and sixty nine million dollars. So why does this matter to you? You were never a customer of a Canadian exchange in twenty eighteen. Because look at what those customers actually did wrong. They did not buy at the top. Bitcoin did nothing wrong in this story. The network worked perfectly the entire time. Every coin that existed was exactly where the blockchain said it was. What they did was hand their coins to someone else and take a number on a screen in return. A balance. And a balance on somebody else's website is not Bitcoin. It is a promise. It is only as good as the person making it, and the people checking on them. At Quadriga, nobody was checking. When the regulator's staff interviewed investors, one of them explained why he had chosen Quadriga over the bigger exchanges. Quadriga is the biggest in Canada. I mean, what can possibly go wrong in Canada? Hold on to that sentence. You will hear versions of it for the rest of this audiobook, because it is the sentence people say just before they lose money. It is the biggest. Everyone uses it. My friend made money on it. It has a really nice app. The popular version of this story taught people the wrong lesson. It taught them that crypto is dangerous because keys get lost. The real version teaches a far more useful one. The danger was never the technology. It was trust, handed to the wrong person, with nobody watching. Bitcoin was invented to remove that kind of trust. The customers of QuadrigaCX handed it straight back. Which brings us to the idea underneath every chapter that follows. The one feature of crypto that made this fraud so final, and that will either protect you or ruin you, depending on whether you understand it."
         }
       ]
+    },
+    {
+      "slug": "what-happens-to-crypto-when-you-die",
+      "id": "vzPehboBuSU",
+      "kind": "long",
+      "title": "What Happens to Your Crypto When You Die?",
+      "description": "No court can unlock a crypto wallet you hold yourself - not even for your family. Here is who actually controls your coins, what happens on an exchange, why a will is the worst place for a seed phrase, and the setups that let your family inherit without anyone taking the coins early.",
+      "uploadDate": "2026-10-24T19:10:24Z",
+      "duration": "PT3M58S",
+      "seconds": 238,
+      "poster": "/images/videos/what-happens-to-crypto-when-you-die.webp",
+      "target": {
+        "type": "posts",
+        "slug": "what-happens-to-crypto-when-you-die"
+      },
+      "alsoOn": [],
+      "placement": "auto",
+      "chapters": [
+        {
+          "start": 0,
+          "title": "What happens to your crypto when you die?",
+          "text": "No court can unlock a crypto wallet you hold yourself. Not even for your family, after you die. If the keys are gone, the coins never move again. So what actually happens to your crypto when you die? Stay to the end, and you will know the one place you should never write your seed phrase. It is the place most people would pick first."
+        },
+        {
+          "start": 21,
+          "title": "Who actually controls your crypto?",
+          "text": "Who actually controls your crypto? A bank knows who you are. Lose your password, and it lets you back in, because your identity is the lock. Crypto flips that around. The blockchain has no idea who you are. It checks one thing: a signature made with the right private key. Whoever can make that signature controls the coins. Nobody else can. Not a judge, and not a support team. Most wallets keep that private key as a seed phrase, twelve or twenty-four plain words that can rebuild the whole wallet. No key, no coins. Bitcoin will only ever have twenty-one million coins. An estimated three to three point seven million of them are probably gone for good."
+        },
+        {
+          "start": 66,
+          "title": "What if your crypto is on an exchange?",
+          "text": "What if your crypto is on an exchange? Then the exchange holds the keys for you, and that is the easier case. Your family contacts the exchange and opens an estate case. They send a death certificate, and court papers naming an executor. The account is frozen while every document is checked. Then the coins move to the estate, or are sold, as the papers say. Probate alone often takes three to twelve months. But none of it starts if nobody knows which exchanges you used."
+        },
+        {
+          "start": 99,
+          "title": "What if you hold the keys yourself?",
+          "text": "What if you hold the keys yourself? Then there is no estate department. No form, no support line, no reset. Your family gets the coins only if they can find the wallet, and the seed phrase that opens it. That phrase has to be easy for them to find, and hard for anyone else. So where do you keep it? Only in your head? Then your family never finds it. In a desk drawer? So does anyone who breaks in. Written into your will? That one is the worst of all."
+        },
+        {
+          "start": 129,
+          "title": "Why is a will the worst place?",
+          "text": "Why is a will the worst place? A will feels safe. It is the one document your family is sure to read. But in many countries, a will becomes a public record once it goes through probate. Write your seed phrase into it, and you may have published the key to your coins. So let the will name your crypto, and say where the instructions are kept. Never the words themselves."
+        },
+        {
+          "start": 154,
+          "title": "So what actually works?",
+          "text": "So what actually works? Every setup that works does two things at once. Your family can find the keys, and no single person can take them early. The simple version: a hardware wallet in a safe, its seed phrase split across two places. A sealed letter with your will says where each piece is. Never what it says. The stronger version spreads the keys out, so no one key can move anything alone. One key stays with you, at home. One sits on a second device, in another safe. And one is held by a lawyer. Any two can move the coins, so your executor and the lawyer still can. In 2013, Hal Finney, the first person Satoshi ever sent a bitcoin to, wrote this about his own. My bitcoins are stored in our safe deposit box, and my son and daughter are tech savvy. He was already paralysed by a fatal illness. One box, and two people who knew what to do with it."
+        },
+        {
+          "start": 213,
+          "title": "So what happens to your crypto?",
+          "text": "So what happens to your crypto? Whatever your keys allow. A court can decide who should get it. Only the keys decide whether anyone can. Nothing in this video is financial or legal advice. So, if you died tomorrow, could anyone you trust actually find your keys?"
+        }
+      ]
     }
   ],
   "_fields": {
