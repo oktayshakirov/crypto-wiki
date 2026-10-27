@@ -24,7 +24,7 @@ import {
 } from "react-icons/fa";
 import config from "@config/config.json";
 import VideoCard from "@components/VideoCard";
-import { longVideos } from "@lib/videos";
+import { longVideos, videoCard } from "@lib/videos";
 
 // Eight, matching the page size of the /videos, /exchanges and /crypto-ogs
 // feeds these rows preview. Their 1/2/4 column track divides 8 evenly at every
@@ -315,7 +315,7 @@ export const getStaticProps = async () => {
         },
         slug: exchange.slug,
       })),
-      videos: longVideos().slice(0, HOME_VIDEO_COUNT),
+      videos: longVideos().slice(0, HOME_VIDEO_COUNT).map(videoCard),
       postPages: totalPostsPages,
       ogPages: totalOGsPages,
       exchangePages: totalExchangesPages,

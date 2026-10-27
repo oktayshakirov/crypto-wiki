@@ -1,5 +1,10 @@
 import VideoSingle from "@layouts/VideoSingle";
-import { longVideos, getVideoBySlug, videoSourceHref } from "@lib/videos";
+import {
+  longVideos,
+  getVideoBySlug,
+  videoSourceHref,
+  videoCard,
+} from "@lib/videos";
 import { getSinglePage } from "@lib/contentParser";
 
 const VideoPage = ({ video, related, source, isApp }) => (
@@ -40,7 +45,8 @@ export const getStaticProps = async ({ params }) => {
       source,
       related: longVideos()
         .filter((item) => item.slug !== video.slug)
-        .slice(0, 3),
+        .slice(0, 3)
+        .map(videoCard),
     },
   };
 };

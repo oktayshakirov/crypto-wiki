@@ -75,9 +75,14 @@ export const getStaticProps = async ({ params }) => {
         }
       : null;
 
+  // The body is already in mdxContent. The layout only reads the raw markdown
+  // as a fallback meta description (first 200 characters at most), so ship just
+  // that - the full text doubled the page data Vercel bills ISR reads on.
   return {
     props: {
-      exchange,
+      exchange: [
+        { ...exchange[0], content: exchange[0].content.slice(0, 200) },
+      ],
       mdxContent,
       toc,
       prevExchange,
