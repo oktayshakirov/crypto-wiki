@@ -18,7 +18,7 @@ const Footer = () => {
     <footer className="section bg-theme-dark">
       {/* The app and audiobook cards, side by side on desktop. Stretch keeps
           the pair the same height when one description runs a line longer. */}
-      <div className="web-only container mb-2.5 flex flex-wrap items-stretch gap-2.5">
+      <div className="web-only container mb-8 flex flex-wrap items-stretch gap-2.5">
         {pathname !== "/app" && <AppsBanner />}
         {pathname !== "/audiobook" && <AudiobookBanner />}
       </div>
