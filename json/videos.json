@@ -1378,6 +1378,60 @@
           "text": "So what happens to your crypto? Whatever your keys allow. A court can decide who should get it. Only the keys decide whether anyone can. Nothing in this video is financial or legal advice. So, if you died tomorrow, could anyone you trust actually find your keys?"
         }
       ]
+    },
+    {
+      "slug": "north-korea-crypto",
+      "id": "MWdM9UUQkt0",
+      "kind": "long",
+      "title": "How Does North Korea Steal Crypto? The $1.5 Billion Bybit Heist, Explained",
+      "description": "North Korea has stolen more than $7 billion in crypto, and almost none of it took breaking the code. Here is how the Bybit heist actually worked, the three ways its hackers get in, what happened at Drift and Bitget in 2026, where the stolen coins go in the first hours, and the one habit that matters for your own coins.",
+      "uploadDate": "2026-10-27T12:27:22Z",
+      "duration": "PT4M15S",
+      "seconds": 255,
+      "poster": "/images/videos/north-korea-crypto.webp",
+      "target": {
+        "type": "posts",
+        "slug": "how-does-north-korea-steal-crypto"
+      },
+      "alsoOn": [],
+      "placement": "auto",
+      "chapters": [
+        {
+          "start": 0,
+          "title": "How does North Korea steal crypto?",
+          "text": "North Korea has stolen more than seven billion dollars in crypto. Almost none of it took breaking the code. It took one person clicking a file, or signing a screen they trusted. So how does a country cut off from the world's banks pull that off? Stay to the end for the three ways they get in, and the one habit that matters for your own coins."
+        },
+        {
+          "start": 23,
+          "title": "Who is behind the attacks?",
+          "text": "Who is behind the attacks? Most of it traces back to one intelligence agency's hackers, best known as the Lazarus Group. And crypto suits them. Sanctions shut North Korea out of the banks, and a blockchain never asks who you are. The heists keep getting bigger. In 2022, six hundred and twenty-five million dollars from the Ronin bridge. In 2025, one point four six billion from Bybit. In April 2026, a suspected two hundred and eighty-five million from Drift. And that September, three hundred and eighty-seven million from Bitget."
+        },
+        {
+          "start": 63,
+          "title": "How did they rob Bybit?",
+          "text": "How did they rob Bybit? On the twenty-first of February 2025, Bybit moved Ether out of its cold wallet, as it did routinely. Its own systems were never breached. The attackers had hacked one developer's computer at Safe Wallet, the signing service Bybit used. From there, they rewrote what Bybit's signers would see. The screen asked for a routine transfer to Bybit's hot wallet. Three signers approved it, the chief executive last. But what they signed replaced the wallet's code, and handed it to the attackers. Then about one point four six billion dollars in Ether left the wallet. Five days later, the FBI said who it was. North Korea responsible for one point five billion dollar Bybit hack. That one theft was about seventy-two percent of everything North Korea stole that year."
+        },
+        {
+          "start": 119,
+          "title": "How do they get in?",
+          "text": "How do they get in? Almost every big theft starts one of three ways, and all three go through people. A fake recruiter, whose coding test installs malware. A trusted supplier, quietly poisoned, the way Safe Wallet was. Or a fake employee, hired remotely under a stolen identity. The Ronin theft began with a fake job offer, sent to one engineer. Actually, this year's two biggest suspected heists skipped malware altogether. At Drift, a security council pre-signed transactions that looked routine. At Bitget, faked data made the theft look like normal withdrawals. Different targets, same gap. People approving what they could not really see."
+        },
+        {
+          "start": 163,
+          "title": "Where does the stolen crypto go?",
+          "text": "Where does the stolen crypto go? Once a hack is public, everyone is watching. So the next part is a race. First, anything that can be frozen gets swapped away, like stablecoins. Then the coins hop chains. Bitget's made twenty-three transfers across four in three hours. Some is moved into Zcash, where transfers are hidden by design. Last, brokers in China and payment platforms in Cambodia turn it into spendable money. And that money goes somewhere. Estimates given to a UN panel tie cyber theft to about half its foreign currency, and forty percent of its weapons programs."
+        },
+        {
+          "start": 203,
+          "title": "What does this mean for you?",
+          "text": "What does this mean for you? You are very unlikely to be the target of a state hacking unit. It goes where the money is concentrated. Coins on a centralized exchange are only as safe as its signers. Coins on a hardware wallet cannot be drained by an exchange breach. And a recruiter's coding test is the same trick, aimed at you. So here is the habit that matters most. When a wallet asks you to sign, check what it does, not just what it says."
+        },
+        {
+          "start": 233,
+          "title": "So how does North Korea steal crypto?",
+          "text": "So how does North Korea steal crypto? Rarely by breaking code. By breaking trust, one approval at a time. Nothing in this video is financial advice. So, the next time a wallet asks for your signature, would you know what you are really signing?"
+        }
+      ]
     }
   ],
   "_fields": {
