@@ -1,6 +1,6 @@
 import VideosList from "@layouts/VideosList";
 import config from "@config/config.json";
-import { longVideos } from "@lib/videos";
+import { longVideos, videoCard } from "@lib/videos";
 
 // The feed paginates the same way /posts does, off `paginationVideos`.
 // /videos/page/1 is built too so a link to it resolves; its canonical points
@@ -27,7 +27,7 @@ export const getStaticProps = async ({ params }) => {
 
   return {
     props: {
-      videos: allVideos.slice(end - paginationVideos, end),
+      videos: allVideos.slice(end - paginationVideos, end).map(videoCard),
       currentPage,
       totalPages: Math.ceil(allVideos.length / paginationVideos),
     },

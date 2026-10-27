@@ -115,9 +115,12 @@ export const getStaticProps = async ({ params }) => {
     .map((p) => formatPost(p));
   const similarPosts = similerItems(post[0], minimalPosts);
 
+  // The body is already in mdxContent. The layout only reads the raw markdown
+  // as a fallback meta description (first 200 characters at most), so ship just
+  // that - the full text doubled the page data Vercel bills ISR reads on.
   return {
     props: {
-      post: post[0],
+      post: { ...post[0], content: post[0].content.slice(0, 200) },
       mdxContent: mdxContent,
       toc: toc,
       prevPost: formatPost(prevPost),

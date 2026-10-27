@@ -76,15 +76,23 @@ const SearchPage = ({ authors, cryptoOgs, exchanges, isApp }) => {
 
 export default SearchPage;
 
+// Search only matches these by title, so the full pages (body and all) would be
+// ~800 KB of page data for nothing - and Vercel bills ISR reads per 8 KB served.
+const titleOnly = (items) =>
+  items.map((item) => ({
+    frontmatter: { title: item.frontmatter.title },
+    slug: item.slug,
+  }));
+
 export const getStaticProps = () => {
   const authors = getSinglePage("content/authors");
   const cryptoOgs = getSinglePage("content/crypto-ogs");
   const exchanges = getSinglePage("content/exchanges");
   return {
     props: {
-      authors: authors,
-      cryptoOgs: cryptoOgs,
-      exchanges: exchanges,
+      authors: titleOnly(authors),
+      cryptoOgs: titleOnly(cryptoOgs),
+      exchanges: titleOnly(exchanges),
     },
   };
 };
