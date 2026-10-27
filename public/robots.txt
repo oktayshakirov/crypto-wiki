@@ -3,5 +3,61 @@ User-agent: *
 Allow: /
 Disallow: /search/
 
+# GPTBot
+User-agent: GPTBot
+Disallow: /
+
+# ClaudeBot
+User-agent: ClaudeBot
+Disallow: /
+
+# CCBot
+User-agent: CCBot
+Disallow: /
+
+# Bytespider
+User-agent: Bytespider
+Disallow: /
+
+# meta-externalagent
+User-agent: meta-externalagent
+Disallow: /
+
+# Amazonbot
+User-agent: Amazonbot
+Disallow: /
+
+# ImageSiftBot
+User-agent: ImageSiftBot
+Disallow: /
+
+# SemrushBot
+User-agent: SemrushBot
+Disallow: /
+
+# MJ12bot
+User-agent: MJ12bot
+Disallow: /
+
+# DotBot
+User-agent: DotBot
+Disallow: /
+
+# DataForSeoBot
+User-agent: DataForSeoBot
+Disallow: /
+
+# Barkrowler
+User-agent: Barkrowler
+Disallow: /
+
+# BLEXBot
+User-agent: BLEXBot
+Disallow: /
+
+# serpstatbot
+User-agent: serpstatbot
+Disallow: /
+
 # Sitemaps
 Sitemap: https://www.thecrypto.wiki/sitemap.xml

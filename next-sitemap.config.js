@@ -77,7 +77,7 @@ try {
 }
 if (newestVideo) newestByType.set("videos", newestVideo);
 
-const newestOverall = [...newestByType.values()].sort().pop() || null;
+const newestOverall =[...newestByType.values()].sort().pop() || null;
 
 // A listing or taxonomy URL is only as fresh as the newest thing it lists.
 const listingLastmod = (urlPath) => {
@@ -94,6 +94,23 @@ const listingLastmod = (urlPath) => {
 // site would be the same false freshness claim as stamping the build clock.
 const lastmodFor = (urlPath) =>
   contentLastmod.get(urlPath) || listingLastmod(urlPath) || undefined;
+
+const BLOCKED_CRAWLERS = [
+  "GPTBot",
+  "ClaudeBot",
+  "CCBot",
+  "Bytespider",
+  "meta-externalagent",
+  "Amazonbot",
+  "ImageSiftBot",
+  "SemrushBot",
+  "MJ12bot",
+  "DotBot",
+  "DataForSeoBot",
+  "Barkrowler",
+  "BLEXBot",
+  "serpstatbot",
+];
 
 module.exports = {
   siteUrl: "https://www.thecrypto.wiki",
@@ -171,6 +188,13 @@ module.exports = {
         allow: "/",
         disallow: ["/search/"],
       },
+      // Crawlers that take the content and send no visitors back: AI training
+      // scrapers and SEO-tool indexes. Every page they fetch is an ISR read on
+      // Vercel. Search engines and the AI *search* bots (OAI-SearchBot,
+      // ChatGPT-User, PerplexityBot, Claude-SearchBot) stay allowed because they
+      // cite and link. AhrefsBot stays allowed for our own Ahrefs reports. A
+      // Vercel firewall rule matches the same list for bots that ignore this.
+      ...BLOCKED_CRAWLERS.map((userAgent) => ({ userAgent, disallow: "/" })),
     ],
   },
 };
