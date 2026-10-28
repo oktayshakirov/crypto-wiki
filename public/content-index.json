@@ -157,6 +157,13 @@
     },
     {
       "type": "crypto-ogs",
+      "slug": "logan-paul",
+      "title": "Logan Paul",
+      "url": "https://www.thecrypto.wiki/crypto-ogs/logan-paul",
+      "date": "2026-10-28T00:00:00.000Z"
+    },
+    {
+      "type": "crypto-ogs",
       "slug": "michael-saylor",
       "title": "Michael Saylor",
       "url": "https://www.thecrypto.wiki/crypto-ogs/michael-saylor",
@@ -1026,28 +1033,28 @@
     {
       "type": "videos",
       "slug": "bitcoin-halving",
-      "title": "What Is the Bitcoin Halving? How It Works and When the Next One Is",
+      "title": "Bitcoin Halving Explained: Why Half Was Mined in 4 Years",
       "url": "https://www.thecrypto.wiki/videos/bitcoin-halving",
       "date": "2026-10-11T15:30:38.000Z"
     },
     {
       "type": "videos",
       "slug": "bitcoin-miners-ai",
-      "title": "Why Are Bitcoin Miners Switching to AI?",
+      "title": "Why Bitcoin Miners Are Switching to AI (It's Not the Chips)",
       "url": "https://www.thecrypto.wiki/videos/bitcoin-miners-ai",
       "date": "2026-09-16T12:01:44.000Z"
     },
     {
       "type": "videos",
       "slug": "bitcoin-price",
-      "title": "Who Controls Bitcoin's Price? Not Who You Think",
+      "title": "What REALLY Decides Bitcoin's Price? Explained Simply",
       "url": "https://www.thecrypto.wiki/videos/bitcoin-price",
       "date": "2026-08-23T22:34:00.000Z"
     },
     {
       "type": "videos",
       "slug": "crypto-exchanges",
-      "title": "Crypto Exchanges Explained: Who Actually Holds Your Coins?",
+      "title": "How Do Crypto Exchanges ACTUALLY Work? Who Holds Your Coins",
       "url": "https://www.thecrypto.wiki/videos/crypto-exchanges",
       "date": "2026-08-19T14:23:41.000Z"
     },
@@ -1089,7 +1096,7 @@
     {
       "type": "videos",
       "slug": "market-cap",
-      "title": "What Is Market Cap in Crypto? Price x Supply Explained",
+      "title": "What Is Market Cap in Crypto? Why a Cheap Coin Isn't Cheap",
       "url": "https://www.thecrypto.wiki/videos/market-cap",
       "date": "2026-10-06T21:42:17.000Z"
     },
@@ -1109,22 +1116,29 @@
     },
     {
       "type": "videos",
+      "slug": "north-korea-crypto",
+      "title": "How Does North Korea Steal Crypto? The $1.5 Billion Bybit Heist, Explained",
+      "url": "https://www.thecrypto.wiki/videos/north-korea-crypto",
+      "date": "2026-10-27T12:27:22.000Z"
+    },
+    {
+      "type": "videos",
       "slug": "perpetual-futures",
-      "title": "What Are Perpetual Futures?",
+      "title": "What Are Perpetual Futures? The Trade That Never Expires",
       "url": "https://www.thecrypto.wiki/videos/perpetual-futures",
       "date": "2026-09-04T18:01:37.000Z"
     },
     {
       "type": "videos",
       "slug": "proof-of-stake",
-      "title": "What Is Proof of Stake? The Blockchain Without Miners",
+      "title": "Proof of Work vs Proof of Stake: Which One Actually Wins?",
       "url": "https://www.thecrypto.wiki/videos/proof-of-stake",
       "date": "2026-08-26T23:12:35.000Z"
     },
     {
       "type": "videos",
       "slug": "quantum-crypto",
-      "title": "Quantum Computers vs. Crypto: What Actually Breaks",
+      "title": "Will Quantum Computers BREAK Bitcoin? Not the Way You Think",
       "url": "https://www.thecrypto.wiki/videos/quantum-crypto",
       "date": "2026-08-31T00:53:37.000Z"
     },
@@ -1193,8 +1207,15 @@
     },
     {
       "type": "videos",
+      "slug": "what-happens-to-crypto-when-you-die",
+      "title": "What Happens to Your Crypto When You Die?",
+      "url": "https://www.thecrypto.wiki/videos/what-happens-to-crypto-when-you-die",
+      "date": "2026-10-24T19:10:24.000Z"
+    },
+    {
+      "type": "videos",
       "slug": "what-is-a-crypto-whale",
-      "title": "What Is a Crypto Whale? How Big Wallets Actually Work",
+      "title": "What Is a Crypto Whale? Who Really Owns the Biggest Wallets",
       "url": "https://www.thecrypto.wiki/videos/what-is-a-crypto-whale",
       "date": "2026-09-25T16:05:44.000Z"
     }
