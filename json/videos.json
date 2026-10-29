@@ -1432,6 +1432,60 @@
           "text": "So how does North Korea steal crypto? Rarely by breaking code. By breaking trust, one approval at a time. Nothing in this video is financial advice. So, the next time a wallet asks for your signature, would you know what you are really signing?"
         }
       ]
+    },
+    {
+      "slug": "prediction-markets",
+      "id": "RfC43F8WIe0",
+      "kind": "long",
+      "title": "What Are Prediction Markets? How Polymarket Odds Really Work",
+      "description": "A prediction market sells you a share in something that has not happened yet, and its price is the crowd's odds. Here is how the shares work, why a price becomes a probability, who decides what actually happened, the 2025 Polymarket market that settled against the facts, and when not to trust the odds.",
+      "uploadDate": "2026-10-29T17:21:29Z",
+      "duration": "PT3M52S",
+      "seconds": 232,
+      "poster": "/images/videos/prediction-markets.webp",
+      "target": {
+        "type": "posts",
+        "slug": "what-are-prediction-markets"
+      },
+      "alsoOn": [],
+      "placement": "auto",
+      "chapters": [
+        {
+          "start": 0,
+          "title": "What are prediction markets?",
+          "text": "A prediction market sells you a share in something that has not happened yet. If that share costs sixty-two cents, the crowd is saying sixty-two percent. Not a pundit, not a poll. People paying to be right. But a price cannot say what actually happened. Somebody still has to decide that. In March 2025, on a seven million dollar market, that decision went against the facts. Stay to the end, and you will know how to read the odds, and when not to trust them."
+        },
+        {
+          "start": 30,
+          "title": "How does a prediction market work?",
+          "text": "How does a prediction market work? Take Polymarket, the biggest crypto prediction market. Every market there is one question, with a deadline. Each share in it is worth one dollar, or nothing. It comes as a pair, one for yes and one for no. If yes trades at sixty-two cents, no costs about thirty-eight. So the crowd puts the odds at sixty-two percent. And at the deadline, the right side pays a dollar, and the wrong side pays nothing. Polymarket's own card shows it the same way. Fifty-one cents for yes means fifty-one percent. And you never have to wait for the deadline. You can sell your share whenever the price moves."
+        },
+        {
+          "start": 73,
+          "title": "Why would a price be the odds?",
+          "text": "Why would a price be the odds? Because anyone who thinks the price is wrong can make money correcting it. If you think the real chance is eighty percent, a sixty-two cent share looks cheap. So you buy it. Buying pushes the price up, until nobody thinks it is cheap any more. Every piece of news does the same. Money moves, and the price follows. So the odds are not anyone's opinion. They are what the opinions are worth, once they are paid for."
+        },
+        {
+          "start": 103,
+          "title": "Who decides what happened?",
+          "text": "Who decides what happened? Not Polymarket, and not a judge. It uses an oracle, a system that brings a real-world answer onto the blockchain, called UMA. First, someone proposes the answer, and puts down a bond, usually seven hundred and fifty dollars. Then anyone has two hours to challenge it. If someone does, holders of the UMA token vote on the answer. And the more tokens you hold, the more your vote counts."
+        },
+        {
+          "start": 133,
+          "title": "What happens when the vote is wrong?",
+          "text": "What happens when the vote is wrong? In March 2025, a seven million dollar market asked one question. Would Ukraine agree to a minerals deal with Trump before April? In two days, the yes price climbed from nine percent to a hundred. And the market resolved yes. No deal had been agreed. Users blamed one large holder of UMA tokens, for swinging the vote. Polymarket's own team called it an unprecedented situation. But it refunded nothing. The market had not failed. It had followed its own rules. The deal was signed at the end of April. A month too late."
+        },
+        {
+          "start": 174,
+          "title": "When should you not trust the odds?",
+          "text": "When should you not trust the odds? A price is only as good as three things behind it. A market so thin that one big trade can swing it. A question vague enough to argue about. And an answer that a vote can still get wrong. So before you read a price as the odds, check how much is traded, read the rules, and see who decides. And check where you live. Polymarket itself paid a one point four million dollar fine in the US in 2022. It only came back there with federal approval in late 2025."
+        },
+        {
+          "start": 210,
+          "title": "So what is a prediction market?",
+          "text": "So what is a prediction market? A price that is the crowd's guess about the future, and a vote that decides what the future was. Nothing in this video is financial advice. So, the next time a headline quotes the odds, would you check who decides the answer?"
+        }
+      ]
     }
   ],
   "_fields": {
