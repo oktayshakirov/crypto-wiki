@@ -1486,6 +1486,60 @@
           "text": "So what is a prediction market? A price that is the crowd's guess about the future, and a vote that decides what the future was. Nothing in this video is financial advice. So, the next time a headline quotes the odds, would you check who decides the answer?"
         }
       ]
+    },
+    {
+      "slug": "binance-hack",
+      "id": "Ll59QrUyfGg",
+      "kind": "long",
+      "title": "Binance Hack Explained: How North Korea Stole $6.36 Billion",
+      "description": "On 29 October 2026 about $6.36 billion left Binance, most of it in twenty minutes, and Binance says no private key was stolen. Here is how the biggest crypto theft on record worked, from one transaction carrying fifty signed authorizations to a wallet that kept sweeping deposits for hours, how much could be frozen, and what it means for coins you keep on an exchange.",
+      "uploadDate": "2026-10-30T14:27:09Z",
+      "duration": "PT3M52S",
+      "seconds": 232,
+      "poster": "/images/videos/binance-hack.webp",
+      "target": {
+        "type": "posts",
+        "slug": "how-does-north-korea-steal-crypto"
+      },
+      "alsoOn": [],
+      "placement": "auto",
+      "chapters": [
+        {
+          "start": 0,
+          "title": "Binance hack explained",
+          "text": "About six point three six billion dollars just left Binance. Most of it was gone in about twenty minutes. And Binance says no private key was stolen. So how did North Korea's hackers pull off the biggest crypto theft ever recorded? Stay to the end for the trap that kept running for hours, and what it means for coins you keep on an exchange."
+        },
+        {
+          "start": 22,
+          "title": "Who did it?",
+          "text": "Who did it? Investigators at TRM Labs and Chainalysis point to one group, a North Korean hacking unit known as TraderTraitor. The FBI named the same unit for the Bybit theft in February 2025. And the size of the thefts has jumped. The Ronin bridge in 2022, six hundred and twenty-five million dollars. Bybit, one point four six billion. Bitget last month, three hundred and eighty-seven million. And Binance, about six point three six billion. About four times the record it replaced."
+        },
+        {
+          "start": 59,
+          "title": "How did they get in?",
+          "text": "How did they get in? Binance has not published a full account yet. Its first finding points to one engineer's compromised laptop. TRM goes further. Its most likely explanation is a break-in to the systems that sign Binance's hot-wallet transactions. Either way, this was planned. The attackers' wallet was funded through the mixer Tornado Cash the day before, and the setup ran for at least thirty-six hours."
+        },
+        {
+          "start": 87,
+          "title": "What happened that evening?",
+          "text": "What happened that evening? At five past eight in the evening, universal time, money started leaving Binance on ten blockchains at once. On Ethereum, it took a single transaction. A recent Ethereum upgrade lets an ordinary wallet run a smart contract's code, as long as the wallet has signed for it. At twenty past eight, one transaction reached Binance's hot wallet. It carried fifty signed authorizations, and pointed the wallet at the attackers' contract. About three and a half minutes later, the wallet was empty. And for hours after, every new deposit was swept straight out. Why fifty? Each was signed for a different place in the wallet's queue, so one was bound to fit. Binance suspended withdrawals across the exchange."
+        },
+        {
+          "start": 136,
+          "title": "Can stolen crypto be frozen?",
+          "text": "Can stolen crypto be frozen? Some of it. Stablecoins can be frozen by the companies that issue them. Ether and Bitcoin cannot. Here is what could be frozen. Tether, about one point seven seven billion. Circle, about eight hundred and twenty-five million. Ripple, World Liberty and Arbitrum, about a hundred million more. And here is what could not. More than four hundred and twenty thousand Ether. Eighteen thousand two hundred and seventy Bitcoin. And three hundred and twenty-five million in Tether, dumped for Ether at a ten percent loss before it could be frozen. By TRM's count, about two point seven billion dollars was frozen within hours, and Binance puts it nearer three. The rest is still moving. The Bitcoin is being split into smaller and smaller pieces."
+        },
+        {
+          "start": 183,
+          "title": "What does it mean for you?",
+          "text": "What does it mean for you? Binance says it will cover every loss, from its emergency user fund and its own money. That promise is only as good as the reserves behind it. Coins on a centralized exchange sit in wallets that the exchange signs for. Coins in a wallet you hold yourself are signed for by you, and no exchange breach can reach them. Neither is free of risk. One trusts a company's systems. The other trusts your own care."
+        },
+        {
+          "start": 212,
+          "title": "So how did North Korea rob Binance?",
+          "text": "So how did North Korea rob Binance? Not by stealing a key. By getting Binance's own wallet to sign the door open, and leaving it open. Nothing in this video is financial advice. So, do you know everything your own wallet has already signed?"
+        }
+      ]
     }
   ],
   "_fields": {
