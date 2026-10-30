@@ -1,10 +1,11 @@
 ---
 title: "How Does North Korea Steal Crypto?"
-description: "North Korea has stolen over $1 billion in crypto in 2026 alone. Learn how its hackers break into exchanges, launder the funds, and how to keep your coins safe."
+description: "North Korean hackers took a record $6.36 billion from Binance in October 2026. Learn how they break into exchanges, launder the funds and how to stay safe."
 date: 2026-10-22
+updated: 2026-10-30
 image: "/images/posts/how-does-north-korea-steal-crypto.jpg"
 categories: ["Security", "Politics"]
-exchanges: ["Bybit", "Bitget"]
+exchanges: ["Binance", "Bybit", "Bitget"]
 authors: ["Oktay Shakirov"]
 draft: false
 ---
@@ -13,9 +14,9 @@ draft: false
 
 North Korea steals crypto mainly by tricking the people who control the money, not by breaking the cryptography. State-backed hacking units pose as recruiters, investors and job candidates, plant malware on employees' computers, and use that access to drain exchange and protocol wallets. The stolen coins are then swapped, bridged and mixed across dozens of blockchains until they can be cashed out.
 
-The scale is hard to overstate. Blockchain analytics firm Chainalysis counted at least $2.02 billion stolen by North Korean groups in 2025, a record year that pushed the country's all-time crypto haul to roughly $6.75 billion. In 2026 the pace has continued: Elliptic reported on 25 September 2026 that suspected North Korean thefts had passed $1 billion for the year across more than 51 incidents.
+The scale is hard to overstate. Blockchain analytics firm Chainalysis counted at least $2.02 billion stolen by North Korean groups in 2025, a record year that pushed the country's all-time crypto haul to roughly $6.75 billion. 2026 has dwarfed it. Elliptic had already tracked more than $1 billion in suspected North Korean thefts across over 51 incidents by 25 September, and on 29 October 2026 hackers drained an estimated $6.36 billion from **[Binance](/exchanges/binance)**, the largest crypto theft ever recorded. TRM Labs and Chainalysis both attributed it to North Korea's TraderTraitor unit.
 
-This guide explains who is behind the attacks, the three main ways they get in, what happened in the two biggest heists of 2026, how the money disappears afterwards, and what all of it means for you as an ordinary holder. If you are new to how coins move between wallets, our **[guide to sending and receiving crypto safely](/posts/send-and-receive-crypto-safely)** is a good primer.
+This guide explains who is behind the attacks, the three main ways they get in, what happened in the biggest heists of 2026, including the Binance attack, how the money disappears afterwards, and what all of it means for you as an ordinary holder. If you are new to how coins move between wallets, our **[guide to sending and receiving crypto safely](/posts/send-and-receive-crypto-safely)** is a good primer.
 
 ## Who Is Behind the Attacks?
 
@@ -33,9 +34,9 @@ North Korea's crypto campaign is not new. It shifted from bank fraud to crypto a
 
 In March 2022, attackers drained about $625 million from the Ronin bridge used by the game Axie Infinity, and the FBI attributed the theft to Lazarus weeks later. Reporting afterwards traced the entry point to a fake job offer sent to one of the developer's engineers. It showed how a single compromised laptop could unlock a bridge holding hundreds of millions of dollars.
 
-The record still belongs to the attack on **[Bybit](/exchanges/bybit)** on 21 February 2025, when roughly $1.46 billion in Ether was taken in a single transaction. Attackers had compromised a developer machine at Safe{Wallet}, the multisig service Bybit used, and altered the interface so that Bybit's signers approved what looked like a routine transfer. Five days later the FBI publicly named North Korea. That one theft made up about 72% of the country's 2025 total.
+Until October 2026, the record belonged to the attack on **[Bybit](/exchanges/bybit)** on 21 February 2025, when roughly $1.46 billion in Ether was taken in a single transaction. Attackers had compromised a developer machine at Safe{Wallet}, the multisig service Bybit used, and altered the interface so that Bybit's signers approved what looked like a routine transfer. Five days later the FBI publicly named North Korea. That one theft made up about 72% of the country's 2025 total.
 
-2026 has brought two more nine-figure cases: roughly $285 million from the Solana derivatives exchange Drift Protocol on 1 April, and about $387 million from **[Bitget](/exchanges/bitget)** on 24 September. Both are covered in detail further down, because they show where the techniques are heading.
+2026 has brought three more: roughly $285 million from the Solana derivatives exchange Drift Protocol on 1 April, about $387 million from **[Bitget](/exchanges/bitget)** on 24 September, and the record $6.36 billion from Binance on 29 October, about four times the size of Bybit. All three are covered in detail further down, because they show where the techniques are heading.
 
 ## Three Ways In
 
@@ -49,25 +50,27 @@ There is no single North Korean playbook, but almost every major theft starts wi
 
 ![A hooded figure in black gloves typing on a laptop in a dark room](/images/posts/hacker.jpg)
 
-## Inside the 2026 Heists: Drift and Bitget
+## Inside the 2026 Heists: Drift, Bitget and Binance
 
-The two largest suspected North Korean attacks of 2026 hit very different targets, a decentralized protocol and a centralized exchange, yet both followed the same logic of getting trusted insiders to approve something they did not understand.
+The three largest suspected North Korean attacks of 2026 hit very different targets, a decentralized protocol and two centralized exchanges, yet all followed the same logic of getting trusted people or systems to approve something they should not have.
 
-**Drift Protocol (1 April 2026).** Drift is a Solana-based exchange for **[perpetual futures](/posts/what-are-perpetual-futures)**. According to TRM Labs, attackers tricked members of Drift's Security Council into pre-signing transactions that looked routine but carried hidden admin permissions. Those signatures were kept valid using a Solana feature called durable nonces, so they could be executed weeks later. Separately, the attackers created a worthless token, minted 750 million units, and wash-traded it on a small pool until price oracles treated it as worth about $1. On the day, they listed that token as collateral, raised withdrawal limits and made 31 withdrawals in about 12 minutes. TRM and Elliptic both described the attack as likely, though not confirmed, North Korean work.
+**Drift Protocol (1 April 2026).** Drift is a Solana-based exchange for **[perpetual futures](/posts/what-are-perpetual-futures)**. According to TRM Labs, attackers tricked members of Drift's Security Council into pre-signing transactions that looked routine but carried hidden admin permissions. Those signatures were kept valid using a Solana feature called durable nonces, so they could be executed weeks later. Separately, the attackers wash-traded a worthless token of their own until price oracles valued it at about $1. On the day, they listed that token as collateral, raised withdrawal limits and made 31 withdrawals in about 12 minutes. TRM and Elliptic both described the attack as likely, though not confirmed, North Korean work.
 
 **Bitget (24 September 2026).** Bitget first reported about $351.6 million in unauthorized transfers from its hot and warm wallets, then raised the figure to roughly $387 million after finding further stolen assets on other chains. CEO Gracy Chen said no private keys were compromised. Instead, the attackers reportedly breached a backend system in the wallet infrastructure and spoofed transaction data so that fraudulent withdrawals looked legitimate. Cold wallets were untouched, Bitget said its User Protection Fund covers the loss, and withdrawals resumed in stages between 28 September and 2 October. Chainalysis attributed the theft to North Korea-linked actors in a 1 October report, and Elliptic called the link highly likely.
 
+**Binance (29 October 2026).** According to TRM Labs, the drain began at 20:05 UTC and most of the money was gone within about 20 minutes, spread across ten blockchains including Ethereum, Bitcoin, Tron, Solana and the XRP Ledger. On Ethereum, the attacker submitted one transaction carrying 50 pre-signed authorizations from a Binance hot wallet, which handed control of that wallet to an attacker contract. It was emptied in about three and a half minutes, and the contract kept sweeping new deposits for hours afterwards. Binance said its preliminary investigation points to a compromised engineer's laptop and found no evidence that private keys leaked. It suspended withdrawals and said it will cover the losses from its SAFU fund and company money. TRM attributed the theft to TraderTraitor with high confidence. Binance has not yet published a root cause, so these details may still change.
+
 <ArticleAd />
 
-The lesson from both is uncomfortable. Neither required breaking encryption or finding a bug in a **[smart contract](/posts/smart-contracts-and-industries-beyond-crypto)** in the classic sense. They required patience, convincing social engineering and a gap in how humans verify what they sign. Drift had moved its Security Council to a 2-of-5 threshold with no timelock just five days before the attack, which removed the delay that might have let someone notice.
+The lesson from all three is uncomfortable. None required breaking encryption or finding a bug in a **[smart contract](/posts/smart-contracts-and-industries-beyond-crypto)** in the classic sense. They required patience, convincing social engineering and a gap in how humans verify what they sign. Binance's preliminary finding, a single compromised laptop, echoes the fake job offer that opened the Ronin bridge four years earlier.
 
 ## How the Stolen Crypto Gets Laundered
 
 Stealing the coins is only half the job. Every exchange, stablecoin issuer and analytics firm starts watching the moment a hack is announced, so the next phase is a race to move funds before they can be frozen.
 
-The first step is almost always to dump anything that can be frozen. Stablecoins like USDT and USDC can be blocked by their issuers, so attackers swap them for native assets such as ETH as fast as possible, usually through a **[decentralized exchange](/posts/what-is-a-dex)** that has no account to suspend. Our guide to **[stablecoins](/posts/what-are-stablecoins)** explains why issuers hold that power. In the Bitget case, Circle and Tether managed to freeze only about $318,000.
+The first step is almost always to dump anything that can be frozen. Stablecoins like USDT and USDC can be blocked by their issuers, so attackers swap them for native assets such as ETH as fast as possible, usually through a **[decentralized exchange](/posts/what-is-a-dex)** that has no account to suspend. Our guide to **[stablecoins](/posts/what-are-stablecoins)** explains why issuers hold that power. In the Bitget case, Circle and Tether managed to freeze only about $318,000. Binance went very differently: by 00:30 UTC on 30 October, TRM counted about $2.7 billion frozen by Tether, Circle, Ripple, World Liberty Financial and Arbitrum's Security Council, and Binance put the total near $3 billion. The attackers responded by selling about $325 million in USDT to market makers at a discount of more than 10% just to get it into ETH.
 
-Next comes chain-hopping. Funds are pushed through cross-chain bridges and swap protocols to split the trail across networks. Chainalysis found the Bitget loot moved in 23 transfers across four blockchains within the first three hours, with about half on Ethereum and around 41% on the XRP Ledger. Some of the XRP was converted into Bitcoin through a cross-chain liquidity protocol, and a share was moved into Zcash's shielded pool, where balances and transfers are hidden by design. Elliptic also linked Bitget funds to addresses used to launder the 2025 Bybit theft, a sign that the same laundering infrastructure is reused from heist to heist.
+Next comes chain-hopping. Funds are pushed through cross-chain bridges and swap protocols to split the trail across networks. Chainalysis found the Bitget loot moved in 23 transfers across four blockchains within the first three hours, with about half on Ethereum and around 41% on the XRP Ledger. Some of the XRP was converted into Bitcoin through a cross-chain liquidity protocol, and a share was moved into Zcash's shielded pool, where balances and transfers are hidden by design. Elliptic also linked Bitget funds to addresses used to launder the 2025 Bybit theft, a sign that the same laundering infrastructure is reused from heist to heist. From Binance, the 18,270 stolen BTC is being split into 1,000 and 100 BTC pieces in a so-called peel chain.
 
 The final step is cashing out, which is where the money touches the real world. A multinational monitoring team set up by the US and ten allies reported in October 2025 that North Korean groups relied heavily on Chinese brokers and on Cambodian platforms, including Huione Pay, to turn crypto into usable currency. Over-the-counter traders who ask few questions are the weakest link in the chain, and the place where law enforcement has the best chance to intervene.
 
@@ -85,7 +88,7 @@ For the industry, the consequences show up as tighter rules. Exchanges face stri
 
 You are very unlikely to be the direct target of a state hacking unit. North Korea goes where the money is concentrated, which means exchanges, bridges and protocols. The risk to you is indirect, and it can be managed.
 
-**Spread your exchange exposure.** Even large, reputable platforms get hacked. Bybit and Bitget both covered their losses, but that depended on having the reserves to do so. Read our guide to **[understanding crypto exchanges](/posts/understanding-crypto-exchanges)** for what to look for, and avoid keeping more on any single platform than you would be comfortable waiting weeks to withdraw.
+**Spread your exchange exposure.** Even large, reputable platforms get hacked. Bybit, Bitget and Binance all pledged to cover their losses, but that depends on having the reserves to do so. Read our guide to **[understanding crypto exchanges](/posts/understanding-crypto-exchanges)** for what to look for, and avoid keeping more on any single platform than you would be comfortable waiting weeks to withdraw.
 
 **Hold long-term savings yourself.** Coins on a **[hardware wallet](/posts/what-is-a-hardware-wallet)** cannot be drained by an exchange breach. The trade-off is that you become responsible for your **[seed phrase](/posts/what-is-a-seed-phrase)**, so learn how to back it up properly before moving serious amounts.
 
@@ -97,6 +100,6 @@ You are very unlikely to be the direct target of a state hacking unit. North Kor
 
 ## Conclusion
 
-North Korea has turned crypto theft into one of its most important sources of income, with roughly $6.75 billion stolen by the end of 2025 and more than $1 billion added in 2026 so far. Its hackers rarely break code. They break trust, through fake recruiters, tampered vendor software, planted employees and transactions that look routine until it is too late. The stolen funds are then swapped, bridged and mixed across chains within hours.
+North Korea has turned crypto theft into one of its most important sources of income, with roughly $6.75 billion stolen by the end of 2025 and a single October 2026 hack on Binance worth almost as much again. Its hackers rarely break code. They break trust, through fake recruiters, tampered vendor software, planted employees and transactions that look routine until it is too late. The stolen funds are then swapped, bridged and mixed across chains within hours.
 
 For most holders the practical answer is not fear but good habits. Keep long-term holdings in self-custody, limit how much sits on any one exchange, and treat unexpected job offers and signing requests with healthy suspicion. A good next step is our guide on **[how to store crypto](/posts/how-to-store-crypto)**, which walks through the options from hot wallets to cold storage.
