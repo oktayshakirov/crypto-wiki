@@ -1540,6 +1540,65 @@
           "text": "So how did North Korea rob Binance? Not by stealing a key. By getting Binance's own wallet to sign the door open, and leaving it open. Nothing in this video is financial advice. So, do you know everything your own wallet has already signed?"
         }
       ]
+    },
+    {
+      "slug": "seed-phrase",
+      "id": "0vSUTJMq-Rw",
+      "kind": "long",
+      "title": "What Is a Seed Phrase? How 12 Words Control Your Crypto",
+      "description": "Your crypto is not inside your wallet app - twelve words decide who can move it. Here is what a seed phrase is, how a wallet turns 128 coin flips into twelve words, what those words unlock, why nobody can guess one, and the three ways seed phrases really get stolen.",
+      "uploadDate": "2026-11-02T17:46:14Z",
+      "duration": "PT3M47S",
+      "seconds": 227,
+      "poster": "/images/videos/seed-phrase.webp",
+      "target": {
+        "type": "posts",
+        "slug": "what-is-a-seed-phrase"
+      },
+      "alsoOn": [],
+      "placement": "auto",
+      "chapters": [
+        {
+          "start": 0,
+          "title": "What is a seed phrase?",
+          "text": "Your crypto is not inside your wallet app. It lives on the network, and twelve words decide who can move it. Lose the words, and the coins are gone for good. Show them to anyone, and the coins are theirs. So how can twelve words hold a whole wallet, and why can't anyone guess them? Stay to the end for the three ways seed phrases really get stolen, because guessing is not one of them."
+        },
+        {
+          "start": 24,
+          "title": "Is it just a password?",
+          "text": "No. It is the backup a self-custody wallet shows you once, when you set it up. Twelve or twenty-four ordinary words, in order. A password unlocks the app on one phone. The seed phrase rebuilds the whole wallet, on any device. There is no reset button, and no company to call. If you were never shown words like these, a company is holding your keys for you."
+        },
+        {
+          "start": 49,
+          "title": "How are the words made?",
+          "text": "It starts with chance, not with words. Your wallet flips a coin, a hundred and twenty-eight times. Each flip is one bit, a one or a zero. It adds four more bits as a checksum, and cuts the line into twelve groups of eleven. Each group is a number, from zero to two thousand and forty-seven. And each number picks one word, from a fixed list of two thousand and forty-eight. That list is a standard called bip thirty-nine, published in 2013, so the same words work in almost any wallet. The words are only a way to write that number down without a mistake."
+        },
+        {
+          "start": 88,
+          "title": "What do the words unlock?",
+          "text": "Your wallet turns the words into one very long number, called the seed. Twelve words. One seed. From the seed, a whole tree of private keys. And from each key, an address that can receive coins. One phrase can rebuild more than a million addresses, across Bitcoin, Ethereum and other coins. Lose the words, and you lose the whole tree at once."
+        },
+        {
+          "start": 115,
+          "title": "Can someone guess a seed phrase?",
+          "text": "Twelve words from a list of two thousand sounds easy to guess. Actually, it is a hundred and twenty-eight coin flips, and every one has to match. That makes the number of possible phrases thirty-nine digits long. Check a trillion phrases every second, and you would still need hundreds of millions of times the age of the universe. Twenty-four words multiply that number by itself. So the math is not the weak point. As long as the wallet's randomness is real, nobody guesses twelve words."
+        },
+        {
+          "start": 150,
+          "title": "How do seed phrases get stolen?",
+          "text": "Almost every loss starts with a person, not with the math. A photo of the words, on a phone that syncs to the cloud. A hardware wallet bought from a reseller, with the words already printed in the box. And a support page that looks like your wallet's, asking you to type them in. Real wallet support will never ask for your seed phrase. And a phrase that has been on any screen, like the one in this video, is not a secret any more."
+        },
+        {
+          "start": 181,
+          "title": "How do you keep one safe?",
+          "text": "Write the words by hand, in order, and keep two copies in two different places. Never photograph them, never type them into a website, and never keep them in a notes app. You can also add a passphrase, a twenty-fifth word you keep in your head. Without it, the twelve words open a different, empty wallet. But forget it, and nobody can get you back in."
+        },
+        {
+          "start": 205,
+          "title": "So what is a seed phrase?",
+          "text": "A hundred and twenty-eight coin flips, written down as twelve words. Nobody can guess them. So the only way in is through whoever holds the paper. Nothing in this video is financial advice. So, where are your twelve words right now?"
+        }
+      ]
     }
   ],
   "_fields": {
