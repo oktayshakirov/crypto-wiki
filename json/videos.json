@@ -1658,6 +1658,60 @@
           "text": "Mostly the people who own the exchanges and the stablecoins, not the people holding the coins. And every figure is a stake times a guess, with a date on it. Nothing in this video is financial advice. So the next time a headline says a billionaire owns crypto, will you ask which kind?"
         }
       ]
+    },
+    {
+      "slug": "random-tokens",
+      "id": "cwmnGv7U-V4",
+      "kind": "long",
+      "title": "Random Tokens in Your Crypto Wallet? Don't Touch Them",
+      "description": "A token you never bought showed up in your crypto wallet. Nobody hacked you - anyone can send crypto to any address. Here is where it came from, what it wants you to sign, why a hardware wallet will not stop it, how address poisoning works, and what to do.",
+      "uploadDate": "2026-11-06T17:13:08Z",
+      "duration": "PT3M31S",
+      "seconds": 211,
+      "poster": "/images/videos/random-tokens.webp",
+      "target": {
+        "type": "posts",
+        "slug": "understanding-crypto-airdrops"
+      },
+      "alsoOn": [],
+      "placement": "auto",
+      "chapters": [
+        {
+          "start": 0,
+          "title": "Random tokens in your wallet",
+          "text": "A token you never bought just showed up in your crypto wallet. Nobody hacked you. Anyone can send crypto to any address, and receiving it is harmless. The danger starts the moment you try to do something with it. So where did it come from, and what is it waiting for you to do? Stay to the end for the pasted address that cost one person sixty-eight million dollars."
+        },
+        {
+          "start": 21,
+          "title": "How did it get into your wallet?",
+          "text": "How did it get into your wallet? Your wallet address works like an email address. Anyone who has it can send you something, and there is no button to refuse a transfer. Every address you have used sits on a public blockchain. A script reads it, sends the same token to thousands of active wallets, and waits for one person to bite. So getting one says nothing about your security. It only says your address is in use."
+        },
+        {
+          "start": 48,
+          "title": "What does the token want?",
+          "text": "What does the token want? Look at its name. Often it is a website, a reward to claim, or a famous name, misspelled. Try to sell it, and you are told to claim it, or enable trading, first. That sends you to a site, which asks you to connect your wallet and approve one small transaction. Your screen shows a claim, with a fee of a few cents. You approve it. But what you signed lets their contract move your tokens, with no limit. Your tokens sit in the wallet. Their contract drains it, and the approval stays open until you revoke it."
+        },
+        {
+          "start": 83,
+          "title": "Doesn't a hardware wallet stop this?",
+          "text": "Doesn't a hardware wallet stop this? Actually, no. A hardware wallet keeps your private keys on a chip, off the internet, and that matters. But it signs whatever you approve. Press the button on a drainer's request, and the device has done its job perfectly. It protects your private keys. It cannot protect the decision."
+        },
+        {
+          "start": 104,
+          "title": "What is address poisoning?",
+          "text": "What is address poisoning? Sometimes the strange transfer is not a new token at all. It is a tiny amount, from an address that looks almost exactly like one you use. A computer generates addresses until the first and last characters match yours. Four at each end takes about four billion tries, which a graphics card gets through in minutes. Your real address. Their look-alike. The same start, and the same end. And a different middle, where nobody looks. Now it sits at the top of your history, and the next time you copy from there, you pay them. In May 2024, one person did exactly that. Exploiter steals $68M worth of crypto through address poisoning. A week later the thief sent almost all of it back, which almost never happens. A 2025 study counted two hundred and seventy million poisoning attempts, on just two blockchains, in two years."
+        },
+        {
+          "start": 161,
+          "title": "What should you do with it?",
+          "text": "What should you do with it? Don't sell it, swap it, or visit the site in its name. Don't copy an address from your history. Copy it from the receive screen of whoever you are paying. And hide the token. Leave it alone. Then check every character, not just the ends. If you already signed something, revoke the approval from a clean wallet, and move what is left to a new one. And ignore anyone who offers to recover it for a fee. That is the second scam."
+        },
+        {
+          "start": 191,
+          "title": "So is a random token dangerous?",
+          "text": "So is a random token dangerous? On its own, it cannot take a thing. It needs your signature, or a pasted address. Nothing in this video is financial advice. So, the last address you pasted: did you check the middle?"
+        }
+      ]
     }
   ],
   "_fields": {
