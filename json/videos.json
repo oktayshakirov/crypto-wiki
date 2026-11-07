@@ -1712,6 +1712,65 @@
           "text": "So is a random token dangerous? On its own, it cannot take a thing. It needs your signature, or a pasted address. Nothing in this video is financial advice. So, the last address you pasted: did you check the middle?"
         }
       ]
+    },
+    {
+      "slug": "tokenized-stocks",
+      "id": "uIhrmiQgD5Y",
+      "kind": "long",
+      "title": "What Are Tokenized Stocks? Do You Actually Own the Share?",
+      "description": "A tokenized stock lets you buy a piece of Tesla on a blockchain at midnight - but following a share's price is not the same as owning it. Here is how tokenized stocks are built, the two kinds behind one name, what a backed token does and does not give you, who sets the price when the market is closed, and the 2026 SEC rule.",
+      "uploadDate": "2026-11-07T23:40:24Z",
+      "duration": "PT4M3S",
+      "seconds": 243,
+      "poster": "/images/videos/tokenized-stocks.webp",
+      "target": {
+        "type": "posts",
+        "slug": "what-are-tokenized-stocks"
+      },
+      "alsoOn": [],
+      "placement": "auto",
+      "chapters": [
+        {
+          "start": 0,
+          "title": "Tokenized stocks",
+          "text": "A tokenized stock lets you buy a piece of Tesla on a blockchain, at midnight. But the token follows Tesla's price. Whether you own any Tesla is a separate question. In 2025, one company had to announce that tokens of its stock were not its stock. So what does a tokenized stock actually give you? Stay to the end for the 2026 rule that changed the answer in America."
+        },
+        {
+          "start": 25,
+          "title": "What is a tokenized stock?",
+          "text": "What is a tokenized stock? It is a token on a blockchain whose price tracks one company's share. You can hold it in a crypto wallet, buy a tiny fraction of it, and trade it when the stock market is closed. Here is how the backed kind is built. An issuer buys real shares, a custodian holds them in an account, a token is issued for each one, and the token lands in your wallet."
+        },
+        {
+          "start": 49,
+          "title": "Is there always a share behind it?",
+          "text": "Is there always a share behind it? Not always. Two kinds of token can sit behind the same name, and in an app they look identical. Take a backed token first. Real shares, held by a custodian. One token for every share. Sometimes, you can swap it for the share. Now compare a synthetic one. No shares anywhere. A contract that copies the price. And only the issuer's promise behind it. Both go up when Tesla goes up. Only one has a Tesla share anywhere behind it. Robinhood's own help page calls its stock tokens derivatives, and says buyers are not buying the actual stocks."
+        },
+        {
+          "start": 88,
+          "title": "Does the backed kind make you a shareholder?",
+          "text": "Does the backed kind make you a shareholder? Actually, usually not. The company's list of shareholders shows the custodian, not you. Your token is a claim on whoever holds the share for you. Kraken describes its own backed tokens as price exposure without shareholder rights such as voting. So here is what a backed token usually gives you. The share's price, yes. Dividends, usually, paid by the issuer as more tokens or a stablecoin. A vote at the company, no. And your name on the register, no."
+        },
+        {
+          "start": 123,
+          "title": "Not OpenAI equity",
+          "text": "Not OpenAI equity. In 2025, Robinhood sold tokens of OpenAI, whose shares are not even public. OpenAI answered in public, the same week. These OpenAI tokens are not OpenAI equity. Robinhood said the tokens were backed by its stake in a company that held OpenAI shares. A claim on a company, that holds a claim on the shares."
+        },
+        {
+          "start": 150,
+          "title": "Who sets the price when the market is closed?",
+          "text": "Who sets the price when the market is closed? The New York Stock Exchange shuts every evening, and all weekend. Some tokenized stocks keep trading on a blockchain anyway, priced only by the people trading them. Imagine bad news breaks on a Saturday. The token slides fifteen percent by Sunday night. On Monday, the real share opens down seven, and the token jumps back to meet it. If the token can be swapped for the share, traders close that gap. If it can't, the gap waits for Monday."
+        },
+        {
+          "start": 181,
+          "title": "What changed in 2026?",
+          "text": "What changed in 2026? This has been tried before. Binance launched stock tokens in April 2021, and stopped selling them that July. Robinhood's OpenAI tokens came in 2025. And in September 2026, the SEC wrote its first rule for them. CNBC, that day: SEC clears path for tokenized stocks. On a registered venue, a token now has to carry the same rights as the share, dividends and votes included. And a company can refuse to have its stock tokenized at all."
+        },
+        {
+          "start": 219,
+          "title": "So do you own the share?",
+          "text": "So do you own the share? A tokenized stock always gives you the price. Whether it gives you the share depends on what sits behind it, and whose name is on the register. Nothing in this video is financial advice. So, the next token that follows a stock: is there a share behind it, and whose is it?"
+        }
+      ]
     }
   ],
   "_fields": {
