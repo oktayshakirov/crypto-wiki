@@ -35,7 +35,7 @@ const faqs = [
   {
     question: "How often is the chart updated?",
     answer:
-      "The chart uses daily price data and refreshes periodically. Check the timestamp on the chart component for the latest update time.",
+      "The chart plots one price per day. Recent prices load from Binance daily BTC/USDT data each time you open the page, so the newest point tracks the current day so far. Older history comes from a stored dataset.",
   },
 ];
 
@@ -435,10 +435,10 @@ const BitcoinRainbowChartPage = ({ isApp }) => {
                   How often is the chart updated?
                 </h3>
                 <p className="mb-0">
-                  The chart on this page uses price data from {dataSource} and
-                  is updated periodically (e.g., daily, hourly - specify if
-                  possible). Check the timestamp if available on the chart
-                  component itself.
+                  The chart plots one price per day. Recent prices load from{" "}
+                  {dataSource} daily BTC/USDT data each time you open the page,
+                  so the newest point tracks the current day so far. Older
+                  history comes from a stored dataset.
                 </p>
               </div>
             </div>
