@@ -1771,6 +1771,45 @@
           "text": "So do you own the share? A tokenized stock always gives you the price. Whether it gives you the share depends on what sits behind it, and whose name is on the register. Nothing in this video is financial advice. So, the next token that follows a stock: is there a share behind it, and whose is it?"
         }
       ]
+    },
+    {
+      "slug": "logan-paul-cryptozoo",
+      "id": "0prJiheNfLI",
+      "kind": "long",
+      "title": "What Happened to Logan Paul's CryptoZoo? The Refund and the Ruling",
+      "description": "In 2021 Logan Paul sold thousands of people a digital egg for a game he called a really fun game that makes you money. The game never arrived. Here is how CryptoZoo was meant to work, what the 2024 buyback did and did not cover, and why a court called his pitch puffery - and why the case is not over.",
+      "uploadDate": "2026-11-11T16:48:48Z",
+      "duration": "PT2M48S",
+      "seconds": 168,
+      "poster": "/images/videos/logan-paul-cryptozoo.webp",
+      "target": {
+        "type": "crypto-ogs",
+        "slug": "logan-paul"
+      },
+      "alsoOn": [],
+      "placement": "auto",
+      "chapters": [
+        {
+          "start": 0,
+          "title": "Logan Paul's CryptoZoo",
+          "text": "In 2021, Logan Paul sold thousands of people a digital egg. He called the game it belonged to a really fun game that makes you money. The eggs sold out in minutes. The game never arrived. So what happened to CryptoZoo, and to the people who paid for it? Stay to the end for what a court decided those exact words were worth."
+        },
+        {
+          "start": 21,
+          "title": "What was CryptoZoo?",
+          "text": "So what was CryptoZoo, exactly? A game about collecting animals, where every egg and every animal was an NFT. Here is how it was meant to work. You buy the project's own token, called ZOO, spend it on an egg, hatch the egg into an animal, and breed animals into rarer hybrids you can sell. On launch day, the third of September 2021, the first ten thousand eggs sold out within minutes. Buyers paid for eggs, they bought the ZOO token, and then the value drained away. But the game never became playable, and buyers were left holding eggs with nothing to hatch them into."
+        },
+        {
+          "start": 60,
+          "title": "Did Logan Paul refund the buyers?",
+          "text": "So did Logan Paul pay anyone back? Not for more than a year. In December 2022, the YouTuber Coffeezilla published an investigation into the project. Paul first threatened to sue him. Days later he apologised, and said he had hired conmen to build it. In January 2024 the buyback finally came: 0.1 ETH for each base egg or base animal. So here is who it actually paid. Base eggs, yes. Base animals, yes. Hybrid animals, no. The ZOO token, no. And the price of taking it: you gave up any claim against him."
+        },
+        {
+          "start": 106,
+          "title": "Can you sue an influencer over a crypto pitch?",
+          "text": "So can you sue an influencer over a crypto pitch? In October 2025, a federal judge in Texas threw out all twenty-seven claims against him. The court called the pitch puffery: sales talk too vague to be a promise. Actually, that was round one. Here is the whole fight so far. February 2023, the buyers sue Paul and five others. June 2024, Paul sues Coffeezilla for defamation. October 2025, the first complaint is dismissed, most of it with leave to try again. February 2026, a new complaint, and Paul moves to dismiss it too. July 2026, the Coffeezilla case settles, its terms private. A really fun game that makes you money promised nothing, so far, in court. Nothing in this video is financial advice. So the next famous person who pitches you a game that pays: what is that sentence actually promising?"
+        }
+      ]
     }
   ],
   "_fields": {
