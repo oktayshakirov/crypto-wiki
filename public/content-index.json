@@ -388,6 +388,13 @@
     },
     {
       "type": "exchanges",
+      "slug": "edgex",
+      "title": "edgeX",
+      "url": "https://www.thecrypto.wiki/exchanges/edgex",
+      "date": "2026-11-11T00:00:00.000Z"
+    },
+    {
+      "type": "exchanges",
       "slug": "gate",
       "title": "Gate",
       "url": "https://www.thecrypto.wiki/exchanges/gate",
@@ -1011,6 +1018,13 @@
     },
     {
       "type": "posts",
+      "slug": "which-billionaires-own-crypto",
+      "title": "Which Billionaires Own Crypto?",
+      "url": "https://www.thecrypto.wiki/posts/which-billionaires-own-crypto",
+      "date": "2026-11-03T00:00:00.000Z"
+    },
+    {
+      "type": "posts",
       "slug": "who-controls-bitcoins-price",
       "title": "Who Controls Bitcoin's Price? Whales, Dev's or Governments?",
       "url": "https://www.thecrypto.wiki/posts/who-controls-bitcoins-price",
@@ -1060,6 +1074,13 @@
     },
     {
       "type": "videos",
+      "slug": "crypto-billionaires",
+      "title": "Richest Crypto Billionaires 2026: Where Their Money Really Comes From",
+      "url": "https://www.thecrypto.wiki/videos/crypto-billionaires",
+      "date": "2026-11-04T17:12:02.000Z"
+    },
+    {
+      "type": "videos",
       "slug": "crypto-exchanges",
       "title": "How Do Crypto Exchanges ACTUALLY Work? Who Holds Your Coins",
       "url": "https://www.thecrypto.wiki/videos/crypto-exchanges",
@@ -1099,6 +1120,13 @@
       "title": "How to Avoid Crypto Scams: The Two Things Every Scam Asks For",
       "url": "https://www.thecrypto.wiki/videos/how-to-avoid-crypto-scams",
       "date": "2026-09-22T12:00:00.000Z"
+    },
+    {
+      "type": "videos",
+      "slug": "logan-paul-cryptozoo",
+      "title": "What Happened to Logan Paul's CryptoZoo? The Refund and the Ruling",
+      "url": "https://www.thecrypto.wiki/videos/logan-paul-cryptozoo",
+      "date": "2026-11-11T16:48:48.000Z"
     },
     {
       "type": "videos",
@@ -1158,6 +1186,13 @@
     },
     {
       "type": "videos",
+      "slug": "random-tokens",
+      "title": "Random Tokens in Your Crypto Wallet? Don't Touch Them",
+      "url": "https://www.thecrypto.wiki/videos/random-tokens",
+      "date": "2026-11-06T17:13:08.000Z"
+    },
+    {
+      "type": "videos",
       "slug": "real-world-asset-tokenization",
       "title": "What Is Real World Asset Tokenization?",
       "url": "https://www.thecrypto.wiki/videos/real-world-asset-tokenization",
@@ -1200,10 +1235,24 @@
     },
     {
       "type": "videos",
+      "slug": "seed-phrase",
+      "title": "What Is a Seed Phrase? How 12 Words Control Your Crypto",
+      "url": "https://www.thecrypto.wiki/videos/seed-phrase",
+      "date": "2026-11-02T17:46:14.000Z"
+    },
+    {
+      "type": "videos",
       "slug": "stop-losing-money-in-crypto-sample",
       "title": "Stop Losing Money in Crypto - Free Audiobook Sample (Introduction and Chapter 1)",
       "url": "https://www.thecrypto.wiki/videos/stop-losing-money-in-crypto-sample",
       "date": "2026-10-24T18:59:34.000Z"
+    },
+    {
+      "type": "videos",
+      "slug": "tokenized-stocks",
+      "title": "What Are Tokenized Stocks? Do You Actually Own the Share?",
+      "url": "https://www.thecrypto.wiki/videos/tokenized-stocks",
+      "date": "2026-11-07T23:40:24.000Z"
     },
     {
       "type": "videos",
