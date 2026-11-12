@@ -1810,6 +1810,50 @@
           "text": "So can you sue an influencer over a crypto pitch? In October 2025, a federal judge in Texas threw out all twenty-seven claims against him. The court called the pitch puffery: sales talk too vague to be a promise. Actually, that was round one. Here is the whole fight so far. February 2023, the buyers sue Paul and five others. June 2024, Paul sues Coffeezilla for defamation. October 2025, the first complaint is dismissed, most of it with leave to try again. February 2026, a new complaint, and Paul moves to dismiss it too. July 2026, the Coffeezilla case settles, its terms private. A really fun game that makes you money promised nothing, so far, in court. Nothing in this video is financial advice. So the next famous person who pitches you a game that pays: what is that sentence actually promising?"
         }
       ]
+    },
+    {
+      "slug": "hardware-wallet",
+      "id": "sr2ISfqtwRs",
+      "kind": "long",
+      "title": "Do You Need a Hardware Wallet? What It Protects (and What It Doesn't)",
+      "description": "Your crypto is not on your hardware wallet - it never was. Here is what the device actually protects, how it signs a transaction, what it cannot stop, the 2026 Coldcard case where about 1,816 bitcoin were drained without anyone touching a device, and the two questions that tell you whether you need one.",
+      "uploadDate": "2026-11-12T22:33:41Z",
+      "duration": "PT2M59S",
+      "seconds": 179,
+      "poster": "/images/videos/hardware-wallet.webp",
+      "target": {
+        "type": "posts",
+        "slug": "what-is-a-hardware-wallet"
+      },
+      "alsoOn": [],
+      "placement": "auto",
+      "chapters": [
+        {
+          "start": 0,
+          "title": "Do you need a hardware wallet?",
+          "text": "Your crypto is not on your hardware wallet. It never was. Every coin lives on the blockchain. The device holds one thing: the key that can move them. So what does that key need protecting from, and does a small device really do it? Stay for the 2026 case where nobody touched a device, and about eighteen hundred bitcoin were drained anyway."
+        },
+        {
+          "start": 22,
+          "title": "What does a hardware wallet actually do?",
+          "text": "What does a hardware wallet actually do? Every wallet does one job: it signs, with your private key, to prove you approved a transaction. On a phone or a laptop, that key sits on a device that's online all day. A hardware wallet keeps the key on a chip inside, with its own screen, and its own buttons, all off the internet. That is why it is called a cold wallet. When you send, your computer prepares the transaction, the device shows it on its own screen, you check it and press the button, and only the signature comes back. The key never leaves the chip, so malware on your laptop has nothing to read."
+        },
+        {
+          "start": 60,
+          "title": "What can't a hardware wallet stop?",
+          "text": "What can't a hardware wallet stop? Actually, more than people think. It signs whatever you approve. Press the button on a scammer's request, and it has done its job perfectly. And your recovery words are the key, written down. Anyone who reads them can type them into another wallet, and rebuild your key, without your device. It blocks malware reading your key, a thief without your PIN, and a swapped address, if you read the screen. It can't stop a request you approve, your words typed into a fake site, or your words lost with the device. And in 2026, the device itself failed. A Coldcard firmware release from March 2021 made some wallets create their keys from weak randomness. Key strength fell from a hundred and twenty-eight bits to as little as forty: weak enough to guess, without touching the device. Coins sat in more than five thousand two hundred addresses. Starting July thirtieth, about eighteen hundred bitcoin were drained, in four waves. So a hardware wallet is software too, and its updates matter."
+        },
+        {
+          "start": 126,
+          "title": "So do you need one?",
+          "text": "So do you need one? On an exchange, the company holds it. In a phone app, you hold it, on a device that's always online. On a hardware wallet, you hold it offline, and the backup is yours alone. Exchanges get hacked too: in 2025, Bybit lost about one and a half billion dollars in one transaction. If the place your key sits was hacked tonight, would you be fine? And can you keep your recovery words safe, and secret, for years? If it is no, then yes, that is the problem a hardware wallet was built for."
+        },
+        {
+          "start": 159,
+          "title": "So who can reach your key?",
+          "text": "So who can reach your key? A hardware wallet guards the key. It can't guard your recovery words, or the button you press. Nothing in this video is financial advice. So, your coins were never on the device. Who else could reach the key right now?"
+        }
+      ]
     }
   ],
   "_fields": {
