@@ -1854,6 +1854,45 @@
           "text": "So who can reach your key? A hardware wallet guards the key. It can't guard your recovery words, or the button you press. Nothing in this video is financial advice. So, your coins were never on the device. Who else could reach the key right now?"
         }
       ]
+    },
+    {
+      "slug": "stablecoin-interest",
+      "id": "rckp842qPWM",
+      "kind": "long",
+      "title": "Is the US Using Stablecoins to Reset Its Debt?",
+      "description": "The rumour says America will hide its $40 trillion debt inside stablecoins and wipe it out. Follow one stablecoin dollar instead: it is lent to the US government through a Treasury bill, the issuer keeps the interest, the GENIUS Act bans paying holders any of it, and every licensed stablecoin can be frozen.",
+      "uploadDate": "2026-11-17T00:25:22Z",
+      "duration": "PT2M58S",
+      "seconds": 178,
+      "poster": "/images/videos/stablecoin-interest.webp",
+      "target": {
+        "type": "posts",
+        "slug": "what-is-the-genius-act"
+      },
+      "alsoOn": [],
+      "placement": "auto",
+      "chapters": [
+        {
+          "start": 0,
+          "title": "Is the US using stablecoins to reset its debt?",
+          "text": "The rumour says America will hide its forty trillion dollar debt inside stablecoins, and quietly wipe it out. Stablecoins really do hold that debt. But they don't erase a cent of it. They earn interest on it, and you get none. In September 2025, a Putin adviser said America would solve its debt by pushing everyone into the crypto cloud. So follow one stablecoin dollar, and check three things: does it erase the debt, who keeps the interest, and who can freeze it?"
+        },
+        {
+          "start": 29,
+          "title": "Where does a stablecoin dollar go?",
+          "text": "So where does a stablecoin dollar actually go? You hand an issuer like Tether or Circle a dollar, and get one token back. They lend that dollar to the US government, by buying a Treasury bill. The bill pays interest, and the issuer keeps it. Your share is zero. That's not a side effect. It's the business. In 2025, ninety-six percent of Circle's revenue was interest on its reserves, about two point six billion dollars. And a law now makes sure you never get a share. The GENIUS Act bans issuers from paying holders any form of interest or yield, from January 2027."
+        },
+        {
+          "start": 68,
+          "title": "Can stablecoins erase the debt?",
+          "text": "So can stablecoins really erase America's debt? Actually, buying a Treasury bill is lending, not erasing. Within ninety-three days, the government pays the dollar back, with interest. The debt is over forty trillion dollars. Every stablecoin in existence adds up to about two hundred and eighty-seven billion. Less than one percent, even if every token sat in Treasury bills. What is true: the US Treasury Secretary wants stablecoins as big new buyers of those bills. So stablecoins don't shrink the debt. They help the government keep borrowing. And if the dollar ever lost value, a dollar token would lose exactly the same."
+        },
+        {
+          "start": 109,
+          "title": "Are governments taking stablecoins over?",
+          "text": "So are governments taking stablecoins over? In July 2025, the US passed the GENIUS Act. In December, Kyrgyzstan launched a national stablecoin. In January 2026, Wyoming put its own stable token on sale. And in January 2027, the US rules take effect. Wyoming keeps the interest too. It goes to the state's schools, not to holders. But one fear is real: every licensed stablecoin can be frozen. The law requires issuers to be able to seize, freeze or burn tokens on a lawful order. By July 2026, Tether had frozen about five point seven billion dollars, across nine thousand six hundred addresses. So a stablecoin isn't a government currency. It's a dollar with an off switch. Does it erase the debt? Does it fund it? Is the interest yours? Can it be frozen? Nothing in this video is financial advice. So the debt isn't going anywhere. Who do you think should get the interest on your dollar?"
+        }
+      ]
     }
   ],
   "_fields": {
