@@ -8,7 +8,7 @@ Whether you're just beginning your crypto journey or are a seasoned enthusiast l
 
 ## Demo
 
-![Desktop Demo](https://oktayshakirov.com/assets/images/projects/crypto-wiki.png "Desktop Demo")
+![Desktop Demo](https://oktayshakirov.com/assets/images/projects/crypto-wiki.webp "Desktop Demo")
 
 <p align="center">
   <a href="https://www.TinnitusHelp.me/"><strong>➥ Live Demo</strong></a>
