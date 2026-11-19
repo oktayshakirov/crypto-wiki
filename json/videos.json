@@ -1893,6 +1893,65 @@
           "text": "So are governments taking stablecoins over? In July 2025, the US passed the GENIUS Act. In December, Kyrgyzstan launched a national stablecoin. In January 2026, Wyoming put its own stable token on sale. And in January 2027, the US rules take effect. Wyoming keeps the interest too. It goes to the state's schools, not to holders. But one fear is real: every licensed stablecoin can be frozen. The law requires issuers to be able to seize, freeze or burn tokens on a lawful order. By July 2026, Tether had frozen about five point seven billion dollars, across nine thousand six hundred addresses. So a stablecoin isn't a government currency. It's a dollar with an off switch. Does it erase the debt? Does it fund it? Is the interest yours? Can it be frozen? Nothing in this video is financial advice. So the debt isn't going anywhere. Who do you think should get the interest on your dollar?"
         }
       ]
+    },
+    {
+      "slug": "squid-game-token",
+      "id": "Uwic_u_apxg",
+      "kind": "long",
+      "title": "Squid Game Crypto Scam: How $3.4 Million Vanished in 5 Minutes",
+      "description": "On 1 November 2021 a token called SQUID, named after Netflix's Squid Game, hit $2,861. Five minutes later it was worth less than a tenth of a cent, and almost nobody holding it could sell. Here is how the trap was built, what happened at 09:35 UTC, where the money went, and the one check that would have caught it.",
+      "uploadDate": "2026-11-19T12:39:16Z",
+      "duration": "PT5M7S",
+      "seconds": 307,
+      "poster": "/images/videos/squid-game-token.webp",
+      "target": {
+        "type": "posts",
+        "slug": "the-squid-game-crypto-scam"
+      },
+      "alsoOn": [],
+      "placement": "auto",
+      "chapters": [
+        {
+          "start": 0,
+          "title": "The Squid Game crypto scam",
+          "text": "On the first of November 2021, a token called SQUID hit two thousand eight hundred and sixty one dollars. Five minutes later, it was worth less than a tenth of a cent. And almost nobody holding it could sell a single coin on the way down. Its creators left with about three point four million dollars, and nobody has ever been named. So how do you build a coin that nobody can sell? Stay to the end for the one check that would have caught it in a minute."
+        },
+        {
+          "start": 28,
+          "title": "Who made the Squid Game token?",
+          "text": "Who made the Squid Game token? In September 2021, Squid Game became the biggest show on Netflix. A month later, an anonymous team launched a token named after it, with no link to Netflix at all. They said SQUID would pay for an online game based on the show. You buy SQUID, pay it to enter, survive six rounds, and the last player standing wins the pot. Unlike the show, they said, the prize would have no limit. The team would keep ten percent of every entry fee. On the twentieth of October, the presale sold out, the project said, in a second. And the show they borrowed has one rule worth remembering. Only one player walks out with the money."
+        },
+        {
+          "start": 70,
+          "title": "Why did SQUID only go up?",
+          "text": "Why did SQUID only go up? Trading opened on the twenty-sixth of October, at about a cent. Five days later it was thirty-eight dollars, and on the morning of November first, ninety. News sites covered the climb, and every story brought new buyers in. The BBC reported that buyers were complaining they could not sell. People kept buying anyway. Actually, three days before the end, this headline already said what was wrong. Users unable to sell. A price that only climbs is not proof that people want in. It can mean nobody is allowed out."
+        },
+        {
+          "start": 105,
+          "title": "Why couldn't anyone sell SQUID?",
+          "text": "Why couldn't anyone sell SQUID? SQUID traded on PancakeSwap, where you swap with a pool of coins, not with a person. And the token's own rules decided who could use it. Anyone could buy SQUID with BNB. But when a holder tried to sell, the rules asked for marbles, earned only in a game that never launched. The creators' own wallet needed nothing at all. The team called it anti-dumping technology, a way to stop people selling too fast. It stopped everyone except them. TRM Labs, a firm that traces stolen crypto, read the contracts the same way. A token you can buy and never sell has a name: a honeypot."
+        },
+        {
+          "start": 146,
+          "title": "Were there other warning signs?",
+          "text": "Were there other warning signs? Plenty, and all of them in public. Replies were switched off on its Twitter account, and its Telegram group did not let anyone talk. It claimed Netflix and CoinGecko as partners. CoinGecko's co-founder said that was not true. Its white paper was full of spelling mistakes and claims nobody could check. And by the last weekend, CoinMarketCap was telling visitors it had reports that holders could not sell."
+        },
+        {
+          "start": 174,
+          "title": "What happened on November 1?",
+          "text": "What happened on November 1? At about nine thirty-five in the morning, UTC, SQUID touched its peak. Then the creators did the one thing nobody else could. They sold. On one side of the pool sat everyone's SQUID. On the other, the money that buyers had paid in. The creators swapped their own SQUID for that money, until the money side was empty. Within five minutes, the price had fallen ninety-nine point nine nine percent. A streamer happened to be reading the price out loud on Twitch at that moment. His scream became one of crypto's most watched clips. In the project's Telegram channel, a last message said the developers no longer wanted to run it. By that afternoon the website was down, and Twitter had restricted the account."
+        },
+        {
+          "start": 220,
+          "title": "Where did the Squid Game money go?",
+          "text": "Where did the Squid Game money go? Not far, at first. TRM Labs followed it, step by step. It left the pool as BNB, went into Tornado Cash, a mixer, in fifty-five deposits that same day, crossed a bridge onto Ethereum, and came out through two exchanges that checked almost no identity. The US Treasury sanctioned Tornado Cash itself in 2022, and lifted the sanctions in 2025. But the same trail led somewhere else too. TRM linked the people behind SQUID to two more rug pulls. Across all three, about nineteen million dollars. And as of TRM's report, nobody had been named, and no buyer had been paid back."
+        },
+        {
+          "start": 264,
+          "title": "How would you have caught it?",
+          "text": "How would you have caught it? Every one of these was there before the pull. A price that only went up. Comments switched off. A partnership nobody confirmed. A warning that holders could not sell. And a rule that said you could not leave. The check that would have caught it costs a few dollars. Try to sell a tiny amount back. If it will not let you sell that, it will not let you sell more. In the show, only one player walks out with the money. SQUID kept that rule, and the creators were the player. Nothing in this video is financial advice. So, the last thing you bought online: did you ever check that you could sell it?"
+        }
+      ]
     }
   ],
   "_fields": {
