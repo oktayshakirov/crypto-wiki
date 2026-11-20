@@ -1,11 +1,12 @@
 # Sends the app push notification for newly published content.
 #
-# This is the automatic path: push content to main and, once Vercel has the
-# deployment live, the notification goes out on its own.
+# This is the automatic path: push content to main and, once deploy.yml has
+# the new build live on Cloudflare, the notification goes out on its own.
 #
-# It deliberately does not run during `npm run build`. The sync used to live
-# there, and because a Vercel build finishes before the production alias is
-# promoted, notifications went out while the URL still returned 404.
+# It deliberately does not run during the build. The sync used to live there
+# (on Vercel), and because a build finishes before the new version is serving,
+# notifications went out while the URL still returned 404. waitForDeploy.js
+# polls the live site instead, so this works on any host.
 name: Notify on new content
 
 on:

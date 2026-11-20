@@ -6,6 +6,26 @@ Crypto Wiki is your trusted source for accurate and up-to-date information on al
 
 Whether you're just beginning your crypto journey or are a seasoned enthusiast looking to stay on top of the latest developments, Crypto Wiki has you covered. Our platform offers a wide range of content, from beginner guides that explain the basics of blockchain technology to advanced insights into emerging trends and innovations in the cryptocurrency space.
 
+## Hosting (Cloudflare Workers)
+
+The site is a static export (`output: "export"`) served by Cloudflare as static
+assets, plus one small Worker (`worker/index.js`) for the only dynamic part: the
+view counter (`/api/views/:type/:slug`, Firestore REST). It also 308s
+trailing-slash URLs. Static requests never invoke the Worker.
+
+- **Deploy:** automatic. `.github/workflows/deploy.yml` builds and runs
+  `wrangler deploy` on every push to `main`, every Monday (to refresh the
+  "Most popular" ranking) and on demand. By hand: `npm run build && npm run deploy`.
+- **Local check of the real thing:** `npm run build && npm run preview` serves
+  `out/` plus the Worker on localhost (needs `.dev.vars` with the `FIREBASE_*` values).
+- **Redirects:** `public/_redirects`. **Headers:** `public/_headers`.
+  `next.config.js` `redirects()`/`headers()` do nothing in a static export.
+- **Images:** `next/image` uses `lib/imageLoader.js`, which points at WebP
+  variants `scripts/finalizeExport.js` renders into `out/_img/` at build time
+  (cached in `.image-cache/`). There is no runtime image optimizer.
+- **Worker secrets:** `FIREBASE_PROJECT_ID`, `FIREBASE_CLIENT_EMAIL`,
+  `FIREBASE_PRIVATE_KEY`, set with `wrangler secret put`.
+
 ## Demo
 
 ![Desktop Demo](https://oktayshakirov.com/assets/images/projects/crypto-wiki.webp "Desktop Demo")
@@ -63,7 +83,8 @@ It needs three repository secrets — `FIREBASE_PROJECT_ID`,
 variables → Actions.
 
 **Do not move the sync back into `npm run build`.** It used to live there, and
-because a Vercel build finishes before the production alias is promoted,
+because a build finishes before the new version is serving (true on Vercel,
+where this was learned, and on Cloudflare),
 notifications went out while the URL still returned 404 — taps in the first ~15
 seconds hit a missing page. That is why the trigger is a post-deploy workflow
 rather than a build step.

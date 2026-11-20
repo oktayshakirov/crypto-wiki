@@ -39,3 +39,9 @@ yarn-error.log*
 
 # views data
 # /data
+
+# Cloudflare: wrangler state, local Worker secrets (copy of .env values), and
+# the build-time WebP variant cache (scripts/finalizeExport.js)
+.wrangler
+.dev.vars
+.image-cache/

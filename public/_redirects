@@ -1,0 +1,15 @@
+# Permanent redirects, served by Cloudflare's static assets before any file.
+# (Static export ignores next.config.js redirects(), so they live here.)
+# 308 matches what Vercel sent for `permanent: true`.
+
+# Shrinking a feed's page size retires its highest pagination pages. Those
+# URLs are indexed, so they redirect to the feed's first page instead of
+# turning into the sort of 404 Ahrefs flags. Revisit whenever a page size
+# changes.
+/crypto-ogs/page/6 /crypto-ogs 308
+/crypto-ogs/latest/page/6 /crypto-ogs/latest 308
+/crypto-ogs/popular/page/6 /crypto-ogs/popular 308
+
+# /videos/page/2 used to redirect to /videos here too, but the video archive
+# has since grown to 5 pages and /videos links to page 2, so that redirect
+# made page 2 unreachable. Removed 2026-11-20.

@@ -1,0 +1,23 @@
+{
+  // thecrypto.wiki on Cloudflare Workers: static assets from the Next export
+  // plus the small API Worker. Deployed by .github/workflows/deploy.yml.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "thecrypto-wiki",
+  "main": "worker/index.js",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./out",
+    "binding": "ASSETS",
+    // out/404.html for any path without a file, with a real 404 status.
+    "not_found_handling": "404-page",
+    "html_handling": "auto-trailing-slash",
+    // Only these reach the Worker. Every other request is a static asset
+    // and never counts against the Workers request quota. "/*/" catches
+    // trailing-slash URLs so the Worker can 308 them to the slashless
+    // canonical, as Vercel did (the assets layer alone answers 307).
+    "run_worker_first": ["/api/*", "/*/"]
+  },
+  // Secrets (set with `wrangler secret put`, never in this file):
+  // FIREBASE_PROJECT_ID, FIREBASE_CLIENT_EMAIL, FIREBASE_PRIVATE_KEY
+  "observability": { "enabled": true }
+}

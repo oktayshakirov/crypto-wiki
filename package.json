@@ -6,11 +6,11 @@
   "license": "MIT",
   "scripts": {
     "dev": "node lib/jsonGenerator.js && node scripts/generateContentIndex.js && node scripts/generateViews.js && next dev",
-    "build": "npm run clean && node lib/jsonGenerator.js && node scripts/generateContentIndex.js && node scripts/generateViews.js && next build && next-sitemap && node scripts/fix-robots.js",
+    "build": "npm run clean && node lib/jsonGenerator.js && node scripts/generateContentIndex.js && node scripts/generateViews.js && next build && next-sitemap && node scripts/fix-robots.js && node scripts/finalizeExport.js",
     "sync-content": "node scripts/syncContent.js",
-    "export": "next build && next export && next-sitemap",
     "lint": "next lint",
-    "start": "next start",
+    "preview": "wrangler dev",
+    "deploy": "wrangler deploy",
     "clean": "rimraf .next"
   },
   "dependencies": {
@@ -48,7 +48,8 @@
     "sass": "1.57.0",
     "sharp": "0.35.4",
     "tailwind-bootstrap-grid": "5.0.1",
-    "tailwindcss": "^3.4.11"
+    "tailwindcss": "^3.4.11",
+    "wrangler": "^4.165.0"
   },
   "overrides": {
     "postcss": "$postcss",

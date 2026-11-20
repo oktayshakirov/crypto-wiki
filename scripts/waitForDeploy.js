@@ -1,7 +1,7 @@
 // Blocks until production is serving the content in this checkout.
 //
-// Pushing to main starts a Vercel build, and the build finishes some time
-// before the production alias is promoted to it. Announcing a post in that gap
+// Pushing to main starts a build and deploy (deploy.yml), which finishes some
+// time after this workflow starts. Announcing a post in that gap
 // is what used to send push notifications pointing at a 404.
 //
 // public/content-index.json ships inside the deployment, so the live copy is a

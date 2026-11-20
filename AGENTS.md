@@ -4,16 +4,19 @@ Guidance for coding agents. Humans: this doubles as an onboarding note.
 
 ## What this is
 
-A Next.js **pages-router** site (Emotion + Tailwind). Content is MDX. Deploys
-automatically from `main` (Netlify — see `netlify.toml`). There is no staging;
-**a push to `main` is a production deploy.**
+A Next.js **pages-router** site (Emotion + Tailwind). Content is MDX. It is a
+**static export** served by **Cloudflare Workers** (static assets + a small
+Worker in `worker/index.js` for the view counter); see the README's "Hosting"
+section. Deploys automatically from `main` via `.github/workflows/deploy.yml`.
+There is no staging; **a push to `main` is a production deploy.**
 
 ## Commands
 
 | Task | Command | Notes |
 | --- | --- | --- |
 | Dev server | `npm run dev` | port 3000 (auto-bumps to 3001+). Regenerates JSON + content index + views first. |
-| Production build | `npm run build` | Must pass before any commit that touches rendered output. Runs `clean`, the generators, `next build`, `next-sitemap`. |
+| Production build | `npm run build` | Must pass before any commit that touches rendered output. Runs `clean`, the generators, `next build`, `next-sitemap`, `fix-robots`, `finalizeExport` (image variants). Writes `out/`. |
+| Serve the build | `npm run preview` | `out/` + the Worker via `wrangler dev`, as production serves it. Needs `.dev.vars`. |
 | Lint | `npm run lint` | |
 
 Node deps via **npm** (`package-lock.json`). No `engines` pin; use current LTS.
@@ -68,7 +71,7 @@ these rules — the SKILL.md at that path has the reasoning.
   there is symlinked and canonical for the publish skill + gate). Its
   `content-database.json` is the slug registry: when you rename a content slug
   here, update the matching key there too, and add a 301 in
-  `next.config.js` (`redirects()`).
+  `public/_redirects` (static export ignores `next.config.js` redirects).
 
 ## Verifying a change
 
