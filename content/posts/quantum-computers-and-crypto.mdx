@@ -20,11 +20,11 @@ Classical computers use bits (0s or 1s) to process information sequentially. Qua
 
 ### **Crypto's Achilles' Heel: Public-Key Cryptography**
 
-Modern cryptocurrency security relies heavily on **public-key cryptography (PKC)**. Algorithms like **ECDSA (Elliptic Curve Digital Signature Algorithm)**, used extensively by Bitcoin, Ethereum, and many other cryptocurrencies for generating wallet addresses and signing transactions, are based on mathematical problems (like the Elliptic Curve Discrete Logarithm Problem) considered practically impossible for classical computers to solve in reverse. That is, it's easy to generate a public key from a private key, but infeasible to derive the private key from the public key.
+Modern cryptocurrency security relies heavily on **public-key cryptography (PKC)**. Algorithms like **ECDSA (Elliptic Curve Digital Signature Algorithm)**, used extensively by Bitcoin, Ethereum, and many other cryptocurrencies for generating **[wallet addresses](/posts/send-and-receive-crypto-safely)** and signing transactions, are based on mathematical problems (like the Elliptic Curve Discrete Logarithm Problem) considered practically impossible for classical computers to solve in reverse. That is, it's easy to generate a public key from a private key, but infeasible to derive the private key from the public key.
 
 However, Peter Shor's quantum algorithm (**Shor's Algorithm**), developed in 1994, provides an efficient method for quantum computers to solve these underlying mathematical problems (including integer factorization which breaks RSA, another common PKC algorithm). A sufficiently powerful, fault-tolerant quantum computer running Shor's algorithm could potentially derive a user's private key from their publicly known public key, allowing an attacker to steal funds or forge transactions.
 
-While hash functions like SHA-256 (used in Bitcoin mining and address hashing) are considered more resistant to quantum attacks, **Grover's Algorithm** offers a quadratic speedup for searching, potentially requiring the use of larger hash outputs or other adjustments in the future to maintain the same security level.
+While hash functions like SHA-256 (used in **[Bitcoin mining](/posts/is-bitcoin-mining-still-profitable)** and address hashing) are considered more resistant to quantum attacks, **Grover's Algorithm** offers a quadratic speedup for searching, potentially requiring the use of larger hash outputs or other adjustments in the future to maintain the same security level.
 
 ![Futuristic abstract digital art representing the future](/images/posts/crypto-future.jpg)
 

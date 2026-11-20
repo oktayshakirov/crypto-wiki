@@ -4,6 +4,7 @@ description: "The best practices for storing your cryptocurrency securely. Disco
 date: 2024-08-26
 image: "/images/posts/ledger.jpeg"
 categories: ["Security", "Beginners"]
+exchanges: ["Coinbase", "Binance", "Crypto.com"]
 authors: ["Oktay Shakirov"]
 draft: false
 ---
@@ -31,7 +32,7 @@ It's crucial to understand that a cryptocurrency wallet doesn't store your actua
 - **Public Key:** Used to generate addresses where you can receive crypto. Think of it like your bank account number - safe to share.
 - **Private Key:** Used to authorize transactions _from_ your addresses. Think of it like your account password or signature - **must be kept absolutely secret.**
 
-Whoever controls the private key controls the crypto associated with that address. Wallets primarily help you manage these keys securely and interact with the blockchain. They generally fall into two main categories based on their internet connectivity: Hot Wallets and Cold Wallets.
+Whoever controls the private key controls the crypto associated with that address. Wallets primarily help you manage these keys securely and interact with the blockchain. They generally fall into two main categories based on their internet connectivity: Hot Wallets and **[Cold Wallets](/posts/what-is-a-hardware-wallet)**.
 
 ### **Hot Wallets (Online Storage)**
 
@@ -41,7 +42,7 @@ Hot wallets are connected to the internet, making them convenient for accessing 
   - **Web Wallets:** Accessed via a web browser. Can be exchange wallets (like those on [Coinbase](/exchanges/coinbase) or [Binance](/exchanges/binance)) or browser extensions (like **[MetaMask](https://metamask.io)**). _Note: Exchange wallets are typically custodial._
   - **Mobile Wallets:** Smartphone apps providing easy access on the go (e.g., **[Trust Wallet](https://trustwallet.com)**, **[Exodus](https://www.exodus.com)**).
   - **Desktop Wallets:** Software installed on your computer (e.g., **[Exodus](https://www.exodus.com)**, **[Electrum](https://electrum.org)**). Susceptible to malware on the host computer.
-- **Pros:** Convenient for frequent transactions, easy setup, good for interacting with dApps and DeFi.
+- **Pros:** Convenient for frequent transactions, easy setup, good for interacting with dApps and **[DeFi](/posts/what-is-defi)**.
 - **Cons:** More vulnerable to online hacking, phishing, and malware. If using a custodial web wallet (like on an exchange), you don't control the private keys.
 - **Best Use Case:** Storing small amounts of crypto needed for active trading or regular use.
 
@@ -74,7 +75,7 @@ Implementing robust security measures is vital, regardless of the wallet type yo
     - **NEVER store it digitally:** Do not save it in photos, text files, password managers, email, or cloud storage. These are vulnerable to hacking.
     - **Write it down physically:** Use pen and paper or, ideally, engrave it onto metal plates for fire/water resistance.
     - **Store backups securely & redundantly:** Keep copies in multiple, geographically separate, secure locations (e.g., a safe at home, a safe deposit box - consider risks of single points of failure).
-    - **NEVER share it with anyone:** No legitimate support team or service will ever ask for your seed phrase.
+    - **NEVER share it with anyone:** No legitimate support team or service will ever ask for your **[seed phrase](/posts/what-is-a-seed-phrase)**.
 2.  **Use Strong, Unique Passwords & Enable 2FA:** Protect access to your wallet apps and exchange accounts with strong passwords. Enable Two-Factor Authentication (2FA) wherever possible, preferably using authenticator apps like **[Google Authenticator](https://auth.google.com)** or **[Authy](https://authy.com)** rather than less secure SMS-based 2FA.
 3.  **Keep Software Updated:** Regularly update your wallet software, operating system (OS), browser, and antivirus programs to patch known security vulnerabilities.
 4.  **Beware of Phishing & Scams:** Be hyper-vigilant against attempts to steal your keys or credentials.
@@ -91,7 +92,7 @@ Implementing robust security measures is vital, regardless of the wallet type yo
 
 The crypto storage landscape continues to evolve with new technologies aimed at enhancing security and usability:
 
-- **Multi-Signature (Multisig) Wallets:** These require multiple private keys (e.g., 2 out of 3, or 3 out of 5) to authorize a transaction. This prevents a single point of failure - one compromised key doesn't compromise the funds. Ideal for businesses, DAOs, or individuals seeking extra security.
+- **Multi-Signature (Multisig) Wallets:** These require multiple private keys (e.g., 2 out of 3, or 3 out of 5) to authorize a transaction. This prevents a single point of failure - one compromised key doesn't compromise the funds. Ideal for businesses, **[DAOs](/posts/what-is-a-dao)**, or individuals seeking extra security.
 - **Multi-Party Computation (MPC) Wallets:** An emerging technology where a private key is split into multiple encrypted "shards" held by different parties or devices. No single shard reveals the key, and a threshold of shards is needed to sign transactions. This can eliminate the single point of failure associated with seed phrases while potentially offering smoother recovery processes. Often used in institutional custody solutions (e.g., **[Fireblocks](https://www.fireblocks.com)**).
 - **Smart Contract Wallets & Social Recovery:** Wallets built using smart contracts (like **[Argent](https://www.argent.xyz)**) can offer features beyond traditional wallets, such as daily transfer limits, transaction whitelisting, and "social recovery." Social recovery allows users to designate trusted contacts ("guardians") who can help them regain access if they lose their primary device, avoiding the sole reliance on a seed phrase (though introducing smart contract risk).
 - **Quantum Resistance:** As quantum computing advances, it poses a long-term threat to current public-key cryptography. The industry is actively developing and standardizing Post-Quantum Cryptography (PQC). While not an immediate concern for breaking keys today, users should be aware that migrating to quantum-resistant wallets and addresses will be necessary in the future. Learn more: [Quantum Computers And Crypto](/posts/quantum-computers-and-crypto).
