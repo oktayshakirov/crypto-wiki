@@ -1,4 +1,4 @@
-import { detectIsApp } from "@lib/utils/isApp";
+import { detectIsApp, isInAppWebView } from "@lib/utils/isApp";
 import { JsonContext } from "context/state";
 import Head from "next/head";
 import Script from "next/script";
@@ -29,7 +29,9 @@ const MyApp = ({ Component, pageProps }) => {
   useEffect(() => {
     if (detectIsApp()) {
       document.documentElement.classList.add("is-app");
-      localStorage.setItem("isApp", "true");
+      // Remember it only inside the app's WebView. In a browser this left
+      // anyone who opened an ?isApp=true link stuck in app mode for good.
+      if (isInAppWebView()) localStorage.setItem("isApp", "true");
       setIsApp(true);
     }
   }, []);

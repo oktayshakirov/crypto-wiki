@@ -6,7 +6,14 @@ import { Head, Html, Main, NextScript } from "next/document";
 // website-only chrome (`.web-only`) without a flash. It has to be inline and
 // in the head: React learns about the app only after mount (see _app.js), and
 // these are the same flags detectIsApp reads.
-const MARK_APP = `try{if(new URLSearchParams(location.search).get("isApp")==="true"||window.isApp||localStorage.getItem("isApp")==="true"){document.documentElement.classList.add("is-app")}}catch(e){}`;
+//
+// Only the app's WebView may keep app mode across page loads:
+// react-native-webview defines window.ReactNativeWebView there from document
+// start (every app WebView sets onMessage), and never in a browser. In a
+// browser, ?isApp=true hides the chrome for that one view only, and a stored
+// flag - e.g. from opening a link copied out of the app - is ignored and
+// cleared, so the visitor is not stuck without header, footer and ads.
+const MARK_APP = `try{var w=!!window.ReactNativeWebView;if(!w)localStorage.removeItem("isApp");if(new URLSearchParams(location.search).get("isApp")==="true"||window.isApp||(w&&localStorage.getItem("isApp")==="true")){document.documentElement.classList.add("is-app")}}catch(e){}`;
 
 const Document = () => {
   // destructuring items from config object
