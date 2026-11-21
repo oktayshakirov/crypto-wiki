@@ -69,7 +69,27 @@ const calculationComponents = [
   },
 ];
 
-const FearAndGreedIndexPage = ({ isApp }) => {
+// Bake today's reading into the static export so the score is in the HTML
+// Google indexes ("fear and greed index today" searches). deploy.yml rebuilds
+// daily to keep it current. A failed fetch must not break the build: the page
+// then falls back to the client-side fetch, as before.
+export async function getStaticProps() {
+  let initialIndex = null;
+  try {
+    const res = await fetch("https://api.alternative.me/fng/?limit=1", {
+      signal: AbortSignal.timeout(10000),
+    });
+    const reading = (await res.json())?.data?.[0];
+    if (reading && !Number.isNaN(parseInt(reading.value, 10))) {
+      initialIndex = reading;
+    }
+  } catch (error) {
+    console.warn("Fear & Greed fetch failed at build time:", error.message);
+  }
+  return { props: { initialIndex } };
+}
+
+const FearAndGreedIndexPage = ({ isApp, initialIndex }) => {
   const author = {
     name: "Oktay Shakirov",
     profileUrl: "/authors/oktay-shakirov",
@@ -89,11 +109,18 @@ const FearAndGreedIndexPage = ({ isApp }) => {
 
   const dataSource = originalSource.name;
 
+  const pageTitle =
+    "Crypto Fear and Greed Index Today: Live Score & Meaning | Crypto Wiki";
+  const todayScore = initialIndex
+    ? `Today's Crypto Fear and Greed Index is ${parseInt(initialIndex.value, 10)} (${initialIndex.value_classification}). `
+    : "Today's Crypto Fear and Greed Index score, updated daily. ";
+  const pageDescription = `${todayScore}See what drives crypto market sentiment (volatility, momentum, social media) and the index's limitations. Not financial advice.`;
+
   return (
     <Base
-      title="Crypto Fear & Greed Index (Live) - Market Sentiment Analysis | Crypto Wiki"
-      meta_title="Crypto Fear & Greed Index (Live) - Market Sentiment Analysis | Crypto Wiki"
-      description="Track the current Crypto Fear and Greed Index score. Understand the factors driving crypto market sentiment (volatility, social media, etc.) & its limitations. Not financial advice."
+      title={pageTitle}
+      meta_title={pageTitle}
+      description={pageDescription}
       image="/images/meta-image.png"
       canonical={`${config.site.base_url}/tools/fear-and-greed-index`}
       jsonLd={[
@@ -130,7 +157,7 @@ const FearAndGreedIndexPage = ({ isApp }) => {
         <div className="container mb-6">
           <h2 className="h3 mb-3 text-center">Current Market Sentiment</h2>
           <div className="mx-auto">
-            <FearAndGreedIndexChart />
+            <FearAndGreedIndexChart initialValue={initialIndex} />
           </div>
 
           <div className="mt-4 flex flex-wrap justify-center gap-x-4 gap-y-2">

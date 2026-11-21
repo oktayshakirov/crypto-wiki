@@ -10,6 +10,10 @@
 /crypto-ogs/latest/page/6 /crypto-ogs/latest 308
 /crypto-ogs/popular/page/6 /crypto-ogs/popular 308
 
+# The old team author page. Google still crawls it and reports a 404; the
+# site has one author.
+/authors/crypto-wiki-team /authors/oktay-shakirov 308
+
 # /videos/page/2 used to redirect to /videos here too, but the video archive
 # has since grown to 5 pages and /videos links to page 2, so that redirect
 # made page 2 unreachable. Removed 2026-11-20.

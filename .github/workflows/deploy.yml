@@ -1,7 +1,8 @@
 # Builds the static export and deploys it to Cloudflare Workers.
 #
-# Runs on every push to main (a push is a production deploy), weekly so the
-# "Most popular" listings refresh even without new content (view counts are
+# Runs on every push to main (a push is a production deploy), daily so the
+# Fear & Greed score baked into /tools/fear-and-greed-index stays current and
+# the "Most popular" listings refresh even without new content (view counts are
 # snapshotted at build time by scripts/generateViews.js, which keeps Firestore
 # reads flat no matter how much traffic the site gets), and on demand.
 #
@@ -18,8 +19,9 @@ on:
   push:
     branches: [main]
   schedule:
-    # Mondays 04:00 UTC - quiet hours, and a fresh ranking to start the week.
-    - cron: "0 4 * * 1"
+    # Daily 04:00 UTC - quiet hours, and after alternative.me publishes the
+    # day's Fear & Greed reading (00:00 UTC).
+    - cron: "0 4 * * *"
   workflow_dispatch:
 
 concurrency:
