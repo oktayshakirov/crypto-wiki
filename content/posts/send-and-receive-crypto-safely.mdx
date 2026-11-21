@@ -2,6 +2,7 @@
 title: "How to Send and Receive Crypto Safely"
 description: "Step-by-step safeguards for sending and receiving crypto: network selection, memos/tags, confirmations, test sends, hardware wallets, tax tips, scam traps."
 date: 2025-11-07
+updated: 2026-11-21
 image: "/images/posts/crypto-transfer.jpg"
 categories: ["Beginners", "Security", "Blockchain"]
 crypto-ogs: ["Satoshi Nakamoto", "Vitalik Buterin"]
@@ -248,6 +249,22 @@ Remember: hardware wallets provide excellent security, but they're not foolproof
 
 ![Hardware wallet approving a test transaction before a large send](/images/posts/ledger.jpeg)
 
+## Was Ledger Hacked? When the Page Itself Swaps the Address
+
+Ledger's devices were not hacked, but on 16 November 2026 its website was one of 178 organisations' sites, alongside the BBC, CNN, Zoom and HSBC, that served a hijacked script which swapped crypto addresses for the attacker's. An unauthorized party used a flaw in the account signup of Optimizely Web Experimentation, a tool large sites load on every page to test different versions of it, and slipped its own code into customers' projects. Researchers track the attack as OPTIMJACK.
+
+The script looked for Bitcoin, Ethereum, Solana, Tron, TON, Litecoin and Dogecoin addresses and replaced them in three places: in the text on the page, in whatever a visitor copied, and in what the page sent. Each replacement was a valid address for its chain, so the format check in Step 3 passes.
+
+This is the case the hardware wallet advice above does not cover. You copy the address from the page, paste it into your wallet app, and your hardware wallet shows it on its own screen. Every screen matches, because every screen shows the attacker's address. The device did its job: it showed exactly where the coins would go. It cannot know where you meant them to go. Checking the device screen catches malware that changes an address after you copy it; it cannot catch an address that was already wrong on the page.
+
+What does catch it is a comparison against a source the page never touched:
+
+- Get the address from the receiver's own wallet app, not from a web page, even an official one.
+- Compare it with your device screen character by character, not just the first and last six.
+- Send a small test (Step 6) and have the receiver confirm it arrived before you send the rest.
+
+The money taken was small. Early reports put it at about $7,000; a later on-chain count by Bitquery found $2,260 in 19 payments and argued the larger figure included the attacker's own swaps. Optimizely says it fixed the flaw, removed the injected code and secured the affected accounts. If you sent crypto on 16 November 2026 to an address you copied from a website, check where it went. For what a device does and does not protect, see **[What Is a Hardware Wallet?](/posts/what-is-a-hardware-wallet)**.
+
 ## Confirmations and Finality: How Long Is "Safe"?
 
 Different networks secure transactions differently, so "safe" varies by chain and value:
@@ -347,4 +364,4 @@ Remember: the blockchain's irreversibility is a feature, not a bug. It's what ma
 
 Start small, practice with test transactions, and gradually build your confidence. Before you know it, these safety checks will become second nature, and you'll be able to move crypto safely without anxiety. The process might take a few extra minutes, but those minutes are worth it when they protect your hard-earned assets.
 
-If you're new to cryptocurrency, continue building your knowledge with our **[Crypto for Beginners](/posts/crypto-for-beginners)** guide, and always remember: when in doubt, slow down, verify, and test first. Your future self will thank you.
+If you're new to cryptocurrency, keep building your knowledge one step at a time, and always remember: when in doubt, slow down, verify, and test first. Your future self will thank you.
