@@ -1952,6 +1952,50 @@
           "text": "How would you have caught it? Every one of these was there before the pull. A price that only went up. Comments switched off. A partnership nobody confirmed. A warning that holders could not sell. And a rule that said you could not leave. The check that would have caught it costs a few dollars. Try to sell a tiny amount back. If it will not let you sell that, it will not let you sell more. In the show, only one player walks out with the money. SQUID kept that rule, and the creators were the player. Nothing in this video is financial advice. So, the last thing you bought online: did you ever check that you could sell it?"
         }
       ]
+    },
+    {
+      "slug": "optimizely-hack",
+      "id": "lxpyo9KZ2Pk",
+      "kind": "long",
+      "title": "Was Ledger Hacked? What the Optimizely Hack Did to Crypto Addresses",
+      "description": "Was Ledger hacked? On 16 November 2026 its website was one of 178 running a hijacked Optimizely script that swapped crypto wallet addresses for the attacker's. Here is where the address was swapped, why your hardware wallet's screen would have agreed with it, and the one check that does work.",
+      "uploadDate": "2026-11-21T11:05:57Z",
+      "duration": "PT2M48S",
+      "seconds": 168,
+      "poster": "/images/videos/optimizely-hack.webp",
+      "target": {
+        "type": "posts",
+        "slug": "send-and-receive-crypto-safely"
+      },
+      "alsoOn": [],
+      "placement": "auto",
+      "chapters": [
+        {
+          "start": 0,
+          "title": "Was Ledger hacked?",
+          "text": "Was Ledger hacked? On November sixteenth, its website was hijacked, along with a hundred and seventy-seven others. For most of a day, one script on all of them swapped crypto wallet addresses for the attacker's own. The devices were never touched. But the usual advice, check your hardware wallet's screen, would not have caught it. Here is where the address was swapped, why every screen agreed with it, and the one check that does work."
+        },
+        {
+          "start": 25,
+          "title": "How did one script reach 178 websites?",
+          "text": "Big websites run code from other companies on every visit. One of them, Optimizely, lets a site test two versions of a page, so its script loads on every page it serves. On November sixteenth, someone used a flaw in Optimizely's signup to slip their own code into customers' projects. It reached a hundred and seventy-eight organisations: the BBC, CNN, Zoom, HSBC, and Ledger. Nobody had to click anything. Opening the page was enough."
+        },
+        {
+          "start": 61,
+          "title": "What did the script do to crypto addresses?",
+          "text": "It looked for wallet addresses next to words like deposit or send, and swapped them for the attacker's own. It swapped them in the text on the page, in whatever you copied, and in whatever the page sent. Each was a real, valid address for its chain, so a format check passes. Actually, this is where the usual advice breaks. You copy the address from the page, paste it into your wallet app, and your hardware wallet shows it on its own screen. Every screen matches: the attacker's address. The device did its job. It showed exactly where the coins would go. It can't know where you meant them to go. Reading the device screen catches malware that changes the address after you paste it. It can't catch an address that was wrong before you copied it."
+        },
+        {
+          "start": 111,
+          "title": "So what check would have caught it?",
+          "text": "A check only works against a source the page never touched. Get the address from the receiver's own app, not a web page, compare it with your device, character by character, and send a small test they confirm before the rest. Any one of those would have shown two different addresses. The take was small: about seven thousand dollars reached the attacker's wallets. Optimizely says it closed the flaw within three hours of spotting it, and removed the code. If you sent crypto on November sixteenth to an address you copied from a website, check where it went."
+        },
+        {
+          "start": 148,
+          "title": "So what did your device agree with?",
+          "text": "Your hardware wallet shows where the coins will go. It can't tell you where that address came from. Nothing in this video is financial advice. So, every screen agreed with the attacker. What did you check yours against?"
+        }
+      ]
     }
   ],
   "_fields": {
