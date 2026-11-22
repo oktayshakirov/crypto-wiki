@@ -4,14 +4,14 @@ meta_title: "Binance Wiki: Company Profile, Fees, BNB & Safety"
 image: "/images/exchanges/binance.png"
 description: "Binance offers advanced trading services, staking, and DeFi opportunities, making it a global leader in crypto."
 date: 2024-07-20
-updated: 2026-07-23
+updated: 2026-11-22
 order: 4
 authors: ["Oktay Shakirov"]
 quickFacts:
   founded: "2017"
   headquarters: "No single public headquarters"
   founder: "Changpeng Zhao (CZ) and He Yi"
-  ceo: "Richard Teng (since November 2023, succeeding Changpeng Zhao)"
+  ceo: "Richard Teng and Yi He, co-CEOs since 3 December 2025 (Teng has led since November 2023, succeeding Changpeng Zhao)"
   users: "Over 300 million registered users"
   type: "Centralized exchange (CEX)"
   custody: "Custodial"
@@ -21,7 +21,9 @@ faqs:
   - question: "What is Binance?"
     answer: "Binance is the world's largest cryptocurrency exchange by trading volume, founded in 2017 by Changpeng Zhao (CZ). It offers spot and derivatives trading, staking, savings products, and a wider ecosystem that includes BNB Chain."
   - question: "Is Binance safe?"
-    answer: "Binance is the largest exchange by volume, maintains an emergency insurance fund known as SAFU, and publishes proof-of-reserves. In November 2023 it agreed to a 4.3 billion dollar settlement with US authorities and CZ stepped down as CEO. It remains a custodial exchange, so counterparty risk applies."
+    answer: "Binance is the largest exchange by volume, maintains an emergency insurance fund known as SAFU, and publishes proof-of-reserves. In November 2023 it agreed to a 4.3 billion dollar settlement with US authorities and CZ stepped down as CEO. On 29 October 2026 it suffered the largest crypto hack on record, about 6.3 billion dollars, and said it covered the losses from its own funds rather than user balances. It remains a custodial exchange, so counterparty risk applies."
+  - question: "Was Binance hacked?"
+    answer: "Yes. On 29 October 2026 attackers drained Binance hot wallets of about 6.3 billion dollars (Binance's estimate; Elliptic estimated 6.43 billion), the largest crypto theft ever recorded. The FBI attributed it to North Korea's TraderTraitor group on 31 October 2026. Binance paused withdrawals, began reopening them on 1 November 2026, and said it would absorb the loss from company funds, its futures insurance fund and SAFU."
   - question: "What are Binance's fees?"
     answer: "Binance uses a tiered maker and taker model that is among the lowest in the industry, with additional discounts for paying fees in BNB and for higher 30-day trading volume. Check the official fee schedule for current rates."
   - question: "Can US users trade on Binance?"
@@ -43,7 +45,7 @@ social:
 ---
 ## **Binance: A Global Leader in Cryptocurrency Services**
 
-Founded in 2017 by **[Changpeng Zhao (CZ)](/crypto-ogs/changpeng-zhao)** and **[Yi He](/crypto-ogs/yi-he)**, Binance rapidly grew to become the world's largest cryptocurrency exchange by trading volume, a position it frequently maintains. Offering a vast ecosystem of services that extend far beyond simple buying and selling, Binance caters to a diverse global user base, from absolute beginners to sophisticated institutional traders. However, its journey has also been marked by significant regulatory challenges worldwide, shaping its operations and leadership. This article provides an overview of Binance's core offerings, features, security measures, and the evolving landscape it navigates.
+Founded in 2017 by **[Changpeng Zhao (CZ)](/crypto-ogs/changpeng-zhao)** and **[Yi He](/crypto-ogs/yi-he)**, Binance rapidly grew to become the world's largest cryptocurrency exchange by trading volume, a position it frequently maintains. Offering a vast ecosystem of services that extend far beyond simple buying and selling, Binance caters to a diverse global user base, from absolute beginners to sophisticated institutional traders. However, its journey has also been marked by significant regulatory challenges worldwide, shaping its operations and leadership, and in October 2026 by the largest crypto theft ever recorded. This article provides an overview of Binance's core offerings, features, security measures, the October 2026 hack, and the evolving landscape it navigates.
 
 <ArticleAd />
 
@@ -75,12 +77,26 @@ As one of the world's largest cryptocurrency exchanges, Binance implements exten
 Given its scale, security is a critical focus for Binance:
 
 - **Account Security:** Strong emphasis on user-side security, including mandatory **Two-Factor Authentication (2FA)** (Authenticator App recommended over SMS), **Anti-Phishing Codes** in emails, **Withdrawal Address Whitelisting**, and device management.
-- **SAFU (Secure Asset Fund for Users):** Binance allocates a percentage of trading fees to this emergency insurance fund. It's intended to cover user losses in extreme cases, such as a platform hack, though the exact conditions and coverage limits are at Binance's discretion.
+- **SAFU (Secure Asset Fund for Users):** Binance allocates a percentage of trading fees to this emergency insurance fund. It's intended to cover user losses in extreme cases, such as a platform hack, though the exact conditions and coverage limits are at Binance's discretion. It was drawn on for the first time at large scale after the October 2026 hack described below.
 - **Platform Security:** Continuous investment in platform infrastructure security, risk monitoring systems, and threat intelligence.
 
 *Note: While Binance implements security measures, holding large amounts of crypto long-term on *any* centralized exchange carries inherent risks. Self-custody via personal wallets is recommended for maximum security. See: **[How To Store Crypto](/posts/how-to-store-crypto)** and **[How to Avoid Crypto Scams](/posts/how-to-avoid-crypto-scams)**.*
 
 <ArticleAd />
+
+## **The October 2026 Hack**
+
+On 29 October 2026, Binance suffered the largest crypto theft ever recorded. Starting at about 20:05 UTC, attackers drained Binance hot wallets across several blockchains, and most of the money was gone within roughly 20 minutes. Binance put the loss at about $6.3 billion, while the blockchain analytics firm Elliptic estimated $6.43 billion at the time of the theft. That is around four times the roughly $1.5 billion taken from Bybit in February 2025, the previous record.
+
+The stolen funds included 18,270 BTC sent from a single Binance hot wallet, and billions of dollars in ether, USDT and USDC on Ethereum. On Ethereum, according to Elliptic's on-chain analysis, the attacker submitted one transaction carrying 50 pre-signed EIP-7702 authorizations, which handed control of a hot wallet to a "sweeper" contract that emptied it in about three and a half minutes. Elliptic concluded the attacker had control of Binance's transaction-signing infrastructure rather than stolen private keys. Binance's early findings pointed to a compromised DevOps engineer's laptop that gave access to an internal service able to trigger withdrawals, and it later said investigators had found further breach points. As of 22 November 2026, Binance had not published a full root cause.
+
+On 31 October 2026 the FBI attributed the theft to North Korea's **TraderTraitor** group, the same label it used for the Bybit hack. Our guide on **[how North Korea steals crypto](/posts/how-does-north-korea-steal-crypto)** explains how these attacks usually start and how the stolen money is laundered.
+
+Binance's response was to pay for the loss itself. "Binance will absorb the financial impact of these stolen funds, not our users," the exchange said on 31 October 2026. It covered the hole with corporate funds, part of its futures insurance fund and the portion of SAFU above its required size, and pledged to restore SAFU to about $1 billion. Withdrawals, suspended on the night of the attack, began reopening in phases on 1 November 2026, starting with bitcoin, with some less liquid tokens following later. By 12 November 2026 Binance reported that the stolen assets had been fully replaced, backed by a proof-of-reserves snapshot covering 198 tokens.
+
+Part of the loot was stopped. Roughly $2.85 billion, mostly stablecoins that their issuers could block, had been frozen or intercepted by early November 2026, and on 18 November 2026 Binance obtained a $6.5 billion worldwide freezing injunction from the Abu Dhabi Global Market Courts. The rest is being laundered: Elliptic reported that about 2,310 BTC (around $149 million), converted from other stolen assets, went through bitcoin mixers between 17 and 20 November 2026, while the 18,270 BTC taken directly from Binance had not yet moved.
+
+For users, the episode cuts both ways. Binance had the reserves to make customers whole, which most exchanges could not have done after a loss of this size. But it also showed that even the largest platform can lose billions in minutes, which is the clearest argument for keeping long-term holdings in your own wallet rather than on any exchange.
 
 ## **User Experience and Educational Resources**
 
@@ -96,7 +112,7 @@ Binance's rapid global expansion has brought it into frequent conflict with fina
 
 - **Extensive Reach:** The platform historically served users in over 180 countries, making it a truly global entity.
 - **Significant Regulatory Challenges:** Binance has faced intense scrutiny, investigations, and enforcement actions from numerous regulatory bodies globally. Key concerns often cited include operating in jurisdictions without appropriate licenses, inadequate Know Your Customer (KYC) and Anti-Money Laundering (AML) procedures historically, and allegations of offering unregistered securities (particularly regarding certain services or the BNB token itself).
-- **Major US Settlement (Late 2023):** A pivotal moment involved a comprehensive settlement with multiple US agencies (including the Department of Justice, Treasury - FinCEN/OFAC, and CFTC). This resulted in substantial fines ($4.3 billion), stringent ongoing compliance monitoring requirements, and founder Changpeng Zhao (CZ) stepping down as CEO. Richard Teng, a former regulator, assumed the CEO role, signaling a stronger focus on compliance.
+- **Major US Settlement (Late 2023):** A pivotal moment involved a comprehensive settlement with multiple US agencies (including the Department of Justice, Treasury - FinCEN/OFAC, and CFTC). This resulted in substantial fines ($4.3 billion), stringent ongoing compliance monitoring requirements, and founder Changpeng Zhao (CZ) stepping down as CEO. Richard Teng, a former regulator, assumed the CEO role, signaling a stronger focus on compliance. US President Donald Trump pardoned Zhao in October 2025, and in December 2025 Binance named co-founder Yi He co-CEO alongside Teng.
 - **Market Adjustments:** Regulatory pressures have forced Binance to withdraw from certain markets (e.g., Canada in 2023) or significantly alter the services offered in others (including stricter measures for US persons, who are directed to the separately operated, more limited Binance.US platform).
 - **Ongoing Scrutiny:** Despite the US settlement, navigating the complex and evolving regulatory requirements in Europe (**[MiCA](/posts/what-is-mica)** framework), Asia, and other regions remains a primary operational challenge and focus for Binance under its current leadership.
 
@@ -114,9 +130,9 @@ Binance's rapid global expansion has brought it into frequent conflict with fina
 
 ## **Conclusion**
 
-Binance remains the undisputed giant of the centralized cryptocurrency exchange world, offering an unmatched selection of assets and a deep suite of services for trading, earning yield, and engaging with the broader crypto ecosystem, including the influential BNB Chain. Its platform provides significant liquidity and drives innovation through initiatives like Launchpad.
+Binance remains the largest centralized cryptocurrency exchange, offering an unmatched selection of assets and a deep suite of services for trading, earning yield, and engaging with the broader crypto ecosystem, including the influential BNB Chain. Its platform provides significant liquidity and drives innovation through initiatives like Launchpad.
 
-However, its history is also marked by significant regulatory friction globally, culminating in major enforcement actions and a change in leadership. While Binance is now operating under increased compliance scrutiny, potential users must perform due diligence regarding its legal status and service availability in their specific jurisdiction. For experienced users seeking extensive features and deep liquidity, Binance remains a dominant force, but understanding the associated regulatory and custodial risks is essential.
+However, its history is also marked by significant regulatory friction globally, culminating in major enforcement actions and a change in leadership, and by the record October 2026 hack, which it absorbed from its own reserves. While Binance is now operating under increased compliance scrutiny, potential users must perform due diligence regarding its legal status and service availability in their specific jurisdiction. For experienced users seeking extensive features and deep liquidity, Binance remains a dominant force, but understanding the associated regulatory and custodial risks is essential.
 
 <ExchangeButton
   href="https://accounts.binance.com/register?ref=70049710"
