@@ -1,0 +1,145 @@
+---
+title: "Variational"
+meta_title: "Variational Review: Zero-Fee Perps on Crypto, Stocks & Gold"
+image: "/images/exchanges/variational.png"
+description: "Variational is a zero-fee perp DEX on Arbitrum for crypto, stocks and commodities, priced by its own market maker."
+date: 2026-11-23
+order: 36
+authors: ["Oktay Shakirov"]
+quickFacts:
+  founded: "2021; the Omni trading app launched in early 2025"
+  headquarters: "Cayman Islands (as reported by CoinDesk and The Block, 2026)"
+  founder: "Lucas Schuermann and Edward Yu, who earlier co-founded the quant firm Qu Capital, acquired by Genesis in 2019"
+  ceo: "Lucas Schuermann"
+  owner: "MCMC Research Corporation, S.A. is the contracting party in the terms of use"
+  type: "Decentralized exchange (DEX); request-for-quote perpetual futures and swaps on crypto, stocks, indices, commodities and FX"
+  users: "More than 100,000 accounts (company figure, November 2026)"
+  valuation: "USD 1.5 billion (Series B led by Bain Capital Crypto, announced 18 November 2026)"
+  custody: "USDC collateral sits in on-chain settlement-pool contracts on Arbitrum, and withdrawals go only to the connected wallet"
+  regulation: "Not registered or licensed by any regulator, according to its terms of use"
+  token: "VAR, scheduled for Q4 2026 and not yet launched as of 23 November 2026"
+  availability: "Global web app with no native mobile app; blocks US and Canadian persons, Taiwan and sanctioned territories"
+faqs:
+  - question: "What is Variational?"
+    answer: "Variational is an on-chain derivatives protocol on Arbitrum whose retail app, Omni, offers perpetual futures and swaps on crypto, stocks, indices, commodities and currencies with no trading fees. Instead of an order book it uses a request-for-quote model in which its own market maker, the Omni Liquidity Provider, quotes a price and takes the other side of every trade. It was founded in 2021 by Lucas Schuermann and Edward Yu and launched Omni in early 2025."
+  - question: "Is Variational safe?"
+    answer: "Collateral is held in USDC in settlement-pool smart contracts on Arbitrum rather than in an exchange wallet, and the contracts were audited by Zellic in December 2024 and Spearbit in March 2025. As of November 2026 we found no publicly reported hack. The main risks are smart-contract bugs, liquidation under leverage, and the fact that a single team-seeded market maker is the counterparty to every trade, which the documentation itself says can lose money."
+  - question: "How does Variational make money with zero fees?"
+    answer: "Omni charges no maker or taker fee, but every quote has a spread between the bid and the ask, and that spread is the cost of trading. The Omni Liquidity Provider earns the spread, and the documentation says 20 percent of spreads paid currently goes to the protocol treasury, a share it describes as still being tested. There is also a flat 0.1 USDC charge per deposit or withdrawal and a liquidation penalty, so check the official fee page before trading."
+  - question: "Can US residents use Variational?"
+    answer: "No. Variational's restricted persons policy, last updated in April 2026, excludes US persons and Canadian persons, and it also lists Taiwan, the US territories and sanctioned regions including Cuba, Iran, North Korea, Syria, Sudan and occupied parts of Ukraine. The terms also allow the company to geo-block and to refuse customers from other countries."
+  - question: "Has the VAR token launched?"
+    answer: "Not as of 23 November 2026. Variational has said the VAR token will launch in Q4 2026, after moving it back from an earlier Q3 target, and has not announced an exact date. The published allocation is 32 percent to points holders at launch, 18 percent to an ecosystem reserve and 50 percent to the team and investors under a 12-month lock followed by at least three years of unlocking."
+social:
+  website: "https://variational.io/"
+  twitter: "https://x.com/variational_io"
+  discord: "https://discord.gg/variational"
+  telegram: "https://t.me/variational_io"
+  instagram: "https://www.instagram.com/variational.io"
+  linkedin: "https://www.linkedin.com/company/variational/"
+---
+
+## Variational: A Zero-Fee Perp DEX for Crypto, Stocks and Commodities
+
+Variational is an on-chain derivatives protocol on Arbitrum whose trading app, Omni, offers **[perpetual futures](/posts/what-are-perpetual-futures)** and swaps on crypto, stocks, indices, commodities and currencies with no trading fees. Instead of matching buyers and sellers on an order book, it uses a request-for-quote model: you ask for a price, Variational's own market maker quotes one, and that market maker takes the other side of the trade. It was founded in 2021 by Lucas Schuermann and Edward Yu, and Omni launched in early 2025.
+
+In under two years it has become one of the largest venues in on-chain derivatives. According to DefiLlama data cited by Cointelegraph on 18 November 2026, Variational had about 62 billion US dollars of 30-day volume and about 688 million dollars of open interest, third by open interest behind **[Hyperliquid](/exchanges/hyperliquid)** and **[Aster](/exchanges/aster)**. On the same day it announced a 110 million dollar Series B at a 1.5 billion dollar valuation.
+
+What sets it apart is the mix of what people trade. Variational says more than half of its daily volume now comes from stocks, indices and commodities rather than crypto pairs, which makes it one of the main on-chain venues for traditional markets.
+
+## From Qu Capital to Omni
+
+Schuermann and Yu met at Columbia University. In 2017 they co-founded Qu Capital, a quantitative trading and research firm focused on digital assets, with Alex Price. Genesis, the institutional trading desk owned by Digital Currency Group, bought Qu Capital in 2019, and Schuermann went on to serve as vice president of engineering at Genesis until 2021. That year the two left to start Variational, with Schuermann as CEO.
+
+The company raised a 10.3 million dollar seed round in October 2024. Its contracts were audited by Zellic in December 2024 and by Spearbit in March 2025, and Omni went live on Arbitrum in early 2025. A points program followed on 17 December 2025, with 3 million points handed out retroactively to existing traders and new points distributed every week after that.
+
+Growth picked up through 2026. In May, Variational raised a 50 million dollar Series A led by Dragonfly, with Bain Capital Crypto and Coinbase Ventures taking part. Fortune reported that the company had 24 employees at the time. Alea Research, using DefiLlama data, put its third-quarter 2026 volume at 114.2 billion dollars, up from 62.8 billion in the second quarter, and found that it rose from eighth to fourth among perp DEXs by quarterly volume. For the last two weeks of September only Hyperliquid traded more.
+
+The Series B, announced on 18 November 2026, was led by Bain Capital Crypto, with Dragonfly, HSG and Peak XV also investing. At that point the company reported more than 475 billion dollars in cumulative volume and more than 100,000 accounts. The Block, citing company data reported by Bloomberg, put its net annualized revenue at about 75 million dollars for August to November.
+
+<ArticleAd />
+
+## Core Protocol: How Variational Omni Works
+
+Variational has two apps. Omni is the retail venue, and Pro is a settlement layer for institutions trading over the counter. Everything below refers to Omni, which is what most traders mean by Variational.
+
+- **Request for Quote:** There is no order book. You enter an order, the Omni Liquidity Provider (OLP) returns a bid or ask for your size, and you accept it. Both sides then get a last look, the OLP against its risk limits and you against your slippage limit, before the trade settles. The documentation says the whole flow takes seconds.
+- **One Counterparty:** The OLP is a vertically integrated market maker that quotes every market and takes the other side of every Omni trade. It hedges its own exposure on outside venues, including centralized exchanges, DEXs and traditional finance dealers, using its own capital. The docs say it never sends traders' funds to those venues.
+- **Settlement Pools:** Each user trades through a bilateral settlement pool with the OLP, a smart contract that holds positions, collateral and margin rules. Pools are isolated from each other, collateral is USDC on Arbitrum, and withdrawals can only go back to the wallet you connected.
+- **Zero Trading Fees:** Omni charges no maker or taker fee at any volume tier. The cost is the spread, which the order form shows as half the gap between the bid and ask for your size. Alea Research calculated that traders paid 26.8 million dollars in spread in the third quarter of 2026, or about 2.35 basis points of volume, against a 2.40 basis point fee on Hyperliquid. There is also a flat 0.1 USDC charge per deposit or withdrawal.
+- **Where the Money Goes:** The OLP keeps the spread, and the documentation says 20 percent of spreads paid currently go to the protocol treasury, a share it calls still under test. In the third quarter, Alea found, about half of the spread covered market-making costs, with the rest split between OLP profit, the treasury and referral rewards.
+- **Leverage:** Up to 50x on large crypto pairs such as BTC and ETH and on gold, silver, platinum and palladium perpetuals, 20x on most single stocks and index perpetuals, and 10x on most other crypto. Liquidated positions pay a 0.5 percent penalty, and high leverage makes a **[crypto liquidation](/posts/what-is-a-crypto-liquidation)** far more likely after even a small move.
+
+The model has an obvious trade-off. You are never matched against other traders, so there is no visible depth to read, and the price you get depends on how well one dealer quotes and hedges. The OLP is currently seeded by the Variational team, and the docs state plainly that "there is a risk that OLP loses money." The team plans to open it to user deposits as a community vault once it has proven stable.
+
+![A trader holding a phone with a trading app open beside a laptop and printed candlestick charts](/images/posts/analysis.jpg)
+
+## Security Measures
+
+Collateral on Omni sits in smart contracts on Arbitrum, a **[layer-2 network](/posts/what-are-layer-2-blockchains)** settled on Ethereum, rather than in an exchange's hot wallet. Variational publishes its mainnet contract addresses, including the core OLP vault and the protocol treasury, so anyone can follow the balances on Arbiscan. Deposits and withdrawals are gasless, so you do not need ETH, and funds can only be withdrawn to the connected wallet.
+
+Zellic audited the protocol in December 2024 and Spearbit, through Cantina, in March 2025, and the docs say audits continue as new features ship. As of November 2026 we found no publicly reported hack or loss of user funds.
+
+The risks are different from a centralized exchange's rather than absent:
+
+- **Smart-Contract Risk:** Audits reduce bugs but do not rule them out, and new products such as swaps add new code.
+- **Counterparty Concentration:** Every trade faces the same team-seeded market maker. If its hedging fails badly in a fast market, that is a risk you take on.
+- **Wallet Security:** You trade from your own wallet, so the protection of your **[seed phrase](/posts/what-is-a-seed-phrase)** is entirely your responsibility, and nobody can recover a lost one.
+
+## Beyond Crypto: Stocks, Commodities and Swaps
+
+Variational listed its first real-world asset perpetuals, including gold, silver, copper and oil, around its Series A in May 2026, and reached 100 traditional listings by 17 August 2026. These are derivatives that track a price. They are not **[tokenized stocks](/posts/what-are-tokenized-stocks)** that represent ownership of a share, so you get no voting rights, and you never hold the underlying asset. Schuermann told CoinDesk in May that he expects perpetuals on real-world assets to become the largest contract class in DeFi, bigger than bitcoin and ether combined.
+
+On 1 September 2026 Variational added swaps, starting with gold and the Nasdaq 100. A swap tracks the total return of an index, commodity or currency and is priced from quotes by traditional finance liquidity partners. It has no crypto-style funding rate. Instead it charges a daily financing rate at 17:00 New York time, benchmarked to real interest rates such as SOFR, and dividends are passed through as cash adjustments. By 14 October there were 16 swaps, including cocoa, the Dow and a volatility index.
+
+Swaps took off quickly. Alea Research found they made up 50.3 percent of Variational's September volume, with the Nasdaq 100 swap alone at about 30 percent. On 14 October 2026 Crypto Briefing reported that Variational had overtaken trade.xyz as the largest on-chain venue for **[real-world asset](/posts/real-world-asset-tokenization)** derivatives by volume.
+
+Two details matter before you trade them. Swaps follow traditional market hours, so trading, take-profit and stop-loss orders and liquidations all pause while a market is closed, and a position can open sharply higher or lower after a weekend. And until round-the-clock trading arrives, swaps use isolated margin only.
+
+![Three gold bars stamped 999.9 fine gold, the kind of commodity Variational lists as perpetuals and swaps](/images/posts/gold.jpg)
+
+## The VAR Token and the Points Program
+
+Variational does not have a live token yet. On 24 September 2026 it said the VAR token would launch in Q4 2026, later than an earlier Q3 target, and as of 23 November 2026 it had not announced a date. The published allocation is:
+
+- **Genesis Distribution (32 percent):** **[Airdropped](/posts/understanding-crypto-airdrops)** to points holders in proportion to their points, fully unlocked at launch.
+- **Ecosystem Reserve (18 percent):** Held at the foundation's discretion.
+- **Team and Investors (50 percent):** Locked for 12 months after launch, then unlocking over at least three years.
+
+Variational says it will use 100 percent of treasury revenue to buy back and burn VAR. Points are distributed every Friday, with boosts for higher volume tiers and for referrals, and the company reserves the right to change the program. Points are not a token, so treat any outside estimate of what a point is worth as speculation, and be wary of airdrop "claim" sites that do not come from Variational's official channels.
+
+<ArticleAd />
+
+## User Experience
+
+Omni is a web app. There is no native iOS or Android app, but the site is built for mobile browsers and supports signing in on a phone by scanning a QR code. One cross-margined account gives you access to more than 550 markets across crypto, equities, indices, commodities, currencies and pre-IPO names.
+
+Getting started takes a crypto wallet and **[stablecoins](/posts/what-are-stablecoins)** on Arbitrum. You bridge USDC to Arbitrum, connect your wallet and deposit. There is no signup form and no identity check, which keeps onboarding quick but means there is no support desk that can reverse a mistaken transfer. In November 2026 the company told Cointelegraph it was building email registration and other deposit methods to remove the wallet requirement.
+
+The interface will feel familiar to anyone who has used **[Lighter](/exchanges/lighter)** or Hyperliquid, though quoting works differently. Instead of reading a book and placing a limit order, you see a price for your size and accept it. Programmatic traders should note that, as of Alea's 27 October 2026 report, a public trading API was still pending.
+
+## Decentralization and the Regulatory Landscape
+
+Variational does not hold a financial licence. Its terms of use name MCMC Research Corporation, S.A. as the contracting party, state that the company and platform are not registered or licensed by any government body, apply Panamanian law and send disputes to individual arbitration in Panama. Press coverage describes the protocol as based in the Cayman Islands.
+
+Access is restricted by policy rather than by a licensing regime. The restricted persons page, last updated on 20 April 2026, excludes US persons and Canadian persons and lists Taiwan, the US territories, Cuba, Iran, North Korea, Sudan, Syria and the Crimea, Donetsk, Luhansk and Sevastopol regions. The terms also let the company geo-block and refuse customers from other countries.
+
+The traditional markets are the bigger regulatory question. Leveraged derivatives on listed stocks and indices are tightly regulated products in most countries, and an unlicensed venue offering them to retail traders sits in a grey area that could change quickly.
+
+## Points to Consider
+
+- **Zero Fees, Not Zero Cost:** You pay through the spread on every quote, plus 0.1 USDC per transfer and swap financing charges. Compare the quoted price with other venues on larger trades.
+- **A Single Counterparty:** The OLP quotes and fills everything. That keeps execution simple, but it concentrates risk in one team-run market maker.
+- **Market Hours on Swaps:** Swaps on indices and commodities close outside trading hours, and positions can gap at the reopen. Size them for that.
+- **Pre-Token Incentives:** Much of today's activity is shaped by points ahead of the VAR launch. Volume can fall once a token is out, as it did on other perp DEXs, so **[do your own research](/posts/do-your-own-research)** before treating current numbers as permanent.
+- **Not for US or Canadian Users:** Both are blocked, along with Taiwan and sanctioned regions.
+
+## Conclusion
+
+Variational has gone from a 2021 startup by two former Genesis quants to one of the four or five largest on-chain derivatives venues, valued at 1.5 billion dollars in November 2026. Its zero-fee quoting model and fast push into stocks, commodities and swaps make it something different in the **[decentralized exchange](/posts/what-is-a-dex)** field, and it now leads on-chain trading in traditional markets.
+
+<ArticleAd />
+
+It is also young, unlicensed and built around one market maker that the team itself says can lose money, and its token has not launched. For experienced traders outside the US and Canada who want leveraged exposure to gold, the Nasdaq 100 or crypto from a self-custody wallet with no trading fee, Variational is worth a close look. For beginners, or anyone who wants a regulated broker and a visible order book, the trade-offs deserve more weight than the zero-fee headline.
+
+<ExchangeButton href="https://variational.io/" text="Visit Variational" />
