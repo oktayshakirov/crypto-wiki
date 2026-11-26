@@ -1996,6 +1996,45 @@
           "text": "Your hardware wallet shows where the coins will go. It can't tell you where that address came from. Nothing in this video is financial advice. So, every screen agreed with the attacker. What did you check yours against?"
         }
       ]
+    },
+    {
+      "slug": "bitcoin-ponzi",
+      "id": "Q5BvCVrn8Y8",
+      "kind": "long",
+      "title": "Is Bitcoin a Ponzi Scheme? The Definition, Checked",
+      "description": "People call Bitcoin a Ponzi scheme: early buyers getting rich off the ones who come later. Part of that is true - but a Ponzi scheme needs three things, and Bitcoin is missing two of them. The SEC's definition, checked against how Bitcoin actually works.",
+      "uploadDate": "2026-11-26T12:17:46Z",
+      "duration": "PT2M53S",
+      "seconds": 173,
+      "poster": "/images/videos/bitcoin-ponzi.webp",
+      "target": {
+        "type": "posts",
+        "slug": "what-is-bitcoin"
+      },
+      "alsoOn": [],
+      "placement": "auto",
+      "chapters": [
+        {
+          "start": 0,
+          "title": "Is Bitcoin a Ponzi scheme?",
+          "text": "People call Bitcoin a Ponzi scheme: early buyers getting rich off the ones who come later. Part of that is true, and by the end you'll know exactly which part. But a Ponzi scheme needs three things, and Bitcoin is missing two of them. In 2022, the actor Ben McKenzie told the US Senate that crypto is the largest Ponzi scheme in history. So check Bitcoin against the definition: who holds the money, who promises the return, and who pays it out?"
+        },
+        {
+          "start": 29,
+          "title": "What makes a Ponzi scheme?",
+          "text": "What makes a Ponzi scheme? The US Securities and Exchange Commission defines it as a fraud that pays existing investors with money from new ones. In 1920, Charles Ponzi promised fifty percent in forty-five days. Bernie Madoff was a former chairman of the Nasdaq stock market, with a Wall Street firm he'd run since 1960. His clients' statements showed sixty-four point eight billion dollars that never existed. And in crypto, BitConnect promised profits from a trading bot, and took about two point four billion dollars. Every one runs the same way. New investors pay in, the operator pays earlier investors their returns out of that money, and when the new money stops, so do the payouts."
+        },
+        {
+          "start": 76,
+          "title": "Does Bitcoin fit the definition?",
+          "text": "Does Bitcoin fit the definition? Actually, there's nobody in the middle of Bitcoin. When you buy, your dollars go to whoever sold to you, nobody holds a pot of everyone's money, and nobody promises you a return. And every one of those trades sits on a public ledger that anyone can read. New coins don't go to early investors either. They go to miners, as pay for securing the network. The 2008 paper that started it describes a peer-to-peer electronic cash system. A Ponzi collapses when new money stops, because the payouts stop. Bitcoin has no payouts to stop."
+        },
+        {
+          "start": 116,
+          "title": "What are the sceptics right about?",
+          "text": "What are the sceptics right about? But their real point survives. Bitcoin pays you nothing while you hold it. No interest, no dividend, no rent. In 2018, Warren Buffett put it this way: the asset itself is creating nothing. So the only way to sell it for more is to find someone who'll pay more. That makes it speculation, like gold. It doesn't make it a Ponzi. And real Ponzi schemes do hide inside crypto. BitConnect was one. OneCoin took about four billion dollars, and never even had a blockchain. Someone in the middle holding the money? No. A promised return? No. Old investors paid with new money? No. Gains that need the next buyer? Yes. Nothing in this video is financial advice. So, is Ponzi the right word for Bitcoin, or just the easiest one?"
+        }
+      ]
     }
   ],
   "_fields": {
